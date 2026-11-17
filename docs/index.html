@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>iPhone 深度商业与产品价值研究报告：全球智能手机单品定价权霸主、50% 全球收入垄断与折叠屏/AI 生态升级周期</title>
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <!-- Chart.js -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ ipgold: {
+ 300: '#FDE047',
+ 400: '#FACC15',
+ 500: '#EAB308',
+ 600: '#CA8A04',
+ 700: '#A16207',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ }
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(234, 179, 8, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #EAB308;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-ipgold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-ipgold-600 via-ipgold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-ipgold-400 to-ipgold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ iP
+ </div>
+ <div>
+ <div class="text-[11px] text-ipgold-400 font-semibold tracking-wider uppercase">Apple · iPhone Flagship Line</div>
+ <div class="text-sm font-bold leading-tight">iPhone 深度商业与产品分析报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-2">
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">iPhone 研报目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 产品矩阵与 ASP 飙升架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 核心护城河与 iOS 生态闭环</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球高端手机竞品横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 供应链成本与生态复利推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 行业风险与多情景演进</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
+ <p>全球消费电子与智能硬件研究组</p>
+ <p class="mt-1">数据基准：2026年11月 (iPhone 17/18周期)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-ipgold-400 via-ipgold-500 to-ipgold-600 flex items-center justify-center text-navy-950 font-extrabold text-base shadow-lg shadow-ipgold-500/25">
+ iP
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-ipgold-400 bg-ipgold-500/15 px-2 py-0.5 rounded">Apple iPhone</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">iPhone 深度研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 全球智能手机行业利润垄断者 · ASP 突破 $1,031 与折叠屏/AI 换机超级周期
+ </p>
+ </div>
+
+ <!-- 产品实时快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">全球手机行业收入占比</span>
+ <span class="font-mono font-bold text-ipgold-400">~50.0% (历史新高)</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">iPhone 平均售价 (ASP)</span>
+ <span class="font-mono font-bold text-emerald-400">$1,031 (+27% YoY)</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">出货份额 (全球Q3)</span>
+ <span class="font-mono font-bold text-white">22% (出货量稳居前二)</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3.5 overflow-y-auto max-h-[calc(100vh-310px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-ipgold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>产品矩阵与 ASP 飙升架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>核心护城河与 iOS 生态闭环</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球高端手机竞品横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>供应链成本与生态复利推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>行业风险与多情景演进</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏 -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2.5">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-ipgold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-ipgold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-ipgold-500 to-ipgold-600 hover:from-ipgold-600 hover:to-ipgold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-ipgold-500/15 text-ipgold-700 dark:text-ipgold-400 font-bold border border-ipgold-500/30">评级：行业标杆 / 高端硬件绝对统治者</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：iPhone 17 系列热销与首款折叠屏 iPhone Duo 创新周期</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖时间：2026年11月</span>
+ <span>NASDAQ: AAPL (iPhone Division)</span>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景金色点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#EAB308 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-ipgold-500/20 border border-ipgold-400/40 text-ipgold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-ipgold-400 animate-pulse"></span>
+ <span>CORE ANALYSIS · 全球智能手机 50% 收入垄断 × ASP 突破 $1,031 × 折叠屏 iPhone Duo 与苹果智能 AI 引擎</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ iPhone 深度商业与产品价值研究报告：全球智能手机单品定价权霸主、50% 收入垄断与折叠屏/AI 生态升级周期
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 凭借最新发布的 <strong class="text-white">iPhone 17 系列</strong>的出色销量统治力与备受瞩目的超高端折叠屏 <strong class="text-ipgold-300">iPhone Duo</strong> 的量产交付，苹果 iPhone 在全球智能手机出货量下滑的行业逆境中展现了惊人的抗风险与虹吸效应。Counterpoint Research 最新数据显示，苹果在 2026 年第三季度独占全球智能手机总收入的 <strong class="text-emerald-400">50%</strong>，创下历史同期新高，平均售价（ASP）飙升至 <strong class="text-ipgold-300">$1,031</strong>。
+ 尽管面临存储芯片与元器件成本上涨的压力，iPhone 凭借强大的品牌溢价、Apple Intelligence 端侧 AI 算力与黏性极强的 iOS 换机护城河，成功推动全球换机意愿保持在 <strong class="text-white">37%</strong> 的高位，构筑起全球消费电子领域不可撼动的现金与利润堡垒。
+ </p>
+
+ <!-- 核心投资结论高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">半壁江山的收入垄断</div>
+ <div class="text-white font-semibold">以全球 ~22% 的出货量份额斩获全行业 50% 的总收入，ASP 升至历史顶峰 $1,031</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">折叠屏与 AI 双轮驱动</div>
+ <div class="text-ipgold-400 font-semibold">首款折叠屏 iPhone Duo 早期交付超预期，Apple Intelligence 锁死高端用户升级周期</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">极强的抗跌韧性与服务飞轮</div>
+ <div class="text-emerald-400 font-semibold">面对供应链成本上升，iPhone 展现出无与伦比的转嫁与吸金能力，持续反哺 App Store 服务生态</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>全球智能手机收入占比</span>
+ <span class="p-1.5 rounded-lg bg-ipgold-500/15 text-ipgold-600 dark:text-ipgold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">50.0%</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">历史同期新高</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 全球每赚取 2 美元智能手机收入，就有 1 美元归属于 iPhone，尽显极致高端定价权。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>iPhone 平均售价 (ASP)</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$1,031</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">突破千元大关</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 消费结构向 Pro / Pro Max 及全新超高端折叠屏 iPhone Duo 倾斜，持续拉高单机盈利天花板。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>全球出货量与市场份额</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">22%</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">逆势稳健增长</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 在全球智能手机市场整体收缩背景下，出货份额逆势增至 22%，展现出极强的品牌忠诚度。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>用户换机意愿 (Upgrade Intent)</span>
+ <span class="p-1.5 rounded-lg bg-ipgold-500/15 text-ipgold-600 dark:text-ipgold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">37%</span>
+ <span class="text-xs font-bold text-ipgold-700 dark:text-ipgold-400 bg-ipgold-500/15 px-2 py-0.5 rounded">极高用户粘性</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 约 37% 的现有 iPhone 用户表示极有可能在近期升级新机，换机意愿远超行业平均水平。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 产品矩阵与 ASP 飙升架构 (Product Matrix & ASP Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-ipgold-600 dark:text-ipgold-400">Section 01 · Product Matrix & ASP Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 产品矩阵与 ASP 结构演进：从标准版、Pro 旗舰到折叠屏 iPhone Duo 的金字塔</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">iPhone 年营收规模维持在 ~$200B+ 核心大盘</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2022–2026 iPhone 平均售价 (ASP) 与全球智能手机收入份额演进</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">ASP 持续飙升至 $1,031 创历史纪录，收入占比稳定站上 50% 行业巅峰</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('asp_trend')" id="btn-chart-asp" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-ipgold-600 dark:text-ipgold-400 shadow-sm transition cursor-pointer">视图A：ASP与收入份额走势</button>
+ <button onclick="switchBizChart('model_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：各机型销量与热销排名</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="iphoneBizChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性拆解核心洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">iPhone 产品矩阵的三大增长引擎</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-ipgold-500/15 text-ipgold-600 dark:text-ipgold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">iPhone 17 / 18 系列全球热销，包揽销量榜首</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 标准版与 Pro 旗舰在全球各主要市场（如日本 BCN 排名、中美欧统计）持续霸榜前三，以均衡的性能与续航成为全球换机首选。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">超高端折叠屏 iPhone Duo 带来 ASP 增量突破</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 苹果首款折叠屏旗舰 <em>iPhone Duo</em> 的正式发布与初期交付缓解了高端机型天花板限制，成功吸引追求极致科技体验的高净值商务群体。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">Apple Intelligence 端侧 AI 成为换机核心催化剂</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 深度集成的 AI 功能与 iOS 生态无缝融合，有效缩短了老旧机型用户的换机决策周期，使全球升级意愿稳固在 37% 的高位。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">硬件战略核心目标</span>
+ <span class="font-bold text-ipgold-600 dark:text-ipgold-400">高 ASP 与高毛利率的双轮复利</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大产品系列详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 系列 1：iPhone 标准版与数字系列 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-ipgold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-ipgold-500/15 text-ipgold-700 dark:text-ipgold-400 text-xs font-bold">销量基本盘 · 占出货量 ~55%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">全球畅销榜常年霸榜</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 标准与中端系列（iPhone 17 / 18 / 17e）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 作为苹果出货量的主力军，数字系列与轻量化衍生机型（如 iPhone 17e）在各大市场（如日本 BCN 零售榜前列）击败众多中端安卓机型。凭借出色的能效比、长续航与亲民定价，成为拉新和吸引安卓转网用户（Switchers）的核心利器。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>全球智能手机销量冠军梯队</span>
+ <span class="text-ipgold-600 dark:text-ipgold-400 font-semibold">基本盘稳固如磐石</span>
+ </div>
+ </div>
+
+ <!-- 系列 2：iPhone Pro 与 Pro Max 旗舰 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">利润发动机 · 占硬件利润 ~70%+</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">ASP 超 $1,000+ 核心支撑</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. Pro 与 Pro Max 专业旗舰系列</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 搭载最顶尖的 A 系列 Pro 芯片、钛金属轻量化机身、专业多焦段影像系统与高刷灵动岛屏幕。Pro 系列不仅是全球高端机型销量风向标，更是将 iPhone 平均售价（ASP）推高至 $1,031 纪录的核心功臣。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>全球高净值用户首选机型</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">压倒性利润收割机</span>
+ </div>
+ </div>
+
+ <!-- 系列 3：折叠屏创新先锋 iPhone Duo -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">超高端破局 · 开启折叠屏新纪元</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">早期交付需求火爆</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 折叠屏创新旗舰（iPhone Duo）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 苹果首款折叠屏智能手机 <em>iPhone Duo</em> 于 2026 年秋季重磅登场。凭借顶级的折叠铰链工艺、无痕屏幕与专属 iOS 27.3 多任务分屏交互，早期订单和配送延期显示出极其强劲的市场追捧，进一步抬升了苹果在超高端折叠屏赛道的品牌话语权。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>创新看涨期权与 ASP 放大器</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">引领行业折叠新浪潮</span>
+ </div>
+ </div>
+
+ <!-- 系列 4：二手翻新与以旧换新循环生态 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">保值防线 · 锁定长期生态粘性</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">残值率行业第一</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 官方翻新与以旧换新（Trade-In）循环矩阵</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 凭借行业断层领先的硬件残值率（Resale Value），iPhone 官方以旧换新计划和 Certified Refurbished 翻新机体系有效降低了消费者的购机门槛。旧机高效流转至新兴市场或次级用户，形成强大的品牌闭环，不断为 App Store 服务生态输送活跃账号。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>极高残值率与二手生态闭环</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">降低换机门槛的利器</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 核心护城河与 iOS 生态闭环 (Core Moats & iOS Ecosystem)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Core Moats & iOS Ecosystem</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 核心护城河与 iOS 生态闭环：软硬件垂直一体化、极高转换成本与服务飞轮</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：极宽 (Wide Economic Moat)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-ipgold-500/15 text-ipgold-600 dark:text-ipgold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">软硬件垂直一体化（自研 A 系列 / M 系列芯片）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 从底层硅片架构（如 A 系列仿生芯片与神经网络引擎）到 iOS 操作系统的深度协同，赋予 iPhone 压倒性的性能功耗比优势。这种极致的自研能力令安卓阵营难以在流畅度与能效上轻易匹敌。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">极高的 iOS 用户转换成本（Switching Costs）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ iMessage、FaceTime、iCloud 云同步、Apple Watch / AirPods 智能穿戴生态以及密码钥匙串，构筑了极具黏性的数字生活圈。用户一旦深度体验 iOS 生态，向安卓迁移的心理与数据迁移成本极高。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">App Store 开发者生态与千亿服务收入飞轮</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 全球最优质的开发者首先在 iOS 平台首发创新应用。庞大的 iPhone 活跃装机量转化为源源不断的高毛利 App Store 佣金与 iCloud、Apple Music 等服务收入，形成硬件销售反哺服务、服务锁定硬件的超级飞轮。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">顶级的品牌溢价与二手残值率保障</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ iPhone 在全球消费者心中已演变为轻奢与身份符号。出色的耐用性与三年后依然坚挺的二手残值率，使得消费者在实际计算总拥有成本（TCO）时，往往发现 iPhone 具备极高的性价比与保值属性。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维护城河雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">高端旗舰智能手机五维护城河雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">iPhone vs 三星 Galaxy Ultra vs 国内高端旗舰阵营（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 全球高端手机竞品横向对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-ipgold-600 dark:text-ipgold-400">Section 03 · Global High-End Smartphone Competitive Landscape</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球高端手机竞品横向对比：50% 行业收入垄断与差异化生态博弈</h2>
+ </div>
+ <!-- 交互式筛选按钮 -->
+ <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-ipgold-500 text-navy-950 shadow-sm transition cursor-pointer">全部阵营</button>
+ <button onclick="filterCompetitors('flagship')" data-filter="flagship" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">全球直面旗舰对手</button>
+ <button onclick="filterCompetitors('foldable')" data-filter="foldable" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">折叠屏与创新赛道对手</button>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">品牌阵营与代表机型</th>
+ <th class="py-4 px-4 min-w-[130px]">核心市场优势</th>
+ <th class="py-4 px-4 min-w-[140px]">高端化与定价策略</th>
+ <th class="py-4 px-4 min-w-[100px]">平均售价(ASP)</th>
+ <th class="py-4 px-4 min-w-[115px]">行业利润占有率</th>
+ <th class="py-4 px-4 min-w-[115px]">生态护城河评分</th>
+ <th class="py-4 px-5 min-w-[230px]">核心优劣势与与 iPhone 竞合定位评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：iPhone 基准 -->
+ <tr data-category="core" class="bg-ipgold-500/5 dark:bg-ipgold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-ipgold-500 text-navy-950 text-[10px] font-extrabold">行业霸主</span>
+ <span class="font-bold text-slate-900 dark:text-white">Apple iPhone (17/18/Duo)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">iOS / A系芯片 / Apple Intelligence</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">北美、日本、西欧等高端市场统治级地位</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-ipgold-500/15 text-ipgold-700 dark:text-ipgold-400">超高端定价 + 折叠屏突破</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">~$1,031 (最高)</td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">~50.0% (断层第一)</td>
+ <td class="py-4 px-4 font-mono font-bold text-ipgold-600 dark:text-ipgold-400">9.8 / 10</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全球智能手机利润收割机：</strong>以全行业约 22% 的出货份额独占 50% 的总收入；软硬件一体化与服务飞轮无人能及，唯一短板在于全球宏观经济波动下的换机周期拉长。
+ </td>
+ </tr>
+
+ <!-- 行 2：三星 Galaxy Ultra / S26 系列 -->
+ <tr data-category="flagship" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">三星 Galaxy (S26 / Ultra)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Android / Galaxy AI / 折叠屏先行者</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">全球总出货量第一(中低端A系列支撑) + 全球化布局</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-500/15 text-blue-700 dark:text-blue-400">双旗舰 + 折叠屏矩阵覆盖</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$320 (全系列均价)</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~19.0%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">8.2 / 10</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全球出货量领跑者：</strong>凭借庞大的中低端 Galaxy A 系列维持全球出货量第一，但在高端旗舰利润上被 iPhone 持续大幅甩开；折叠屏形态曾居先发优势，现面临 iPhone Duo 正面挤压。
+ </td>
+ </tr>
+
+ <!-- 行 3：华为 / 荣耀等国内高端旗舰阵营 -->
+ <tr data-category="flagship" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">中国高端旗舰 (华为 Mate/Pura & 荣耀)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">HarmonyOS NEXT / 卫星通信 / 极致影像</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">中国本土超高端市场极强的号召力与创新迭代</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">三折叠与尖端影像超高端定位</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$600+ (国内高端)</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~12.0% (国内聚合)</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">8.5 / 10</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>中国本土最强挑战者：</strong>在华纳税与消费者心智中占据极高地位，凭借三折叠屏、昆仑玻璃及鸿蒙生态对 iPhone 在国内市场形成强力分流；但在海外市场拓展受限。
+ </td>
+ </tr>
+
+ <!-- 行 4：小米 / OPPO / Vivo (高端化突围者) -->
+ <tr data-category="foldable" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">小米 / OPPO / Vivo (国内主流阵营)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">影像旗舰 / 小折叠与横折创新</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">中国本土及欧洲、亚太中高端市场</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-500/15 text-teal-700 dark:text-teal-400">性价比向影像旗舰与折叠屏渗透</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$250–$450</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~15.0% (合计)</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">7.5 / 10</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>极度内卷的创新先锋：</strong>在快充、影像算法及折叠屏轻薄化上领先行业，对 iPhone 在中印及欧洲市场的中端份额构成持续压制，迫使 iPhone 加速推出创新形态机型。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：行业收入占比与 ASP 对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">全球智能手机主要阵营平均售价 (ASP, $) 与全球总收入利润份额对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">iPhone 以 $1,031 平均售价与 50% 收入独占鳌头，彰显不可替代的高端定价霸权</p>
+ </div>
+ <span class="text-xs font-semibold text-ipgold-700 dark:text-ipgold-400 bg-ipgold-500/15 px-2.5 py-1 rounded">$1,031 ASP 行业断层第一</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 供应链成本与生态复利推演 (Supply Chain & Compounding Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Supply Chain Cost & Ecosystem Compounding Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 供应链成本结构与生态复利：零部件压力测试与 iPhone 用户终身价值（LTV）推演</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">存储与元器件成本波动 · 强悍的溢价转嫁与服务衍生能力</span>
+ </div>
+
+ <!-- 1. 供应链与财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-ipgold-600 dark:text-ipgold-400 uppercase">Hardware Gross Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~36%–38%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 尽管内存（RAM/闪存）采购成本近期面临波动，凭借卓越的供应链议价权和 Pro 占比提升，iPhone 硬件毛利率依然稳如磐石。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Annual iPhone Revenue</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$200B+</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 每年稳定贡献苹果公司超过半数的绝对营收，是支撑庞大研发投入与千亿级股票回购的超级现金奶牛。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Active Installed Base</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~2.2B+</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 全球活跃 iOS 设备保有量突破 22 亿台，其中 iPhone 占比绝大部分，为高毛利的服务业务（App Store/iCloud）提供庞大基盘。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Services Upsell (ARPU)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$100+ / yr</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 每位 iPhone 活跃用户平均每年带来的生态服务消费持续增长，形成“硬件一次性买卖 + 服务终身复利”的商业模式。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2021–2026 iPhone 平均售价 (ASP, $) 稳步攀升 vs 全球活跃装机量（Active Installed Base, 亿台）双轴演进</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">硬件高端化推动 ASP 从 $825 跃升至 $1,031，同时活跃装机量稳步突破 22 亿大关，驱动生态服务飞轮加速旋转</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-ipgold-700 dark:text-ipgold-400 bg-ipgold-500/15 px-2.5 py-1 rounded">5年 ASP 涨幅超 +25%</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：iPhone 用户终身价值 (LTV) 与以旧换新换机复利推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-ipgold-400 font-bold">
+ <span>IPHONE ECOSYSTEM LTV & UPGRADE SIMULATOR · 用户终身价值与换机推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">iPhone 用户生态价值（LTV）与换机周期资产复利模拟器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：初始购机款 $1,031 (Pro旗舰) | 年均服务 ARPU $110 | 支持残值回收率与升级年限自定义测算</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-ipgold-500/15 border border-ipgold-400/30 text-xs font-semibold text-ipgold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="tradein-toggle" checked onchange="updateIphoneSimulator()" class="w-4 h-4 rounded accent-[#EAB308] cursor-pointer">
+ <span>开启官方以旧换新 (Trade-In) 残值抵扣</span>
+ </label>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <!-- 初始购机均价滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始购机均价 (USD)</span>
+ <span id="sim-price-label" class="font-mono font-bold text-white text-sm">$1,031</span>
+ </div>
+ <input id="sim-price" type="range" min="799" max="1799" step="50" value="1031" oninput="updateIphoneSimulator()" class="w-full accent-[#EAB308] cursor-pointer">
+ </div>
+
+ <!-- 换机周期滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">平均换机周期 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">3 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="6" step="1" value="3" oninput="updateIphoneSimulator()" class="w-full accent-[#EAB308] cursor-pointer">
+ </div>
+
+ <!-- 年均服务 ARPU 增长滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年均生态服务消费 (iCloud/App Store/AI)</span>
+ <span id="sim-arpu-label" class="font-mono font-bold text-emerald-400 text-sm">$110 /年</span>
+ </div>
+ <input id="sim-arpu" type="range" min="50" max="300" step="10" value="110" oninput="updateIphoneSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <!-- 二手残值率选择按钮组 -->
+ <div class="pt-1">
+ <div class="text-slate-300 font-medium mb-2">换机时官方折抵残值率（Resale Value Rate）：</div>
+ <div class="grid grid-cols-3 gap-2" id="residual-btn-group">
+ <button type="button" onclick="setResidualRate(0.35)" data-res="0.35" class="res-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-ipgold-400 transition cursor-pointer">
+ 35% 基础残值<br><span class="text-[10px] text-slate-400">长期老化机型</span>
+ </button>
+ <button type="button" onclick="setResidualRate(0.50)" data-res="0.5" class="res-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-ipgold-500 text-navy-950 border border-ipgold-400 shadow transition cursor-pointer">
+ 50% 标准残值<br><span class="text-[10px] text-navy-900">Pro旗舰 3 年折旧</span>
+ </button>
+ <button type="button" onclick="setResidualRate(0.65)" data-res="0.65" class="res-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-ipgold-400 transition cursor-pointer">
+ 65% 保值神话<br><span class="text-[10px] text-slate-400">Pro Max 热门色</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">周期内累计生态服务贡献 (Services LTV)</div>
+ <div id="sim-total-services" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$330</div>
+ <div class="text-xs text-slate-400 mt-1.5">App Store、iCloud 及订阅服务总额</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">换机残值折抵抵扣额 (Trade-In Credit)</div>
+ <div id="sim-tradein-credit" class="text-2xl sm:text-3xl font-mono font-extrabold text-ipgold-400 mt-1.5">$516</div>
+ <div class="text-xs text-slate-400 mt-1.5">用于抵扣下代新机购置成本</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">折算实际年化硬件持有成本 (Net TCO)</div>
+ <div id="sim-net-tco" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$172 /年</div>
+ <div class="text-xs text-slate-400 mt-1.5">极低的年均硬件折旧费用（折合每天不到 $0.47）</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">单个用户周期内综合总价值 (User LTV)</div>
+ <div id="sim-user-ltv" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$1,361</div>
+ <div class="text-xs text-slate-400 mt-1.5">硬件毛利 + 长期生态服务复利总和</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 市场多空核心分歧对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">ASP 飙升 + 折叠屏/AI 换机超级周期</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>50% 行业收入垄断地位稳固：</strong>ASP 突破 $1,031 证明高端机型（Pro/Pro Max 及 iPhone Duo）具备极强的定价权与抗通胀转嫁能力。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>Apple Intelligence 与折叠屏开启新一轮升级潮：</strong>端侧 AI 功能与首款折叠屏 iPhone Duo 完美契合，有效激发庞大老旧机型用户的换机意愿（保持在 37% 高位）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>软硬件双轮驱动的高毛利飞轮：</strong>22 亿活跃装机量源源不断转化为高毛利服务收入，平抑了单一硬件出货量的周期性波动。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">换机周期拉长 + 供应链成本压力</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>零部件成本（存储/芯片）上涨侵蚀毛利：</strong>全球存储芯片及关键元器件价格持续上行，若无法全部转嫁可能对硬件毛利率造成结构性压制。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>全球宏观经济与消费者换机周期拉长：</strong>部分成熟市场消费者面对高通胀倾向于延长手机使用寿命至 4 年以上，考验 iPhone 基础出货量韧性。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>区域市场竞争极度激烈：</strong>在中国及新兴市场面对本土高端旗舰的强势创新（如三折叠与极致影像）与价格竞争，市占率面临局部蚕食。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 行业风险与多情景演进 (Risks & Scenario Framework)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-ipgold-600 dark:text-ipgold-400">Section 05 · Industry Risks & Scenario Framework</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 行业风险与多情景演进：三情景推演与高端手机配置策略</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">策略建议：长期看好高端硬件定价霸权与服务生态复利</span>
+ </div>
+
+ <!-- 1. 三情景推演卡片 (Bull / Base / Bear) -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 牛市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：25%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">ASP 突破 $1,100+ | 收入占比 53%</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>Apple Intelligence 迎来现象级 AI 应用爆发，折叠屏 iPhone Duo 产能大超预期成为全球商务标杆，带动全球换机意愿飙升至 42% 以上，出货量与 ASP 双双创历史新高。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 业务爆发潜力：硬件营收双位数强劲增长
+ </div>
+ </div>
+
+ <!-- 基准情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-ipgold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-ipgold-500/15 text-ipgold-700 dark:text-ipgold-400 text-xs font-bold">基准情景 (Base Case)</span>
+ <span class="font-mono text-xs font-bold text-ipgold-600 dark:text-ipgold-400">概率：55%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">ASP 维持 ~$1,030 | 收入占比 ~50%</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>iPhone 17/18 与折叠屏稳定热销，Pro 比例维持高位；供应链成本波动被定价策略完美对冲，换机意愿保持在 37% 历史稳态，实现中低个位数稳健增长。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-ipgold-600 dark:text-ipgold-400">
+ 稳健增长预期：全球高端收入龙头地位稳固
+ </div>
+ </div>
+
+ <!-- 熊市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">ASP 回落至 $950 | 毛利率承压</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>全球宏观经济走弱导致换机周期延长至 4 年以上；存储芯片等核心零部件成本大幅飙升且无法转嫁，叠加本土竞争对手强力挤压，导致硬件毛利率阶段性承压。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 潜在周期回撤：销量放缓与硬件毛利波动
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心风险矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">四大核心潜在风险评估与跟踪边界</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 核心供应链成本与存储芯片涨价</span>
+ <span class="text-xs font-mono text-rose-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">闪存与 DRAM 价格上行对硬件毛利率的潜在挤压</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 尽管苹果拥有极强的议价权，但若上游半导体及存储组件价格持续超预期上涨，将对标准版机型的毛利率构成一定考验。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 全球换机周期拉长与宏观波动</span>
+ <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">消费者设备使用寿命延长对年出货量的物理约束</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 智能手机硬件耐用性的不断提升（如钛金属机身与长期系统更新支持）使得用户平均换机周期延长，对纯出货量增长形成天然天花板。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">03 · 区域市场竞争加剧与地缘监管摩擦</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">本地化竞争、应用商店反垄断与合规审查</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 在中国等核心高端市场面对本土巨头的创新机型分流；同时全球各司法管辖区关于 App Store 佣金与侧载（Sideloading）的监管合规持续演进。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · AI 功能商业化落地与隐私安全博弈</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">Apple Intelligence 算力普及与全球不同语言适配进度</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 端侧 AI 的全面推广需要庞大的算力与各地区合规落地支持，若 AI 功能迭代速度不及预期，可能影响新一代用户的升级热潮。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级组合配置纪律横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-ipgold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>机构级消费电子产品研究洞察与投资配置建议</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 洞察高端硬件“二八定律”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 在全球智能手机整体饱和甚至微缩的宏观大背景下，应重点关注<strong>单品 ASP 与利润集中度</strong>而非单纯的出货量数字。iPhone 独占 50% 行业收入证明高端化战略的极端有效性。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-ipgold-400 mb-1">2. 折叠屏与 AI 带来的估值重估</div>
+ <p class="text-slate-300 leading-relaxed">
+ <strong>iPhone Duo</strong> 的量产与 Apple Intelligence 的深度普及打破了“智能手机已无创新”的悲观预期，成功打开了超高端商务折叠屏的新增量赛道。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 硬件到服务生态的复利飞轮</div>
+ <p class="text-slate-300 leading-relaxed">
+ 22 亿活跃装机量是苹果最坚不可摧的护城河。以旧换新与高残值率将用户牢牢锁定在 iOS 生态内，持续创造高毛利的服务现金流。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Fundamental Tracking KPIs</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度基本面跟踪 KPI 交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-ipgold-500/15 text-ipgold-700 dark:text-ipgold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选苹果财报及产业链调研中已验证达标的 iPhone 核心经营指标（勾选状态自动本地保存），持续校验 iPhone 定价权与换机周期：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#CA8A04] focus:ring-ipgold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. iPhone 全球智能手机行业收入占比是否稳守 48%–50% 顶峰</span>
+ <span class="text-[11px] font-mono text-ipgold-600 dark:text-ipgold-400 font-semibold shrink-0">行业收入霸权锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 追踪 Counterpoint 等机构数据，确认 iPhone 是否持续斩获全球约半数智能手机总收入。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#CA8A04] focus:ring-ipgold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 平均售价 (ASP) 是否保持在 $1,000 以上高位</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">高端结构晴雨表</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 确认 Pro / Pro Max 及折叠屏 iPhone Duo 销量占比是否持续推高单机平均售价。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#CA8A04] focus:ring-ipgold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 折叠屏 iPhone Duo 早期交付周期与产能爬坡进展</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">创新增量看涨期权</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 关注供应链订单及零售端发货等待时间，评估超高端折叠屏对高净值用户的吸引力。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#CA8A04] focus:ring-ipgold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 用户换机意愿指数是否保持在 35%–40% 活跃区间</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">升级周期健康度</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 追踪调研机构关于 iPhone 现有用户升级意向的季度调查数据，防范换机周期意外拉长。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#CA8A04] focus:ring-ipgold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. Apple Intelligence 端侧 AI 普及率与多语种生态落地</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">AI 换机催化剂</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 评估 AI 功能在全球主要国家和地区的软件推送及用户实际激活使用率。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#CA8A04] focus:ring-ipgold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 零部件（存储/芯片）采购成本波动与硬件毛利率 (36%+)</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">供应链成本控制</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查上游 DRAM 及闪存定价走势，确认 iPhone 硬件毛利率是否稳守 36%–38% 目标区间。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明 (Disclaimer Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>Apple iPhone 深度商业与产品价值分析报告 · 机构研究框架版 (NASDAQ: AAPL)</span>
+ <span>数据基准：2026 年最新财报及 Counterpoint Research 行业数据 (H2 2026)</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度研究报告基于公开市场数据（Counterpoint Research、BCN、Apple 财报发布会披露信息）及消费电子行业调研资料整理生成，旨在提供结构化的 iPhone 产品矩阵分析与高端机型 ASP 演进框架。报告中涉及的销量预测、ASP 走势、三情景目标推演及以旧换新残值模拟均基于特定假设条件推演，不构成任何证券买卖建议、投资决策参考或收益承诺。请在独立核实后审慎决策。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-ipgold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-ipgold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 竞品矩阵筛选器
+ // ==========================================
+ function filterCompetitors(category) {
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-ipgold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-ipgold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ if (category === 'all' || rowCat === 'core' || rowCat === category) {
+ row.style.display = '';
+ } else {
+ row.style.display = 'none';
+ }
+ });
+ }
+
+ // ==========================================
+ // 5. iPhone 用户终身价值 (LTV) 与以旧换新换机复利推演器
+ // ==========================================
+ let currentResidualRate = 0.50; // 默认 50% 残值率
+
+ function setResidualRate(rate) {
+ currentResidualRate = rate;
+ document.querySelectorAll('#residual-btn-group .res-btn').forEach(btn => {
+ const btnRes = parseFloat(btn.dataset.res);
+ if (Math.abs(btnRes - rate) < 0.001) {
+ btn.className = 'res-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-ipgold-500 text-navy-950 border border-ipgold-400 shadow transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-navy-900';
+ } else {
+ btn.className = 'res-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-ipgold-400 transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+ }
+ });
+ updateIphoneSimulator();
+ }
+
+ function updateIphoneSimulator() {
+ const price = parseFloat(document.getElementById('sim-price').value);
+ const years = parseInt(document.getElementById('sim-years').value, 10);
+ const arpu = parseFloat(document.getElementById('sim-arpu').value);
+ const tradeinEnabled = document.getElementById('tradein-toggle').checked;
+
+ document.getElementById('sim-price-label').textContent = '$' + price.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-arpu-label').textContent = '$' + arpu + ' /年';
+
+ const totalServicesLtv = arpu * years;
+ const tradeinCredit = tradeinEnabled ? (price * currentResidualRate) : 0;
+ const netHardwareCost = Math.max(0, price - tradeinCredit);
+ const annualizedTco = netHardwareCost / years;
+ const userLtv = netHardwareCost + totalServicesLtv;
+
+ document.getElementById('sim-total-services').textContent = '$' + Math.round(totalServicesLtv).toLocaleString('en-US');
+ document.getElementById('sim-tradein-credit').textContent = '$' + Math.round(tradeinCredit).toLocaleString('en-US');
+ document.getElementById('sim-net-tco').textContent = '$' + Math.round(annualizedTco).toLocaleString('en-US') + ' /年';
+ document.getElementById('sim-user-ltv').textContent = '$' + Math.round(userLtv).toLocaleString('en-US');
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'iphone_research_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'asp_trend';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const ctx = document.getElementById('iphoneBizChart').getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：2022–2026 iPhone ASP ($) vs 全球智能手机总收入份额 (%)
+ const aspConfig = {
+ type: 'bar',
+ data: {
+ labels: ['2022', '2023', '2024', '2025', '2026E'],
+ datasets: [
+ {
+ label: 'iPhone 平均售价 ASP ($)',
+ data: [882, 925, 958, 990, 1031],
+ backgroundColor: '#EAB308',
+ borderRadius: 4,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '全球智能手机收入占比 (%)',
+ data: [45.2, 46.5, 47.8, 48.5, 50.0],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 2.5,
+ pointRadius: 4,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.dataset.yAxisID === 'y'
+ ? `${ctx.dataset.label}: $${ctx.parsed.y}`
+ : `${ctx.dataset.label}: ${ctx.parsed.y}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 700,
+ max: 1200,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 35,
+ max: 60,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：2026 核心机型销量与热销分布结构 (%)
+ const splitConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'iPhone Pro Max 系列 (利润主力)',
+ 'iPhone Pro 系列 (专业旗舰)',
+ 'iPhone 标准数字版 (销量基本盘)',
+ 'iPhone 17e / 轻量化衍生机型',
+ '超高端折叠屏 iPhone Duo (创新先锋)',
+ '官方翻新与以旧换新机型流通'
+ ],
+ datasets: [
+ {
+ label: '出货与收入结构占比 (%)',
+ data: [32.5, 24.0, 26.5, 8.0, 4.5, 4.5],
+ backgroundColor: [
+ '#EAB308',
+ '#CA8A04',
+ '#10B981',
+ '#06B6D4',
+ '#3B82F6',
+ '#64748B'
+ ],
+ borderRadius: 6,
+ barThickness: 22
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `占 iPhone 总体生态比例: ${ctx.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 40,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'asp_trend' ? aspConfig : splitConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnAsp = document.getElementById('btn-chart-asp');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'asp_trend') {
+ btnAsp.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-ipgold-600 dark:text-ipgold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2022–2026 iPhone 平均售价 (ASP) 与全球智能手机收入份额演进';
+ subEl.textContent = 'ASP 持续飙升至 $1,031 创历史纪录，收入占比稳定站上 50% 行业巅峰';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-ipgold-600 dark:text-ipgold-400 shadow-sm transition cursor-pointer';
+ btnAsp.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2026 iPhone 各机型出货量与收入结构占比拆解';
+ subEl.textContent = 'Pro 与 Pro Max 系列贡献主要利润，折叠屏 iPhone Duo 开启超高端新增长';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const ctx = document.getElementById('moatRadarChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '软硬件垂直一体化',
+ '品牌溢价与残值率',
+ '高端定价权与ASP',
+ 'iOS生态用户粘性',
+ 'App Store服务飞轮'
+ ],
+ datasets: [
+ {
+ label: 'Apple iPhone',
+ data: [9.9, 9.8, 9.7, 9.8, 9.9],
+ borderColor: '#EAB308',
+ backgroundColor: 'rgba(234, 179, 8, 0.24)',
+ pointBackgroundColor: '#EAB308',
+ borderWidth: 2.5
+ },
+ {
+ label: '三星 Galaxy Ultra',
+ data: [8.5, 8.2, 7.8, 8.0, 7.5],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '中国高端旗舰阵营',
+ data: [8.8, 8.3, 8.2, 8.5, 7.8],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const ctx = document.getElementById('compMarginChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Apple iPhone (行业垄断者)',
+ '三星 Galaxy (全系列均价)',
+ '中国高端旗舰 (华为/荣耀/小米)',
+ '海外其他安卓中低端品牌'
+ ],
+ datasets: [
+ {
+ label: '平均售价 ASP ($)',
+ data: [1031, 320, 580, 180],
+ backgroundColor: '#EAB308',
+ borderRadius: 5,
+ barThickness: 16
+ },
+ {
+ label: '全球智能手机利润份额 (%)',
+ data: [50.0, 19.0, 15.0, 16.0],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 16
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.datasetIndex === 0 ? `平均售价: $${ctx.parsed.x}` : `行业利润份额: ${ctx.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 1100,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v >= 100 ? '$' + v : v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['2021', '2022', '2023', '2024', '2025', '2026E'],
+ datasets: [
+ {
+ type: 'bar',
+ label: 'iPhone 平均售价 ASP ($)',
+ data: [825, 882, 925, 958, 990, 1031],
+ backgroundColor: 'rgba(234, 179, 8, 0.85)',
+ borderRadius: 5,
+ barThickness: 28,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '全球活跃 iOS 装机量 (亿台)',
+ data: [1650, 1800, 1950, 2080, 2150, 2220],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.dataset.yAxisID === 'y'
+ ? `${ctx.dataset.label}: $${ctx.parsed.y}`
+ : `${ctx.dataset.label}: ${(ctx.parsed.y / 100).toFixed(2)} 亿台`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 700,
+ max: 1200,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v },
+ title: { display: true, text: '平均售价 ASP ($)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 1500,
+ max: 2400,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => (v / 100).toFixed(1) + '亿' },
+ title: { display: true, text: '活跃 iOS 装机量 (百万台)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateIphoneSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>
