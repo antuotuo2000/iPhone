@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>纳斯达克100ETF Invesco QQQ Trust (NASDAQ: QQQ) 深度研究报告：全球AI算力与科技巨头核心载体、巨头集中度博弈与定投复利引擎</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#070B14',
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+            },
+            qqqcyan: {
+              300: '#67E8F9',
+              400: '#22D3EE',
+              500: '#06B6D4',
+              600: '#0891B2',
+              700: '#0E7490',
+            },
+            emerald: {
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+            },
+            indigo: {
+              400: '#818CF8',
+              500: '#6366F1',
+              600: '#4F46E5',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 自定义滚动条与机构研报细节排版 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+
+    /* 打印友好优化 */
+    @media print {
+      #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+        display: none !important;
+      }
+      main {
+        margin-left: 0 !important;
+        padding: 0 !important;
+      }
+      section {
+        break-inside: avoid;
+      }
+    }
+
+    /* 卡片悬浮微光与上移过渡 */
+    .report-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .report-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 侧边导航激活态：Invesco QQQ 标志性科技青蓝渐变 */
+    .nav-link.active {
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.24) 0%, rgba(99, 102, 241, 0.08) 100%);
+      border-left: 3px solid #06B6D4;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-qqqcyan-500 selection:text-navy-950 transition-colors duration-200">
+
+  <!-- 顶部全局阅读进度条 -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-qqqcyan-600 via-qqqcyan-400 to-indigo-500 w-0 transition-all duration-150"></div>
+  </div>
+
+  <!-- 移动端顶部导航栏 -->
+  <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-qqqcyan-400 to-indigo-600 flex items-center justify-center font-extrabold text-white text-xs shadow">
+        QQQ
+      </div>
+      <div>
+        <div class="text-[11px] text-qqqcyan-400 font-semibold tracking-wider uppercase">NASDAQ: QQQ · Nasdaq-100 ETF</div>
+        <div class="text-sm font-bold leading-tight">纳指100ETF (QQQ) 深度研究报告</div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-2">
+      <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 移动端折叠抽屉菜单 -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+    <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <span class="font-bold text-white text-base">QQQ 研报目录导航</span>
+          <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+          <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 指数编制与十大重仓架构</a></li>
+          <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 核心优势与四重结构性护城河</a></li>
+          <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 美股宽基与同类纳指ETF对比</a></li>
+          <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 历史超额收益与定投复利推演</a></li>
+          <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 投资决策与宏观风险配置</a></li>
+          <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+        </ul>
+      </div>
+      <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
+        <p>全球指数化配置与科技成长研究组</p>
+        <p class="mt-1">数据基准：2026年11月 (Q3 26 / FY26E)</p>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+  <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+    <div>
+      <!-- 机构品牌头 -->
+      <div class="p-5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-qqqcyan-400 via-qqqcyan-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-sm shadow-lg shadow-qqqcyan-500/25">
+            QQQ
+          </div>
+          <div>
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-qqqcyan-400 bg-qqqcyan-500/15 px-2 py-0.5 rounded">NASDAQ: QQQ</span>
+            <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">纳指100ETF深度研报</h2>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          Invesco QQQ Trust · 全球科技成长旗舰与 AI 算力巨头一篮子核心载体
+        </p>
+      </div>
+
+      <!-- 基金实时快照徽章 -->
+      <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">资产管理规模 (AUM)</span>
+          <span class="font-mono font-bold text-white">~$395.0B <span class="text-emerald-400 text-[10px]">(全球Top 5)</span></span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">费率结构 (QQQ / QQQM)</span>
+          <span class="font-mono font-bold text-qqqcyan-400">0.20% <span class="text-slate-400">(QQQM 0.15%)</span></span>
+        </div>
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+          <span class="text-slate-400">远期估值与十大重仓</span>
+          <span class="font-mono font-bold text-emerald-400">~27.8x P/E · Top10 占 52.4%</span>
+        </div>
+      </div>
+
+      <!-- 七大核心章节目录导航 -->
+      <div class="px-3 py-3.5 overflow-y-auto max-h-[calc(100vh-310px)]">
+        <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+        <nav id="desktop-nav" class="space-y-1 text-[13px]">
+          <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-qqqcyan-400 mr-2">00</span>执行摘要与核心指标</span>
+          </a>
+          <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>指数编制与十大重仓架构</span>
+          </a>
+          <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>核心优势与四重结构性护城河</span>
+          </a>
+          <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>美股宽基与同类纳指ETF对比</span>
+          </a>
+          <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>历史超额收益与定投复利推演</span>
+          </a>
+          <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>投资决策与宏观风险配置</span>
+          </a>
+          <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 侧边栏底部工具栏 -->
+    <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2.5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-slate-400">阅读模式切换</span>
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-3.5 h-3.5 text-qqqcyan-400 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span class="dark:hidden">深色护眼模式</span>
+          <span class="hidden dark:inline">机构亮色模式</span>
+        </button>
+      </div>
+      <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-qqqcyan-500 to-indigo-600 hover:from-qqqcyan-600 hover:to-indigo-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>打印 / 导出 PDF 研报</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="lg:ml-[280px] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+      <!-- =========================================================
+           00. Hero 研报封面区与执行摘要
+      ========================================================= -->
+      <section id="sec-exec" class="scroll-mt-20">
+        <!-- 顶部研报元数据标签栏 -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-qqqcyan-500/15 text-qqqcyan-700 dark:text-qqqcyan-400 font-bold border border-qqqcyan-500/30">配置评级：核心长期复利底仓（长线定投优选 QQQM）</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">追踪基准：Nasdaq-100 Index (NDX · 剔除金融股)</span>
+          </div>
+          <div class="flex items-center space-x-3 font-mono">
+            <span>覆盖时间：2026年11月</span>
+            <span>NASDAQ: QQQ</span>
+          </div>
+        </div>
+
+        <!-- Hero 标题卡片 -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+          <!-- 背景科技青蓝点阵纹理 -->
+          <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#22D3EE 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+          <div class="relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-qqqcyan-500/20 border border-qqqcyan-400/40 text-qqqcyan-300 text-xs font-semibold mb-4">
+              <span class="w-2 h-2 rounded-full bg-qqqcyan-400 animate-pulse"></span>
+              <span>CORE THESIS · 近4000亿美元规模科技旗舰 × 十大科技巨头占52.4% × 过去十年年化 ~18.5% 复利引擎</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+              纳斯达克100ETF Invesco QQQ Trust (NASDAQ: QQQ) 深度研究报告：全球AI算力与科技巨头核心载体、巨头集中度博弈与定投复利引擎
+            </h1>
+            <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+              自 1999 年 3 月成立以来，<strong class="text-white">Invesco QQQ Trust (QQQ)</strong> 凭借对 <strong class="text-qqqcyan-300">纳斯达克 100 指数（Nasdaq-100 Index）</strong> 的精准追踪，已成长为资产管理规模（AUM）逾 <strong class="text-emerald-400">$3,950 亿美元</strong>、日均成交额超 <strong class="text-white">$220 亿美元</strong> 的全球科技成长资产总枢纽。
+              指数天然剔除传统银行与金融股，将超 <strong class="text-qqqcyan-400">61%</strong> 的权重倾注于信息技术与通信服务板块，一篮子囊括 <strong class="text-white">英伟达（NVDA）、苹果（AAPL）、微软（MSFT）、亚马逊（AMZN）、博通（AVGO）、Meta 与 Alphabet（GOOGL）</strong> 等全球 AI 算力基建与前沿模型寡头。
+              在当前成份股盈利维持 <strong class="text-emerald-400">+16%~+19%</strong> 强劲内生增长、而 GOOGL 等核心重仓估值回调带来安全边际的背景下，QQQ（及同门低费率姊妹基金 <strong class="text-qqqcyan-300">QQQM，费率仅 0.15%</strong>）依然是普通与机构投资者一键捕获全球科技创新红利的最高效工具。
+            </p>
+
+            <!-- 核心投资结论高亮条 -->
+            <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">纯正非金融科技创新高纯度</div>
+                <div class="text-white font-semibold">100% 剔除商业银行与保险地产，信息技术 + 通信服务 + 可选消费三大引擎占权重逾 81%</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">“优胜劣汰”自动新陈代谢机制</div>
+                <div class="text-qqqcyan-400 font-semibold">按修正市值加权 + 年度成分调整 + 特殊再平衡防集中度过载，自动淘汰衰落企业并纳入新霸主</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">同门双子星分工：QQQ vs QQQM</div>
+                <div class="text-emerald-400 font-semibold">机构期权与短线交易选 QQQ（0.20%费率/极致流动性）；长线买入持有与定投首选 QQQM（0.15%费率）</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4个核心 KPI 卡片 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+          <!-- KPI 1 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>资产管理规模与日均流动性</span>
+              <span class="p-1.5 rounded-lg bg-qqqcyan-500/15 text-qqqcyan-600 dark:text-qqqcyan-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$395B</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">日均成交 $22B+</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              全球交投最活跃的科技旗舰 ETF，买卖价差仅 $0.01，拥有全美最深厚的周度与月度期权链流动性。
+            </p>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>过去 10 年历史年化总回报</span>
+              <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~18.5%</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">跑赢标普 +4.2%/年</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              过去十年累计总回报逾 +440%，显著跑赢标普 500 指数（SPY 年化 ~14.3%），复利效应极其惊人。
+            </p>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>前十大重仓集中度 & 远期 P/E</span>
+              <span class="p-1.5 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">52.4%</span>
+              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-500/15 px-2 py-0.5 rounded">Forward P/E 27.8x</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              前十大科技寡头合计占指数半壁江山，远期市盈率 ~27.8x，对应 2027E 盈利预期增速 +17.5%（PEG ~1.58）。
+            </p>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>年度管理费率与季配股息率</span>
+              <span class="p-1.5 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">0.20%</span>
+              <span class="text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded">股息率 ~0.58%</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              每万美元年管理费仅 $20（同门 QQQM 仅 $15），每季度派发股息，主要回报来自成分股盈利与股价内生增长。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           一、 指数编制与十大重仓架构 (Index Methodology & Holdings)
+      ========================================================= -->
+      <section id="sec-biz" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-qqqcyan-600 dark:text-qqqcyan-400">Section 01 · Index Architecture & Top Holdings</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 指数编制与十大重仓架构：三大核心赛道驱动与 AI 算力巨头集中度拆解</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">成份股总数 101 只 · 每季再平衡、每年 12 月成分股优胜劣汰调整</span>
+        </div>
+
+        <!-- 交互式 Chart.js 双视图切换面板 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- 左侧：双视图图表 -->
+          <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">QQQ 行业板块权重分布（GICS 行业透视 %）</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">信息技术（51.2%）+ 通信服务（15.6%）+ 可选消费（14.4%）三大成长板块合计占 81.2%</p>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+                <button onclick="switchBizChart('sector_split')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-qqqcyan-600 dark:text-qqqcyan-400 shadow-sm transition cursor-pointer">视图A：GICS 行业板块分布</button>
+                <button onclick="switchBizChart('top10_weights')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：前十大重仓股精确权重</button>
+              </div>
+            </div>
+            <div class="relative h-72 w-full">
+              <canvas id="bizArchitectureChart"></canvas>
+            </div>
+          </div>
+
+          <!-- 右侧：结构性拆解核心洞察 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">纳斯达克 100 指数三大核心编制法则</h3>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-qqqcyan-500/15 text-qqqcyan-600 dark:text-qqqcyan-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">严格剔除金融股，聚焦轻资产高 ROE 产业</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      仅纳入在纳斯达克交易所上市的最大 100 家<strong>非金融类企业</strong>（排除银行、券商、保险与传统 REITs），天然规避高杠杆顺周期金融风险。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">修正市值加权与“防单一寡头过载”熔断机制</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      若单一成分股权重突破 <strong>24%</strong>，或所有权重超 <strong>4.5%</strong> 的头部巨头合计占比突破 <strong>48%</strong>，指数公司将触发“特殊再平衡（Special Rebalance）”动态削减头部权重，防范极端集中风险。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">全产业链 AI 闭环：从芯片算力到云与终端入口</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      完整覆盖上游 AI 算力（<strong>NVDA / AVGO / AMD / ASML</strong>）、中游超大规模云与大模型（<strong>MSFT / GOOGL / AMZN</strong>）及下游超级应用（<strong>AAPL / META / NFLX / TSLA</strong>）。
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-slate-500 dark:text-slate-400">年度成分股大换血窗口</span>
+              <span class="font-bold text-qqqcyan-600 dark:text-qqqcyan-400">每年 12 月第三个周五盘后生效</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大核心产业链板块卡片矩阵 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- 板块 1：半导体与 AI 算力硬件 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-qqqcyan-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-qqqcyan-500/15 text-qqqcyan-700 dark:text-qqqcyan-400 text-xs font-bold">第一增长引擎 · 半导体与算力设备 (~24.5%)</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">NVDA / AVGO / ASML / AMD</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 半导体芯片与 AI 算力基础设施集群</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                以 <strong>英伟达（NVDA，权重 ~9.4%）</strong> 与 <strong>博通（AVGO，权重 ~4.6%）</strong> 为领头羊，囊括 <strong>AMD、高通（QCOM）、美光（MU）、阿斯麦（ASML）、应用材料（AMAT）与泛林集团（LRCX）</strong>。直接承接全球云巨头每年超 $5,000 亿美元数据中心资本开支红利，是 QQQ 近年来最强劲的 Alpha 业绩引擎。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>占指数总权重约 24.5%</span>
+              <span class="text-qqqcyan-600 dark:text-qqqcyan-400 font-semibold">AI 算力资本开支最直接受益者</span>
+            </div>
+          </div>
+
+          <!-- 板块 2：超大规模云计算与企业软件 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">第二核心支柱 · 软件、云与网络安全 (~26.7%)</span>
+                <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">MSFT / PLTR / PANW / INTU</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 企业级 SaaS 软件、云计算与网络安全矩阵</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                涵盖 <strong>微软（MSFT，权重 ~8.1%）</strong>、AI 数据平台 <strong>Palantir（PLTR）</strong>、财税软件龙头 <strong>Intuit（INTU）</strong>、<strong>Adobe（ADBE）</strong> 以及网络安全三巨头 <strong>Palo Alto（PANW）、CrowdStrike（CRWD）、Fortinet（FTNT）</strong>。高毛利经常性订阅模式为指数提供极强的自由现金流韧性。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>占指数总权重约 26.7%</span>
+              <span class="text-indigo-600 dark:text-indigo-400 font-semibold">高粘性 B 端现金流压舱石</span>
+            </div>
+          </div>
+
+          <!-- 板块 3：数字广告、流媒体与消费互联网 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第三超级入口 · 互联网平台与智能硬件 (~30.0%)</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">AAPL / AMZN / GOOGL / META</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 全球十亿级 C 端入口、电商与智能电动车</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                聚合 <strong>苹果（AAPL，~8.8%）、亚马逊（AMZN，~5.6%）、Alphabet（GOOGL/GOOG，合并 ~5.2%）、Meta（~3.6%）、特斯拉（TSLA，~3.2%）与 Netflix（NFLX）</strong>。掌控全球数十亿终端设备、搜索、社交与流媒体分发网络，具备极强的定价权与 AI 应用变现潜力。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>通信服务 15.6% + 可选消费 14.4%</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">C 端流量与消费心智统治者</span>
+            </div>
+          </div>
+
+          <!-- 板块 4：创新医药、必选零售与工业自动化 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-amber-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs font-bold">第四防御缓冲垫 · 医药、会员零售与工业 (~18.8%)</span>
+                <span class="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">COST / AMGN / ISRG / LIN</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 创新生物医药、仓储会员零售与精密工业</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                QQQ 并非纯硬件科技基金，还包含仓储会员零售霸主 <strong>好市多（COST，~2.6%）</strong>、百事可乐（PEP）、手术机器人龙头 <strong>直觉外科（ISRG）</strong>、生物制药巨头 <strong>安进（AMGN）、吉利德（GILD）、再生元（REGN）</strong> 及工业气体龙头林德（LIN），在科技回调期提供稳健基本面缓冲。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>必选消费 5.8% + 医疗保健 5.4% + 工业等 7.6%</span>
+              <span class="text-amber-600 dark:text-amber-400 font-semibold">优质非科技龙头增强组合韧性</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           二、 核心优势与四重结构性护城河 (Product Edge & Moat)
+      ========================================================= -->
+      <section id="sec-moat" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Structural Advantages & ETF Moat</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 核心优势与四重结构性护城河：为何 QQQ 能长期战胜 90%+ 主动科技基金？</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">指数评级：极宽 (Wide Moat · 全球最具网络效应的衍生品与流动性护城河)</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- 左侧：四重护城河深度解析 -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 护城河 1 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-qqqcyan-500/15 text-qqqcyan-600 dark:text-qqqcyan-400 flex items-center justify-center font-bold text-sm">01</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“赢家通吃”的指数新陈代谢算法</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                主动基金经理常因“止盈过早、死扛衰落股”跑输基准；QQQ 遵循客观市值加权法则，自动让 <strong>NVDA、MSFT、AAPL</strong> 等超级赢家权重自然膨胀，同时将衰落企业（如昔日黑莓、雅虎）无情剔除。
+              </p>
+            </div>
+
+            <!-- 护城河 2 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">02</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">全球最深厚期权链与机构流动性壁垒</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                日均成交额超 <strong>$220 亿美元</strong>，机构大单冲击成本近乎为零；同时拥有全球流动性仅次于 SPY 的期权市场，便于长线持有者通过 <strong>备兑开仓（Covered Call）</strong> 或保护性看跌期权增厚收益。
+              </p>
+            </div>
+
+            <!-- 护城河 3 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">03</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">极致税收递延效率（UIT/ETF 实物申赎）</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                依托美股 ETF 独特的<strong>实物申购赎回（In-Kind Creation/Redemption）</strong>机制，即便每年 12 月进行成分股调仓，QQQ 过去十年几乎从未向持有人派发应税资本利得分配，复利损耗极低。
+              </p>
+            </div>
+
+            <!-- 护城河 4 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">04</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">成份股极高的研发投入与盈利质量</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                纳指 100 成份股平均研发费用率（R&D/Sales）高达 <strong>~12.5%</strong>（为标普 500 其余成分股的 3 倍以上），平均净资产收益率（ROE）超 <strong>32%</strong>，用内生现金流持续筑高技术壁垒。
+              </p>
+            </div>
+          </div>
+
+          <!-- 右侧：五维配置能力雷达图 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">美股三大旗舰指数 ETF 五维配置特征雷达图</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Invesco QQQ vs 标普500 (SPY/VOO) vs 半导体ETF (SMH)（满分 10 分）</p>
+            <div class="relative h-72 w-full">
+              <canvas id="moatRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           三、 美股宽基与同类纳指ETF横向对比 (Competitive Landscape)
+      ========================================================= -->
+      <section id="sec-comp" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-qqqcyan-600 dark:text-qqqcyan-400">Section 03 · ETF Peer & Benchmark Comparison</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 美股宽基与同类纳指 ETF 横向对比：QQQ vs QQQM vs VOO vs SCHG 精准选型</h2>
+          </div>
+          <!-- 交互式筛选按钮 -->
+          <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+            <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-qqqcyan-600 text-white shadow-sm transition cursor-pointer">全部对比标的</button>
+            <button onclick="filterCompetitors('ndx')" data-filter="ndx" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">同追踪纳指100矩阵</button>
+            <button onclick="filterCompetitors('broad')" data-filter="broad" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">美股核心宽基与成长</button>
+            <button onclick="filterCompetitors('sector')" data-filter="sector" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">纯科技与半导体主题</button>
+          </div>
+        </div>
+
+        <!-- 横向对比矩阵表格 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                  <th class="py-4 px-5 min-w-[180px]">ETF 代码与管理人</th>
+                  <th class="py-4 px-4 min-w-[135px]">追踪指数与成分</th>
+                  <th class="py-4 px-4 min-w-[100px]">年度费率</th>
+                  <th class="py-4 px-4 min-w-[115px]">10年年化回报</th>
+                  <th class="py-4 px-4 min-w-[110px]">远期 P/E</th>
+                  <th class="py-4 px-5 min-w-[240px]">核心优劣势与最佳适用人群</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+                <!-- 行 1：QQQ 基准 -->
+                <tr data-category="core" class="bg-qqqcyan-500/5 dark:bg-qqqcyan-500/10 font-medium">
+                  <td class="py-4 px-5">
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-0.5 rounded bg-qqqcyan-600 text-white text-[10px] font-extrabold">流动性总旗舰</span>
+                      <span class="font-bold text-slate-900 dark:text-white">Invesco QQQ</span>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">AUM ~$395B · 成立 1999年</div>
+                  </td>
+                  <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">Nasdaq-100 (101只非金融)</td>
+                  <td class="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">0.20%</td>
+                  <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">~18.5%</td>
+                  <td class="py-4 px-4 font-mono font-bold text-qqqcyan-600 dark:text-qqqcyan-400">~27.8x</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>全球机构交易与期权之王：</strong>极致的日内成交深度与最丰富期权链，适合大资金进出、波段交易及备兑期权增强策略；纯长线定投可优选同门 QQQM 省费率。
+                  </td>
+                </tr>
+
+                <!-- 行 2：Invesco QQQM -->
+                <tr data-category="ndx" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-0.5 rounded bg-emerald-600 text-white text-[10px] font-bold">长线定投优选</span>
+                      <span class="font-bold text-slate-900 dark:text-white">Invesco QQQM</span>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">AUM ~$52B · 景顺同门迷你版</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">完全相同的 Nasdaq-100 指数</td>
+                  <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">0.15%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~18.6% (等效)</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~27.8x</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>个人长线持有与定期定额最优解：</strong>底层持仓与 QQQ 100% 一致，但年费率直降 25%（省 5 bps）且单股价格更低、支持股息自动再投资优化，唯一短板是期权流动性较弱。
+                  </td>
+                </tr>
+
+                <!-- 行 3：Vanguard VOO / SPY -->
+                <tr data-category="broad" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Vanguard VOO / SPY</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">标普 500 指数核心宽基旗舰</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">S&P 500 (500只全行业大盘)</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">0.03% – 0.09%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~14.3%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~22.4x</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>全市场均衡压舱石：</strong>包含银行、能源、工业与医疗等传统行业，科技权重约 32%（仅为 QQQ 一半），波动率与最大回撤明显小于 QQQ，适合与 QQQ 组成“核心+卫星”组合。
+                  </td>
+                </tr>
+
+                <!-- 行 4：Schwab SCHG / Vanguard VUG -->
+                <tr data-category="broad" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Schwab SCHG / VUG</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">美股大盘成长风格对标 ETF</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">道琼斯/CRSP 大盘成长股 (~230只)</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">0.04%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~17.2%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~28.5x</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>低费率跨交易所成长替代品：</strong>可纳入纽交所上市成长股（如礼来 LLY、Visa），费率仅 0.04%，但历史长期回报仍略逊于专注纳斯达克硬科技的 QQQ。
+                  </td>
+                </tr>
+
+                <!-- 行 5：XLK / SMH 纯科技与半导体 -->
+                <tr data-category="sector" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">SPDR XLK / VanEck SMH</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">纯信息技术 / 纯半导体行业 ETF</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">单一行业集中持仓 (25–68只)</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">0.09% – 0.35%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~21.0%–26.5%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~26.0x–31.0x</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>高贝塔进攻锐矛但行业风险高度集中：</strong>XLK 不含亚马逊、Meta 与谷歌；SMH 则 100% 押注芯片周期，牛市爆发力更强但熊市回撤常超 40%–50%，适合做小仓位卫星增强。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 配套 Chart.js 横向条形图：近10年年化回报与费率成本对比 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">美股核心宽基与科技指数 ETF 过去 10 年年化复合回报率（CAGR %）与最大回撤风险对比</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">QQQ（及同源 QQQM）以 ~18.5% 的十年年化复合回报大幅领先标普 500（14.3%），在收益与分散度之间取得黄金平衡</p>
+            </div>
+            <span class="text-xs font-semibold text-qqqcyan-700 dark:text-qqqcyan-400 bg-qqqcyan-500/15 px-2.5 py-1 rounded">10年年化 +18.5% 复利领先</span>
+          </div>
+          <div class="relative h-64 w-full">
+            <canvas id="compMarginChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           四、 历史超额收益与定投复利推演 (Historical Alpha & DCA Simulator)
+      ========================================================= -->
+      <section id="sec-fin" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Historical Compounding & DCA Wealth Simulator</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 历史超额收益与估值体系：十年 5.4 倍财富跃迁与 QQQ / QQQM 定投复利推演器</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">成份股 2027E 盈利预期增速 +17.5% · 远期 P/E 27.8x</span>
+        </div>
+
+        <!-- 1. 历史表现与估值健康度四大硬核指标卡 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-qqqcyan-600 dark:text-qqqcyan-400 uppercase">10-Year Cumulative Return</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">+446% (5.46x)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              十年前投入 $10,000 至 QQQ 如今已增值至约 <strong>$54,600</strong>，同期标普 500（SPY）约为 $38,100，超额创造逾 $16,500 净财富。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Constituents EPS Growth</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">+17.5% YoY</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              纳指 100 成份股未来 12 个月一致预期 EPS 增速达 17.5%，显著高于标普 500 其余 400 只股票（约 +10.2%），高估值有高盈利消化。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Forward P/E & PEG Ratio</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">27.8x / 1.58</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              当前远期市盈率 27.8x 处于过去五年估值区间中枢（22x–33x）合理位置，受益于 GOOGL 等巨头估值回调，整体并未出现严重泡沫。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Historical Max Drawdown</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">-35.1% (2022)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              高成长伴随高波动：2022 年美联储激进加息周期曾录得 -35.1% 最大回撤（2000 年科网泡沫曾跌超 80%），定投分批建仓至关重要。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. 交互式 Chart.js 双轴剪刀差图 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">2016–2026E 纳指100ETF (QQQ) 累计净值增长曲线 vs 标普500 (SPY) 超额剪刀差（基准=100）</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">2016 年初投入 100 基准资金，历经 2020 公共卫生事件与 2022 加息深蹲后，QQQ 凭借 AI 算力革命迅速创出新高并持续拉开与标普 500 的差距</p>
+            </div>
+            <span class="text-xs font-mono font-bold text-qqqcyan-700 dark:text-qqqcyan-400 bg-qqqcyan-500/15 px-2.5 py-1 rounded">十年超额 Alpha 剪刀差 +165%</span>
+          </div>
+          <div class="relative h-72 w-full">
+            <canvas id="valEvolutionChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 3. 交互式组件：QQQ / QQQM“一次性底仓 + 每月定期定额（DCA）”复利财富推演器 -->
+        <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+            <div>
+              <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-qqqcyan-400 font-bold">
+                <span>NASDAQ-100 DCA & LUMP-SUM COMPOUNDING ENGINE · 定投复利推演器</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-1">纳指100ETF (QQQ / QQQM)“初始底仓 + 每月定投（DCA）”长期复利财富推演器</h3>
+              <p class="text-xs text-slate-400 mt-0.5">支持自由调节初始投入、每月定投金额、持有年限、预期年化总回报率及 QQQ (0.20%) vs QQQM (0.15%) 费率对比</p>
+            </div>
+            <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-qqqcyan-500/15 border border-qqqcyan-400/30 text-xs font-semibold text-qqqcyan-300 cursor-pointer shrink-0">
+              <input type="checkbox" id="qqqm-fee-toggle" checked onchange="updateDcaSimulator()" class="w-4 h-4 rounded accent-[#06B6D4] cursor-pointer">
+              <span>使用长线低费率版 QQQM (0.15%/年)</span>
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <!-- 左侧参数控制区 -->
+            <div class="lg:col-span-5 space-y-4 text-xs">
+              <!-- 初始本金滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">初始一次性底仓投入 (USD)</span>
+                  <span id="sim-init-label" class="font-mono font-bold text-white text-sm">$20,000</span>
+                </div>
+                <input id="sim-init" type="range" min="0" max="200000" step="5000" value="20000" oninput="updateDcaSimulator()" class="w-full accent-[#06B6D4] cursor-pointer">
+              </div>
+
+              <!-- 每月定投金额滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">每月定期定额投入金额 (Monthly DCA)</span>
+                  <span id="sim-monthly-label" class="font-mono font-bold text-qqqcyan-400 text-sm">$1,000 / 月</span>
+                </div>
+                <input id="sim-monthly" type="range" min="0" max="10000" step="250" value="1000" oninput="updateDcaSimulator()" class="w-full accent-[#06B6D4] cursor-pointer">
+              </div>
+
+              <!-- 持有年限滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">长期持有与定投年限 (Years)</span>
+                  <span id="sim-years-label" class="font-mono font-bold text-white text-sm">15 年</span>
+                </div>
+                <input id="sim-years" type="range" min="3" max="30" step="1" value="15" oninput="updateDcaSimulator()" class="w-full accent-[#6366F1] cursor-pointer">
+              </div>
+
+              <!-- 预期年化总回报率情景按钮组 -->
+              <div class="pt-1">
+                <div class="text-slate-300 font-medium mb-2">远期毛年化总回报率（含股息再投资）假设情景：</div>
+                <div class="grid grid-cols-3 gap-2" id="cagr-btn-group">
+                  <button type="button" onclick="setCagrRate(0.10)" data-cagr="0.1" class="cagr-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-qqqcyan-400 transition cursor-pointer">
+                    10.0% 保守情景<br><span class="text-[10px] text-slate-400">估值温和消化</span>
+                  </button>
+                  <button type="button" onclick="setCagrRate(0.135)" data-cagr="0.135" class="cagr-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-qqqcyan-600 text-white border border-qqqcyan-400 shadow transition cursor-pointer">
+                    13.5% 基准复利<br><span class="text-[10px] text-qqqcyan-100">机构合理预期</span>
+                  </button>
+                  <button type="button" onclick="setCagrRate(0.175)" data-cagr="0.175" class="cagr-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-qqqcyan-400 transition cursor-pointer">
+                    17.5% 历史强势<br><span class="text-[10px] text-slate-400">AI 持续超预期</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右侧四大实时测算结果卡片 -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">期末预计账户总资产 (Net Ending Wealth)</div>
+                <div id="sim-final-wealth" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$679,420</div>
+                <div id="sim-wealth-multiple" class="text-xs font-semibold text-emerald-400 mt-1.5">总资产达到累计投入本金的 3.40 倍</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">累计投入总本金 vs 纯复利投资净收益</div>
+                <div id="sim-total-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-qqqcyan-400 mt-1.5">+$479,420</div>
+                <div id="sim-total-invested" class="text-xs text-slate-400 mt-1.5">累计投入本金：$200,000 (收益占比 70.6%)</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">对比标普500 (假定年化10.0%) 超额财富</div>
+                <div id="sim-vs-spy" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">+$184,150</div>
+                <div class="text-xs text-slate-400 mt-1.5">长期复利时间窗口越长，超额剪刀差越显著</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">持有期累计管理费成本 (Expense Drag)</div>
+                <div id="sim-fee-cost" class="text-2xl sm:text-3xl font-mono font-extrabold text-indigo-400 mt-1.5">$7,480</div>
+                <div id="sim-fee-note" class="text-xs text-slate-400 mt-1.5">选用 QQQM (0.15%) 较 QQQ 节省 ~$2,490 费率</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 华尔街多空核心分歧对比 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">AI 商业化兑现 + 盈利高增消化估值</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 算力投资正加速转化为云与广告真实利润：</strong>Google Cloud 营收翻倍、微软 Azure 与 AWS 持续高增，证明 AI 并非纯概念泡沫而是真金白银的现金流引擎。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>自动淘汰机制消除个股“黑天鹅”归零风险：</strong>单一科技巨头即便因技术颠覆衰落（如当年诺基亚/英特尔），也会被指数动态降权替换，长线持有永不退市。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>头部巨头资产负债表极度健康：</strong>前十大重仓普遍手握千亿美元级净现金（如 GOOGL $2,651亿现金），抗高利率冲击能力远超 2000 年科网泡沫时期。</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">前十高度集中 + AI CapEx 周期拐点</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>前十大重仓占比超 52% 带来“伪分散”风险：</strong>QQQ 虽名义持有 101 只股票，但实际净值高度绑定“科技七巨头（Mag 7）”及半导体景气周期，若 AI 资本开支放缓将引发共振回调。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>长端美债利率反弹对长久期成长股的估值压制：</strong>科技成长股未来现金流贴现久期较长，一旦通胀反复导致美联储暂停降息，27.8x Forward P/E 将面临估值收缩压力。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>全球反垄断与跨境关税摩擦冲击跨国科技巨头：</strong>纳指 100 成份股海外营收占比超 45%，美欧反垄断诉讼及全球半导体供应链关税均可能扰动短期盈利预期。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           五、 投资决策与宏观风险配置框架 (Investment Decision & Risk)
+      ========================================================= -->
+      <section id="sec-inv" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-qqqcyan-600 dark:text-qqqcyan-400">Section 05 · Investment Decision & Macro Risk Allocation</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 投资决策与宏观风险配置框架：三情景收益推演与“哑铃型”核心配置纪律</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">配置纪律：定投为基、回撤加码 · 避免满仓追高与高倍杠杆（TQQQ 长期损耗）</span>
+        </div>
+
+        <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- 牛市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：30%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">31.0x–33.0x P/E (+22%~+28%)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>美国经济实现温和降息“软着陆”，企业端 AI Agent 与具身智能商业化全面爆发，成份股 2027E 盈利增速超 20%，估值向历史牛市上沿扩张。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              未来 12–18 个月潜在年化总回报：+22% 至 +28%
+            </div>
+          </div>
+
+          <!-- 基准情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-qqqcyan-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-qqqcyan-500/15 text-qqqcyan-700 dark:text-qqqcyan-400 text-xs font-bold">基准情景 (Base Case)</span>
+                <span class="font-mono text-xs font-bold text-qqqcyan-600 dark:text-qqqcyan-400">概率：50%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">26.5x–28.5x P/E (+12%~+16%)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>估值为消化前期涨幅维持在 27x–28x 中枢横向震荡，ETF 净值上涨完全由成份股 15%–17% 的内生盈利增长驱动，走出一轮健康的“盈利消化估值”慢牛。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-qqqcyan-600 dark:text-qqqcyan-400">
+              未来 12–18 个月稳健年化总回报：+12% 至 +16%
+            </div>
+          </div>
+
+          <!-- 熊市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+                <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">21.0x–23.0x P/E (-15%~-25%)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>超大规模云巨头削减 2027 年 AI 资本开支引发半导体板块深度去库存，或二次通胀迫使美债收益率飙升，触发 15%–25% 阶段性技术熊市回撤。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+              历史规律：每次 20%+ 深蹲均为长线定投黄金加仓点
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 四大核心风险矩阵 -->
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">四大核心潜在风险评估与跟踪边界</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · AI 资本开支周期见顶与半导体共振回撤</span>
+                <span class="text-xs font-mono text-rose-500 font-semibold">关注度：极高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">半导体与云巨头高度联动带来的单边贝塔放大</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                由于半导体（24.5%）与云计算龙头合计占 QQQ 权重逾半数，一旦云巨头 CapEx 增速拐头向下，芯片股与云服务商将同步承压，指数波动率（Beta ~1.18）显著高于标普 500。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 无风险利率中枢抬升对长久期估值冲击</span>
+                <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">10年期美债收益率突破 4.75% 警戒线时的估值压缩</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                历史回测显示，当 10 年期美债收益率快速上行突破 4.75%–5.0% 时，QQQ 的远期 P/E 往往从 28x+ 向 22x–24x 均值回归，带来阶段性杀估值风险。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">03 · 杠杆 ETF（TQQQ）误用带来的波动率损耗</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">切忌将 3 倍杠杆 TQQQ 当作 1 倍 QQQ 长期死拿</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                TQQQ 每日再平衡机制在高位宽幅震荡市会产生严重“波动率拖累（Volatility Decay）”，且年化融资与管理隐性成本超 1.5%；长线复利应严格使用无杠杆 QQQ / QQQM。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">04 · 跨国科技巨头海外营收汇率与监管风险</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">强势美元汇兑损失及欧盟数字税/反垄断罚款</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                苹果、微软、谷歌与英伟达等重仓股海外收入占比高，美元指数大幅走强会削弱海外折算利润，同时面临欧美 AI 版权与市场支配地位监管审查。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 机构级组合配置纪律横幅 -->
+        <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+          <h3 class="text-base font-bold text-qqqcyan-400 mb-4 flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>机构级投资组合配置纪律与“核心 + 卫星”实战执行手册</span>
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-white mb-1">1. 工具精准分流：长线定投选 QQQM，交易选 QQQ</div>
+              <p class="text-slate-300 leading-relaxed">
+                若投资周期在 3 年以上且无期权对冲需求，直接买入 <strong>QQQM（0.15% 费率）</strong>，底层持仓与 QQQ 完全一致却每年省下 25% 管理费；仅在需要高频交易或卖出 Covered Call 时使用 <strong>QQQ</strong>。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-qqqcyan-400 mb-1">2. 经典“哑铃配置”：60% VOO + 40% QQQM</div>
+              <p class="text-slate-300 leading-relaxed">
+                将标普 500（VOO）作为全行业稳健基石，搭配 30%–40% 的 <strong>QQQM</strong> 强化科技与 AI 进攻弹性，既能捕获科技牛市超额收益，又能将极端熊市回撤控制在可承受心理边界内。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-emerald-400 mb-1">3. 回撤阶梯加码法则（-10% / -20% 触发器）</div>
+              <p class="text-slate-300 leading-relaxed">
+                保持每月固定日期机械定投（DCA）消除择时焦虑；同时预留 15%–20% 机动现金，每当 QQQ 自历史高点回撤达 <strong>-10%</strong> 与 <strong>-20%</strong> 时分两档追加买入，大幅拉低长期持仓成本。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+      ========================================================= -->
+      <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Fundamental Tracking KPIs</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度基本面跟踪 KPI 交互式核查清单（Checklist）</h2>
+          </div>
+          <div class="flex items-center space-x-2 no-print">
+            <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-qqqcyan-500/15 text-qqqcyan-700 dark:text-qqqcyan-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+            <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            点击勾选每季跟踪复盘中已验证达标的宏观与成份股指标（勾选状态自动本地保存），持续校验纳指 100 长期复利逻辑：
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+            <!-- KPI 1 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0891B2] focus:ring-qqqcyan-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">1. 前十大科技重仓季度盈利（EPS）增速维持 15%+</span>
+                  <span class="text-[11px] font-mono text-qqqcyan-600 dark:text-qqqcyan-400 font-semibold shrink-0">基本面核心锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  核查 NVDA、MSFT、AAPL、AMZN、GOOGL、META 与 AVGO 财报季实际 EPS 兑现度，确认盈利增速持续跑赢标普 500 均值。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 2 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0891B2] focus:ring-qqqcyan-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">2. 超大规模云巨头（Hyperscalers）AI 资本开支指引保持扩张</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">算力景气晴雨表</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  跟踪微软、谷歌、亚马逊与 Meta 季度 CapEx 预算表态（2026 年合计逾 $5,000 亿），确保上游半导体成份股订单能见度无虞。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 3 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0891B2] focus:ring-qqqcyan-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">3. 远期市盈率（Forward P/E）处于 24x–30x 合理健康区间</span>
+                  <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">估值安全边界</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  当前远期 P/E 约 27.8x；若回落至 24x 以下视为积极加码窗口，若短期冲高突破 33x 则暂停额外一次性加仓、仅保留定投。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 4 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0891B2] focus:ring-qqqcyan-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">4. 10 年期美债收益率稳定在 4.5% 以下宽松舒适区</span>
+                  <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">宏观贴现率锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  追踪美国核心 PCE 通胀与美联储利率点阵图，确认无风险利率未出现失控性飙升以保护长久期科技股估值倍数。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 5 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0891B2] focus:ring-qqqcyan-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">5. 每年 12 月 Nasdaq-100 年度成分股调整与再平衡动向</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">指数新陈代谢</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  关注每年 12 月第二个周五公布的成分股调入/调出名单及头部权重上限再平衡公告，把握新晋科技独角兽纳入红利。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 6 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0891B2] focus:ring-qqqcyan-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">6. 个人账户定投执行纪律与“核心宽基+纳指”仓位再平衡</span>
+                  <span class="text-[11px] font-mono text-qqqcyan-600 dark:text-qqqcyan-400 font-semibold shrink-0">组合风控纪律</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  每半年检视组合中 QQQ / QQQM 占比是否因大涨被动超配，适时向 VOO 或短债再平衡锁定阶段性超额收益。
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           页脚免责声明 (Disclaimer Footer)
+      ========================================================= -->
+      <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+          <span>纳斯达克100ETF Invesco QQQ Trust (NASDAQ: QQQ / QQQM) 深度配置与复利分析报告 · 机构研究框架版</span>
+          <span>数据基准：Invesco 基金招募说明书、Nasdaq Global Indexes 及 2026 年 11 月市场公开数据</span>
+        </div>
+        <p class="leading-relaxed">
+          <strong>免责声明：</strong>本深度研究报告基于景顺（Invesco）公开基金披露文件、纳斯达克全球指数（Nasdaq Global Indexes）编制规则及成份股 2026Q3 财报公开数据整理生成，旨在提供结构化的指数化资产配置与估值分析框架。报告中涉及的十年历史年化回报不代表未来表现，三情景收益推演及 DCA 定投复利模拟器均基于特定年化假设条件测算，不构成任何证券买卖建议或收益承诺。请在独立核实后审慎决策。
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+  <script>
+    // ==========================================
+    // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+    // ==========================================
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      updateChartsTheme();
+    }
+
+    // ==========================================
+    // 2. 移动端抽屉菜单切换
+    // ==========================================
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    // ==========================================
+    // 3. 阅读进度条与左侧导航滚动联动高亮
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+      let currentId = 'sec-exec';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 160;
+        if (scrollTop >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const numSpan = link.querySelector('span span');
+        if (numSpan) {
+          numSpan.classList.remove('text-qqqcyan-400');
+          numSpan.classList.add('text-slate-500');
+        }
+        if (link.dataset.target === currentId) {
+          link.classList.add('active');
+          if (numSpan) {
+            numSpan.classList.remove('text-slate-500');
+            numSpan.classList.add('text-qqqcyan-400');
+          }
+        }
+      });
+    });
+
+    // ==========================================
+    // 4. 同类 ETF 对比矩阵筛选器
+    // ==========================================
+    function filterCompetitors(category) {
+      document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('bg-qqqcyan-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        } else {
+          btn.classList.remove('bg-qqqcyan-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        }
+      });
+
+      const rows = document.querySelectorAll('#comp-table-body tr');
+      rows.forEach(row => {
+        const rowCat = row.dataset.category;
+        if (category === 'all' || rowCat === 'core' || rowCat === category) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // ==========================================
+    // 5. 纳指100ETF (QQQ / QQQM) 一次性底仓 + 每月定投复利推演器
+    // ==========================================
+    let currentCagrRate = 0.135; // 默认 13.5% 机构基准复利预期
+
+    function setCagrRate(rate) {
+      currentCagrRate = rate;
+      document.querySelectorAll('#cagr-btn-group .cagr-btn').forEach(btn => {
+        const btnRate = parseFloat(btn.dataset.cagr);
+        if (Math.abs(btnRate - rate) < 0.001) {
+          btn.className = 'cagr-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-qqqcyan-600 text-white border border-qqqcyan-400 shadow transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-qqqcyan-100';
+        } else {
+          btn.className = 'cagr-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-qqqcyan-400 transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+        }
+      });
+      updateDcaSimulator();
+    }
+
+    function updateDcaSimulator() {
+      const initPrincipal = parseFloat(document.getElementById('sim-init').value);
+      const monthlyContrib = parseFloat(document.getElementById('sim-monthly').value);
+      const years = parseInt(document.getElementById('sim-years').value, 10);
+      const useQqqm = document.getElementById('qqqm-fee-toggle').checked;
+
+      document.getElementById('sim-init-label').textContent = '$' + initPrincipal.toLocaleString('en-US');
+      document.getElementById('sim-monthly-label').textContent = '$' + monthlyContrib.toLocaleString('en-US') + ' / 月';
+      document.getElementById('sim-years-label').textContent = years + ' 年';
+
+      const expenseRatio = useQqqm ? 0.0015 : 0.0020;
+      const netAnnualRate = currentCagrRate - expenseRatio;
+      const grossMonthlyRate = Math.pow(1 + currentCagrRate, 1 / 12) - 1;
+      const netMonthlyRate = Math.pow(1 + netAnnualRate, 1 / 12) - 1;
+      const qqqNetMonthlyRate = Math.pow(1 + (currentCagrRate - 0.0020), 1 / 12) - 1;
+      const qqqmNetMonthlyRate = Math.pow(1 + (currentCagrRate - 0.0015), 1 / 12) - 1;
+      const spyNetMonthlyRate = Math.pow(1 + (0.10 - 0.0003), 1 / 12) - 1; // VOO 10.0% - 0.03%
+
+      const months = years * 12;
+      let grossVal = initPrincipal;
+      let netVal = initPrincipal;
+      let qqqVal = initPrincipal;
+      let qqqmVal = initPrincipal;
+      let spyVal = initPrincipal;
+
+      for (let m = 1; m <= months; m++) {
+        grossVal = (grossVal + monthlyContrib) * (1 + grossMonthlyRate);
+        netVal = (netVal + monthlyContrib) * (1 + netMonthlyRate);
+        qqqVal = (qqqVal + monthlyContrib) * (1 + qqqNetMonthlyRate);
+        qqqmVal = (qqqmVal + monthlyContrib) * (1 + qqqmNetMonthlyRate);
+        spyVal = (spyVal + monthlyContrib) * (1 + spyNetMonthlyRate);
+      }
+
+      const totalInvested = initPrincipal + monthlyContrib * months;
+      const netGain = netVal - totalInvested;
+      const wealthMultiple = totalInvested > 0 ? netVal / totalInvested : 0;
+      const gainRatioPct = netVal > 0 ? (netGain / netVal) * 100 : 0;
+      const vsSpyDiff = netVal - spyVal;
+      const feeDrag = Math.max(0, grossVal - netVal);
+      const qqqmFeeSaved = Math.max(0, qqqmVal - qqqVal);
+
+      document.getElementById('sim-final-wealth').textContent = '$' + Math.round(netVal).toLocaleString('en-US');
+      document.getElementById('sim-wealth-multiple').textContent = `总资产达到累计投入本金的 ${wealthMultiple.toFixed(2)} 倍`;
+      document.getElementById('sim-total-gain').textContent = '+$' + Math.round(netGain).toLocaleString('en-US');
+      document.getElementById('sim-total-invested').textContent = `累计投入本金：$${Math.round(totalInvested).toLocaleString('en-US')} (复利收益占比 ${gainRatioPct.toFixed(1)}%)`;
+      document.getElementById('sim-vs-spy').textContent = `${vsSpyDiff >= 0 ? '+' : '-'}$${Math.abs(Math.round(vsSpyDiff)).toLocaleString('en-US')}`;
+      document.getElementById('sim-fee-cost').textContent = '$' + Math.round(feeDrag).toLocaleString('en-US');
+      document.getElementById('sim-fee-note').textContent = useQqqm
+        ? `选用 QQQM (0.15%) 较 QQQ 节省 ~$${Math.round(qqqmFeeSaved).toLocaleString('en-US')} 费率损耗`
+        : `当前按 QQQ (0.20%) 测算，切换 QQQM 可省 ~$${Math.round(qqqmFeeSaved).toLocaleString('en-US')}`;
+    }
+
+    // ==========================================
+    // 6. KPI 核查清单状态持久化与计数更新
+    // ==========================================
+    const KPI_STORAGE_KEY = 'qqq_research_kpi_state_v1';
+
+    function loadKpiChecklist() {
+      try {
+        const saved = localStorage.getItem(KPI_STORAGE_KEY);
+        if (saved) {
+          const stateMap = JSON.parse(saved);
+          document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+            if (typeof stateMap[cb.id] === 'boolean') {
+              cb.checked = stateMap[cb.id];
+            }
+          });
+        }
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+      updateKpiChecklist();
+    }
+
+    function updateKpiChecklist() {
+      const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      const stateMap = {};
+
+      checkboxes.forEach(cb => {
+        stateMap[cb.id] = cb.checked;
+        if (cb.checked) checkedCount++;
+      });
+
+      const pct = Math.round((checkedCount / total) * 100);
+      document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+      try {
+        localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+    }
+
+    function resetKpiChecklist() {
+      document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      updateKpiChecklist();
+    }
+
+    // ==========================================
+    // 7. Chart.js 数据可视化初始化与主题自适应
+    // ==========================================
+    let bizChartInstance = null;
+    let radarChartInstance = null;
+    let compMarginChartInstance = null;
+    let valEvolutionChartInstance = null;
+    let currentBizMode = 'sector_split';
+
+    function getChartColors() {
+      const isDark = document.documentElement.classList.contains('dark');
+      return {
+        text: isDark ? '#CBD5E1' : '#475569',
+        grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+        radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+      };
+    }
+
+    function initBizChart() {
+      const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+      const colors = getChartColors();
+
+      // 视图 A：QQQ GICS 行业板块权重分布 (%)
+      const sectorConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            '信息技术 (半导体 / 软件 / 硬件)',
+            '通信服务 (Alphabet / Meta / Netflix)',
+            '可选消费 (Amazon / Tesla / Booking)',
+            '必选消费 (Costco / PepsiCo / Mondelez)',
+            '医疗保健 (Amgen / Intuitive / Gilead)',
+            '工业、公用事业与能源材料 (Linde / Honeywell)'
+          ],
+          datasets: [
+            {
+              label: '占 QQQ 净资产权重 (%)',
+              data: [51.2, 15.6, 14.4, 5.8, 5.4, 7.6],
+              backgroundColor: [
+                '#06B6D4',
+                '#6366F1',
+                '#10B981',
+                '#F59E0B',
+                '#EC4899',
+                '#64748B'
+              ],
+              borderRadius: 6,
+              barThickness: 22
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `行业权重占比: ${ctx.parsed.x.toFixed(1)}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 60,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      };
+
+      // 视图 B：QQQ 前十大重仓公司精确权重 (%)
+      const top10Config = {
+        type: 'bar',
+        data: {
+          labels: [
+            '1. 英伟达 NVIDIA (NVDA)',
+            '2. 苹果 Apple (AAPL)',
+            '3. 微软 Microsoft (MSFT)',
+            '4. 亚马逊 Amazon (AMZN)',
+            '5. Alphabet (GOOGL + GOOG 合并)',
+            '6. 博通 Broadcom (AVGO)',
+            '7. Meta Platforms (META)',
+            '8. 特斯拉 Tesla (TSLA)',
+            '9. 好市多 Costco (COST)',
+            '10. 奈飞 Netflix (NFLX)'
+          ],
+          datasets: [
+            {
+              label: '重仓股占 QQQ 权重 (%)',
+              data: [9.4, 8.8, 8.1, 5.6, 5.2, 4.6, 3.6, 3.2, 2.6, 1.3],
+              backgroundColor: '#06B6D4',
+              borderRadius: 5,
+              barThickness: 16
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `持仓权重: ${ctx.parsed.x.toFixed(1)}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 11,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            }
+          }
+        }
+      };
+
+      if (bizChartInstance) bizChartInstance.destroy();
+      bizChartInstance = new Chart(ctx, currentBizMode === 'sector_split' ? sectorConfig : top10Config);
+    }
+
+    function switchBizChart(mode) {
+      currentBizMode = mode;
+      const btnEvo = document.getElementById('btn-chart-evo');
+      const btnSplit = document.getElementById('btn-chart-split');
+      const titleEl = document.getElementById('biz-chart-title');
+      const subEl = document.getElementById('biz-chart-sub');
+
+      if (mode === 'sector_split') {
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-qqqcyan-600 dark:text-qqqcyan-400 shadow-sm transition cursor-pointer';
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = 'QQQ 行业板块权重分布（GICS 行业透视 %）';
+        subEl.textContent = '信息技术（51.2%）+ 通信服务（15.6%）+ 可选消费（14.4%）三大成长板块合计占 81.2%';
+      } else {
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-qqqcyan-600 dark:text-qqqcyan-400 shadow-sm transition cursor-pointer';
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = 'QQQ 前十大重仓科技寡头权重分布（合计占 52.4%）';
+        subEl.textContent = 'NVDA (9.4%)、AAPL (8.8%)、MSFT (8.1%) 领衔全栈 AI 与消费电子生态';
+      }
+      initBizChart();
+    }
+
+    function initRadarChart() {
+      const ctx = document.getElementById('moatRadarChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (radarChartInstance) radarChartInstance.destroy();
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: [
+            'AI 与科技创新纯度',
+            '十年历史复利爆发力',
+            '流动性和期权衍生品深度',
+            '跨行业风险分散度',
+            '熊市低波动抗回撤韧性'
+          ],
+          datasets: [
+            {
+              label: 'Invesco QQQ (纳指100)',
+              data: [9.3, 9.4, 9.9, 7.6, 6.8],
+              borderColor: '#06B6D4',
+              backgroundColor: 'rgba(6, 182, 212, 0.24)',
+              pointBackgroundColor: '#06B6D4',
+              borderWidth: 2.5
+            },
+            {
+              label: 'Vanguard VOO / SPY (标普500)',
+              data: [7.0, 8.0, 9.8, 9.8, 8.6],
+              borderColor: '#6366F1',
+              backgroundColor: 'rgba(99, 102, 241, 0.14)',
+              pointBackgroundColor: '#6366F1',
+              borderWidth: 2.0
+            },
+            {
+              label: 'VanEck SMH (纯半导体)',
+              data: [9.9, 9.9, 8.4, 4.2, 4.5],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.12)',
+              pointBackgroundColor: '#10B981',
+              borderWidth: 1.8,
+              borderDash: [4, 4]
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            }
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 10,
+              ticks: { display: false, stepSize: 2 },
+              grid: { color: colors.grid },
+              angleLines: { color: colors.radarAngle },
+              pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initCompMarginChart() {
+      const ctx = document.getElementById('compMarginChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (compMarginChartInstance) compMarginChartInstance.destroy();
+      compMarginChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            'VanEck SMH (纯半导体 · 高波锐矛)',
+            'SPDR XLK (纯信息技术 · 不含AMZN/GOOGL)',
+            'Invesco QQQ / QQQM (纳指100 · 核心科技旗舰)',
+            'Schwab SCHG (美股大盘成长风格)',
+            'Vanguard VOO / SPY (标普500 · 全市场宽基)'
+          ],
+          datasets: [
+            {
+              label: '过去 10 年年化复合总回报率 CAGR (%)',
+              data: [26.2, 21.4, 18.5, 17.2, 14.3],
+              backgroundColor: '#06B6D4',
+              borderRadius: 5,
+              barThickness: 14
+            },
+            {
+              label: '近五年最大回撤幅度绝对值 Max Drawdown (%)',
+              data: [44.8, 33.6, 35.1, 34.2, 24.5],
+              backgroundColor: '#6366F1',
+              borderRadius: 5,
+              barThickness: 14
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.datasetIndex === 0
+                  ? `${ctx.dataset.label}: +${ctx.parsed.x.toFixed(1)}%`
+                  : `${ctx.dataset.label}: -${ctx.parsed.x.toFixed(1)}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              max: 50,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initValEvolutionChart() {
+      const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+      valEvolutionChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026E'],
+          datasets: [
+            {
+              label: 'Invesco QQQ 累计总回报净值曲线 (2016年初=100)',
+              data: [100, 132.7, 132.5, 184.1, 273.6, 348.5, 234.9, 363.8, 456.9, 502.4, 546.0],
+              borderColor: '#06B6D4',
+              backgroundColor: 'rgba(6, 182, 212, 0.16)',
+              fill: true,
+              borderWidth: 3,
+              pointRadius: 4,
+              pointHoverRadius: 6,
+              tension: 0.25
+            },
+            {
+              label: '标普 500 ETF (SPY) 累计总回报净值曲线 (2016年初=100)',
+              data: [100, 121.7, 116.2, 152.5, 180.5, 232.3, 190.1, 239.9, 299.6, 342.1, 381.0],
+              borderColor: '#6366F1',
+              backgroundColor: 'transparent',
+              borderDash: [5, 5],
+              borderWidth: 2.5,
+              pointRadius: 3.5,
+              tension: 0.25
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)} 点`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              min: 80,
+              max: 600,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 } },
+              title: { display: true, text: '累计含息复利净值 (2016=100)', color: colors.text, font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartsTheme() {
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadKpiChecklist();
+      updateDcaSimulator();
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>黄仁勋 Jensen Huang (1993–2026) 深度商业与全栈算力战略研究报告：GPU加速革命、CUDA护城河与33年传奇掌舵复盘</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ nvgreen: {
+ 300: '#A3E635',
+ 400: '#84CC16',
+ 500: '#76B900',
+ 600: '#5C9400',
+ 700: '#426B00',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(118, 185, 0, 0.26) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #76B900;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #76B900;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-nvgreen-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-nvgreen-600 via-nvgreen-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-nvgreen-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-nvgreen-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Jensen_Huang_NVIDIA_CEO_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-nvgreen-400 to-nvgreen-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ JH
+ </div>
+ <div>
+ <div class="text-[11px] text-nvgreen-400 font-semibold tracking-wider uppercase">NVIDIA · GPU · CUDA · AI</div>
+ <div class="text-sm font-bold leading-tight">黄仁勋深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-nvgreen-500 hover:bg-nvgreen-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">黄仁勋专题目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 商业版图与算力架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 全栈哲学与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 传奇科技领袖横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 商业回报与价值复利推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与管理遗产复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 黄仁勋法则核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-nvgreen-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>AI算力与科技商业领袖研究组</p>
+ <p>财报与估值基准：SEC 10-K / 2026年11月</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-nvgreen-300 via-nvgreen-500 to-nvgreen-600 flex items-center justify-center text-navy-950 font-extrabold text-base shadow-lg shadow-nvgreen-500/25">
+ JH
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-nvgreen-400 bg-nvgreen-500/15 px-2 py-0.5 rounded">FOUNDER MONOGRAPH</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">黄仁勋深度研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 加速计算与AI工厂的架构师 · NVIDIA 33年（1993–2026）全栈崛起与接班转折复盘
+ </p>
+ </div>
+
+ <!-- 核心人物历史财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">1999 IPO → 2026 巅峰市值</span>
+ <span class="font-mono font-bold text-white">~$0.6B → ~$4.89T</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY2026 营收 / 净利润</span>
+ <span class="font-mono font-bold text-nvgreen-400">$215.94B / $120.07B</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">任期与 2026.11 动态</span>
+ <span class="font-mono font-bold text-mogold-400">33年掌舵 · Kress暂代</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-nvgreen-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>商业版图与算力架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>全栈哲学与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>传奇科技领袖横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>商业回报与价值复利推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与管理遗产复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>黄仁勋法则核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏 -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-nvgreen-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-nvgreen-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-nvgreen-400 to-nvgreen-600 hover:from-nvgreen-500 hover:to-nvgreen-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-nvgreen-500/15 text-nvgreen-700 dark:text-nvgreen-400 font-bold border border-nvgreen-500/30">商业史定评：加速计算与AI工厂第一架构师</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：1993 丹尼餐厅创立 → 2006 CUDA 押注 → 2026 巅峰与交棒</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖基准：2026年11月最新进展</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-nvgreen-600 dark:text-nvgreen-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#76B900 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-nvgreen-500/20 border border-nvgreen-400/40 text-nvgreen-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-nvgreen-400 animate-pulse"></span>
+ <span>CORE THESIS · 零十亿美元市场先行者 × CUDA 软硬协同闭环 × 扁平扁平化组织极速迭代</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 黄仁勋 Jensen Huang (1993–2026) 深度研究报告：加速计算布道者、CUDA生态霸权与33年传奇掌舵的治理转折
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 1993 年 4 月，30 岁的黄仁勋与克里斯·马拉科夫斯基、柯蒂斯·普里姆在圣何塞丹尼餐厅（Denny's）创立 <strong class="text-white">NVIDIA</strong>，在 1997 年距离破产仅剩 30 天的绝境下凭借 RIVA 128 惊险翻盘。随后二十余年间，他以“光速（Speed of Light）”哲学与超越摩尔定律的“黄氏定律（Huang's Law）”，顶住华尔街长达十年的质疑重金押注 <strong class="text-nvgreen-300">CUDA 通用计算平台</strong>，将一家 PC 显卡公司重塑为全球生成式 AI 时代的算力中枢。截至 2026 财年（截至 2026 年 1 月 25 日），NVIDIA 年营收飙升至 <a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026" target="_blank" rel="noopener noreferrer" class="cite-link text-nvgreen-300 font-semibold">$2,159.38亿（同比 +65.5%）</a>、GAAP 净利润高达 <a href="https://www.earningslens.ai/report/nvda/2026-FY" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$1,200.67亿</a>，市值一度触及 <a href="https://bullfincher.io/companies/nvidia-corporation/revenue-by-segment" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">$4.89万亿</a> 人类商业史巅峰；而在 <strong class="text-white">2026 年 11 月 12 日</strong>，掌舵整整 33 年的黄仁勋因个人治理调查宣布辞去 CEO 职务，由长期 CFO 科莱特·克雷斯（Colette Kress）出任临时 CEO，NVIDIA 正式迈入“后黄仁勋制度化治理新纪元”。
+ </p>
+
+ <!-- 核心商业遗产高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">超越芯片的“AI工厂”系统壁垒</div>
+ <div class="text-white font-semibold">将 GPU + NVLink 互联 + InfiniBand/Spectrum-X 网络 + CUDA-X 软件打包为整机柜数据中心级系统</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">71.1% 毛利率与 $1,027亿 经营现金流</div>
+ <div class="text-nvgreen-400 font-semibold">FY2026 录得 $1,534.6亿毛利、60.4% 营业利润率与 55.6% 净利率，盈利能力傲视全球硬科技史</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">2026年11月治理交棒与关键人考验</div>
+ <div class="text-mogold-400 font-semibold">连续担任 CEO 33 年后卸任，董事局启动正式继任遴选，检验数十年沉淀的扁平化体系自我运转韧性</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>33年掌舵巅峰市值 (1999–2026)</span>
+ <span class="p-1.5 rounded-lg bg-nvgreen-500/15 text-nvgreen-600 dark:text-nvgreen-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$4.89T</span>
+ <span class="text-xs font-bold text-nvgreen-700 dark:text-nvgreen-400 bg-nvgreen-500/15 px-2 py-0.5 rounded">&gt;7,000x 回报</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 从 1999 年 1 月纳斯达克上市时约 $6.26亿市值起步，2026 年 11 月初最高触及 $4.89万亿（<a href="https://bullfincher.io/companies/nvidia-corporation/revenue-by-segment" target="_blank" rel="noopener noreferrer" class="cite-link">Bullfincher</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2026 全年营收与净利润</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$215.94B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">净利 $120.07B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 较 FY2025（$130.50B）再增 65.5%，四年间年营收自 FY22 的 $26.91B 暴增 8.0 倍（<a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026" target="_blank" rel="noopener noreferrer" class="cite-link">NVIDIA FY26 Release</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>数据中心业务统治力 (FY2026)</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$193.74B</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">占总营收 89.7%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ Hopper 与 Blackwell 架构放量带动数据中心年增 68.2%，Q2 FY27 单季营收更攀升至 $96.2B（<a href="https://fourweekmba.com/nvidia-revenue-breakdown/" target="_blank" rel="noopener noreferrer" class="cite-link">FourWeekMBA</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>极扁平组织与资本开支效率</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">42,000</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">人均创收 $5.14M</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 约 4.2 万名员工直接向约 50–60 名高管扁平汇报，人均创造 $514万营收与 $286万净利润（<a href="https://bullfincher.io/companies/nvidia-corporation/revenue-by-segment" target="_blank" rel="noopener noreferrer" class="cite-link">NVDA FY26</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 商业版图与算力架构 (Business & Compute Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-nvgreen-600 dark:text-nvgreen-400">Section 01 · Business Empire & Accelerated Compute Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 商业版图与算力架构：从 3D 游戏显卡到“AI 工厂”全栈基础设施</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2026 净营收 $215.94B · Data Center 占比 89.7%（$193.74B）</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2025 vs FY2026 NVIDIA 五大市场平台营收结构拆解（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">数据中心跃升至 $193.74B（+68.2%），游戏、专业可视化与汽车平台同步实现两位数高增</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('fy26_mix')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-nvgreen-600 dark:text-nvgreen-400 shadow-sm transition cursor-pointer">视图A：FY26五大平台拆解</button>
+ <button onclick="switchBizChart('ai_trajectory')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：FY22–FY26爆发曲线</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">黄仁勋重构现代计算范式的三大战略跃迁</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-nvgreen-500/15 text-nvgreen-600 dark:text-nvgreen-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">从“3D 显卡供应商”到“通用并行计算平台”</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 1999 年发明全球首款 GPU（GeForce 256）；2006 年力排众议推出 <strong>CUDA 架构</strong>，宁可牺牲短期毛利率在每颗游戏芯片中植入并行计算单元，提前十年为深度学习埋下通用开发底座。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">从“单颗芯片销售”升维至“数据中心整机柜系统”</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2019 年斥资 <strong>$69亿收购 Mellanox</strong> 补齐高速互联短板，将 GPU（Hopper / Blackwell / Rubin）、Grace CPU、NVLink 交换芯片与网络打通为 <strong>DGX / GB200 NVL72 整机柜级“AI 工厂”</strong>（<a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000038/a2026-annualxreportxwebxfi.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">NVDA 2026 Annual Review</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">一年一迭代节奏锁死全产业链研发周期</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 打破半导体传统两年更新惯例，确立 <strong>Hopper → Blackwell → Blackwell Ultra → Rubin</strong> 年度架构节奏，使竞品追赶永远滞后 1–2 代（<a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026" target="_blank" rel="noopener noreferrer" class="cite-link">NVIDIA FY26</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">核心计算范式定义</span>
+ <span class="font-bold text-nvgreen-600 dark:text-nvgreen-400">加速计算（Accelerated Computing）取代通用CPU</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心业务与技术引擎详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 分部 1：数据中心与 AI 工厂引擎 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-nvgreen-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-nvgreen-500/15 text-nvgreen-700 dark:text-nvgreen-400 text-xs font-bold">第一绝对主引擎 · 占 FY26 营收 89.7%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">FY26 营收 $193.74B (+68.2%)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 数据中心与 AI 工厂基础设施（Compute + Networking）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 由云服务商（CSP）、主权 AI 国家基金及企业级 Agentic AI 集群驱动，FY2026 数据中心营收从 FY25 的 $115.2B 跃升至 <strong>$193.74B</strong>（其中 Q4 单季达 $62.3B，Q2 FY27 单季更冲至 $89.0B）。Blackwell 架构机柜级方案与 Spectrum-X 以太网/InfiniBand 构成了现代大模型训练与推理的底层水电煤（<a href="https://fourweekmba.com/nvidia-revenue-breakdown/" target="_blank" rel="noopener noreferrer" class="cite-link">FourWeekMBA</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Blackwell / Hopper / NVLink / Spectrum-X</span>
+ <span class="text-nvgreen-600 dark:text-nvgreen-400 font-semibold">三年数据中心营收暴增逾 12 倍</span>
+ </div>
+ </div>
+
+ <!-- 分部 2：CUDA-X 与企业级软件栈 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">生态灵魂与开发者税 · 500万+开发者底座</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">数百个领域专用加速库</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. CUDA 生态与企业级 AI 软件底座（CUDA-X / NIM / Omniverse）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ NVIDIA 实质上是一家披着半导体外衣的系统软件巨头。围绕 <strong>CUDA</strong> 打造的 cuDNN、TensorRT-LLM、NVIDIA NIM 微服务与 <strong>Omniverse 数字孪生引擎</strong>，覆盖量子化学、基因测序、金融风控到工业仿真全领域，让全球 AI 生态对 NVIDIA 产生极高路径依赖（<a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000038/a2026-annualxreportxwebxfi.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">NVIDIA Annual Review</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>CUDA / TensorRT / NVIDIA NIM / AI Enterprise</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">高粘性、高毛利软件生态飞轮</span>
+ </div>
+ </div>
+
+ <!-- 分部 3：游戏与专业可视化图形帝国 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">起家现金牛与端侧AI入口 · 占 FY26 营收 8.9%</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">合计营收 $19.23B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 消费级 GeForce 游戏显卡与专业工作站（Gaming + ProViz）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 凭借实时光线追踪（RTX）与 AI 帧生成（DLSS），GeForce 长期统治全球独立显卡市场，FY2026 游戏平台营收同比增长 <strong>41.3% 至 $16.04B</strong>；专业可视化（ProViz）受益于 Blackwell 工作站 GPU 与本地大模型开发机 DGX Spark 放量，年增 <strong>69.9% 至 $3.19B</strong>（<a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026" target="_blank" rel="noopener noreferrer" class="cite-link">NVIDIA FY26 Release</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>GeForce RTX 50 / DLSS / RTX PRO / DGX Spark</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">全美大学生与开发者第一块AI训练卡</span>
+ </div>
+ </div>
+
+ <!-- 分部 4：物理 AI 与自动驾驶矩阵 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">下一代万亿美元物理AI引擎 · 营收增速 +38.7%</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">Automotive $2.35B + OEM $0.62B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 物理 AI、智能驾驶与人形机器人（DRIVE + Jetson + Isaac）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 黄仁勋预判 AI 的下一波浪潮是理解物理规律的 <strong>Physical AI</strong>。NVIDIA 搭建起“云端 DGX 训练 → Omniverse 虚拟仿真测试 → 车端 DRIVE Thor / 机器人端 Jetson 推理”三台计算机闭环，FY2026 汽车业务营收达 <strong>$2.35B（+38.7%）</strong>，成为人形机器人与自动驾驶公认“卖铲人”（<a href="https://bullfincher.io/companies/nvidia-corporation/revenue-by-segment" target="_blank" rel="noopener noreferrer" class="cite-link">Bullfincher</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>DRIVE Thor / Cosmos / Project GR00T / Jetson</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">重工业与具身智能底层操作系统</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 全栈哲学与四重核心护城河 (Philosophy & Economic Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Full-Stack Philosophy & Economic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 全栈哲学与四重核心护城河：芯片-网络-软件协同与 71.1% 毛利壁垒</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极宽 (Wide Moat · 开发者生态锁定 + 系统级联合优化 + 供应链优先权)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-nvgreen-500/15 text-nvgreen-600 dark:text-nvgreen-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“数据中心即计算单元”全栈协同</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 竞争对手往往只做单一 ASIC 加速卡，而黄仁勋同步自研 GPU、CPU、NVLink 交换芯片、高速网卡与系统软件，消除万卡集群通信瓶颈，实现远超单卡参数的端到端能效比与 <strong>71.1%（非GAAP 71.3%）超高毛利率</strong>（<a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026" target="_blank" rel="noopener noreferrer" class="cite-link">NVIDIA FY26</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">CUDA 开发者网络效应与极高转换成本</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 历经二十年沉淀，全球超 500 万名开发者、所有主流 AI 框架（PyTorch / JAX）均深度针对 CUDA 底层算子优化。即便云厂商自研 ASIC，迁移存量代码栈的工程与调试成本也使其难以撼动 NVIDIA 绝对主力地位。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“零十亿美元市场”前瞻押注与光速执行</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 黄仁勋拒绝在成熟红海抢份额，专攻初期规模接近零、但未来潜在空间达十亿乃至万亿美元的赛道；配合全公司共享同一架构底座的<strong>扁平职能制（50+高管直报CEO）</strong>与“前五名事项（Top 5 Things）”邮件机制，决策零延迟。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">$185亿饱和研发投入与台积电 CoWoS 锁单</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ FY2026 研发费用高达 <strong>$185.0亿（同比 +43.2%）</strong> 构筑技术代差，同时背靠 <strong>$625.6亿现金及有价证券</strong> 提前锁定台积电先进制程、CoWoS 封装与 SK 海力士/美光 HBM 高带宽内存绝大部分产能（<a href="https://www.earningslens.ai/report/nvda/2026-FY" target="_blank" rel="noopener noreferrer" class="cite-link">EarningsLens</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维创始人战略特征雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">传奇科技创始人五维商业能力模型对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">黄仁勋 (NVIDIA) vs 乔布斯 (Apple) vs 贝索斯 (Amazon)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 传奇科技领袖横向对比 (Tech Founders Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-nvgreen-600 dark:text-nvgreen-400">Section 03 · Iconic Tech Founders Comparative Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 传奇科技领袖横向对比：全栈算力架构师与顶级商业范式比较</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索人物 / 企业 / 范式关键词..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-nvgreen-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-nvgreen-500 text-navy-950 shadow-sm transition cursor-pointer">全部宗师</button>
+ <button onclick="filterCompetitors('chip')" data-filter="chip" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">半导体与算力阵营</button>
+ <button onclick="filterCompetitors('ecosystem')" data-filter="ecosystem" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">软硬生态与云巨头</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">创始人 / CEO 与企业</th>
+ <th class="py-4 px-4 min-w-[145px]">核心商业护城河范式</th>
+ <th class="py-4 px-4 min-w-[150px]">标志性市值与营收尺度</th>
+ <th class="py-4 px-4 min-w-[125px]">代表性利润率特征</th>
+ <th class="py-4 px-4 min-w-[125px]">组织与战略方法论</th>
+ <th class="py-4 px-5 min-w-[240px]">与黄仁勋商业模式的异同评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：黄仁勋基准 -->
+ <tr data-category="core" class="bg-nvgreen-500/5 dark:bg-nvgreen-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-nvgreen-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">黄仁勋 (Jensen Huang)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">NVIDIA (1993–2026)</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">GPU+网络+CUDA软件栈全栈闭环</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-nvgreen-500/15 text-nvgreen-700 dark:text-nvgreen-400">巅峰 $4.89T / 营收 $215.9B</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">毛利 71.1% / 营业 60.4%</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">50+高管扁平直管 + 年度迭代</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>算力时代全栈统帅：</strong>以“无晶圆厂设计+软件定义算力”拿下 AI 时代最高利润份额，人均创收高达 $514万（<a href="https://www.earningslens.ai/report/nvda/2026-FY" target="_blank" rel="noopener noreferrer" class="cite-link">EarningsLens</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：史蒂夫·乔布斯 -->
+ <tr data-category="ecosystem" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">史蒂夫·乔布斯 (Steve Jobs)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Apple / Pixar / NeXT</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">软硬芯云垂直闭环 + 消费美学溢价</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">2011登顶 $350B (今~$4.8T)</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利 40.5% / 营业 31.2%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">职能制组织 + 2×2极简减法</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>精神同源的硬科技双子星：</strong>均坚决拒绝事业部割据、坚持端到端软硬一体；乔布斯统治 C 端个人终端，黄仁勋则统治 B 端算力底座。
+ </td>
+ </tr>
+
+ <!-- 行 3：苏姿丰 -->
+ <tr data-category="chip" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">苏姿丰 (Lisa Su)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">AMD (EPYC / Instinct AI)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">Chiplet 芯粒模块化 + 开放软件生态</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-500/15 text-teal-700 dark:text-teal-400">2014濒危逆袭至百亿美元营收</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">非GAAP毛利率 ~50–54%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">高性能计算聚焦 + 开放标准</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>最强劲的直接挑战者：</strong>凭 Zen 架构与先进封装成功蚕食英特尔 CPU 份额，但在 AI 加速器领域仍受制于 ROCm 与 CUDA 的软件生态差距。
+ </td>
+ </tr>
+
+ <!-- 行 4：张忠谋 / 魏哲家 -->
+ <tr data-category="chip" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">张忠谋 (Morris Chang)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">TSMC 台积电 (纯晶圆代工范式)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">“永不与客户竞争”的先进制程与封装垄断</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">破万亿美元市值晶圆霸主</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利 ~53–58% / 高资本开支</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">制造良率极致主义 + 客户信任</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>三十年铁血共生盟友：</strong>黄仁勋轻资产专注架构与软件，将重资产制造完全托付台积电；两家创始人联手开创了“Fabless + Foundry”现代半导体黄金分工。
+ </td>
+ </tr>
+
+ <!-- 行 5：萨提亚·纳德拉 -->
+ <tr data-category="ecosystem" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">萨提亚·纳德拉 (Satya Nadella)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Microsoft (Azure + OpenAI 生态)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">企业级云基础设施 + 模型与办公应用分发</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">$3.5T–$4.0T 级云软件巨擘</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利 ~69–70% / 营业 ~44%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">成长型思维 + 开放云合作</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>算力上下游最佳拍档：</strong>微软作为 NVIDIA 最大的云客户之一重金采购 GPU 建设 Azure AI 算力池，共同构成生成式 AI 时代的底层双寡头。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的领袖记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：顶级科技巨头营业利润率对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">“卖铲人”的极致经营杠杆：NVIDIA 营业利润率 vs 全球顶级云与半导体巨头（%）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">依托 71.1% 毛利率与扁平高效组织（费用率仅 10.7%），NVIDIA FY2026 GAAP 营业利润率高达 60.4%，显著领跑同业（<a href="https://www.earningslens.ai/report/nvda/2026-FY" target="_blank" rel="noopener noreferrer" class="cite-link">SEC XBRL / FY26 财报口径</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-nvgreen-700 dark:text-nvgreen-400 bg-nvgreen-500/15 px-2.5 py-1 rounded">60.4% GAAP 营业利润率登顶科技巨擘</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 商业回报与价值复利推演 (Financial Surge & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Surge & Value Creation Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 商业回报与价值复利推演：$1,027亿现金流机器与跨周期股东回报</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">四年间年度净利润从 FY22 的 $9.75B 飙升至 FY26 的 $120.07B，实现 12.3 倍指数级跃迁</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-nvgreen-600 dark:text-nvgreen-400 uppercase">FY2026 Gross &amp; Net Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">71.1% / 55.6%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 每创造 $1 美元营收便留存 $0.556 美元 GAAP 纯利，FY26 全年毛利润高达 $1,534.6亿（<a href="https://www.earningslens.ai/report/nvda/2026-FY" target="_blank" rel="noopener noreferrer" class="cite-link">EarningsLens</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Operating Cash Flow &amp; Cash</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$102.72B OCF</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ FY2026 经营性现金流突破千亿美元（同比 +60.3%），期末现金及有价证券达 <strong>$625.56亿</strong>，长期债务仅 $84.7亿（<a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026" target="_blank" rel="noopener noreferrer" class="cite-link">NVIDIA FY26</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Shareholder Buybacks</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$40.09B 回购</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ FY2026 全年投入 $400.9亿回购股票并派息 $9.74亿，期末仍保有高达 <strong>$585亿</strong> 剩余股票回购授权额度（<a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026" target="_blank" rel="noopener noreferrer" class="cite-link">NVIDIA Release</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Capital Efficiency (ROE)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">ROE 76.3%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 轻晶圆厂模式叠加全栈定价权，带动净资产收益率高达 76.3%、总资产收益率（ROA）达 58.1%（<a href="https://www.earningslens.ai/report/nvda/2026-FY" target="_blank" rel="noopener noreferrer" class="cite-link">SEC XBRL</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2022–FY2026 生成式 AI 超级周期：NVIDIA 年度净营收 vs 年度净利润爆发曲线（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">自 ChatGPT 引爆全球大模型算力竞赛以来，NVIDIA 连续三年营收与净利润呈指数级喷发，FY26 净利润达 $1,200.7亿</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-nvgreen-700 dark:text-nvgreen-400 bg-nvgreen-500/15 px-2.5 py-1 rounded">4年营收复合增速 CAGR +68.3%</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“黄仁勋长期主义周期”股东价值与复利动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-nvgreen-400 font-bold">
+ <span>ACCELERATED COMPOUNDING ENGINE · 黄仁勋长期主义价值复利模拟器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">穿越多次濒死与芯片周期：真实历史周期与自定义算力复利推演器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实历史锚点（1999–2026 全任期奇迹 / 2016–2026 AI黄金十年 / 2022–2026 大模型爆发四年）或手动调节参数</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-nvgreen-500/15 border border-nvgreen-400/30 text-xs font-semibold text-nvgreen-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#76B900] cursor-pointer">
+ <span>叠加季度股息与回购增厚 (+0.6%/年)</span>
+ </label>
+ </div>
+
+ <!-- 真实历史周期预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('nvda_ipo_2026')" data-era="nvda_ipo_2026" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-nvgreen-500 text-navy-950 font-bold border border-nvgreen-400 shadow transition cursor-pointer">
+ <div>① 1999–2026 上市至巅峰 27 年周期</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">27年 · 市值 ~$0.63B→$4.89T (~39.2% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('cuda_ai_decade')" data-era="cuda_ai_decade" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-nvgreen-400 transition cursor-pointer">
+ <div>② 2016–2026 DGX-1 至 AI 十年周期</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">10年 · 深度押注AI爆发 (~64.0% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('chatgpt_boom')" data-era="chatgpt_boom" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-nvgreen-400 transition cursor-pointer">
+ <div>③ 2022–2026 生成式 AI 超级四年</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">4年 · 营收 $26.9B→$215.9B (~68.3% CAGR)</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始投入本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$10,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="1000" max="100000" step="1000" value="10000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#76B900] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">27 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="30" step="1" value="27" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#76B900] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年化复合回报率 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-nvgreen-400 text-sm">39.2%</span>
+ </div>
+ <input id="sim-growth" type="range" min="5" max="70" step="0.1" value="39.2" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：对应 1999 年 1 月 NVIDIA 纳斯达克 IPO（发行市值约 $6.26亿）持有至 2026 年 11 月初市值峰值（$4.89万亿）的 27 年全周期复利斜率。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计总资产市值</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$75,697,534</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-nvgreen-400 mt-1.5">累计净增值 +756,875%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">本金增值倍数 (MOIC Multiple)</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-nvgreen-400 mt-1.5">7,569.8x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 2.1 年资产翻一倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">累计创造净资本利得</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$75,687,534</div>
+ <div class="text-xs text-slate-400 mt-1.5">扣除初始投入本金后的纯复利收益</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效综合年化复合增长率</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">39.20%</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">持有第 14 年中期资产约：$1,026,227</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角历史定评对比 (Bull Legacy vs Critical & Governance Lens) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">正向商业遗产定评 (Enduring Genius)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">二十年磨一剑 + 算力基础设施化</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>人类商业史最罕见的长期战略定力：</strong>自 2006 年力推 CUDA 到 2023 年生成式 AI 爆发，忍受长达十余年“烧钱无回报”批评而毫不动摇，最终收割整个时代红利。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>无晶圆厂模式下最极致的利润兑现：</strong>没有重资产晶圆厂包袱，却通过系统集成与软件定义拿走了 AI 产业链超 70% 的营业利润池。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>高密度精英工程文化沉淀：</strong>4.2 万名员工贡献逾 $1,200亿年净利润，培养出科莱特·克雷斯等极具执行力的核心高管梯队。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">风险敞口与 2026 治理转折反思 (Governance &amp; Risks)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">关键人风险 + 客户高度集中</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>2026年11月突发辞任与治理危机：</strong>连续掌舵 33 年后因个人行为调查辞去 CEO，董事会任命 Harvey C. Jones 为首任独立董事长并拒绝黄仁勋复出请求，验证了“超级创始人个人权威”与现代上市公司内控边界的张力（<a href="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition" target="_blank" rel="noopener noreferrer" class="cite-link">NVIDIA Transition Release</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>高度集中的客户与地缘周期风险：</strong>前五大云客户贡献约半数营收，且大客户均在自研定制 ASIC（TPU / Trainium / Maia）寻求去单一依赖；同时受地缘出口管制影响，中国区数据中心算力收入已归零（<a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026" target="_blank" rel="noopener noreferrer" class="cite-link">NVDA FY26 Outlook</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>极扁平架构的“后黄仁勋时代”适配考验：</strong>过去 50 余名高管直接向黄仁勋一人汇报的模式高度依赖创始人的技术直觉，临时 CEO 科莱特·克雷斯与未来新任 CEO 需重构跨部门协同治理机制（<a href="https://decrypt.co/383513/nvidia-board-shuts-down-jensen-huang-comeback" target="_blank" rel="noopener noreferrer" class="cite-link">Decrypt</a>）。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕演进与管理遗产复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-nvgreen-600 dark:text-nvgreen-400">Section 05 · Three-Act Career Evolution & Strategic Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕演进与管理复盘：从丹尼餐厅创业到 $4.89万亿交棒的 33 年史诗</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">理解黄仁勋的关键：每一次看似非共识的底层架构豪赌，都在十年后转化为降维打击壁垒</span>
+ </div>
+
+ <!-- 1. 三幕演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 绝境求生与图形霸主</span>
+ <span class="font-mono text-xs font-bold text-slate-500">1993–2005</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">NV1 折戟与 GPU 诞生</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>首款芯片 NV1 因采用冷门二次曲面渲染惨败，公司裁员逾半并险些倒闭；1997 年孤注一掷押注微软 Direct3D 推出 RIVA 128 三个月狂销百万片起死回生，1999 年发布 GeForce 256 定义 GPU 并成功上市（<a href="https://www.britannica.com/money/Jensen-Huang" target="_blank" rel="noopener noreferrer" class="cite-link">Britannica</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段启示：向主流工业标准低头，方能活到颠覆标准的时刻
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-nvgreen-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-nvgreen-500/15 text-nvgreen-700 dark:text-nvgreen-400 text-xs font-bold">第二幕 · 寂寞深耕 CUDA</span>
+ <span class="font-mono text-xs font-bold text-nvgreen-600 dark:text-nvgreen-400">2006–2016</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">十年蛰伏点亮深度学习</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2006 年推出 CUDA 让科研人员可用 C 语言调用 GPU 并行算力；尽管长期受智能手机退场与华尔街毛利率质疑困扰，黄仁勋坚持全线芯片标配 CUDA。2012 年 AlexNet 凭借两块 GTX 580 引爆深度学习革命，2016 年黄仁勋亲手向 OpenAI 交付全球首台 DGX-1。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-nvgreen-600 dark:text-nvgreen-400">
+ 阶段启示：在无人问津处铺设十年的基础设施，终成时代收费站
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第三幕 · AI 封神与制度交棒</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2017–2026.11</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$4.89T 巅峰与治理谢幕</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>收购 Mellanox 完成系统化拼图，乘生成式 AI 浪潮推动公司营收跃升至 $2,159亿、市值登顶 $4.89万亿。2026 年 11 月 12 日，黄仁勋因个人治理调查辞任 CEO，董事会任命 CFO Colette Kress 暂代 CEO 并组建专业继任委员会（<a href="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition" target="_blank" rel="noopener noreferrer" class="cite-link">NVIDIA Newsroom</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：伟大的技术帝国最终必须完成从创始人驱动到制度治理的跨越
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大商业折戟与进化闭环矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：黄仁勋生涯四大关键挫折与战略进化闭环</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">教训 01 · 早期架构闭门造车的濒死体验</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">1995 NV1 惨败</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">绝不能脱离开发者主流标准搞技术自嗨</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 早期 NV1 执着于自创曲面算法而非兼容微软标准，直接导致资金链断裂（靠世嘉社长入交昭一郎退还预付款才勉强发薪）。此后黄仁勋形成“永远贴近一线开发者痛点”的铁律。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">教训 02 · 移动端 Tegra 退出手机红海</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2011–2014 战略撤退</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">果断放弃低毛利手机基带市场，转战汽车与边缘计算</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 面对高通在智能手机 SoC 的基带垄断，黄仁勋没有盲目死磕消费手机红海，而是将 Tegra 芯片重新定义为智能座舱、自动驾驶与任天堂 Switch 游戏主机引擎，避开同质化消耗战。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">教训 03 · 加密货币周期暴跌与库存洗礼</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2018 &amp; 2022 矿潮波动</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">剔除投机性伪需求，锚定企业级 AI 真实生产力</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2018 年与 2022 年两度遭遇加密货币矿潮退去后的显卡库存积压与股价腰斩，促使 NVIDIA 加速摆脱对消费显卡周期的依赖，全力转向确定性更高的企业级数据中心与软件订阅。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">教训 04 · 超级创始人权力的合规与治理边界</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2026.11 辞任风波</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">万亿美元市值公司的治理规范不容任何豁免</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2026 年 11 月因职场关系调查闪电辞任表明：即便功勋卓著如创立公司 33 年的灵魂 CEO，在现代董事会独立治理与机构投资者合规红线面前也无特权（<a href="https://finance.biggo.com/news/c20c8c88-200c-4552-a8f7-525e1c456f9a" target="_blank" rel="noopener noreferrer" class="cite-link">BigGo Finance</a>）。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级商业与投资启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-nvgreen-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给科技创业者、芯片从业者与长期价值投资者的三条“黄仁勋底层法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 真正的护城河是“芯片 + 系统 + 开发者软件栈”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 单点硬件参数领先只能带来 12–18 个月的窗口期；只有将硬件算力固化为开发者赖以生存的软件标准（如 CUDA），才能在十年尺度上构建近乎垄断的超额毛利。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-nvgreen-400 mb-1">2. 寻找敢于押注“零十亿美元市场”的长期主义者</div>
+ <p class="text-slate-300 leading-relaxed">
+ 当一个赛道已经出现在所有券商研报首页时，超额收益往往已经收敛；顶级复合回报源于提前 5–10 年重注尚无短期财务回报但具备平台潜力的底层技术。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">3. 审视“后创始人时代”的组织制度承接力</div>
+ <p class="text-slate-300 leading-relaxed">
+ 当一家万亿巨擘告别灵魂创始人（如 2011 年的苹果或 2026 年 11 月的 NVIDIA），投资成败取决于其既有的软件生态锁定力与继任运营官团队能否延续高毛利现金流。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “黄仁勋法则”硬科技与平台企业评估交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Jensen Huang Full-Stack &amp; Enterprise Diagnostic Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “黄仁勋法则”硬科技与算力企业评估交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-nvgreen-500/15 text-nvgreen-700 dark:text-nvgreen-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于审视任何硬科技、半导体或 AI 基础设施公司是否具备“NVIDIA 式”长期复利壁垒（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#76B900] focus:ring-nvgreen-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 全栈协同定价权：卖单颗芯片还是卖整机柜系统？</span>
+ <span class="text-[11px] font-mono text-nvgreen-600 dark:text-nvgreen-400 font-semibold shrink-0">系统级壁垒</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验企业是否打通算力芯片、高速互联与整机架构，避免陷入单一元器件比价泥潭（标杆：毛利率稳守 65%–75%）。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#76B900] focus:ring-nvgreen-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 软件定义硬件护城河：是否拥有不可替代的开发者栈？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">CUDA 生态锁</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查下游客户迁移至竞品硬件的软件重写与调试成本是否高到令其望而却步。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#76B900] focus:ring-nvgreen-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. “光速”架构迭代节奏：能否压缩至一年一代交付？</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">时间差护城河</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察产品路线图是否迫使追赶者刚流片一代产品，领先者已量产下一代倍增算力架构。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#76B900] focus:ring-nvgreen-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 零十亿美元市场远见：是否提前 5–10 年布局前沿？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">非共识前瞻</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验研发预算是否前瞻投入至物理 AI、具身智能、主权算力或下一代光子互联等新兴爆发点。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#76B900] focus:ring-nvgreen-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 供应链产能锁死能力与人均创收效率</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">轻资产高杠杆</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查是否掌握晶圆代工先进封装（CoWoS）与 HBM 内存优先分配权，且保持精简高密度工程师团队。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#76B900] focus:ring-nvgreen-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 董事会独立制衡与后创始人接班治理韧性</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">治理安全边际</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 借鉴 2026 年 11 月 CEO 交棒事件，评估公司核心竞争力是否已沉淀为可脱离单一创始人持续运转的制度与生态。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>黄仁勋 Jensen Huang (1993–2026) 深度商业、全栈算力战略与长期复利研究报告 · 机构框架版</span>
+ <span>核心数据出处：NVIDIA SEC Form 10-K / 10-Q (FY2022–FY2027) · NVIDIA Newsroom</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务与企业治理数据均严格核验自美国证监会（SEC EDGAR）披露的 <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000038/a2026-annualxreportxwebxfi.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">NVIDIA FY2026 Annual Report / Form 10-K</a>、<a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026" target="_blank" rel="noopener noreferrer" class="cite-link">NVIDIA FY2026 全年业绩公告</a>、<a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm" target="_blank" rel="noopener noreferrer" class="cite-link">FY2027 Q1 10-Q 财报</a>及 <a href="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition" target="_blank" rel="noopener noreferrer" class="cite-link">2026 年 11 月 12 日 NVIDIA CEO 交接官方公告</a>。报告内置的复利模拟器旨在复盘算力创新周期长期资本增值规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Jensen_Huang_NVIDIA_CEO_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Jensen_Huang_NVIDIA_CEO_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-nvgreen-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-nvgreen-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 传奇科技领袖横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-nvgreen-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-nvgreen-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “黄仁勋长期主义周期”股东价值与复利动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ nvda_ipo_2026: {
+ principal: 10000,
+ years: 27,
+ cagr: 39.2,
+ caption: '当前测算基准：对应 1999 年 1 月 NVIDIA 纳斯达克 IPO（发行市值约 $6.26亿）持有至 2026 年 11 月初市值峰值（$4.89万亿）的 27 年全周期复利斜率。'
+ },
+ cuda_ai_decade: {
+ principal: 10000,
+ years: 10,
+ cagr: 64.0,
+ caption: '当前测算基准：模拟 2016 年黄仁勋交付首台 DGX-1 深度学习超算至 2026 年 Blackwell 规模放量的十年 AI 基础设施黄金复利周期。'
+ },
+ chatgpt_boom: {
+ principal: 10000,
+ years: 4,
+ cagr: 68.3,
+ caption: '当前测算基准：对应 FY2022（年营收 $26.91B）至 FY2026（年营收 $215.94B）生成式 AI 超级浪潮四年间的年化营收复合增速斜率。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-nvgreen-500 text-navy-950 font-bold border border-nvgreen-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-nvgreen-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-principal').value = preset.principal;
+ document.getElementById('sim-years').value = preset.years;
+ document.getElementById('sim-growth').value = preset.cagr;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义算力复利推演模式——自由探索不同本金、持有期限与硬科技平台年化复合增速下的长期财富放大效应。';
+ }
+
+ function updateValueSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 10000;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 27;
+ const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 39.2;
+ const divBonus = document.getElementById('div-bonus-toggle').checked ? 0.6 : 0;
+
+ const effGrowthPct = baseGrowthPct + divBonus;
+ const r = effGrowthPct / 100;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+ const finalVal = principal * Math.pow(1 + r, years);
+ const netGain = finalVal - principal;
+ const multiple = principal > 0 ? (finalVal / principal) : 1;
+ const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+ const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+ const midYears = Math.max(1, Math.round(years / 2));
+ const midVal = principal * Math.pow(1 + r, midYears);
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+ document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年资产翻一倍` : '稳健保值';
+ document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+ document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+ document.getElementById('sim-mid-val').textContent = `持有第 ${midYears} 年中期资产约：$${Math.round(midVal).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'jh_nvda_analysis_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“黄仁勋法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'fy26_mix';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：NVIDIA FY2025 vs FY2026 五大市场平台营收拆解 ($B, 源自 SEC Form 10-K)
+ const mixConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '数据中心 (Data Center)',
+ '游戏显卡 (Gaming)',
+ '专业可视化 (ProViz)',
+ '智能汽车 (Automotive)',
+ 'OEM 及其他'
+ ],
+ datasets: [
+ {
+ label: 'FY2025 净营收 ($B · 总计 $130.50B)',
+ data: [115.19, 11.35, 1.88, 1.69, 0.39],
+ backgroundColor: 'rgba(100, 116, 139, 0.65)',
+ borderRadius: 5
+ },
+ {
+ label: 'FY2026 净营收 ($B · 总计 $215.94B)',
+ data: [193.74, 16.04, 3.19, 2.35, 0.62],
+ backgroundColor: '#76B900',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 210,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：FY2022–FY2026 营收与净利润五年爆发轨迹 ($B)
+ const trajectoryConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2022 (元宇宙浪潮)',
+ 'FY2023 (矿潮去库存)',
+ 'FY2024 (Hopper爆发)',
+ 'FY2025 (AI基础设施化)',
+ 'FY2026 (Blackwell放量)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: 'NVIDIA 年度总营收 ($B)',
+ data: [26.91, 26.97, 60.92, 130.50, 215.94],
+ backgroundColor: 'rgba(118, 185, 0, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'NVIDIA 年度 GAAP 净利润 ($B)',
+ data: [9.75, 4.37, 29.76, 72.88, 120.07],
+ borderColor: '#F59E0B',
+ backgroundColor: '#F59E0B',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 240,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ },
+ y1: {
+ position: 'right',
+ min: 0,
+ max: 140,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#F59E0B', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'fy26_mix' ? mixConfig : trajectoryConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'fy26_mix') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-nvgreen-600 dark:text-nvgreen-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2025 vs FY2026 NVIDIA 五大市场平台营收结构拆解（SEC 10-K）';
+ subEl.textContent = '数据中心跃升至 $193.74B（+68.2%），游戏、专业可视化与汽车平台同步实现两位数高增';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-nvgreen-600 dark:text-nvgreen-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2022–FY2026 五年财报轨迹：营收 8.0 倍与净利润 12.3 倍指数级爆发';
+ subEl.textContent = '穿越 FY2023 矿潮去库存低谷后，AI 基础设施需求推动营收与盈利连续三年刷新半导体史纪录';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '芯片-网络-软件全栈协同力',
+ '非共识长期研发战略定力',
+ '开发者生态与CUDA锁定度',
+ '扁平化组织与年度迭代速度',
+ 'C端消费硬件品牌美学溢价'
+ ],
+ datasets: [
+ {
+ label: '黄仁勋 (NVIDIA)',
+ data: [9.9, 9.8, 9.9, 9.7, 7.6],
+ borderColor: '#76B900',
+ backgroundColor: 'rgba(118, 185, 0, 0.25)',
+ pointBackgroundColor: '#76B900',
+ borderWidth: 2.5
+ },
+ {
+ label: '史蒂夫·乔布斯 (Apple)',
+ data: [9.6, 9.4, 9.3, 9.2, 10.0],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.16)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.0
+ },
+ {
+ label: '杰夫·贝索斯 (Amazon)',
+ data: [8.8, 9.6, 9.2, 8.9, 7.4],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'NVIDIA 英伟达 (FY2026 GAAP 营业利润率)',
+ 'TSMC 台积电 (纯晶圆代工先进制程龙头)',
+ 'Microsoft 微软 (云与企业软件标杆)',
+ 'Apple 苹果 (消费电子与服务生态标杆)',
+ 'AMD 超威半导体 (数据中心与PC挑战者)'
+ ],
+ datasets: [
+ {
+ label: '营业利润率 Operating Margin (%)',
+ data: [60.4, 45.7, 44.6, 31.5, 18.5],
+ backgroundColor: [
+ '#76B900',
+ '#10B981',
+ '#06B6D4',
+ '#F59E0B',
+ '#64748B'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `营业利润率: ${c.parsed.x.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 70,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2022', 'FY2023', 'FY2024', 'FY2025', 'FY2026'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年度经营性现金流 Operating Cash Flow ($B)',
+ data: [9.11, 5.64, 28.09, 64.09, 102.72],
+ backgroundColor: 'rgba(118, 185, 0, 0.85)',
+ borderRadius: 5,
+ barThickness: 32,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '年度 GAAP 净利润 Net Income ($B)',
+ data: [9.75, 4.37, 29.76, 72.88, 120.07],
+ borderColor: '#F59E0B',
+ backgroundColor: '#F59E0B',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 120,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '经营性现金流 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 140,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#F59E0B', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '年度净利润 ($B)', color: '#F59E0B', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateValueSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

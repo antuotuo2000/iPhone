@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Meta Reality Labs 硬件与空间计算生态深度研究报告 (NASDAQ: META)：AI智能眼镜接棒VR、Muse个人智能体变现与2026亏损见顶拐点</title>
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <!-- Chart.js -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ rlcyan: {
+ 300: '#67E8F9',
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ 700: '#0E7490',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ amber: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ }
+ }
+ }
+ }
+ }
+ </script>
+
+ <style>
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(6, 182, 212, 0.26) 0%, rgba(16, 185, 129, 0.08) 100%);
+ border-left: 3px solid #22D3EE;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-rlcyan-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-rlcyan-600 via-rlcyan-400 to-emerald-400 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 导出成功轻量级提示条 (Toast) -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-rlcyan-400/50 shadow-2xl text-xs font-medium no-print">
+ <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+ <span id="export-toast-text">已导出独立 HTML 研报文件 (META_Reality_Labs_Analysis.html)</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-rlcyan-400 to-rlcyan-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ RL
+ </div>
+ <div>
+ <div class="text-[11px] text-rlcyan-300 font-semibold tracking-wider uppercase">Reality Labs · AI Glasses &amp; XR</div>
+ <div class="text-sm font-bold leading-tight">Meta Reality Labs 硬件生态深度报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-2">
+ <button onclick="exportStandaloneHtml()" class="p-2 rounded-lg bg-rlcyan-500/20 hover:bg-rlcyan-500/30 text-rlcyan-300" aria-label="导出HTML文件" title="导出独立HTML文件">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">Reality Labs 研报导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 硬件产品矩阵与收入结构切换</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重穿戴硬件护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球 AI 眼镜与 XR 巨头横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务亏损见顶与盈亏平衡测算器</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 战略演进判断与硬件交付风险</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-rlcyan-500 text-navy-950 font-bold text-xs flex items-center justify-center space-x-1.5">
+ <span>一键下载独立 HTML 文件</span>
+ </button>
+ <p>全球空间计算与 AI 穿戴硬件研究组</p>
+ <p>数据基准：2026年11月 (Meta 2026Q3财报)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rlcyan-300 via-rlcyan-500 to-teal-600 flex items-center justify-center text-navy-950 font-extrabold text-sm shadow-lg shadow-rlcyan-500/25">
+ RL
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-rlcyan-300 bg-rlcyan-500/15 px-2 py-0.5 rounded">REALITY LABS · NEXT COMPUTING</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">Reality Labs 深度研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ Meta 下一代计算平台事业部 · AI 智能眼镜爆款放量、Quest 战略收缩与 2026 亏损见顶拐点
+ </p>
+ </div>
+
+ <!-- Reality Labs 核心数据快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">2026 前三季度总营收</span>
+ <span class="font-mono font-bold text-white">$1.28B <span class="text-emerald-400 text-[10px]">(+2.4% YoY)</span></span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">2026E 全年营业亏损指引</span>
+ <span class="font-mono font-bold text-amber-400">-$18.5B <span class="text-slate-400">(2027收窄至-$15B)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">累计硬件出货 (Quest / 眼镜)</span>
+ <span class="font-mono font-bold text-rlcyan-300">2,676万 / 890万台</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-340px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-rlcyan-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>硬件产品矩阵与收入结构切换</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重穿戴硬件护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球 AI 眼镜与 XR 巨头横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务亏损见顶与盈亏平衡测算器</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>战略演进判断与硬件交付风险</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏 -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-rlcyan-400 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-rlcyan-400 to-rlcyan-500 hover:from-rlcyan-500 hover:to-rlcyan-600 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 研报文件</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-rlcyan-500/15 text-rlcyan-700 dark:text-rlcyan-300 font-bold border border-rlcyan-500/30">研究对象：Meta Reality Labs 硬件与空间计算事业部 · 战略拐点深度拆解</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：2026Q3 财报季 · Connect 2026 新品与 2027 亏损收窄指引</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖时间：2026年11月</span>
+ <span>母公司：NASDAQ: META</span>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#22D3EE 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rlcyan-500/20 border border-rlcyan-400/40 text-rlcyan-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-rlcyan-400 animate-pulse"></span>
+ <span>CORE THESIS · AI 智能眼镜全面接棒 Quest VR × Muse 个人智能体软件变现 × 2026 亏损见顶拐点</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ Meta Reality Labs 深度研究报告：AI 智能眼镜爆款破局、Quest 战略收缩与亏损见顶拐点
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 2026 年是 <strong class="text-white">Meta Reality Labs（RL）</strong>自 2020 年独立披露财报以来最具历史意义的战略转折点。截至 2026 年 9 月 30 日，RL 累计营业亏损已超 <strong class="text-amber-300">$960 亿</strong>（2026Q3 单季营收 <strong class="text-white">$4.43 亿</strong>、营业亏损收窄 7% 至 <strong class="text-emerald-400">$41.29 亿</strong>；前三季度累计营收 <strong class="text-white">$12.8 亿</strong>、亏损 <strong class="text-white">$127.8 亿</strong>）。
+ 在 2026 年 10 月 Q3 财报电话会议上，CEO <strong class="text-white">Mark Zuckerberg</strong> 与 CFO <strong class="text-white">Susan Li</strong> 正式确认战略转向：放缓传统 VR 头显迭代节奏，将资源全面倾斜至 <strong class="text-rlcyan-300">AI 智能眼镜（Ray-Ban Meta / Oakley Meta 及全新 HUD 显示版眼镜）</strong>与 <strong class="text-emerald-400">“Muse”个人超级智能体订阅</strong>，并明确指引 RL 全年营业亏损将在 <strong class="text-amber-300">2026 年（$180亿–$190亿）正式见顶</strong>，并于 <strong class="text-emerald-400">2027 年大幅收窄至约 $150 亿美元</strong>。
+ </p>
+
+ <!-- 核心投资结论高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">内部收入引擎彻底易主：智能眼镜超越 VR</div>
+ <div class="text-white font-semibold">智能眼镜年营收从 2021 年 $4,500万 飙升至 $21.5亿+（占 RL 总营收逾 80%），累计销量达 890 万副，彻底抵消 Quest VR 硬件下滑</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">硬件微利铺量 + “Muse”个人 AI 订阅变现</div>
+ <div class="text-rlcyan-300 font-semibold">Zuckerberg 明确表示智能眼镜不靠硬件赚暴利，而是以极致性价比抢占第一视角入口，通过随附的 Muse 个人 AI 智能体付费订阅实现盈利</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">财务估值重估催化：2027 年减亏释放 $35亿+ 利润</div>
+ <div class="text-amber-300 font-semibold">过去每年近 $190亿 亏损相当于拉低 Meta 每股收益约 $6.0/股；2027 年亏损收窄至 $150亿 将直接增厚集团自由现金流并修复估值折价</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>2026Q3 单季营收与营业亏损</span>
+ <span class="p-1.5 rounded-lg bg-rlcyan-500/15 text-rlcyan-600 dark:text-rlcyan-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$443M</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">亏损 -$4.13B (-7%)</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ Q3 亏损较去年同期（-$4.43B）及市场预期（-$4.54B）大幅收窄约 $4亿；前三季度累计营收 $12.8亿（+2.4% YoY）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Ray-Ban / Meta AI 眼镜累计销量</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">890万副</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">单季增速 +225%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 与 EssilorLuxottica 联合打造的智能眼镜品类年营收突破 $21.5亿，已全面超越 Quest 头显（$6.6亿）成为 RL 第一大收入支柱。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Meta Quest 累计装机量与留存</span>
+ <span class="p-1.5 rounded-lg bg-rlcyan-500/15 text-rlcyan-600 dark:text-rlcyan-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">2,676万台</span>
+ <span class="text-xs font-bold text-rlcyan-600 dark:text-rlcyan-400 bg-rlcyan-500/15 px-2 py-0.5 rounded">全球XR份额 &gt;70%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ Quest 全系列累计销量居全球 XR 硬件榜首（第二名 PSVR 仅 870 万台），Horizon Store 已有超 300 款应用实现百万美元级生命周期收入。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>2026E 亏损峰值 vs 2027E 指引</span>
+ <span class="p-1.5 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">-$18.5B</span>
+ <span class="text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded">2027E 降至 -$15B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2026 全年亏损预计较 2025 年（-$19.19B）首次停止扩大，2027 年进一步缩减约 $35亿–$40亿，标志着烧钱峰值正式成为历史。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 硬件产品矩阵与收入结构切换 (Hardware Matrix & Revenue Shift)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-rlcyan-600 dark:text-rlcyan-400">Section 01 · Hardware Product Matrix &amp; Revenue Composition Shift</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 硬件产品矩阵与收入结构切换：AI 眼镜爆发接棒 VR，Muse 智能体开启软件变现</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">Connect 2026 最新发布秋季眼镜矩阵 · 2027 春季推出 $1,299.99 旗舰超轻薄 VR 眼镜</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2021–2026E Reality Labs 内部收入结构大逆转：智能眼镜 vs Quest VR ($B)</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">2021 年 Quest VR 贡献 97% 硬件营收（$1.85B vs $0.05B），至 2025–2026 年智能眼镜已彻底反超成为绝对主力</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('rev_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-rlcyan-600 dark:text-rlcyan-400 shadow-sm transition cursor-pointer">视图A：眼镜与VR收入结构逆转</button>
+ <button onclick="switchBizChart('growth_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：2026Q3 财报核心指标拆解</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性拆解核心洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026 年 Reality Labs 三大战略级转变</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-rlcyan-500/15 text-rlcyan-600 dark:text-rlcyan-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“硬件微利铺量 + Muse 个人 AI 智能体订阅”商业闭环</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ Zuckerberg 在 2026Q3 业绩会上直言，Meta 对智能眼镜采用低硬件毛利定价以扩大装机，核心盈利引擎将是随眼镜推送的 <strong>“Muse”个人 AI 智能体</strong>（已于 2026 年 11 月在北美及日本率先上线）的付费增值订阅。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">2026年9月 Connect 大会扩充全价格带智能眼镜矩阵</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 除了持续热销的 <strong>Ray-Ban Meta</strong> 与运动款 <strong>Oakley Meta</strong> 外，Meta 于 2026 年 9 月 23 日发布带单目 HUD 屏显与神经腕带交互的新一代智能眼镜，并在 Q4 假日季迎来集中放量交付。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">告别“年年硬推平价 VR”，聚焦突破性产品（2027春新品）</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026 年 Meta 未推出新款 Quest 消费级头显，而是精简 VR 工作室开支，集中研发将于 <strong>2027 年春季上市、定价 $1,299.99 的超轻薄分体式 VR 眼镜</strong>，大幅提升研发投资回报率。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">智能眼镜用户留存表现</span>
+ <span class="font-bold text-rlcyan-600 dark:text-rlcyan-400">周活跃率 40% · 三个月留存率高达 73%</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心硬件与软件产品线详细卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 产品线 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rlcyan-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-rlcyan-500/15 text-rlcyan-700 dark:text-rlcyan-300 text-xs font-bold">第一增长引擎 · 累计销量 890 万副</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">年营收 &gt;$2.15B (+225% 同比)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. Ray-Ban Meta &amp; Oakley Meta AI 音频视觉智能眼镜</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 携手全球眼镜巨头 <strong>EssilorLuxottica（依视路陆逊梯卡）</strong>，将第一视角 1200 万像素超广角相机、开放式定向音频与多模态 Llama 助手融入经典时尚镜框（重不足 50 克）。全球 3 个月留存率高达 <strong>73%</strong>，已成为现象级大众消费电子爆款。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>覆盖主流时尚与专业运动双重场景</span>
+ <span class="text-rlcyan-600 dark:text-rlcyan-400 font-semibold">全天候无感佩戴的第一视角 AI 终端</span>
+ </div>
+ </div>
+
+ <!-- 产品线 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">全彩显示跃迁 · 2026秋季重磅新品</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">sEMG 肌电神经腕带交互</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. HUD 显示版智能眼镜与 Orion 全息 AR 技术下放</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 继承旗舰原型机 <strong>Orion（猎户座全息 AR 眼镜）</strong>的核心交互成果，2026 年秋季上市的 HUD 显示版智能眼镜在右镜片内置高亮度微显示屏，支持实时提词、导航箭头、WhatsApp 消息预览及多语种实时字幕翻译，并可通过肌电腕带进行无声手指微动作操控。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>开启“后智能手机时代”视觉交互过渡</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">客单价跃升至 $799 级别高端区间</span>
+ </div>
+ </div>
+
+ <!-- 产品线 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-amber-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs font-bold">软件变现核心 · 2026年11月正式落地</span>
+ <span class="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">AI Agent 订阅 + Horizon 商店</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. “Muse”个人超级智能体与 Horizon OS 软件生态</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>Muse</strong> 是专为智能眼镜打造的随身记忆与多模态执行代理，能够记住用户看到的物品、日程与偏好并主动提供建议；配合 Quest 平台累计超 <strong>300 款百万美元级营收 VR 游戏/应用</strong>（2025 上半年内容收入即超 $2.8亿），高毛利软件正逐步提升整体毛利率。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>已于北美及日本正式商业化上线</span>
+ <span class="text-amber-600 dark:text-amber-400 font-semibold">破解硬件微利难题的 SaaS 订阅密钥</span>
+ </div>
+ </div>
+
+ <!-- 产品线 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">空间计算基本盘 · 累计销量 2,676 万台</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">2027春 $1,299.99 旗舰新品</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. Meta Quest 3 / 3S 与超轻薄旗舰 VR 眼镜路线图</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 尽管 2026 年因无新机发布导致 Quest 硬件出货同比下滑约 10%（2026 年估算约 230 万台），但 Quest 仍占据全球 XR 头显逾 70% 存量份额。2027 年春季即将登场的 <strong>$1,299.99 超轻薄高端 VR 眼镜</strong>将主打空间巨幕办公与混合现实，直接对标苹果 Vision Pro。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Quest 3 与 3S 销量基本持平</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">精简内容补贴，专注高客单价技术突破</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 行业地位与四重穿戴硬件护城河 (Industry Position & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position &amp; Wearable Computing Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重穿戴硬件护城河：时尚渠道垄断、十年光学专利与社交底座</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：宽 (Wide Moat · 全球 XR 与智能眼镜合计装机量超 3,560 万台断层第一)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-rlcyan-500/15 text-rlcyan-600 dark:text-rlcyan-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">与 EssilorLuxottica 深度绑定的全球光学渠道壁垒</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 眼镜首先是时尚配饰与视力矫正医疗器械，其次才是电子产品。Meta 与拥有 Ray-Ban、Oakley 及全球超 18,000 家线下门店的 EssilorLuxottica 签署长期独家协议，完美解决了近视配镜、门店试戴与时尚外观三大行业死穴。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">累计 $960亿 研发砸出的 MicroLED 与碳化硅光波导专利</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 过去十年 Reality Labs 收购并孵化了数十家顶尖光学、微型显示与传感器公司，掌握高折射率碳化硅光波导、MicroLED 微投影及手腕肌电神经信号（sEMG）底层专利，构筑起极高的硬件工程壁垒。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">36.4亿社交关系链与免掏手机直播/通讯场景</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 智能眼镜最高频的刚需是“免提拍摄分享到 Instagram/Facebook Stories”以及“语音收发 WhatsApp 消息与视频通话”。没有庞大社交网络底座的纯硬件厂商无法提供这种原生社交闭环。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">自研 Llama 多模态模型与端云协同算力优势</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 依托自家 Llama 轻量级端侧模型与千亿级云端集群，Meta 无需向第三方大模型支付高昂 API 调用费即可让全球数百万副眼镜随时调用实时视觉识别与语音对话，拥有全行业最低的 AI 边际服务成本。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维护城河雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球智能眼镜与 XR 平台五维壁垒雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Meta Reality Labs vs 苹果 Vision 生态 vs 谷歌 Android XR（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 全球 AI 眼镜与 XR 巨头横向对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-rlcyan-600 dark:text-rlcyan-400">Section 03 · Global Smart Glasses &amp; XR Competitive Landscape</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球智能眼镜与 XR 巨头横向对比：Meta 以“轻量化 AI 眼镜”降维领跑行业出货量</h2>
+ </div>
+ <!-- 交互式筛选按钮 -->
+ <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-rlcyan-500 text-navy-950 shadow-sm transition cursor-pointer">全部核心玩家</button>
+ <button onclick="filterCompetitors('us_giants')" data-filter="us_giants" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">北美科技巨头 (Apple / Google+Samsung)</button>
+ <button onclick="filterCompetitors('china_xr')" data-filter="china_xr" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">中国 AI 眼镜与 AR 新锐 (XREAL / 雷鸟 / 字节)</button>
+ <button onclick="filterCompetitors('gaming_vr')" data-filter="gaming_vr" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">传统游戏与工业 XR (Sony PSVR / Snap)</button>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">厂商与核心硬件产品</th>
+ <th class="py-4 px-4 min-w-[140px]">累计硬件出货量</th>
+ <th class="py-4 px-4 min-w-[130px]">主流售价区间</th>
+ <th class="py-4 px-4 min-w-[130px]">产品形态重心</th>
+ <th class="py-4 px-4 min-w-[115px]">AI 助手与生态</th>
+ <th class="py-4 px-5 min-w-[240px]">与 Meta Reality Labs 的竞争格局对比</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：Meta Reality Labs 基准 -->
+ <tr data-category="core" class="bg-rlcyan-500/5 dark:bg-rlcyan-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-rlcyan-400 text-navy-950 text-[10px] font-extrabold">全球绝对领跑</span>
+ <span class="font-bold text-slate-900 dark:text-white">Meta Reality Labs</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Ray-Ban / Oakley Meta + Quest 3/3S</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">Quest 2,676万 + 眼镜 890万</td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">$299–$799</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">轻量化 AI 眼镜 + 一体机 VR</td>
+ <td class="py-4 px-4 font-semibold text-rlcyan-600 dark:text-rlcyan-400">Llama + Muse + 36亿社交</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>行业唯一同时跑通消费级爆款规模与前沿全息研发的玩家：</strong>凭借亲民价格与时尚设计率先打开大众市场，占据全球 XR 与智能眼镜超 70% 存量份额。
+ </td>
+ </tr>
+
+ <!-- 行 2：Apple Vision Pro / 传闻智能眼镜 -->
+ <tr data-category="us_giants" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">苹果 Apple (Vision 生态)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Apple Vision Pro / 研发中轻量化眼镜</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">~80万–100万台 (Vision Pro)</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">$3,499 起</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">超高端空间计算头显</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">visionOS + Apple Intelligence</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>显示与芯片硬件标杆，但高定价限制出货量级：</strong>Vision Pro 确立了空间计算交互标准，但 $3,499 售价与重量限制其成为日常穿戴品，Meta 已凭轻量化眼镜抢先占领大众心智。
+ </td>
+ </tr>
+
+ <!-- 行 3：Google + Samsung (Android XR) -->
+ <tr data-category="us_giants" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Google + 三星 (Android XR)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Project Moohan 头显 + Gemini AI 眼镜</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">早期商业化放量阶段 (&lt;100万)</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">$399–$1,799</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">Gemini 多模态眼镜 + MR头显</td>
+ <td class="py-4 px-4 text-emerald-600 dark:text-emerald-400 font-medium">Gemini Live + Android 生态</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>Meta 在 AI 眼镜赛道最强劲的联盟对手：</strong>Google 依托 Gemini Live 实时视频对话与 Google Maps/YouTube 生态联合三星、Gentle Monster 切入市场，正面抗衡 Ray-Ban Meta。
+ </td>
+ </tr>
+
+ <!-- 行 4：中国 AI 眼镜与 AR 新锐 (XREAL / 雷鸟 / 字节 PICO) -->
+ <tr data-category="china_xr" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">XREAL / 雷鸟创新 / 字节 PICO</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">分体式观影 AR 眼镜 &amp; 百元级 AI 拍摄眼镜</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">合计约 180万–240万台</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">$199–$599</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">BirdBath 观影 AR + 轻量AI眼镜</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">豆包 / 通义千问 / 第三方大模型</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>中国供应链反应极快，主攻本土及性价比细分市场：</strong>依托国内强大光学与代工供应链在轻量 AI 眼镜与便携巨幕观影赛道快速起量，但受限于海外社交生态与品牌渠道壁垒。
+ </td>
+ </tr>
+
+ <!-- 行 5：Sony PlayStation VR & Snap Spectacles -->
+ <tr data-category="gaming_vr" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Sony PSVR / Snap Spectacles</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">主机游戏 VR 外设 / 开发者 AR 眼镜</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">PSVR1+2 合计 870万台</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">$549 / $99月租</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">主机有线 VR / 开发者试验版</td>
+ <td class="py-4 px-4 text-slate-500 dark:text-slate-400">PlayStation 游戏 / Snap Lens</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>场景单一或仍处开发者阶段：</strong>PSVR2 绑定 PS5 主机且缺乏通用 AI 与社交场景；Snap 第五代 AR 眼镜受限于资金实力仅向开发者按月出租，难以规模化。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：全球主要 XR 与智能眼镜平台累计销量对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">全球主流 XR 头显与智能眼镜平台累计硬件出货量对比（百万台，截至 2026 年）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">Meta 独占全球前两大畅销硬件平台（Meta Quest 2,676万台 + Ray-Ban Meta 890万副），合计出货量超过全球其余所有厂商总和的三倍</p>
+ </div>
+ <span class="text-xs font-semibold text-rlcyan-700 dark:text-rlcyan-300 bg-rlcyan-500/15 px-2.5 py-1 rounded">Treeview / XR Market 2026 统计</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 财务亏损见顶与盈亏平衡测算器 (Financials & Breakeven Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Operating Loss Peak &amp; Path to Profitability Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务亏损见顶与盈亏平衡推演：$960亿累计投入后迎来 2027 年减亏拐点</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2025 亏损 -$19.19B · 2026E 亏损 -$18.5B (见顶) · 2027E 指引收窄至 -$15.0B</span>
+ </div>
+
+ <!-- 1. Reality Labs 财务四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-rlcyan-600 dark:text-rlcyan-400 uppercase">Cumulative Operating Loss</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">-$96.3B</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 自 2020 年底至 2026 年 9 月 30 日累计营业亏损超 $960 亿，全部由 Meta 应用家族（年营业利润超 $1,000亿）内生现金流全额覆盖。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">2027E Operating Loss Guidance</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$15.0B 亏损</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ CFO Susan Li 正式指引 2027 年 RL 营业亏损将从 2026 年的 $180亿–$190亿 降至约 $150亿，同比直接减亏逾 $35亿。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Smart Glasses Revenue Share</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">&gt;80% 部门营收</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ AI 智能眼镜年销售额突破 $21.5亿，已彻底取代 Quest 成为部门增长引擎，预计 2026Q4 假日季随新品交付迎来单季新高。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">EPS Drag Impact on META</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$6.00 / 股拖拽</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 当前每年约 $185亿 税前亏损相当于拉低 Meta 摊薄每股收益约 $6.0/股；若未来几年逐步减亏，将直接释放超百美元/股的估值空间。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴剪刀差图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2021–2027E Reality Labs 年度营业亏损 ($B · 倒U型见顶曲线) vs 年度总营收 ($B)</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">亏损在 2025 年（-$19.19B）与 2026E（-$18.50B）构筑历史大顶后，随着 VR 预算收缩与 AI 眼镜放量，2027E 正式开启减亏通道</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-rlcyan-700 dark:text-rlcyan-300 bg-rlcyan-500/15 px-2.5 py-1 rounded">2026年确认亏损见顶历史拐点</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：Reality Labs“智能眼镜装机量 + Muse AI 订阅”盈亏平衡推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-rlcyan-300 font-bold">
+ <span>REALITY LABS BREAKEVEN &amp; MUSE SUBSCRIPTION SIMULATOR · 减亏与盈利路径模拟器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">Reality Labs 财务路径推演：“智能眼镜年出货 × Muse AI 订阅渗透率 × 研发费用收敛”模拟器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：2027E 起始营业亏损 -$15.0B | 眼镜均价 $380 | 测算至 2030 年智能眼镜硬件与 Muse 个人 AI 订阅如何推动 RL 走向盈亏平衡</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-rlcyan-500/20 border border-rlcyan-400/30 text-xs font-semibold text-rlcyan-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="drip-toggle" checked onchange="updateCompoundSimulator()" class="w-4 h-4 rounded accent-[#22D3EE] cursor-pointer">
+ <span>计入 2027 春季旗舰 VR 眼镜与 Horizon 商店内容营收 (+$1.8B/年)</span>
+ </label>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">2030 年智能眼镜活跃佩戴用户规模 (百万副)</span>
+ <span id="sim-users-label" class="font-mono font-bold text-white text-sm">4,500 万副</span>
+ </div>
+ <input id="sim-users" type="range" min="15" max="100" step="5" value="45" oninput="updateCompoundSimulator()" class="w-full accent-[#22D3EE] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">“Muse”个人 AI 智能体付费订阅渗透率 (%)</span>
+ <span id="sim-sub-rate-label" class="font-mono font-bold text-emerald-400 text-sm">35% 付费转化</span>
+ </div>
+ <input id="sim-sub-rate" type="range" min="5" max="70" step="5" value="35" oninput="updateCompoundSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">Muse AI 智能体订阅月费 ($ / 月 · 85%高毛利)</span>
+ <span id="sim-sub-price-label" class="font-mono font-bold text-amber-400 text-sm">$12.0 / 月</span>
+ </div>
+ <input id="sim-sub-price" type="range" min="5" max="25" step="1" value="12" oninput="updateCompoundSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div class="pt-1">
+ <div class="text-slate-300 font-medium mb-2">年度研发与运营费用（OpEx）纪律假设：</div>
+ <div class="grid grid-cols-3 gap-2" id="buyback-btn-group">
+ <button type="button" onclick="setOpexScenario(18.0)" data-bb="18.0" class="bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-rlcyan-400 transition cursor-pointer">
+ $18.0B 持续高投入<br><span class="text-[10px] text-slate-400">全息AR重金研发</span>
+ </button>
+ <button type="button" onclick="setOpexScenario(15.5)" data-bb="15.5" class="bb-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-rlcyan-400 text-navy-950 border border-rlcyan-300 shadow transition cursor-pointer">
+ $15.5B 基准收敛<br><span class="text-[10px] text-navy-900">符合2027指引</span>
+ </button>
+ <button type="button" onclick="setOpexScenario(13.0)" data-bb="13.0" class="bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-rlcyan-400 transition cursor-pointer">
+ $13.0B 精简聚焦<br><span class="text-[10px] text-slate-400">大幅削减VR预算</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">2030E Reality Labs 预计总年营收</div>
+ <div id="sim-total-rev" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$11.77B</div>
+ <div id="sim-rev-split" class="text-xs font-semibold text-rlcyan-300 mt-1.5">硬件 $7.70B + 高毛利软件订阅 $4.07B</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">2030E 部门营业利润 / 亏损状态</div>
+ <div id="sim-op-result" class="text-2xl sm:text-3xl font-mono font-extrabold text-amber-400 mt-1.5">-$10.32B</div>
+ <div id="sim-op-note" class="text-xs text-slate-400 mt-1.5">较 2026 峰值 (-$18.5B) 减亏逾 44%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">Muse 个人 AI 订阅年化高毛利 ARR</div>
+ <div id="sim-muse-arr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$2.27B / 年</div>
+ <div id="sim-muse-users" class="text-xs text-slate-400 mt-1.5">对应 1,575 万名高粘性订阅用户</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">对母公司 Meta 增厚的税前利润</div>
+ <div id="sim-meta-boost" class="text-2xl sm:text-3xl font-mono font-extrabold text-rlcyan-300 mt-1.5">+$8.18B / 年</div>
+ <div id="sim-eps-boost" class="text-xs text-slate-400 mt-1.5">相当于直接增厚 META EPS 约 +$2.75/股</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 华尔街对 Reality Labs 的多空核心分歧对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">看多核心论点 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">押中下一代个人计算入口 + 亏损确认见顶</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>智能眼镜是自然人类形态的最佳 AI 载体：</strong>无需改变用户习惯即可让 AI 看到用户所见、听到用户所听，Ray-Ban Meta 890 万副销量与 73% 三个月留存率验证了真实大众刚需。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>2026 亏损见顶与 2027 降至 $150亿 消除最大估值折价因子：</strong>长期以来华尔街给予 Meta 估值折价的核心原因之一便是 RL 无底洞般的亏损，如今预算收敛将直接触发估值修复。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>摆脱对苹果 iOS 与谷歌 Android 的分发依赖：</strong>拥有自有硬件与 Horizon OS 操作系统，意味着 Meta 首次掌握从芯片、系统到 AI 智能体的全栈平台控制权。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">看空担忧论点 (Bear Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">$960亿沉没成本 + 距离盈亏平衡仍有十倍差距</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>当前营收仅能覆盖约 10% 的部门成本：</strong>即使 2027 年亏损收窄至 $150亿，其年营收（约 $25亿–$30亿）仍需再增长五倍以上且保持费用不涨才可能实现盈亏平衡。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>Quest VR 业务明显失速与元宇宙社交冷清：</strong>2026Q3 财报显示 Quest 出货下滑拖累部门总营收同比下降 6%，表明沉浸式 VR 至今未能突破核心游戏玩家圈层。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>苹果、谷歌与 OpenAI/Jony Ive 硬件联盟全面围剿：</strong>智能手机巨头拥有天然的手机系统底层权限优势（如 AirPods 与 iPhone 深度联动），一旦苹果推出轻量化智能眼镜将形成强劲分流。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 战略演进判断与硬件交付风险 (Strategic Outlook & Risks)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-rlcyan-600 dark:text-rlcyan-400">Section 05 · Strategic Outlook &amp; Execution Risk Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 Reality Labs 战略演进三情景推演与核心硬件交付风险评估</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">核心策略：紧抓 AI 眼镜高增红利 · 严控 VR 资本开支 · 推进 Muse 订阅变现</span>
+ </div>
+
+ <!-- 1. 三情景战略演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 乐观情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">乐观演进 (Bull Case)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：30%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">2028E 营收破 $65B / 亏损缩至 -$9B</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心路径：</strong>Ray-Ban/Oakley 眼镜与 HUD 显示版累计出货突破 2,500 万副，Muse 个人 AI 订阅转化率超 25%，叠加 2027 春季超轻薄 VR 眼镜大卖，推动部门加速迈向盈亏平衡。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 成为媲美 Apple Watch 的下一个百亿美元级消费硬件平台
+ </div>
+ </div>
+
+ <!-- 基准情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rlcyan-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rlcyan-500/15 text-rlcyan-700 dark:text-rlcyan-300 text-xs font-bold">基准演进 (Base Case)</span>
+ <span class="font-mono text-xs font-bold text-rlcyan-600 dark:text-rlcyan-400">概率：50%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">2027E 亏损 -$15B / 营收 $3.2B</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心路径：</strong>严格兑现 2027 年营业亏损收窄至 $150亿 指引，AI 眼镜年出货稳步迈向 1,000 万副级，Quest 维持小众精品化路线，持续为应用家族提供第一视角 AI 数据反馈。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rlcyan-600 dark:text-rlcyan-400">
+ 亏损负担逐年减轻，释放母公司盈利弹性
+ </div>
+ </div>
+
+ <!-- 保守情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">保守演进 (Bear Case)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">亏损居高不下 (-$17B+) 且竞争加剧</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心路径：</strong>受制于苹果 iOS 蓝牙后台权限限制与 Google/三星 Android XR 联盟冲击，智能眼镜增速放缓；同时 HUD 光波导良率爬坡困难推高研发与物料补贴成本。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 持续每年拖累 Meta 每股收益约 $5–$6/股
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心风险矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">Reality Labs 面临的四大核心运营与商业风险</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · iOS / Android 手机系统权限限制</span>
+ <span class="text-xs font-mono text-rose-500 font-semibold">关注度：极高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">智能眼镜高度依赖手机算力与蓝牙连接，受制于苹果系统限制</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 目前智能眼镜仍需配对智能手机进行网络传输与重度计算，苹果对第三方穿戴设备的后台保活与通知交互权限限制，始终是 Meta 在北美 iPhone 用户群中的潜在痛点。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 公共场所第一视角拍摄的隐私与立法阻力</span>
+ <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">全天候佩戴摄像头引发欧美及日韩公共场所隐私担忧</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 尽管 Meta 在镜框配备了醒目的白色录制指示灯，但随着眼镜普及率提升，健身房、学校、医疗机构及部分欧洲国家可能出台更严格的穿戴式摄像设备限制法规。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rlcyan-500/10 text-rlcyan-600 dark:text-rlcyan-400 text-xs font-bold">03 · 光学显示组件良率与续航散热物理极限</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">50 克级镜框内兼顾全天续航、MicroLED 亮度与算力散热极难</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 从纯音频相机眼镜向带 HUD 屏幕的真 AR 眼镜跨越时，电池容量与光波导良率将直接决定硬件毛利率与消费者退货率。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 消费级 VR 市场萎缩与内容开发者流失</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">2026 年放缓 VR 硬件节奏可能导致第三方内容生态活跃度下降</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 在 2027 年春季 $1,299.99 新旗舰上市前的空窗期，如何维持 Horizon Store 开发者生态活力并避免存量 Quest 活跃度下滑，是运营层面的现实考验。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 投研观察与估值启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-rlcyan-300 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>Reality Labs 对 Meta 整体估值的三大核心启示</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 从“估值减分项”向“免费看涨期权”转变</div>
+ <p class="text-slate-300 leading-relaxed">
+ 随着管理层明确 2026 年亏损见顶、2027 年收窄至 $150亿，资本市场不再担忧 RL 失控吞噬应用家族利润，其正在从估值拖累转为 <strong>AI 穿戴硬件的看涨期权</strong>。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-rlcyan-300 mb-1">2. 关注“Muse”软件订阅毛利率拐点</div>
+ <p class="text-slate-300 leading-relaxed">
+ 复刻苹果 iPhone + Services 模式，未来评估 RL 成败的关键不仅在于卖出多少副 Ray-Ban/Oakley 眼镜，更在于 <strong>Muse 个人 AI 助手的付费订阅转化率与复购率</strong>。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 关注 2026Q4 假日季新品交付数据</div>
+ <p class="text-slate-300 leading-relaxed">
+ 由于 Connect 2026 秋季智能眼镜新品于 9 月 23 日发布（仅计入 Q3 最后一周），<strong>2026Q4 财报将首次完整反映新款智能眼镜的假日季爆发力</strong>，是核心跟踪节点。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Reality Labs Quarterly Tracking KPIs</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 Reality Labs 季度基本面跟踪 KPI 交互式核查清单（2026Q4–2027 监测）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-rlcyan-500/15 text-rlcyan-700 dark:text-rlcyan-300 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选季度财报中已验证达标的 Reality Labs 关键指标（勾选状态自动本地保存），持续追踪 AI 眼镜放量与减亏兑现进度：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#06B6D4] focus:ring-rlcyan-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 2026Q3 营业亏损同比收窄 7% 至 $41.3亿（低于市场预期）</span>
+ <span class="text-[11px] font-mono text-rlcyan-600 dark:text-rlcyan-400 font-semibold shrink-0">减亏拐点验证</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 已验证前三季度累计亏损（-$127.8B）低于去年同期（-$131.7B），成本纪律开始显现成效。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#06B6D4] focus:ring-rlcyan-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 智能眼镜累计销量达 890 万副，年营收超越 Quest VR</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">核心增长引擎</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 已验证 Ray-Ban Meta 与 Oakley Meta 成为部门第一大收入来源，三个月用户留存率高达 73%。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#06B6D4] focus:ring-rlcyan-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. “Muse”个人 AI 智能体正式在北美及日本眼镜端上线</span>
+ <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">软件订阅钥匙</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026 年 11 月已向北美及日本眼镜用户推送 Muse，开启硬件随附高毛利 AI 服务商业化第一步。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#06B6D4] focus:ring-rlcyan-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 2026Q4 假日季新品眼镜放量推动部门单季营收重回双位数增长</span>
+ <span class="text-[11px] font-mono text-rose-600 dark:text-rose-400 font-semibold shrink-0">Q4 核心催化</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查 9 月 23 日发布的秋季智能眼镜（含 HUD 显示版）在圣诞购物季的完整季度出货与供应链交付表现。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#06B6D4] focus:ring-rlcyan-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 2027 财年各季度营业亏损按计划向全年 $150亿 目标收敛</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">预算纪律底线</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 密切监测 2027Q1 起单季亏损是否稳步降至 $35亿–$38亿 区间，兑现管理层减亏承诺。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#06B6D4] focus:ring-rlcyan-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 2027 春季 $1,299.99 超轻薄旗舰 VR 眼镜按期发布与市场反响</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">高端空间计算</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 评估新一代轻量化 VR 眼镜在空间办公与混合现实体验上的口碑，检验高客单价策略对 VR 业务毛利的改善。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明 (Disclaimer Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>Meta Reality Labs 硬件与空间计算生态深度研究报告 · 独立分部拆解版</span>
+ <span>数据基准：Meta 2026Q3 财报 (Form 10-Q)、业绩电话会议指引及 XR 行业出货统计</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度研究报告聚焦于 Meta Platforms Inc. 旗下硬件与空间计算分部 <strong>Reality Labs（含 Ray-Ban/Oakley Meta AI 智能眼镜、Meta Quest 系列及 Muse 个人智能体）</strong>的财务表现、产品结构转型及 2027 年减亏指引拆解，旨在提供结构化的产业与商业模式分析框架。报告中涉及的 2027–2030 年财务路径与盈亏平衡模拟器均基于特定假设条件，不构成任何证券买卖建议。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立 HTML 研报文件 (Standalone Export)
+ // ==========================================
+ function exportStandaloneHtml() {
+ const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const a = document.createElement('a');
+ a.href = url;
+ a.download = 'META_Reality_Labs_Analysis.html';
+ document.body.appendChild(a);
+ a.click();
+ document.body.removeChild(a);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+
+ const toast = document.getElementById('export-toast');
+ if (toast) {
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-rlcyan-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-rlcyan-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 同行竞争格局矩阵筛选器
+ // ==========================================
+ function filterCompetitors(category) {
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-rlcyan-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-rlcyan-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ if (category === 'all' || rowCat === 'core' || rowCat === category) {
+ row.style.display = '';
+ } else {
+ row.style.display = 'none';
+ }
+ });
+ }
+
+ // ==========================================
+ // 5. Reality Labs 减亏与盈亏平衡路径模拟器
+ // ==========================================
+ let currentOpexBillion = 15.5; // 默认 2027 指引基准 $15.5B OpEx
+
+ function setOpexScenario(opex) {
+ currentOpexBillion = opex;
+ document.querySelectorAll('#buyback-btn-group .bb-btn').forEach(btn => {
+ const btnO = parseFloat(btn.dataset.bb);
+ if (Math.abs(btnO - opex) < 0.05) {
+ btn.className = 'bb-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-rlcyan-400 text-navy-950 border border-rlcyan-300 shadow transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-navy-900';
+ } else {
+ btn.className = 'bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-rlcyan-400 transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+ }
+ });
+ updateCompoundSimulator();
+ }
+
+ function updateCompoundSimulator() {
+ const activeGlassesMillions = parseFloat(document.getElementById('sim-users').value);
+ const subRatePct = parseFloat(document.getElementById('sim-sub-rate').value);
+ const monthlySubPrice = parseFloat(document.getElementById('sim-sub-price').value);
+ const includeVrSoftware = document.getElementById('drip-toggle').checked;
+
+ document.getElementById('sim-users-label').textContent = (activeGlassesMillions * 100).toLocaleString('en-US') + ' 万副';
+ document.getElementById('sim-sub-rate-label').textContent = subRatePct + '% 付费转化';
+ document.getElementById('sim-sub-price-label').textContent = '$' + monthlySubPrice.toFixed(1) + ' / 月';
+
+ // 估算当年新增硬件销量约为活跃装机量的 45%，平均出厂/分成均价 $380
+ const annualUnitsMillions = activeGlassesMillions * 0.45;
+ const glassesHwRevB = (annualUnitsMillions * 380) / 1000;
+
+ const paidSubMillions = activeGlassesMillions * (subRatePct / 100);
+ const museArrB = (paidSubMillions * monthlySubPrice * 12) / 1000;
+
+ const vrAndContentRevB = includeVrSoftware ? 1.80 : 0.40;
+ const totalRevB = glassesHwRevB + museArrB + vrAndContentRevB;
+
+ // 硬件综合毛利率约 28%，Muse 订阅及软件内容毛利率约 85%
+ const grossProfitB = (glassesHwRevB * 0.28) + ((museArrB + vrAndContentRevB) * 0.85);
+ const opIncomeB = grossProfitB - currentOpexBillion;
+
+ // 对比 2026E 峰值亏损 -$18.50B 的改善幅度
+ const lossImprovementB = opIncomeB - (-18.50);
+ const epsBoost = (lossImprovementB * 0.85) / 2.53; // 按 25.3亿稀释股本与 15% 税率估算
+
+ document.getElementById('sim-total-rev').textContent = '$' + totalRevB.toFixed(2) + 'B';
+ document.getElementById('sim-rev-split').textContent = `眼镜硬件 $${glassesHwRevB.toFixed(2)}B + 软件订阅 $${(museArrB + vrAndContentRevB).toFixed(2)}B`;
+
+ const opEl = document.getElementById('sim-op-result');
+ if (opIncomeB >= 0) {
+ opEl.textContent = '+$' + opIncomeB.toFixed(2) + 'B (盈利)';
+ opEl.className = 'text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5';
+ document.getElementById('sim-op-note').textContent = '已跨越盈亏平衡点，开始正向贡献利润！';
+ } else {
+ opEl.textContent = '-$' + Math.abs(opIncomeB).toFixed(2) + 'B';
+ opEl.className = 'text-2xl sm:text-3xl font-mono font-extrabold text-amber-400 mt-1.5';
+ const shrinkPct = ((18.50 - Math.abs(opIncomeB)) / 18.50) * 100;
+ document.getElementById('sim-op-note').textContent = `较 2026 峰值 (-$18.5B) 减亏 ${shrinkPct.toFixed(1)}%`;
+ }
+
+ document.getElementById('sim-muse-arr').textContent = '$' + museArrB.toFixed(2) + 'B / 年';
+ document.getElementById('sim-muse-users').textContent = `对应 ${(paidSubMillions * 100).toLocaleString('en-US')} 万名高粘性订阅用户`;
+ document.getElementById('sim-meta-boost').textContent = '+$' + lossImprovementB.toFixed(2) + 'B / 年';
+ document.getElementById('sim-eps-boost').textContent = `相当于直接增厚 META EPS 约 +$${epsBoost.toFixed(2)}/股`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'meta_reality_labs_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'rev_evolution';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：2021–2026E Reality Labs 内部收入结构切换：AI 智能眼镜 vs Quest VR ($B)
+ const evoConfig = {
+ type: 'bar',
+ data: {
+ labels: ['2021', '2022', '2023', '2024', '2025', '2026E'],
+ datasets: [
+ {
+ label: 'AI 智能眼镜品类估算营收 ($B)',
+ data: [0.05, 0.12, 0.35, 0.95, 2.15, 2.45],
+ backgroundColor: '#22D3EE',
+ borderRadius: 4,
+ stack: 'rl'
+ },
+ {
+ label: 'Quest VR 硬件与内容商店营收 ($B)',
+ data: [2.22, 2.04, 1.55, 1.20, 0.72, 0.55],
+ backgroundColor: '#6366F1',
+ borderRadius: 4,
+ stack: 'rl'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ stacked: true,
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ stacked: true,
+ min: 0,
+ max: 3.5,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toFixed(1) + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：Reality Labs 核心运营与留存指标 (%)
+ const splitConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Ray-Ban Meta 智能眼镜三个月留存率',
+ 'Meta 在全球存量 XR/智能眼镜市场份额',
+ '智能眼镜在 RL 总营收中的占比 (2026E)',
+ 'Ray-Ban Meta 眼镜周活跃佩戴率',
+ '2026E 营业亏损较 2025 年收窄幅度',
+ '2027E 指引营业亏损较 2026E 预计收窄幅度'
+ ],
+ datasets: [
+ {
+ label: '核心结构与改善比率 (%)',
+ data: [73.0, 72.5, 81.6, 40.0, 3.6, 18.9],
+ backgroundColor: [
+ '#22D3EE',
+ '#06B6D4',
+ '#10B981',
+ '#F59E0B',
+ '#6366F1',
+ '#34D399'
+ ],
+ borderRadius: 6,
+ barThickness: 22
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `统计数值: ${ctx.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 90,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'rev_evolution' ? evoConfig : splitConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'rev_evolution') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-rlcyan-600 dark:text-rlcyan-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2021–2026E Reality Labs 内部收入结构大逆转：智能眼镜 vs Quest VR ($B)';
+ subEl.textContent = '2021 年 Quest VR 贡献 97% 硬件营收（$1.85B vs $0.05B），至 2025–2026 年智能眼镜已彻底反超成为绝对主力';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-rlcyan-600 dark:text-rlcyan-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'Reality Labs 智能眼镜留存率、份额与 2027 年减亏幅度 (%)';
+ subEl.textContent = '智能眼镜三个月留存率达 73%、贡献逾 81% 部门营收，2027E 营业亏损预计大幅收窄 18.9% 至 $150亿';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const ctx = document.getElementById('moatRadarChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '全球光学零售渠道与时尚设计壁垒',
+ '大众亲民定价与累计装机规模',
+ '自研端侧大模型与社交生态联动',
+ '空间计算微显示与芯片工程精度',
+ '手机系统底层权限与硬件整合度'
+ ],
+ datasets: [
+ {
+ label: 'Meta Reality Labs',
+ data: [9.8, 9.9, 9.7, 8.8, 7.6],
+ borderColor: '#22D3EE',
+ backgroundColor: 'rgba(34, 211, 238, 0.25)',
+ pointBackgroundColor: '#22D3EE',
+ borderWidth: 2.5
+ },
+ {
+ label: '苹果 Vision 生态',
+ data: [7.8, 5.2, 8.6, 9.9, 9.9],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: 'Google Android XR',
+ data: [7.5, 6.8, 9.2, 8.2, 9.2],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.12)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const ctx = document.getElementById('compMarginChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Meta Quest 全系列 VR 头显 (Meta)',
+ 'Ray-Ban / Oakley Meta 智能眼镜 (Meta)',
+ 'Sony PlayStation VR 1 & 2 合计',
+ '中国主流 AR/AI 眼镜品牌合计 (XREAL/雷鸟等)',
+ 'Apple Vision Pro 空间计算头显'
+ ],
+ datasets: [
+ {
+ label: '截至 2026 年累计硬件出货量 (百万台)',
+ data: [26.76, 8.90, 8.70, 2.20, 0.90],
+ backgroundColor: [
+ '#06B6D4',
+ '#22D3EE',
+ '#6366F1',
+ '#10B981',
+ '#F59E0B'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `累计硬件出货量: ${ctx.parsed.x.toFixed(2)} 百万台`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 30,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'M' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['2021', '2022', '2023', '2024', '2025', '2026E', '2027E 指引'],
+ datasets: [
+ {
+ type: 'bar',
+ label: 'Reality Labs 年度营业亏损规模 ($B · 越低越优)',
+ data: [10.19, 13.72, 16.12, 17.73, 19.19, 18.50, 15.00],
+ backgroundColor: [
+ 'rgba(244, 63, 94, 0.65)',
+ 'rgba(244, 63, 94, 0.72)',
+ 'rgba(244, 63, 94, 0.78)',
+ 'rgba(244, 63, 94, 0.85)',
+ 'rgba(244, 63, 94, 0.95)',
+ 'rgba(245, 158, 11, 0.88)',
+ 'rgba(16, 185, 129, 0.88)'
+ ],
+ borderRadius: 5,
+ barThickness: 28,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'Reality Labs 年度总营收 ($B)',
+ data: [2.27, 2.16, 1.90, 2.15, 2.27, 2.45, 3.20],
+ borderColor: '#22D3EE',
+ backgroundColor: '#22D3EE',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.dataset.yAxisID === 'y'
+ ? `年度营业亏损: -$${ctx.parsed.y.toFixed(2)}B`
+ : `年度总营收: $${ctx.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 22,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '-$' + v + 'B' },
+ title: { display: true, text: '年度营业亏损 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 4.0,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#22D3EE', font: { size: 11, weight: '600' }, callback: v => '$' + v.toFixed(1) + 'B' },
+ title: { display: true, text: 'Reality Labs 年度营收 ($B)', color: '#22D3EE', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateCompoundSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>苏米特·辛格 Sumit Singh 深度商业与战略研究报告：宠物垂直电商帝国操盘手、84.4% Autoship 订阅飞轮与医疗服务化跃迁</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：琥珀金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Chewy_CEO_Sumit_Singh_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ SS
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Chewy (NYSE: CHWY) · CEO</div>
+ <div class="text-sm font-bold leading-tight">苏米特·辛格深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">Chewy CEO 专题目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 商业版图与生态架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 运营哲学与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 零售与宠物领袖横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 盈利扭转与价值复利推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与管理得失复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 辛格法则核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>消费科技与商业领袖深度研究组</p>
+ <p>财报与估值基准：SEC 10-K / 2026Q2</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-base shadow-lg shadow-mogold-500/25">
+ SS
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CEO MONOGRAPH</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">苏米特·辛格研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 亚马逊供应链基因 × 情感化高情商服务 · Chewy (NYSE: CHWY) 掌舵八年深度复盘
+ </p>
+ </div>
+
+ <!-- 核心人物历史财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">任期净营收跃升 (FY17–TTM)</span>
+ <span class="font-mono font-bold text-white">$2.10B → $13.07B</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">TTM 毛利率 / 营业利润</span>
+ <span class="font-mono font-bold text-emerald-400">29.9% / $328.2M</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">Autoship 占比 / 活跃客户</span>
+ <span class="font-mono font-bold text-mogold-400">84.4% · 2,171万</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>商业版图与生态架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>运营哲学与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>零售与宠物领袖横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>盈利扭转与价值复利推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与管理得失复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>辛格法则核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">管理层深度剖析：垂直电商盈利重构者</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究对象：Sumit Singh · Chewy CEO (2018.03 至今) · 前 Amazon / Dell 高管</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据截止：2026年11月 (FY26 Q2)</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 84.4% Autoship 订阅底座 × 医疗诊所全渠道闭环 × 广告高毛利化</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 苏米特·辛格 Sumit Singh 深度研究报告：如何将烧钱的垂直宠物电商锻造为百亿美元高粘性医疗与订阅帝国
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 在垂直电商普遍被亚马逊吞噬或陷入无休止补贴亏损的商业格局中，拥有 <strong class="text-white">Dell 精益供应链</strong> 与 <a href="https://investor.chewy.com/governance/board-of-directors/person-details/default.aspx?ItemId=f3e1b093-1327-4fe7-9aa8-229407f48a09" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">Amazon 电商基础设施运营基因</a> 的苏米特·辛格（Sumit Singh）于 2018 年 3 月接棒瑞安·科恩（Ryan Cohen）出任 Chewy CEO。八年间，他带领 Chewy 登陆纽交所（2019 IPO），将年净营收从接任前夕的 <strong class="text-white">$21.04亿</strong> 推升 <strong class="text-emerald-400">6.2 倍至 $130.69亿（TTM）</strong>，毛利率由 17.5% 系统性拉升至 <a href="https://investor.chewy.com/financials/quarterly-results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">30.4%（FY26 Q2）</a>，并将年度营业利润从巨亏 -$3.38亿彻底扭转为盈利 <strong class="text-emerald-400">+$3.28亿（TTM）</strong>。
+ 更关键的是，他正通过 <strong class="text-white">Chewy Vet Care 实体兽医诊所（2026 年冲刺 60 家并购整合 Modern Animal）</strong>、<strong class="text-white">Chewy+ 付费会员</strong> 与 <strong class="text-white">站内赞助广告</strong>，把一家低毛利宠物粮搬运工升级为覆盖“食品—处方药—医疗—保险”全生命周期的高壁垒生态平台。
+ </p>
+
+ <!-- 核心商业遗产高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">订阅飞轮压舱石（Autoship）</div>
+ <div class="text-white font-semibold">Autoship 客户销售额占总营收比例由 2019 年 66% 稳步攀升至 84.4%，锁死刚需复购现金流</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-mogold-400 font-medium mb-1">毛利率结构性重塑（+1,290 bps）</div>
+ <div class="text-mogold-300 font-semibold">依托自动化履约中心、高毛利处方药房与站内广告，毛利率从 17.5% 跃升至 30.4%</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-emerald-400 font-medium mb-1">估值与成长性的二元张力</div>
+ <div class="text-emerald-300 font-semibold">基本面创历史最佳（TTM 营收 $13.07B），但股价自疫情高点回落至 ~$21–$22（~0.67x EV/Sales），考验新曲线兑现</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>执掌期间营收扩张 (FY17–TTM)</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$13.07B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">6.2x 增长</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 由 FY2017 年 $2.10B 稳健扩张至 FY2025 $12.60B 及 TTM $13.07B，位列美国宠物线上零售绝对龙头（<a href="https://www.macrotrends.net/stocks/charts/CHWY/chewy/revenue" target="_blank" rel="noopener noreferrer" class="cite-link">Macrotrends</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Autoship 客户销售额占比</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">84.4%</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">TTM $11.01B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 周期性自动补货会员贡献超八成营收，在通胀与消费波动周期提供类 SaaS 级高可预测现金流（<a href="https://stockanalysis.com/stocks/chwy/financials/metrics/" target="_blank" rel="noopener noreferrer" class="cite-link">StockAnalysis</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>活跃客户规模与单客年消费</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">2,171万</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">NSPAC $602</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 截至 2026 年 8 月活跃客户达 2,171 万，单客年均净消费额（NSPAC）突破 $602 创历史新高（<a href="https://stockanalysis.com/stocks/chwy/financials/metrics/" target="_blank" rel="noopener noreferrer" class="cite-link">CHWY Metrics</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>GAAP 营业利润与调整后 EBITDA</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$328.2M</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">EBITDA率 6.8%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 摆脱上市初期巨亏阴霾，FY26 Q2 调整后 EBITDA 利润率达 6.8%，稳步向辛格设定的 10% 长期目标迈进（<a href="https://investor.chewy.com/financials/quarterly-results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">CHWY Q2 2026</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 商业版图与生态架构 (Business Empire & Ecosystem Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Business Empire & Ecosystem Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 商业版图与生态架构：从单一宠粮电商品牌到“全生命周期宠物健康生态”</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2025 净营收 $12.60B · 消耗品与宠物健康合计占比 85.4%</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2024 vs FY2025 Chewy 四大核心业务板块营收拆解（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">刚需消耗品（$8.78B）筑牢基本盘，高毛利宠物健康与处方板块加速放量至 $1.98B（+11.9%）</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('fy25_mix')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：四大板块拆解</button>
+ <button onclick="switchBizChart('turnaround_trajectory')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：FY17–FY25盈利逆转</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">苏米特·辛格操盘 Chewy 三大底层战略重构</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">将“重型低值品物流痛点”转化为自动化履约壁垒</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 40 磅重袋装狗粮与猫砂是传统快递噩梦。辛格引入 <strong>Amazon 级智能仓储自动化</strong>，实现全美超 80% 人口次日达，单箱履约成本持续下降，把重货痛点变成竞品难以复制的规模壁垒。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">打破纯线上边界：杀入 $540亿 宠物医疗诊所蓝海</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2024 年起推出自营 <strong>Chewy Vet Care</strong> 门诊并并购 Modern Animal（预计 2027 年贡献 $1.25亿年化营收），约 <strong>40% 诊所到店客户为 Chewy 全新用户</strong>，首年单客消费高达 ~$900（<a href="https://news.alphastreet.com/chewy-chwy-is-building-a-recurring-revenue-moat-through-autoship-and-a-vet-care-health-platform/amp/" target="_blank" rel="noopener noreferrer" class="cite-link">AlphaStreet</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“零售媒体广告 + Chewy+ 会员”双轮拉动利润率</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 向雀巢普瑞纳、玛氏等品牌方开放站内赞助广告（Sponsored Ads，毛利率超 70%），叠加 $59/年 <strong>Chewy+ 付费会员</strong>，推动公司朝着 <strong>10% 长期调整后 EBITDA 利润率</strong> 目标迈进（<a href="https://freedom24.com/ideas/details/22360?site_lang=en" target="_blank" rel="noopener noreferrer" class="cite-link">Freedom24</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">国际化扩张首站（2023 Q3 启动）</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">成功切入加拿大市场并稳步放量</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大商业与生态板块详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 分部 1：刚需消耗品与 Autoship 引擎 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一营收基本盘 · 占 FY25 净营收 69.7%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">FY25 营收 $8.78B (TTM $8.98B)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 刚需宠物主粮与消耗品矩阵（Consumables &amp; Autoship）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 涵盖干湿主粮、处方粮、猫砂与日常营养补充剂。辛格将 <strong>Autoship 定期自动配送</strong> 打造为整个商业模式的流量入口与现金流引擎——截至 FY26 Q2，Autoship 客户销售额占总营收比例高达 <strong>84.4%</strong>（2019 年 IPO 时为 66%），大幅降低了获客摊销成本并使客户留存率远超传统综合电商（<a href="https://www.stratrix.com/flywheel/chewy-s-service-obsessed-pet-commerce" target="_blank" rel="noopener noreferrer" class="cite-link">Stratrix</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>占总营收 ~70% · 极低需求价格弹性</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">经济衰退周期的天然防御护盾</span>
+ </div>
+ </div>
+
+ <!-- 分部 2：宠物健康、处方药房与 Vet Care 诊所 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第二高毛利增长极 · 占 FY25 净营收 15.7%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">FY25 营收 $1.98B (+11.9%)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 在线处方药房与线下兽医诊所（Chewy Health &amp; Vet Care）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 辛格任内最具远见的战略破局：在全美 50 州建立持牌宠物药房与配药中心，打通兽医电子处方流转（Practice Hub），使全美超 15,000 家合作兽医诊所接入 Chewy 体系；同时自建 <strong>Chewy Vet Care</strong> 线下门诊（目标 2026 年末扩至 <strong>60 家诊所</strong>），形成“线下首诊—处方配药—长期处方粮订阅”全闭环（<a href="https://freedom24.com/ideas/details/22360?site_lang=en" target="_blank" rel="noopener noreferrer" class="cite-link">Freedom24</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>目标 60 家实体诊所 · 客单价 ~$900</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">毛利率显著高于传统标准零售</span>
+ </div>
+ </div>
+
+ <!-- 分部 3：硬质用品与自有品牌矩阵 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">毛利优化利器 · 占 FY25 净营收 11.4%</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">FY25 营收 $1.44B (+13.4%)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 硬质宠物用品与高毛利自有品牌（Hardgoods &amp; Private Brands）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 涵盖智能喂食器、窝垫、玩具、牵引服饰及旅游用品。辛格大力培育 <strong>Frisco、American Journey、Vibeful</strong> 等自有品牌矩阵（自有品牌毛利率较第三方全国品牌高出约 700–1,000 个基点），借 Autoship 包裹顺带搭售硬质用品，有效摊薄单笔物流边际成本（<a href="https://stockanalysis.com/stocks/chwy/financials/metrics/" target="_blank" rel="noopener noreferrer" class="cite-link">StockAnalysis</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Frisco / American Journey 自有品牌</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">提高单箱客单价与毛利结构</span>
+ </div>
+ </div>
+
+ <!-- 分部 4：广告货币化、保险与加拿大国际业务 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">第三增长曲线 · 高利润率轻资产变现</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">FY25 其他业务 $406.8M</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 零售媒体广告、Chewy+ 会员与宠物保险（Ads, Insurance &amp; Intl）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 借鉴他在亚马逊的平台变现经验，辛格上线 <strong>Sponsored Ads 站内搜索与展示广告</strong>（占净营收比重向 1%–3% 迈进，几乎全额转化为营业利润）；联合 Trupanion 推出 <strong>CarePlus 宠物保险</strong>；并上线 <strong>$59/年 Chewy+ 会员</strong>（无门槛包邮 + 5% 食品与药品返现），深度锁定高净值养宠家庭（<a href="https://www.chewy.com/customer-care/chewy/chewy-overview/chewy-membership" target="_blank" rel="noopener noreferrer" class="cite-link">Chewy+</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Sponsored Ads / CarePlus / 加拿大市场</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">长期 EBITDA 率冲刺 10% 的核心抓手</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 运营哲学与四重核心护城河 (Philosophy & Economic Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Operating Philosophy & Economic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 运营哲学与四重核心护城河：“铁血精密算法 × 极致情感温度”的混合双打</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：窄转宽（Narrow-to-Wide Moat · 订阅转换成本 + 垂直医疗壁垒 + 情感品牌溢价）</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">84.4% Autoship 习惯锁定与高转换成本</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 宠物饮食与慢性病用药具有极强品牌惯性（随意换粮易致宠物肠胃不适）。一旦主人在 Chewy 设定好配送周期与宠物档案，几乎不会为几美元差价迁移至亚马逊，形成<strong>极低流失率的复利收入池</strong>（<a href="https://www.customerexperiencedive.com/news/chewys-autoship-subscription-grows-offering-reliability-and-repeat-sales/822715/" target="_blank" rel="noopener noreferrer" class="cite-link">CX Dive</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">工业工程级履约网络（亚马逊基因落地）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 辛格本科主修工业工程、硕士深造运筹与物流，并在亚马逊主导消费品电商业务。他将高度机器人化的区域履约中心（FC）部署于全美核心人口带，使 Chewy 在处理大重量袋装宠粮时拥有<strong>行业最低单件履约成本</strong>（<a href="https://magazine.engr.utexas.edu/2020/relentlessly-curious" target="_blank" rel="noopener noreferrer" class="cite-link">UT Austin</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“拟人化养宠”极致客服与情感共鸣壁垒</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 辛格不仅保留了瑞安·科恩创立的 24/7 秒接人工客服、手绘宠物油画与宠物离世鲜花慰问传统，本人更长期亲自回复客户邮件，连续斩获 <strong>Forrester 全美客户体验榜首</strong>，构筑亚马逊冷冰冰算法无法替代的情感护城河（<a href="https://www.chewy.com/sumit-singh" target="_blank" rel="noopener noreferrer" class="cite-link">Chewy Bio</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">处方合规壁垒 + 兽医 SaaS + 实体诊所协同</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 宠物处方药受各州药监严格监管，且需要兽医处方审核。Chewy 通过自建 <strong>Connect with a Vet 免费在线问诊</strong>、兽医后台系统及自营 <strong>Chewy Vet Care 诊所</strong>，将低频医疗诊疗转化为高频线上处方复购（<a href="https://www.tradingview.com/news/zacks:6bcec5ef2094b:0-how-pet-healthcare-could-shape-chewy-s-future-growth-profitability/" target="_blank" rel="noopener noreferrer" class="cite-link">Zacks</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维CEO能力雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">消费零售掌舵者五维商业能力模型对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">苏米特·辛格 (Chewy) vs 瑞安·科恩 (Chewy创始人) vs 道格·麦克米伦 (Walmart)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 零售与宠物领袖横向对比 (Retail & Pet Leaders Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Retail & Pet Industry Leaders Comparative Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 零售与宠物产业领袖横向对比：五种商业打法与高粘性复购统治力</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索人物 / 企业 / 模式关键词..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部掌舵者</button>
+ <button onclick="filterCompetitors('pet')" data-filter="pet" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">宠物垂直赛道</button>
+ <button onclick="filterCompetitors('omnichannel')" data-filter="omnichannel" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">全渠道与综合零售巨头</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">领袖与操盘企业</th>
+ <th class="py-4 px-4 min-w-[140px]">核心商业护城河范式</th>
+ <th class="py-4 px-4 min-w-[145px]">体量与核心运营指标</th>
+ <th class="py-4 px-4 min-w-[115px]">毛利率 / 盈利特征</th>
+ <th class="py-4 px-4 min-w-[125px]">战略与管理方法论</th>
+ <th class="py-4 px-5 min-w-[240px]">与苏米特·辛格操盘模式的异同评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：苏米特·辛格基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">苏米特·辛格</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Chewy (NYSE: CHWY · CEO)</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">84.4% 订阅飞轮 + 宠物医疗处方生态</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">TTM 营收 $13.07B / 2,171万客</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">毛利 30.4% / EBITDA 6.8%</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">精益自动化 + 高情商服务</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>垂直品类终极进化：</strong>成功接棒创始人瑞安·科恩，将亏损高增长初创企业平稳过渡为连续盈利、自由现金流充沛的行业霸主（<a href="https://investor.chewy.com/financials/quarterly-results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">CHWY IR</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：瑞安·科恩 -->
+ <tr data-category="pet" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">瑞安·科恩 (Ryan Cohen)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Chewy 联合创始人 (2011–2018 CEO)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">极致“取悦客户”文化 + 闪电抢占线上份额</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">2017年 $33.5亿售予 PetSmart</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利 ~17.5% / 战略性亏损</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">疯狂客户体验 + 激进获客</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“0到1奠基者”与“1到100扩建者”：</strong>科恩打造了无与伦比的品牌口碑与 $21亿营收底座；辛格则补齐了规模盈利、自动化履约、IPO 与医疗诊所版图（<a href="https://www.stratrix.com/flywheel/chewy-s-service-obsessed-pet-commerce" target="_blank" rel="noopener noreferrer" class="cite-link">Stratrix</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 3：Petco 管理层 -->
+ <tr data-category="pet" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Petco (NASDAQ: WOOF)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">传统全美千店宠物连锁龙头</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">1,500+ 实体门店 + 美容/洗护/店内医院</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">年营收 ~$61亿 · 门店租金包袱重</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">高租金吞噬营业利润率</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">重资产店中店服务网络</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>轻履约降维打击重门店：</strong>Petco 虽早有线下门店，但历史包袱沉重、电商反应迟缓；Chewy 先凭纯线上高效履约拿下 2,171 万忠实用户，再反向精准开设高坪效医疗诊所。
+ </td>
+ </tr>
+
+ <!-- 行 4：安迪·贾西 (Amazon) -->
+ <tr data-category="omnichannel" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">安迪·贾西 (Andy Jassy)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Amazon (辛格老东家 · 综合电商霸主)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">Prime 全品类会员生态 + FBA 极速物流网络</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">全美综合电商市占率第一</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">零售微利 + 广告/云高利</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">万物商店效率最大化</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“万物高效” vs “垂直情感专精”：</strong>辛格把亚马逊最擅长的自动化供应链与站内广告全套搬入 Chewy，同时用专业兽医问诊与拟人化温情服务筑起亚马逊难以模仿的垂直护城河。
+ </td>
+ </tr>
+
+ <!-- 行 5：道格·麦克米伦 (Walmart) -->
+ <tr data-category="omnichannel" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">道格·麦克米伦 (Doug McMillon)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Walmart (全球商超与平价宠物粮巨头)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">天天平价规模采购 + 4,600+ 门店前置仓</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">Walmart+ 会员 + 线下宠物诊所试点</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">综合毛利率 ~24%–25%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">全渠道生鲜顺带买宠粮</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>平价商超 vs 中高端养宠家庭：</strong>沃尔玛主打大众性价比与顺带采购；Chewy 牢牢锁定视宠物为家人、愿为处方粮、定制营养与在线兽医支付溢价的中高净值“Pet Parents”。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的领袖或企业记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：订阅/高粘性收入占比 vs 传统零售同行 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">商业模式含金量透视：Chewy Autoship 订阅客户销售额占比演进 vs 传统零售复购结构（%）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">在辛格任期内，Chewy 逐步将“一次性交易型电商”重塑为类订阅制现金流机器，Autoship 客户贡献比重由 66% 稳步抬升至 84.4%（<a href="https://www.stratrix.com/flywheel/chewy-s-service-obsessed-pet-commerce" target="_blank" rel="noopener noreferrer" class="cite-link">SEC 10-K / Stratrix 统计口径</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">84.4% 周期锁定度冠绝垂直电商</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 盈利扭转与价值复利推演 (Financial Turnaround & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Turnaround & Value Creation Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 盈利扭转与价值复利推演：从亏损烧钱到 $5.75亿自由现金流及主动回购</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">辛格时代最硬核成绩单：连续 1,290 个基点毛利率扩张与强劲自由现金流创造</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Gross Margin Expansion</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">30.4% (+12.9pp)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 毛利率由 FY2017 接任前夕的 17.5% 稳步爬升至 FY26 Q2 的 30.4%，打破“生鲜与重货电商永无高毛利”魔咒（<a href="https://investor.chewy.com/financials/quarterly-results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">CHWY Q2 2026</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Free Cash Flow Engine</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$575.3M (TTM)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 负营运资金周期（先收客户款、后付供应商货款）使经营现金流远超 GAAP 净利，FY2025 经营现金流高达 $6.92亿（<a href="https://koalagains.com/stocks/NYSE/CHWY" target="_blank" rel="noopener noreferrer" class="cite-link">KoalaGains</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Share Buyback &amp; Cap Allocation</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">429M → 402M 股</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 2024–2026 年趁股价低估果断启动大额股票回购注销（包括向大股东 BC Partners 定向回购），流通股本显著收缩增厚每股收益（<a href="https://investor.chewy.com/financials/quarterly-results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">CHWY 10-Q</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Valuation Compression</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$21.62 (~0.67x P/S)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 相较 2021 年疫情狂热期 $120 历史峰值，当前市值约 $87亿，远期市盈率仅 ~12x，呈现基本面持续走强与估值深度压缩的背离（<a href="https://www.forbes.com/companies/chewy/" target="_blank" rel="noopener noreferrer" class="cite-link">Forbes</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2018–FY2025（含 TTM）Chewy 毛利率爬升 (%) vs 单客年均净消费额 NSPAC ($) 协同曲线</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">苏米特·辛格执掌八年间最核心的运营剪刀差：客户年均消费从 $334 跃升至 $602 的同时，毛利率同步净增逾 10 个百分点</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">单客年贡献毛利实现 3.1 倍跃迁</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“Chewy 订阅飞轮与长期价值”动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>SUBSCRIPTION &amp; VET CARE COMPOUNDING ENGINE · Chewy 经营基本面与估值推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">从营收扩张到 10% EBITDA 利润率兑现：三大情景与自定义复合回报模拟</h3>
+ <p class="text-xs text-slate-400 mt-0.5">一键切换三大真实/前瞻情景（辛格任内营收复利轨迹 / FY26–2030 稳健利润释放基准 / 诊所+广告爆发牛市）或自由调节参数</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>叠加年均 2.5% 股票回购注销增厚效应</span>
+ </label>
+ </div>
+
+ <!-- 预设情景按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('singh_revenue')" data-era="singh_revenue" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① FY17–FY25 辛格任期营收复利轨迹</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">8年 · $2.10B → $12.60B (~25.1% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('base_case_2030')" data-era="base_case_2030" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 2026–2031 稳健盈利与估值修复基准</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">5年 · 营收 +7% 叠加利润率扩张 (~14.5% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('bull_vet_ads')" data-era="bull_vet_ads" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 诊所连锁 + 广告放量达成 10% EBITDA</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">5年 · 估值重估至 1.2x EV/Sales (~21.0% CAGR)</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始投入 / 基准规模 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$10,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="1000" max="100000" step="1000" value="10000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">复合观察周期 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">8 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="15" step="1" value="8" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年化复合增长率 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">25.1%</span>
+ </div>
+ <input id="sim-growth" type="range" min="4" max="35" step="0.1" value="25.1" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：对应苏米特·辛格 2018 年初出任 CEO 至 FY2025 财年末（2026年2月结账）期间，Chewy 净营收由 $21.04亿增长至 $126.02亿的真实经营体量复合增速（25.1% CAGR）。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计总价值 / 规模</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$59,975</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计净增值 +500%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">规模扩张倍数 (MOIC Multiple)</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">6.00x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 3.1 年翻一倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">累计创造净增量价值</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$49,975</div>
+ <div class="text-xs text-slate-400 mt-1.5">扣除初始基准后的纯复利增量</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效综合年化复合增速</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">25.10%</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">持有第 4 年中期资产约：$24,490</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角客观评估 (Bull Achievements vs Critical Risks) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">核心管理成就与看多逻辑 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">盈利质量跃迁 + 医疗破局</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>证明垂直品类巨头可独立战胜亚马逊：</strong>依靠 84.4% Autoship 锁客与极致兽医客服体验，在亚马逊重兵围剿下反将营收做到 $130.7亿且持续扩大市场份额（<a href="https://www.benzinga.com/markets/earnings/26/03/51463980/chewy-ceo-sees-resilient-pet-industry-expanding-profitability-in-2026" target="_blank" rel="noopener noreferrer" class="cite-link">Benzinga</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>战略前瞻切入高壁垒宠物医疗服务：</strong>线下 Vet Care 诊所不仅自身单店模型健康，更为线上带来 40% 全新客源及高达 ~$900 的首年消费额（<a href="https://news.alphastreet.com/chewy-chwy-is-building-a-recurring-revenue-moat-through-autoship-and-a-vet-care-health-platform/amp/" target="_blank" rel="noopener noreferrer" class="cite-link">AlphaStreet</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>高效的资本配置与股本收缩：</strong>利用充沛经营现金流在股价低估期回购注销超 2,700 万股股票，显著提升每股自由现金流含金量（<a href="https://koalagains.com/stocks/NYSE/CHWY" target="_blank" rel="noopener noreferrer" class="cite-link">KoalaGains</a>）。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">争议、局限与核心风险点 (Critical Risks)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">增速放缓 + 资本结构杠杆上升</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“后疫情时代”客户净增趋缓与估值大幅回撤：</strong>随着美国养宠家庭渗透率趋于饱和，营收增速从疫情期 37%–47% 回落至 6%–7% 区间，股价自 2021 年高点跌超 80%，2019 年 IPO 投资者长期回报承压（<a href="https://freedom24.com/ideas/details/22360?site_lang=en" target="_blank" rel="noopener noreferrer" class="cite-link">Freedom24</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>激进回购导致账面股东权益偏薄、负债率抬升：</strong>截至 FY26 Q2 长期债务增至 $5.89亿，总负债与股东权益比攀升至 313%，资产负债表安全垫较此前收窄（<a href="https://www.forbes.com/companies/chewy/" target="_blank" rel="noopener noreferrer" class="cite-link">Forbes</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>高管薪酬争议与线下重资产运营考验：</strong>辛格 FY25 总薪酬达 $2,572万（员工薪酬中位数比 579:1）；同时 60 家实体兽医诊所扩张将考验其重资产医疗人力管理能力（<a href="https://gloom.sh/stocks/chwy/proxy/2026" target="_blank" rel="noopener noreferrer" class="cite-link">CHWY 2026 Proxy</a>）。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕演进与管理得失复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Career Evolution & Strategic Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕职业演进与管理得失复盘：从供应链工程师到百亿级垂直电商统帅</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">理解苏米特·辛格的关键：Dell 精益制造 × Amazon 飞轮算法 × Chewy 情感服务</span>
+ </div>
+
+ <!-- 1. 三幕演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-teal-500/15 text-teal-600 dark:text-teal-400 text-xs font-bold">第一幕 · 供应链与电商淬炼</span>
+ <span class="font-mono text-xs font-bold text-slate-500">2000–2017</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">Dell 精益制造与 Amazon 实战</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>本科工业工程出身，先后获德州大学奥斯汀分校运筹物流硕士与芝加哥大学布斯商学院 MBA；历任 <strong>Dell 全球供应链高级管理层</strong>及 <strong>Amazon 北美消费品/生鲜电商高管</strong>，深谙库存周转、履约自动化与数据驱动决策（<a href="https://investor.chewy.com/governance/board-of-directors/person-details/default.aspx?ItemId=f3e1b093-1327-4fe7-9aa8-229407f48a09" target="_blank" rel="noopener noreferrer" class="cite-link">CHWY Bio</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-teal-600 dark:text-teal-400">
+ 阶段沉淀：为日后破解重货宠物粮履约成本打下深厚内功
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 接棒上市与疫情狂飙</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2017.08–2021</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">纽交所 IPO 与百亿规模跃迁</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2017 年 8 月以 COO 身份加盟，2018 年 3 月正式接替创始人瑞安·科恩出任 CEO；2019 年 6 月带领 Chewy 登陆纽交所募资超 $10亿；2020–2021 年疫情“养宠潮”期间稳住供应链断供冲击，营收突破 $89亿并跻身《财富》美国 500 强（<a href="https://www.chewy.com/sumit-singh" target="_blank" rel="noopener noreferrer" class="cite-link">Chewy</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：保留初创温情灵魂的同时植入大厂规模执行力
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 盈利反转与医疗突围</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2022–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">穿越周期与全渠道服务化</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>直面通胀与后疫情客户增速放缓阵痛，通过仓储自动化、处方药房、赞助广告与 Chewy+ 会员实现 GAAP 全面盈利（TTM 净利 $2.74亿）；同时进军加拿大并加速铺设 <strong>Chewy Vet Care</strong> 诊所网络（<a href="https://www.avma.org/news/chewy-expands-clinic-ownership-modern-animal-purchase" target="_blank" rel="noopener noreferrer" class="cite-link">AVMA</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段启示：从“追逐 GMV 规模”成功切换至“自由现金流与高毛利生态”
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大经营挑战与进化复盘矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：辛格掌舵八年应对的四大核心挑战与策略演进</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">挑战 01 · “大厂高管空降”的文化排异风险</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">Amazon 效率 vs Chewy 温情</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">没有用冰冷 KPI 阉割手绘宠物肖像与无条件退款文化</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 许多出身亚马逊的空降高管容易因过度削减“非标准成本”而毁掉品牌灵魂；辛格极其聪明地把自动化效率锁在后台仓库，而在前端继续加码 24/7 真人客服与宠物手绘惊喜，守住了最高NPS口碑。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">挑战 02 · 大袋宠物粮天然低毛利与高运费困局</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">毛利率 17.5% → 30.4%</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">通过“处方药 + 自有品牌 + 站内广告”重构毛利结构</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 单靠卖第三方袋装狗粮难以突破 20% 毛利率天花板；辛格通过引入高毛利处方药品（~35%+ 毛利）、自有品牌及近乎零边际成本的站内广告，硬生生在重货电商里挤出 30.4% 毛利率与 6.8% EBITDA 率。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">挑战 03 · 2022–2023 年活跃客户流失与通胀挤压</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">客户数短暂下滑后重回 2,171万</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">疫情透支消费退潮后，靠精细化留存与价格梯度重拾增长</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2022–2023 年美国通胀高企叠加疫情期间冲动领养退潮，Chewy 活跃客户一度微降；辛格迅速优化营销投放 ROI、推出差异化价格带并强化 Autoship 首单折扣，至 2026 年客户规模重回 2,171 万历史新高（<a href="https://stockanalysis.com/stocks/chwy/financials/metrics/" target="_blank" rel="noopener noreferrer" class="cite-link">StockAnalysis</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">挑战 04 · 控股大股东退出与股价剧烈波动</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">BC Partners 减持与主动回购</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">妥善消化控股股东抛压并借低估值回购增厚股东权益</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 面对私募大股东 BC Partners 逐步退出带来的二级市场供给压力，辛格利用公司自身充沛的自由现金流直接向大股东定向回购注销股份，既平滑了市场冲击又在 ~$20 区间大幅缩减总股本。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级商业与投资启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给消费创业者与投资者的三条“苏米特·辛格垂直电商突围法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 垂直电商活下来的唯一解：高复购刚需 + 订阅化锁客</div>
+ <p class="text-slate-300 leading-relaxed">
+ 低频标品电商永远跑不过综合巨头；唯有锁定“高频刚需消耗品（宠物粮/慢性药）+ 自动订阅周期（84.4% Autoship）”，才能将一次性流量转化为类 SaaS 级复利现金流。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 用低毛利高频商品获客，靠高毛利服务与广告赚钱</div>
+ <p class="text-slate-300 leading-relaxed">
+ 袋装宠粮是建立信任的“入口钩子”，真正的利润池藏在处方药房、线下兽医诊疗、宠物保险与站内品牌广告之中——业务组合升级是零售股毛利率重估的核心催化剂。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 关注“创始人交棒职业经理人”后的第二阶段兑现力</div>
+ <p class="text-slate-300 leading-relaxed">
+ 优秀创始人擅长用激情打开市场，而兼具工程供应链背景与共情力的职业 CEO（如辛格）则擅长通过自动化与品类扩张将规模转化为实打实的自由现金流。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “辛格法则”垂直消费与平台评估交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Sumit Singh Vertical Commerce &amp; Moat Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “辛格法则”垂直零售与平台护城河交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于评估任何垂直电商、消费订阅平台或全渠道零售企业是否具备“Chewy 式”盈利突围能力（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 周期性订阅销售占比是否超过 65%（对标 Autoship 84.4%）？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">现金流稳定锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验平台收入究竟依赖高昂广告买来的“一次性脉冲订单”，还是建立在刚需消耗品自动补货之上。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 单客年均净消费额（NSPAC）与毛利率是否实现同步双升？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">单位经济检验</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查企业是否通过高毛利品类（处方医疗、自有品牌、站内广告）提升老客钱包份额，而非靠打折换规模。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 后台仓储自动化与前台情感体验是否兼得？</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">差异化壁垒</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察企业能否在重货履约端保持顶级供应链效率的同时，在客服端提供综合电商巨头无法复制的情感温度。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 线下服务闭环（如 Vet Care 诊所）能否反哺线上低成本获客？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">全渠道飞轮</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 追踪线下门店/诊所的新客转化比例（Chewy 达 40%）及首年全渠道消费额（~$900）是否显著高于纯线上获客。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 自由现金流（FCF）转换率与股权激励（SBC）稀释控制</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">股东回报成色</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 对比报告期 FCF（$575M）与扣除股权激励后的真实 FCF（~$264M），核查股票回购是否真正带来净股本缩减。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 资产负债表杠杆边界（警惕过度举债回购侵蚀安全垫）</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">财务稳健锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪长期债务余额（FY26 Q2 为 $5.89亿）与流动比率变化，确保资本回馈股东的同时保留充足业务扩张弹药。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>苏米特·辛格 Sumit Singh (Chewy CEO) 深度商业、运营战略与投资研究报告 · 机构框架版</span>
+ <span>核心数据出处：Chewy, Inc. SEC Form 10-K / FY2026 Q2 10-Q / 2026 Proxy Statement</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务、运营与管理层资料均核验自美国证监会（SEC EDGAR）公开披露的 <a href="https://www.sec.gov/Archives/edgar/data/1766502/000176650226000034/chwy-20260201.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Chewy, Inc. FY2025 Form 10-K</a>、<a href="https://investor.chewy.com/financials/quarterly-results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Chewy FY2026 Q2 季度财报公告</a>、<a href="https://gloom.sh/stocks/chwy/proxy/2026" target="_blank" rel="noopener noreferrer" class="cite-link">Chewy 2026 委托书（Proxy Statement）</a>及公开市场数据库。报告内置的推演模拟器旨在辅助理解经营复合增速与估值逻辑，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Chewy_CEO_Sumit_Singh_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Chewy_CEO_Sumit_Singh_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 零售与宠物领袖横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “Chewy 订阅飞轮与长期价值”动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ singh_revenue: {
+ principal: 10000,
+ years: 8,
+ cagr: 25.1,
+ caption: '当前测算基准：对应苏米特·辛格 2018 年初出任 CEO 至 FY2025 财年末（2026年2月结账）期间，Chewy 净营收由 $21.04亿增长至 $126.02亿的真实经营体量复合增速（25.1% CAGR）。'
+ },
+ base_case_2030: {
+ principal: 10000,
+ years: 5,
+ cagr: 14.5,
+ caption: '当前测算基准：模拟 2026–2031 年未来五年基准情景——营收维持 ~7% 稳健内生增长，同时调整后 EBITDA 利润率从 6.8% 向 10% 长期目标靠拢带来的盈利复合增速。'
+ },
+ bull_vet_ads: {
+ principal: 10000,
+ years: 5,
+ cagr: 21.0,
+ caption: '当前测算基准：模拟 Chewy Vet Care 诊所网络与高毛利站内广告加速放量，推动公司提前兑现 10% 调整后 EBITDA 率并引发市场估值倍数修复的乐观情景。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-principal').value = preset.principal;
+ document.getElementById('sim-years').value = preset.years;
+ document.getElementById('sim-growth').value = preset.cagr;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义复合推演模式——自由探索不同基准规模、观察期限与年化复合增速下的长期价值放大效应。';
+ }
+
+ function updateValueSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 10000;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 8;
+ const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 15;
+ const buybackBonus = document.getElementById('div-bonus-toggle').checked ? 2.5 : 0;
+
+ const effGrowthPct = baseGrowthPct + buybackBonus;
+ const r = effGrowthPct / 100;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+ const finalVal = principal * Math.pow(1 + r, years);
+ const netGain = finalVal - principal;
+ const multiple = principal > 0 ? (finalVal / principal) : 1;
+ const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+ const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+ const midYears = Math.max(1, Math.round(years / 2));
+ const midVal = principal * Math.pow(1 + r, midYears);
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+ document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年翻一倍` : '稳健保值';
+ document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+ document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+ document.getElementById('sim-mid-val').textContent = `持有第 ${midYears} 年中期规模约：$${Math.round(midVal).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'chwy_singh_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“辛格法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'fy25_mix';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：Chewy FY2024 vs FY2025 四大业务板块营收拆解 ($B, 源自 SEC Form 10-K)
+ const mixConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '刚需消耗品 (Consumables)',
+ '宠物健康与处方 (Pet Health)',
+ '硬质用品与自有品牌 (Hardgoods)',
+ '广告/保险/其他业务 (Other)'
+ ],
+ datasets: [
+ {
+ label: 'FY2024 净营收 ($B)',
+ data: [8.40, 1.77, 1.27, 0.43],
+ backgroundColor: 'rgba(100, 116, 139, 0.65)',
+ borderRadius: 5
+ },
+ {
+ label: 'FY2025 净营收 ($B · 总计 $12.60B)',
+ data: [8.78, 1.98, 1.44, 0.41],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 10,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：FY2017–FY2025 辛格执掌期营收扩张与 GAAP 营业利润扭亏曲线 ($B / $M)
+ const trajectoryConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2017 (接棒前夕)',
+ 'FY2019 (IPO元年)',
+ 'FY2020 (疫情起飞)',
+ 'FY2021 (规模破89亿)',
+ 'FY2023 (全面转盈)',
+ 'FY2025 (盈利加速)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年度净营收 Net Sales ($B)',
+ data: [2.10, 4.85, 7.15, 8.97, 11.15, 12.60],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'GAAP 营业利润 Operating Income ($M)',
+ data: [-338, -253, -90, -74, -24, 254],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => {
+ if (c.dataset.yAxisID === 'y') return `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`;
+ return `${c.dataset.label}: $${c.parsed.y}M`;
+ }
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 14,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ },
+ y1: {
+ position: 'right',
+ min: -400,
+ max: 350,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'M' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'fy25_mix' ? mixConfig : trajectoryConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'fy25_mix') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2024 vs FY2025 Chewy 四大核心业务板块营收拆解（SEC 10-K）';
+ subEl.textContent = '刚需消耗品（$8.78B）筑牢基本盘，高毛利宠物健康与处方板块加速放量至 $1.98B（+11.9%）';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2017 接棒前夕至 FY2025：Chewy 营收 6 倍扩张与营业利润扭亏曲线';
+ subEl.textContent = '营业利润由 FY2017 亏损 -$3.38亿稳步改善至 FY2025 盈利 +$2.54亿（TTM 达 +$3.28亿）';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '精益供应链与履约自动化',
+ '客户情感体验与服务口碑',
+ '订阅锁客与复购飞轮强度',
+ '毛利结构重塑与医疗破局',
+ '全局全品类线下渠道广度'
+ ],
+ datasets: [
+ {
+ label: '苏米特·辛格 (Chewy CEO)',
+ data: [9.5, 9.6, 9.7, 9.2, 7.6],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: '瑞安·科恩 (Chewy 创始人)',
+ data: [7.8, 9.9, 8.9, 7.4, 6.2],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '道格·麦克米伦 (Walmart CEO)',
+ data: [9.6, 7.5, 8.0, 8.4, 9.9],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Chewy (FY2026 Q2 · 辛格生态成熟期)',
+ 'Chewy (FY2025 全年 · 医疗与会员放量)',
+ 'Chewy (FY2023 Q1 · 疫后结构稳固期)',
+ 'Chewy (2019 IPO · 辛格接棒上市初期)',
+ '传统综合百货/低粘性非订阅电商均值'
+ ],
+ datasets: [
+ {
+ label: 'Autoship / 周期性订阅客户贡献净营收占比 (%)',
+ data: [84.4, 83.3, 75.0, 66.0, 22.0],
+ backgroundColor: [
+ '#F59E0B',
+ '#D97706',
+ '#10B981',
+ '#06B6D4',
+ '#64748B'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `订阅客户销售占比: ${c.parsed.x.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 100,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2018', 'FY2020', 'FY2022', 'FY2024', 'FY2025', 'FY26 TTM'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '单客年均净消费额 NSPAC ($)',
+ data: [334, 372, 495, 578, 591, 602],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 30,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '公司整体毛利率 Gross Margin (%)',
+ data: [20.2, 25.5, 28.0, 29.2, 29.8, 30.4],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => {
+ if (c.dataset.yAxisID === 'y') return `${c.dataset.label}: $${c.parsed.y}`;
+ return `${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`;
+ }
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 200,
+ max: 680,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v },
+ title: { display: true, text: '单客年均净消费额 NSPAC ($)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 15,
+ max: 35,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' },
+ title: { display: true, text: '整体毛利率 (%)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateValueSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube (Alphabet 旗下核心业务 · NASDAQ: GOOGL) 深度研究报告：全球流媒体与客厅大屏霸主、1.5亿订阅飞轮与AI内容生态引擎</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#070B14',
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+            },
+            ytred: {
+              300: '#FCA5A5',
+              400: '#F87171',
+              500: '#EF4444',
+              600: '#DC2626',
+              700: '#B91C1C',
+            },
+            emerald: {
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+            },
+            amber: {
+              400: '#FBBF24',
+              500: '#F59E0B',
+              600: '#D97706',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 自定义滚动条与机构研报细节排版 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+
+    /* 打印友好优化 */
+    @media print {
+      #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+        display: none !important;
+      }
+      main {
+        margin-left: 0 !important;
+        padding: 0 !important;
+      }
+      section {
+        break-inside: avoid;
+      }
+    }
+
+    /* 卡片悬浮微光与上移过渡 */
+    .report-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .report-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 侧边导航激活态：YouTube 标志性流媒体赤红渐变 */
+    .nav-link.active {
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.24) 0%, rgba(245, 158, 11, 0.08) 100%);
+      border-left: 3px solid #EF4444;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-ytred-500 selection:text-white transition-colors duration-200">
+
+  <!-- 顶部全局阅读进度条 -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-ytred-600 via-ytred-500 to-amber-500 w-0 transition-all duration-150"></div>
+  </div>
+
+  <!-- 移动端顶部导航栏 -->
+  <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-ytred-500 to-ytred-700 flex items-center justify-center font-extrabold text-white text-xs shadow">
+        YT
+      </div>
+      <div>
+        <div class="text-[11px] text-ytred-400 font-semibold tracking-wider uppercase">Alphabet · YouTube Core Engine</div>
+        <div class="text-sm font-bold leading-tight">YouTube 深度商业与估值报告</div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-2">
+      <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 移动端折叠抽屉菜单 -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+    <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <span class="font-bold text-white text-base">YouTube 研报目录导航</span>
+          <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+          <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 业务与双轮变现架构</a></li>
+          <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重护城河</a></li>
+          <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球流媒体与社交视频对比</a></li>
+          <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 分部财务与 SOTP 独立估值推演</a></li>
+          <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 投资决策与风险配置框架</a></li>
+          <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+        </ul>
+      </div>
+      <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
+        <p>全球数字媒体与消费互联网研究组</p>
+        <p class="mt-1">数据基准：2026年11月 (Q3 26 / FY26E)</p>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+  <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+    <div>
+      <!-- 机构品牌头 -->
+      <div class="p-5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-ytred-500 via-ytred-600 to-amber-500 flex items-center justify-center text-white font-extrabold text-base shadow-lg shadow-ytred-500/25">
+            ▶
+          </div>
+          <div>
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-ytred-400 bg-ytred-500/15 px-2 py-0.5 rounded">GOOGL · STREAMING</span>
+            <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">YouTube 深度研报</h2>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          全球第一大流媒体与客厅大屏霸主 · 广告+订阅 $700亿+ 年化营收超级印钞机
+        </p>
+      </div>
+
+      <!-- 业务快照徽章 -->
+      <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">2026Q3 广告单季营收</span>
+          <span class="font-mono font-bold text-white">$11.21B <span class="text-emerald-400 text-[10px]">(+9.0% YoY)</span></span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">2026E 含订阅全口径营收</span>
+          <span class="font-mono font-bold text-emerald-400">~$71.5B <span class="text-slate-400">(全球第一)</span></span>
+        </div>
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+          <span class="text-slate-400">Paid 订阅与美国电视份额</span>
+          <span class="font-mono font-bold text-ytred-400">1.5亿+ 订阅 · CTV 11%+</span>
+        </div>
+      </div>
+
+      <!-- 七大核心章节目录导航 -->
+      <div class="px-3 py-3.5 overflow-y-auto max-h-[calc(100vh-310px)]">
+        <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+        <nav id="desktop-nav" class="space-y-1 text-[13px]">
+          <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-ytred-400 mr-2">00</span>执行摘要与核心指标</span>
+          </a>
+          <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>业务与双轮变现架构</span>
+          </a>
+          <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重护城河</span>
+          </a>
+          <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球流媒体与社交视频对比</span>
+          </a>
+          <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>分部财务与 SOTP 独立估值</span>
+          </a>
+          <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>投资决策与风险配置框架</span>
+          </a>
+          <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 侧边栏底部工具栏 -->
+    <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2.5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-slate-400">阅读模式切换</span>
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-3.5 h-3.5 text-ytred-400 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span class="dark:hidden">深色护眼模式</span>
+          <span class="hidden dark:inline">机构亮色模式</span>
+        </button>
+      </div>
+      <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-ytred-500 to-ytred-600 hover:from-ytred-600 hover:to-ytred-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>打印 / 导出 PDF 研报</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="lg:ml-[280px] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+      <!-- =========================================================
+           00. Hero 研报封面区与执行摘要
+      ========================================================= -->
+      <section id="sec-exec" class="scroll-mt-20">
+        <!-- 顶部研报元数据标签栏 -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-ytred-500/15 text-ytred-700 dark:text-ytred-400 font-bold border border-ytred-500/30">分部独立评估：SOTP 隐含估值 ~$6,500亿–$7,800亿</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">母公司：Alphabet Inc. (NASDAQ: GOOGL) 核心资产深度拆解</span>
+          </div>
+          <div class="flex items-center space-x-3 font-mono">
+            <span>覆盖时间：2026年11月</span>
+            <span>YOUTUBE · CTV & AI</span>
+          </div>
+        </div>
+
+        <!-- Hero 标题卡片 -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+          <!-- 背景赤红点阵纹理 -->
+          <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#EF4444 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+          <div class="relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-ytred-500/20 border border-ytred-400/40 text-ytred-300 text-xs font-semibold mb-4">
+              <span class="w-2 h-2 rounded-full bg-ytred-400 animate-pulse"></span>
+              <span>CORE THESIS · 广告+订阅超700亿美元体量 × 客厅大屏(CTV)第一霸主 × Veo 3 & Gemini 创作者革命</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+              YouTube (Alphabet 旗下核心业务 · NASDAQ: GOOGL) 深度研究报告：全球流媒体与客厅大屏霸主、1.5亿订阅飞轮与AI内容生态引擎
+            </h1>
+            <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+              作为 Alphabet（GOOGL）旗下最具消费心智与情绪粘性的超级入口，YouTube 在 CEO <strong class="text-white">Neal Mohan</strong> 掌舵下已完成从“免费 UGC 广告平台”向<strong class="text-ytred-300">“广告 + 付费订阅双轮驱动的全球第一大流媒体生态”</strong>的历史性跨越。
+              2026Q3 单季 YouTube 广告营收达 <strong class="text-emerald-400">$11.21B（+9.0% YoY）</strong>，叠加计入 Google 订阅/平台/设备板块的 <strong class="text-white">YouTube Music & Premium（全球突破 1.5 亿付费订阅户）</strong> 及 <strong class="text-amber-300">YouTube TV（超 950 万家庭付费订阅）</strong>，YouTube 2026 全年全口径总营收已突破 <strong class="text-ytred-400">$715 亿美元</strong>——全面超越 Netflix（~$485B）与 Disney 娱乐流媒体板块。
+              凭借美国尼尔森（Nielsen）流媒体总观看时长 <strong class="text-white">11%+ 的统治级份额</strong>、日均超 <strong class="text-emerald-400">1,000 亿次</strong> Shorts 短视频播放与 <strong class="text-ytred-300">Veo 3 / Dream Screen</strong> 生成式 AI 创作工具，YouTube 正在构建零传统影视重资产包袱的高利润率复利帝国。
+            </p>
+
+            <!-- 核心投资结论高亮条 -->
+            <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">客厅大屏（CTV）第一流媒体</div>
+                <div class="text-white font-semibold">连续蝉联美国尼尔森电视收视份额榜首（超 11%），彻底取代传统有线电视成为家庭第一屏幕</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">广告 + 订阅双引擎 $715B 营收</div>
+                <div class="text-emerald-400 font-semibold">广告年化 ~$445B + 订阅年化 ~$270B，YouTube Music/Premium 突破 1.5 亿付费会员</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">零版权重资产包袱的飞轮模型</div>
+                <div class="text-ytred-400 font-semibold">55%/45% 创作者动态分成机制替代 Netflix 每年 $180亿+ 刚性买断，AI 推荐提升转化率</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4个核心 KPI 卡片 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+          <!-- KPI 1 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>2026E 全口径年化总营收</span>
+              <span class="p-1.5 rounded-lg bg-ytred-500/15 text-ytred-600 dark:text-ytred-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$71.5B</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+12.8% YoY</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              含 ~$44.5B 广告收入与 ~$27.0B 订阅（Music/Premium/YouTube TV），全球流媒体营收规模断层第一。
+            </p>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>2026Q3 单季披露广告营收</span>
+              <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$11.21B</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+9.0% YoY</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              在高基数下仍保持近双位数稳健增长，客厅大屏品牌广告与 Shorts 效果转化广告双双提速。
+            </p>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>付费订阅会员矩阵规模</span>
+              <span class="p-1.5 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">1.50亿+</span>
+              <span class="text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded">Music & Premium</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              全球 Music & Premium 付费用户超 1.5 亿（含试用），叠加 YouTube TV 超 950 万高客单价美国家庭。
+            </p>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>独立 SOTP 隐含估值区间</span>
+              <span class="p-1.5 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$710B</span>
+              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-500/15 px-2 py-0.5 rounded">占GOOGL ~20.6%</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              按 10x 远期营收估值即达 ~$7,100 亿美元（超 Netflix 市值 1.8 倍），在当前 15.1x GOOGL 股价中被显著低估。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           一、 业务与双轮变现架构 (Business & Revenue Architecture)
+      ========================================================= -->
+      <section id="sec-biz" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-ytred-600 dark:text-ytred-400">Section 01 · Dual-Engine Monetization Architecture</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 业务与双轮变现架构：广告基本盘稳健扩张，订阅业务构筑第二增长曲线</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">2026E 全口径营收 ~$71.5B（广告 62% + 订阅 38%）</span>
+        </div>
+
+        <!-- 交互式 Chart.js 双视图切换面板 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- 左侧：双视图图表 -->
+          <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2022–2026E YouTube 广告营收 vs 订阅业务全口径营收演进 ($B)</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">订阅营收从 2022 年 $10.5B 跃升至 2026E ~$27.0B，带动 YouTube 总营收突破 $71.5B</p>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+                <button onclick="switchBizChart('rev_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-ytred-600 dark:text-ytred-400 shadow-sm transition cursor-pointer">视图A：广告+订阅双轮演进</button>
+                <button onclick="switchBizChart('screen_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：播放终端与商业化拆解</button>
+              </div>
+            </div>
+            <div class="relative h-72 w-full">
+              <canvas id="bizArchitectureChart"></canvas>
+            </div>
+          </div>
+
+          <!-- 右侧：结构性拆解核心洞察 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026Q3 三大核心增长飞轮驱动</h3>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-ytred-500/15 text-ytred-600 dark:text-ytred-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">客厅大屏（CTV）观看时长反超手机，收割传统电视预算</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      美国本土市场通过智能电视（CTV）观看 YouTube 的日均时长已正式超越移动端；暂停广告（Pause Ads）与互动二维码购物广告推动大屏 CPM 较移动端溢价 <strong>35%+</strong>。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">1.5 亿付费订阅军团平滑广告周期波动</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      <strong>YouTube Music & Premium</strong> 全球订阅突破 <strong>1.5 亿</strong>，<strong>YouTube TV</strong>（叠加 NFL Sunday Ticket 独家转播权）稳居美国第一大虚拟有线电视服务，订阅年化创收达 <strong>~$270亿</strong>。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">Shorts 商业化率追平长视频 & Veo 3 降低创作门槛</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      Shorts 日均播放量突破 <strong>1,000 亿次</strong>，在美国等核心市场每小时观看变现效率已追平甚至超越长视频；原生集成 <strong>Veo 3</strong> 视频生成模型大幅提升创作者日更产能。
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-slate-500 dark:text-slate-400">2026Q3 财报披露口径提示</span>
+              <span class="font-bold text-ytred-600 dark:text-ytred-400">广告计入 Ads，订阅计入 Subscriptions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大业务矩阵详细卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- 分部 1：长视频与 CTV 客厅大屏广告 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-ytred-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-ytred-500/15 text-ytred-700 dark:text-ytred-400 text-xs font-bold">核心利润底座 · 占广告总盘 ~75%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">CTV 份额 11.1% 全球第一</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 长视频与客厅智能电视（CTV）品牌及效果广告</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                YouTube 早已突破短平快娱乐边界，演化为涵盖深度播客（全美第一大播客平台）、科技评测、体育集锦与教育纪录片的“新电视网”。凭借 <strong>Gemini 驱动的 Demand Gen 广告系统</strong>，品牌主可跨长视频、大屏与信息流实现精准归因投放，持续虹吸传统线性电视（Linear TV）流出的百亿美元级品牌预算。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>Q3 广告单季 $11.21B (+9.0% YoY)</span>
+              <span class="text-ytred-600 dark:text-ytred-400 font-semibold">全美第一大播客与大屏流媒体</span>
+            </div>
+          </div>
+
+          <!-- 分部 2：YouTube Music & Premium 消费订阅 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-amber-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs font-bold">高粘性经常性收入 · 1.5 亿+ 会员</span>
+                <span class="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">单用户 LTV 显著高于免费观看</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. YouTube Music & Premium（无广告+音乐流媒体捆绑）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                在 Alphabet 财报中归入“订阅、平台与设备”（该板块 Q3 营收 <strong>$14.29B，+11% YoY</strong>）。凭借“去广告观看 + 后台播放 + 完整版 YouTube Music 曲库”的超高性价比捆绑，全球付费用户突破 <strong>1.5 亿</strong>，有效抗衡 Spotify 与 Apple Music，且 Premium 会员贡献的净收益大幅高于普通广告用户。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>订阅年化规模 ~$180B+ (不含 TV)</span>
+              <span class="text-amber-600 dark:text-amber-400 font-semibold">低流失率 SaaS 级现金流</span>
+            </div>
+          </div>
+
+          <!-- 分部 3：YouTube TV 与顶级体育赛事转播 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">美国客厅统治力 · 950万+ 家庭</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">全美第一大付费电视运营商</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. YouTube TV & NFL Sunday Ticket（直播体育核心壁垒）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                <strong>YouTube TV</strong>（基础月费 $82.99+）用户突破 <strong>950 万户</strong>，正式超越 Comcast 成为美国最大付费电视分销商；叠加独家 <strong>NFL Sunday Ticket（周日橄榄球门票）</strong> 与多画面同屏（Multiview）交互技术，锁定北美最具消费能力的体育核心家庭，年化营收贡献超 <strong>$90 亿美元</strong>。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>ARPU ~$85/月 · 高家庭渗透率</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">体育直播锁死大屏黄金时段</span>
+            </div>
+          </div>
+
+          <!-- 分部 4：Shorts 短视频与社交电商购物 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">高频流量池 · 日均播放 1,000 亿次</span>
+                <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">Shopify 联盟带货高增</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. YouTube Shorts & YouTube Shopping 商业闭环</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Shorts 成功抵御 TikTok 与 Reels 的时间分流，月活观众超 <strong>20 亿</strong>，成为新创作者涨粉并导流至高变现长视频的超级漏斗；同时 <strong>YouTube Shopping</strong> 联合 Shopify 及全球零售商，支持视频内一键商品标签挂载，打开效果广告之外的电商佣金新增量。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>超 300 万创作者加入 YPP 分成计划</span>
+              <span class="text-indigo-600 dark:text-indigo-400 font-semibold">短带长 + 社交电商闭环成型</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           二、 行业地位与四重核心护城河 (Industry Position & Moat)
+      ========================================================= -->
+      <section id="sec-moat" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position & Economic Moat</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重核心护城河：创作者共生分成、全终端覆盖与 Gemini AI 引擎</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：极宽 (Wide Moat · 全球唯一横跨“短视频+长视频+直播TV+音乐”生态)</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- 左侧：四重护城河深度解析 -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 护城河 1 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-ytred-500/15 text-ytred-600 dark:text-ytred-400 flex items-center justify-center font-bold text-sm">01</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">创作者动态分成（YPP）零版权资本风险</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                相比 Netflix 每年需预先投入 <strong>$180亿+</strong> 现金买断剧集并承担收视扑街风险，YouTube 通过 <strong>55%/45%</strong> 广告动态分成（三年累计向创作者支付超 $800亿），实现“先变现、后分成”的极致轻资产现金流结构。
+              </p>
+            </div>
+
+            <!-- 护城河 2 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">02</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">全时长（15秒至4小时）与全终端统治</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                TikTok 困于手机竖屏短内容，Netflix 局限于大屏长剧集；唯有 YouTube 同时主宰<strong>手机竖屏 Shorts、PC 深度教程与客厅 65 寸智能电视 CTV</strong>，全天候捕获用户碎片与沉浸时间。
+              </p>
+            </div>
+
+            <!-- 护城河 3 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">03</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">Gemini 4 + Veo 3 赋能创作与精准推荐</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                AI 多语言自动配音（Auto-Dubbing）让头部英语创作者一键触达西语、印地语等全球十亿受众；依托 Alphabet 自研 TPU 与 Gemini 理解视频多模态语义，广告定向 ROI 行业领先。
+              </p>
+            </div>
+
+            <!-- 护城河 4 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">Android 预装与 Google 搜索意图协同</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                背靠全球超 30 亿台 Android 设备的原生系统级入口，以及 Google 搜索结果页内视频卡片的直接引流，使 YouTube 的全球用户获客成本（CAC）近乎为零。
+              </p>
+            </div>
+          </div>
+
+          <!-- 右侧：五维护城河雷达图 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球视频与流媒体巨头五维护城河雷达图</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">YouTube vs Netflix (NFLX) vs TikTok / Meta Reels（满分 10 分）</p>
+            <div class="relative h-72 w-full">
+              <canvas id="moatRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           三、 全球流媒体与社交视频巨头横向对比 (Competitive Landscape)
+      ========================================================= -->
+      <section id="sec-comp" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-ytred-600 dark:text-ytred-400">Section 03 · Global Streaming & Social Video Landscape</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球流媒体与社交视频横向对比：营收规模第一（$71.5B）与电视收视霸主</h2>
+          </div>
+          <!-- 交互式筛选按钮 -->
+          <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+            <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-ytred-600 text-white shadow-sm transition cursor-pointer">全部平台</button>
+            <button onclick="filterCompetitors('svod')" data-filter="svod" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">传统长视频流媒体 (SVOD)</button>
+            <button onclick="filterCompetitors('short')" data-filter="short" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">短视频与社交平台</button>
+            <button onclick="filterCompetitors('audio')" data-filter="audio" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">流媒体音乐平台</button>
+          </div>
+        </div>
+
+        <!-- 横向对比矩阵表格 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                  <th class="py-4 px-5 min-w-[180px]">平台名称与母公司</th>
+                  <th class="py-4 px-4 min-w-[140px]">内容供给与成本模型</th>
+                  <th class="py-4 px-4 min-w-[130px]">2026E 年化营收</th>
+                  <th class="py-4 px-4 min-w-[125px]">美国电视份额</th>
+                  <th class="py-4 px-4 min-w-[125px]">付费订阅规模</th>
+                  <th class="py-4 px-5 min-w-[230px]">核心优劣势与竞合定位评估</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+                <!-- 行 1：YouTube 基准 -->
+                <tr data-category="core" class="bg-ytred-500/5 dark:bg-ytred-500/10 font-medium">
+                  <td class="py-4 px-5">
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-0.5 rounded bg-ytred-600 text-white text-[10px] font-extrabold">全生态第一霸主</span>
+                      <span class="font-bold text-slate-900 dark:text-white">YouTube (GOOGL)</span>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">YouTube / Shorts / Music / TV</div>
+                  </td>
+                  <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">UGC/PGC 动态分成 (零买断包袱)</td>
+                  <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">~$71.5B (含订阅)</td>
+                  <td class="py-4 px-4 font-mono font-bold text-ytred-600 dark:text-ytred-400">~11.1% (第一)</td>
+                  <td class="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">1.50亿+ / TV 950万</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>营收与收视时长双料全球第一：</strong>兼具 TikTok 的社交算法分发与 Netflix 的客厅大屏统治力，且无需承担高风险影视剧预先买断资本开支。
+                  </td>
+                </tr>
+
+                <!-- 行 2：Netflix -->
+                <tr data-category="svod" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Netflix (NFLX)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">全球付费长视频剧集与电影龙头</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">重资产自制与版权买断 (~$18B/年)</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$48.5B</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~8.2% (第二)</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~3.15亿 付费会员</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>精品长剧标杆但体量已被 YouTube 超越：</strong>广告套餐增长迅速，但内容制作成本刚性且缺乏短视频与用户自制生态，市值（~$4,200B）仅相当于 YouTube 独立估值的 60%。
+                  </td>
+                </tr>
+
+                <!-- 行 3：Disney+ / Hulu / ESPN -->
+                <tr data-category="svod" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Disney 流媒体矩阵 (DIS)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Disney+ / Hulu / ESPN Flagship</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">顶级好莱坞 IP + 体育版权采购</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$27.5B</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~4.9%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~1.85亿 合并订阅</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>顶级家庭 IP 与体育护城河：</strong>在儿童合家欢及 ESPN 体育直播领域与 YouTube TV 展开激烈竞合，但流媒体板块整体营业利润率仍显著低于 YouTube。
+                  </td>
+                </tr>
+
+                <!-- 行 4：TikTok & Instagram Reels -->
+                <tr data-category="short" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">TikTok / Meta Reels (META)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">移动端短视频与社交电商挑战者</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">纯移动端 UGC 信息流广告与带货</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$32B–$38B (各)</td>
+                  <td class="py-4 px-4 font-mono text-slate-500 dark:text-slate-400">&lt; 1.0% (极弱)</td>
+                  <td class="py-4 px-4 font-mono text-slate-500 dark:text-slate-400">以免费广告为主</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>移动端年轻注意力强敌但缺乏大屏与订阅：</strong>在手机端碎片时间竞争激烈，但难以切入客厅大屏（CTV）与深度长视频，创作者单千次播放分成显著低于 YouTube。
+                  </td>
+                </tr>
+
+                <!-- 行 5：Spotify -->
+                <tr data-category="audio" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Spotify (SPOT)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">全球独立音频与播客流媒体龙头</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">向三大唱片公司支付高额版权分成</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$21.5B</td>
+                  <td class="py-4 px-4 font-mono text-slate-500 dark:text-slate-400">音频为主</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~2.75亿 付费会员</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>音频订阅龙头但视频化转型受制：</strong>Spotify 正积极发力视频播客，但 YouTube 已凭借全美第一大播客份额与“视频+音乐”双捆绑会员（1.5亿+）形成降维打击。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 配套 Chart.js 横向条形图：全球主流流媒体年化营收与美国电视收视份额对比 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">全球主流流媒体平台 2026E 年化营收体量 ($B) 与美国尼尔森电视收视份额 (%) 对比</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">YouTube（含广告与订阅）以 ~$71.5B 年化营收超越 Netflix 与 Disney 流媒体之和，并以 11.1% 份额稳坐美国电视收视头把交椅</p>
+            </div>
+            <span class="text-xs font-semibold text-ytred-700 dark:text-ytred-400 bg-ytred-500/15 px-2.5 py-1 rounded">营收体量与电视份额双第一</span>
+          </div>
+          <div class="relative h-64 w-full">
+            <canvas id="compMarginChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           四、 分部财务与 SOTP 独立估值推演 (Financials & SOTP Simulator)
+      ========================================================= -->
+      <section id="sec-fin" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Segment Financials & SOTP Valuation Simulator</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务拆解与独立 SOTP 估值：YouTube 独立价值 ~$7,100亿 对母公司股价的隐蔽支撑</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">2026E 估算分部营业利润 ~$21.5B · 营业利润率 ~30%</span>
+        </div>
+
+        <!-- 1. 财务健康度四大硬核指标卡 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-ytred-600 dark:text-ytred-400 uppercase">Full-Scope 2026E Revenue</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$71.5B</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              单季广告营收已稳定站上 $11B+ 台阶，加上 Music/Premium 与 YouTube TV 订阅收入，占 Alphabet 总营收约 14.8%。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Est. Operating Margin</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~29%–31%</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              受益于自研 TPU 降低视频转码与 AI 推荐推理带宽成本，以及高毛利 Premium 订阅占比提升，估算年化营业利润逾 <strong>$21.5B</strong>。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Subscription Recurring Mix</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~37.8%</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              订阅收入在 YouTube 全口径总营收中的占比从 2020 年不足 15% 攀升至近 38%，大幅降低宏观广告周期敏感度。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Standalone SOTP Value</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$650B–$780B</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              若作为独立上市公司对标 Netflix（~8.7x EV/Sales）与 Spotify（~6.5x EV/Sales），YouTube 独立市值高达 ~$7,100 亿美元。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. 交互式 Chart.js 双轴剪刀差图 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">2021–2026E YouTube 季度广告营收规模跃迁 vs 全球付费订阅会员扩张曲线</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">单季广告营收从 2021 年均值 ~$7.2B 跃升至 2026Q3 的 $11.21B，同期 Music & Premium 付费订阅户从 5,000 万暴增至 1.50 亿+</p>
+            </div>
+            <span class="text-xs font-mono font-bold text-ytred-700 dark:text-ytred-400 bg-ytred-500/15 px-2.5 py-1 rounded">5年订阅会员数翻三倍</span>
+          </div>
+          <div class="relative h-72 w-full">
+            <canvas id="valEvolutionChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 3. 交互式组件：YouTube 独立分部（SOTP）估值与商业化飞轮动态推演器 -->
+        <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+            <div>
+              <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-ytred-400 font-bold">
+                <span>YOUTUBE STANDALONE SOTP VALUATION ENGINE · 独立资产重估推演器</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-1">YouTube 独立分部估值（SOTP）与 Alphabet 母公司隐蔽价值测算器</h3>
+              <p class="text-xs text-slate-400 mt-0.5">基准参数：2026E 广告年化 $44.5B | 订阅年化 $27.0B | 母公司 GOOGL 总市值 ~$3.44T ($282.8/股) | 测算 YouTube 独立公允价值及占母公司市值比重</p>
+            </div>
+            <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-ytred-500/15 border border-ytred-400/30 text-xs font-semibold text-ytred-300 cursor-pointer shrink-0">
+              <input type="checkbox" id="ctv-premium-toggle" checked onchange="updateYoutubeSotpSimulator()" class="w-4 h-4 rounded accent-[#EF4444] cursor-pointer">
+              <span>计入客厅大屏(CTV)与AI商业化溢价</span>
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <!-- 左侧参数控制区 -->
+            <div class="lg:col-span-5 space-y-4 text-xs">
+              <!-- 广告收入未来两年复合增速滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">2027–2028E YouTube 广告年均增速</span>
+                  <span id="sim-ad-growth-label" class="font-mono font-bold text-ytred-400 text-sm">11.0%</span>
+                </div>
+                <input id="sim-ad-growth" type="range" min="5" max="18" step="0.5" value="11" oninput="updateYoutubeSotpSimulator()" class="w-full accent-[#EF4444] cursor-pointer">
+              </div>
+
+              <!-- 订阅收入未来两年复合增速滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">2027–2028E 订阅业务（Premium + TV）年均增速</span>
+                  <span id="sim-sub-growth-label" class="font-mono font-bold text-amber-400 text-sm">16.0%</span>
+                </div>
+                <input id="sim-sub-growth" type="range" min="8" max="25" step="1" value="16" oninput="updateYoutubeSotpSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+              </div>
+
+              <!-- 分部估算营业利润率滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">YouTube 全口径估算营业利润率</span>
+                  <span id="sim-yt-margin-label" class="font-mono font-bold text-emerald-400 text-sm">31.0%</span>
+                </div>
+                <input id="sim-yt-margin" type="range" min="24" max="38" step="0.5" value="31.0" oninput="updateYoutubeSotpSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+              </div>
+
+              <!-- EV/Sales 估值倍数按钮组 -->
+              <div class="pt-1">
+                <div class="text-slate-300 font-medium mb-2">独立上市公司可比估值倍数（EV / 2027E Sales）：</div>
+                <div class="grid grid-cols-3 gap-2" id="ev-btn-group">
+                  <button type="button" onclick="setEvMultiple(7.5)" data-ev="7.5" class="ev-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-ytred-400 transition cursor-pointer">
+                    7.5x 保守折价<br><span class="text-[10px] text-slate-400">略高于Spotify</span>
+                  </button>
+                  <button type="button" onclick="setEvMultiple(9.5)" data-ev="9.5" class="ev-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-ytred-600 text-white border border-ytred-400 shadow transition cursor-pointer">
+                    9.5x 对标Netflix<br><span class="text-[10px] text-ytred-100">流媒体龙头公允值</span>
+                  </button>
+                  <button type="button" onclick="setEvMultiple(11.5)" data-ev="11.5" class="ev-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-ytred-400 transition cursor-pointer">
+                    11.5x 平台溢价<br><span class="text-[10px] text-slate-400">高增长高毛利重估</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右侧四大实时测算结果卡片 -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">2027E YouTube 预计全口径总营收</div>
+                <div id="sim-2027-rev" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$82.1B</div>
+                <div id="sim-sub-mix" class="text-xs font-semibold text-amber-400 mt-1.5">其中订阅收入占比升至 38.8% ($31.9B)</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">2027E 估算分部营业利润 (EBIT)</div>
+                <div id="sim-2027-ebit" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$25.9B</div>
+                <div id="sim-implied-pe" class="text-xs text-slate-400 mt-1.5">对应隐含远期营业利润倍数 ~30.1x</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">YouTube 独立 SOTP 隐含企业价值</div>
+                <div id="sim-sotp-val" class="text-2xl sm:text-3xl font-mono font-extrabold text-ytred-400 mt-1.5">$780.0B</div>
+                <div id="sim-nflx-ratio" class="text-xs font-semibold text-ytred-300 mt-1.5">相当于 Netflix 当前市值的 1.86 倍</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">占母公司 GOOGL 总市值比例 & 每股贡献</div>
+                <div id="sim-googl-share" class="text-2xl sm:text-3xl font-mono font-extrabold text-indigo-400 mt-1.5">22.7%</div>
+                <div id="sim-per-share" class="text-xs text-slate-400 mt-1.5">折合每股 GOOGL 隐含价值 ~$63.5/股</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 华尔街多空核心分歧对比 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">大屏统治 + 订阅复利飞轮</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>传统有线电视加速崩溃的最大赢家：</strong>全美每年仍有超 $600 亿美元线性电视广告预算正加速向 CTV 迁移，YouTube 凭借 11%+ 收视份额处于最有利收割位。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>1.5 亿付费订阅户与提价权释放高确定性利润：</strong>YouTube Premium 与 YouTube TV 具备极强提价能力，订阅业务构筑起穿越宏观周期的“类 SaaS”现金流护城河。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>生成式 AI（Veo 3 + 自动多语言配音）降低内容供给成本：</strong>AI 赋能海量中小创作者产出电影级画面并实现全球跨语种分发，进一步拉大与 Netflix 传统拍片模式的成本代差。</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">AI 垃圾内容泛滥 + 版权通胀</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>低质 AI 生成内容（AI Slop）稀释平台内容调性风险：</strong>批量生成同质化短视频若过度涌入推荐池，可能拉低用户长时间沉浸体验与品牌广告主安全感。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>体育转播版权成本持续通胀挤压 YouTube TV 利润率：</strong>NFL Sunday Ticket 每年高达约 $20 亿美元的版权费及五大电视网转播分成不断推高 YouTube TV 运营成本。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>作为母公司非独立上市资产缺乏直接估值催化：</strong>由于财务合并在 Alphabet 内部且未单独披露分部利润表，市场短期更易受母公司 $2,000亿 CapEx 情绪拖累。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           五、 投资决策与风险配置框架 (Investment Decision & Risk)
+      ========================================================= -->
+      <section id="sec-inv" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-ytred-600 dark:text-ytred-400">Section 05 · Investment Decision & Risk Allocation</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 投资决策与风险配置框架：通过母公司 GOOGL 捕获被低估的流媒体王冠</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">投资映射路径：买入折价的母公司 GOOGL（~15.1x P/E）即折价拥有全球第一流媒体</span>
+        </div>
+
+        <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- 牛市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：30%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$850B–$950B 独立估值</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>YouTube 广告增速重返 14%+，CTV 电视收视份额突破 14%，Music/Premium 会员向 2 亿迈进，YouTube Shopping 成为北美社交电商核心渠道，管理层首次单独披露分部利润率。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              对母公司 GOOGL 股价边际提振：+$70–$80/股
+            </div>
+          </div>
+
+          <!-- 基准情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-ytred-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-ytred-500/15 text-ytred-700 dark:text-ytred-400 text-xs font-bold">基准情景 (Base Case)</span>
+                <span class="font-mono text-xs font-bold text-ytred-600 dark:text-ytred-400">概率：55%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$680B–$780B 独立估值</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>广告营收维持 9%–11% 稳健复利，订阅业务保持 15% 左右扩张，2027E 全口径营收突破 $82B，按 9.5x EV/Sales 稳健贡献母公司逾五分之一核心价值。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-ytred-600 dark:text-ytred-400">
+              对母公司 GOOGL 股价稳健锚定：+$58–$65/股
+            </div>
+          </div>
+
+          <!-- 熊市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+                <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：15%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$500B–$560B 独立估值</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>宏观消费走弱导致品牌广告主削减 CTV 预算（广告增速放缓至 4%–5%），同时青少年保护法案与 AI 版权诉讼提高内容审核与分成合规成本。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+              即便极端熊市仍高于当前 Netflix 总市值
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 四大核心风险矩阵 -->
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">四大核心潜在风险评估与跟踪边界</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 宏观消费周期对品牌广告的波动传导</span>
+                <span class="text-xs font-mono text-rose-500 font-semibold">关注度：高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">品牌展示广告较搜索效果广告更具宏观周期弹性</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                搜索广告直接捕捉即时购买意图，而 YouTube 品牌大屏广告在经济下行期更易成为企业营销预算优先削减项；需持续跟踪零售、汽车与消费品广告主投放节奏。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 短视频 Attention 争夺与推荐质量平衡</span>
+                <span class="text-xs font-mono text-amber-500 font-semibold">关注度：中高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">TikTok / Reels 竞争及 AI 批量内容生态治理</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                需防范低成本 AI 批量搬运视频泛滥对人类优质创作者积极性的打击，确保推荐算法持续向高原创度、高完播率的精品 PGC/UGC 倾斜。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">03 · 全球未成年人保护法规与内容监管趋严</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">欧美及澳州社交媒体年龄限制法案的合规影响</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                多国加强青少年屏幕时长与定向广告限制（COPPA 等），可能限制部分少儿与青少年垂类频道的个性化广告变现单价（eCPM）。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">04 · 版权方谈判与体育赛事转播权成本上升</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">三大唱片公司版税及体育联盟转播权续约溢价</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                YouTube Music 需向环球、索尼、华纳等唱片公司支付高比例版税；未来竞标 NBA、英超或 NFL 新周期版权时，需严守财务回报纪律避免过度亏损获客。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 机构级组合配置纪律横幅 -->
+        <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+          <h3 class="text-base font-bold text-ytred-400 mb-4 flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>机构级投资映射与流媒体板块套利配置纪律</span>
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-white mb-1">1. 通过 GOOGL 折价买入“隐形流媒体王冠”</div>
+              <p class="text-slate-300 leading-relaxed">
+                Netflix 享有约 35x+ P/E 与 8.7x EV/Sales 估值，而体量更庞大、现金流更轻资产的 YouTube 隐藏在仅 <strong>15.1x P/E 的 GOOGL</strong> 体内，买入母公司即实现显著估值套利。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-amber-400 mb-1">2. 紧盯订阅业务占比提升带来的估值重估</div>
+              <p class="text-slate-300 leading-relaxed">
+                随着 YouTube Music/Premium（1.5亿+）与 YouTube TV 占分部收入逼近 40%，YouTube 的商业属性正从周期性广告转向高粘性订阅，长期理应享有更高估值中枢。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-emerald-400 mb-1">3. 关注管理层独立财务披露催化节点</div>
+              <p class="text-slate-300 leading-relaxed">
+                如同 Alphabet 过往单独拆分披露 Google Cloud 营业利润后引发市场价值重估，未来一旦单独披露 <strong>YouTube 订阅营收及分部利润率</strong>，将成为强力重估催化剂。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+      ========================================================= -->
+      <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Fundamental Tracking KPIs</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度基本面跟踪 KPI 交互式核查清单（Checklist）</h2>
+          </div>
+          <div class="flex items-center space-x-2 no-print">
+            <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-ytred-500/15 text-ytred-700 dark:text-ytred-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+            <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            点击勾选季度财报及行业第三方监测中已验证达标的经营指标（勾选状态自动本地保存），持续校验 YouTube 双轮商业化护城河：
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+            <!-- KPI 1 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-ytred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">1. YouTube Ads 单季广告营收维持 9%–13% 稳健增速</span>
+                  <span class="text-[11px] font-mono text-ytred-600 dark:text-ytred-400 font-semibold shrink-0">核心创收支柱</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  2026Q3 YouTube 广告营收达 $11.21B（+9.0% YoY）；持续跟踪品牌大屏广告与 Demand Gen 效果广告的季末冲刺表现。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 2 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-ytred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">2. 美国尼尔森（Nielsen）电视收视份额稳居 11% 以上</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">大屏统治力锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  每月核查 Nielsen The Gauge 报告，确认 YouTube 在美国所有电视观看时间中的占比持续领先 Netflix 与传统广播电视网。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 3 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-ytred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">3. Music & Premium（1.5亿+）与 YouTube TV 订阅持续净增</span>
+                  <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">第二增长曲线</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  追踪 Alphabet“订阅、平台与设备”板块双位数增速（Q3 达 $14.29B，+11% YoY），以及提价后的订阅用户留存率。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 4 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-ytred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">4. Shorts 国际市场单小时变现效率持续向长视频靠拢</span>
+                  <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">商业化剪刀差</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  在日均 1,000 亿次播放基数上，关注欧洲、拉美与亚太市场 Shorts 广告加载率提升及与长视频变现率差距的进一步收窄。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 5 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-ytred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">5. Veo 3 视频生成与 AI 自动多语言配音的创作者渗透率</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">AI 生态护城河</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  跟踪使用生成式 AI 工具（Dream Screen / Veo 3 / Auto-Dubbing）的频道数量及海外非英语区观看时长增量贡献。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 6 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-ytred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">6. YouTube Shopping 联盟带货 GMV 与品牌合作数量扩张</span>
+                  <span class="text-[11px] font-mono text-ytred-600 dark:text-ytred-400 font-semibold shrink-0">电商新增量期权</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  核查接入 YouTube Shopping 联盟计划的头部零售品牌数量及视频内商品标签点击转化率，评估电商佣金对广告之外的增厚潜力。
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           页脚免责声明 (Disclaimer Footer)
+      ========================================================= -->
+      <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+          <span>YouTube（Alphabet Inc. 核心业务 · NASDAQ: GOOGL）深度商业与投资价值分析报告 · 机构研究框架版</span>
+          <span>数据基准：Alphabet 2026Q3 财报（10-Q）、Nielsen 收视监测及 2026 年 11 月行业公开数据</span>
+        </div>
+        <p class="leading-relaxed">
+          <strong>免责声明：</strong>本深度研究报告基于 Alphabet Inc. 公开财务报告（10-Q/10-K，其中财报单列披露 YouTube Ads 广告营收，YouTube Music/Premium 与 YouTube TV 订阅收入合并计入 Google 订阅、平台与设备板块）、业绩电话会议披露数据及全球流媒体行业第三方调研数据（如 Nielsen The Gauge）整理生成。报告中涉及的 YouTube 全口径含订阅总营收拆解、分部营业利润率估算及 SOTP 独立估值推演均基于公开运营指标进行结构化建模，不构成任何证券买卖建议或收益承诺。请在独立核实后审慎决策。
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+  <script>
+    // ==========================================
+    // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+    // ==========================================
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      updateChartsTheme();
+    }
+
+    // ==========================================
+    // 2. 移动端抽屉菜单切换
+    // ==========================================
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    // ==========================================
+    // 3. 阅读进度条与左侧导航滚动联动高亮
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+      let currentId = 'sec-exec';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 160;
+        if (scrollTop >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const numSpan = link.querySelector('span span');
+        if (numSpan) {
+          numSpan.classList.remove('text-ytred-400');
+          numSpan.classList.add('text-slate-500');
+        }
+        if (link.dataset.target === currentId) {
+          link.classList.add('active');
+          if (numSpan) {
+            numSpan.classList.remove('text-slate-500');
+            numSpan.classList.add('text-ytred-400');
+          }
+        }
+      });
+    });
+
+    // ==========================================
+    // 4. 同行竞争格局矩阵筛选器
+    // ==========================================
+    function filterCompetitors(category) {
+      document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('bg-ytred-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        } else {
+          btn.classList.remove('bg-ytred-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        }
+      });
+
+      const rows = document.querySelectorAll('#comp-table-body tr');
+      rows.forEach(row => {
+        const rowCat = row.dataset.category;
+        if (category === 'all' || rowCat === 'core' || rowCat === category) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // ==========================================
+    // 5. YouTube 独立 SOTP 估值与商业化飞轮动态推演器
+    // ==========================================
+    let currentEvMultiple = 9.5; // 默认 9.5x 对标 Netflix 流媒体龙头倍数
+
+    function setEvMultiple(ev) {
+      currentEvMultiple = ev;
+      document.querySelectorAll('#ev-btn-group .ev-btn').forEach(btn => {
+        const btnEv = parseFloat(btn.dataset.ev);
+        if (Math.abs(btnEv - ev) < 0.01) {
+          btn.className = 'ev-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-ytred-600 text-white border border-ytred-400 shadow transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-ytred-100';
+        } else {
+          btn.className = 'ev-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-ytred-400 transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+        }
+      });
+      updateYoutubeSotpSimulator();
+    }
+
+    function updateYoutubeSotpSimulator() {
+      const adGrowthPct = parseFloat(document.getElementById('sim-ad-growth').value);
+      const subGrowthPct = parseFloat(document.getElementById('sim-sub-growth').value);
+      const ytMarginPct = parseFloat(document.getElementById('sim-yt-margin').value);
+      const ctvBonus = document.getElementById('ctv-premium-toggle').checked;
+
+      document.getElementById('sim-ad-growth-label').textContent = adGrowthPct.toFixed(1) + '%';
+      document.getElementById('sim-sub-growth-label').textContent = subGrowthPct.toFixed(1) + '%';
+      document.getElementById('sim-yt-margin-label').textContent = ytMarginPct.toFixed(1) + '%';
+
+      // 2026E 基准年化营收 ($B)
+      const baseAd2026 = 44.5;
+      const baseSub2026 = 27.0;
+
+      const gAd = (adGrowthPct + (ctvBonus ? 1.5 : 0)) / 100;
+      const gSub = (subGrowthPct + (ctvBonus ? 1.0 : 0)) / 100;
+
+      // 推演至 2027E
+      const revAd2027 = baseAd2026 * (1 + gAd);
+      const revSub2027 = baseSub2026 * (1 + gSub);
+      const totalRev2027 = revAd2027 + revSub2027;
+
+      const subMixPct = (revSub2027 / totalRev2027) * 100;
+      const effectiveMargin = (ytMarginPct + (ctvBonus ? 0.5 : 0)) / 100;
+      const ebit2027 = totalRev2027 * effectiveMargin;
+
+      const effectiveMultiple = currentEvMultiple + (ctvBonus ? 0.3 : 0);
+      const sotpValue = totalRev2027 * effectiveMultiple; // $B
+      const impliedEbitMultiple = sotpValue / ebit2027;
+
+      const nflxMcap = 420.0; // ~$420B
+      const nflxRatio = sotpValue / nflxMcap;
+
+      const googlMcap = 3440.0; // ~$3.44T
+      const googlShares = 12.29; // Billion shares
+      const shareOfGooglPct = (sotpValue / googlMcap) * 100;
+      const perGooglShare = sotpValue / googlShares;
+
+      document.getElementById('sim-2027-rev').textContent = '$' + totalRev2027.toFixed(1) + 'B';
+      document.getElementById('sim-sub-mix').textContent = `其中订阅收入占比升至 ${subMixPct.toFixed(1)}% ($${revSub2027.toFixed(1)}B)`;
+      document.getElementById('sim-2027-ebit').textContent = '$' + ebit2027.toFixed(1) + 'B';
+      document.getElementById('sim-implied-pe').textContent = `对应隐含远期营业利润倍数 ~${impliedEbitMultiple.toFixed(1)}x`;
+      document.getElementById('sim-sotp-val').textContent = '$' + sotpValue.toFixed(1) + 'B';
+      document.getElementById('sim-nflx-ratio').textContent = `相当于 Netflix 当前市值的 ${nflxRatio.toFixed(2)} 倍`;
+      document.getElementById('sim-googl-share').textContent = shareOfGooglPct.toFixed(1) + '%';
+      document.getElementById('sim-per-share').textContent = `折合每股 GOOGL 隐含价值 ~$${perGooglShare.toFixed(1)}/股`;
+    }
+
+    // ==========================================
+    // 6. KPI 核查清单状态持久化与计数更新
+    // ==========================================
+    const KPI_STORAGE_KEY = 'youtube_research_kpi_state_v1';
+
+    function loadKpiChecklist() {
+      try {
+        const saved = localStorage.getItem(KPI_STORAGE_KEY);
+        if (saved) {
+          const stateMap = JSON.parse(saved);
+          document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+            if (typeof stateMap[cb.id] === 'boolean') {
+              cb.checked = stateMap[cb.id];
+            }
+          });
+        }
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+      updateKpiChecklist();
+    }
+
+    function updateKpiChecklist() {
+      const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      const stateMap = {};
+
+      checkboxes.forEach(cb => {
+        stateMap[cb.id] = cb.checked;
+        if (cb.checked) checkedCount++;
+      });
+
+      const pct = Math.round((checkedCount / total) * 100);
+      document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+      try {
+        localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+    }
+
+    function resetKpiChecklist() {
+      document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      updateKpiChecklist();
+    }
+
+    // ==========================================
+    // 7. Chart.js 数据可视化初始化与主题自适应
+    // ==========================================
+    let bizChartInstance = null;
+    let radarChartInstance = null;
+    let compMarginChartInstance = null;
+    let valEvolutionChartInstance = null;
+    let currentBizMode = 'rev_evolution';
+
+    function getChartColors() {
+      const isDark = document.documentElement.classList.contains('dark');
+      return {
+        text: isDark ? '#CBD5E1' : '#475569',
+        grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+        radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+      };
+    }
+
+    function initBizChart() {
+      const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+      const colors = getChartColors();
+
+      // 视图 A：2022–2026E YouTube 广告营收 vs 订阅全口径营收 ($B) 与总营收增速 (%)
+      const evoConfig = {
+        type: 'bar',
+        data: {
+          labels: ['2022', '2023', '2024', '2025', '2026E'],
+          datasets: [
+            {
+              label: 'YouTube Ads 财报披露广告营收 ($B)',
+              data: [29.2, 31.5, 36.1, 40.4, 44.5],
+              backgroundColor: '#EF4444',
+              borderRadius: 4,
+              stack: 'ytrev',
+              yAxisID: 'y'
+            },
+            {
+              label: 'YouTube 订阅业务估算营收 (Music/Premium/TV, $B)',
+              data: [10.5, 13.8, 17.6, 22.1, 27.0],
+              backgroundColor: '#F59E0B',
+              borderRadius: 4,
+              stack: 'ytrev',
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: '全口径总营收同比增速 (%)',
+              data: [9.8, 14.1, 18.5, 16.4, 14.4],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 2.5,
+              pointRadius: 4,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.dataset.yAxisID === 'y1'
+                  ? `${ctx.dataset.label}: +${ctx.parsed.y.toFixed(1)}%`
+                  : `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(1)}B`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 85,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 0,
+              max: 25,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '+' + v + '%' }
+            }
+          }
+        }
+      };
+
+      // 视图 B：YouTube 全口径商业化结构与播放终端时长拆解 (%)
+      const splitConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            '客厅智能电视 (CTV) 观看时长占比 (美国)',
+            '移动端 (Mobile/Shorts) 观看时长占比',
+            'YouTube 广告占全口径营收比重',
+            'Music/Premium + TV 订阅占全口径营收比重',
+            'PC 桌面与平板观看时长占比'
+          ],
+          datasets: [
+            {
+              label: '2026Q3 结构占比 (%)',
+              data: [46.5, 41.0, 62.2, 37.8, 12.5],
+              backgroundColor: [
+                '#EF4444',
+                '#3B82F6',
+                '#DC2626',
+                '#F59E0B',
+                '#64748B'
+              ],
+              borderRadius: 6,
+              barThickness: 24
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `结构占比: ${ctx.parsed.x}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 75,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      };
+
+      if (bizChartInstance) bizChartInstance.destroy();
+      bizChartInstance = new Chart(ctx, currentBizMode === 'rev_evolution' ? evoConfig : splitConfig);
+    }
+
+    function switchBizChart(mode) {
+      currentBizMode = mode;
+      const btnEvo = document.getElementById('btn-chart-evo');
+      const btnSplit = document.getElementById('btn-chart-split');
+      const titleEl = document.getElementById('biz-chart-title');
+      const subEl = document.getElementById('biz-chart-sub');
+
+      if (mode === 'rev_evolution') {
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-ytred-600 dark:text-ytred-400 shadow-sm transition cursor-pointer';
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '2022–2026E YouTube 广告营收 vs 订阅业务全口径营收演进 ($B)';
+        subEl.textContent = '订阅营收从 2022 年 $10.5B 跃升至 2026E ~$27.0B，带动 YouTube 总营收突破 $71.5B';
+      } else {
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-ytred-600 dark:text-ytred-400 shadow-sm transition cursor-pointer';
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '2026Q3 播放终端时长结构与“广告+订阅”变现比例拆解';
+        subEl.textContent = '客厅大屏（CTV）已超越手机成为美国最大观看终端，订阅贡献全口径营收近 38%';
+      }
+      initBizChart();
+    }
+
+    function initRadarChart() {
+      const ctx = document.getElementById('moatRadarChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (radarChartInstance) radarChartInstance.destroy();
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: [
+            '内容供给轻资产与分成飞轮',
+            '客厅大屏 (CTV) 统治力',
+            '短视频与社交分发算法',
+            '付费订阅与捆绑粘性',
+            'AI 创作工具与算力底座'
+          ],
+          datasets: [
+            {
+              label: 'YouTube (GOOGL)',
+              data: [9.9, 9.8, 9.2, 9.3, 9.8],
+              borderColor: '#EF4444',
+              backgroundColor: 'rgba(239, 68, 68, 0.24)',
+              pointBackgroundColor: '#EF4444',
+              borderWidth: 2.5
+            },
+            {
+              label: 'Netflix (NFLX)',
+              data: [6.2, 9.4, 4.0, 9.7, 7.6],
+              borderColor: '#3B82F6',
+              backgroundColor: 'rgba(59, 130, 246, 0.14)',
+              pointBackgroundColor: '#3B82F6',
+              borderWidth: 2.0
+            },
+            {
+              label: 'TikTok / Meta Reels',
+              data: [9.0, 3.5, 9.9, 4.2, 8.6],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.12)',
+              pointBackgroundColor: '#10B981',
+              borderWidth: 1.8,
+              borderDash: [4, 4]
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            }
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 10,
+              ticks: { display: false, stepSize: 2 },
+              grid: { color: colors.grid },
+              angleLines: { color: colors.radarAngle },
+              pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initCompMarginChart() {
+      const ctx = document.getElementById('compMarginChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (compMarginChartInstance) compMarginChartInstance.destroy();
+      compMarginChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            'YouTube (含订阅全口径 · 全球第一)',
+            'Netflix (NFLX · 付费剧集龙头)',
+            'TikTok (全球独立短视频估算)',
+            'Disney 流媒体 (Disney+ / Hulu / ESPN)',
+            'Spotify (SPOT · 音频订阅龙头)'
+          ],
+          datasets: [
+            {
+              label: '2026E 年化总营收规模 ($B)',
+              data: [71.5, 48.5, 36.0, 27.5, 21.5],
+              backgroundColor: '#EF4444',
+              borderRadius: 5,
+              barThickness: 14
+            },
+            {
+              label: '美国尼尔森电视收视总份额 (%)',
+              data: [11.1, 8.2, 0.8, 4.9, 0.2],
+              backgroundColor: '#F59E0B',
+              borderRadius: 5,
+              barThickness: 14
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.datasetIndex === 0
+                  ? `${ctx.dataset.label}: $${ctx.parsed.x.toFixed(1)}B`
+                  : `${ctx.dataset.label}: ${ctx.parsed.x.toFixed(1)}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              max: 80,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 } }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initValEvolutionChart() {
+      const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+      valEvolutionChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['2021', '2022', '2023', '2024', '2025', '2026E'],
+          datasets: [
+            {
+              type: 'bar',
+              label: 'YouTube 季度平均广告营收 ($B/季)',
+              data: [7.21, 7.31, 7.88, 9.04, 10.10, 11.13],
+              backgroundColor: 'rgba(239, 68, 68, 0.85)',
+              borderRadius: 5,
+              barThickness: 28,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: 'YouTube Music & Premium 全球订阅会员 (百万户)',
+              data: [50, 80, 100, 115, 132, 152],
+              borderColor: '#F59E0B',
+              backgroundColor: '#F59E0B',
+              borderWidth: 3,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.dataset.yAxisID === 'y'
+                  ? `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}B/季`
+                  : `${ctx.dataset.label}: ${ctx.parsed.y}M 付费户`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 14,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+              title: { display: true, text: '单季平均广告营收 ($B)', color: colors.text, font: { size: 11 } }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 0,
+              max: 180,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#F59E0B', font: { size: 11, weight: '600' }, callback: v => v + 'M' },
+              title: { display: true, text: 'Music & Premium 订阅户 (百万)', color: '#F59E0B', font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartsTheme() {
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadKpiChecklist();
+      updateYoutubeSotpSimulator();
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    });
+  </script>
+</body>
+</html>

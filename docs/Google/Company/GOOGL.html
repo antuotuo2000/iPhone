@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>字母表公司 Alphabet Inc. (NASDAQ: GOOGL) 深度研究报告：全球搜索与AI全栈算力霸主、云营收翻倍奇点与重资产扩张博弈</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#070B14',
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+            },
+            gblue: {
+              300: '#93C5FD',
+              400: '#60A5FA',
+              500: '#3B82F6',
+              600: '#2563EB',
+              700: '#1D4ED8',
+            },
+            emerald: {
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+            },
+            amber: {
+              400: '#FBBF24',
+              500: '#F59E0B',
+              600: '#D97706',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 自定义滚动条与机构研报细节排版 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+
+    /* 打印友好优化 */
+    @media print {
+      #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+        display: none !important;
+      }
+      main {
+        margin-left: 0 !important;
+        padding: 0 !important;
+      }
+      section {
+        break-inside: avoid;
+      }
+    }
+
+    /* 卡片悬浮微光与上移过渡 */
+    .report-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .report-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 侧边导航激活态：Google 标志性科技蓝渐变 */
+    .nav-link.active {
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.24) 0%, rgba(16, 185, 129, 0.08) 100%);
+      border-left: 3px solid #3B82F6;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-gblue-500 selection:text-white transition-colors duration-200">
+
+  <!-- 顶部全局阅读进度条 -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-gblue-600 via-gblue-400 to-emerald-500 w-0 transition-all duration-150"></div>
+  </div>
+
+  <!-- 移动端顶部导航栏 -->
+  <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-gblue-400 to-gblue-600 flex items-center justify-center font-extrabold text-white text-xs shadow">
+        G
+      </div>
+      <div>
+        <div class="text-[11px] text-gblue-400 font-semibold tracking-wider uppercase">NASDAQ: GOOGL · AI Full-Stack</div>
+        <div class="text-sm font-bold leading-tight">Alphabet (Google) 深度研究报告</div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-2">
+      <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 移动端折叠抽屉菜单 -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+    <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <span class="font-bold text-white text-base">GOOGL 研报目录导航</span>
+          <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+          <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 业务与收入架构</a></li>
+          <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重护城河</a></li>
+          <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球AI云与科技巨头对比</a></li>
+          <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务健康与AI CapEx推演</a></li>
+          <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 投资决策与风险配置</a></li>
+          <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+        </ul>
+      </div>
+      <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
+        <p>全球科技与AI基础设施研究组</p>
+        <p class="mt-1">数据基准：2026年11月 (Q3 26 / FY26E)</p>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+  <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+    <div>
+      <!-- 机构品牌头 -->
+      <div class="p-5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gblue-400 via-gblue-500 to-emerald-500 flex items-center justify-center text-white font-extrabold text-lg shadow-lg shadow-gblue-500/25">
+            G
+          </div>
+          <div>
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-gblue-400 bg-gblue-500/15 px-2 py-0.5 rounded">NASDAQ: GOOGL</span>
+            <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">Alphabet 深度研报</h2>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          全球搜索与AI全栈算力霸主 · 5000亿美元年化营收规模与云收入翻倍引擎
+        </p>
+      </div>
+
+      <!-- 股票实时快照徽章 -->
+      <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">参考股价 (52周区间)</span>
+          <span class="font-mono font-bold text-white">~$282.8 <span class="text-slate-400 text-[10px]">($272-$409)</span></span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">Q3 2026 营收 / 云增速</span>
+          <span class="font-mono font-bold text-emerald-400">$127.6B <span class="text-slate-400">(Cloud +103%)</span></span>
+        </div>
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+          <span class="text-slate-400">核心估值与积压订单</span>
+          <span class="font-mono font-bold text-gblue-400">~15.1x TTM P/E · $568B积压</span>
+        </div>
+      </div>
+
+      <!-- 七大核心章节目录导航 -->
+      <div class="px-3 py-3.5 overflow-y-auto max-h-[calc(100vh-310px)]">
+        <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+        <nav id="desktop-nav" class="space-y-1 text-[13px]">
+          <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-gblue-400 mr-2">00</span>执行摘要与核心指标</span>
+          </a>
+          <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>业务与收入架构</span>
+          </a>
+          <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重护城河</span>
+          </a>
+          <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球AI云与科技巨头对比</span>
+          </a>
+          <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务健康与AI CapEx推演</span>
+          </a>
+          <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>投资决策与风险配置</span>
+          </a>
+          <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 侧边栏底部工具栏 -->
+    <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2.5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-slate-400">阅读模式切换</span>
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-3.5 h-3.5 text-gblue-400 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span class="dark:hidden">深色护眼模式</span>
+          <span class="hidden dark:inline">机构亮色模式</span>
+        </button>
+      </div>
+      <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-gblue-500 to-gblue-600 hover:from-gblue-600 hover:to-gblue-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>打印 / 导出 PDF 研报</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="lg:ml-[280px] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+      <!-- =========================================================
+           00. Hero 研报封面区与执行摘要
+      ========================================================= -->
+      <section id="sec-exec" class="scroll-mt-20">
+        <!-- 顶部研报元数据标签栏 -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-gblue-500/15 text-gblue-700 dark:text-gblue-400 font-bold border border-gblue-500/30">评级：强烈推荐 / AI全栈核心基石</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：2026Q3 云翻倍突破与 $200B CapEx 超级周期</span>
+          </div>
+          <div class="flex items-center space-x-3 font-mono">
+            <span>覆盖时间：2026年11月</span>
+            <span>NASDAQ: GOOGL</span>
+          </div>
+        </div>
+
+        <!-- Hero 标题卡片 -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+          <!-- 背景科技蓝点阵纹理 -->
+          <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#60A5FA 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+          <div class="relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-gblue-500/20 border border-gblue-400/40 text-gblue-300 text-xs font-semibold mb-4">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>CORE THESIS · 5000亿美元营收体量 × Google Cloud +103% 爆发 × Gemini 4 & 自研 TPU 闭环</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+              字母表公司 Alphabet Inc. (NASDAQ: GOOGL) 深度研究报告：全球搜索与AI全栈算力霸主、云营收翻倍奇点与重资产扩张博弈
+            </h1>
+            <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+              在 CEO <strong class="text-white">Sundar Pichai</strong> 领导下，Alphabet 正式跨入 <strong class="text-gblue-300">半万亿美元（$500B）年化营收运行速率</strong>：2026Q3 合并营收同比大增 <strong class="text-emerald-400">+25% 至 $127.6B</strong>，其中 <strong class="text-white">Google Cloud 单季营收同比飙升 +103% 至 $30.7B</strong>（营业利润率跃升至 <strong class="text-emerald-400">36.2%</strong>，积压订单高达 <strong class="text-gblue-300">$560.8B</strong>），自研 TPU 芯片外销开始实质性创收，Gemini 应用月活突破 <strong class="text-white">10 亿大关</strong>。
+              尽管全年 <strong class="text-amber-400">$1,950亿–$2,050亿</strong> 创纪录资本开支与股权投资公允价值波动导致短期自由现金流承压及股价回调至 <strong class="text-white">~$282.8</strong>，但当前 <strong class="text-gblue-400">~15.1x 市盈率</strong> 已显著低于五年均值（23.6x），展现出极具吸引力的全栈 AI 资产折价配置窗口。
+            </p>
+
+            <!-- 核心投资结论高亮条 -->
+            <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">唯一端到端 AI 全栈闭环</div>
+                <div class="text-white font-semibold">自研 TPU 芯片 + 全球超算数据中心 + Gemini 4 Argon/Carbon 前沿模型 + 十亿级分发入口</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">Google Cloud 步入非线性盈利期</div>
+                <div class="text-emerald-400 font-semibold">单季营收 $30.7B (+103% YoY)，营业利润翻三倍至 $11.1B，积压订单 $560.8B 锁定未来增长</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">核心搜索护城河逆势加速</div>
+                <div class="text-gblue-400 font-semibold">Search & Other 营收 $63.4B (+12% YoY)，AI 赋能推动查询量创下近五年最快同比增速</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4个核心 KPI 卡片 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+          <!-- KPI 1 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>总市值与参考股价</span>
+              <span class="p-1.5 rounded-lg bg-gblue-500/15 text-gblue-600 dark:text-gblue-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$3.44T</span>
+              <span class="text-xs font-bold text-gblue-600 dark:text-gblue-400 bg-gblue-500/15 px-2 py-0.5 rounded">~$282.8</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              因 Q3 重资产 CapEx 上调与股权投资账面亏损，股价较 52 周高点 $408.6 回撤约 30%，进入估值黄金坑。
+            </p>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>2026Q3 单季总营收与增速</span>
+              <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$127.6B</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+25% YoY</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              连续第 13 个季度实现双位数增长，年化营收正式突破 $5,000 亿美元大关，核心营业利润率达 31.8%。
+            </p>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>Google Cloud 营收与积压订单</span>
+              <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$30.7B</span>
+              <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">+103% YoY</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              云收入占集团总营收比例由去年 15% 跃升至 24%，云积压订单高达 $560.8B，营业利润率扩至 36.2%。
+            </p>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>2026E 资本开支与估值倍数</span>
+              <span class="p-1.5 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~15.1x</span>
+              <span class="text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded">CapEx ~$200B</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Q3 单季 CapEx 达 $51.4B（+114% YoY）致短期 FCF 转负，但现金储备 $265.1B 充沛且 P/E 处五年低谷。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           一、 业务与收入架构 (Business & Revenue Architecture)
+      ========================================================= -->
+      <section id="sec-biz" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-gblue-600 dark:text-gblue-400">Section 01 · Business & Revenue Architecture</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 业务与收入架构：搜索现金牛稳健加速，Google Cloud 成为第二增长极</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Q3 2026 总营收 $127.6B · 营业利润 $40.6B (+30% YoY)</span>
+        </div>
+
+        <!-- 交互式 Chart.js 双视图切换面板 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- 左侧：双视图图表 -->
+          <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2022–2026E 核心板块营收结构与合并营业利润率演进</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">Google Cloud 营收从 2022 年 $26.3B 飙升至 2026E 逾 $112B，推动集团营收突破 $475B</p>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+                <button onclick="switchBizChart('rev_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-gblue-600 dark:text-gblue-400 shadow-sm transition cursor-pointer">视图A：年度营收与利润率</button>
+                <button onclick="switchBizChart('q3_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：Q3 2026 分部营收与增速</button>
+              </div>
+            </div>
+            <div class="relative h-72 w-full">
+              <canvas id="bizArchitectureChart"></canvas>
+            </div>
+          </div>
+
+          <!-- 右侧：结构性拆解核心洞察 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026Q3 三大核心商业化突破引擎</h3>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-gblue-500/15 text-gblue-600 dark:text-gblue-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">Google Cloud 营收翻倍 (+103%) 与 TPU 芯片外销破局</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      企业 AI 基础设施需求井喷带动 Cloud 单季营收冲上 <strong>$30.7B</strong>，营业利润大增 209% 至 <strong>$11.1B</strong>；同时专有 <strong>TPU 算力系统</strong> 首次对外商业化销售并贡献显著增量收入。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">AI 概览彻底证伪“搜索替代论”，查询增速创五年新高</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      Search & Other 营收稳健增长 <strong>+12% 至 $63.35B</strong>，商业查询量在 AI 交互引导下不降反升，创近五年最快同比增速，TAC 流量获取成本率进一步优化至 <strong>20.0%</strong>。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">Gemini App 突破 10 亿月活 & 付费订阅双轮驱动</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      <strong>Gemini 4 Argon 与 Carbon</strong> 模型发布引爆调用量，第一方模型 API 每分钟处理高达 <strong>320 亿 Tokens</strong>（同比 4 倍+）；YouTube Music & Premium 全球订阅用户突破 <strong>1.5 亿</strong>。
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-slate-500 dark:text-slate-400">全集团营业利润率扩张</span>
+              <span class="font-bold text-emerald-600 dark:text-emerald-400">31.8% (+130 bps YoY)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大业务分部详细卡片矩阵 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- 分部 1：Google Search & Other -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-gblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-gblue-500/15 text-gblue-700 dark:text-gblue-400 text-xs font-bold">第一现金牛基石 · 占总营收 ~49.7%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">+12% YoY</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. Google Search & Other（核心搜索与商业意图入口）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                2026Q3 实现营收 <strong>$63.35B</strong>（同比增长 12%），零售与金融垂直领域广告需求最为强劲。多模态搜索（Circle to Search / Google Lens）与 AI 摘要显著拓展了长尾复杂问题的查询频次，推动全球搜索查询同比增速创下<strong>近五年最高水平</strong>，直接带动整个 Google Services 板块营业利润率攀升至 <strong>40.7%</strong>。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>Q3 营收 $63.35B / Services 利润 $39.16B</span>
+              <span class="text-gblue-600 dark:text-gblue-400 font-semibold">商业查询量创五年最快增速</span>
+            </div>
+          </div>
+
+          <!-- 分部 2：Google Cloud & TPU -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">爆发式第二引擎 · 占总营收 ~24.1%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">+103% YoY · 利润率 36.2%</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. Google Cloud & TPU 算力系统（企业 AI 基础设施）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                2026Q3 营收同比翻倍暴增 <strong>+103% 至 $30.71B</strong>，占集团总营收比重由去年同期的 15% 跃升至 <strong>24.1%</strong>；板块营业利润从去年 $3.59B 飙升至 <strong>$11.12B</strong>（利润率达 <strong>36.2%</strong>）。除 Vertex AI 与 Gemini 4 企业调用暴涨外，<strong>自研 TPU 算力系统外销</strong>正式成为重要增长极，云业务积压订单高达 <strong>$560.8B</strong>。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>Q3 营业利润 $11.12B (+209% YoY)</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">积压订单 $560.8B 锁定能见度</span>
+            </div>
+          </div>
+
+          <!-- 分部 3：YouTube 广告与订阅硬件生态 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-amber-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs font-bold">流媒体与订阅护城河 · 占总营收 ~25.8%</span>
+                <span class="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">订阅超 1.5 亿付费户</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. YouTube 广告、订阅服务与 Pixel 硬件生态</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                2026Q3 <strong>YouTube 广告营收 $11.21B</strong>（+9% YoY），客厅大屏（CTV）观看时长与品牌广告表现尤为亮眼；<strong>订阅、平台与设备营收达 $14.29B</strong>（+11% YoY），由 YouTube Music/Premium（全球超 <strong>1.5 亿</strong> 订阅用户）、Google One AI 会员及 Pixel 硬件出货增长共同驱动；Google Network 广告营收 $7.5B（+1%）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>YouTube 广告 $11.21B / 订阅硬件 $14.29B</span>
+              <span class="text-amber-600 dark:text-amber-400 font-semibold">非广告订阅收入增强周期韧性</span>
+            </div>
+          </div>
+
+          <!-- 分部 4：Other Bets 与前沿登月项目 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">前沿期权矩阵 · Waymo / Genie 4 / 量子</span>
+                <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">Waymo 商业化扩张</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. Other Bets（Waymo 自动驾驶、Genie 4 世界模型与生物科技）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                2026Q3 Other Bets 营收 <strong>$3.72亿</strong>，运营亏损 <strong>$20亿</strong>（主要源于自动驾驶龙头 <strong>Waymo</strong> 车队规模与多城商业化加速扩张，以及 GFiber 剥离交割前的过渡投入）。同时 DeepMind 最新发布实时交互世界模型 <strong>Genie 4</strong>，为具身智能机器人与通用 Agent 训练构筑底层仿真壁垒。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>Q3 营收 $372M / 研发投入加码</span>
+              <span class="text-indigo-600 dark:text-indigo-400 font-semibold">自动驾驶与世界模型长期期权</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           二、 行业地位与四重核心护城河 (Industry Position & Moat)
+      ========================================================= -->
+      <section id="sec-moat" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position & Economic Moat</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重核心护城河：自研硅基算力、前沿模型与十亿级分发网络</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：极宽 (Wide Moat · 全球唯一端到端全栈 AI 巨头)</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- 左侧：四重护城河深度解析 -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 护城河 1 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-gblue-500/15 text-gblue-600 dark:text-gblue-400 flex items-center justify-center font-bold text-sm">01</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">自研 TPU 算力底座与低推理成本优势</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                历经十余年迭代的专有 <strong>TPU（张量处理器）</strong> 集群无需向第三方支付高额 GPU 溢价，在训练与大规模推理环节具备显著能耗与单位成本优势，并已实现向外部企业客户商业化销售创收。
+              </p>
+            </div>
+
+            <!-- 护城河 2 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">Gemini 4 前沿模型矩阵与 RSI 加速飞轮</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                <strong>Gemini 4 Carbon</strong> 登顶 Artificial Analysis 权威评测榜首，<strong>Argon</strong> 上线首周开发者调用增速达前代 3.5 倍；内部团队借助 AI 递归自我改进（RSI）使代码交付提速 <strong>35%</strong> 且缺陷减少 <strong>30%</strong>。
+              </p>
+            </div>
+
+            <!-- 护城河 3 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">03</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">七大“20亿级用户”生态零成本分发</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                手握 Search、YouTube、Android、Chrome、Gmail、Maps、Play 七大十亿级超级入口，推动 <strong>Gemini App</strong> 以史上最快速度突破 <strong>10 亿月活用户</strong>，API 每分钟处理 <strong>320 亿 Tokens</strong>。
+              </p>
+            </div>
+
+            <!-- 护城河 4 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">$2,651亿 现金储备与 $5,677亿 订单积压</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                截至 2026Q3 账面现金及有价证券高达 <strong>$265.1B</strong>，总资产突破 <strong>$1.003万亿</strong>；全集团营收积压（Backlog）达 <strong>$567.7B</strong>（其中 Cloud 占 $560.8B），为万亿级算力基建提供确定性回报锚点。
+              </p>
+            </div>
+          </div>
+
+          <!-- 右侧：五维护城河雷达图 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球 AI 与云科技巨头五维护城河雷达图</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Alphabet (GOOGL) vs 微软 (MSFT) vs 亚马逊 (AMZN)（满分 10 分）</p>
+            <div class="relative h-72 w-full">
+              <canvas id="moatRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           三、 全球AI云与科技巨头横向对比 (Competitive Landscape)
+      ========================================================= -->
+      <section id="sec-comp" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-gblue-600 dark:text-gblue-400">Section 03 · Global AI & Cloud Competitive Landscape</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球科技巨头横向对比：全行业最低估值折价（~15x P/E）与最快云增速（+103%）</h2>
+          </div>
+          <!-- 交互式筛选按钮 -->
+          <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+            <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-gblue-600 text-white shadow-sm transition cursor-pointer">全部巨头</button>
+            <button onclick="filterCompetitors('cloud')" data-filter="cloud" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">超大规模云巨头</button>
+            <button onclick="filterCompetitors('ads')" data-filter="ads" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">数字广告与消费入口</button>
+            <button onclick="filterCompetitors('ai_native')" data-filter="ai_native" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">AI 原生大模型挑战者</button>
+          </div>
+        </div>
+
+        <!-- 横向对比矩阵表格 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                  <th class="py-4 px-5 min-w-[180px]">企业名称与核心引擎</th>
+                  <th class="py-4 px-4 min-w-[130px]">AI 算力与模型栈</th>
+                  <th class="py-4 px-4 min-w-[140px]">核心业务增速</th>
+                  <th class="py-4 px-4 min-w-[100px]">参考 P/E</th>
+                  <th class="py-4 px-4 min-w-[115px]">营业利润率</th>
+                  <th class="py-4 px-4 min-w-[115px]">年化 CapEx</th>
+                  <th class="py-4 px-5 min-w-[230px]">核心优劣势与竞合定位评估</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+                <!-- 行 1：Alphabet GOOGL 基准 -->
+                <tr data-category="core" class="bg-gblue-500/5 dark:bg-gblue-500/10 font-medium">
+                  <td class="py-4 px-5">
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-0.5 rounded bg-gblue-600 text-white text-[10px] font-extrabold">全栈性价比之王</span>
+                      <span class="font-bold text-slate-900 dark:text-white">Alphabet (GOOGL)</span>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Search / Cloud / YouTube / TPU</div>
+                  </td>
+                  <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">100% 自研 TPU + Gemini 4 闭环</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">总营收 +25% / 云 +103%</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono font-bold text-gblue-600 dark:text-gblue-400">~15.1x</td>
+                  <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">~31.8%</td>
+                  <td class="py-4 px-4 font-mono font-bold text-amber-600 dark:text-amber-400">~$200B</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>全栈成本最优且估值最具安全边际：</strong>全球唯一从底层芯片到十亿级用户入口完全自主的巨头，云增速翻倍领跑，但短期受 $200B 资本开支拖累 FCF 压制估值。
+                  </td>
+                </tr>
+
+                <!-- 行 2：微软 Microsoft -->
+                <tr data-category="cloud" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">微软 (MSFT)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Azure / Office 365 / Copilot</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">英伟达 GPU + 外部模型合作</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-gblue-500/15 text-gblue-700 dark:text-gblue-400">总营收 +16% / Azure +35%</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~31.5x</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~44.5%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$115B</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>企业级软件粘性极强但估值溢价高：</strong>B 端办公与云生态稳固，利润率行业领先；但云增速已被 Google Cloud 反超，且 31.5x P/E 较 GOOGL 溢价逾一倍。
+                  </td>
+                </tr>
+
+                <!-- 行 3：亚马逊 Amazon -->
+                <tr data-category="cloud" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">亚马逊 (AMZN)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">AWS / North America 零售 / 广告</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">Trainium 芯片 + Bedrock 生态</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">总营收 +13% / AWS +24%</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~29.0x</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~11.2%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$125B</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>全球云份额第一但 AI 模型层相对依赖外部：</strong>AWS 基数庞大且零售广告高速扩张，但缺乏自研前沿基础模型与十亿级 C 端搜索/视频超级入口。
+                  </td>
+                </tr>
+
+                <!-- 行 4：Meta Platforms -->
+                <tr data-category="ads" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Meta Platforms (META)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Facebook / Instagram / Llama</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">开源 Llama 系列 + 推荐算法</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">广告营收 +21% YoY</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~24.5x</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~41.0%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$95B</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>社交广告变现效率极高但缺乏 B 端云引擎：</strong>AI 显著提升 Reels 广告转化率，与 YouTube 在视频注意力市场直接交锋，但缺乏公有云与企业基础设施变现渠道。
+                  </td>
+                </tr>
+
+                <!-- 行 5：AI 原生挑战者 -->
+                <tr data-category="ai_native" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">OpenAI / Anthropic / Perplexity</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">ChatGPT / Claude / AI 搜索助手</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">依赖外部算力租赁 + 闭源模型</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">ARR 高增但持续巨额烧钱</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-500 dark:text-slate-400">未上市/高溢价</td>
+                  <td class="py-4 px-4 font-mono text-rose-600 dark:text-rose-400">深度亏损</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">算力租赁为主</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>信息获取习惯分流者：</strong>持续争夺年轻用户对话式问答心智，但缺乏自有搜索广告变现网络与底层自研芯片，且随着 Gemini 4 性能登顶与 10 亿用户破局，护城河面临反噬。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 配套 Chart.js 横向条形图：云业务增速与市盈率估值对比 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">全球核心科技巨头云业务同比增速（Cloud YoY Growth）与市盈率（P/E）剪刀差对比</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Alphabet 凭借 +103% 的云营收爆发增速领跑全球三大云巨头，但市场给予的 P/E 估值（15.1x）仅为微软（31.5x）的一半</p>
+            </div>
+            <span class="text-xs font-semibold text-gblue-700 dark:text-gblue-400 bg-gblue-500/15 px-2.5 py-1 rounded">云增速 +103% vs 15.1x 估值折价</span>
+          </div>
+          <div class="relative h-64 w-full">
+            <canvas id="compMarginChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           四、 财务健康与AI CapEx推演 (Financial Health & CapEx Simulator)
+      ========================================================= -->
+      <section id="sec-fin" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Health & AI CapEx ROI Simulator</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务健康度与估值体系：$2,651亿 现金堡垒与重资产 CapEx 投资回报测算</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">2026E CapEx 指引 $195B–$205B · Q3 经营现金流 $42.3B</span>
+        </div>
+
+        <!-- 1. 财务健康度四大硬核指标卡 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-gblue-600 dark:text-gblue-400 uppercase">Cash & Marketable Sec.</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$265.1B</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              截至 Q3 末账面现金及有价证券高达 2,651 亿美元（较年初 $126.8B 翻倍），叠加 Q3 发行 $28.7B 优先无担保票据，弹药极其充裕。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Q3 Operating Income</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$40.58B</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              核心营业利润同比增长 <strong>+30%</strong>，营业利润率扩张 130bps 至 <strong>31.8%</strong>；单季经营活动现金流高达 <strong>$42.29B</strong>，主业造血能力极强。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Q3 CapEx & Free Cash Flow</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$51.4B / -$9.1B</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              Q3 单季资本开支同比激增 +114% 至 $51.4B，导致单季自由现金流为 -$9.1B（TTM FCF 为 $19.7B），重资产投入已进入峰值区间。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">GAAP vs Core EPS Impact</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$2.12 (-$0.55)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              Q3 股权证券投资录得 $8.66B 账面公允价值亏损（去年同期为盈利 $10.73B），直接拉低单季稀释 EPS 约 <strong>$0.55/股</strong>，属非经营性噪音。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. 交互式 Chart.js 双轴剪刀差图 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">2021–2026E 营业利润（Operating Income）稳步扩张 vs AI 资本开支（CapEx）爆发剪刀差</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Alphabet 营业利润预计从 2021 年 $78.7B 跃升至 2026E 逾 $152B，而全年 CapEx 从 $24.6B 飙升至 ~$200B 以抢占 AI 算力制高点</p>
+            </div>
+            <span class="text-xs font-mono font-bold text-gblue-700 dark:text-gblue-400 bg-gblue-500/15 px-2.5 py-1 rounded">总资产突破 $1.003 Trillion</span>
+          </div>
+          <div class="relative h-72 w-full">
+            <canvas id="valEvolutionChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 3. 交互式组件：Alphabet 云与 AI 算力资本开支（CapEx）中长期投资回报（ROIC）与目标估值推演器 -->
+        <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+            <div>
+              <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-gblue-400 font-bold">
+                <span>AI INFRASTRUCTURE & CLOUD VALUATION ENGINE · 算力基建回报推演器</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-1">Alphabet 云与 AI 算力重资产扩张回报（2028E 远期盈利与目标股价推演器）</h3>
+              <p class="text-xs text-slate-400 mt-0.5">基准参数：当前参考股价 $282.8 | 流通股本 ~12.29B | 2026E 营收基数 ~$485B | 测算 CapEx 转化为云营收与折旧后的远期利润弹性</p>
+            </div>
+            <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gblue-500/15 border border-gblue-400/30 text-xs font-semibold text-gblue-300 cursor-pointer shrink-0">
+              <input type="checkbox" id="tpu-bonus-toggle" checked onchange="updateCapexSimulator()" class="w-4 h-4 rounded accent-[#3B82F6] cursor-pointer">
+              <span>计入自研 TPU 芯片外销增量溢价</span>
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <!-- 左侧参数控制区 -->
+            <div class="lg:col-span-5 space-y-4 text-xs">
+              <!-- Google Cloud 未来两年复合增速滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">2027–2028E Google Cloud 年均复合增速</span>
+                  <span id="sim-cloud-growth-label" class="font-mono font-bold text-emerald-400 text-sm">45.0%</span>
+                </div>
+                <input id="sim-cloud-growth" type="range" min="20" max="75" step="5" value="45" oninput="updateCapexSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+              </div>
+
+              <!-- 搜索与YouTube核心广告增速滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">Google Services（搜索+YouTube）年均增速</span>
+                  <span id="sim-services-growth-label" class="font-mono font-bold text-gblue-400 text-sm">11.0%</span>
+                </div>
+                <input id="sim-services-growth" type="range" min="5" max="18" step="1" value="11" oninput="updateCapexSimulator()" class="w-full accent-[#3B82F6] cursor-pointer">
+              </div>
+
+              <!-- 远期折旧消化后营业利润率滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">2028E 合并营业利润率（消化高折旧后）</span>
+                  <span id="sim-op-margin-label" class="font-mono font-bold text-white text-sm">33.0%</span>
+                </div>
+                <input id="sim-op-margin" type="range" min="27" max="38" step="0.5" value="33.0" oninput="updateCapexSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+              </div>
+
+              <!-- 远期目标估值倍数 P/E 按钮组 -->
+              <div class="pt-1">
+                <div class="text-slate-300 font-medium mb-2">市场给予的远期市盈率（Forward P/E）重估倍数：</div>
+                <div class="grid grid-cols-3 gap-2" id="pe-btn-group">
+                  <button type="button" onclick="setTargetPe(16)" data-pe="16" class="pe-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-gblue-400 transition cursor-pointer">
+                    16.0x 保守折价<br><span class="text-[10px] text-slate-400">维持重资产折价</span>
+                  </button>
+                  <button type="button" onclick="setTargetPe(21)" data-pe="21" class="pe-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-gblue-600 text-white border border-gblue-400 shadow transition cursor-pointer">
+                    21.0x 均值修复<br><span class="text-[10px] text-gblue-100">接近5年历史中枢</span>
+                  </button>
+                  <button type="button" onclick="setTargetPe(26)" data-pe="26" class="pe-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-gblue-400 transition cursor-pointer">
+                    26.0x AI龙头溢价<br><span class="text-[10px] text-slate-400">看齐微软/META</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右侧四大实时测算结果卡片 -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">2028E 预计集团总营收规模</div>
+                <div id="sim-2028-rev" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$698.4B</div>
+                <div id="sim-cloud-share" class="text-xs font-semibold text-emerald-400 mt-1.5">其中 Google Cloud 营收占比升至 35.6%</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">2028E 预计稀释每股收益 (EPS)</div>
+                <div id="sim-2028-eps" class="text-2xl sm:text-3xl font-mono font-extrabold text-gblue-400 mt-1.5">$16.85</div>
+                <div id="sim-op-income" class="text-xs text-slate-400 mt-1.5">预计合并营业利润 ~$230.5B</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">2028E 测算目标股价 (Target Price)</div>
+                <div id="sim-target-price" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$353.85</div>
+                <div id="sim-upside-pct" class="text-xs font-semibold text-emerald-400 mt-1.5">较当前 $282.8 潜在上行空间 +25.1%</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">对应目标总市值 (Implied Market Cap)</div>
+                <div id="sim-target-mcap" class="text-2xl sm:text-3xl font-mono font-extrabold text-amber-400 mt-1.5">$4.35T</div>
+                <div id="sim-cagr-note" class="text-xs text-slate-400 mt-1.5">两年隐含股价年化复合回报 +11.9%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 华尔街多空核心分歧对比 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">云翻倍奇点 + 全栈估值折价</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>Google Cloud +103% 爆发与 $560.8B 积压锁定高确定性：</strong>AI 算力供不应求，云业务营业利润率已突破 36.2%，正在从烧钱期迈入利润收割期。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>自研 TPU 商业化与 Gemini 4 构筑全栈护城河：</strong>摆脱对单一外部 GPU 供应商的完全依赖，TPU 外销开辟全新高毛利硬件及云算力增量赛道。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>15.1x P/E 提供极佳风险收益比：</strong>Q3 EPS 下滑主因 $8.66B 非经营性股权投资账面亏损；剔除噪音后主业营业利润大增 30%，当前估值处五年绝对低位。</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">$200B CapEx 折旧悬崖 + 反垄断</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>$1,950亿–$2,050亿 资本开支引发自由现金流萎缩：</strong>单季 CapEx 达 $51.4B 令 FCF 连续两季转负（-$9.1B），未来两年巨额服务器折旧将持续考验营业利润率。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>核心搜索营收增速（+12%）显著慢于云业务：</strong>尽管查询量创新高，但广告营收略低于华尔街极致预期，市场仍担忧 AI 聊天机器人长期稀释高利润商业点击率。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>美欧反垄断监管持续高压：</strong>Q3 再计提 $10亿 欧盟《数字市场法》（DMA）罚款，美国司法部（DOJ）关于搜索分销排他协议的补救措施仍具不确定性。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           五、 投资决策与风险配置框架 (Investment Decision & Risk)
+      ========================================================= -->
+      <section id="sec-inv" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-gblue-600 dark:text-gblue-400">Section 05 · Investment Decision & Risk Allocation</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 投资决策与风险配置框架：三情景估值推演与全球 AI 组合配置纪律</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">配置建议：AI 全栈核心基石底仓 · $270–$285 回调区间分批建仓</span>
+        </div>
+
+        <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- 牛市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：30%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">24.0x–26.0x P/E ($395–$430)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>Google Cloud 保持 50%+ 高速扩张且 TPU 外销超预期放量；Search 广告在 AI 商业化驱动下维持 13%+ 增长，2027 年 CapEx 增速放缓带动 FCF 强力反弹，估值重回历史高点。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              潜在上行空间：+40% 至 +52%
+            </div>
+          </div>
+
+          <!-- 基准情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-gblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-gblue-500/15 text-gblue-700 dark:text-gblue-400 text-xs font-bold">基准情景 (Base Case)</span>
+                <span class="font-mono text-xs font-bold text-gblue-600 dark:text-gblue-400">概率：50%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">19.5x–21.5x P/E ($340–$370)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>Cloud 营收随基数扩大温和收敛至 40%–45% 增速，营业利润率维持 32%–33% 消化折旧压力；股权投资非经营噪音消退后，P/E 从当前 15.1x 向 20x 历史中枢平稳修复。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-gblue-600 dark:text-gblue-400">
+              潜在稳健回报：+20% 至 +31%
+            </div>
+          </div>
+
+          <!-- 熊市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+                <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">13.5x–14.5x P/E ($240–$255)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>宏观广告支出放缓导致 Search 增速跌破 8%，同时 2027 年 CapEx 继续维持 $2,000亿+ 高位引发长期 ROIC 担忧，或美国反垄断强力拆分 Chrome/默认搜索协议。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+              潜在下行空间：-10% 至 -15%（$2,651亿现金构筑强力安全垫）
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 四大核心风险矩阵 -->
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">四大核心潜在风险评估与跟踪边界</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 万亿级算力基建折旧与 ROIC 错配风险</span>
+                <span class="text-xs font-mono text-rose-500 font-semibold">关注度：极高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">全年 $2,000亿 CapEx 转化为未来每年数百亿折旧成本</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                Q3 折旧费用已同比攀升至 $83.7亿；若未来企业 AI 推理需求增速不及算力投放节奏，高额数据中心折旧将直接挤压云业务及全集团营业利润率。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 生成式 AI 搜索入口分流与商业变现率</span>
+                <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">对话式 AI 问答对传统十条蓝色链接广告位的长期重构</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                尽管当前搜索查询量创五年最快增速，但 ChatGPT 等外部助手仍在争夺移动端默认入口，需持续观察 AI Overview 内部广告的点击率（CTR）与单次点击价格（CPC）表现。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-gblue-500/10 text-gblue-600 dark:text-gblue-400 text-xs font-bold">03 · 美欧反垄断诉讼与默认搜索分发协议限制</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">DOJ 搜索反垄断案及欧盟 DMA 巨额合规罚款常态化</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                Q3 再次计提 $10亿 欧盟 DMA 罚款；若美国法院限制向苹果等 OEM 支付默认搜索引擎分成，短期虽可节省大笔 TAC 费用，但长期可能削弱 iOS 端自然流量份额。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 股权投资公允价值波动与股权激励摊薄</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">非上市科技股权公允价值重估与 AI 人才薪酬通胀</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                Q3 研发费用大增 +36% 至 $20.6B（AI 顶尖人才薪酬大幅上升），单季股权激励（SBC）达 $8.7B（未确认薪酬成本达 $61.8B），需关注后续股票回购对股本稀释的对冲力度。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 机构级组合配置纪律横幅 -->
+        <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+          <h3 class="text-base font-bold text-gblue-400 mb-4 flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>机构级投资组合配置纪律与“AI 全栈基石”建仓策略</span>
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-white mb-1">1. 把握财报错杀带来的估值折价窗口</div>
+              <p class="text-slate-300 leading-relaxed">
+                Q3 财报后股价因 FCF 转负与非经营性股权亏损从 $321.9 急跌至 <strong>~$282.8</strong>，TTM P/E 压缩至 <strong>~15.1x</strong>，当前处于全球七大科技巨头中最低估值分位，具备极高安全边际。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-emerald-400 mb-1">2. 哑铃型配置：全栈算力 + 纯芯片龙头互补</div>
+              <p class="text-slate-300 leading-relaxed">
+                在 AI 资产组合中以 <strong>GOOGL</strong> 作为“全栈模型 + 公有云 + 商业应用变现”核心底座，搭配上游纯芯片卖水人（NVDA/AVGO），有效对冲硬件供应链周期波动。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-amber-400 mb-1">3. 紧盯 FCF 拐点作为估值重估催化剂</div>
+              <p class="text-slate-300 leading-relaxed">
+                重资产投入期通常伴随估值压制；一旦后续季度管理层释放 <strong>2027 年 CapEx 增速放缓</strong> 或 Google Cloud 利润率突破 38% 信号，将触发戴维斯双击重返 $350+ 区间。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+      ========================================================= -->
+      <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Fundamental Tracking KPIs</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度基本面跟踪 KPI 交互式核查清单（Checklist）</h2>
+          </div>
+          <div class="flex items-center space-x-2 no-print">
+            <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-gblue-500/15 text-gblue-700 dark:text-gblue-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+            <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            点击勾选季度财报中已验证达标的经营指标（勾选状态自动本地保存），持续校验 Alphabet 全栈 AI 变现效率与资本开支回报拐点：
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+            <!-- KPI 1 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-gblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">1. Google Cloud 营收增速保持 50%+ 且营业利润率稳居 35%+</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">核心增长引擎</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  2026Q3 云营收飙升 +103% 至 $30.7B，营业利润率达 36.2%；需跟踪 $560.8B 积压订单的季度交付转化速度与 TPU 外销贡献。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 2 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-gblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">2. Search & Other 维持双位数增长（10%–13%）且查询量稳健</span>
+                  <span class="text-[11px] font-mono text-gblue-600 dark:text-gblue-400 font-semibold shrink-0">现金牛压舱石</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Q3 搜索营收达 $63.35B（+12% YoY），查询增速创近五年新高；需确认 AI 搜索摘要持续提升商业查询转化率且 TAC 率稳居 20% 附近。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 3 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-gblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">3. Gemini App 月活与 API Token 处理量延续指数级扩张</span>
+                  <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">生态心智壁垒</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Gemini App 已突破 10 亿用户，第一方模型 API 每分钟处理 320 亿 Tokens（环比 +40%）；跟踪 Gemini 4 Carbon 全面开放后的企业调用放量。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 4 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-gblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">4. 资本开支（CapEx）指引见顶回落与单季 FCF 重返正值</span>
+                  <span class="text-[11px] font-mono text-rose-600 dark:text-rose-400 font-semibold shrink-0">估值重估扳机</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  密切关注管理层对 2027 全年 CapEx 预算的表态；若季度资本开支增速由 +114% 明显收敛，单季自由现金流将迅速回正并引爆估值修复。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 5 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-gblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">5. YouTube 广告及全球付费订阅会员（1.5亿+）持续高增</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">多元化抗周期</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  跟踪 YouTube 客厅大屏广告份额提升及 Google One AI 高阶订阅包在消费端的渗透率，降低对单一搜索广告的依赖。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 6 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-gblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">6. 股票回购执行节奏对冲 SBC 股权激励稀释及反垄断进展</span>
+                  <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">股东回报纪律</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  核查每季回购金额是否足以抵消 $8.7B/季的股权激励稀释，以及美国 DOJ 搜索反垄断案最终补救判决对默认分发渠道的实际影响。
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           页脚免责声明 (Disclaimer Footer)
+      ========================================================= -->
+      <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+          <span>字母表公司 Alphabet Inc. (NASDAQ: GOOGL) 深度商业与投资价值分析报告 · 机构研究框架版</span>
+          <span>数据基准：2026Q3 财报（10-Q）及 2026 年 11 月市场公开数据</span>
+        </div>
+        <p class="leading-relaxed">
+          <strong>免责声明：</strong>本深度研究报告基于 Alphabet Inc. 公开财务报告（10-Q/10-K）、2026Q3 业绩电话会议披露数据及全球云计算与人工智能产业调研资料整理生成，旨在提供结构化的产业分析与科技巨头估值框架。报告中涉及的 2028E 远期盈利预测、资本开支回报（ROIC）模拟及三情景目标价均基于特定假设条件推演，不构成任何证券买卖建议或收益承诺。科技行业算力周期与反垄断监管政策存在较高不确定性，请在独立核实后审慎决策。
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+  <script>
+    // ==========================================
+    // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+    // ==========================================
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      updateChartsTheme();
+    }
+
+    // ==========================================
+    // 2. 移动端抽屉菜单切换
+    // ==========================================
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    // ==========================================
+    // 3. 阅读进度条与左侧导航滚动联动高亮
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+      let currentId = 'sec-exec';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 160;
+        if (scrollTop >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const numSpan = link.querySelector('span span');
+        if (numSpan) {
+          numSpan.classList.remove('text-gblue-400');
+          numSpan.classList.add('text-slate-500');
+        }
+        if (link.dataset.target === currentId) {
+          link.classList.add('active');
+          if (numSpan) {
+            numSpan.classList.remove('text-slate-500');
+            numSpan.classList.add('text-gblue-400');
+          }
+        }
+      });
+    });
+
+    // ==========================================
+    // 4. 同行竞争格局矩阵筛选器
+    // ==========================================
+    function filterCompetitors(category) {
+      document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('bg-gblue-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        } else {
+          btn.classList.remove('bg-gblue-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        }
+      });
+
+      const rows = document.querySelectorAll('#comp-table-body tr');
+      rows.forEach(row => {
+        const rowCat = row.dataset.category;
+        if (category === 'all' || rowCat === 'core' || rowCat === category) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // ==========================================
+    // 5. Alphabet 云与 AI 算力 CapEx 回报与 2028E 估值推演器
+    // ==========================================
+    let currentTargetPe = 21; // 默认 21.0x 历史均值修复倍数
+
+    function setTargetPe(pe) {
+      currentTargetPe = pe;
+      document.querySelectorAll('#pe-btn-group .pe-btn').forEach(btn => {
+        const btnPe = parseFloat(btn.dataset.pe);
+        if (Math.abs(btnPe - pe) < 0.01) {
+          btn.className = 'pe-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-gblue-600 text-white border border-gblue-400 shadow transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-gblue-100';
+        } else {
+          btn.className = 'pe-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-gblue-400 transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+        }
+      });
+      updateCapexSimulator();
+    }
+
+    function updateCapexSimulator() {
+      const cloudGrowthPct = parseFloat(document.getElementById('sim-cloud-growth').value);
+      const servicesGrowthPct = parseFloat(document.getElementById('sim-services-growth').value);
+      const opMarginPct = parseFloat(document.getElementById('sim-op-margin').value);
+      const tpuBonus = document.getElementById('tpu-bonus-toggle').checked;
+
+      document.getElementById('sim-cloud-growth-label').textContent = cloudGrowthPct.toFixed(1) + '%';
+      document.getElementById('sim-services-growth-label').textContent = servicesGrowthPct.toFixed(1) + '%';
+      document.getElementById('sim-op-margin-label').textContent = opMarginPct.toFixed(1) + '%';
+
+      // 2026E 基准分部年化营收 ($B)
+      const baseCloud2026 = 112.0;
+      const baseServices2026 = 372.0;
+      const baseOther2026 = 1.6;
+
+      const gCloud = (cloudGrowthPct + (tpuBonus ? 4.0 : 0)) / 100;
+      const gServices = servicesGrowthPct / 100;
+
+      // 推演 2 年至 2028E
+      const revCloud2028 = baseCloud2026 * Math.pow(1 + gCloud, 2);
+      const revServices2028 = baseServices2026 * Math.pow(1 + gServices, 2);
+      const revOther2028 = baseOther2026 * 1.25;
+      const totalRev2028 = revCloud2028 + revServices2028 + revOther2028;
+
+      const cloudSharePct = (revCloud2028 / totalRev2028) * 100;
+      const effectiveMargin = (opMarginPct + (tpuBonus ? 0.6 : 0)) / 100;
+      const opIncome2028 = totalRev2028 * effectiveMargin;
+
+      // 有效税率 ~16%，利息及净其他收益约 +$5B，2028E 稀释股本经回购后约 11.95B 股
+      const netIncome2028 = (opIncome2028 + 5.0) * (1 - 0.16);
+      const shares2028 = 11.95;
+      const eps2028 = netIncome2028 / shares2028;
+
+      const targetPrice = eps2028 * currentTargetPe;
+      const currentPrice = 282.80;
+      const upsidePct = ((targetPrice - currentPrice) / currentPrice) * 100;
+      const cagrPct = (Math.pow(Math.max(0.1, targetPrice / currentPrice), 0.5) - 1) * 100;
+      const impliedMcap = (targetPrice * shares2028) / 1000; // Trillions
+
+      document.getElementById('sim-2028-rev').textContent = '$' + totalRev2028.toFixed(1) + 'B';
+      document.getElementById('sim-cloud-share').textContent = `其中 Google Cloud 营收达 $${revCloud2028.toFixed(1)}B (占比 ${cloudSharePct.toFixed(1)}%)`;
+      document.getElementById('sim-2028-eps').textContent = '$' + eps2028.toFixed(2);
+      document.getElementById('sim-op-income').textContent = `预计合并营业利润 ~$${opIncome2028.toFixed(1)}B (含TPU溢价)`;
+      document.getElementById('sim-target-price').textContent = '$' + targetPrice.toFixed(2);
+      document.getElementById('sim-upside-pct').textContent = `较当前 $282.8 潜在上行空间 ${upsidePct >= 0 ? '+' : ''}${upsidePct.toFixed(1)}%`;
+      document.getElementById('sim-target-mcap').textContent = '$' + impliedMcap.toFixed(2) + 'T';
+      document.getElementById('sim-cagr-note').textContent = `两年隐含股价年化复合回报 ${cagrPct >= 0 ? '+' : ''}${cagrPct.toFixed(1)}%`;
+    }
+
+    // ==========================================
+    // 6. KPI 核查清单状态持久化与计数更新
+    // ==========================================
+    const KPI_STORAGE_KEY = 'googl_research_kpi_state_v1';
+
+    function loadKpiChecklist() {
+      try {
+        const saved = localStorage.getItem(KPI_STORAGE_KEY);
+        if (saved) {
+          const stateMap = JSON.parse(saved);
+          document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+            if (typeof stateMap[cb.id] === 'boolean') {
+              cb.checked = stateMap[cb.id];
+            }
+          });
+        }
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+      updateKpiChecklist();
+    }
+
+    function updateKpiChecklist() {
+      const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      const stateMap = {};
+
+      checkboxes.forEach(cb => {
+        stateMap[cb.id] = cb.checked;
+        if (cb.checked) checkedCount++;
+      });
+
+      const pct = Math.round((checkedCount / total) * 100);
+      document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+      try {
+        localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+    }
+
+    function resetKpiChecklist() {
+      document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      updateKpiChecklist();
+    }
+
+    // ==========================================
+    // 7. Chart.js 数据可视化初始化与主题自适应
+    // ==========================================
+    let bizChartInstance = null;
+    let radarChartInstance = null;
+    let compMarginChartInstance = null;
+    let valEvolutionChartInstance = null;
+    let currentBizMode = 'rev_evolution';
+
+    function getChartColors() {
+      const isDark = document.documentElement.classList.contains('dark');
+      return {
+        text: isDark ? '#CBD5E1' : '#475569',
+        grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+        radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+      };
+    }
+
+    function initBizChart() {
+      const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+      const colors = getChartColors();
+
+      // 视图 A：2022–2026E Google Services vs Google Cloud 年度营收 ($B) 与合并营业利润率 (%)
+      const evoConfig = {
+        type: 'bar',
+        data: {
+          labels: ['2022', '2023', '2024', '2025', '2026E'],
+          datasets: [
+            {
+              label: 'Google Services 营收 ($B)',
+              data: [253.5, 272.5, 304.9, 336.0, 372.0],
+              backgroundColor: '#3B82F6',
+              borderRadius: 4,
+              stack: 'rev',
+              yAxisID: 'y'
+            },
+            {
+              label: 'Google Cloud 营收 ($B)',
+              data: [26.3, 33.1, 43.2, 62.5, 112.0],
+              backgroundColor: '#10B981',
+              borderRadius: 4,
+              stack: 'rev',
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: '合并营业利润率 (%)',
+              data: [26.5, 27.4, 32.1, 31.2, 31.8],
+              borderColor: '#F59E0B',
+              backgroundColor: '#F59E0B',
+              borderWidth: 2.5,
+              pointRadius: 4,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.dataset.yAxisID === 'y1'
+                  ? `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)}%`
+                  : `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(1)}B`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 550,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 15,
+              max: 40,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#F59E0B', font: { size: 11, weight: '600' }, callback: v => v + '%' }
+            }
+          }
+        }
+      };
+
+      // 视图 B：2026Q3 核心业务分部营收 ($B) 与同比增速 (%)
+      const splitConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            'Search & Other ($63.35B)',
+            'Google Cloud ($30.71B)',
+            '订阅、平台与设备 ($14.29B)',
+            'YouTube 广告 ($11.21B)',
+            'Google Network ($7.50B)'
+          ],
+          datasets: [
+            {
+              label: '2026Q3 同比营收增速 (%)',
+              data: [12.0, 103.0, 11.0, 9.0, 1.0],
+              backgroundColor: [
+                '#3B82F6',
+                '#10B981',
+                '#F59E0B',
+                '#EF4444',
+                '#64748B'
+              ],
+              borderRadius: 6,
+              barThickness: 24
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `2026Q3 同比增速: +${ctx.parsed.x}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 115,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '+' + v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      };
+
+      if (bizChartInstance) bizChartInstance.destroy();
+      bizChartInstance = new Chart(ctx, currentBizMode === 'rev_evolution' ? evoConfig : splitConfig);
+    }
+
+    function switchBizChart(mode) {
+      currentBizMode = mode;
+      const btnEvo = document.getElementById('btn-chart-evo');
+      const btnSplit = document.getElementById('btn-chart-split');
+      const titleEl = document.getElementById('biz-chart-title');
+      const subEl = document.getElementById('biz-chart-sub');
+
+      if (mode === 'rev_evolution') {
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-gblue-600 dark:text-gblue-400 shadow-sm transition cursor-pointer';
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '2022–2026E 核心板块营收结构与合并营业利润率演进';
+        subEl.textContent = 'Google Cloud 营收从 2022 年 $26.3B 飙升至 2026E 逾 $112B，推动集团营收突破 $475B';
+      } else {
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-gblue-600 dark:text-gblue-400 shadow-sm transition cursor-pointer';
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '2026Q3 五大核心创收板块体量与同比增速对比';
+        subEl.textContent = 'Google Cloud 单季营收 $30.71B 同比暴涨 +103% 领跑全集团，Search & Other 稳增 +12%';
+      }
+      initBizChart();
+    }
+
+    function initRadarChart() {
+      const ctx = document.getElementById('moatRadarChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (radarChartInstance) radarChartInstance.destroy();
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: [
+            '自研芯片与底层算力',
+            '前沿大模型领先度',
+            '十亿级C端生态分发',
+            '公有云商业化增速',
+            '企业级软件生态粘性'
+          ],
+          datasets: [
+            {
+              label: 'Alphabet (GOOGL)',
+              data: [9.8, 9.8, 9.9, 9.8, 8.2],
+              borderColor: '#3B82F6',
+              backgroundColor: 'rgba(59, 130, 246, 0.24)',
+              pointBackgroundColor: '#3B82F6',
+              borderWidth: 2.5
+            },
+            {
+              label: '微软 (MSFT)',
+              data: [7.2, 8.8, 8.0, 8.6, 9.9],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.14)',
+              pointBackgroundColor: '#10B981',
+              borderWidth: 2.0
+            },
+            {
+              label: '亚马逊 (AMZN)',
+              data: [8.5, 7.4, 8.8, 8.2, 8.5],
+              borderColor: '#F59E0B',
+              backgroundColor: 'rgba(245, 158, 11, 0.12)',
+              pointBackgroundColor: '#F59E0B',
+              borderWidth: 1.8,
+              borderDash: [4, 4]
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            }
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 10,
+              ticks: { display: false, stepSize: 2 },
+              grid: { color: colors.grid },
+              angleLines: { color: colors.radarAngle },
+              pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initCompMarginChart() {
+      const ctx = document.getElementById('compMarginChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (compMarginChartInstance) compMarginChartInstance.destroy();
+      compMarginChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            'Alphabet (GOOGL · 云 +103% / 15.1x P/E)',
+            '微软 (MSFT · Azure +35% / 31.5x P/E)',
+            '亚马逊 (AMZN · AWS +24% / 29.0x P/E)',
+            'Meta (META · 广告 +21% / 24.5x P/E)'
+          ],
+          datasets: [
+            {
+              label: '核心云 / 广告引擎最新同比增速 (%)',
+              data: [103.0, 35.0, 24.0, 21.0],
+              backgroundColor: '#10B981',
+              borderRadius: 5,
+              barThickness: 14
+            },
+            {
+              label: '当前参考市盈率 P/E 倍数 (x)',
+              data: [15.1, 31.5, 29.0, 24.5],
+              backgroundColor: '#3B82F6',
+              borderRadius: 5,
+              barThickness: 14
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.datasetIndex === 0
+                  ? `${ctx.dataset.label}: +${ctx.parsed.x}%`
+                  : `${ctx.dataset.label}: ${ctx.parsed.x}x`
+              }
+            }
+          },
+          scales: {
+            x: {
+              max: 115,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 } }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initValEvolutionChart() {
+      const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+      valEvolutionChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['2021', '2022', '2023', '2024', '2025', '2026E'],
+          datasets: [
+            {
+              type: 'bar',
+              label: '集团合并营业利润 Operating Income ($B)',
+              data: [78.7, 74.8, 84.3, 112.4, 124.5, 154.0],
+              backgroundColor: 'rgba(59, 130, 246, 0.85)',
+              borderRadius: 5,
+              barThickness: 28,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: '全年资本开支 CapEx ($B)',
+              data: [24.6, 31.5, 32.3, 52.5, 92.0, 200.0],
+              borderColor: '#F59E0B',
+              backgroundColor: '#F59E0B',
+              borderWidth: 3,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(1)}B`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 220,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+              title: { display: true, text: '合并营业利润 ($B)', color: colors.text, font: { size: 11 } }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 0,
+              max: 220,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#F59E0B', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' },
+              title: { display: true, text: '全年资本开支 CapEx ($B)', color: '#F59E0B', font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartsTheme() {
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadKpiChecklist();
+      updateCapexSimulator();
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    });
+  </script>
+</body>
+</html>

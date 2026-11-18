@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Meta Llama 开源大模型生态深度研究报告 (NASDAQ: META AI底座)：15亿+次下载、Llama 4/4.5 MoE架构革命与千亿算力商业闭环</title>
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <!-- Chart.js -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ llamapurple: {
+ 300: '#C4B5FD',
+ 400: '#A78BFA',
+ 500: '#8B5CF6',
+ 600: '#7C3AED',
+ 700: '#5B21B6',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ amber: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ }
+ }
+ }
+ }
+ }
+ </script>
+
+ <style>
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(139, 92, 246, 0.28) 0%, rgba(56, 189, 248, 0.08) 100%);
+ border-left: 3px solid #A78BFA;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-llamapurple-500 selection:text-white transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-llamapurple-600 via-llamapurple-400 to-sky-400 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 导出成功轻量级提示条 (Toast) -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-llamapurple-400/50 shadow-2xl text-xs font-medium no-print">
+ <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+ <span id="export-toast-text">已导出独立 HTML 研报文件 (META_Llama_Analysis.html)</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-llamapurple-400 to-llamapurple-600 flex items-center justify-center font-extrabold text-white text-xs shadow">
+ LLaMA
+ </div>
+ <div>
+ <div class="text-[11px] text-llamapurple-300 font-semibold tracking-wider uppercase">Meta Llama 4 / 4.5 · Open-Weight AI</div>
+ <div class="text-sm font-bold leading-tight">Meta Llama 开源大模型生态深度报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-2">
+ <button onclick="exportStandaloneHtml()" class="p-2 rounded-lg bg-llamapurple-500/20 hover:bg-llamapurple-500/30 text-llamapurple-300" aria-label="导出HTML文件" title="导出独立HTML文件">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">Meta Llama 研报导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与 Llama 核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. Llama 4/4.5 模型矩阵与开源逻辑</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重开源生态护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球大模型巨头横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 间接变现 ROI 与推理成本模拟器</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 战略演进判断与开源竞争风险</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. Llama 核心追踪 KPI 核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-llamapurple-500 text-white font-bold text-xs flex items-center justify-center space-x-1.5">
+ <span>一键下载独立 HTML 文件</span>
+ </button>
+ <p>全球人工智能基础模型与算力经济研究组</p>
+ <p>数据基准：2026年11月 (Llama 4/4.5 时代)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-llamapurple-400 via-llamapurple-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xs shadow-lg shadow-llamapurple-500/30">
+ LLaMA
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-llamapurple-300 bg-llamapurple-500/20 px-2 py-0.5 rounded">META LLAMA · OPEN AI STANDARD</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">Meta Llama 深度研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 全球开源权重模型事实标准 · 15亿+累计下载、原生多模态 MoE 架构与 Meta AI 10亿月活底座
+ </p>
+ </div>
+
+ <!-- Llama 核心数据快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">Llama 家族累计下载量</span>
+ <span class="font-mono font-bold text-white">&gt;15.0 亿次 <span class="text-llamapurple-300 text-[10px]">(开源第一)</span></span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">主力开源架构 (2025–2026)</span>
+ <span class="font-mono font-bold text-emerald-400">Llama 4 / 4.5 <span class="text-slate-400">(原生MoE)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">Meta AI 助手全球月活</span>
+ <span class="font-mono font-bold text-amber-400">&gt;10.0 亿人 · 推理成本降 65%</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-340px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-llamapurple-400 mr-2">00</span>执行摘要与 Llama 核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>Llama 4/4.5 模型矩阵与开源逻辑</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重开源生态护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球大模型巨头横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>间接变现 ROI 与推理成本模拟器</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>战略演进判断与开源竞争风险</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>Llama 核心追踪 KPI 核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏 -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-llamapurple-400 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-llamapurple-500 to-llamapurple-600 hover:from-llamapurple-600 hover:to-llamapurple-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 研报文件</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-llamapurple-500/15 text-llamapurple-700 dark:text-llamapurple-300 font-bold border border-llamapurple-500/30">研究对象：Meta Llama 开源大模型生态 · AI 战略核心引擎</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：2026Q3 财报季 · Llama 4 / Llama 4.5 MoE 架构与全栈变现闭环</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖时间：2026年11月</span>
+ <span>母公司：NASDAQ: META</span>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#A78BFA 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-llamapurple-500/20 border border-llamapurple-400/40 text-llamapurple-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-llamapurple-400 animate-pulse"></span>
+ <span>CORE THESIS · 15亿+次累计下载 × Llama 4/4.5 原生多模态 MoE 架构 × 反向反哺 $2,318亿 广告帝国</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ Meta Llama 开源大模型生态深度研究报告：AI 时代的“Linux 级底座”、MoE 算力革命与商业飞轮
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 不同于 OpenAI 与 Anthropic 通过售卖封闭 API 令牌直接收费，<strong class="text-white">Meta Llama</strong> 采取了互联网史上最具颠覆性的 <strong class="text-llamapurple-300">“开放权重（Open-Weight）生态标准化”</strong> 商业路径：通过相继发布 <strong class="text-white">Llama 3、Llama 4（Scout 17B-16E / Maverick 17B-128E / Behemoth）及 2026 年 6 月推出的 Llama 4.5 混合专家（MoE）多模态家族</strong>，Llama 累计下载量已突破 <strong class="text-emerald-400">15 亿次</strong>，Hugging Face 衍生微调模型超 <strong class="text-white">12 万个</strong>，成为全球企业私有化部署与云厂商托管的事实标准。
+ 更关键的是，全球开发者与芯片巨头（NVIDIA、AMD、Qualcomm、AWS）对 Llama 的免费软件栈优化，直接将 Meta 内部每天服务 36.4 亿日活用户的推理成本降低了 <strong class="text-amber-300">65% 以上</strong>，赋能 <strong class="text-llamapurple-300">Meta AI 助手月活突破 10 亿</strong>，并为集团创造了每年逾 <strong class="text-amber-300">$300 亿的广告效率增益与成本节省</strong>。
+ </p>
+
+ <!-- 核心投资结论高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">以开源“商品化互补品”瓦解闭源霸权</div>
+ <div class="text-white font-semibold">通过免费开放前沿权重，Meta 成功防止 OpenAI/Google 垄断操作系统级 AI 入口，确保自身 36 亿社交应用无需向第三方模型巨头缴纳“AI 税”</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">Llama 4 / 4.5 MoE 架构实现极致推理性价比</div>
+ <div class="text-llamapurple-300 font-semibold">Scout（10M 超长上下文窗口）与 Maverick（128 专家 MoE）仅激活 17B 参数即可超越传统稠密大模型，将每百万 Token 推理成本压至闭源模型的 1/5</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">核心矛盾：千亿 CapEx 算力投入 vs 免费开源外部性</div>
+ <div class="text-amber-300 font-semibold">训练旗舰模型需耗资数百亿美元算力，而权重公开后竞争对手可免费借鉴架构；Meta 依赖专属 36 亿第一方用户数据与广告分发构建终极护城河</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Llama 家族累计下载量</span>
+ <span class="p-1.5 rounded-lg bg-llamapurple-500/15 text-llamapurple-600 dark:text-llamapurple-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">&gt;15.0亿</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">12万+衍生模型</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 从 2024 年底 6.5 亿次飙升至 2026 年逾 15 亿次，覆盖 Hugging Face、Ollama、AWS Bedrock、Azure 与 Google Cloud 全部主流云平台。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Meta AI 助手全球月活</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">&gt;10.0亿</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">全球第一AI入口</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 由 Llama 4/4.5 驱动，深度内嵌于 WhatsApp、Instagram、Facebook 搜索栏及 Ray-Ban Meta AI 眼镜，成为全球用户基数最大的个人 AI 助手。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Llama 4 Scout 上下文窗口</span>
+ <span class="p-1.5 rounded-lg bg-llamapurple-500/15 text-llamapurple-600 dark:text-llamapurple-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">10M Tokens</span>
+ <span class="text-xs font-bold text-llamapurple-600 dark:text-llamapurple-400 bg-llamapurple-500/15 px-2 py-0.5 rounded">单卡H100可跑</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 业界首个支持 1,000 万 Token 级上下文窗口的开放权重模型（相当于一次性吞吐 20+ 小时长视频或整个大型代码库），且量化后可在单张 H100 运行。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>间接商业价值与广告主渗透</span>
+ <span class="p-1.5 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">&gt;$30B/年</span>
+ <span class="text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded">400万+广告主</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 超过 400 万家广告主使用 Llama 驱动的生成式创意工具（视频扩展、背景生成、多语种配音），带动广告点击率提升 +11%，间接收益远超直接 API 收费。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 Llama 4 / 4.5 模型矩阵与开源商业逻辑 (Model Matrix & Strategy)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-llamapurple-600 dark:text-llamapurple-400">Section 01 · Llama 4 / 4.5 Architecture Matrix &amp; Open-Weight Flywheel</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 Llama 4 / 4.5 模型矩阵与开源逻辑：原生多模态 MoE 架构与“不收模型税”生态飞轮</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2025年4月发布 Llama 4 · 2026年6月升级 Llama 4.5 · 累计下载破 15 亿次</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2023–2026E Llama 家族累计下载量 (亿次) 与推理成本指数演进</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">从 Llama 2 到 Llama 4.5，累计下载量三年暴增 15 倍突破 15 亿次，同时每百万 Token 推理成本下降 88%</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('rev_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-llamapurple-600 dark:text-llamapurple-400 shadow-sm transition cursor-pointer">视图A：下载量爆发与推理降本</button>
+ <button onclick="switchBizChart('growth_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：Llama 4/4.5 架构参数对比</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性拆解核心洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">Meta 坚持“开放权重（Open-Weight）”的三大战略算盘</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-llamapurple-500/15 text-llamapurple-600 dark:text-llamapurple-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">全行业免费帮 Meta 优化推理与训练基础设施</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 一旦 Llama 成为开源基准，NVIDIA、AMD、Qualcomm、vLLM 与全球数万名系统工程师会自动为其编写极致量化内核与硬件加速代码，Meta 直接将社区成果回流至内部超大规模集群，每年节省数十亿美元算力开支。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">防患未然：避免在 AI 时代重演“被苹果 iOS 卡脖子”的噩梦</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 移动互联网时代苹果 ATT 隐私政策曾让 Meta 损失百亿美元营收。通过将 Llama 打造成 AI 时代的“Linux 底层标准”，Meta 确保没有任何单一闭源模型巨头能控制下一代智能眼镜、手机与企业计算平台。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">云厂商分销分成 + 企业级安全微调生态绑定</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ AWS、Microsoft Azure、Google Cloud、Oracle 与 Databricks 等巨头均托管商业版 Llama API，并与 Meta 达成商业收入分成协议；同时 7 亿月活以上超大科技巨头使用需单独向 Meta 申请商业许可。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">核心授权边界（Llama Community License）</span>
+ <span class="font-bold text-llamapurple-600 dark:text-llamapurple-400">7亿月活以下免费商用 · 超大巨头需单独授权</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- Llama 四大核心模型系列与产品矩阵详细卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 模型 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-llamapurple-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-llamapurple-500/15 text-llamapurple-700 dark:text-llamapurple-300 text-xs font-bold">主力通用旗舰 · 128 专家 MoE</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">17B 激活 / 400B 总参</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. Llama 4 / 4.5 Maverick（高性价比全能多模态主力）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 采用早期融合（Early Fusion）原生多模态混合专家架构，总参数 4,000 亿（128 个路由专家），每次推理仅激活 <strong>170 亿参数</strong>。在代码生成、多语言推理、图像理解与复杂指令遵循上比肩 GPT-4o 与 Gemini Pro，而推理成本仅为闭源竞品的五分之一。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>单台 H100 节点 (8×H100) 高速部署</span>
+ <span class="text-llamapurple-600 dark:text-llamapurple-400 font-semibold">企业级 API 托管与私有云绝对主力</span>
+ </div>
+ </div>
+
+ <!-- 模型 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">超长上下文之王 · 10M Tokens</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">17B 激活 / 109B 总参</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. Llama 4 / 4.5 Scout（千万级上下文与单卡高效模型）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 配备 16 个路由专家与交错注意力机制（iRoPE），在业界率先实现开放权重模型 <strong>1,000 万 Token（10M）超长上下文窗口</strong>，且经 Int4 量化后可在<strong>单张 NVIDIA H100 GPU</strong> 上流畅运行，成为金融研报解析、长视频理解与大型代码库检索的首选基座。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>支持单张 H100 内存驻留推理</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">极致 TCO（总拥有成本）企业私有化利器</span>
+ </div>
+ </div>
+
+ <!-- 模型 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-amber-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs font-bold">教师蒸馏母舰 · 2万亿参数级</span>
+ <span class="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">288B 激活 / ~2T 总参</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. Llama 4 Behemoth 与 Llama 4.5 Reasoning 推理模型</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 作为拥有近 <strong>2 万亿总参数（288B 激活参数）</strong>的超巨型教师模型，Behemoth 不仅在 STEM 数学与深度科学推理基准上超越 Claude Sonnet 与 GPT 旗舰，更承担着通过强化学习与知识蒸馏（Distillation）将高阶推理能力注入轻量级模型的核心使命。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>大规模异步 RL 强化学习架构</span>
+ <span class="text-amber-600 dark:text-amber-400 font-semibold">持续为 Scout/Maverick 输送蒸馏智慧</span>
+ </div>
+ </div>
+
+ <!-- 模型 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">端侧智能与安全护栏 · 全场景覆盖</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">1B / 3B / 8B + Llama Guard</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 端侧轻量模型（1B–8B）与 Llama Stack / Guard 安全套件</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 专为 <strong>Ray-Ban Meta AI 眼镜</strong>、智能手机端侧芯片（高通/联发科）及边缘设备打造的 1B–8B 超低功耗模型，配合 <strong>Llama Guard 安全审查模型</strong>与 <strong>Llama Stack 标准化开发框架</strong>，打通从云端训练到端侧穿戴设备的全栈闭环。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Ray-Ban AI 眼镜实时语音视觉内核</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">构建企业生产级 AI Agent 完整工具链</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 行业地位与四重开源生态护城河 (Industry Position & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position &amp; Open-Source Ecosystem Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重开源生态护城河：开发者路径依赖、千亿算力门槛与数据飞轮</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：极宽 (Wide Moat · 全球企业自托管开源大模型市场占有率超 60%)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-llamapurple-500/15 text-llamapurple-600 dark:text-llamapurple-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">15亿+下载与 12万衍生模型铸就的生态惯性</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 如同 Android 与 Linux，全球高校实验室、AI 初创公司及财富 500 强企业均以 Llama 的 Tokenizer、指令格式与 Llama Stack 为默认开发规范，海量微调权重（医疗、法律、金融垂直版）形成极强的开发者路径依赖。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">独享 36.4亿日活用户场景的 RLHF 反馈飞轮</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 竞争对手即使下载了 Llama 权重，也无法复制 Meta 每天在 Facebook、Instagram 与 WhatsApp 上产生的数十亿次真实用户交互与 Meta AI 问答反馈，这是训练下一代多模态交互模型的独家燃料。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">数据隐私主权与政府/金融企业合规刚需</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 银行、军工、医疗与欧洲大型企业严禁将核心机密数据发送至 OpenAI 外部云端，而美国政府机构亦对纯中国开源模型存在合规顾虑，使拥有美国血统且可完全本地私有化部署的 Llama 成为西方政企唯一安全选择。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">千亿级算力集群 + 自研 MTIA 芯片的研发军备壁垒</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ Meta 每年高达 $1,150亿+ 的资本开支与逾 130 万颗等效 GPU 算力集群，确保其有能力持续训练 2 万亿参数级教师模型并免费开源，直接碾压依赖外部融资的独立开源模型初创公司。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维护城河雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球顶尖基础大模型五维竞争壁垒雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Meta Llama 4/4.5 vs OpenAI GPT 系列 vs DeepSeek / Qwen（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 全球基础大模型巨头横向对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-llamapurple-600 dark:text-llamapurple-400">Section 03 · Global Foundation Models Competitive Landscape</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球基础大模型横向对比：闭源重资产收费 vs 开源生态赋能的路线对决</h2>
+ </div>
+ <!-- 交互式筛选按钮 -->
+ <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-llamapurple-500 text-white shadow-sm transition cursor-pointer">全部核心模型家族</button>
+ <button onclick="filterCompetitors('closed_frontier')" data-filter="closed_frontier" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">闭源旗舰双雄 (OpenAI / Anthropic)</button>
+ <button onclick="filterCompetitors('open_rivals')" data-filter="open_rivals" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">开源主要劲敌 (DeepSeek / Qwen / Mistral)</button>
+ <button onclick="filterCompetitors('cloud_native')" data-filter="cloud_native" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">云与搜索原生巨头 (Google Gemini)</button>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">模型家族与研发机构</th>
+ <th class="py-4 px-4 min-w-[130px]">开放策略与协议</th>
+ <th class="py-4 px-4 min-w-[145px]">核心商业变现模式</th>
+ <th class="py-4 px-4 min-w-[115px]">企业私有化能力</th>
+ <th class="py-4 px-4 min-w-[115px]">单百万Token推理成本</th>
+ <th class="py-4 px-5 min-w-[240px]">与 Meta Llama 的核心优劣势对比</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：Meta Llama 基准 -->
+ <tr data-category="core" class="bg-llamapurple-500/5 dark:bg-llamapurple-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-llamapurple-500 text-white text-[10px] font-extrabold">西方开源霸主</span>
+ <span class="font-bold text-slate-900 dark:text-white">Meta Llama 4 / 4.5</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Scout (10M) / Maverick (MoE) / Behemoth</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-emerald-600 dark:text-emerald-400">开放权重 (Llama 4 社区许可)</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">反哺 $2,318亿 广告效率 + 云厂商分成</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">极强 (全量权重可本地部署)</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-llamapurple-600 dark:text-llamapurple-400">~$0.15–$0.45 (极低)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>唯一兼具“西方企业合规背书 + 全量开放权重 + 千亿算力支持”的模型家族：</strong>不靠卖 API 赚钱，彻底免除企业被单一供应商锁定的焦虑。
+ </td>
+ </tr>
+
+ <!-- 行 2：OpenAI GPT / o系列 -->
+ <tr data-category="closed_frontier" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">OpenAI (GPT-5 / o3 系列)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">ChatGPT 消费端 + 企业级闭源 API</div>
+ </td>
+ <td class="py-4 px-4 text-rose-600 dark:text-rose-400 font-medium">完全闭源 (黑盒 API)</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">ChatGPT 订阅 ($20–$200/月) + API 计费</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">仅限 Azure 托管，不可下载</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$2.00–$15.00</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>前沿推理与品牌心智标杆，但高成本与闭源限制企业大批量渗透：</strong>在复杂多步科学推理上略占优势，但高昂的 API 费用迫使大量企业将高并发业务迁移至 Llama。
+ </td>
+ </tr>
+
+ <!-- 行 3：Anthropic Claude -->
+ <tr data-category="closed_frontier" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Anthropic (Claude 3.7 / 4)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">企业级编程与深度 Agent 首选闭源模型</div>
+ </td>
+ <td class="py-4 px-4 text-rose-600 dark:text-rose-400 font-medium">完全闭源 (AWS/GCP 托管)</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">企业 API 调用 + Claude Code/Team 订阅</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">云端 VPC 隔离，不可自托管</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$3.00–$15.00</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>代码工程与长文本分析口碑极佳：</strong>在软件开发 Agent 领域备受青睐，但同样受限于闭源成本，常与 Llama 形成“Claude 处理复杂规划 + Llama 处理海量执行”的混合架构。
+ </td>
+ </tr>
+
+ <!-- 行 4：DeepSeek & 通义千问 Qwen -->
+ <tr data-category="open_rivals" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">DeepSeek / 阿里 Qwen 3</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">极客推理与全球开源生态最强挑战者</div>
+ </td>
+ <td class="py-4 px-4 text-emerald-600 dark:text-emerald-400 font-medium">完全开源 (MIT / Apache 2.0)</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">极低价 API + 阿里云算力拉动</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">极强 (无商业用户数限制)</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-emerald-600 dark:text-emerald-400">~$0.10–$0.40</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>Llama 在开源赛道的最大技术劲敌：</strong>DeepSeek 的 GRPO 强化学习与 Qwen 的全尺寸矩阵在算法效率与中文/编程榜单上多次逼平甚至超越 Llama，但受欧美政府及金融合规审查限制。
+ </td>
+ </tr>
+
+ <!-- 行 5：Google Gemini -->
+ <tr data-category="cloud_native" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Google Gemini 2.5 / 3</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">原生多模态 + Android / Search 全生态</div>
+ </td>
+ <td class="py-4 px-4 text-amber-600 dark:text-amber-400 font-medium">旗舰闭源 + 轻量 Gemma 开源</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">Google Cloud Vertex AI + Workspace 订阅</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">仅 Gemma 小模型可本地运行</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$0.30–$2.50</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全栈自研 TPU 算力优势显著：</strong>拥有原生多模态与百万级上下文能力，与 Meta 在消费级助手（Meta AI vs Gemini）及智能眼镜赛道展开正面全线交锋。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：推理成本与开源生态指标对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">主流旗舰大模型云端 API 综合推理成本对比（每百万输出 Tokens 美元价格，越低越具性价比）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">凭借混合专家（MoE）稀疏激活架构与全行业硬件内核优化，Llama 4/4.5 Maverick 的推理成本较闭源旗舰降低 80%–90%</p>
+ </div>
+ <span class="text-xs font-semibold text-llamapurple-700 dark:text-llamapurple-300 bg-llamapurple-500/15 px-2.5 py-1 rounded">企业大规模生产部署 TCO 实测</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 间接变现 ROI 与推理成本节省测算器 (Financial ROI & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Indirect Monetization ROI &amp; Inference Economics Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 Llama 的“隐形商业闭环”：千亿级 CapEx 投资如何通过广告增效与降本实现高额 ROI</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2026E Meta 广告营收 $231.8B · Llama 驱动 Advantage+ 流水超 $60B</span>
+ </div>
+
+ <!-- 1. Llama 商业价值四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-llamapurple-600 dark:text-llamapurple-400 uppercase">Ad Conversion &amp; CTR Lift</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">+11% CTR / +18% CVR</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ Llama 生成式广告素材与多语言自动本地化工具已覆盖超 <strong>400 万广告主</strong>，直接推升全球广告点击率与转化率。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Inference Cost Reduction</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">-65% 单位算力成本</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 结合 MoE 稀疏激活、FP8/Int4 量化及自研 <strong>MTIA 推理芯片</strong>，服务 10 亿 Meta AI 月活的边际算力成本大幅下降。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Cloud &amp; Enterprise Licensing</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$1.8B+ 直接分成</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 来自 AWS、Azure、GCP、Oracle、Databricks 等云托管伙伴的 API 商业分成，以及超大科技巨头的专属商业授权费。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">2026E AI Infrastructure CapEx</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$115B–$125B</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 庞大的算力集群同时服务于 Llama 前沿训练与 Andromeda 广告推荐系统，共享数据中心基础设施，实现最高资产周转率。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴剪刀差图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2023–2026E Meta AI 资本开支投入 ($B) vs Llama 赋能带来的年化增量广告与降本价值 ($B)</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">虽然前期算力基建投资巨大，但 Llama 驱动的广告 ROAS 提升、自研芯片替代与商业客服正在加速释放正向回报</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-llamapurple-700 dark:text-llamapurple-300 bg-llamapurple-500/15 px-2.5 py-1 rounded">2026E 间接商业回报突破 $33.5B</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：Llama 企业部署 TCO 节省与 Meta 间接回报动态模拟器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-llamapurple-300 font-bold">
+ <span>LLAMA ENTERPRISE TCO &amp; API ECONOMICS SIMULATOR · 企业部署成本与算力测算器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">企业采用 Llama 4/4.5 替代闭源模型（GPT/Claude）年度算力成本节省测算器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">模拟企业日均 Token 调用量与部署模式（私有化 H100 自托管 vs 云端 API），直观量化 Llama 开放权重带来的惊人 TCO 优势</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-llamapurple-500/20 border border-llamapurple-400/30 text-xs font-semibold text-llamapurple-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="drip-toggle" checked onchange="updateCompoundSimulator()" class="w-4 h-4 rounded accent-[#A78BFA] cursor-pointer">
+ <span>启用 Int4/FP8 量化与推测解码加速 (推理吞吐再提速 1.8x)</span>
+ </label>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">企业日均处理 Token 总量 (百万 Tokens / 日)</span>
+ <span id="sim-tokens-label" class="font-mono font-bold text-white text-sm">500M / 日</span>
+ </div>
+ <input id="sim-tokens" type="range" min="50" max="5000" step="50" value="500" oninput="updateCompoundSimulator()" class="w-full accent-[#A78BFA] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">对比闭源旗舰模型平均综合单价 ($ / 百万 Tokens)</span>
+ <span id="sim-closed-price-label" class="font-mono font-bold text-amber-400 text-sm">$4.50 / 1M</span>
+ </div>
+ <input id="sim-closed-price" type="range" min="1.5" max="12.0" step="0.5" value="4.5" oninput="updateCompoundSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">企业业务年均 AI 调用量增长率</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">45% / 年</span>
+ </div>
+ <input id="sim-growth" type="range" min="10" max="100" step="5" value="45" oninput="updateCompoundSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <div class="pt-1">
+ <div class="text-slate-300 font-medium mb-2">Llama 4/4.5 部署方式选择：</div>
+ <div class="grid grid-cols-3 gap-2" id="buyback-btn-group">
+ <button type="button" onclick="setDeployMode(0.35)" data-bb="0.35" class="bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-llamapurple-400 transition cursor-pointer">
+ 云端 Serverless<br><span class="text-[10px] text-slate-400">按量付费 (~$0.35/1M)</span>
+ </button>
+ <button type="button" onclick="setDeployMode(0.22)" data-bb="0.22" class="bb-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-llamapurple-500 text-white border border-llamapurple-400 shadow transition cursor-pointer">
+ 混合云专属节点<br><span class="text-[10px] text-llamapurple-100">主力推荐 (~$0.22/1M)</span>
+ </button>
+ <button type="button" onclick="setDeployMode(0.14)" data-bb="0.14" class="bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-llamapurple-400 transition cursor-pointer">
+ 自建 H100 集群<br><span class="text-[10px] text-slate-400">极致规模 (~$0.14/1M)</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">采用 Llama 首年直接节省 IT 算力成本</div>
+ <div id="sim-year1-save" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$795,700</div>
+ <div id="sim-save-pct" class="text-xs font-semibold text-llamapurple-300 mt-1.5">成本降幅高达 96.9% (对比闭源方案 $821,250)</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">未来三年累计净节省成本总额</div>
+ <div id="sim-3yr-save" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$3,622,400</div>
+ <div id="sim-3yr-note" class="text-xs text-slate-400 mt-1.5">按业务调用量年增 45% 复利推演</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">Llama 实际有效单位推理成本</div>
+ <div id="sim-eff-cost" class="text-2xl sm:text-3xl font-mono font-extrabold text-llamapurple-300 mt-1.5">$0.12 / 1M</div>
+ <div id="sim-eff-note" class="text-xs text-slate-400 mt-1.5">叠加量化加速后，性价比达闭源模型 37 倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">等效所需 NVIDIA H100 推理卡数量</div>
+ <div id="sim-gpu-count" class="text-2xl sm:text-3xl font-mono font-extrabold text-amber-400 mt-1.5">2 张 H100</div>
+ <div id="sim-gpu-note" class="text-xs text-slate-400 mt-1.5">基于 Scout/Maverick MoE 高吞吐架构估算</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 华尔街对 Meta 开源 Llama 战略的多空核心分歧对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">看多核心论点 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">生态标准制定者 + 广告/硬件全栈变现</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>商业模式降维打击闭源模型初创公司：</strong>OpenAI 与 Anthropic 必须通过售卖模型本身实现盈利，而 Meta 可以永久免费提供前沿模型，依靠后端 36 亿社交广告、WhatsApp 企业客服与 AI 眼镜硬件完成百倍变现。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>MoE 混合专家架构大幅拉平前沿性能差距：</strong>Llama 4 / 4.5 全面转向稀疏 MoE 架构，证明 Meta 在训练效率与长上下文（10M Tokens）工程化上稳居全球第一梯队。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 眼镜与端侧智能的唯一闭环王者：</strong>轻量级 Llama 模型直接运行于 Ray-Ban Meta AI 眼镜（累计销量破 500 万副），让 Meta 抢先占据下一代脱离手机屏幕的第一视角交互入口。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">看空担忧论点 (Bear Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">千亿算力折旧重负 + 开源赛道内卷加剧</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>免费开源导致“技术护城河窗口期”急剧缩短：</strong>Meta 耗费数百亿美元训练的前沿架构与技术报告一经发布，便会被 DeepSeek、Qwen 与 Mistral 在数月内吸收追平，直接资本回报率难以单独核算。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>Scale-up 算力边际收益递减与折旧压力：</strong>2026–2027 年连续千亿级 GPU 集群建设将带来每年近百亿美元新增折旧，若下一代 Llama 5 性能跃迁幅度放缓，市场将质疑其资本开支纪律。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>自定义社区许可证在欧盟与开源界引发争议：</strong>Llama 4 许可证对 7 亿月活以上企业的限制及欧洲合规条款，使其未被 OSI 认定为纯正开源软件，部分欧洲机构因此转向 Mistral。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 战略演进判断与开源竞争风险 (Strategic Outlook & Risks)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-llamapurple-600 dark:text-llamapurple-400">Section 05 · Strategic Outlook &amp; Competitive Risk Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 Llama 生态战略演进三情景推演与核心技术/监管风险评估</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">演进方向：从“大语言模型”向“多模态世界模型与自主 AI Agent 操作系统”跃迁</span>
+ </div>
+
+ <!-- 1. 三情景战略演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 乐观情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">乐观演进 (Bull Case)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：35%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">统治企业 Agent 与端侧 AI 入口</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心路径：</strong>Llama 5 在复杂推理与视频世界模型上实现代际突破，成为全球超 70% 企业私有化 Agent 底座；同时 WhatsApp AI 客服与 AI 眼镜爆发贡献百亿美元级直接增量收入。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 推动 Meta 估值倍数从 24x 向 28x–30x 重估
+ </div>
+ </div>
+
+ <!-- 基准情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-llamapurple-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-llamapurple-500/15 text-llamapurple-700 dark:text-llamapurple-300 text-xs font-bold">基准演进 (Base Case)</span>
+ <span class="font-mono text-xs font-bold text-llamapurple-600 dark:text-llamapurple-400">概率：45%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">与闭源旗舰保持第一梯队平权</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心路径：</strong>Llama 持续维持西方开源模型绝对第一地位，虽未直接创造庞大外部 API 利润，但稳固支撑内部广告转化率提升与推理降本，保障集团营业利润率守住 40%+。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-llamapurple-600 dark:text-llamapurple-400">
+ 圆满完成“防守反击 + 广告增效”战略使命
+ </div>
+ </div>
+
+ <!-- 保守情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">保守演进 (Bear Case)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">技术代差落后且 CapEx 回报承压</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心路径：</strong>OpenAI/Google 在通用人工智能（AGI）推理上拉开显著代差，而开源生态被 DeepSeek/Qwen 进一步分流，导致千亿级算力折旧成为拖累 Meta 净利润的沉重包袱。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 迫使 Meta 收缩前沿训练开支，转向专注内部推荐算法
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心风险矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">Meta Llama 生态面临的四大核心潜在风险</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 训练数据版权诉讼与欧盟 AI 法案限制</span>
+ <span class="text-xs font-mono text-rose-500 font-semibold">关注度：极高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">出版商版权集体诉讼及欧盟禁止使用欧洲用户公开帖文训练</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 爱尔兰数据保护委员会（DPC）与欧盟 AI 法案多次阻挠 Meta 利用欧洲 Facebook/Instagram 公开帖文训练多模态 Llama 模型，导致多模态版本在欧盟推迟上线。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 开源权重安全滥用与国家安全监管风险</span>
+ <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">恶意行为者剥离安全对齐护栏（Jailbreak）引发监管反噬</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 由于开放权重模型可被第三方本地微调移除安全限制，一旦发生大规模自动化网络攻击或深度伪造事件，美国及各国政府可能立法限制前沿权重公开。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-llamapurple-500/10 text-llamapurple-600 dark:text-llamapurple-400 text-xs font-bold">03 · 顶尖 AI 研究人才流失与薪酬通胀</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">FAIR 与 GenAI 团队核心架构师遭初创公司天价挖角</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 硅谷顶尖大模型预训练与强化学习人才极度稀缺，人才竞争推高研发人员股权激励（SBC）支出，考验技术路线的连续性。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 高端 GPU 供应链依赖与电力基础设施瓶颈</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">吉瓦级（GW）数据中心电力审批与先进封装产能约束</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 训练下一代超大规模 Llama 模型需要百兆瓦至吉瓦级连续电力供应，北美电网并网审批周期延长可能影响前沿模型的迭代节奏。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 战略与投资启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-llamapurple-300 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>评估 Meta Llama 商业价值的三大核心方法论</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 切勿用“独立软件营收”衡量开源模型</div>
+ <p class="text-slate-300 leading-relaxed">
+ Llama 的核心财务价值体现在 <strong>Meta 应用家族广告转化率（CVR）提升、Reels 推荐时长延长以及自研推理芯片成本下降</strong>，是镶嵌在 $2,365亿 营收底座中的“乘数因子”。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-llamapurple-300 mb-1">2. 关注“企业级 AI 客服”带来的直接增量</div>
+ <p class="text-slate-300 leading-relaxed">
+ 随着 Llama 4/4.5 驱动的 <strong>AI Business Agents</strong> 在 WhatsApp 与 Messenger 普及，中小企业将直接为自动化导购与客服算力付费，开启 Llama 的第二层直接变现。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 紧盯 Meta AI 助手商业化变现时间表</div>
+ <p class="text-slate-300 leading-relaxed">
+ 目前拥有逾 <strong>10 亿月活的 Meta AI</strong> 尚处于免费圈地阶段，未来一旦在搜索问答中引入原生赞助推荐链接或高级订阅会员，将再造一个百亿美元级高毛利业务。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 Llama 核心追踪 KPI 交互式核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Meta Llama Core Tracking KPIs</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 Meta Llama 核心追踪 KPI 交互式核查清单（季度跟踪监测）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-llamapurple-500/15 text-llamapurple-700 dark:text-llamapurple-300 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选已验证达标的 Meta Llama 生态与商业转化指标（勾选状态自动本地保存），持续校验千亿级 AI 基础设施投入的产出效率：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#8B5CF6] focus:ring-llamapurple-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. Llama 家族累计下载突破 15 亿次，衍生模型超 12 万个</span>
+ <span class="text-[11px] font-mono text-llamapurple-600 dark:text-llamapurple-400 font-semibold shrink-0">生态统治力</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 已验证 Llama 4 与 Llama 4.5（Scout / Maverick）在 Hugging Face 与主流云平台保持最高企业级部署渗透率。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#8B5CF6] focus:ring-llamapurple-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. Meta AI 助手全球月活突破 10 亿，全家族应用深度嵌入</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">C端分发壁垒</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 已验证 WhatsApp、Instagram、Facebook 与 Ray-Ban AI 眼镜全线接入 Llama 驱动的语音与视觉助手。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#8B5CF6] focus:ring-llamapurple-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 超 400 万广告主使用 Llama 生成式创意工具（CTR +11%）</span>
+ <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">核心ROI验证</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 广告视频生成、背景替换与多语言自动配音显著降低中小商户素材制作门槛，直接拉升 Advantage+ 投放预算。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#8B5CF6] focus:ring-llamapurple-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 下一代 Llama 5 旗舰模型按期发布并维持前沿榜单第一梯队</span>
+ <span class="text-[11px] font-mono text-rose-600 dark:text-rose-400 font-semibold shrink-0">技术代差防线</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪千亿级 Blackwell GPU 集群训练出的下一代模型在复杂逻辑推理、Agent 工具调用与视频理解上的基准表现。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#8B5CF6] focus:ring-llamapurple-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 自研 MTIA 推理芯片承接内部 Llama 推理负载比例突破 40%</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">毛利率护城河</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 监测自研专用推理芯片与 MoE 稀疏激活架构对整体数据中心电力与折旧成本的摊薄效果。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#8B5CF6] focus:ring-llamapurple-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. Meta AI 搜索商业化广告与企业 AI Agent 订阅正式落地</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">第二层直接变现</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察 Meta AI 对话流内的商业推荐链接测试及企业级 Llama Stack 托管安全服务收入增速。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明 (Disclaimer Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>Meta Llama 开源大模型生态深度研究报告 · AI 底层架构与商业飞轮独立拆解版</span>
+ <span>数据基准：Meta AI 官方技术报告 (Llama 4/4.5)、2026Q3 财报披露及 Hugging Face / 行业研究统计</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度研究报告聚焦于 Meta Platforms Inc. 旗下核心基础大模型家族 <strong>Meta Llama（含 Llama 4 / 4.5 Scout、Maverick、Behemoth 及 Meta AI 生态）</strong>的技术架构演进、开源生态份额及对集团核心业务的间接商业赋能测算，旨在提供结构化的 AI 产业与商业模式分析框架。报告中涉及的间接商业价值估算及企业部署 TCO 模拟器均基于特定假设条件，不构成任何证券买卖建议。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立 HTML 研报文件 (Standalone Export)
+ // ==========================================
+ function exportStandaloneHtml() {
+ const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const a = document.createElement('a');
+ a.href = url;
+ a.download = 'META_Llama_Analysis.html';
+ document.body.appendChild(a);
+ a.click();
+ document.body.removeChild(a);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+
+ const toast = document.getElementById('export-toast');
+ if (toast) {
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-llamapurple-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-llamapurple-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 同行竞争格局矩阵筛选器
+ // ==========================================
+ function filterCompetitors(category) {
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-llamapurple-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-llamapurple-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ if (category === 'all' || rowCat === 'core' || rowCat === category) {
+ row.style.display = '';
+ } else {
+ row.style.display = 'none';
+ }
+ });
+ }
+
+ // ==========================================
+ // 5. Llama 企业部署成本与算力 TCO 模拟器
+ // ==========================================
+ let currentLlamaUnitCost = 0.22; // 默认混合云专属节点 $0.22 / 1M Tokens
+
+ function setDeployMode(unitCost) {
+ currentLlamaUnitCost = unitCost;
+ document.querySelectorAll('#buyback-btn-group .bb-btn').forEach(btn => {
+ const btnC = parseFloat(btn.dataset.bb);
+ if (Math.abs(btnC - unitCost) < 0.005) {
+ btn.className = 'bb-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-llamapurple-500 text-white border border-llamapurple-400 shadow transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-llamapurple-100';
+ } else {
+ btn.className = 'bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-llamapurple-400 transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+ }
+ });
+ updateCompoundSimulator();
+ }
+
+ function updateCompoundSimulator() {
+ const dailyMillionTokens = parseFloat(document.getElementById('sim-tokens').value);
+ const closedPricePer1M = parseFloat(document.getElementById('sim-closed-price').value);
+ const annualGrowthPct = parseFloat(document.getElementById('sim-growth').value);
+ const quantAccel = document.getElementById('drip-toggle').checked;
+
+ document.getElementById('sim-tokens-label').textContent = dailyMillionTokens.toLocaleString('en-US') + 'M / 日';
+ document.getElementById('sim-closed-price-label').textContent = '$' + closedPricePer1M.toFixed(2) + ' / 1M';
+ document.getElementById('sim-growth-label').textContent = annualGrowthPct + '% / 年';
+
+ const effLlamaCost = quantAccel ? (currentLlamaUnitCost / 1.8) : currentLlamaUnitCost;
+ const annualMillionTokensY1 = dailyMillionTokens * 365;
+
+ const closedCostY1 = annualMillionTokensY1 * closedPricePer1M;
+ const llamaCostY1 = annualMillionTokensY1 * effLlamaCost;
+ const saveY1 = closedCostY1 - llamaCostY1;
+ const savePct = (saveY1 / closedCostY1) * 100;
+
+ const g = annualGrowthPct / 100;
+ let cumSave3Yr = 0;
+ for (let y = 0; y < 3; y++) {
+ cumSave3Yr += saveY1 * Math.pow(1 + g, y);
+ }
+
+ // 估算等效所需 H100 GPU 数量 (假设单张 H100 配合 MoE+FP8 日均有效吞吐约 350M Tokens)
+ const throughputPerGpu = quantAccel ? 350 : 200;
+ const gpuCount = Math.max(1, Math.ceil(dailyMillionTokens / throughputPerGpu));
+
+ document.getElementById('sim-year1-save').textContent = '$' + Math.round(saveY1).toLocaleString('en-US');
+ document.getElementById('sim-save-pct').textContent = `成本降幅高达 ${savePct.toFixed(1)}% (对比闭源方案 $${Math.round(closedCostY1).toLocaleString('en-US')})`;
+ document.getElementById('sim-3yr-save').textContent = '$' + Math.round(cumSave3Yr).toLocaleString('en-US');
+ document.getElementById('sim-3yr-note').textContent = `按业务调用量年增 ${annualGrowthPct}% 复利推演`;
+ document.getElementById('sim-eff-cost').textContent = '$' + effLlamaCost.toFixed(2) + ' / 1M';
+ document.getElementById('sim-eff-note').textContent = `性价比达闭源模型的 ${(closedPricePer1M / effLlamaCost).toFixed(1)} 倍`;
+ document.getElementById('sim-gpu-count').textContent = gpuCount + ' 张 H100';
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'meta_llama_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'rev_evolution';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：2023–2026E Llama 家族累计下载量 (亿次) 与相对推理成本指数
+ const evoConfig = {
+ type: 'bar',
+ data: {
+ labels: ['2023H2 (Llama 2)', '2024H1 (Llama 3)', '2024H2 (Llama 3.2/3.3)', '2025H1 (Llama 4)', '2026H1 (Llama 4.5)', '2026E 年末'],
+ datasets: [
+ {
+ label: 'Llama 家族全球累计下载量 (亿次)',
+ data: [1.1, 3.5, 6.5, 10.2, 13.4, 15.6],
+ backgroundColor: '#8B5CF6',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '同等智能水平推理成本指数 (2023=100)',
+ data: [100, 58, 36, 21, 14, 12],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 2.5,
+ pointRadius: 4,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.dataset.yAxisID === 'y1'
+ ? `${ctx.dataset.label}: ${ctx.parsed.y} (下降 ${100 - ctx.parsed.y}%)`
+ : `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)} 亿次`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 18,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '亿' }
+ },
+ y1: {
+ position: 'right',
+ min: 0,
+ max: 110,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v }
+ }
+ }
+ }
+ };
+
+ // 视图 B：Llama 4 / 4.5 核心型号总参数 vs 每次推理激活参数 (Billion)
+ const splitConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Llama 4 Scout (16专家 · 10M上下文)',
+ 'Llama 4 / 4.5 Maverick (128专家主力)',
+ 'Llama 3.3 70B (传统稠密架构标杆)',
+ 'Llama 4 Behemoth (超巨型教师模型)'
+ ],
+ datasets: [
+ {
+ label: '每次推理实际激活参数量 (Active Params, B)',
+ data: [17, 17, 70, 288],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 14
+ },
+ {
+ label: '模型总参数规模 (Total Params, B)',
+ data: [109, 400, 70, 2000],
+ backgroundColor: '#8B5CF6',
+ borderRadius: 5,
+ barThickness: 14
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.x}B 参数`
+ }
+ }
+ },
+ scales: {
+ x: {
+ type: 'logarithmic',
+ min: 10,
+ max: 2500,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'B' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'rev_evolution' ? evoConfig : splitConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'rev_evolution') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-llamapurple-600 dark:text-llamapurple-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2023–2026E Llama 家族累计下载量 (亿次) 与推理成本指数演进';
+ subEl.textContent = '从 Llama 2 到 Llama 4.5，累计下载量三年暴增 15 倍突破 15 亿次，同时每百万 Token 推理成本下降 88%';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-llamapurple-600 dark:text-llamapurple-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'Llama 4 / 4.5 MoE 混合专家架构：总参数 vs 每次推理激活参数 (对数刻度)';
+ subEl.textContent = 'Maverick 拥有 400B 总参数知识容量，但每次推理仅激活 17B 参数，实现推理算力消耗数量级下降';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const ctx = document.getElementById('moatRadarChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '企业私有化部署与数据主权可控度',
+ '推理性价比与端侧轻量部署能力',
+ '欧美政企合规安全背书',
+ '前沿多步科学推理极限能力',
+ '千亿算力底座与数十亿C端反馈飞轮'
+ ],
+ datasets: [
+ {
+ label: 'Meta Llama 4 / 4.5',
+ data: [9.9, 9.7, 9.6, 8.9, 9.8],
+ borderColor: '#8B5CF6',
+ backgroundColor: 'rgba(139, 92, 246, 0.25)',
+ pointBackgroundColor: '#8B5CF6',
+ borderWidth: 2.5
+ },
+ {
+ label: 'OpenAI GPT / o系列',
+ data: [4.2, 6.5, 9.2, 9.9, 9.4],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: 'DeepSeek / Qwen 开源',
+ data: [9.8, 9.9, 5.5, 9.5, 8.2],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.12)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const ctx = document.getElementById('compMarginChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Meta Llama 4/4.5 Maverick (开放权重 MoE)',
+ 'DeepSeek / Qwen 旗舰开源模型',
+ 'Google Gemini 2.5 Pro (云端托管)',
+ 'OpenAI GPT 旗舰模型 (闭源 API)',
+ 'Anthropic Claude 旗舰模型 (闭源 API)'
+ ],
+ datasets: [
+ {
+ label: '每百万输出 Tokens 综合推理成本 ($ USD · 越低越优)',
+ data: [0.35, 0.28, 2.50, 8.00, 12.00],
+ backgroundColor: [
+ '#8B5CF6',
+ '#10B981',
+ '#38BDF8',
+ '#F59E0B',
+ '#F43F5E'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `综合参考单价: $${ctx.parsed.x.toFixed(2)} / 百万 Tokens`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 14,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['2023', '2024', '2025', '2026E'],
+ datasets: [
+ {
+ type: 'bar',
+ label: 'Meta 集团 AI 基础设施资本开支 CapEx ($B)',
+ data: [28.1, 39.2, 68.5, 118.0],
+ backgroundColor: 'rgba(139, 92, 246, 0.85)',
+ borderRadius: 6,
+ barThickness: 34,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'Llama 赋能带来的年化广告增效与算力降本价值 ($B)',
+ data: [4.2, 11.5, 21.8, 33.5],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(1)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 140,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: 'AI 算力资本开支 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 40,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: 'Llama 间接年化商业回报 ($B)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateCompoundSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

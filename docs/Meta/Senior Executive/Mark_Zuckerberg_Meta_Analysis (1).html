@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>马克·扎克伯格 Mark Zuckerberg 深度商业与战略研究报告：36.4亿社交霸权、效率之年逆转与千亿美元AI算力豪赌</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <script>
+ if (typeof Chart === 'undefined') {
+   document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"><\/script>');
+ }
+ </script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#93C5FD',
+ 400: '#60A5FA',
+ 500: '#3B82F6',
+ 600: '#2563EB',
+ 700: '#1D4ED8',
+ },
+ metablue: {
+ 300: '#7DD3FC',
+ 400: '#38BDF8',
+ 500: '#0284C7',
+ 600: '#0369A1',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：Meta 皇家蓝渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(59, 130, 246, 0.26) 0%, rgba(6, 182, 212, 0.08) 100%);
+ border-left: 3px solid #3B82F6;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #60A5FA;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-white transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-teal-400 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Mark_Zuckerberg_Meta_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-white text-xs shadow">
+ MZ
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Meta · Facebook · Instagram · AI</div>
+ <div class="text-sm font-bold leading-tight">马克·扎克伯格深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-white text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">扎克伯格专题目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 商业版图与双引擎架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 产品战略与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 顶级科技CEO横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务演变与AI算力豪赌推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与管理得失复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 扎克伯格法则核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-white font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>科技商业领袖与平台战略研究组</p>
+ <p>财报与估值基准：SEC 10-K/10-Q · 2026Q3</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-teal-500 flex items-center justify-center text-white font-extrabold text-base shadow-lg shadow-mogold-500/25">
+ MZ
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CEO MONOGRAPH</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">马克·扎克伯格研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 全球社交图谱缔造者与开源AI掌舵人 · Meta Platforms (NASDAQ: META)
+ </p>
+ </div>
+
+ <!-- 核心人物实时财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">Meta 市值 / 投票权</span>
+ <span class="font-mono font-bold text-white">~$1.64T · 60.8%</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY25营收 / 26Q3TTM</span>
+ <span class="font-mono font-bold text-emerald-400">$201.0B / $241.6B</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">日活DAP / 26CapEx</span>
+ <span class="font-mono font-bold text-mogold-400">36.4亿 · $135-145B</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>商业版图与双引擎架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>产品战略与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>顶级科技CEO横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务演变与AI算力豪赌推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与管理得失复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>扎克伯格法则核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">CEO 深度档案：硅谷最具争议的“战时创始人”</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">执掌横跨：Facebook (2004–2021) → Meta Platforms (2021–2026+)</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>财务与估值基准：2026年11月 (Q3 10-Q)</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景科技蓝点阵纹理 -->
+ <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#3B82F6 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 36.4亿日活印钞机 × 60.8%绝对控制权 × 2026年$1,400亿AI基础设施豪赌</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 马克·扎克伯格 Mark Zuckerberg 深度商业与战略研究报告：36.4亿社交图谱帝国、千亿AI算力决战与双重股权控制权博弈
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 从 2004 年哈佛宿舍里的校园名录起步，42 岁的马克·扎克伯格已连续执掌 Meta Platforms 逾 22 年，构建出覆盖全球近半数人口（<a href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">36.4亿日活用户 DAP</a>）的数字注意力霸权。在经历 2022 年元宇宙烧钱与苹果隐私新政双重重创、市值暴跌逾 75% 的至暗时刻后，他以铁血“效率之年”裁员重组实现股价 7 倍惊天逆转；而到了 2026 年，手握 <a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link text-white font-semibold">60.8% 超级投票权</a> 的扎克伯格再次押上全副身家——将 2026 全年资本开支（CapEx）推高至惊人的 <a href="https://www.aichatdaily.com/ai-business/meta-narrows-2026-capex-135b-145b-plans-nonvoting" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">$1,350亿–$1,450亿</a>，并推出 Muse 系列大模型、自研 Iris 芯片与 Ray-Ban AI 智能眼镜，全力角逐通用人工智能（AGI）与下一代个人计算入口。
+ </p>
+
+ <!-- 核心商业遗产高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">印钞机级核心广告基本盘</div>
+ <div class="text-white font-semibold">FY2025 营收首破 $2,010亿，2026 Q3 单季营收达 $646亿 (+26% YoY)，AI 推荐引擎驱动单条广告均价大涨 14%</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">史上最激进资本开支转型</div>
+ <div class="text-mogold-300 font-semibold">2026 年暂停股票回购、发行债券并将 $1,350亿–$1,450亿倾注于超算集群，宁可短期自由现金流承压也要赢下 AI</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">创始人控制权制度护城河</div>
+ <div class="text-emerald-400 font-semibold">凭 B 类股持有 60.8% 投票权，并于 2027 年 1 月起派发无投票权 C 类股，确保资本扩张不稀释长期战略定力</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Meta 总市值与个人身家 (2026.11)</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$1.64T</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">身家 $225B+</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 持有约 13% 经济股权但掌控 <strong>60.8% 投票权</strong>，稳居全球富豪榜前五，99% 股份承诺捐入陈-扎克伯格倡议（<a href="https://www.benzinga.com/markets/large-cap/26/11/63105755/mark-zuckerberg-net-worth-tops-225-billion-meta-ceo-family" target="_blank" rel="noopener noreferrer" class="cite-link">Benzinga</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2025 营收与 TTM 规模</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$201.0B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">TTM $241.6B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ FY2025 营收同比增长 22.2%，净利润达 <strong>$60.46B</strong>，营业利润率 41.4%，毛利率高达 ~81%（<a href="https://tickersage.com/stocks/meta/" target="_blank" rel="noopener noreferrer" class="cite-link">Meta FY25 10-K</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>应用家族日活跃用户 (DAP)</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">36.4亿</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">单季ARPU $17.72</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ Facebook、Instagram、WhatsApp 与 Messenger 每日触达地球近半数人口，Q3 2026 单季人均创收同比大增 23%（<a href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Meta 2026Q3</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>2026 全年 AI 资本开支指引</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$135-145B</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">占营收 ~56%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 从 FY2024 的 $39.2B 跃升逾 3.5 倍，重金建设超大规模 AI 数据中心、自研芯片与开源模型护城河（<a href="https://www.xtb.com/int/market-analysis/news-and-research/record-breaking-meta-though-with-a-cash-loss-investors-for-now-are-buying-zuckerberg-s-plan-anyway" target="_blank" rel="noopener noreferrer" class="cite-link">XTB Research</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 商业版图与双引擎架构 (Business & Platform Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Business Empire & Dual-Segment Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 商业版图与双引擎架构：98.9% 现金牛应用家族供血未来计算平台</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2025 Family of Apps 营业利润 $102.5B vs Reality Labs 营业亏损 -$19.2B</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2021–FY2025 两大事业部营业利润对比：应用家族印钞机 vs 现实实验室投入（$B）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">Family of Apps 2025 年狂赚 $1,025亿营业利润，稳健支撑 Reality Labs 累计 $769亿前沿研发投入</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('segment_profit')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：双事业部利润结构</button>
+ <button onclick="switchBizChart('geo_revenue')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：2026Q3全球区域营收</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">扎克伯格帝国的三大核心运转逻辑</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“先买下威胁，再缩放至十亿级”的经典并购战法</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2012 年以 <strong>$10亿</strong> 闪电收购仅 13 名员工的 Instagram、2014 年斥资 <strong>$190亿</strong> 拿下 WhatsApp，使 Meta 在移动端顺利完成从单一信息流向图文社交与即时通讯的跨代统治（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Insights</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">AI 推荐与 Advantage+ 商业化引擎全栈重塑</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 苹果 ATT 隐私政策曾重创第三方追踪；扎克伯格投入数百亿美元自研生成式广告推荐模型与 Reels 短视频引擎，推动 2026 Q3 广告展示量增 10%、单价涨 14%，广告营收单季冲至 <strong>$630.6亿</strong>（<a href="https://www.xtb.com/int/market-analysis/news-and-research/record-breaking-meta-though-with-a-cash-loss-investors-for-now-are-buying-zuckerberg-s-plan-anyway" target="_blank" rel="noopener noreferrer" class="cite-link">XTB</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">打破 iOS / Android 渠道枷锁的终极执念</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 扎克伯格深知没有自控硬件平台就永远受制于苹果与谷歌抽成和规则，因此即便 Reality Labs 2021–2025 累计亏损 <strong>$769亿</strong>，他仍坚持押注智能眼镜与原生 AI 入口（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Filing Analysis</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">核心收入集中度特征</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">广告占 FY25 总营收 97.6% ($196.2B)</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心业务与技术引擎详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 引擎 1：核心社交矩阵 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一现金牛底座 · 占 FY25 营收 98.9%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">FY25 营业利润 $102.5B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 全球社交图谱与注意力垄断（Facebook / Instagram / Threads）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 从熟人关系链（Social Graph）进化为由 AI 兴趣算法驱动的“发现引擎”（Discovery Engine），Instagram Reels 与 Facebook 视频彻底扭转了短视频流失危机；新兴文本社交平台 <strong>Threads</strong> 依托母体一键导流迅速跻身亿级社区，构筑起全网最高的跨年龄层用户停留时长护城河。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>36.4亿 日活跃用户 · ~81% 综合毛利率</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">全球数字营销必选底层通道</span>
+ </div>
+ </div>
+
+ <!-- 引擎 2：即时通讯与商业消息 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第二变现曲线 · 商业消息高增长</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">FoA 非广告收入 Q3 +59%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 全球即时通讯网络与 AI 商业代理（WhatsApp &amp; Messenger）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ WhatsApp 是拉美、印度、欧洲及中东地区的国民级通信基础设施。近年来扎克伯格重点推进 <strong>Click-to-WhatsApp 导流广告</strong> 与企业付费 API，使应用家族“其他收入”（以 WhatsApp 商业消息及付费认证为主）在 2026 Q3 单季突破 <strong>$11亿（同比 +59%）</strong>（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Q3 2026</a>），并成为 Meta AI 助手触达数十亿用户的超级入口。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Click-to-Message / AI 客服代理</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">从免费通信管道转向B2C交易闭环</span>
+ </div>
+ </div>
+
+ <!-- 引擎 3：开源大模型与算力基础设施 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">战略核武器 · 开源生态与自研算力</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">2026 CapEx $135B–$145B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. Llama / Muse 模型矩阵与“Meta Compute”算力战略</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 扎克伯格以“开源颠覆闭源垄断”的经典打法，通过开源 Llama 与最新发布的 <strong>Muse Spark 1.3</strong> 大模型将基础智能商品化，防止 OpenAI 或 Google 垄断模型层；同时于 2026 年推出 <strong>Meta Compute</strong> 与自研 <strong>Iris AI 芯片</strong>，计划对外输出低成本推理算力并支撑千亿级超算集群（<a href="https://www.fool.com/investing/2026/09/09/mark-zuckerberg-net-worth-jump-billion-meta-ai/" target="_blank" rel="noopener noreferrer" class="cite-link">Motley Fool</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>PyTorch / Llama / Muse / MTIA &amp; Iris</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">用基础设施规模改写AI竞争规则</span>
+ </div>
+ </div>
+
+ <!-- 引擎 4：Reality Labs 与智能眼镜 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">长期远期期权 · 下一代可穿戴终端</span>
+ <span class="font-mono text-xs font-bold text-rose-500 dark:text-rose-400">FY26 预计亏损收窄至 $18–19B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 现实实验室（Reality Labs：Ray-Ban AI 眼镜与 Quest MR）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 经历早期 Horizon Worlds 虚拟世界受挫后，扎克伯格务实将硬件重心转向轻量化 <strong>Ray-Ban Meta 智能眼镜与 Orion AR 原型</strong>——将多模态 AI 摄像头与语音助手嵌入日常眼镜。随着资源进一步聚焦 AI，Reality Labs 年度亏损正从 2025 年峰值 $192亿向 2027 年约 $150亿逐步收敛（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Analysis</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Ray-Ban Meta / Quest / Orion AR</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">争夺后智能手机时代第一视角入口</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 产品战略与四重核心护城河 (Strategy & Economic Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Strategic Playbook & Economic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 产品战略与四重核心护城河：超级投票权、网络效应与“效率之年”铁律</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极宽 (Wide Moat · 双边网络效应 + 广告主ROI闭环 + 治理结构锁定)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">60.8% 超级投票权与跨周期战略定力</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 通过持有 99.7% 的 B 类股（每股 10 票），扎克伯格仅以约 13% 经济股权便锁定 <strong>60.8% 绝对控制权</strong>，并于 2027 年 1 月起派发无投票权 C 类股（<a href="https://www.aichatdaily.com/ai-business/meta-narrows-2026-capex-135b-145b-plans-nonvoting" target="_blank" rel="noopener noreferrer" class="cite-link">AI Chat Daily</a>）。这使他能无视华尔街短期季度压力，强行推进移动端转型与千亿美元 AI 基建。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">36.4亿日活双边网络与中小企业广告壁垒</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 全球超千万中小商户高度依赖 Meta 自动化广告投放工具（Advantage+）获取精准订单。用户规模越大 → 转化数据越丰富 → AI 定向 ROI 越高 → 广告主竞价越激烈，形成几乎不可撼动的双边飞轮。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“免费开源互补品”非对称商业打击</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 遵循经济学“使互补品商品化”原则，扎克伯格开源 PyTorch 框架与 Llama/Muse 模型，让全球开发者免费帮 Meta 调试生态并削弱闭源模型厂商的收费壁垒，而 Meta 则在自身 36.4 亿用户应用层与广告端收取超额垄断租金。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“战时 CEO”极限自我纠偏与扁平组织</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 从 2023 年首倡“效率之年”到 2026 年 5 月再裁员约 8,000 人、将总员工数精简 15% 至 <strong>66,775 人</strong>（单季人均创收近百万美元）（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Q3 2026</a>），扎克伯格展现出顶级创始人罕见的冷酷去臃肿执行力。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维 CEO 战略能力雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球顶级科技 CEO 五维商业能力模型对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">扎克伯格 (Meta) vs 乔布斯 (Apple) vs 马斯克 (Tesla/xAI)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 顶级科技CEO横向对比 (Tech CEOs Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Global Tech CEOs Comparative Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 顶级科技 CEO 横向对比：控制权结构、资本开支强度与人均创收</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索 CEO / 公司 / 战略特征..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-white shadow-sm transition cursor-pointer">全部领袖</button>
+ <button onclick="filterCompetitors('consumer')" data-filter="consumer" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">消费生态与广告巨头</button>
+ <button onclick="filterCompetitors('infra')" data-filter="infra" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">AI 算力与云基础设施</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">科技 CEO 与核心企业</th>
+ <th class="py-4 px-4 min-w-[140px]">治理结构与控制权</th>
+ <th class="py-4 px-4 min-w-[145px]">2026 个人身家 / 市值量级</th>
+ <th class="py-4 px-4 min-w-[120px]">核心商业护城河</th>
+ <th class="py-4 px-4 min-w-[125px]">2026 AI 战略路线</th>
+ <th class="py-4 px-5 min-w-[240px]">与扎克伯格治理与战略的异同评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：扎克伯格基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-white text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">马克·扎克伯格</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Meta Platforms (NASDAQ: META)</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">创始人兼任 · 60.8% 超级投票权</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">身家 ~$225B / 市值 ~$1.64T</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">36.4亿 DAP + 81%毛利</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">开源 Muse + $140B 基建</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“战时创始人”典范：</strong>兼具极致效率压榨与激进长期押注，利用双重股权屏蔽短期资本市场干扰（<a href="https://www.benzinga.com/markets/large-cap/26/11/63105755/mark-zuckerberg-net-worth-tops-225-billion-meta-ceo-family" target="_blank" rel="noopener noreferrer" class="cite-link">Benzinga</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：桑达尔·皮查伊 -->
+ <tr data-category="consumer" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">桑达尔·皮查伊 (Sundar Pichai)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Alphabet / Google (GOOGL)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">职业经理人（佩奇/布林控股）</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">市值 ~$2.5T+ 全球科技巨头</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">搜索垄断 + YouTube + Cloud</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">闭源 Gemini + 自研 TPU</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>数字广告双寡头宿敌：</strong>谷歌拥有更深厚的云与搜索护城河，但面临 AI 搜索颠覆自身现金牛的“创新者窘境”，而 Meta 广告反而因 AI 推荐加速增长。
+ </td>
+ </tr>
+
+ <!-- 行 3：萨提亚·纳德拉 -->
+ <tr data-category="infra" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">萨提亚·纳德拉 (Satya Nadella)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Microsoft (NASDAQ: MSFT)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">职业经理人（分散股权结构）</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">身家 ~$1.5B / 市值 ~$3.8T</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">Azure 企业云 + Office 365</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">企业 Copilot + 外部模型合作</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>B2B 稳健复利 vs C2C 豪赌：</strong>纳德拉依托企业云合同稳步变现 AI；扎克伯格则必须依靠自研模型与硬件去抢占消费者直接触点（<a href="https://bingx.com/en/learn/article/what-is-mark-zuckerberg-net-worth" target="_blank" rel="noopener noreferrer" class="cite-link">BingX</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 4：黄仁勋 -->
+ <tr data-category="infra" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">黄仁勋 (Jensen Huang)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">NVIDIA (NASDAQ: NVDA)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">联合创始人 · ~3.5% 股权</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">身家 ~$170B+ / AI 卖水人王</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">GPU 算力 + CUDA 生态壁垒</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">Blackwell / Rubin 全栈硬件</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>上游最大客户与暗中博弈：</strong>Meta 是英伟达 GPU 全球最大采购商之一，但扎克伯格正通过自研 Iris 芯片与开源软件栈力图降低对单一算力霸主的依赖。
+ </td>
+ </tr>
+
+ <!-- 行 5：埃隆·马斯克 -->
+ <tr data-category="consumer" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">埃隆·马斯克 (Elon Musk)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Tesla / SpaceX / xAI / X</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">多实体实控创始人</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">2026福布斯全球首富 ~$839B+</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">硬核制造 + 航天 + 实时数据</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">xAI Colossus 超算 + 物理AI</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>硅谷最直接的哲学与舆论宿敌：</strong>两人从早期航天火箭合作破裂、Threads 正面狙击 X，到 2026 年在超算集群与开源/闭源 AI 话语权上全面交锋（<a href="https://bingx.com/en/learn/article/what-is-mark-zuckerberg-net-worth" target="_blank" rel="noopener noreferrer" class="cite-link">BingX</a>）。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的领袖记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：科技巨头 2026 资本开支豪赌与单季创收对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">押注全部身家的基建强度：Meta 2026 全年 CapEx 指引与历史资本开支跃迁（$B）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">从 2023 年“效率之年”的 $28.1B 收缩，到 2026 年高达 $140B（中值）的史诗级跃升，扎克伯格正用现金流换取算力代差（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Filing Data</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">3年 CapEx 暴增 ~5 倍</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 财务演变与AI算力豪赌推演 (Financial Turnaround & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Trajectory & AI CapEx ROI Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务演变与 AI 算力豪赌推演：从轻资产印钞机到重资产 AI 基础设施巨头</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2026 Q3 单季营收 $64.6B (+26%)，但因 $34.9B 单季 CapEx 导致自由现金流转负 (-$2.12B)</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Q3 2026 Revenue &amp; Growth</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$64.60B (+26%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 营收超预期且 Q4 指引高达 <strong>$73B–$76B</strong>；剔除 $9.89B 州检察长法律和解计提后，核心营业利润率仍高达 ~35%（<a href="https://www.xtb.com/int/market-analysis/news-and-research/record-breaking-meta-though-with-a-cash-loss-investors-for-now-are-buying-zuckerberg-s-plan-anyway" target="_blank" rel="noopener noreferrer" class="cite-link">XTB</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Balance Sheet Shift (Sep 2026)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$82.4B 现金 / $83.7B 债</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 为支撑百亿美元级数据中心建设，Meta 2025–2026 累计发债将总债务推升至 $83.7B，告别零负债历史，实现低成本债务杠杆加码 AI（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Q3 2026</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Quarterly R&amp;D Intensity</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$20.1B / 单季 (+32%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 2026 Q3 单季研发费用即高达 $201亿（占单季营收 31.1%），重金招揽顶尖 AI 研究员并训练下一代多模态大模型（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Filing</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Capital Return Pivot</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$0 回购 (9M 2026)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 对比 FY2025 全年斥资 $262亿回购股票，2026 前三季度 Meta 暂停全部股票回购（仅派息 $41亿），将每一美元现金流悉数投入 AI 算力基建（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Insights</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2021–2026Q3 TTM 跨越周期：Meta 年度总营收 vs 自由现金流（FCF）剪刀差演进（$B）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">2023–2024 年“效率之年”曾释放出 $52.1B 创纪录自由现金流；而 2025–2026 年为抢占 AI 算力制高点，FCF 主动让渡给超大规模资本开支</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">营收 5 年翻倍 · 现金流重投未来</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“扎克伯格周期”长期股东价值与复利动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>META COMPOUNDING ENGINE · 扎克伯格周期股东价值复利模拟器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">从 2012 IPO 破发到 $1.64万亿巨头：三大真实历史周期与未来推演</h3>
+ <p class="text-xs text-slate-400 mt-0.5">一键切换三大历史真实交易窗口（2012 IPO 至今 / 2022 底部效率逆转 / 2026 华尔街基准三年目标）或自由调节参数</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#3B82F6] cursor-pointer">
+ <span>叠加季度股息再投资 (+0.4%/年)</span>
+ </label>
+ </div>
+
+ <!-- 真实历史周期预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('ipo_2026')" data-era="ipo_2026" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-white font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 2012 IPO 至 2026 长牛周期</div>
+ <div class="text-[11px] opacity-90 font-mono mt-0.5">14年 · 发行价 $38→~$640 (~22.3% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('efficiency_rebound')" data-era="efficiency_rebound" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 2022.10 至暗时刻逆转周期</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">4年 · 谷底 $92.44→~$640 (~62.2% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('ai_base_case')" data-era="ai_base_case" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 2026–2029 AI 基建兑现基准</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">3年 · 机构基准 $640→$996 (~15.9% CAGR)</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始投入本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$10,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="1000" max="100000" step="1000" value="10000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#3B82F6] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">14 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="25" step="1" value="14" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#3B82F6] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年化复合回报率 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">22.3%</span>
+ </div>
+ <input id="sim-growth" type="range" min="5" max="65" step="0.1" value="22.3" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：对应 2012 年 5 月 Facebook 纳斯达克上市发行价（$38.00）持有至 2026 年 10 月末（$640.10）的 14 年真实资本复利斜率。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计总资产市值</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$167,448</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计净增值 +1,574%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">本金增值倍数 (MOIC Multiple)</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">16.74x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 3.4 年资产翻一倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">累计创造净资本利得</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$157,448</div>
+ <div class="text-xs text-slate-400 mt-1.5">扣除初始投入本金后的纯复利收益</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效综合年化复合增长率</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">22.30%</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">持有半程（第 7 年）资产约：$40,920</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 多空双视角投资与管理评估 (Bull Case vs Bear Risks) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心逻辑与管理优势 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">低估值AI期权 + 顶级广告变现</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>极少见兼具“高速增长 + 合理估值”的超大盘科技股：</strong>在保持 26% 营收增速的同时，TTM 市盈率仅约 21.8 倍，显著低于多数同体量 AI 巨头（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Insights</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 算力投入已在核心广告业务实时回收回报：</strong>不同于纯粹讲故事的基建投入，Meta 的 GPU 集群直接提升了信息流推荐时长与广告转化率，推动单季广告收入突破 $630亿。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>Muse Spark 1.3 跻身第一梯队并开启算力变现：</strong>大模型能力追平闭源竞品且推理定价更具性价比，Meta Compute 与 Ray-Ban 眼镜打开硬件与云第二曲线（<a href="https://www.fool.com/investing/2026/09/09/mark-zuckerberg-net-worth-jump-billion-meta-ai/" target="_blank" rel="noopener noreferrer" class="cite-link">Motley Fool</a>）。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头核心风险与治理隐患 (Bear Risks)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">折旧海啸 + 独断治理风险</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>千亿 CapEx 引发的折旧海啸与自由现金流枯竭：</strong>2026 年 $1,350亿–$1,450亿资本开支将转化为未来数年的巨额折旧（D&amp;A 同比暴增 44%），一旦宏观广告增速放缓将剧烈挤压利润率（<a href="https://www.xtb.com/int/market-analysis/news-and-research/record-breaking-meta-though-with-a-cash-loss-investors-for-now-are-buying-zuckerberg-s-plan-anyway" target="_blank" rel="noopener noreferrer" class="cite-link">XTB</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>董事会制衡失效与单一决策者风险：</strong>60.8% 投票权使任何独立董事都无法否决扎克伯格的资本配置决定，若 AI 算力投资回报低于预期，外部股东缺乏纠偏机制。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>全球青少年安全诉讼与反垄断罚单常态化：</strong>仅 2026 Q3 单季便录得 $98.9亿美国州检察长法律和解计提，欧美对算法成瘾、数据隐私及并购历史（FTC 诉讼）的监管高压长期存在（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Filing</a>）。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕演进与管理得失复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Career Evolution & Strategic Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕领导力演进与复盘：从“快速行动打破陈规”到千亿硬核基建统帅</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">扎克伯格最大的核心能力：在三次生死危机中均实现了自我否定与战略换轨</span>
+ </div>
+
+ <!-- 1. 三幕人生演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">第一幕 · 校园起家与移动转身</span>
+ <span class="font-mono text-xs font-bold text-slate-500">2004–2016</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">“Mobile First”闪电战</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>19 岁创办 Facebook 并拒绝雅虎 $10亿收购；2012 年上市初期因桌面端向移动端过渡缓慢遭华尔街看空，扎克伯格果断重写全公司架构并重金买下 Instagram 与 WhatsApp，成功卡位移动信息流时代。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-teal-600 dark:text-teal-400">
+ 阶段启示：识别平台范式迁移后不惜一切代价完成全员转向
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第二幕 · 隐私风暴与元宇宙谷底</span>
+ <span class="font-mono text-xs font-bold text-rose-500">2017–2022</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">从信任危机到市值暴跌 75%</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>剑桥分析事件令公司陷入舆论围剿；2021 年更名 Meta 押注元宇宙，叠加苹果 iOS 隐私拦截与 TikTok 冲击，2022 年营收罕见下滑 1.1%，股价从 $382 暴跌至 <strong>$92.44</strong>（<a href="https://bingx.com/en/learn/article/what-is-mark-zuckerberg-net-worth" target="_blank" rel="noopener noreferrer" class="cite-link">Market History</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段启示：当软件应用生态受制于硬件系统商时，商业根基极度脆弱
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第三幕 · 效率逆转与AI决战</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2023–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">重塑硬核工程文化与千亿基建</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>砍掉冗余管理层并重回一线代码与模型评审，推动市值重返 $1.64万亿上方；2026 年将资本开支拉升至 $135B–$145B，以开源模型、自研芯片与智能眼镜全力冲击 AGI 时代霸主（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Q3 2026</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：只有掌控决策权的创始人才能完成如此剧烈的战略再造
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大关键战略折戟与纠偏闭环矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：扎克伯格四大关键战略教训与进化闭环</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">教训 01 · 过度超前押注沉浸式 VR 的节奏误判</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">Horizon Worlds → Ray-Ban AI</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">大众拒绝笨重头显，但愿意佩戴轻量时尚 AI 眼镜</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2021 年全员押注虚拟化身社交一度导致 $769亿累计亏损与品牌疏离；扎克伯格随后及时把 Reality Labs 重心转向与传统眼镜巨头联名的 Ray-Ban AI 智能眼镜，找到了日常穿戴与多模态 AI 结合的真实突破口。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">教训 02 · 和平年代的组织膨胀与中层官僚化</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2023 &amp; 2026 扁平化改革</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">员工数量翻倍反而降低了产品迭代速度</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 疫情期间过度扩招至 8.7 万人曾引发严重内耗；扎克伯格痛定思痛推行“扁平化”，减少“经理管经理”，至 2026 年 9 月把全公司精简至 <strong>66,775 人</strong>（同比再减 15%），大幅提升工程师人均产出（<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Filing</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">教训 03 · 依赖外部第三方数据追踪的脆弱性</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">Apple ATT 冲击 → AI 广告引擎</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">用第一方 AI 行为建模替代第三方 Cookie 追踪</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2021 年苹果隐私新政曾让 Meta 预计损失百亿美元广告收入；扎克伯格通过全栈自研 Lattice 广告大模型与端到端转化归因工具，仅用两年便使广告定价能力重回高双位数增长轨道。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">教训 04 · 加密货币 Libra (Diem) 监管碰壁</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">主权货币挑战 → WhatsApp 商业支付</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">避免直接挑战主权金融红线，转向合规商业基础设施</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2019 年试图发行全球超主权数字货币 Libra 遭全球央行联合封杀；此后扎克伯格转向与本地持牌支付机构合作，在 WhatsApp 内嵌入合规支付与商业消息服务，实现了稳健的商业化变现。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级商业与投资启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给创业者、战略家与科技投资者的三条“扎克伯格底层法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 当核心cash cow仍具统治力时，勇敢用利润去买断下一代基础设施</div>
+ <p class="text-slate-300 leading-relaxed">
+ 许多科技巨头死于过度追求短期回购与分红而错过技术代际；扎克伯格宁可暂停 $262亿回购、承受短期负自由现金流，也要在 AI 算力竞赛中建立百亿美元级护城河。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-300 mb-1">2. 善用“开源免费策略”瓦解竞争对手的收费护城河</div>
+ <p class="text-slate-300 leading-relaxed">
+ 如果在某个技术层级（如基础大模型）处于追赶位置，最好的策略不是闭门追赶，而是把它彻底开源变成行业免费公共品，把利润池转移到自己独有的海量用户分发层。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 投资创始人控股巨头，本质是评估掌舵人的“自我纠偏速度”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 双重股权是一把双刃剑：它能保护公司免受短视干扰，但也可能放大战略误判；决定长期复利上限的，是创始人面对市场反馈时能否像扎克伯格那样果断承认错误并迅速调头。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “扎克伯格法则”平台与科技企业交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Mark Zuckerberg Platform &amp; AI Strategy Diagnostic Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “扎克伯格法则”平台与 AI 战略评估交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于评估互联网平台、AI 大模型企业或创始人控股型科技巨头的长期竞争壁垒与资本配置质量（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 十亿级注意力入口与双边网络效应锁定</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">流量壁垒锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查平台是否拥有高粘性用户生态（如 Meta 36.4 亿 DAP），能够将任何新功能或 AI 助手在数月内分发给数亿活跃用户。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 激进资本开支（CapEx）的实时主业ROI验证</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">资本配置锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 审视百亿级 AI 算力投资是否已切实提升核心业务转化率与单价（如 Meta 广告均价 +14%），而非停留在单纯的算力军备竞赛。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. “战时 CEO”组织扁平化与人均创收持续提升</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">组织效率锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察管理层是否敢于在顺境或逆境中主动削减冗余层级、提高工程师占比，保持极高的人均营收与执行敏捷度。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 开源生态非对称打击与自研芯片降本能力</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">技术自主权</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验企业是否通过开源模型（Llama/Muse）凝聚开发者生态，并通过自研专用芯片（MTIA/Iris）降低长期推理成本。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 摆脱操作系统渠道税的下一代硬件入口布局</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">远期期权检验</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 评估企业在智能眼镜（Ray-Ban Meta）、可穿戴设备或原生 AI 硬件上的布局能否逐步降低对 iOS/Android 生态的依赖。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 亏损业务边界收敛纪律与监管合规缓冲垫</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">风控安全锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查前沿探索部门（如 Reality Labs）的年度亏损是否处于可控收窄通道，且核心现金牛足以覆盖全球隐私与反垄断合规成本。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>马克·扎克伯格 Mark Zuckerberg 深度商业、产品战略与 AI 资本周期研究报告 · 机构框架版</span>
+ <span>核心数据出处：Meta Platforms SEC Form 10-K (FY2025) &amp; Form 10-Q (Q3 2026)</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务、用户与公司治理指标均严格核验自美国证监会（SEC EDGAR）公开披露的 <a href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Meta Platforms FY2025 Form 10-K</a>、<a href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Meta 2026 Q3 财报公告及 Form 10-Q</a>、<a href="https://sec-api.io/insights/financial-analysis-of-meta-platforms-meta-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">SEC-API 机构财务拆解</a>及权威商业媒体公开资料。报告内置的复利模拟器旨在复盘公司不同战略周期的资本回报规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ // 清理运行态临时样式与画布缓存属性，确保导出的 HTML 在任何本地浏览器打开时干净重绘
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Mark_Zuckerberg_Meta_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Mark_Zuckerberg_Meta_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 顶级科技 CEO 横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “扎克伯格周期”长期股东价值与复利动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ ipo_2026: {
+ principal: 10000,
+ years: 14,
+ cagr: 22.3,
+ caption: '当前测算基准：对应 2012 年 5 月 Facebook 纳斯达克上市发行价（$38.00）持有至 2026 年 10 月末（$640.10）的 14 年真实资本复利斜率。'
+ },
+ efficiency_rebound: {
+ principal: 10000,
+ years: 4,
+ cagr: 62.2,
+ caption: '当前测算基准：模拟 2022 年 10 月市场对元宇宙极度悲观谷底（$92.44）买入，经历“效率之年”与 AI 重估持有 4 年至 ~$640.10 的戴维斯双击回报斜率。'
+ },
+ ai_base_case: {
+ principal: 10000,
+ years: 3,
+ cagr: 15.9,
+ caption: '当前测算基准：对应机构对 Meta 未来三年基准情景测算（营收复合增速 17%、营业利润率 36%、22 倍 PE，目标价 $996）的潜在资本增值推演。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-white font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-90 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-principal').value = preset.principal;
+ document.getElementById('sim-years').value = preset.years;
+ document.getElementById('sim-growth').value = preset.cagr;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义复利推演模式——自由探索不同初始本金、持有期限与预期年化复合增速下的长期股东回报。';
+ }
+
+ function updateValueSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 10000;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 14;
+ const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 20;
+ const divBonus = document.getElementById('div-bonus-toggle').checked ? 0.4 : 0;
+
+ const effGrowthPct = baseGrowthPct + divBonus;
+ const r = effGrowthPct / 100;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+ const finalVal = principal * Math.pow(1 + r, years);
+ const netGain = finalVal - principal;
+ const multiple = principal > 0 ? (finalVal / principal) : 1;
+ const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+ const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+ const midYears = Math.max(1, Math.round(years / 2));
+ const midVal = principal * Math.pow(1 + r, midYears);
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+ document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年资产翻一倍` : '稳健保值';
+ document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+ document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+ document.getElementById('sim-mid-val').textContent = `持有第 ${midYears} 年中期资产约：$${Math.round(midVal).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'mz_meta_analysis_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“扎克伯格法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'segment_profit';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2021–FY2025 两大事业部营业利润对比 ($B, SEC 10-K)
+ const segmentConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022 (寒冬)', 'FY2023 (效率年)', 'FY2024', 'FY2025'],
+ datasets: [
+ {
+ label: 'Family of Apps 应用家族营业利润 ($B)',
+ data: [56.95, 42.66, 62.87, 87.16, 102.50],
+ backgroundColor: '#3B82F6',
+ borderRadius: 5
+ },
+ {
+ label: 'Reality Labs 现实实验室营业亏损 ($B)',
+ data: [-10.19, -13.72, -16.12, -17.73, -19.20],
+ backgroundColor: 'rgba(244, 63, 94, 0.82)',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ min: -25,
+ max: 115,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：2026 Q3 全球四大区域单季营收结构 ($B, SEC Q3 2026 10-Q)
+ const geoConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '美国与加拿大 (40.6%)',
+ '亚太地区 APAC (26.3%)',
+ '欧洲地区 Europe (21.7%)',
+ '世界其他地区 RoW (11.4%)'
+ ],
+ datasets: [
+ {
+ label: '2026 Q3 单季营收 ($B · 合计 $64.60B)',
+ data: [26.20, 17.00, 14.00, 7.40],
+ backgroundColor: ['#3B82F6', '#06B6D4', '#10B981', '#6366F1'],
+ borderRadius: 6,
+ barThickness: 38
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 30,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'segment_profit' ? segmentConfig : geoConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'segment_profit') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2021–FY2025 两大事业部营业利润对比：应用家族印钞机 vs 现实实验室投入（$B）';
+ subEl.textContent = 'Family of Apps 2025 年狂赚 $1,025亿营业利润，稳健支撑 Reality Labs 累计 $769亿前沿研发投入';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2026 Q3 全球四大区域单季营收拆解（总计 $64.60B · +26% YoY）';
+ subEl.textContent = '北美市场贡献超四成营收与核心高ARPU利润，亚太与新兴市场驱动全球用户基本盘持续扩容';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '社交网络效应与用户分发力',
+ '控制权锁定与长期激进押注',
+ '危机下的组织效率重塑力',
+ '端到端消费硬件美学设计',
+ '开源生态与AI算力基建纵深'
+ ],
+ datasets: [
+ {
+ label: '马克·扎克伯格 (Meta)',
+ data: [9.9, 9.8, 9.5, 7.2, 9.4],
+ borderColor: '#3B82F6',
+ backgroundColor: 'rgba(59, 130, 246, 0.24)',
+ pointBackgroundColor: '#3B82F6',
+ borderWidth: 2.5
+ },
+ {
+ label: '史蒂夫·乔布斯 (Apple)',
+ data: [7.6, 8.8, 9.6, 9.9, 8.0],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '埃隆·马斯克 (Tesla/xAI)',
+ data: [8.2, 9.7, 9.4, 8.6, 9.6],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2026 全年资本开支指引中值 (AI 算力基建决战)',
+ '2026 Q3 过去12个月 TTM CapEx (已加速落地)',
+ 'FY2025 全年实际 CapEx (超算集群启动扩容)',
+ 'FY2024 全年实际 CapEx (Llama 3 与推荐升级)',
+ 'FY2023 全年实际 CapEx (“效率之年”精简收缩)'
+ ],
+ datasets: [
+ {
+ label: 'Meta 资本开支 CapEx（含融资租赁，十亿美元 USD）',
+ data: [140.0, 108.0, 72.2, 39.2, 28.1],
+ backgroundColor: [
+ '#3B82F6',
+ '#0284C7',
+ '#06B6D4',
+ '#10B981',
+ '#64748B'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `年度资本开支: $${c.parsed.x.toFixed(1)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 155,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025', '2026 Q3 TTM'],
+ datasets: [
+ {
+ type: 'bar',
+ label: 'Meta 年度总营收 Revenue ($B)',
+ data: [117.93, 116.61, 134.90, 164.50, 201.00, 241.60],
+ backgroundColor: 'rgba(59, 130, 246, 0.85)',
+ borderRadius: 5,
+ barThickness: 30,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '自由现金流 Free Cash Flow ($B)',
+ data: [38.44, 18.41, 43.01, 52.10, 43.59, 25.10],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 270,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '年度总营收 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 65,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '自由现金流 ($B)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ function bootstrapReport() {
+ loadKpiChecklist();
+ updateValueSimulator();
+ if (typeof Chart !== 'undefined') {
+   initBizChart();
+   initRadarChart();
+   initCompMarginChart();
+   initValEvolutionChart();
+ } else {
+   let retries = 0;
+   const timer = setInterval(() => {
+     retries++;
+     if (typeof Chart !== 'undefined') {
+       clearInterval(timer);
+       initBizChart();
+       initRadarChart();
+       initCompMarginChart();
+       initValEvolutionChart();
+     } else if (retries > 25) {
+       clearInterval(timer);
+     }
+   }, 200);
+ }
+ }
+
+ if (document.readyState === 'loading') {
+   window.addEventListener('DOMContentLoaded', bootstrapReport);
+ } else {
+   bootstrapReport();
+ }
+ </script>
+</body>
+</html>

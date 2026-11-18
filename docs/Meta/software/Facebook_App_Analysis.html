@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Facebook 蓝标旗舰应用深度研究报告 (NASDAQ: META 核心支柱)：31.2亿月活现金牛、Marketplace 本地商业与 AI 视频重构</title>
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <!-- Chart.js -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ fbblue: {
+ 300: '#93C5FD',
+ 400: '#4599FF',
+ 500: '#1877F2',
+ 600: '#166FE5',
+ 700: '#0E5A8A',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ amber: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ }
+ }
+ }
+ }
+ }
+ </script>
+
+ <style>
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(24, 119, 242, 0.30) 0%, rgba(16, 185, 129, 0.08) 100%);
+ border-left: 3px solid #4599FF;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-fbblue-500 selection:text-white transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-fbblue-500 via-fbblue-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 导出成功轻量级提示条 (Toast) -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-fbblue-400/50 shadow-2xl text-xs font-medium no-print">
+ <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+ <span id="export-toast-text">已导出独立 HTML 研报文件 (Facebook_App_Analysis.html)</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-fbblue-400 to-fbblue-600 flex items-center justify-center font-extrabold text-white text-sm shadow">
+ f
+ </div>
+ <div>
+ <div class="text-[11px] text-fbblue-300 font-semibold tracking-wider uppercase">Facebook Flagship App · 3.12B MAU</div>
+ <div class="text-sm font-bold leading-tight">Facebook 蓝标旗舰应用深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-2">
+ <button onclick="exportStandaloneHtml()" class="p-2 rounded-lg bg-fbblue-500/20 hover:bg-fbblue-500/30 text-fbblue-300" aria-label="导出HTML文件" title="导出独立HTML文件">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">Facebook 旗舰应用导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与 Facebook 核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. Facebook 产品矩阵与变现架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重社交网络壁垒</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球综合社交与视频平台对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. Facebook 独立财务与ARPU推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 商业演进判断与用户结构风险</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. Facebook 核心运营 KPI 核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-fbblue-500 text-white font-bold text-xs flex items-center justify-center space-x-1.5">
+ <span>一键下载独立 HTML 文件</span>
+ </button>
+ <p>全球社交媒体与数字广告研究组</p>
+ <p>数据基准：2026年11月 (2026Q3披露)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-fbblue-400 via-fbblue-500 to-fbblue-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-fbblue-500/30">
+ f
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-fbblue-300 bg-fbblue-500/20 px-2 py-0.5 rounded">FACEBOOK APP · CORE ENGINE</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">Facebook 深度研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 全球最大单一社交网络 · 31.2亿月活用户、21.7亿日活与 $1,254亿 独立广告现金牛
+ </p>
+ </div>
+
+ <!-- Facebook 核心数据快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">Facebook 月活 / 日活</span>
+ <span class="font-mono font-bold text-white">31.2亿 / 21.7亿 <span class="text-fbblue-300 text-[10px]">(69.6%)</span></span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">2026E Facebook 独立营收</span>
+ <span class="font-mono font-bold text-emerald-400">$125.4B <span class="text-slate-400">(占集团 ~53%)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">北美单用户年化 ARPU</span>
+ <span class="font-mono font-bold text-amber-400">~$215/年 · 全球 $40.2</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-340px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-fbblue-400 mr-2">00</span>执行摘要与 Facebook 核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>Facebook 产品矩阵与变现架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重社交网络壁垒</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球综合社交与视频平台对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>Facebook 独立财务与ARPU推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>商业演进判断与用户结构风险</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>Facebook 核心运营 KPI 核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏 -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-fbblue-400 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-fbblue-500 to-fbblue-600 hover:from-fbblue-600 hover:to-fbblue-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 研报文件</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-fbblue-500/15 text-fbblue-700 dark:text-fbblue-300 font-bold border border-fbblue-500/30">研究对象：Facebook 旗舰应用本体 (Blue App) · 独立业务拆解</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：2026Q3 财报季 · AI 统一视频推荐与年轻用户回流</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖时间：2026年11月</span>
+ <span>母公司：NASDAQ: META</span>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#4599FF 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-fbblue-500/20 border border-fbblue-400/40 text-fbblue-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-fbblue-400 animate-pulse"></span>
+ <span>CORE THESIS · 31.2亿月活社交底座 × AI 视频推荐重塑使用时长 × Marketplace 12亿月活本地商业帝国</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ Facebook 旗舰应用深度研究报告：31.2 亿月活现金牛、AI 发现引擎重塑与年轻族群回流
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 剥离 Instagram、WhatsApp 与 Reality Labs 后，诞生于 2004 年的 <strong class="text-white">Facebook 蓝标主应用（Blue App）</strong>依然是全球互联网史上商业变现能力最强的单一超级入口。截至 2026 年，Facebook 全球月活跃用户（MAU）攀升至 <strong class="text-fbblue-300">31.2 亿人</strong>（占全球互联网人口的 56.1%），日活跃用户（DAU）高达 <strong class="text-emerald-400">21.7 亿人</strong>（DAU/MAU 粘性比达 69.6%）。
+ 得益于自研 <strong class="text-white">AI 统一视频推荐架构（Unified Video Architecture）</strong>打破纯熟人关系链局限，以及 <strong class="text-fbblue-300">Marketplace 二手交易与 Groups 兴趣群组</strong>对欧美 18–29 岁年轻族群的强力吸引（北美年轻日活创三年新高），2026 年 Facebook 单一应用独立广告与商业营收预计突破 <strong class="text-amber-300">$1,253.7亿</strong>，贡献整个 Meta 集团超过一半（~53%）的营收与逾 60% 的自由现金流。
+ </p>
+
+ <!-- 核心投资结论高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">从“熟人广场”进化为“AI 兴趣发现引擎”</div>
+ <div class="text-white font-semibold">超过 50% 的 Facebook 动态流内容已由 AI 算法跨关注推荐，带动视频播放时长同比大增，广告点击率提升 +8.3%、转化率飙升 +15.7%</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">Marketplace 与 Groups 构筑不可替代护城河</div>
+ <div class="text-fbblue-300 font-semibold">Facebook Marketplace 月活突破 12 亿，成为欧美 Z 世代租房、二手车与本地交易首选；Groups 群组月活超 18 亿锁死高频刚需</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">核心矛盾：年轻用户心智争夺 vs 极致变现效率</div>
+ <div class="text-amber-300 font-semibold">尽管面临 TikTok 对 Z 世代娱乐时长的分流，但全球 86% 营销人员仍将 Facebook 作为首选投放阵地，美加区贡献 43.4% 营收</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Facebook 月活 &amp; 日活规模</span>
+ <span class="p-1.5 rounded-lg bg-fbblue-500/15 text-fbblue-600 dark:text-fbblue-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">31.2亿</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">DAU 21.7亿</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 人类历史上首个突破 30 亿月活的社交平台（预计 2031 年突破 40 亿），日活/月活比高达 69.6%，移动端访问占比 97.4%。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>2026E Facebook 独立营收</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$125.4B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+16.1% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 仅 Facebook 蓝标单应用年营收即超过 Netflix、Uber 与 Spotify 营收总和，占 Meta 全集团总营收（$2,365亿）约 53.0%。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>北美市场变现集中度</span>
+ <span class="p-1.5 rounded-lg bg-fbblue-500/15 text-fbblue-600 dark:text-fbblue-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">43.4%</span>
+ <span class="text-xs font-bold text-fbblue-600 dark:text-fbblue-400 bg-fbblue-500/15 px-2 py-0.5 rounded">8.5% 用户贡献</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 美加地区仅占 Facebook 全球用户的 8.5%（约 2.65 亿人），却贡献了 43.4% 的总营收（年化逾 $544亿），印证超强付费转化力。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>营销人员渗透率与核心客群</span>
+ <span class="p-1.5 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">86.0%</span>
+ <span class="text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded">千禧一代占 39%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 全球 86% 数字营销人员使用 Facebook 投放；核心消费主力 25–44 岁千禧一代与 X 世代合计占比超 60%，具备最高可支配购买力。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 Facebook 产品矩阵与变现架构 (Product Matrix & Monetization)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-fbblue-600 dark:text-fbblue-400">Section 01 · Facebook Product Ecosystem &amp; Revenue Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 Facebook 产品矩阵与变现架构：信息流/Reels、Marketplace 与 Groups 三位一体</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2026E Facebook 独立营收 $125.4B · 印度用户 3.78亿居首 · 印尼/巴西/美国紧随其后</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2021–FY2026E Facebook 独立广告营收 ($B) 与月活 MAU (亿人) 演进</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">突破“老龄化见顶”质疑，Facebook 独立营收从 2022 年 $84.5B 稳步攀升至 2026E 的 $125.37B，月活突破 31.2 亿</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('rev_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-fbblue-600 dark:text-fbblue-400 shadow-sm transition cursor-pointer">视图A：六年营收与月活演进</button>
+ <button onclick="switchBizChart('growth_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：用户年龄结构与区域分布</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性拆解核心洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">Facebook 蓝标应用的三大商业化支柱</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-fbblue-500/15 text-fbblue-600 dark:text-fbblue-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">AI 统一视频推荐引擎重塑信息流停留时长</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026 年 Facebook 全面合并长短视频与 Reels 推荐底层架构，用户在全屏视频播放器内的总观看时长同比增长 <strong>+15%</strong>；新版 AI 广告匹配模型使 Facebook 广告点击率提升 <strong>+8.3%</strong>、转化率提升 <strong>+15.7%</strong>。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">Facebook Marketplace 成为欧美本地生活与二手交易霸主</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 凭借强实名社交信用背书与零上架费机制，<strong>Facebook Marketplace</strong> 月活跃买家突破 <strong>12 亿</strong>，在北美二手车、家具家电与同城租房领域全面超越 Craigslist，成为拉动 18–29 岁年轻用户回流的第一大功能入口。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">Groups 兴趣社群与 Messenger 10.1亿月活私域闭环</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 全球超 <strong>18 亿人</strong>每月活跃于 Facebook Groups（育儿、房产、装修、宠物、本地社区），搭配拥有 <strong>10.1 亿月活的 Messenger</strong>，构建了“社群种草 → 信息流转化 → Messenger 私信成单”的高效商业闭环。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">全球第一大用户国（印度）</span>
+ <span class="font-bold text-fbblue-600 dark:text-fbblue-400">3.78 亿用户 · 全球社交渗透率 60%</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- Facebook 四大核心功能模块商业变现详解 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 模块 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-fbblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-fbblue-500/15 text-fbblue-700 dark:text-fbblue-300 text-xs font-bold">核心营收引擎 · 占 FB 广告 ~68%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">链接/图文/视频全形态</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. Facebook Feed 主信息流与站外导流效果广告</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 不同于 Instagram 偏重视觉品牌展示，Facebook 主信息流天然支持<strong>外部独立站链接卡片（占平台帖文 38.9%）</strong>、长图文评测与即时表单（Lead Ads），是全球独立站电商（Shopify 商户）、金融保险、教育及本地服务商获取直接转化（Direct Response）的绝对主阵地。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>美国 68% 成年人日常使用</span>
+ <span class="text-fbblue-600 dark:text-fbblue-400 font-semibold">全网最高外链转化与线索获取效率</span>
+ </div>
+ </div>
+
+ <!-- 模块 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">高增内容引擎 · 占 FB 广告 ~22%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">视频消费占总时长 60%+</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. Facebook Reels 短视频与中长视频贴片广告</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ Facebook 视频消费已占据用户在应用内超过 <strong>60% 的总使用时长</strong>。通过推出跨平台创作者激励计划与 AI 自动剪辑配乐工具，Facebook Reels 不仅盘活了大量原本沉睡的老年与中产用户刷屏时长，更通过叠层横幅广告（Overlay Ads）实现高密度商业变现。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>视频类帖文互动率领先图文 2.1x</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">AI 跨关注推荐贡献 50%+ 曝光</span>
+ </div>
+ </div>
+
+ <!-- 模块 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-amber-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs font-bold">本地商业护城河 · 12亿月活买家</span>
+ <span class="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">年轻用户回流核心抓手</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. Facebook Marketplace 同城交易与汽车/房产垂直广告</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>Marketplace</strong> 已成为全球规模最大的 C2C 本地分类信息与二手交易市场，内嵌于 Facebook 底部核心导航栏。车商、房产中介与本地家具零售商通过付费置顶（Boost Listings）与场景信息流广告精准触达明确处于“交易购买意图”的高净值本地买家。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>覆盖全球 220+ 国家与地区</span>
+ <span class="text-amber-600 dark:text-amber-400 font-semibold">北美年轻群体日活增长第一驱动力</span>
+ </div>
+ </div>
+
+ <!-- 模块 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">高频社群粘性 · 18亿月活群组</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">Messenger 10.1亿 MAU</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. Facebook Groups 兴趣社群、Events 活动与 Pages 商业主页</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 全球超 <strong>2 亿家中小企业</strong>运营着免费的 Facebook Pages 商业主页，并将其作为官网替代品与客户服务窗口；配合 <strong>Click-to-Messenger</strong> 导流广告与 <strong>Meta AI 商业客服机器人</strong>，中小商户无需自建 App 即可在 Facebook 生态内完成全生命周期客户管理。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>超 900 万小微企业使用 AI 创意工具</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">极高商户留存率与极低获客门槛</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 行业地位与四重社交网络壁垒 (Industry Position & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position &amp; Social Network Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重社交网络壁垒：实名关系图谱、全年龄段覆盖与本地生活锁定</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：极宽 (Wide Moat · 占全球社交媒体总用户数 60.0%)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-fbblue-500/15 text-fbblue-600 dark:text-fbblue-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">跨代际“全人口覆盖”的现实社交图谱</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 不同於 Snap 或 TikTok 高度集中于青少年，Facebook 完整覆盖了从 18 岁大学生到 65 岁以上银发族（65岁+占比达 12.3%）的家庭代际网络，是唯一能同时触达一家三代人的数字基础设施。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">千禧一代（25–44岁）高消费主力绝对统治</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 25–44 岁千禧一代占 Facebook 总用户高达 <strong>39%</strong>，正处于结婚、购房、育儿与职场收入巅峰期。这一群体对房产、汽车、家居、金融及母婴消费的高客单价需求，赋予 Facebook 无与伦比的商业变现含金量。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">工具属性深度嵌入日常生活（Groups/Events）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 即使部分欧美用户减少公开发帖，仍每天必须打开 Facebook 查看小区业主群（Groups）、周末聚会邀请（Events）、学校家长通知或登录第三方账号（Facebook Login），工具刚性极高。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">二十年积累的像素追踪与 AI 转化归因壁垒</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 全球数百万电商网站嵌入 Meta Pixel 与 Conversions API，结合 Facebook 账号体系的真实人口统计学标签（年龄、职业、婚育、地理位置），其冷启动找人精准度仍是效果广告行业标杆。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维护城河雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球主流社交平台五维竞争壁垒雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Facebook 蓝标主应用 vs TikTok vs X (Twitter)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 全球综合社交与视频平台横向对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-fbblue-600 dark:text-fbblue-400">Section 03 · Global Social &amp; Video App Competitive Landscape</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球主要社交应用横向对比：Facebook 在用户规模、商业变现与工具属性上全面领跑</h2>
+ </div>
+ <!-- 交互式筛选按钮 -->
+ <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-fbblue-500 text-white shadow-sm transition cursor-pointer">全部主流应用</button>
+ <button onclick="filterCompetitors('meta_family')" data-filter="meta_family" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">同门姊妹应用 (Instagram/Threads)</button>
+ <button onclick="filterCompetitors('video')" data-filter="video" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">视频娱乐劲敌 (YouTube/TikTok)</button>
+ <button onclick="filterCompetitors('public_square')" data-filter="public_square" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">公共舆论与年轻社交 (X/Snap)</button>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">社交应用名称与定位</th>
+ <th class="py-4 px-4 min-w-[140px]">2026 全球月活 (MAU)</th>
+ <th class="py-4 px-4 min-w-[145px]">2026E 独立年营收</th>
+ <th class="py-4 px-4 min-w-[100px]">全局 ARPU</th>
+ <th class="py-4 px-4 min-w-[115px]">核心客群画像</th>
+ <th class="py-4 px-5 min-w-[240px]">与 Facebook 的差异化定位与竞争态势</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：Facebook 蓝标主应用 基准 -->
+ <tr data-category="core" class="bg-fbblue-500/5 dark:bg-fbblue-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-fbblue-500 text-white text-[10px] font-extrabold">全球社交之王</span>
+ <span class="font-bold text-slate-900 dark:text-white">Facebook (Blue App)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">综合社交 / Marketplace / Groups / Reels</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">31.2 亿 (DAU 21.7亿)</td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">~$125.4B</td>
+ <td class="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">~$40.2/年</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">全年龄段 · 25-44岁千禧主力 (39%)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全能型商业基础设施：</strong>全球用户基数最大、商业功能最完备，兼具外链转化广告、社群工具与本地二手交易，现金流体量断层领先。
+ </td>
+ </tr>
+
+ <!-- 行 2：Instagram -->
+ <tr data-category="meta_family" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Instagram (同门姊妹应用)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">视觉潮流社交 / Stories / Reels 电商</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">~24.5 亿</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$92.0B</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$37.6/年</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">18-34岁都市年轻消费群体</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>与 Facebook 形成完美年龄与品类互补：</strong>Instagram 主攻美妆服饰、时尚潮流与品牌形象展示，Facebook 主攻家庭生活、本地服务与高转化效果广告，共享后台广告竞价池。
+ </td>
+ </tr>
+
+ <!-- 行 3：YouTube -->
+ <tr data-category="video" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">YouTube (Google 旗下)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">长视频流媒体 / Shorts / 客厅 CTV</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">~27.5 亿</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$58.0B (广告+订阅)</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$21.1/年</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">全年龄段专业视频观众</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>专业长视频霸主但缺乏社交关系链：</strong>YouTube 占据客厅电视与深度视频时长，但缺乏熟人社交、本地群组与二手交易生态，单用户商业化率仅为 Facebook 的一半。
+ </td>
+ </tr>
+
+ <!-- 行 4：TikTok -->
+ <tr data-category="video" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">TikTok (字节跳动海外)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">算法短视频娱乐 / TikTok Shop 直播电商</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">~17.5 亿</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$48.0B</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$27.4/年</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">16-30岁 Z世代娱乐主力</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>娱乐时长最强挑战者：</strong>单用户日均刷屏时长（90分钟+）远超 Facebook（约 35 分钟），但在中高龄高净值家庭用户、本地社群工具与北美合规确定性上仍逊于 Facebook。
+ </td>
+ </tr>
+
+ <!-- 行 5：X (Twitter) & Snapchat -->
+ <tr data-category="public_square" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">X (原 Twitter) / Snapchat</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">实时新闻公共广场 / 青少年阅后即焚</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">~6.1 亿 / ~8.8 亿</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$3.2B / ~$6.1B</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$5.2 / ~$6.9</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">新闻政经意见领袖 / 13-24岁青少年</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>量级差距悬殊（相差逾 20 倍）：</strong>两者独立营收体量均不足 Facebook 的 5%，缺乏全漏斗闭环归因算力，难以撼动 Facebook 的商业统治地位。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：全球主流社交应用独立营收与单用户 ARPU 对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">全球五大单一社交/视频应用 2026E 独立年营收 ($B) 与全球单用户年化 ARPU ($) 对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">Facebook 单应用不仅在总营收（$125.4B）上断层领跑，更凭借北美高净值用户池实现了全球最高的单用户年化 ARPU（~$40.2）</p>
+ </div>
+ <span class="text-xs font-semibold text-fbblue-700 dark:text-fbblue-300 bg-fbblue-500/15 px-2.5 py-1 rounded">Business of Apps / Resourcera 2026 统计</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 Facebook 独立财务拆解与 ARPU 变现模拟器 (Financials & ARPU Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Facebook Standalone Financials &amp; Monetization Engine</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 Facebook 独立财务与区域变现效率：8.5% 北美用户贡献 43.4% 营收的“印钞机”</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2026E Facebook 独立广告营收 $125.37B · 贡献 Meta 应用家族 54% 收入</span>
+ </div>
+
+ <!-- 1. Facebook 独立财务与运营四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-fbblue-600 dark:text-fbblue-400 uppercase">Facebook Standalone Ad Rev</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$125.37B</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 较 2025 年（$108.0B）同比增长 <strong>+16.1%</strong>，连续四年加速复苏，单应用年营收规模稳居全球所有互联网产品第一名。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">DAU / MAU Engagement Ratio</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">69.6%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 31.2 亿月活用户中有 21.7 亿人每天登录 Facebook；其中 68.7% 用户仅通过手机端访问，移动端广告占平台总收入超 94%。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">North America Revenue Share</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">43.4% (~$54.4B)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 美加市场是 Facebook 的核心利润池，单用户年化变现价值超过印度及东南亚市场的 <strong>18 倍以上</strong>，抗风险底盘极其稳固。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">AI Ad Conversion Lift</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">+15.7% CVR</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 2026 年新一代 AI 广告匹配模型使 Facebook 广告点击率提升 <strong>+8.3%</strong>、转化率提升 <strong>+15.7%</strong>，直接驱动广告主预算回流。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴剪刀差图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2020–2026E Facebook 独立广告年营收 ($B) 与全球单用户年化 ARPU ($/人) 增长轨迹</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">走出 2022 年苹果 ATT 隐私政策冲击低谷后，Facebook 凭借 AI 站内闭环归因实现单用户 ARPU 从 $28.5 跃升至 $40.2</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-fbblue-700 dark:text-fbblue-300 bg-fbblue-500/15 px-2.5 py-1 rounded">四年营收累计反弹 +48.4%</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：Facebook 独立商业变现模型测算器 (MAU × DAU粘性 × ARPU 推演器) -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-fbblue-300 font-bold">
+ <span>FACEBOOK MONETIZATION &amp; ARPU SIMULATOR · 蓝标应用独立营收测算器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">Facebook 商业化引擎：“月活规模 × AI 广告单价提升 × 营业利润率”动态推演器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：2026E MAU 31.2亿 | 全局 ARPU $40.2/年 | 独立营业利润率 ~54% | 测算未来 5 年 AI 推荐与 Marketplace 商业化对 Facebook 独立贡献的增量</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-fbblue-500/20 border border-fbblue-400/30 text-xs font-semibold text-fbblue-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="drip-toggle" checked onchange="updateCompoundSimulator()" class="w-4 h-4 rounded accent-[#4599FF] cursor-pointer">
+ <span>计入 Marketplace 交易佣金与 AI 订阅增量 (+1.8%/年)</span>
+ </label>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">Facebook 未来年均月活 (MAU) 增速</span>
+ <span id="sim-mau-label" class="font-mono font-bold text-white text-sm">2.2% / 年</span>
+ </div>
+ <input id="sim-mau" type="range" min="0.5" max="4.5" step="0.1" value="2.2" oninput="updateCompoundSimulator()" class="w-full accent-[#4599FF] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">AI 算法驱动年均单用户 ARPU 增速</span>
+ <span id="sim-arpu-label" class="font-mono font-bold text-emerald-400 text-sm">9.5% / 年</span>
+ </div>
+ <input id="sim-arpu" type="range" min="3.0" max="16.0" step="0.5" value="9.5" oninput="updateCompoundSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">推演预测年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">5 年 (至 2031)</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="10" step="1" value="5" oninput="updateCompoundSimulator()" class="w-full accent-[#4599FF] cursor-pointer">
+ </div>
+
+ <div class="pt-1">
+ <div class="text-slate-300 font-medium mb-2">Facebook 独立业务营业利润率假设（Operating Margin）：</div>
+ <div class="grid grid-cols-3 gap-2" id="buyback-btn-group">
+ <button type="button" onclick="setMarginScenario(0.50)" data-bb="0.50" class="bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-fbblue-400 transition cursor-pointer">
+ 50% 保守利润率<br><span class="text-[10px] text-slate-400">高AI算力摊销</span>
+ </button>
+ <button type="button" onclick="setMarginScenario(0.54)" data-bb="0.54" class="bb-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-fbblue-500 text-white border border-fbblue-400 shadow transition cursor-pointer">
+ 54% 基准利润率<br><span class="text-[10px] text-fbblue-100">当前FoA常态水平</span>
+ </button>
+ <button type="button" onclick="setMarginScenario(0.58)" data-bb="0.58" class="bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-fbblue-400 transition cursor-pointer">
+ 58% 乐观利润率<br><span class="text-[10px] text-slate-400">经营杠杆全面释放</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末 Facebook 独立年营收规模</div>
+ <div id="sim-final-rev" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$239.8B</div>
+ <div id="sim-rev-cagr" class="text-xs font-semibold text-emerald-400 mt-1.5">年化复合增速 +13.8% (起始 $125.4B)</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末 Facebook 独立年营业利润</div>
+ <div id="sim-end-opinc" class="text-2xl sm:text-3xl font-mono font-extrabold text-fbblue-300 mt-1.5">$129.5B</div>
+ <div id="sim-opinc-note" class="text-xs text-slate-400 mt-1.5">单应用年营业利润突破千亿美元大关</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末全球月活跃用户 (MAU) 规模</div>
+ <div id="sim-end-mau" class="text-2xl sm:text-3xl font-mono font-extrabold text-amber-400 mt-1.5">34.8 亿人</div>
+ <div id="sim-end-dau" class="text-xs text-slate-400 mt-1.5">对应日活 DAU 约 24.2 亿人 (按 69.6% 粘性)</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末单用户年化 ARPU (全局均值)</div>
+ <div id="sim-end-arpu" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$68.90</div>
+ <div id="sim-arpu-boost" class="text-xs text-slate-400 mt-1.5">较当前 $40.20 提升 +71.4%</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 市场对 Facebook 的核心多空分歧对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">看多核心论点 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">算法重塑生命力 + 本地生活基础设施化</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>从“衰落论”到“逆生长”的实证反转：</strong>过去五年华尔街屡次预言 Facebook 用户见顶萎缩，但 2026 年其 MAU 依然保持 31.2 亿正增长，且北美年轻用户活跃度创三年新高。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>无可匹敌的商业转化漏斗效率：</strong>86% 全球营销人员把 Facebook 作为必选项，长图文外链、即时表单与 Marketplace 本地交易的结合使其抗周期能力远超纯娱乐短视频平台。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>源源不断的自由现金流“输血库”：</strong>正是依靠 Facebook 每年超过 $650亿 的独立营业利润，Meta 才得以毫无财务压力地投入千亿级 AI 算力与 Reality Labs 硬件研发。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">看空担忧论点 (Bear Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">人口结构老龄化 + 信息流广告负载上限</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>青少年与 18–24 岁 Z 世代原生社交心智弱化：</strong>欧美 13–24 岁人群更倾向于在 TikTok、Snapchat 与 Instagram 进行日常社交，使用 Facebook 往往仅为了查阅 Marketplace 二手物品或大学社团群组。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>主信息流广告加载率（Ad Load）已接近天花板：</strong>Facebook 信息流中每 4–5 条内容即包含一条赞助广告，未来增长高度依赖单价（eCPM）提升而非无限增加广告位数量。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>欧美隐私监管与青少年诉讼和解负担：</strong>2026 年 8 月与美国 52 个州总检察长达成最高 $185.9亿 青少年心理健康诉讼和解协议，同时欧盟 DMA 持续限制个性化数据跨应用打通。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 商业演进判断与用户结构风险 (Strategic Outlook & Risks)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-fbblue-600 dark:text-fbblue-400">Section 05 · Strategic Outlook &amp; Risk Assessment</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 Facebook 商业演进三情景推演与核心运营风险评估</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">定位判断：从“社交网络”向“AI 兴趣发现 + 本地生活交易超级平台”成功转型</span>
+ </div>
+
+ <!-- 1. 三情景商业演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 乐观情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">乐观演进 (Bull Case)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：30%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">2027E FB 独立营收 $148B+</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心驱动：</strong>AI 统一视频推荐推动北美与欧洲用户日均停留时长再增 10%+，Marketplace 全面引入站内担保支付与本地商户订阅服务，释放百亿美元级交易佣金增量。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 独立营收增速保持 18%+，继续充当 Meta 集团最大增长引擎
+ </div>
+ </div>
+
+ <!-- 基准情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-fbblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-fbblue-500/15 text-fbblue-700 dark:text-fbblue-300 text-xs font-bold">基准演进 (Base Case)</span>
+ <span class="font-mono text-xs font-bold text-fbblue-600 dark:text-fbblue-400">概率：50%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">2027E FB 独立营收 $140B–$143B</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心驱动：</strong>全球 MAU 温和增长 2%–3% 至 32 亿，受益于 Advantage+ 自动化投放渗透率提升，广告单价（eCPM）保持 8%–10% 稳健上行，实现双位数现金流增长。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-fbblue-600 dark:text-fbblue-400">
+ 营收增速 12%–14%，稳健贡献集团逾 50% 自由现金流
+ </div>
+ </div>
+
+ <!-- 保守情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">保守演进 (Bear Case)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">2027E FB 独立营收 $131B–$134B</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心驱动：</strong>欧美宏观消费走弱导致中小企业削减效果广告预算，叠加欧盟进一步限制跨平台行为追踪，致使北美与欧洲 ARPU 增速放缓至低个位数。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 营收增速放缓至 5%–7%，进入存量高股息现金牛阶段
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心风险矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">Facebook 独立业务面临的四大核心潜在风险</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 北美核心收入池高度集中风险</span>
+ <span class="text-xs font-mono text-rose-500 font-semibold">关注度：极高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">美加 8.5% 用户贡献 43.4% 营收，单一区域宏观敏感度极高</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 印度（3.78亿用户）等新兴市场虽然贡献了绝大部分新增用户数量，但受限于本地电商与数字支付成熟度，短期 ARPU 极低，无法在利润端对冲北美市场的任何波动。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 短视频形态对图文外链广告的稀释效应</span>
+ <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">用户时长向 Reels 倾斜，但短视频单小时变现效率仍低于主信息流</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 沉浸式全屏短视频对用户注意力的独占性极强，过于频繁插播广告极易引发用户划走流失，因此 Reels 单位时长的广告变现密度仍需持续通过 AI 交互组件追赶传统 Feed。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-fbblue-500/10 text-fbblue-600 dark:text-fbblue-400 text-xs font-bold">03 · AI 生成内容（AIGC）泛滥对社区真实性的侵蚀</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">大量 AI 批量生成图文充斥公共推荐流，考验内容生态治理</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 随着低成本 AI 图像与文案工具普及，部分流量账号在 Facebook 公共主页批量发布“AI 猎奇内容”博取互动分成，若治理不力可能影响高净值真实用户的社区体验。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 欧美数据隐私法规与未成年人保护合规成本</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">全球各国针对社交平台算法推荐与青少年使用时间的立法趋严</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 继美国 52 州和解案后，欧盟、英国与澳大利亚持续收紧对社交平台的算法透明度与年龄验证要求，可能带来持续的合规法务支出与局部功能限制。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 业务观察与投研启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-fbblue-300 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>Facebook 核心业务追踪框架与商业价值重估启示</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 切勿低估“工具型社交”的生命周期</div>
+ <p class="text-slate-300 leading-relaxed">
+ 纯娱乐社交软件往往受制于审美疲劳周期（5–8年），而 Facebook 凭借 <strong>Groups 社群、Events 活动与 Marketplace 交易</strong>成功沉淀为社会数字公共设施，拥有跨越二十年的超级复利寿命。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-fbblue-300 mb-1">2. 关注 AI 推荐对“存量用户时长”的二次挖掘</div>
+ <p class="text-slate-300 leading-relaxed">
+ 在全球 31.2 亿月活接近物理天花板的背景下，衡量 Facebook 健康度的核心已不再是新增多少新用户，而是 <strong>AI 推荐引擎能否持续推高人均单日使用分钟数与广告转化率</strong>。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 跨境电商与中小商户景气度的“晴雨表”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 由于全球逾 86% 营销人员与数百万独立站商户依赖 Facebook 投放，Facebook 北美与欧洲区的季度 eCPM 价格变化，是观测全球消费需求与中小企业盈利状况的最灵敏高频指标。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 Facebook 核心运营 KPI 交互式核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Facebook Core Operating KPIs</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 Facebook 核心运营 KPI 交互式核查清单（季度跟踪监测）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-fbblue-500/15 text-fbblue-700 dark:text-fbblue-300 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选已验证达标的 Facebook 旗舰应用核心经营指标（勾选状态自动本地保存），持续追踪蓝标应用的真实活跃度与商业变现质量：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#1877F2] focus:ring-fbblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. Facebook 月活突破 31.2 亿且 DAU/MAU 粘性稳居 69%+</span>
+ <span class="text-[11px] font-mono text-fbblue-600 dark:text-fbblue-400 font-semibold shrink-0">用户基本盘</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 日活高达 21.7 亿人，验证即使在短视频分流背景下，Facebook 依然保持极高的每日高频打开惯性。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#1877F2] focus:ring-fbblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 北美 18–29 岁年轻族群日活与 Marketplace 交易量创新高</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">年轻化破局</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪 Marketplace（12亿月活）与本地 Groups 能否持续吸引欧美 Z 世代完成首次注册与日常交易留存。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#1877F2] focus:ring-fbblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. AI 广告匹配模型带动点击率 +8.3% 与转化率 +15.7%</span>
+ <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">变现效率核心</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 验证 AI 统一视频架构与 Advantage+ 投放工具在 Facebook 信息流与 Reels 中的实际广告主投产比（ROAS）表现。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#1877F2] focus:ring-fbblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 美加高净值市场营收占比（当前 43.4%）与 ARPU 扩张</span>
+ <span class="text-[11px] font-mono text-rose-600 dark:text-rose-400 font-semibold shrink-0">核心利润池</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 密切监测美加地区 2.65 亿用户的广告竞价单价（eCPM）走势，确保核心高毛利区域维持双位数收入增长。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#1877F2] focus:ring-fbblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. Click-to-Messenger 私信导流广告与 AI 客服商业化</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">私域闭环增量</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪 Messenger 10.1 亿月活与 Facebook Pages 商业主页联动带来的对话式商务（Conversational Commerce）收入贡献。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#1877F2] focus:ring-fbblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 公共信息流 AIGC 低质内容治理与真实社交互动占比</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">社区健康度</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 评估推荐算法对低质 AI 批量搬运内容的降权效果，保障真人创作者与好友动态的社区生态长期健康。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明 (Disclaimer Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>Facebook 旗舰应用（Blue App）深度商业与运营分析报告 · 独立产品拆解版</span>
+ <span>数据基准：Meta 2026Q3 财报披露、Business of Apps、Statista 及 Pew Research 2026 统计数据</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度研究报告聚焦于 Meta Platforms Inc. 旗下核心旗舰应用 <strong>Facebook（Blue App）</strong>的独立用户规模、产品生态、商业化变现及独立营收估算（结合公司公开财报及第三方行业研究机构对单一应用的拆分测算），旨在提供结构化的产品与商业模式分析框架。报告中涉及的 2027 年推演及 ARPU 模拟器均基于特定假设条件，不构成任何证券买卖建议。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立 HTML 研报文件 (Standalone Export)
+ // ==========================================
+ function exportStandaloneHtml() {
+ const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const a = document.createElement('a');
+ a.href = url;
+ a.download = 'Facebook_App_Analysis.html';
+ document.body.appendChild(a);
+ a.click();
+ document.body.removeChild(a);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+
+ const toast = document.getElementById('export-toast');
+ if (toast) {
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-fbblue-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-fbblue-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 同行竞争格局矩阵筛选器
+ // ==========================================
+ function filterCompetitors(category) {
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-fbblue-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-fbblue-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ if (category === 'all' || rowCat === 'core' || rowCat === category) {
+ row.style.display = '';
+ } else {
+ row.style.display = 'none';
+ }
+ });
+ }
+
+ // ==========================================
+ // 5. Facebook 独立商业化与 ARPU 动态推演器
+ // ==========================================
+ let currentFbMargin = 0.54; // 默认 54% Facebook 独立营业利润率
+
+ function setMarginScenario(margin) {
+ currentFbMargin = margin;
+ document.querySelectorAll('#buyback-btn-group .bb-btn').forEach(btn => {
+ const btnM = parseFloat(btn.dataset.bb);
+ if (Math.abs(btnM - margin) < 0.005) {
+ btn.className = 'bb-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-fbblue-500 text-white border border-fbblue-400 shadow transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-fbblue-100';
+ } else {
+ btn.className = 'bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-fbblue-400 transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+ }
+ });
+ updateCompoundSimulator();
+ }
+
+ function updateCompoundSimulator() {
+ const mauGrowthPct = parseFloat(document.getElementById('sim-mau').value);
+ const arpuGrowthPct = parseFloat(document.getElementById('sim-arpu').value);
+ const years = parseInt(document.getElementById('sim-years').value, 10);
+ const extraCommerce = document.getElementById('drip-toggle').checked;
+
+ document.getElementById('sim-mau-label').textContent = mauGrowthPct.toFixed(1) + '% / 年';
+ document.getElementById('sim-arpu-label').textContent = arpuGrowthPct.toFixed(1) + '% / 年';
+ document.getElementById('sim-years-label').textContent = years + ' 年 (至 ' + (2026 + years) + ')';
+
+ const initMau = 3.12; // 31.2 亿月活
+ const initArpu = 40.18; // $40.18 全局年化 ARPU (3.12B * 40.18 = $125.37B)
+ const initRev = 125.37;
+
+ const effectiveArpuGrowth = (arpuGrowthPct + (extraCommerce ? 1.8 : 0)) / 100;
+ const mauG = mauGrowthPct / 100;
+
+ const endMau = initMau * Math.pow(1 + mauG, years);
+ const endDau = endMau * 0.696;
+ const endArpu = initArpu * Math.pow(1 + effectiveArpuGrowth, years);
+ const endRev = endMau * endArpu;
+ const endOpInc = endRev * currentFbMargin;
+
+ const revCagr = (Math.pow(endRev / initRev, 1 / years) - 1) * 100;
+ const arpuBoostPct = ((endArpu - initArpu) / initArpu) * 100;
+
+ document.getElementById('sim-final-rev').textContent = '$' + endRev.toFixed(1) + 'B';
+ document.getElementById('sim-rev-cagr').textContent = `年化复合增速 +${revCagr.toFixed(1)}% (起始 $125.4B)`;
+ document.getElementById('sim-end-opinc').textContent = '$' + endOpInc.toFixed(1) + 'B';
+ document.getElementById('sim-opinc-note').textContent = `按 ${(currentFbMargin * 100).toFixed(0)}% 独立营业利润率测算`;
+ document.getElementById('sim-end-mau').textContent = endMau.toFixed(2) + ' 亿人';
+ document.getElementById('sim-end-dau').textContent = `对应日活 DAU 约 ${endDau.toFixed(2)} 亿人 (按 69.6% 粘性)`;
+ document.getElementById('sim-end-arpu').textContent = '$' + endArpu.toFixed(2);
+ document.getElementById('sim-arpu-boost').textContent = `较当前 $40.18 提升 +${arpuBoostPct.toFixed(1)}%`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'facebook_blue_app_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'rev_evolution';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2021–FY2026E Facebook 独立广告年营收 ($B) 与月活 MAU (亿人)
+ const evoConfig = {
+ type: 'bar',
+ data: {
+ labels: ['2021', '2022', '2023', '2024', '2025', '2026E'],
+ datasets: [
+ {
+ label: 'Facebook 独立广告营收 ($B)',
+ data: [89.20, 84.50, 91.80, 99.40, 108.00, 125.37],
+ backgroundColor: '#1877F2',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'Facebook 全球月活跃用户 MAU (亿人)',
+ data: [29.12, 29.63, 30.65, 30.85, 31.02, 31.20],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 2.5,
+ pointRadius: 4,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.dataset.yAxisID === 'y1'
+ ? `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)} 亿人`
+ : `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 50,
+ max: 140,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ },
+ y1: {
+ position: 'right',
+ min: 28.0,
+ max: 32.0,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v.toFixed(1) + '亿' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：Facebook 核心用户结构与区域变现占比 (%)
+ const splitConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '移动端访问 Facebook 用户比例',
+ 'DAU / MAU 每日登录粘性比例',
+ '美国成年人 Facebook 渗透率',
+ '北美 (美加) 贡献 Facebook 营收比例',
+ '25–44岁千禧一代核心用户占比',
+ '65岁以上高粘性银发族用户占比'
+ ],
+ datasets: [
+ {
+ label: '2026 核心结构占比 (%)',
+ data: [97.4, 69.6, 68.0, 43.4, 39.0, 12.3],
+ backgroundColor: [
+ '#1877F2',
+ '#10B981',
+ '#4599FF',
+ '#F59E0B',
+ '#6366F1',
+ '#22D3EE'
+ ],
+ borderRadius: 6,
+ barThickness: 22
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `统计占比: ${ctx.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 105,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'rev_evolution' ? evoConfig : splitConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'rev_evolution') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-fbblue-600 dark:text-fbblue-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2021–FY2026E Facebook 独立广告营收 ($B) 与月活 MAU (亿人) 演进';
+ subEl.textContent = '突破“老龄化见顶”质疑，Facebook 独立营收从 2022 年 $84.5B 稳步攀升至 2026E 的 $125.37B，月活突破 31.2 亿';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-fbblue-600 dark:text-fbblue-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'Facebook 核心用户结构、粘性比与北美营收集中度 (%)';
+ subEl.textContent = '97.4% 移动端访问、69.6% 日活粘性比，北美仅占 8.5% 用户却贡献 43.4% 营收';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const ctx = document.getElementById('moatRadarChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '31.2亿全年龄段社交图谱覆盖',
+ '外链导流与效果广告转化 ROI',
+ 'Marketplace/Groups 本地工具刚性',
+ '千禧一代高净值消费力密度',
+ '年轻Z世代纯娱乐刷屏时长'
+ ],
+ datasets: [
+ {
+ label: 'Facebook 蓝标主应用',
+ data: [9.9, 9.8, 9.8, 9.6, 7.2],
+ borderColor: '#1877F2',
+ backgroundColor: 'rgba(24, 119, 242, 0.25)',
+ pointBackgroundColor: '#1877F2',
+ borderWidth: 2.5
+ },
+ {
+ label: 'TikTok (海外短视频)',
+ data: [7.6, 8.2, 6.5, 7.8, 9.9],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: 'X (原 Twitter)',
+ data: [5.5, 5.2, 4.5, 7.5, 6.4],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.12)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const ctx = document.getElementById('compMarginChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Facebook 蓝标主应用 (31.2亿 MAU)',
+ 'Instagram (同门视觉社交 · 24.5亿 MAU)',
+ 'YouTube (长视频+Shorts · 27.5亿 MAU)',
+ 'TikTok (海外短视频 · 17.5亿 MAU)',
+ 'Snapchat (年轻熟人通讯 · 8.8亿 MAU)'
+ ],
+ datasets: [
+ {
+ label: '2026E 单应用独立年营收 ($B)',
+ data: [125.4, 92.0, 58.0, 48.0, 6.1],
+ backgroundColor: '#1877F2',
+ borderRadius: 5,
+ barThickness: 13
+ },
+ {
+ label: '全局单用户年化 ARPU ($/年)',
+ data: [40.2, 37.6, 21.1, 27.4, 6.9],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 13
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.datasetIndex === 0
+ ? `${ctx.dataset.label}: $${ctx.parsed.x.toFixed(1)}B`
+ : `${ctx.dataset.label}: $${ctx.parsed.x.toFixed(1)} / 年`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 140,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026E'],
+ datasets: [
+ {
+ type: 'bar',
+ label: 'Facebook 独立广告年营收 ($B)',
+ data: [72.10, 89.20, 84.50, 91.80, 99.40, 108.00, 125.37],
+ backgroundColor: 'rgba(24, 119, 242, 0.85)',
+ borderRadius: 5,
+ barThickness: 28,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'Facebook 全球单用户年化 ARPU ($/人)',
+ data: [25.75, 30.63, 28.52, 29.95, 32.22, 34.82, 40.18],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.dataset.yAxisID === 'y'
+ ? `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}B`
+ : `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)} / 人`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 50,
+ max: 140,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: 'Facebook 独立年营收 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 20,
+ max: 45,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v.toFixed(0) },
+ title: { display: true, text: '全球单用户年化 ARPU ($/人)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateCompoundSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

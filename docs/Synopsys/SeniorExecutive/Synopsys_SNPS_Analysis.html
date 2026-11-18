@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>新思科技 Synopsys, Inc. (NASDAQ: SNPS) 深度研究报告：全球AI芯片EDA霸主、Ansys多物理场融合奇点与“从硅到系统”估值重估</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#070B14',
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+            },
+            snps: {
+              300: '#D8B4FE',
+              400: '#C084FC',
+              500: '#A855F7',
+              600: '#9333EA',
+              700: '#7E22CE',
+            },
+            emerald: {
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+            },
+            cyan: {
+              400: '#22D3EE',
+              500: '#06B6D4',
+              600: '#0891B2',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 自定义滚动条与机构研报细节排版 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+
+    /* 打印友好优化 */
+    @media print {
+      #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+        display: none !important;
+      }
+      main {
+        margin-left: 0 !important;
+        padding: 0 !important;
+      }
+      section {
+        break-inside: avoid;
+      }
+    }
+
+    /* 卡片悬浮微光与上移过渡 */
+    .report-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .report-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 侧边导航激活态：Synopsys 标志性硅紫渐变 */
+    .nav-link.active {
+      background: linear-gradient(90deg, rgba(168, 85, 247, 0.24) 0%, rgba(6, 182, 212, 0.08) 100%);
+      border-left: 3px solid #A855F7;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-snps-600 selection:text-white transition-colors duration-200">
+
+  <!-- 顶部全局阅读进度条 -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-snps-600 via-snps-400 to-cyan-500 w-0 transition-all duration-150"></div>
+  </div>
+
+  <!-- 移动端顶部导航栏 -->
+  <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-snps-500 to-snps-700 flex items-center justify-center font-extrabold text-white text-xs shadow">
+        SNPS
+      </div>
+      <div>
+        <div class="text-[11px] text-snps-400 font-semibold tracking-wider uppercase">NASDAQ: SNPS · Silicon to Systems</div>
+        <div class="text-sm font-bold leading-tight">新思科技 Synopsys 深度研报</div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-2">
+      <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 移动端折叠抽屉菜单 -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+    <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <span class="font-bold text-white text-base">SNPS 研报目录导航</span>
+          <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+          <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 业务与“硅到系统”收入架构</a></li>
+          <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重核心护城河</a></li>
+          <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球 EDA 与仿真巨头横向对比</a></li>
+          <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务健康与Ansys协同推演器</a></li>
+          <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 投资决策与风险配置框架</a></li>
+          <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+        </ul>
+      </div>
+      <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
+        <p>全球半导体 EDA 与工业软件研究组</p>
+        <p class="mt-1">数据基准：2026年11月18日 (Q3 FY26 / FY26E)</p>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+  <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+    <div>
+      <!-- 机构品牌头 -->
+      <div class="p-5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-snps-400 via-snps-600 to-cyan-500 flex items-center justify-center text-white font-extrabold text-xs shadow-lg shadow-snps-500/25">
+            SNPS
+          </div>
+          <div>
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-snps-400 bg-snps-500/15 px-2 py-0.5 rounded">NASDAQ: SNPS</span>
+            <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">新思科技深度研报</h2>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          全球第一大芯片设计 EDA 与多物理场仿真霸主 · 82% 经常性收入复利引擎
+        </p>
+      </div>
+
+      <!-- 股票实时快照徽章 -->
+      <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">参考股价与总市值</span>
+          <span class="font-mono font-bold text-white">~$459.2 <span class="text-slate-400 text-[10px]">($88.7B MCap)</span></span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">FY26E 营收 / Non-GAAP EPS</span>
+          <span class="font-mono font-bold text-emerald-400">$9.715B <span class="text-slate-400">($15.07)</span></span>
+        </div>
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+          <span class="text-slate-400">远期估值与自由现金流</span>
+          <span class="font-mono font-bold text-snps-400">~30.5x P/E · FCF ~$2.60B</span>
+        </div>
+      </div>
+
+      <!-- 七大核心章节目录导航 -->
+      <div class="px-3 py-3.5 overflow-y-auto max-h-[calc(100vh-310px)]">
+        <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+        <nav id="desktop-nav" class="space-y-1 text-[13px]">
+          <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-snps-400 mr-2">00</span>执行摘要与核心指标</span>
+          </a>
+          <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>业务与“硅到系统”收入架构</span>
+          </a>
+          <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重核心护城河</span>
+          </a>
+          <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球 EDA 与仿真巨头横向对比</span>
+          </a>
+          <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务健康与Ansys协同推演器</span>
+          </a>
+          <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>投资决策与风险配置框架</span>
+          </a>
+          <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 侧边栏底部工具栏 -->
+    <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2.5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-slate-400">阅读模式切换</span>
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-3.5 h-3.5 text-snps-400 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span class="dark:hidden">深色护眼模式</span>
+          <span class="hidden dark:inline">机构亮色模式</span>
+        </button>
+      </div>
+      <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-snps-600 to-snps-700 hover:from-snps-700 hover:to-snps-800 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>打印 / 导出 PDF 研报</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="lg:ml-[280px] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+      <!-- =========================================================
+           00. Hero 研报封面区与执行摘要
+      ========================================================= -->
+      <section id="sec-exec" class="scroll-mt-20">
+        <!-- 顶部研报元数据标签栏 -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-snps-500/15 text-snps-700 dark:text-snps-400 font-bold border border-snps-500/30">评级：强烈推荐 / AI芯片卖水人核心底仓</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：Ansys 并购一周年融合与 FY26 全年指引上调期</span>
+          </div>
+          <div class="flex items-center space-x-3 font-mono">
+            <span>覆盖时间：2026年11月</span>
+            <span>NASDAQ: SNPS</span>
+          </div>
+        </div>
+
+        <!-- Hero 标题卡片 -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+          <!-- 背景硅紫点阵纹理 -->
+          <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#C084FC 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+          <div class="relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-snps-500/20 border border-snps-400/40 text-snps-300 text-xs font-semibold mb-4">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>CORE THESIS · Q3 FY26营收暴增+42%至$2.477B × 经常性收入占比82% × Ansys融合推出Multiphysics Fusion</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+              新思科技 Synopsys, Inc. (NASDAQ: SNPS) 深度研究报告：全球AI芯片EDA霸主、Ansys多物理场融合奇点与“从硅到系统”估值重估
+            </h1>
+            <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+              在 CEO <strong class="text-white">Sassine Ghazi</strong> 领导下，完成对工业仿真巨头 <strong class="text-snps-300">Ansys</strong> 历史性整合一周年的新思科技交出超预期的 Q3 FY2026（截至 2026 年 7 月 31 日）答卷：单季总营收同比大增 <strong class="text-emerald-400">+42.4% 至 $24.77 亿美元</strong>（其中 Ansys 贡献 $7.11 亿，设计自动化大增 53% 至 $20.03 亿，设计 IP 重回正增长达 $4.74 亿），Non-GAAP 营业利润率高达 <strong class="text-cyan-300">41.6%</strong>，Non-GAAP 稀释 EPS 达 <strong class="text-emerald-400">$3.91</strong> 超指引上限。
+              公司随即上调 FY2026 全年营收指引中值至 <strong class="text-white">$97.15 亿美元</strong>、Non-GAAP EPS 中值至 <strong class="text-snps-300">$15.07</strong>（全年自由现金流预计达 <strong class="text-emerald-400">~$26.0 亿美元</strong>），并在 Q3 正式发布首批联合重磅产品 <strong class="text-white">Multiphysics Fusion</strong>。在股价随板块震荡回调至 <strong class="text-white">~$459.2（总市值 ~$887 亿，对应 FY26E P/E 仅 ~30.5x，远低于 Cadence 的 ~42x）</strong>后，具备极佳的跨周期确定性与估值修复弹性。
+            </p>
+
+            <!-- 核心投资结论高亮条 -->
+            <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">“从硅到系统”独家全栈垄断</div>
+                <div class="text-white font-semibold">芯片设计 EDA（数字前端绝对第一）+ 工业多物理场仿真 Ansys，可触达市场 TAM 扩容 1.5 倍至 $28B+</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">82% 经常性订阅现金流壁垒</div>
+                <div class="text-snps-400 font-semibold">基于时间的订阅授权与维护占比高达 82%，不受单一芯片流片成败或晶圆厂产能周期波动影响</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">快速去杠杆与 $400M 协同释放</div>
+                <p class="text-emerald-400 font-semibold">全年 FCF ~$26亿 加速偿还并购贷款，2027 财年 joint solution 联合方案将正式贡献增量营收</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4个核心 KPI 卡片 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+          <!-- KPI 1 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>总市值与最新参考股价</span>
+              <span class="p-1.5 rounded-lg bg-snps-500/15 text-snps-600 dark:text-snps-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$88.7B</span>
+              <span class="text-xs font-bold text-snps-600 dark:text-snps-400 bg-snps-500/15 px-2 py-0.5 rounded">~$459.23</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              对应 FY26E Non-GAAP 市盈率仅 ~30.5x，显著低于主要竞争对手 Cadence（~41x）与 ARM（~78x）。
+            </p>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>FY2026E 全年营收与 EPS 指引</span>
+              <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$9.715B</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">EPS $15.07</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              包含 $2.98B 的 Ansys 仿真营收贡献，Q4 营收指引中值达 $2.555B，增长能见度极高。
+            </p>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>Non-GAAP 营业利润率 & 经常性占比</span>
+              <span class="p-1.5 rounded-lg bg-cyan-500/15 text-cyan-600 dark:text-cyan-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">41.5%</span>
+              <span class="text-xs font-bold text-cyan-600 dark:text-cyan-400 bg-cyan-500/15 px-2 py-0.5 rounded">经常性 82%</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              随着 Ansys 整合深化，长期 Non-GAAP 营业利润率目标锚定 45%+，具备极强内生扩利空间。
+            </p>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>FY2026E 自由现金流 & 净债务</span>
+              <span class="p-1.5 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$2.60B</span>
+              <span class="text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded">净债 ~$6.4B</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              全年资本开支仅 $2.25 亿（占营收 2.3%），Q3 现金增至 $3.61B、总债降至 $10.0B，去杠杆进展迅速。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           一、 业务与“硅到系统”收入架构 (Business & Revenue Architecture)
+      ========================================================= -->
+      <section id="sec-biz" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-snps-600 dark:text-snps-400">Section 01 · Silicon-to-Systems Revenue Architecture</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 业务与“硅到系统”收入架构：AI 芯片 EDA 与 Ansys 多物理场仿真双轮驱动</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Q3 FY26 营收结构：Design Automation 80.9% · Design IP 19.1%</span>
+        </div>
+
+        <!-- 交互式 Chart.js 双视图切换面板 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- 左侧：双视图图表 -->
+          <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY22–FY26E 新思科技业务板块营收演进与 Non-GAAP 营业利润率 ($B)</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">叠加 Ansys 并表与 AI 设计工具需求爆发，集团总营收从 FY22 $5.08B 翻倍至 FY26E $9.72B</p>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+                <button onclick="switchBizChart('rev_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-snps-600 dark:text-snps-400 shadow-sm transition cursor-pointer">视图A：年度板块营收演进</button>
+                <button onclick="switchBizChart('q3_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：Q3 FY26 业务与区域拆解</button>
+              </div>
+            </div>
+            <div class="relative h-72 w-full">
+              <canvas id="bizArchitectureChart"></canvas>
+            </div>
+          </div>
+
+          <!-- 右侧：结构性拆解核心洞察 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">Q3 FY2026 财报三大核心商业化拐点</h3>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-snps-500/15 text-snps-600 dark:text-snps-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">联合 Ansys 首发 Multiphysics Fusion，破解 3D-IC 散热瓶</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      AI 芯片向 2nm 制程与 CoWoS/3D 先进封装演进，热应力与电磁干扰成为流片成败关键；新发布的 <strong>Multiphysics Fusion</strong> 将 Ansys 多物理场仿真直接嵌入新思 3DIC Compiler 布局布线环境。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">ZeBu 硬件仿真验证创历史纪录，云巨头定制 ASIC 井喷</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      随着谷歌、微软、亚马逊与 Meta 竞相设计万亿晶体管级定制 AI 加速芯片，芯片流片前的硬件仿真（Emulation / ZeBu）需求爆棚，推动 Design Automation 单季营收突破 <strong>$20 亿美元（营业利润率 45.2%）</strong>。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">Design IP 重回正增长轨，主动剥离非核心资产聚焦高毛利</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      Q3 Design IP 营收环比与同比双双恢复增长至 <strong>$4.74 亿美元</strong>（PCIe 6.0/7.0、HBM4 与 UCIe 芯粒接口 IP 领涨），同时剥离 Optical Solutions 与 Processor IP 等低协同资产集中火力。
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-slate-500 dark:text-slate-400">并购长期协同目标</span>
+              <span class="font-bold text-snps-600 dark:text-snps-400">年化 $400M 成本协同 + 远期 $1B+ 营收协同</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大核心业务板块详细卡片矩阵 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- 板块 1：核心数字前端与全流程 EDA 软件 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-snps-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-snps-500/15 text-snps-700 dark:text-snps-400 text-xs font-bold">第一绝对基石 · 全球数字 EDA 份额逾 35%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">Fusion Compiler / VCS / PrimeTime</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. AI 驱动芯片设计全流程 EDA 软件（Synopsys.ai）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                新思科技垄断全球数字芯片前端逻辑综合（Design Compiler）、物理布局布线（Fusion Compiler）与静态时序分析签核（PrimeTime 黄金标准）。业界首个全栈 AI 驱动 EDA 套件 <strong>Synopsys.ai（含 DSO.ai 与 VSO.ai）</strong> 已在台积电 2nm/A16 与三星前沿制程全面商业化，显著提升芯片 PPA（功耗、性能与面积）并推动单席位软件客单价持续上移。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>全球前 20 大芯片厂 100% 深度绑定</span>
+              <span class="text-snps-600 dark:text-snps-400 font-semibold">AI 辅助设计带来 15%–25% 提价溢价</span>
+            </div>
+          </div>
+
+          <!-- 板块 2：Ansys 多物理场工业仿真平台 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-cyan-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-cyan-500/15 text-cyan-700 dark:text-cyan-400 text-xs font-bold">第二增长巨擎 · FY26E 贡献营收 $2.98B</span>
+                <span class="font-mono text-xs font-bold text-cyan-600 dark:text-cyan-400">HFSS / Fluent / RedHawk-SC</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. Ansys 多物理场系统仿真（从芯片封装延伸至整车与航天）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                通过收购全球工程仿真霸主 Ansys，新思将业务边界从半导体厂延伸至<strong>新能源汽车、航空航天、机器人与数据中心液冷散热</strong>等万亿级制造业。Q3 Ansys 单季贡献营收 <strong>$7.11 亿美元</strong>（超预期上调全年贡献至 $29.8 亿），并于 2027 财年起通过交叉销售联合方案释放爆发力。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>TAM 扩容 1.5 倍至 $280 亿美元</span>
+              <span class="text-cyan-600 dark:text-cyan-400 font-semibold">打通芯片设计与终端物理世界</span>
+            </div>
+          </div>
+
+          <!-- 板块 3：高速接口 Design IP 矩阵 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">核心芯片积木 · Q3 营收 $473.8M (占19.1%)</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">全球接口 IP 绝对第一</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 高速接口与安全 Design IP（PCIe 7.0 / HBM4 / UCIe / 224G）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                在处理器核心（CPU/GPU）之外，芯片对外的每一种高速通信协议都需要经过晶圆厂流片验证的接口 IP。新思稳居全球接口 IP 市场第一，在 <strong>PCIe 6.0/7.0、HBM4 内存控制器、UCIe 芯粒互联及 224G 以太网 PHY</strong> 领域拥有最完整的台积电/英特尔全节点认证库。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>Q3 调整后营业利润率 26.5%</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">AI 芯片异构集成刚需模块</span>
+            </div>
+          </div>
+
+          <!-- 板块 4：硬件仿真验证系统 (ZeBu & HAPS) -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-amber-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs font-bold">创历史年度营收纪录 · 软硬件协同验证</span>
+                <span class="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">ZeBu EP2 / HAPS-100</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 硬件辅助验证与原型系统（ZeBu Emulation & HAPS）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                当一颗 AI 芯片的晶体管数量突破千亿级，纯软件仿真已无法在流片前运行完整操作系统与大模型代码。新思的 <strong>ZeBu 超级硬件仿真器</strong> 成为英伟达、AMD 及四大云巨头定制 ASIC 团队的必备“数字孪生实验室”，FY2026 创下历史最高年度硬件营收纪录。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>提前数月完成芯片与软件栈联调</span>
+              <span class="text-amber-600 dark:text-amber-400 font-semibold">AI 芯片研发周期加速关键瓶颈</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           二、 行业地位与四重核心护城河 (Industry Position & Moat)
+      ========================================================= -->
+      <section id="sec-moat" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position & Economic Moat</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重核心护城河：晶圆厂 PDK 深度绑定与极高转换成本</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：极宽 (Wide Moat · 全球电子设计自动化双寡头领导者)</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- 左侧：四重护城河深度解析 -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 护城河 1 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-snps-500/15 text-snps-600 dark:text-snps-400 flex items-center justify-center font-bold text-sm">01</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">与台积电、三星及英特尔先进制程联合研发</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                新思在每一代新制程（3nm/2nm/A16 GAA 环绕栅极晶体管）流片前 3–5 年即与晶圆厂联合开发工艺设计套件（PDK）与参考流程，任何芯片设计公司想要使用先进制程都必须依赖新思 EDA 工具。
+              </p>
+            </div>
+
+            <!-- 护城河 2 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold text-sm">02</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“流片零容错”造就的极致客户转换成本</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                一次 2nm 芯片光罩流片费用高达数千万美元，EDA 工具占比不足芯片研发总预算的 10% 却决定成败；芯片工程师团队一旦基于新思工具建立脚本与签核标准，几乎不可能轻易更换供应商。
+              </p>
+            </div>
+
+            <!-- 护城河 3 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">03</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">30% 营收倾注研发构建的代码与算法黑盒</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                公司每年将约 <strong>30% 的营业收入</strong> 重新投入研发（远高于一般软件企业），数千万行核心物理算法与数十年累积的仿真求解器精度形成新进入者无法逾越的技术高墙。
+              </p>
+            </div>
+
+            <!-- 护城河 4 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">04</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">82% 经常性订阅模式穿越半导体周期</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                与英伟达、美光等芯片硬件商不同，新思收入与研发项目数量（R&D Headcount & Design Starts）挂钩，即便芯片终端销量短期波动，客户仍需持续续费设计下一代芯片。
+              </p>
+            </div>
+          </div>
+
+          <!-- 右侧：五维护城河雷达图 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球 EDA 与工业仿真巨头五维护城河雷达图</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">新思科技 (SNPS) vs 铿腾电子 (CDNS) vs 西门子 EDA（满分 10 分）</p>
+            <div class="relative h-72 w-full">
+              <canvas id="moatRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           三、 全球 EDA 与仿真巨头横向对比 (Competitive Landscape)
+      ========================================================= -->
+      <section id="sec-comp" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-snps-600 dark:text-snps-400">Section 03 · EDA & Engineering Simulation Competitive Landscape</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球 EDA 与仿真巨头横向对比：全栈覆盖领先、远期 P/E（30.5x）显著低于 Cadence</h2>
+          </div>
+          <!-- 交互式筛选按钮 -->
+          <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+            <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-snps-600 text-white shadow-sm transition cursor-pointer">全部核心对手</button>
+            <button onclick="filterCompetitors('eda')" data-filter="eda" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">核心 EDA 与 IP 巨头</button>
+            <button onclick="filterCompetitors('cae')" data-filter="cae" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">工业仿真与 PLM 巨头</button>
+          </div>
+        </div>
+
+        <!-- 横向对比矩阵表格 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                  <th class="py-4 px-5 min-w-[180px]">企业名称与核心优势</th>
+                  <th class="py-4 px-4 min-w-[135px]">核心业务版图</th>
+                  <th class="py-4 px-4 min-w-[115px]">年化营收体量</th>
+                  <th class="py-4 px-4 min-w-[115px]">Non-GAAP 营业利润率</th>
+                  <th class="py-4 px-4 min-w-[105px]">Forward P/E</th>
+                  <th class="py-4 px-5 min-w-[235px]">核心优劣势与竞合定位评估</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+                <!-- 行 1：新思科技 SNPS 基准 -->
+                <tr data-category="core" class="bg-snps-500/5 dark:bg-snps-500/10 font-medium">
+                  <td class="py-4 px-5">
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-0.5 rounded bg-snps-600 text-white text-[10px] font-extrabold">硅到系统霸主</span>
+                      <span class="font-bold text-slate-900 dark:text-white">新思科技 (SNPS)</span>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">EDA + 接口IP + Ansys 多物理场仿真</div>
+                  </td>
+                  <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">芯片全流程 EDA + 工业仿真双第一</td>
+                  <td class="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">~$9.72B (FY26E)</td>
+                  <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">~41.5% (目标 45%+)</td>
+                  <td class="py-4 px-4 font-mono font-bold text-snps-600 dark:text-snps-400">~30.5x</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>体量最大、产品谱系最全且估值具性价比：</strong>数字前端 EDA 与接口 IP 稳居第一，叠加 Ansys 构建全栈闭环；30.5x P/E 较 Cadence 折价逾 25%。
+                  </td>
+                </tr>
+
+                <!-- 行 2：铿腾电子 Cadence Design Systems -->
+                <tr data-category="eda" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">铿腾电子 (NASDAQ: CDNS)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">模拟芯片 EDA 霸主 + Palladium 仿真</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">数字/模拟 EDA + 硬件验证 + 系统分析</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$5.85B</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~43.5%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~41.5x</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>直接双寡头对标：</strong>在模拟射频工具与 Palladium 硬件验证极具优势，且无大规模并购债务，但营收体量仅为新思 60% 且估值溢价较高。
+                  </td>
+                </tr>
+
+                <!-- 行 3：Arm Holdings -->
+                <tr data-category="eda" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Arm Holdings (NASDAQ: ARM)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">CPU 指令集架构与计算子系统 IP</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">处理器架构授权 + 芯片出货版税</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$5.65B</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~44.2%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~78.0x</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>高度互补的产业链盟友：</strong>Arm 主攻处理器核心 IP，新思主导接口 IP 与 EDA 工具，双方共同赋能云巨头自研定制芯片。
+                  </td>
+                </tr>
+
+                <!-- 行 4：达索系统 Dassault Systèmes / 西门子数字工业 -->
+                <tr data-category="cae" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">达索系统 (DSY.PA) / 西门子 EDA</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">3DEXPERIENCE / Calibre 物理验证</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">工业 CAD/PLM + 后端物理签核 EDA</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$7.2B (达索)</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~31.5%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~25.5x</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>工业仿真与系统级交锋：</strong>收购 Ansys 后，新思在汽车、航空与精密制造的多物理场数字孪生赛道直接与达索系统及西门子全面交锋。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 配套 Chart.js 横向条形图：营业利润率与远期估值对比 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">全球核心 EDA、IP 与工业仿真巨头 Non-GAAP 营业利润率（%）及远期市盈率（P/E）对比</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">新思科技拥有与 Cadence、Arm 相近的 41.5%+ 高营业利润率，但 30.5x 远期市盈率显著更具安全边际</p>
+            </div>
+            <span class="text-xs font-semibold text-snps-700 dark:text-snps-400 bg-snps-500/15 px-2.5 py-1 rounded">30.5x 远期 P/E 估值折价显著</span>
+          </div>
+          <div class="relative h-60 w-full">
+            <canvas id="compMarginChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           四、 财务健康与Ansys协同推演器 (Financial Health & Simulator)
+      ========================================================= -->
+      <section id="sec-fin" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Health & Ansys Synergy Simulator</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务健康度与估值体系：$26亿 自由现金流去杠杆与“Ansys协同”远期估值推演器</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Q3 现金 $3.61B · 总债务 $10.0B · 长期营业利润率目标 45%+</span>
+        </div>
+
+        <!-- 1. 财务健康度四大硬核指标卡 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-snps-600 dark:text-snps-400 uppercase">Recurring Revenue Mix</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">82.0% (高能见度)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              时间授权与维护服务占总营收高达 82%，为未来 4–8 个季度的现金流与盈利提供极高可预测性。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">FY26E Free Cash Flow</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$2.60B (CapEx $225M)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              全年资本开支压缩至仅 $2.25 亿，经营现金流 ~$28.0 亿，超 92% 转化为自由现金流用于快速偿债。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase">Balance Sheet & De-leveraging</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">现金 $3.61B / 债 $10.0B</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              Q3 现金储备环比大增逾 $11 亿（净债务降至 ~$6.4B），提前偿还定期贷款进度显著超预期，有望重启回购。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">GAAP vs Non-GAAP Bridge</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">41.6% vs 14.4%</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              Q3 GAAP 营业利润率受收购无形资产摊销（16.2%）及 SBC（9.4%）影响，属典型并购会计处理，不影响现金流。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. 交互式 Chart.js 双轴剪刀差图 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2022–FY2027E 合并总营收跃迁 ($B) vs Non-GAAP 稀释 EPS ($/股) 复利增长曲线</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">总营收从 FY22 $5.08B 翻倍至 FY27E 逾 $10.8B，同时债务清偿与协同效应释放推动 Non-GAAP EPS 向 $18+ 加速迈进</p>
+            </div>
+            <span class="text-xs font-mono font-bold text-snps-700 dark:text-snps-400 bg-snps-500/15 px-2.5 py-1 rounded">5年营收与EPS实现双翻倍</span>
+          </div>
+          <div class="relative h-72 w-full">
+            <canvas id="valEvolutionChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 3. 交互式组件：新思科技（SNPS）“Ansys 协同释放 + 债务偿还”FY2028E 盈利与目标股价推演器 -->
+        <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+            <div>
+              <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-snps-400 font-bold">
+                <span>SYNOPSYS + ANSYS SYNERGY VALUATION ENGINE · 远期盈利推演器</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-1">新思科技（SNPS）FY2028E“Ansys 联合方案放量 + 去杠杆降息”目标股价推演器</h3>
+              <p class="text-xs text-slate-400 mt-0.5">基准参数：当前参考股价 ~$459.23 | 稀释总股本 ~1.93 亿股 | FY26E 营收基数 $9.715B | 测算协同效应完全兑现后的盈利弹性</p>
+            </div>
+            <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-snps-500/15 border border-snps-400/30 text-xs font-semibold text-snps-300 cursor-pointer shrink-0">
+              <input type="checkbox" id="synergy-boost-toggle" checked onchange="updateSnpsSimulator()" class="w-4 h-4 rounded accent-[#A855F7] cursor-pointer">
+              <span>计入 $400M 运行率协同与偿债利息节省</span>
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <!-- 左侧参数控制区 -->
+            <div class="lg:col-span-5 space-y-4 text-xs">
+              <!-- FY27-FY28E 年均复合增速滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">FY2027–FY2028E 集团合并营收年均复合增速</span>
+                  <span id="sim-rev-cagr-label" class="font-mono font-bold text-emerald-400 text-sm">12.5%</span>
+                </div>
+                <input id="sim-rev-cagr" type="range" min="7" max="18" step="0.5" value="12.5" oninput="updateSnpsSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+              </div>
+
+              <!-- FY28E Non-GAAP 营业利润率滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">FY2028E Non-GAAP 营业利润率（长期目标 45%+）</span>
+                  <span id="sim-opm-label" class="font-mono font-bold text-snps-400 text-sm">45.0%</span>
+                </div>
+                <input id="sim-opm" type="range" min="41" max="49" step="0.5" value="45.0" oninput="updateSnpsSimulator()" class="w-full accent-[#A855F7] cursor-pointer">
+              </div>
+
+              <!-- 远期目标市盈率 P/E 按钮组 -->
+              <div class="pt-1">
+                <div class="text-slate-300 font-medium mb-2">市场给予的远期市盈率（Non-GAAP Forward P/E）重估倍数：</div>
+                <div class="grid grid-cols-3 gap-2" id="pe-btn-group">
+                  <button type="button" onclick="setSnpsPe(26)" data-pe="26" class="pe-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-snps-400 transition cursor-pointer">
+                    26.0x 保守折价<br><span class="text-[10px] text-slate-400">工业软件均值</span>
+                  </button>
+                  <button type="button" onclick="setSnpsPe(32)" data-pe="32" class="pe-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-snps-600 text-white border border-snps-400 shadow transition cursor-pointer">
+                    32.0x 均值修复<br><span class="text-[10px] text-snps-100">十年历史中枢偏下</span>
+                  </button>
+                  <button type="button" onclick="setSnpsPe(38)" data-pe="38" class="pe-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-snps-400 transition cursor-pointer">
+                    38.0x 龙头重估<br><span class="text-[10px] text-slate-400">看齐 Cadence 溢价</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右侧四大实时测算结果卡片 -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">FY2028E 预计合并总营收</div>
+                <div id="sim-2028-rev" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$12.30B</div>
+                <div id="sim-op-inc" class="text-xs font-semibold text-cyan-400 mt-1.5">预计 Non-GAAP 营业利润 ~$5.66B</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">FY2028E Non-GAAP 净利润 & 摊薄 EPS</div>
+                <div id="sim-2028-eps" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$23.15 / 股</div>
+                <div id="sim-net-inc" class="text-xs text-slate-400 mt-1.5">预计 Non-GAAP 净利润 ~$4.42B</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">FY2028E 测算目标股价 (Target Price)</div>
+                <div id="sim-target-price" class="text-2xl sm:text-3xl font-mono font-extrabold text-snps-400 mt-1.5">$740.80</div>
+                <div id="sim-upside" class="text-xs font-semibold text-emerald-400 mt-1.5">较当前 $459.23 潜在上行空间 +61.3%</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">对应隐含总市值 & 隐含年化回报</div>
+                <div id="sim-target-mcap" class="text-2xl sm:text-3xl font-mono font-extrabold text-amber-400 mt-1.5">$141.5B</div>
+                <div id="sim-cagr-note" class="text-xs text-slate-400 mt-1.5">两年隐含股价年化复合回报 +27.0%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 华尔街多空核心分歧对比 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">AI 芯片卖水人 + 2027 联合方案放量</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>几乎不赌单一芯片赢家的“纯正 AI 研发税”：</strong>无论英伟达、AMD 还是云巨头自研 ASIC 胜出，所有复杂 AI 芯片的设计验证都必须购买新思 EDA 与接口 IP。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>Ansys 整合首年零掉链子，2027 财年正式开启交叉销售增量：</strong>Multiphysics Fusion 解决 3D-IC 散热痛点，45%+ 长期营业利润率路径清晰。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>~30.5x FY26E P/E 较 Cadence（~41.5x）存在逾 25% 估值折价：</strong>随着并购债务快速削减，市场对并购整合的担忧消退将触发估值修复。</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">非AI工业消费复苏偏慢 + 对华出口管制</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“冰火两重天”市场结构：AI 芯片极度火热而汽车/工业模拟芯片复苏偏慢：</strong>非 AI 传统半导体客户削减或推迟研发预算，阶段性拖累 Design IP 整体增速。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>美国对华先进制程 EDA 软件与高端 IP 出口管制限制：</strong>中国区占新思营收约 14%–16%，地缘出口限制制约部分前沿工具向中国客户销售。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>百亿美元并购债务（$10.0B）导致短期暂停大规模股票回购：</strong>未来 12–18 个月自由现金流优先用于偿还贷款（每年利息支出约 $4.8 亿），回购弹性暂受制约。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           五、 投资决策与风险配置框架 (Investment Decision & Risk)
+      ========================================================= -->
+      <section id="sec-inv" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-snps-600 dark:text-snps-400">Section 05 · Investment Decision & Risk Allocation</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 投资决策与风险配置框架：三情景估值推演与科技基石配置纪律</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">配置定位：半导体生态稳健型核心基石 · $430–$465 区间分批建仓</span>
+        </div>
+
+        <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- 牛市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：30%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">35.0x–38.0x P/E ($780–$850)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>2027 财年 Ansys 联合仿真方案超预期放量带动内生增速重返 14%+，工业与汽车芯片设计需求全面回暖，估值向 Cadence（38x–41x）看齐。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              潜在上行空间：+70% 至 +85%
+            </div>
+          </div>
+
+          <!-- 基准情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-snps-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-snps-500/15 text-snps-700 dark:text-snps-400 text-xs font-bold">基准情景 (Base Case)</span>
+                <span class="font-mono text-xs font-bold text-snps-600 dark:text-snps-400">概率：55%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">30.0x–32.5x P/E ($650–$720)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>集团保持 11%–13% 稳健复利增长，Non-GAAP 营业利润率平稳向 44%–45% 抬升，债务有序削减，估值稳居 30x–32x 历史合理中枢。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-snps-600 dark:text-snps-400">
+              潜在稳健回报：+41% 至 +57%
+            </div>
+          </div>
+
+          <!-- 熊市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+                <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：15%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">23.0x–25.0x P/E ($390–$420)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>全球宏观衰退迫使芯片厂削减研发工程师编制（Seats），同时对华出口管制进一步收紧，触发软件板块估值下探 24x 历史底部。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+              潜在下行回撤：-9% 至 -15%（82% 经常性收入抗跌极强）
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 四大核心风险矩阵 -->
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">四大核心潜在风险评估与跟踪边界</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 地缘出口管制与中国本土 EDA 替代</span>
+                <span class="text-xs font-mono text-rose-500 font-semibold">关注度：高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">美国商务部对先进 GAA 制程 EDA 工具的出口限制</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                中国区占新思营收约 15%；若美方进一步收紧成熟制程仿真软件或接口 IP 对华授权，将对亚太区增长斜率造成阶段性扰动。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 汽车与工业芯片客户研发预算谨慎</span>
+                <span class="text-xs font-mono text-amber-500 font-semibold">关注度：中高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">非 AI 模拟及 MCU 芯片厂商去库存拖累部分 IP 授权</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                传统汽车与工业半导体巨头仍在消化库存，新项目立项节奏偏慢，需观察 2027 年该部分客户是否全面重启研发扩张。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">03 · Ansys 跨团队销售整合与文化磨合</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">半导体销售团队与传统机械/流体 CAE 渠道协同效率</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                350 亿美元级超大型并购后的销售激励统一与产品线整合需持续跟踪，确保 2027 财年如期兑现联合解决方案营收贡献。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">04 · 无形资产摊销与股权激励对 GAAP 净利润的压制</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">FY26E GAAP EPS ($3.96) 与 Non-GAAP EPS ($15.07) 差异显著</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                每年约 $16.1 亿收购无形资产摊销与高额 SBC 拉低表观 GAAP 净利润，部分仅看重 GAAP 市盈率的量化基金可能低估其真实自由现金流。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 机构级组合配置纪律横幅 -->
+        <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+          <h3 class="text-base font-bold text-snps-400 mb-4 flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>机构级投资组合配置纪律与“半导体核心卖水人”建仓策略</span>
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-white mb-1">1. 半导体组合的“低波动压舱石”定位</div>
+              <p class="text-slate-300 leading-relaxed">
+                相比存储周期股（<strong>SNDK</strong>）或高波互联股（<strong>CRDO</strong>），新思科技拥有 82% 经常性收入与 30.5x 合理估值，适合作为科技组合的长期稳健底仓。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-snps-400 mb-1">2. 把握 $440–$470 区间吸纳并购整合红利</div>
+              <p class="text-slate-300 leading-relaxed">
+                在经历 Ansys 并购消化期后，2027 财年将迎来“联合新产品放量 + 债务利息下降 + 营业利润率向 45% 迈进”的三重共振。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-emerald-400 mb-1">3. 关注资产剥离聚焦与重启回购时间点</div>
+              <p class="text-slate-300 leading-relaxed">
+                随着 $26 亿年化自由现金流持续偿债，一旦净债务降至 EBITDA 1.5x 以下，管理层重启大规模股票回购将成为股价催化剂。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+      ========================================================= -->
+      <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Fundamental Tracking KPIs</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度基本面跟踪 KPI 交互式核查清单（Checklist）</h2>
+          </div>
+          <div class="flex items-center space-x-2 no-print">
+            <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-snps-500/15 text-snps-700 dark:text-snps-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+            <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            点击勾选季度财报（重点关注即将在 2026 年 12 月初发布的 Q4 FY26 全年收官与 FY27 首次正式指引）中已验证达标的经营指标：
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+            <!-- KPI 1 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-snps-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">1. 经常性营收占比稳守 80%–83% 高确定性区间</span>
+                  <span class="text-[11px] font-mono text-snps-600 dark:text-snps-400 font-semibold shrink-0">商业模式基石</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Q3 FY26 经常性营收占比达 82%，确保持续高续约率与可预测现金流入。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 2 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-snps-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">2. Non-GAAP 营业利润率向 45% 长期目标稳步迈进</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">运营杠杆锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  FY26E 目标营业利润率达 41.5%，跟踪 FY27 成本协同释放推动利润率向 43%–45% 扩张。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 3 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-snps-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">3. 自由现金流（FCF ~$2.6B）与定期贷款提前偿还进度</span>
+                  <span class="text-[11px] font-mono text-cyan-600 dark:text-cyan-400 font-semibold shrink-0">去杠杆健康度</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  核查每季偿还 Ansys 并购定期贷款金额及财务净利息支出的逐季下降斜率。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 4 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-snps-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">4. Design IP 板块恢复双位数同比增速（Mid-Teens 目标）</span>
+                  <span class="text-[11px] font-mono text-snps-600 dark:text-snps-400 font-semibold shrink-0">内生增长扳机</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Q3 Design IP（$473.8M）已重回正增长；跟踪 PCIe 7.0 与 HBM4 接口 IP 推动增速回归 12%–15%。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 5 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-snps-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">5. Multiphysics Fusion 联合仿真方案商业化客户采用数量</span>
+                  <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">并购营收协同</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  跟踪 2027 财年头部 AI 芯片厂在 3D-IC 先进封装设计中采购新思+Ansys 联合套装的订单转化。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 6 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-snps-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">6. Synopsys.ai 全栈 AI 驱动 EDA 工具的客户渗透与提价幅度</span>
+                  <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">AI 溢价验证</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  核查全球前 20 大半导体客户续约时升级至 Synopsys.ai 套件的比例及单合同价值提升幅度。
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           页脚免责声明 (Disclaimer Footer)
+      ========================================================= -->
+      <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+          <span>新思科技 Synopsys, Inc. (NASDAQ: SNPS) 深度商业与投资价值分析报告 · 机构研究框架版</span>
+          <span>数据基准：Synopsys FY2026 第三季度财报（2026年8月26日发布）及 2026 年 11 月市场公开数据</span>
+        </div>
+        <p class="leading-relaxed">
+          <strong>免责声明：</strong>本深度研究报告基于 Synopsys, Inc. 公开财务报告（10-Q/10-K）、业绩电话会议披露数据及全球 EDA 与工业仿真软件行业调研资料整理生成，旨在提供结构化的产业分析与估值框架。报告中涉及的 FY2028E 远期盈利预测、Ansys 协同测算及三情景目标价均基于特定假设条件推演，不构成任何证券买卖建议或收益承诺。请在独立核实后审慎决策。
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+  <script>
+    // ==========================================
+    // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+    // ==========================================
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      updateChartsTheme();
+    }
+
+    // ==========================================
+    // 2. 移动端抽屉菜单切换
+    // ==========================================
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    // ==========================================
+    // 3. 阅读进度条与左侧导航滚动联动高亮
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+      let currentId = 'sec-exec';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 160;
+        if (scrollTop >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const numSpan = link.querySelector('span span');
+        if (numSpan) {
+          numSpan.classList.remove('text-snps-400');
+          numSpan.classList.add('text-slate-500');
+        }
+        if (link.dataset.target === currentId) {
+          link.classList.add('active');
+          if (numSpan) {
+            numSpan.classList.remove('text-slate-500');
+            numSpan.classList.add('text-snps-400');
+          }
+        }
+      });
+    });
+
+    // ==========================================
+    // 4. 同行竞争格局矩阵筛选器
+    // ==========================================
+    function filterCompetitors(category) {
+      document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('bg-snps-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        } else {
+          btn.classList.remove('bg-snps-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        }
+      });
+
+      const rows = document.querySelectorAll('#comp-table-body tr');
+      rows.forEach(row => {
+        const rowCat = row.dataset.category;
+        if (category === 'all' || rowCat === 'core' || rowCat === category) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // ==========================================
+    // 5. 新思科技 FY2028E 协同与目标股价推演器
+    // ==========================================
+    let currentSnpsPe = 32; // 默认 32.0x 均值修复倍数
+
+    function setSnpsPe(pe) {
+      currentSnpsPe = pe;
+      document.querySelectorAll('#pe-btn-group .pe-btn').forEach(btn => {
+        const btnPe = parseFloat(btn.dataset.pe);
+        if (Math.abs(btnPe - pe) < 0.01) {
+          btn.className = 'pe-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-snps-600 text-white border border-snps-400 shadow transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-snps-100';
+        } else {
+          btn.className = 'pe-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-snps-400 transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+        }
+      });
+      updateSnpsSimulator();
+    }
+
+    function updateSnpsSimulator() {
+      const cagrPct = parseFloat(document.getElementById('sim-rev-cagr').value);
+      const opmPct = parseFloat(document.getElementById('sim-opm').value);
+      const synergyBonus = document.getElementById('synergy-boost-toggle').checked;
+
+      document.getElementById('sim-rev-cagr-label').textContent = cagrPct.toFixed(1) + '%';
+      document.getElementById('sim-opm-label').textContent = opmPct.toFixed(1) + '%';
+
+      // FY26E 营收基数 $9.715B，推演 2 年至 FY28E
+      const baseRev26 = 9.715;
+      const g = cagrPct / 100;
+      const rev28 = baseRev26 * Math.pow(1 + g, 2);
+
+      const effectiveOpm = (opmPct + (synergyBonus ? 1.0 : 0)) / 100;
+      const nonGaapOpInc28 = rev28 * effectiveOpm;
+
+      // 偿债后净利息费用从 -$0.48B 收窄至 -$0.22B (若计入协同则 -$0.15B)，有效税率 18%
+      const netInterest28 = synergyBonus ? -0.15 : -0.24;
+      const nonGaapNetInc28 = (nonGaapOpInc28 + netInterest28) * (1 - 0.18);
+      const dilutedShares28 = 0.191; // 191M shares (含后期重启回购小幅缩减)
+      const eps28 = nonGaapNetInc28 / dilutedShares28;
+
+      const targetPrice = eps28 * currentSnpsPe;
+      const currentPrice = 459.23;
+      const upsidePct = ((targetPrice - currentPrice) / currentPrice) * 100;
+      const cagrReturnPct = (Math.pow(Math.max(0.1, targetPrice / currentPrice), 0.5) - 1) * 100;
+      const impliedMcapB = targetPrice * dilutedShares28;
+
+      document.getElementById('sim-2028-rev').textContent = '$' + rev28.toFixed(2) + 'B';
+      document.getElementById('sim-op-inc').textContent = `预计 Non-GAAP 营业利润 ~$${nonGaapOpInc28.toFixed(2)}B`;
+      document.getElementById('sim-2028-eps').textContent = '$' + eps28.toFixed(2) + ' / 股';
+      document.getElementById('sim-net-inc').textContent = `预计 Non-GAAP 净利润 ~$${nonGaapNetInc28.toFixed(2)}B`;
+      document.getElementById('sim-target-price').textContent = '$' + targetPrice.toFixed(2);
+      document.getElementById('sim-upside').textContent = `较当前 $459.23 潜在上行空间 ${upsidePct >= 0 ? '+' : ''}${upsidePct.toFixed(1)}%`;
+      document.getElementById('sim-target-mcap').textContent = '$' + impliedMcapB.toFixed(1) + 'B';
+      document.getElementById('sim-cagr-note').textContent = `两年隐含股价年化复合回报 ${cagrReturnPct >= 0 ? '+' : ''}${cagrReturnPct.toFixed(1)}%`;
+    }
+
+    // ==========================================
+    // 6. KPI 核查清单状态持久化与计数更新
+    // ==========================================
+    const KPI_STORAGE_KEY = 'snps_research_kpi_state_v1';
+
+    function loadKpiChecklist() {
+      try {
+        const saved = localStorage.getItem(KPI_STORAGE_KEY);
+        if (saved) {
+          const stateMap = JSON.parse(saved);
+          document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+            if (typeof stateMap[cb.id] === 'boolean') {
+              cb.checked = stateMap[cb.id];
+            }
+          });
+        }
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+      updateKpiChecklist();
+    }
+
+    function updateKpiChecklist() {
+      const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      const stateMap = {};
+
+      checkboxes.forEach(cb => {
+        stateMap[cb.id] = cb.checked;
+        if (cb.checked) checkedCount++;
+      });
+
+      const pct = Math.round((checkedCount / total) * 100);
+      document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+      try {
+        localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+    }
+
+    function resetKpiChecklist() {
+      document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      updateKpiChecklist();
+    }
+
+    // ==========================================
+    // 7. Chart.js 数据可视化初始化与主题自适应
+    // ==========================================
+    let bizChartInstance = null;
+    let radarChartInstance = null;
+    let compMarginChartInstance = null;
+    let valEvolutionChartInstance = null;
+    let currentBizMode = 'rev_evolution';
+
+    function getChartColors() {
+      const isDark = document.documentElement.classList.contains('dark');
+      return {
+        text: isDark ? '#CBD5E1' : '#475569',
+        grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+        radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+      };
+    }
+
+    function initBizChart() {
+      const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+      const colors = getChartColors();
+
+      // 视图 A：FY22–FY26E 新思科技业务板块营收演进 ($B) 与 Non-GAAP 营业利润率 (%)
+      const evoConfig = {
+        type: 'bar',
+        data: {
+          labels: ['FY22', 'FY23', 'FY24', 'FY25', 'FY26E'],
+          datasets: [
+            {
+              label: 'Design Automation (EDA + Ansys 仿真, $B)',
+              data: [3.80, 4.30, 4.37, 5.29, 7.82],
+              backgroundColor: '#9333EA',
+              borderRadius: 4,
+              stack: 'snpsrev',
+              yAxisID: 'y'
+            },
+            {
+              label: 'Design IP (接口与基础 IP, $B)',
+              data: [1.28, 1.54, 1.76, 1.76, 1.90],
+              backgroundColor: '#06B6D4',
+              borderRadius: 4,
+              stack: 'snpsrev',
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: 'Non-GAAP 营业利润率 (%)',
+              data: [33.0, 35.1, 38.5, 37.8, 41.5],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 2.5,
+              pointRadius: 4,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.dataset.yAxisID === 'y1'
+                  ? `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)}%`
+                  : `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}B`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 11,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 20,
+              max: 50,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' }
+            }
+          }
+        }
+      };
+
+      // 视图 B：Q3 FY26 区域营收分布与商业模式结构 (%)
+      const splitConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            'Design Automation 板块占比 ($2,003M)',
+            '经常性订阅与维护收入占比 (Recurring Mix)',
+            '北美市场营收占比 (North America)',
+            '亚太及中国市场营收占比 (APAC & China)',
+            'Design IP 板块营收占比 ($473.8M)',
+            '欧洲市场营收占比 (Europe)'
+          ],
+          datasets: [
+            {
+              label: 'Q3 FY26 占总营收比重 (%)',
+              data: [80.9, 82.0, 43.7, 38.3, 19.1, 18.0],
+              backgroundColor: [
+                '#9333EA',
+                '#10B981',
+                '#06B6D4',
+                '#F59E0B',
+                '#6366F1',
+                '#64748B'
+              ],
+              borderRadius: 6,
+              barThickness: 22
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `营收结构占比: ${ctx.parsed.x.toFixed(1)}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 95,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            }
+          }
+        }
+      };
+
+      if (bizChartInstance) bizChartInstance.destroy();
+      bizChartInstance = new Chart(ctx, currentBizMode === 'rev_evolution' ? evoConfig : splitConfig);
+    }
+
+    function switchBizChart(mode) {
+      currentBizMode = mode;
+      const btnEvo = document.getElementById('btn-chart-evo');
+      const btnSplit = document.getElementById('btn-chart-split');
+      const titleEl = document.getElementById('biz-chart-title');
+      const subEl = document.getElementById('biz-chart-sub');
+
+      if (mode === 'rev_evolution') {
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-snps-600 dark:text-snps-400 shadow-sm transition cursor-pointer';
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = 'FY22–FY26E 新思科技业务板块营收演进与 Non-GAAP 营业利润率 ($B)';
+        subEl.textContent = '叠加 Ansys 并表与 AI 设计工具需求爆发，集团总营收从 FY22 $5.08B 翻倍至 FY26E $9.72B';
+      } else {
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-snps-600 dark:text-snps-400 shadow-sm transition cursor-pointer';
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = 'Q3 FY26 业务板块、商业模式及全球区域收入占比拆解 (%)';
+        subEl.textContent = '经常性收入高达 82%，北美（43.7%）与亚太（38.3%）双轮驱动';
+      }
+      initBizChart();
+    }
+
+    function initRadarChart() {
+      const ctx = document.getElementById('moatRadarChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (radarChartInstance) radarChartInstance.destroy();
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: [
+            '数字芯片全流程 EDA 统治力',
+            '接口 IP 库完整度与市占率',
+            '多物理场系统仿真广度',
+            '经常性订阅现金流稳定性',
+            '当前远期估值性价比'
+          ],
+          datasets: [
+            {
+              label: '新思科技 (SNPS)',
+              data: [9.8, 9.8, 9.9, 9.5, 8.2],
+              borderColor: '#9333EA',
+              backgroundColor: 'rgba(147, 51, 234, 0.24)',
+              pointBackgroundColor: '#9333EA',
+              borderWidth: 2.5
+            },
+            {
+              label: '铿腾电子 (CDNS)',
+              data: [9.4, 8.6, 8.2, 9.6, 6.8],
+              borderColor: '#06B6D4',
+              backgroundColor: 'rgba(6, 182, 212, 0.14)',
+              pointBackgroundColor: '#06B6D4',
+              borderWidth: 2.0
+            },
+            {
+              label: '西门子 EDA',
+              data: [8.2, 7.2, 9.0, 8.4, 7.8],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.12)',
+              pointBackgroundColor: '#10B981',
+              borderWidth: 1.8,
+              borderDash: [4, 4]
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            }
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 10,
+              ticks: { display: false, stepSize: 2 },
+              grid: { color: colors.grid },
+              angleLines: { color: colors.radarAngle },
+              pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initCompMarginChart() {
+      const ctx = document.getElementById('compMarginChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (compMarginChartInstance) compMarginChartInstance.destroy();
+      compMarginChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            '新思科技 (SNPS · EDA + Ansys 仿真)',
+            '铿腾电子 (CDNS · 核心 EDA 与验证)',
+            'Arm Holdings (ARM · 指令集架构 IP)',
+            '达索系统 (DSY.PA · 工业仿真与 PLM)'
+          ],
+          datasets: [
+            {
+              label: 'Non-GAAP 营业利润率 Operating Margin (%)',
+              data: [41.5, 43.5, 44.2, 31.5],
+              backgroundColor: '#9333EA',
+              borderRadius: 5,
+              barThickness: 15
+            },
+            {
+              label: '当前远期市盈率 Forward P/E 倍数 (x)',
+              data: [30.5, 41.5, 78.0, 25.5],
+              backgroundColor: '#06B6D4',
+              borderRadius: 5,
+              barThickness: 15
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.datasetIndex === 0
+                  ? `${ctx.dataset.label}: ${ctx.parsed.x}%`
+                  : `${ctx.dataset.label}: ${ctx.parsed.x}x`
+              }
+            }
+          },
+          scales: {
+            x: {
+              max: 85,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 } }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initValEvolutionChart() {
+      const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+      valEvolutionChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['FY22', 'FY23', 'FY24', 'FY25', 'FY26E', 'FY27E'],
+          datasets: [
+            {
+              type: 'bar',
+              label: '合并总营收 Revenue ($B)',
+              data: [5.08, 5.84, 6.13, 7.05, 9.72, 10.95],
+              backgroundColor: 'rgba(147, 51, 234, 0.85)',
+              borderRadius: 5,
+              barThickness: 28,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: 'Non-GAAP 稀释每股收益 EPS ($/股)',
+              data: [8.90, 11.19, 13.20, 13.45, 15.07, 18.85],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 3,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.dataset.yAxisID === 'y'
+                  ? `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}B`
+                  : `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 13,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+              title: { display: true, text: '合并总营收 ($B)', color: colors.text, font: { size: 11 } }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 5,
+              max: 22,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v },
+              title: { display: true, text: 'Non-GAAP 稀释 EPS ($/股)', color: '#10B981', font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartsTheme() {
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadKpiChecklist();
+      updateSnpsSimulator();
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    });
+  </script>
+</body>
+</html>
