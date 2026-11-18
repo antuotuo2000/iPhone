@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>史蒂夫·霍夫曼 Steve Huffman (u/spez) 深度商业与领袖战略研究报告：Reddit 联合创始人回归逆转、AI 语料筑墙与 76.1% 投票权治理格局</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FDBA74',
+ 400: '#FB923C',
+ 500: '#FF4500',
+ 600: '#EA580C',
+ 700: '#C2410C',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：Reddit 标志性亮橙渐变 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(255, 69, 0, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #FF4500;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #FF4500;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-white transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Steve_Huffman_Reddit_CEO_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-white text-xs shadow">
+ SH
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">NYSE: RDDT · u/spez</div>
+ <div class="text-sm font-bold leading-tight">史蒂夫·霍夫曼深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-white text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">霍夫曼专题目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 商业改造与盈利跃迁</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 治理哲学的四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 社交与AI社区CEO横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 股权投票权与净资产推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与管理争议复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 霍夫曼管理评估核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-white font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>科技公司治理与创始人研究组</p>
+ <p>数据基准：SEC 2026 Proxy / Q3 2026</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-white font-extrabold text-base shadow-lg shadow-mogold-500/25">
+ SH
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CEO MONOGRAPH · u/spez</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">史蒂夫·霍夫曼研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 20天手写初版代码 → 2015二次救火掌舵 → 76.1% 超级投票权与 AI 语料商业化舵手
+ </p>
+ </div>
+
+ <!-- 核心人物最新财务与治理快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">掌舵任期与投票权</span>
+ <span class="font-mono font-bold text-white">11年+ · 控 76.1% 投票权</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">26Q3 营收与净利率</span>
+ <span class="font-mono font-bold text-emerald-400">$895M (+53%) · 32%净利</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">CEO 持仓与净资产</span>
+ <span class="font-mono font-bold text-mogold-400">324万股 · 净值 ~$500M</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>商业改造与盈利跃迁</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>治理哲学的四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>社交与AI社区CEO横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>股权投票权与净资产推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与管理争议复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>霍夫曼管理评估核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">管理层定评：极具争议却铁腕高效的技术创始人CEO</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：2005创站 · 2015二次回归 · 2024 IPO · 2026Q3盈利爆发</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据基准：2026年11月</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景亮橙点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#FF4500 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>FOUNDER CEO DOSSIER · 20天手写初代代码 × 2015“帕欧危机”救火回归 × 76.1% 超级投票权铁腕治理</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 史蒂夫·霍夫曼 Steve Huffman (u/spez) 深度研究报告：从极客理想主义到铁血商业操盘手的十一年重塑
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 2005 年，21 岁的弗吉尼亚大学计算机毕业生 <strong class="text-white">史蒂夫·霍夫曼（Steve Huffman）</strong> 仅凭 Y Combinator 提供的 <a href="https://visionarytalks.com/steve-huffman-net-worth/" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">$12,000 种子资金</a>，用 20 天时间写出了 Reddit 的初版代码；2009 年离职创立机票搜索平台 Hipmunk 后，他于 <strong class="text-white">2015 年 7 月</strong>在社区版主大罢工的混乱时刻临危受命重返 Reddit 出任 CEO（<a href="https://www.unifygtm.com/insights/executives/reddit-ceo" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">Unify / 2026 Proxy</a>）。
+ 在随后的十一年间，他以“不讨好原教旨用户、但坚决兑现商业价值”的务实手腕，推动底层技术重构、顶住 2023 年 API 抗议风暴封堵 AI 免费爬虫、签约 Google 与 OpenAI 语料授权协议，并于 2024 年 3 月带领 Reddit 成功登陆纽交所。至 <strong class="text-emerald-400">2026 年 Q3</strong>，Reddit 单季营收已突破 <a href="https://investor.redditinc.com/news-events/news-releases/news-details/2026/Reddit-Reports-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$8.95亿（+53% YoY）</a>、净利润率高达 <strong class="text-white">32%（$2.83亿）</strong>，而霍夫曼本人虽仅直接持有不足 2% 股份（约 324 万股），却通过与 Advance 和腾讯的代理投票协议掌控高达 <a href="https://visionarytalks.com/steve-huffman-net-worth/" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-400 font-semibold">76.1% 超级投票权</a>。
+ </p>
+
+ <!-- 核心领袖特征高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">从“不可变现论坛”到盈利机器</div>
+ <div class="text-white font-semibold">2015 年回归前 Reddit 年营收不足 $1,500万；2026 年全年运行率突破 $35亿+，毛利率高达 91.5%</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">极不对称的“小持股+绝对控制”架构</div>
+ <div class="text-mogold-400 font-semibold">直接持股约 324 万股（&lt;2% 经济权益），借 AB 股与机构投票代理权掌握 76.1% 董事会决策统治力</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">2026 新战役：AI 搜索截流与登录闭环</div>
+ <div class="text-emerald-400 font-semibold">面对 Google 搜索引流走弱（周跌超百万次），果断推出海外强制登录测试与关闭公开 RSS/API</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>治理控制权与直接持股</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">76.1%</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">3.24M 股</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 直接持股不足 2%，但通过 Advance 与 Tencent 投票代理协议掌控绝对表决权（<a href="https://visionarytalks.com/steve-huffman-net-worth/" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>2026Q3 单季营收与净利</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$895M</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+53% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 26Q3 净利润达 $2.83亿（净利率 32%），调整后 EBITDA 达 $4.02亿（45% 利润率）（<a href="https://investor.redditinc.com/news-events/news-releases/news-details/2026/Reddit-Reports-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit IR</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>CEO 个人净资产（2026年11月）</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$500M</span>
+ <span class="text-xs font-bold text-rose-600 dark:text-rose-400 bg-rose-500/15 px-2 py-0.5 rounded">峰值 $1.2B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 随 2026 年股价从高点回调，其持股市值约 $3.08亿加约 $1.90亿现金及投资，暂别十亿富豪榜（<a href="https://visionarytalks.com/steve-huffman-net-worth/" target="_blank" rel="noopener noreferrer" class="cite-link">VisionaryTalks</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2025 常规年薪与安全开支</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$3.10M</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">安保 $1.12M</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 继 2023 年 IPO 前 $1.93亿一次性股权激励后，2025 年底薪 $56.9万、奖金 $141万、安保占其他薪酬大头（<a href="https://rentseek.ing/t/RDDT" target="_blank" rel="noopener noreferrer" class="cite-link">DEF 14A</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 商业改造与盈利跃迁 (Business Transformation & Execution)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Business Transformation &amp; Operational Execution</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 商业改造与盈利跃迁：从技术债泥潭到 91.5% 毛利与单季 $8.95亿 营收</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2026Q3 营收 $895M (+53% YoY) · 自由现金流 $363M (FCF 利润率 40.6%)</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2023–2026Q4E 霍夫曼掌舵下 Reddit 季度营收与调整后 EBITDA 爆发曲线</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">2026Q3 营收达 $895M（广告 $847M + 数据授权 $48M），Q4 指引首次跨过单季 $10亿 大关（$1.00B–$1.03B）</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('rev_trajectory')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：季度营收与EBITDA跃升</button>
+ <button onclick="switchBizChart('user_monetization')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：26Q3活跃用户与ARPU拆解</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">霍夫曼二次回归后的三大破局手术</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">自研原生 App 与广告堆栈重构（告别第三方寄生）</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2015 年回归时 Reddit 甚至没有官方 iOS/Android 客户端，海量移动流量流向第三方 App（如 Apollo）且无法展示广告。霍夫曼大刀阔斧重建原生客户端与广告投放引擎，使 26Q3 广告营收同比大增 <strong>+54% 至 $8.47亿</strong>（<a href="https://www.tradingkey.com/news/transcripts/262256134-tradingkey" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 Earnings Call</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">铁腕封堵 AI 免费爬虫，确立“语料付费”行业规则</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2023 年顶住版主停摆抗议推出 API 分级收费，2024 年先后与 Google、OpenAI 签署大模型训练数据授权协议；2026 年 9–10 月更进一步<a href="https://www.unifygtm.com/insights/executives/reddit-ceo" target="_blank" rel="noopener noreferrer" class="cite-link">关闭公开 RSS 与未授权 API 抓取</a>并起诉 Perplexity AI，Q3 数据授权及其他收入增至 <strong>$4,800万（+35% YoY）</strong>。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">应对 AI 搜索截流：海外“强制登录体验”战略转型</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 面对 2026 年 10 月外部搜索引擎每周引流减少超 100 万次的挑战，霍夫曼果断在 Q4 启动海外市场“以登录为主（Primarily Logged-in）”测试——虽然短期牺牲部分未登录触达面，但已登录与 App 日活贡献了 <strong>80% 以上变现收入</strong>（<a href="https://www.tradingkey.com/news/transcripts/262256134-tradingkey" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit Q3 2026 Call</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">2026Q4 最新业绩指引</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">单季营收 $1.00B–$1.03B · Adj. EBITDA $480M–$510M</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心战略与业务落地模块卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 模块 1：核心广告商业化引擎 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一商业支柱 · 占 26Q3 营收 94.6%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">ARPU $6.87 (+36% YoY)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 广告定价权跃升与国际市场爆发（+67% YoY）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 在霍夫曼主导下，Reddit 摆脱了早年因“NSFW 敏感内容”遭品牌广告主抵制的困境，建立起严格的社区安全分级与上下文意图定向系统。2026Q3 广告收入达 <strong>$8.47亿（+54% YoY）</strong>，其中美国营收增长 +50%，国际营收在机器翻译加持下飙升 <strong>+67%</strong>，单用户平均收入（ARPU）同比大增 +36% 至 <strong>$6.87</strong>，且单次展示定价增速超越曝光量增速（<a href="https://www.tradingkey.com/news/transcripts/262256134-tradingkey" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit Q3 2026 Call</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>美国 +50% / 国际 +67% / 毛利率 91.5%</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">量价齐升验证高意图商业模式</span>
+ </div>
+ </div>
+
+ <!-- 模块 2：AI 语料主权与版权护城河 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">高毛利第二曲线 · 26Q3 营收 $48M (+35%)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">Google / OpenAI 签约</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. AI 时代语料主权战略与重拳打击非法抓取</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 霍夫曼敏锐预判到二十年积累的人类真实问答是大型语言模型抵抗“合成数据污染”的核心燃料。他一方面与 <strong>Google、OpenAI</strong> 达成官方商业授权合作，另一方面在 2026 年下半年果断叫停全站公开 RSS 订阅与未授权 API 访问，并就数据抓取问题与 <strong>Perplexity AI</strong> 展开法律交锋（<a href="https://www.unifygtm.com/insights/executives/reddit-ceo" target="_blank" rel="noopener noreferrer" class="cite-link">Reuters / TechCrunch</a>），牢牢守住语料变现闸门。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>从免费开放互联网转向有偿版权授权</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">筑高人类真实数据护城河</span>
+ </div>
+ </div>
+
+ <!-- 模块 3：高管团队升级与精细化治理 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">管理层班底 · 技术创始+职业高管联姻</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">人效增速显著跑赢扩编</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. “极客创始人 + 顶级职业经理人”核心领导班底</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 霍夫曼深知自身长板在于产品架构、社区直觉与顶层战略，因此围绕自己搭建了高度互补的高管团队：联合创始人 <strong>Christopher Slowe</strong> 任 CTO 统领技术底层，<strong>Jennifer Wong</strong> 任 COO 主导商业化变现，<strong>Andrew Vollero</strong> 任 CFO 严控财务纪律（26Q3 员工总数仅增 +12% 而营收暴增 +53%），并于 2026 年 8 月引入资深法律高管 <strong>Paul Cappuccio</strong> 出任首席法务官护航 AI 版权与监管博弈（<a href="https://www.unifygtm.com/insights/executives/reddit-ceo" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit 2026 Proxy</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>SBC 占营收比降至 15%（同比降 80bps）</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">超强经营杠杆释放自由现金流</span>
+ </div>
+ </div>
+
+ <!-- 模块 4：资本配置与首次股票回购 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">资产负债表与资本配置 · 账面现金 $3.03B</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">Q3 回购 $100M 股份</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 零有息负债现金堡垒与逆周期股票回购</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 在霍夫曼与 CFO 审慎资本纪律下，Reddit 2026Q3 单季资本开支仅 <strong>$100万（占营收 0.1%）</strong>，自由现金流达 <strong>$3.63亿（+98% YoY）</strong>，账面现金及有价证券首次突破 <strong>$30.3亿美元</strong>（<a href="https://investor.redditinc.com/news-events/news-releases/news-details/2026/Reddit-Reports-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit Q3 2026 Release</a>）。趁 2026 年股价回调之际，公司果断在 Q3 以均价 $149.81 回购注销 67 万股 A 类普通股（耗资 <strong>$1亿</strong>），使总稀释股本环比下降 0.3%，账面仍留有 $6.6亿回购额度。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>CapEx 仅占营收 0.1% · 现金 $3.03B</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">IPO 后两年即开启反稀释回购</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 治理哲学的四重核心护城河 (Leadership Philosophy & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Leadership Philosophy &amp; Governance Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 治理哲学的四重核心护城河：76.1% 超级投票权与“去中心化版主自治”杠杆</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极强的结构性治理壁垒与双边社区网络效应</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重领导力护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">76.1% 超级投票权构筑“反短视”决策防火墙</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ Reddit 采用 B 类股（10 票/股）与 A 类股（1 票/股）双层结构，加之机构大股东 Advance 与 Tencent 将投票代理权授予霍夫曼，使其握有 <strong>76.1% 投票权</strong>（<a href="https://visionarytalks.com/steve-huffman-net-worth/" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>），能够顶住短期舆论风暴推进商业化。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“十万 Subreddits + 志愿版主”极轻资产模型</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 霍夫曼坚持保留社区联邦制精髓——由数万名无薪志愿者版主制定版规、过滤低质垃圾帖，使 Reddit 无需像传统媒体或长视频平台支付巨额版权费，从而维持 <strong>91.5% 的软件级毛利率</strong>（<a href="https://investor.redditinc.com/news-events/news-releases/news-details/2026/Reddit-Reports-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit IR</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">原生全栈工程师基因（20天手写初版代码）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 作为亲手编写 Reddit 第一代 Lisp/Python 架构及创办 Hipmunk 担任 CTO 的纯正技术创始人（<a href="https://en.wikipedia.org/wiki/Steve_Huffman" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>），霍夫曼能直接穿透技术黑箱评估搜索算法、多语言机器翻译与反爬虫工程落地效率。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">克制的个人薪酬纪律与股权利益绑定</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 除 2023 年 IPO 前夕一次性长期绩效包（$1.93亿）外，霍夫曼 FY2025 总薪酬仅 <strong>$310万（含 $56.9万底薪）</strong>且未新增股票授予（<a href="https://bullfincher.io/companies/reddit/ceo-salary" target="_blank" rel="noopener noreferrer" class="cite-link">Bullfincher / SEC</a>），个人财富高度与股东长期回报同频。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维创始人战略特征雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球社交与社区创始人 CEO 五维能力模型对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">史蒂夫·霍夫曼 (Reddit) vs 马克·扎克伯格 (Meta) vs 埃文·斯皮格尔 (Snap)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 社交与 AI 社区 CEO 横向对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Social &amp; Community Founder CEOs Comparative Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 社交与兴趣社区 CEO 横向对比：治理控制力、商业变现率与营收增速标杆</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索 CEO / 平台 / 治理特征..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-white shadow-sm transition cursor-pointer">全部 CEO</button>
+ <button onclick="filterCompetitors('founder')" data-filter="founder" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">创始人掌舵派</button>
+ <button onclick="filterCompetitors('pro')" data-filter="pro" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">职业经理人掌舵派</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">CEO 与执掌平台</th>
+ <th class="py-4 px-4 min-w-[130px]">投票权控制度</th>
+ <th class="py-4 px-4 min-w-[140px]">核心商业变现抓手</th>
+ <th class="py-4 px-4 min-w-[115px]">毛利率 / 营收增速</th>
+ <th class="py-4 px-4 min-w-[125px]">管理风格与舆论标签</th>
+ <th class="py-4 px-5 min-w-[240px]">与史蒂夫·霍夫曼的治理及经营对比</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：史蒂夫·霍夫曼基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-white text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">史蒂夫·霍夫曼</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Reddit (NYSE: RDDT · u/spez)</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">76.1% (代理权+AB股)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">高意图社区广告 + AI语料授权</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">91.5% / +53%</td>
+ <td class="py-4 px-4 text-slate-900 dark:text-white">务实铁血、不惧社区抵制</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全行业最高毛利率与最强单季增速：</strong>二次回归后成功把理想主义论坛转化为高现金流公司，但与核心版主群体多次爆发公开冲突（<a href="https://investor.redditinc.com/news-events/news-releases/news-details/2026/Reddit-Reports-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit IR</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：马克·扎克伯格 -->
+ <tr data-category="founder" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">马克·扎克伯格 (Mark Zuckerberg)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Meta Platforms (NASDAQ: META)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">~61% 超级投票权</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">AI 推荐流 + Advantage+ 广告</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">81.8% / +19%</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">重算力全栈投入、激进转型</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全栈重资产 vs 社区轻资产：</strong>同样拥有绝对投票权控制力，扎克伯格敢于每年砸数百亿美元自建 AI 算力集群，而霍夫曼坚持极轻资产（CapEx 仅占营收 0.1%）。
+ </td>
+ </tr>
+
+ <!-- 行 3：埃文·斯皮格尔 -->
+ <tr data-category="founder" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">埃文·斯皮格尔 (Evan Spiegel)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Snap Inc. (NYSE: SNAP)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">&gt;99% 投票权控制</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">熟人社交 + Snapchat+ 订阅</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">54.2% / +14%</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">产品至上、偏重 AR 硬件实验</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>商业化兑现差距显著：</strong>Snap 与 Reddit 同样拥有双层投票权保护，但熟人阅后即焚难以沉淀高商业意图与公开 AI 语料，盈利能力远逊于霍夫曼治下的 Reddit。
+ </td>
+ </tr>
+
+ <!-- 行 4：比尔·雷迪 -->
+ <tr data-category="pro" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">比尔·雷迪 (Bill Ready)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Pinterest (NYSE: PINS · 职业CEO)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">普通同股同权治理</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">视觉购物灵感 + 电商联盟导流</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">79.5% / +17%</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">电商支付背景、商业化老练</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>垂类意图可比标杆：</strong>作为前 Google 商务总裁，雷迪成功盘活 Pinterest 购物转化；霍夫曼在 2026 年引入电商级效果广告的打法与 Pinterest 高度异曲同工。
+ </td>
+ </tr>
+
+ <!-- 行 5：琳达·亚卡里诺 / X 管理层 -->
+ <tr data-category="pro" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">X (原 Twitter) 管理团队</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">X Corp. (私有化 · 马斯克控股)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">私有控股绝对控制</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">实时舆情 + Grok 语料 + 订阅</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">广告波动修复中</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">激进裁员与言论边界重塑</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>品牌安全治理分水岭：</strong>X 与 Reddit 均在 2023 年封堵免费 API 对抗爬虫，但霍夫曼通过“版主自治+品牌安全分级”留住了主流品牌广告主，实现营收逆势狂飙。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的 CEO 记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：五大平台毛利率与单季营收增速对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">霍夫曼治理效能横向验证：上市社交与社区平台毛利率与同比营收增速双维对比（2026Q3 基准）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">依托志愿版主自治、极低云算力负担（CapEx 占营收 0.1%）及高毛利 AI 语料授权，Reddit 在毛利率（91.5%）与增速（+53%）双指标上全面领跑</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">91.5% 毛利率 + 53% 营收增速双第一</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 股权投票权与净资产推演 (Governance & Net Worth Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Governance Structure &amp; CEO Wealth Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 股权投票权与净资产推演：76.1% 控制力杠杆与“50亿美元十亿薪酬对赌”</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2026 年 11 月最新估算：直接持股 324 万股 + 现金投资，总净值约 $5.0 亿美元</span>
+ </div>
+
+ <!-- 1. 治理与个人财富四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Voting Power Control</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">76.1% 表决权</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 直接持股仅占总股本 &lt;2%，但借助 B 类 10 倍投票权及 Advance/腾讯投票代理协议实现绝对掌控（<a href="https://visionarytalks.com/steve-huffman-net-worth/" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Outright Equity Stake</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">3.24M 股</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 截至 2026 年 3 月代理声明披露直接持有约 324 万股 Reddit 股票（另含未行权绩效期权），按 11 月股价估值约 $3.08亿（<a href="https://visionarytalks.com/steve-huffman-net-worth/" target="_blank" rel="noopener noreferrer" class="cite-link">VisionaryTalks</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">FY2025 Total Pay Package</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$3.10M / 年</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 基本工资 $569,250 + 现金绩效奖金 $1,405,478 + 个人安保等其他补贴 $1,118,906（安保开支较 2024 年翻倍）（<a href="https://rentseek.ing/t/RDDT" target="_blank" rel="noopener noreferrer" class="cite-link">DEF 14A</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">2023 Pre-IPO Mega Grant</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$193.2M 激励包</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 2023 年获批多年期股票与期权大礼包（初始公允价值约 $1.92亿），深度绑定 IPO 后市值冲刺 $50亿 至 $250亿+ 里程碑（<a href="https://visionarytalks.com/steve-huffman-net-worth/" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 霍夫曼持股市值过山车轨迹图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2024 IPO 至今：霍夫曼直接持股（324万股）市值与个人净资产过山车轨迹（$M）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">从 2024 年 3 月 IPO 发行价（$34）起步，随 2025 年 Q3 财报后登顶十亿富豪（$1.2B），再到 2026 年 11 月随科技股估值回调回落至 ~$500M（含 $190M 现金投资）</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">高弹性科技创始人财富映射</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：霍夫曼持股与 Reddit 市值弹性动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>CEO WEALTH &amp; GOVERNANCE SIMULATOR · 霍夫曼持股财富与期权杠杆推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">不同 Reddit 股价与业绩兑现情景下：霍夫曼个人净资产与重返“十亿富豪俱乐部”阈值测算</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：直接持有 324 万股（3.24M）| 场外现金及投资约 $1.90亿 | 支持切换历史关键股价节点或自由拖动模拟</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="option-vest-toggle" checked onchange="updateWealthSimulator()" class="w-4 h-4 rounded accent-[#FF4500] cursor-pointer">
+ <span>计入 2023 激励包在途绩效期权内含价值（~1.1M 份等效净值）</span>
+ </label>
+ </div>
+
+ <!-- 历史与目标股价预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimPrice('ipo_2024')" data-era="ipo_2024" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>① 2024年3月 IPO 发行价基准</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">股价 $34.00 · 市值 ~$6.5B</div>
+ </button>
+ <button type="button" onclick="setSimPrice('nov_2026')" data-era="nov_2026" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-white font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>② 2026年11月 回调现价基准</div>
+ <div class="text-[11px] opacity-90 font-mono mt-0.5">股价 ~$95.00 · 市值 ~$19.2B</div>
+ </button>
+ <button type="button" onclick="setSimPrice('peak_2026')" data-era="peak_2026" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 2026年1月 历史峰值重返</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">股价 ~$259.00 · 市值 ~$52.0B</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">模拟 RDDT 股价 (USD / 股)</span>
+ <span id="sim-price-label" class="font-mono font-bold text-white text-sm">$95.00</span>
+ </div>
+ <input id="sim-price" type="range" min="34" max="320" step="1" value="95" oninput="markCustomEra(); updateWealthSimulator()" class="w-full accent-[#FF4500] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">直接持有股份数量 (万股 · 2026 Proxy: 324万股)</span>
+ <span id="sim-shares-label" class="font-mono font-bold text-white text-sm">324 万股</span>
+ </div>
+ <input id="sim-shares" type="range" min="200" max="500" step="4" value="324" oninput="markCustomEra(); updateWealthSimulator()" class="w-full accent-[#FF4500] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">场外现金及其他多元投资估值 ($M)</span>
+ <span id="sim-cash-label" class="font-mono font-bold text-emerald-400 text-sm">$190M</span>
+ </div>
+ <input id="sim-cash" type="range" min="50" max="400" step="10" value="190" oninput="markCustomEra(); updateWealthSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：对应 2026 年 11 月初 Reddit 股价回调至 ~$95 区间（总市值约 $19.2B）时，霍夫曼直接持股价值约 $3.08亿，叠加场外 $1.90亿现金及在途期权。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">霍夫曼估算总净资产 (Net Worth)</div>
+ <div id="sim-total-wealth" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$565M</div>
+ <div id="sim-billionaire-status" class="text-xs font-semibold text-amber-400 mt-1.5">距离“十亿富豪 ($1.0B)”门槛还差 $435M（需股价 ~$194）</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">直接持有 RDDT 股票公开市值</div>
+ <div id="sim-stock-val" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">$308M</div>
+ <div id="sim-option-val" class="text-xs text-slate-400 mt-1.5">在途绩效期权隐含净值：+$67M</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">对应 Reddit 隐含总市值（2.06亿稀释股本）</div>
+ <div id="sim-implied-cap" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$19.6B</div>
+ <div id="sim-ipo-mult" class="text-xs text-slate-400 mt-1.5">较 2024 年 IPO 发行价（$34）累计涨幅 +179.4%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">经济持股比例 vs 治理投票权</div>
+ <div id="sim-econ-pct" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">1.57% / 76.1%</div>
+ <div class="text-xs text-slate-400 mt-1.5">48 倍投票权杠杆保障战略执行连贯性</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 华尔街与社区双视角评估对比 (Bull Case vs Governance & Community Risks) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">市场认可的领袖优势 (Bull Case for Huffman)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">强执行力 + 商业嗅觉</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>兑现“增长+高盈利”承诺的罕见社交CEO：</strong>2026Q3 交出营收 +53%、净利率 32%、自由现金流 $3.63亿的成绩单，证明其不仅懂极客社区，更精通商业变现（<a href="https://investor.redditinc.com/news-events/news-releases/news-details/2026/Reddit-Reports-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit IR</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 时代提前布局语料版权护城河：</strong>早于绝大多数互联网平台看清爬虫免费吸食训练数据的危害，率先通过 API 收费与官方授权将人类语料资产化。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>高度克制的资本开支与股东回报意识：</strong>未盲目跟风烧钱买卡训练通用大模型，而是保持 0.1% CapEx 占比并及时启动 $1亿 股票回购保护每股价值。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">治理与社区博弈隐患 (Bear / Governance Lens)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">版主摩擦 + 搜索流量依赖</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>与核心志愿者版主群体的长期信任裂痕：</strong>2023 年 API 收费风波中强硬撤换抗议版主引发全网“u/spez”抵制浪潮（<a href="https://en.wikipedia.org/wiki/Steve_Huffman" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>），过度商业化仍可能削弱社区自发贡献热情。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>高度依赖 Google 搜索引流的结构性脆弱点：</strong>2026 年 10 月外部搜索引流出现周跌超百万次迹象，霍夫曼推出的海外强制登录测试若执行过猛，可能短期拖累新增用户天花板（<a href="https://www.tradingkey.com/news/transcripts/262256134-tradingkey" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit Q3 Call</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>76.1% 投票权高度集中带来的制衡缺失：</strong>外部中小股东几乎无法通过常规股东大会否决管理层提案，投资 RDDT 在很大程度上等同于押注霍夫曼个人的战略判断。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕演进与管理争议复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Career Evolution &amp; Strategic Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕人生演进与管理复盘：从硅谷少年黑客到成熟上市公司掌门</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">跨越 21 年的三段式蜕变：创业卖身 → 另起炉灶练兵 → 二次回归执掌千亿级流量帝国</span>
+ </div>
+
+ <!-- 1. 三幕人生演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 车库创站与过早套现</span>
+ <span class="font-mono text-xs font-bold text-slate-500">2005–2009</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">20天写就 Reddit 与早期出售</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2005 年 6 月与大学室友奥哈尼安获保罗·格雷厄姆 $1.2万资助，在 20 天内敲出网站代码；仅创立 16 个月后（2006 年 10 月）便以约 $1,000万–$2,000万将 Reddit 卖给出版巨头康泰纳仕（Condé Nast），2009 年合同期满后离开（<a href="https://visionarytalks.com/steve-huffman-net-worth/" target="_blank" rel="noopener noreferrer" class="cite-link">VisionaryTalks</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段启示：早年缺乏独立商业变现耐心，让公司陷入长达数年的治理真空
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · Hipmunk 砺剑</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2010–2015</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">CTO 视角打磨搜索与用户体验</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2010 年与亚当·戈尔茨坦联合创立旅游搜索引擎 <strong>Hipmunk</strong> 并任 CTO（<a href="https://en.wikipedia.org/wiki/Steve_Huffman" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>），首创“痛苦指数（Agony Index）”可视化航班筛选，积累了搜索引擎排序、商业导流与团队管理实战经验，为日后改造 Reddit 奠定产品方法论。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：从纯极客程序员成长为懂得交易转化与搜索引擎逻辑的技术高管
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 救火归来与上市</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2015–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">重掌帅印、IPO 与 AI 变现</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2015 年 7 月在原 CEO 艾伦·帕欧辞职的混乱中重返任 CEO，历经九年重构移动端、重建广告系统、平息内容治理风波，于 2024 年 3 月以 $34/股带领 Reddit 敲钟上市，并在 2026 年实现单季近 $9亿 营收与规模化 GAAP 盈利（<a href="https://investor.redditinc.com/news-events/news-releases/news-details/2026/Reddit-Reports-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit IR</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段启示：创始人二次回归往往能以更强的历史合法性推行痛苦却必要的商业改革
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大关键决策与实战教训复盘矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：霍夫曼掌舵 Reddit 期间的四大关键决策复盘</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">决策 01 · 2023 API 收费风暴与 r/place 抗议</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">公关危机 vs 商业大胜</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">宁可承受全网骂名，也要抢在 IPO 前收回数据控制权</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2023 年 7 月全站版主关停版块抗议高额 API 定价，u/spez 成为全网群嘲对象（<a href="https://en.wikipedia.org/wiki/Steve_Huffman" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>）。霍夫曼拒绝妥协，最终清退了寄生在免费接口上的第三方 App 并锁死 AI 大模型白嫖通道，为 2024 年顺利上市与 2026 年数据授权创收扫清障碍。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">决策 02 · 从“绝对言论自由”转向品牌安全分级</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">治理底线重塑</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">封禁极端有毒子版块，换取世界 500 强广告主预算入场</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 早期 Reddit 因放任极端仇恨与成人内容导致五百强品牌避之不及。霍夫曼上任后多次修订内容政策、隔离敏感版块并引入自动化风控，才使 Q3 广告收入得以膨胀至单季 $8.47亿。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">决策 03 · 2026 应对 AI 答案分流的“登录墙”实验</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">流量主权保卫战</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">宁愿牺牲部分低价值游客触达，也要把用户沉淀进自有 App</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 面对 2026 年秋季 Google 搜索引流下降，霍夫曼在 Q3 电话会上宣布将于 Q4 在部分海外市场测试“以登录为主”访问模式——因为已登录与 App 用户贡献了超 80% 商业变现，且能防止匿名爬虫窃取语料（<a href="https://www.tradingkey.com/news/transcripts/262256134-tradingkey" target="_blank" rel="noopener noreferrer" class="cite-link">TradingKey</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">决策 04 · 治理结构与接班人/高管梯队建设</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">董事会制衡与授权</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">独立董事长（David Habiger）+ 强力 COO/CFO 分担日常经营</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 尽管拥有 76.1% 投票权，霍夫曼并未包揽董事长职务（由 David Habiger 自 2023 年 11 月担任董事会主席），同时将广告销售与运营放权给 COO Jennifer Wong，使自己能专注产品方向与 AI 合作谈判（<a href="https://www.unifygtm.com/insights/executives/reddit-ceo" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit 2026 Proxy</a>）。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级管理与投资观察启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>评估创始人型 CEO 的三条“霍夫曼观察法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 区分“核心用户的噪音”与“商业价值的失血”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 社区平台每次商业化提速（如早期 Facebook 信息流广告或 2023 年 Reddit API 收费）必然遭遇核心老用户激烈反弹；优秀的 CEO 敢于在保护核心内容生态的前提下坚决跨越商业化深水区。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 超级投票权是双刃剑，需以财务纪律作为验金石</div>
+ <p class="text-slate-300 leading-relaxed">
+ 76.1% 投票权赋予霍夫曼极高行动自由度；投资者应重点跟踪其是否继续保持低 CapEx（0.1% 营收比）、SBC 占比逐季下降及逆周期回购，以此验证控制权未被滥用。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 创始人二次回归的黄金窗口期</div>
+ <p class="text-slate-300 leading-relaxed">
+ 与乔布斯 1997 年重返苹果相似，霍夫曼在外面经历 Hipmunk 历练后于 2015 年二次执掌 Reddit，既有创始人的天然权威，又补齐了商业闭环与组织管理的短板。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “霍夫曼治理与执行力”季度跟踪核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · CEO Execution &amp; Governance Tracking Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 霍夫曼治理与战略执行力季度跟踪核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 用于持续追踪史蒂夫·霍夫曼及其管理团队在后续季度的战略兑现与公司治理健康度（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 海外“强制登录”转型是否带动 Logged-in DAUq 加速？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">流量主权核心锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 26Q3 已登录日活达 5,350 万（贡献超 80% 营收）；需核查海外强制登录测试能否成功对冲外部搜索引流下滑。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 2026Q4 单季营收如期跨越 $10亿（$1.00B–$1.03B）里程碑</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">商业化兑现锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 验证单季调整后 EBITDA 能否站稳 $4.8亿–$5.1亿（47%–50% 利润率区间），兑现霍夫曼高经营杠杆承诺。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 严控员工扩编与 SBC 股权激励摊薄（营收比降至 15% 以下）</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">组织纪律指标</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 26Q3 员工同比仅增 +12%、SBC 占营收降至 15%（同比降 80bps）；持续确认管理层不盲目膨胀人员编制。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. AI 数据授权维权与新客户签约（Perplexity 诉讼与 API 续约）</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">语料变现护城河</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪关闭公开 RSS/API 后的爬虫阻断效果，以及新任首席法务官 Paul Cappuccio 推动的商业授权转化进展。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 社区生态健康度：志愿者版主留存与 AI 垃圾内容治理</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">内容纯度生命线</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 警惕 AI 批量生成水军贴侵蚀人类真实讨论口碑，核查管理层为志愿者版主提供的 AI 审核工具落地成效。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 剩余 $6.6亿 回购额度执行节奏及霍夫曼个人减持动态</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">内部人信号锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 关注公司利用 $30.3亿 现金继续回购注销股本，以及 SEC Form 4 披露的霍夫曼 10b5-1 交易计划变动情况。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>史蒂夫·霍夫曼 Steve Huffman (u/spez) · Reddit CEO 深度治理与商业战略研究报告</span>
+ <span>核心数据出处：Reddit SEC 2026 DEF 14A Proxy · Reddit Q3 2026 Earnings Release</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有公司治理、薪酬与财务指标均核验自美国证监会（SEC EDGAR）披露的 <a href="https://rentseek.ing/t/RDDT" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit, Inc. 2026 Proxy Statement (DEF 14A, Filed Apr 23, 2026)</a>、<a href="https://investor.redditinc.com/news-events/news-releases/news-details/2026/Reddit-Reports-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Reddit Q3 2026 财报公告（2026年10月29日）</a>、<a href="https://www.tradingkey.com/news/transcripts/262256134-tradingkey" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 业绩电话会议纪要</a>及 <a href="https://visionarytalks.com/steve-huffman-net-worth/" target="_blank" rel="noopener noreferrer" class="cite-link">2026 年 11 月公开持股估值统计</a>。报告内置的估值与净资产模拟器旨在分析管理层激励与股东利益绑定机制，不构成任何证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ // 清理运行态临时样式与画布缓存属性，确保导出的 HTML 在任何本地浏览器打开时干净重绘
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Steve_Huffman_Reddit_CEO_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Steve_Huffman_Reddit_CEO_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 社交与社区 CEO 横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. 霍夫曼持股财富与期权杠杆动态推演器
+ // ==========================================
+ const PRICE_PRESETS = {
+ ipo_2024: {
+ price: 34,
+ shares: 324,
+ cash: 190,
+ caption: '当前测算基准：对应 2024 年 3 月 21 日 Reddit 纽交所 IPO 发行价（$34.00/股）时，霍夫曼直接持有约 324 万股价值约 $1.10亿。'
+ },
+ nov_2026: {
+ price: 95,
+ shares: 324,
+ cash: 190,
+ caption: '当前测算基准：对应 2026 年 11 月初 Reddit 股价回调至 ~$95 区间（总市值约 $19.2B）时，霍夫曼直接持股价值约 $3.08亿，叠加场外 $1.90亿现金及在途期权。'
+ },
+ peak_2026: {
+ price: 259,
+ shares: 324,
+ cash: 190,
+ caption: '当前测算基准：对应 2026 年 1 月 13 日 Reddit 创下年内最高收盘价（~$259/股）时，霍夫曼仅直接持股价值即达约 $8.39亿，叠加现金与期权稳居十亿富豪行列。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-white font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-90 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimPrice(eraKey) {
+ const preset = PRICE_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-price').value = preset.price;
+ document.getElementById('sim-shares').value = preset.shares;
+ document.getElementById('sim-cash').value = preset.cash;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateWealthSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义市值与治理杠杆模拟模式——自由调节 RDDT 股价、直接持股规模与场外投资配置，观察霍夫曼净资产敏感度。';
+ }
+
+ function updateWealthSimulator() {
+ const price = parseFloat(document.getElementById('sim-price').value) || 95;
+ const sharesTenK = parseFloat(document.getElementById('sim-shares').value) || 324;
+ const cashM = parseFloat(document.getElementById('sim-cash').value) || 190;
+ const includeOptions = document.getElementById('option-vest-toggle').checked;
+
+ document.getElementById('sim-price-label').textContent = '$' + price.toFixed(2);
+ document.getElementById('sim-shares-label').textContent = sharesTenK + ' 万股';
+ document.getElementById('sim-cash-label').textContent = '$' + cashM + 'M';
+
+ const sharesM = sharesTenK / 100; // 百万股
+ const stockValM = sharesM * price;
+ // 模拟在途绩效期权内含净值（按行权价 $34 折算约 1.1M 份等效净收益）
+ const optionValM = includeOptions ? Math.max(0, 1.1 * (price - 34)) : 0;
+ const totalWealthM = stockValM + cashM + optionValM;
+
+ const dilutedSharesM = 206.3; // 2026Q3 财报披露完全稀释总股本 206.3M
+ const impliedCapB = (dilutedSharesM * price) / 1000;
+ const ipoGainPct = ((price - 34) / 34) * 100;
+ const econOwnershipPct = (sharesM / dilutedSharesM) * 100;
+
+ document.getElementById('sim-total-wealth').textContent = totalWealthM >= 1000
+ ? '$' + (totalWealthM / 1000).toFixed(2) + 'B'
+ : '$' + Math.round(totalWealthM).toLocaleString('en-US') + 'M';
+
+ const statusEl = document.getElementById('sim-billionaire-status');
+ if (totalWealthM >= 1000) {
+ statusEl.textContent = `已重返“十亿富豪 ($1.0B+)”俱乐部（超出门槛 +$${Math.round(totalWealthM - 1000)}M）`;
+ statusEl.className = 'text-xs font-semibold text-emerald-400 mt-1.5';
+ } else {
+ const gapM = 1000 - totalWealthM;
+ const denomShares = sharesM + (includeOptions ? 1.1 : 0);
+ const neededPrice = (1000 - cashM + (includeOptions ? 1.1 * 34 : 0)) / denomShares;
+ statusEl.textContent = `距“十亿富豪 ($1.0B)”差 $${Math.round(gapM)}M（需股价 ~$${Math.round(neededPrice)}）`;
+ statusEl.className = 'text-xs font-semibold text-amber-400 mt-1.5';
+ }
+
+ document.getElementById('sim-stock-val').textContent = '$' + Math.round(stockValM).toLocaleString('en-US') + 'M';
+ document.getElementById('sim-option-val').textContent = includeOptions
+ ? `在途绩效期权隐含净值：+$${Math.round(optionValM)}M`
+ : '已关闭未行权期权估值测算';
+ document.getElementById('sim-implied-cap').textContent = '$' + impliedCapB.toFixed(1) + 'B';
+ document.getElementById('sim-ipo-mult').textContent = `较 2024 年 IPO 发行价（$34）累计涨幅 +${ipoGainPct.toFixed(1)}%`;
+ document.getElementById('sim-econ-pct').textContent = `${econOwnershipPct.toFixed(2)}% / 76.1%`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'sh_reddit_ceo_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置霍夫曼治理与执行力核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'rev_trajectory';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：2023Q3–2026Q4E Reddit 单季营收与调整后 EBITDA 跃迁 ($M, 源自 Reddit 财报与 Q4 指引)
+ const revConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '23Q3 (IPO前)',
+ '24Q3 (上市首年)',
+ '25Q3 (盈利跃升)',
+ '26Q3 (最新财季)',
+ '26Q4E (指引中值)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '单季总营收 Revenue ($M)',
+ data: [208, 348, 585, 895, 1015],
+ backgroundColor: 'rgba(255, 69, 0, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '单季调整后 EBITDA ($M)',
+ data: [-7, 94, 236, 402, 495],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toLocaleString('en-US')}M`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 1150,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' }
+ },
+ y1: {
+ position: 'right',
+ min: -50,
+ max: 600,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'M' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：2026Q3 全球活跃用户结构拆解（百万 DAUq，源自 Reddit 2026Q3 财报披露）
+ const userConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '全球日活总计 Global DAUq (百万)',
+ '未登录日活 Global Logged-out (百万)',
+ '已登录日活 Global Logged-in (百万)',
+ '美国本土总日活 U.S. DAUq (百万)',
+ '美国已登录日活 U.S. Logged-in (百万)'
+ ],
+ datasets: [
+ {
+ label: '2026Q3 活跃用户规模 (百万 DAUq)',
+ data: [130.3, 76.8, 53.5, 50.7, 23.4],
+ backgroundColor: ['#FF4500', '#64748B', '#10B981', '#06B6D4', '#F59E0B'],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (c) => {
+ const notes = [
+ ' (同比增长 +12%，全球单季 ARPU 达 $6.87)',
+ ' (受搜索引擎引流变化影响较大)',
+ ' (贡献超 80% 商业变现的核心基本盘)',
+ ' (美国单季营收同比增长 +50%)',
+ ' (季度环比持续稳健增长)'
+ ];
+ return `${c.parsed.x}M DAUq${notes[c.dataIndex]}`;
+ }
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 150,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'M' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'rev_trajectory' ? revConfig : userConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'rev_trajectory') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2023–2026Q4E 霍夫曼掌舵下 Reddit 季度营收与调整后 EBITDA 爆发曲线';
+ subEl.textContent = '2026Q3 营收达 $895M（广告 $847M + 数据授权 $48M），Q4 指引首次跨过单季 $10亿 大关（$1.00B–$1.03B）';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2026Q3 活跃用户结构拆解（全球 1.303亿 DAUq · 全球单季 ARPU $6.87）';
+ subEl.textContent = '已登录日活（5,350万）贡献超 80% 商业收入，霍夫曼启动海外强制登录转型以降低外部搜索依赖';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '原生技术架构与工程理解力',
+ '董事会与超级投票权掌控力',
+ '轻资产高毛利商业变现效率',
+ '核心社区用户和谐度',
+ 'AI 时代语料主权变现先发力'
+ ],
+ datasets: [
+ {
+ label: '史蒂夫·霍夫曼 (Reddit)',
+ data: [9.2, 9.6, 9.7, 6.2, 9.8],
+ borderColor: '#FF4500',
+ backgroundColor: 'rgba(255, 69, 0, 0.24)',
+ pointBackgroundColor: '#FF4500',
+ borderWidth: 2.5
+ },
+ {
+ label: '马克·扎克伯格 (Meta)',
+ data: [9.4, 9.0, 9.2, 8.2, 8.8],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '埃文·斯皮格尔 (Snap)',
+ data: [8.5, 9.9, 6.4, 8.4, 6.0],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Reddit (霍夫曼 · 高意图社区+AI语料)',
+ 'Meta (扎克伯格 · 全球社交广告霸主)',
+ 'Pinterest (雷迪 · 视觉购物灵感平台)',
+ 'Snap (斯皮格尔 · 即时通讯与AR)'
+ ],
+ datasets: [
+ {
+ label: '综合毛利率 Gross Margin (%)',
+ data: [91.5, 81.8, 79.5, 54.2],
+ backgroundColor: '#FF4500',
+ borderRadius: 5,
+ barThickness: 14
+ },
+ {
+ label: '单季同比营收增速 YoY Growth (%)',
+ data: [53.0, 19.0, 17.0, 14.0],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 14
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: ${c.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 100,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ '2024年3月 (IPO发行)',
+ '2025年10月 (Q3财报后)',
+ '2026年1月 (年内峰值)',
+ '2026年11月 (回调现价)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '霍夫曼估算总净资产 ($M · 含 $190M 现金投资)',
+ data: [300, 1200, 1029, 500],
+ backgroundColor: 'rgba(255, 69, 0, 0.85)',
+ borderRadius: 5,
+ barThickness: 36,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '直接持有 324 万股 RDDT 市值 ($M)',
+ data: [110, 677, 839, 308],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toLocaleString('en-US')}M`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 1350,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' },
+ title: { display: true, text: '财富与持股市值 (百万美元 $M)', color: colors.text, font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateWealthSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>
