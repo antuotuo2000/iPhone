@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>大卫·戈克勒 David Goeckeler 深度商业与战略研究报告：闪迪 (SanDisk) 独立分拆操盘手、AI存储周期重塑与千亿美元市值跃迁</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：琥珀金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：David_Goeckeler_SanDisk_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ DG
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">SanDisk (SNDK) · WDC · Cisco</div>
+ <div class="text-sm font-bold leading-tight">大卫·戈克勒深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">闪迪 CEO 专题目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 商业版图与分拆架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 商业模式创新与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 存储与半导体领袖横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务爆发与股东价值推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕职业演进与管理复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. “戈克勒法则”核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>半导体与存储产业领袖研究组</p>
+ <p>财报与估值基准：SEC Filings / 2026Q4 (FY27 Q1)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-base shadow-lg shadow-mogold-500/25">
+ DG
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CEO MONOGRAPH · SNDK</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">大卫·戈克勒研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 闪迪 (SanDisk) 董事长兼 CEO · 分拆减法宗师与 AI 存储商业模式重塑者
+ </p>
+ </div>
+
+ <!-- 核心人物与闪迪财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">分拆独立后市值跃迁</span>
+ <span class="font-mono font-bold text-white">~$7.0B → ~$115.1B</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY27 Q1 单季营收/净利</span>
+ <span class="font-mono font-bold text-emerald-400">$11.03B / $8.10B</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">Non-GAAP 毛利率 / NBM锁单</span>
+ <span class="font-mono font-bold text-mogold-400">85.1% · $88.9B 合约</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>商业版图与分拆架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>商业模式创新与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>存储与半导体领袖横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务爆发与股东价值推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕职业演进与管理复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>“戈克勒法则”核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">CEO 深度档案：闪迪独立复兴与 AI 推理存储架构师</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">履历横跨：Cisco (2001–2020) · Western Digital CEO (2020–2025) · Sandisk CEO (2025–至今)</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据基准：2026年11月 (FY27 Q1 财报后)</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 战略分拆释放价值 × NBM 商业模式去周期化 × AI 推理存储超级红利</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 大卫·戈克勒 David Goeckeler 深度研究报告：闪迪 (SanDisk) 独立分拆操盘手、商业模式重构与千亿美元市值跃迁
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 在重资产、强周期的半导体存储行业，绝大多数掌门人倾向于通过并购做大规模以摊薄晶圆折旧；但拥有 19 年思科（Cisco）软件与网络工程背景的 <strong class="text-white">大卫·戈克勒（David Goeckeler）</strong> 却反其道而行。2020 年执掌西部数据（WDC）后，他力排众议推进 HDD 与 NAND Flash 业务彻底分拆，于 <a href="https://www.sandisk.com/en-ae/company/newsroom/press-releases/2025/sandisk-celebrates-nasdaq-listing-after-completing-separation" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">2025 年 2 月 24 日</a> 率领 <strong class="text-white">闪迪（Sandisk Corp., Nasdaq: SNDK）</strong> 重返纳斯达克独立上市。
+ 独立后的闪迪在 AI 大模型推理爆发与高端企业级 SSD 紧缺浪潮下实现惊人跃迁：<strong class="text-emerald-400">FY2026 全年营收飙升 175% 至 $202.48亿</strong>，最新公布的 <a href="https://www.sandisk.com/company/newsroom/press-releases/2026/2026-10-29-sandisk-reports-fiscal-first-quarter-2027-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">FY2027 Q1 单季营收突破 $110.31亿（同比 +378%）、Non-GAAP 毛利率高达 85.1%、GAAP 净利润达 $81.01亿</a>，公司市值由独立首日约 $70 亿一路跃升至 <a href="https://www.macrotrends.net/stocks/charts/SNDK/sandisk/market-cap" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-400 font-semibold">2026 年 11 月约 $1,151.3亿</a>，并宣布 1 拆 8 拆股及累计百亿美元级回购计划。
+ </p>
+
+ <!-- 核心商业遗产高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">NBM 新商业模式锁死长期确定性</div>
+ <div class="text-white font-semibold">引入企业软件级长约机制（NBM），底价保底合同最低承诺营收达 $889亿，打破传统存储价格暴跌宿命</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">极轻资本开支与零有息负债堡垒</div>
+ <div class="text-mogold-400 font-semibold">依托与铠侠（Kioxia）合资产线摊薄折旧，FY27 Q1 现金资本开支仅占营收 1.8%，实现零有息负债与 $51亿净现金</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">从消费级记忆卡向 AI 数据中心引擎转型</div>
+ <div class="text-emerald-400 font-semibold">数据中心业务单季营收暴增 1,685% 至 $48.02亿，携手三家美国超大规模云厂商（Hyperscalers）卡位 AI 推理底座</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>独立后市值与股价重估 (2025–2026)</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$115.1B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">&gt;16x 市值跃升</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2025 年 2 月首日收盘 $48.60（市值约 $70亿），至 2026 年 11 月达 $800–$865（盘中峰值 $2,354），市值超 $1,134亿–$1,151亿（<a href="https://www.macrotrends.net/stocks/charts/SNDK/sandisk/market-cap" target="_blank" rel="noopener noreferrer" class="cite-link">Macrotrends</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2027 Q1 单季营收与 GAAP 净利</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 0 012 2v14a2 2 0 01-2 2h-2a2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$11.03B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">净利 $8.10B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 单季营收同比暴增 +378%，Non-GAAP 毛利率达 85.1%，单季调整后自由现金流高达 $56.96亿（<a href="https://www.sec.gov/Archives/edgar/data/2023554/000162828026068243/sndkq1-27ex991xpressrelease.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk SEC 8-K</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>NBM 长约底价保底营收与 RPO</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$88.9B</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">RPO $16.5B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 将思科企业软件订阅思维引入存储芯片，锁定客户多年期最低采购与底价条款，重塑现金流可见度（<a href="https://investor.sandisk.com/static-files/4ca97b6e-7da4-4d52-b4ac-0e80f462716f" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk IR Deck</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>技术代际跃迁与股东回报力度</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">BiCS8 / HBF</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">单季回购 $5.0B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ BiCS8 成为主力产出节点，首批高带宽闪存（HBF）芯片完成流片；单季回购 $50亿并启动 1:8 拆股（<a href="https://www.fool.com/earnings/call-transcripts/2026/10/30/sandisk-sndk-q1-2027-earnings-call-transcript/" target="_blank" rel="noopener noreferrer" class="cite-link">Earnings Call</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 商业版图与分拆架构 (Business & Spin-Off Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Strategic Separation & End-Market Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 商业版图与分拆架构：从西部数据“集团折价”到三大存储引擎全速释放</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2027 Q1 闪迪单季营收 $11.03B · 数据中心与边缘计算合计占比达 96.4%</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2026 Q1 vs FY2027 Q1 闪迪三大终端市场单季营收结构跃迁（$B）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">数据中心营收由 $0.27B 暴增 1,685% 至 $4.80B，边缘计算升至 $5.83B，彻底摆脱消费级零售依赖</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('end_market')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：三大终端市场跃迁</button>
+ <button onclick="switchBizChart('quarterly_surge')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：独立后六季爆发轨迹</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">戈克勒重塑闪迪商业版图的三大核心手术</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“战略减法”破除集团估值折价（2020–2025）</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 西部数据（WDC）2016 年以 $190亿收购闪迪后，机械硬盘（HDD）与闪存（NAND）共用同一代码导致资本配置互相掣肘。戈克勒上任后推行运营双轨制并于 <strong>2025 年 2 月完成彻底分拆</strong>，使华尔街得以按纯 AI 存储龙头对 SNDK 独立重估（<a href="https://phemex.com/academy/david-goeckeler-cisco-spin-off-success" target="_blank" rel="noopener noreferrer" class="cite-link">Phemex Research</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">重心由“消费零售牌”转向“AI 超大规模数据中心”</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 打破外界对闪迪仅是“SD卡/U盘消费品牌”的刻板印象，戈克勒重兵投入企业级 TLC/QLC 大容量 SSD，拿下 <strong>三家美国顶级超大规模云厂商（Hyperscalers）</strong>，数据中心单季营收一年内增长近 18 倍（<a href="https://investor.sandisk.com/static-files/4ca97b6e-7da4-4d52-b4ac-0e80f462716f" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk FY27 Q1</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">果断放弃低毛利消费份额，死守晶圆颗粒溢价</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 在晶圆供应紧缺期，戈克勒主动收缩低价消费端出货（FY27 Q1 消费端营收同比降 39% 至 $3.97亿），将宝贵的 <strong>BiCS8 先进产能</strong> 优先分配给高溢价数据中心与高端边缘计算客户（<a href="https://www.tradingkey.com/news/presentation/262259848-" target="_blank" rel="noopener noreferrer" class="cite-link">TradingKey</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">独立后纳斯达克交易代码与拆股里程碑</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">Nasdaq: SNDK · 2026.11 执行 1:8 拆股</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心业务与技术支柱详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 支柱 1：AI 数据中心企业级 SSD -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一爆发主引擎 · FY27 Q1 占总营收 43.5%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">单季营收 $4.80B (+1,685% YoY)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. AI 数据中心与超大规模云存储（Datacenter eSSD）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 随着 AI 大模型从训练迈向大规模推理（Inference），海量 KV Cache 上下文与 RAG 向量库引爆高速大容量企业级 SSD 需求。闪迪数据中心业务在 <strong>FY2026 全年暴涨 437% 至 $51.53亿</strong> 后，仅 <strong>FY2027 Q1 单季便轰出 $48.02亿</strong>（环比再增 61%），预计 2027 自然年数据中心将占据全球 NAND 位元需求的 55% 以上（<a href="https://investor.sandisk.com/static-files/4ca97b6e-7da4-4d52-b4ac-0e80f462716f" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk IR</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>UltraQLC / 高容量 PCIe Gen5 eSSD</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">绑定三大美国超大规模云巨头</span>
+ </div>
+ </div>
+
+ <!-- 支柱 2：边缘计算与端侧 AI 存储 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第一大基本盘 · FY27 Q1 占总营收 52.9%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">单季营收 $5.83B (+7% QoQ)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 高端边缘计算、AI PC 与智能汽车存储（Edge）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 覆盖旗舰智能手机（UFS 4.0/4.1）、AI PC 定制化 OEM SSD、智能网联汽车（ADAS 车载存储）及工业物联网。FY2026 全年边缘计算业务实现 <strong>+195% 增长至 $121.60亿</strong>，FY2027 Q1 单季稳居 <strong>$58.32亿</strong>。戈克勒主动剔除低端价格战订单，聚焦高容量旗舰机型与汽车电子长周期客户（<a href="https://investor.sandisk.com/node/8136/pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk FY26 10-K/Q4</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>AI PC OEM / 旗舰手机 UFS / 车规级闪存</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">结构高端化驱动单比特毛利跃升</span>
+ </div>
+ </div>
+
+ <!-- 支柱 3：消费级品牌矩阵与终端需求探针 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">全球国民级品牌资产 · FY27 Q1 占总营收 3.6%</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">单季营收 $397M (FY26全年 $2.94B)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 全球消费级移动存储与内容创作生态（Consumer）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 拥有全球数以十万计零售网点与极高消费者心智认知的 <strong>SanDisk Extreme 便携式 SSD、存储卡与游戏主机扩容卡</strong>。尽管在供给受限周期中主动提价控量使 Q1 消费端占比降至 3.6%（$3.97亿），但戈克勒强调其作为“终端需求早期感知雷达”与品牌溢价护城河的战略价值不可替代（<a href="https://investor.sandisk.com/static-files/4ca97b6e-7da4-4d52-b4ac-0e80f462716f" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk IR</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>SanDisk Extreme PSSD / microSD / 游戏存储</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">直接触达终端用户的市场需求探针</span>
+ </div>
+ </div>
+
+ <!-- 支柱 4：Kioxia 25年合资晶圆联盟与 HBF 前沿架构 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">制造底座与未来杀手锏 · 49.9% 合资股权</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">现金 CapEx 仅占营收 1.8%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 铠侠 (Kioxia) 晶圆合资联盟与高带宽闪存 (HBF)</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 通过持有日本四日市与北上晶圆厂合资公司（Flash Ventures）<strong>49.9% 股权</strong>，闪迪以极低现金资本开支（FY27 Q1 仅 $2.02亿）锁定全球领先的 <strong>218 层 BiCS8 3D NAND</strong> 产能；同时在 CTO Alper Ilkbahar 领衔下完成首颗 <strong>高带宽闪存（HBF, High Bandwidth Flash）</strong> 芯片流片，旨在以媲美 HBM 的带宽与数倍容量攻克 AI 推理内存墙（<a href="https://www.fool.com/earnings/call-transcripts/2026/10/30/sandisk-sndk-q1-2027-earnings-call-transcript/" target="_blank" rel="noopener noreferrer" class="cite-link">Q1 2027 Call</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>BiCS8 3D NAND / HBF 高带宽闪存流片</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">轻资产享有一流晶圆厂制造成本优势</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 商业模式创新与四重核心护城河 (Business Model & Economic Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Business Model Innovation & Economic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 商业模式创新与四重核心护城河：用“思科软件思维”改造周期性存储芯片</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：结构性重塑 (NBM 长约锁价 + 合资制造规模 + 主控固件协同 + 品牌渠道)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">NBM 新商业模式：把大宗现货变成长约契约</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 借鉴当年在思科（Cisco）将安全硬件转型为软件订阅的经验，戈克勒在闪迪首创 <strong>New Business Model (NBM) 多年期保底协议</strong>，要求下游云巨头支付预付款押金并承诺最低采购量与地板价，截至 FY27 Q1 已锁定 <strong>$889亿最低保底营收与 $165亿 RPO</strong>（<a href="https://investor.sandisk.com/static-files/4ca97b6e-7da4-4d52-b4ac-0e80f462716f" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk IR</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">跨 25 年铠侠合资制造联盟与极致资本效率</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 不同于三星、美光需独自承担百亿美元级晶圆厂重资产折旧，闪迪与铠侠分担前端研发与设备投入。FY2027 Q1 闪迪总资本开支（Gross CapEx）仅占营收 <strong>3.4%（$3.78亿）</strong>，现金 CapEx 仅占 <strong>1.8%</strong>，释放出 <strong>51.6% 的惊人自由现金流转化率</strong>（<a href="https://www.sec.gov/Archives/edgar/data/2023554/000162828026068243/sndkq1-27ex991xpressrelease.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC 8-K</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“颗粒 + 自研主控 + 企业级固件”垂直集成</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 拥有 25,000+ 工程研发管理经验的戈克勒深知：AI 数据中心采购的不是裸晶圆，而是高 IOPS、低尾延迟与高耐久度的系统级存储方案。闪迪凭借自研 ASIC 主控芯片、企业级固件与 <strong>BiCS8 CBA（外围电路直接键合阵列）</strong> 技术实现高于纯晶圆厂的软件附加值（<a href="https://investor.sandisk.com/management/david-goeckeler" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk Bio</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">HBF 架构卡位与零负债资本配置铁律</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 独立仅一年多便彻底还清全部有息债务（$0 债务 + $51亿现金），确立“100% 超额自由现金流回馈股东”铁律（过去两季已斥资约 $90亿–$100亿回购约 4% 总股本），同时前瞻布局 <strong>HBF（高带宽闪存）</strong> 切入 AI 推理内存新赛道（<a href="https://www.fool.com/earnings/call-transcripts/2026/10/30/sandisk-sndk-q1-2027-earnings-call-transcript/" target="_blank" rel="noopener noreferrer" class="cite-link">Motley Fool</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维领袖战略能力雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球存储与基础设施掌门人五维战略能力对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">大卫·戈克勒 (Sandisk) vs 桑杰·梅赫罗特拉 (Micron) vs 陈立武 (Intel/Cadence)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 存储与半导体领袖横向对比 (Memory & Semiconductor Leaders)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Semiconductor & Storage Leadership Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 存储与半导体领袖横向对比：商业模式分化与资本回报率（ROIC）统治力</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索高管 / 企业 / 商业模式..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部对比标的</button>
+ <button onclick="filterCompetitors('memory')" data-filter="memory" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">核心存储双雄 (NAND/DRAM)</button>
+ <button onclick="filterCompetitors('infra')" data-filter="infra" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">硬科技拆分与算力领军</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">领袖与执掌企业</th>
+ <th class="py-4 px-4 min-w-[145px]">核心业务与产品壁垒</th>
+ <th class="py-4 px-4 min-w-[145px]">市值与资本市场表现</th>
+ <th class="py-4 px-4 min-w-[125px]">最新毛利率 / 盈利特征</th>
+ <th class="py-4 px-4 min-w-[130px]">战略与资本配置哲学</th>
+ <th class="py-4 px-5 min-w-[240px]">与大卫·戈克勒模式的异同评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：大卫·戈克勒基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">大卫·戈克勒</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Sandisk Corp. (SNDK)</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">纯 NAND 闪存 + 企业级 SSD + NBM 长约</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">独立后市值跃升 &gt;16x (~$115B)</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">毛利 85.1% / ROIC 131%</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">分拆减法 + NBM 锁价 + 零债务</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全行业资本效率标杆：</strong>依托 Kioxia 合资模式实现最低现金 CapEx 占比，用软件级合同机制兑现 85%+ 毛利率与百亿级回购（<a href="https://www.morningstar.com/stocks/xnas/sndk/quote" target="_blank" rel="noopener noreferrer" class="cite-link">Morningstar</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：桑杰·梅赫罗特拉 -->
+ <tr data-category="memory" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">桑杰·梅赫罗特拉 (Sanjay Mehrotra)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Micron Technology (MU) · 前闪迪联合创始人</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">DRAM + HBM3E/HBM4 + NAND 全线重资产</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">美系全品类存储双雄之一</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">ROIC ~90.7% / 重资产折旧高</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">百亿级美国本土晶圆厂扩产</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>渊源深厚的镜像对手：</strong>梅赫罗特拉正是 1988 年闪迪（SanDisk）联合创始人；美光同时主攻 HBM 与 NAND 但资本开支极重，戈克勒则率领新闪迪走轻资产纯 NAND 路线（<a href="https://www.morningstar.com/stocks/xnas/sndk/quote" target="_blank" rel="noopener noreferrer" class="cite-link">Morningstar</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 3：郭鲁正 -->
+ <tr data-category="memory" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">郭鲁正 (Kwak Noh-Jung)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">SK Hynix (含 Solidigm)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">AI HBM 绝对霸主 + Solidigm 大容量 QLC</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">韩国 AI 算力供应链核心龙头</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">HBM 驱动历史级盈利扩张</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">MR-MUF 封装壁垒 + 绑定英伟达</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>算力近端 vs 数据温热端：</strong>SK 海力士垄断 GPU 旁侧 HBM 内存，闪迪则聚焦推理上下文与海量数据中心 eSSD，并通过自研 HBF 谋求向高带宽层渗透。
+ </td>
+ </tr>
+
+ <!-- 行 4：欧文·谭 -->
+ <tr data-category="infra" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">欧文·谭 (Irving Tan)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Western Digital (WDC · 纯 HDD 业务)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">云端近线大容量机械硬盘（ePMR / HAMR）</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">分拆后作为纯 HDD 龙头独立运营</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">稳定温冷数据存储现金流</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">专注超大规模云冷数据存储</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>同源分拆的“双子星”：</strong>由戈克勒一手招募并交棒 WDC 的前思科战友；分拆使 WDC 专注低成本冷数据 HDD，而闪迪轻装上阵搏击高弹性 AI 闪存（<a href="https://www.westerndigital.com/company/newsroom/press-releases/2025/2025-02-24-western-digital-completes-planned-company-separation" target="_blank" rel="noopener noreferrer" class="cite-link">WDC Release</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 5：霍克·陈 -->
+ <tr data-category="infra" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">陈福阳 (Hock Tan)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Broadcom (AVGO)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">定制 AI ASIC + 交换芯片 + VMware 软件</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">万亿美元级半导体与基础设施巨头</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">综合毛利率 ~75%+ / 极强 FCF</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">硬科技特许经营权 + 软件化现金流</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>理念高度共鸣：</strong>两人均擅长剔除无谓价格战业务、将硬件基础设施赋予企业级软件合同粘性，并把充沛自由现金流全力倾注于股东回报。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的领袖或企业记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：三大全球存储巨头资本回报效率对比 (Morningstar 2026口径) -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">轻资产合资制造的威力：闪迪 (SNDK) vs 美光 (MU) 核心资本回报与盈利能力对比（%）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">得益于 Kioxia 合资晶圆厂分担资本开支以及 NBM 高溢价长约，闪迪的归一化 ROIC 与 ROE 全面领跑全球存储行业（<a href="https://www.morningstar.com/stocks/xnas/sndk/quote" target="_blank" rel="noopener noreferrer" class="cite-link">Morningstar 2026年11月统计</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">ROIC 130.99% 冠绝存储双雄</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 财务爆发与股东价值推演 (Financial Surge & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Explosion & Shareholder Value Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务爆发与股东价值推演：85.1% 惊人毛利率、百亿回购与跨周期复利模拟器</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">从分拆初期的亏损阴霾（FY25 Q4 净亏 -$2,300万）到单季净赚 $81.01亿的超级反转</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">FY27 Q1 Non-GAAP Gross Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">85.1% (+55.2ppt)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 由一年前（FY26 Q1）的 29.9% 飙升 55.2 个百分点至 85.1%，打破传统存储芯片“周期性微利”的天花板（<a href="https://www.sec.gov/Archives/edgar/data/2023554/000162828026068243/sndkq1-27ex991xpressrelease.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk 8-K</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Zero-Debt Balance Sheet</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$5.10B ($0 债务)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 独立分拆时承接的逾 $18亿长期债务已于 2026 年初提前全额清偿，期末账面现金达 $51亿且零有息负债（<a href="https://www.fool.com/earnings/call-transcripts/2026/10/30/sandisk-sndk-q1-2027-earnings-call-transcript/" target="_blank" rel="noopener noreferrer" class="cite-link">Q1 2027 Call</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Adjusted Free Cash Flow</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$5.70B / 季</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ FY27 Q1 单季经营现金流 $63.63亿、调整后自由现金流 $56.96亿，单季即斥资 $50亿回购 320 万股注销股本（<a href="https://investor.sandisk.com/static-files/4ca97b6e-7da4-4d52-b4ac-0e80f462716f" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk IR</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">FY27 Q2 Revenue Guidance</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$12.2B–$12.6B</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 管理层指引下季营收继续环比增长至 $124亿中值（年化超 $490亿规模），Non-GAAP 毛利率维持 84.5%–85.5% 高位（<a href="https://www.businesswire.com/news/home/20261029487384/en/Sandisk-Reports-Fiscal-First-Quarter-2027-Financial-Results" target="_blank" rel="noopener noreferrer" class="cite-link">Business Wire</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2025 Q4 至 FY2027 Q1：闪迪独立后六大财季单季营收（$B）与 Non-GAAP 毛利率（%）爆发曲线</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">自 2025 年 2 月分拆独立起，短短五个季度内单季营收从 $19.01亿跃升至 $110.31亿（增长 5.8 倍），毛利率从 26.4% 直线拉升至 85.1%</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">单季营收 5 季扩张 5.8x · 毛利率 +58.7ppt</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“戈克勒分拆重估”股东价值与周期复利推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>SPIN-OFF VALUE COMPOUNDING ENGINE · 闪迪重估与周期回报推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">从分拆重估到 AI 推理长牛：历史锚点与未来情景动态模拟器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实历史与前瞻基准（2025.02–2026.11 独立重估实绩 / 2020–2026 戈克勒掌舵全景 / 2027–2031 AI推理常态化稳健情景）</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" checked onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>叠加百亿回购注销 EPS 增厚效应 (+3.5%/年)</span>
+ </label>
+ </div>
+
+ <!-- 真实历史与情景预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('sndk_spinoff')" data-era="sndk_spinoff" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 2025.02–2026.11 独立上市实绩</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">1.75年 · 股价 $48.60→$840 (~17.3x 重估)</div>
+ </button>
+ <button type="button" onclick="setSimEra('ai_steady_5y')" data-era="ai_steady_5y" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 2027–2031 AI 推理稳健情景</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">5年 · NBM 长约护航假设 (22.0% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('goeckeler_wdc_era')" data-era="goeckeler_wdc_era" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 2020–2026 戈克勒掌舵全周期</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">6.5年 · 含 WDC+SNDK 分拆合体复利 (~38.0%)</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始投入本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$10,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="1000" max="100000" step="1000" value="10000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">持有与推演年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">5 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="15" step="1" value="5" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">内生业绩与估值年化增速 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">22.0%</span>
+ </div>
+ <input id="sim-growth" type="range" min="5" max="65" step="0.5" value="22.0" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：对应 2025 年 2 月 24 日闪迪纳斯达克首个常规交易日收盘价 $48.60 持有至 2026 年 11 月（约 $800–$865 区间，含期间 $2,354 盘中峰值）的真实重估回报。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计总资产市值</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$172,840</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计净增值 +1,628%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">本金增值倍数 (MOIC Multiple)</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">17.28x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">分拆重估周期真实倍数锚定</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">累计创造净资本利得</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$162,840</div>
+ <div class="text-xs text-slate-400 mt-1.5">扣除初始投入本金后的纯资本增值</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效综合年化复合增长率</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">410.0%</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">独立第 1 年资产里程碑约：$51,000</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 多空双视角风险与前景评估 (Bull Case vs Bear Case) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心逻辑 (Bull Case · 结构性长牛)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">AI 推理存储刚需 + NBM 锁价</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 推理（Inference）引爆 NAND 需求二次曲线：</strong>多模态大模型与长上下文窗口将推理存储推向主战场，管理层预计 2027 年数据中心位元需求再增 40%（<a href="https://investor.sandisk.com/static-files/4ca97b6e-7da4-4d52-b4ac-0e80f462716f" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk IR</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>$889亿 NBM 地板价协议平抑下行波动：</strong>即使未来存储供需趋于平衡，已签署的多年期底价协议仍能锁定远高于历史周期底部的盈利下限。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>估值倍数极具安全边际：</strong>经历 2026 年夏季冲高回落整理后，SNDK 归一化前瞻市盈率仅约 <strong>5.1x–6.7x</strong>，配合超百亿美元回购授权形成强力底部支撑（<a href="https://financefeeds.com/sandisk-sndk-stock-1280-friday-after-11-billion-quarter-12-2-12-6-billion-guide-8-for-1-split-bull-1480-bear-1150/" target="_blank" rel="noopener noreferrer" class="cite-link">FinanceFeeds</a>）。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头风险预警 (Bear Case · 周期与竞争隐患)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">85% 毛利不可持续性 + 巨头扩产</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>85% 巅峰毛利率面临均值回归压力：</strong>存储半导体历史上从未有企业能永久维持 85% 毛利率；一旦三星、SK 海力士与美光重启大规模晶圆扩产，现货与合同价格仍可能承压。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>缺乏原生 DRAM / HBM 产品线：</strong>相比美光与 SK 海力士具备 DRAM+NAND 双轮对冲，纯 NAND 业务在产品结构单一性上更依赖 <strong>HBF（高带宽闪存）</strong> 商业化按期落地。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>高度依赖与铠侠（Kioxia）的合资协调：</strong>前端晶圆产能深度绑定日本合资伙伴，若双方在扩产节奏或资本开支分摊上出现分歧，将影响新节点爬坡速度。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕职业演进与管理复盘 (Three-Act Career & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Career Evolution & Strategic Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕职业演进与管理复盘：从思科 $340亿网络掌门到存储分拆破局者</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">跨界领袖的独特优势：用软件订阅制与系统架构思维降维打击传统硬件周期</span>
+ </div>
+
+ <!-- 1. 三幕职业演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">第一幕 · 网络与软件淬炼</span>
+ <span class="font-mono text-xs font-bold text-slate-500">2001–2020</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">思科 19 年老兵与 $340B 业务掌舵</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>计算机科学硕士与双料 MBA（伯克利 Haas &amp; 哥伦比亚商学院）出身，在思科历任安全事业部及网络与安全业务执行副总裁，统领超 <strong>25,000 名工程师与 $340亿营收盘子</strong>，主导将传统硬件盒装业务成功转型为高粘性软件与经常性订阅模式（<a href="https://its.umich.edu/events/leadership-in-technology/past-events/david-goeckeler" target="_blank" rel="noopener noreferrer" class="cite-link">Univ. of Michigan</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-teal-600 dark:text-teal-400">
+ 阶段沉淀：形成“软件定义硬件 + 经常性合约锁定”的核心商业基因
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 逆周期破局与分拆</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2020–2025</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">WDC 熬过寒冬与双雄独立分拆</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2020 年 3 月空降西部数据 CEO，在 2022–2023 年存储行业史上最惨烈价格战中果断削减冗余开支、推动组织独立核算；2023 年 10 月官宣分拆计划，历经 16 个月精密财税与法务拆分，于 <strong>2025 年 2 月 24 日</strong> 让闪迪与 WDC 各自独立奔跑（<a href="https://www.sec.gov/Archives/edgar/data/2023554/000095012324006221/filename2.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Form 10</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段沉淀：敢于做“集团减法”的魄力远胜盲目求大的帝国建造者
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · AI 巅峰与股东回馈</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2025–至今</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">闪迪千亿市值与 $889亿 NBM 护城河</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>出任独立后闪迪董事长兼 CEO，精准卡位 AI 大模型推理存储爆发风口，将单季营收推高至 <strong>$110.3亿</strong>、毛利率推升至 <strong>85.1%</strong>，签署 $889亿 NBM 地板价长约并执行百亿美元回购与 1:8 拆股，跻身全球表现最耀眼的半导体掌门人之列（<a href="https://www.sandisk.com/company/newsroom/press-releases/2026/2026-10-29-sandisk-reports-fiscal-first-quarter-2027-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk 2026</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段沉淀：用制度化长约与极致资本配置将周期红利转化为永久股东财富
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 戈克勒战略决策四步法复盘矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业管理镜鉴：大卫·戈克勒重塑闪迪的四大关键决断</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500/10 text-mogold-600 dark:text-mogold-400 text-xs font-bold">决断 01 · 承认并顺应资本规律的“分拆减法”</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">HDD ≠ NAND</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">当两项业务资本周期与估值逻辑迥异时，分离就是最大生产力</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 机械硬盘与闪存共用董事会只会让双方在资本开支审批中互相内耗；分拆后 WDC 与 SNDK 各自吸引了最匹配的风险偏好资金，合计总市值实现几何级裂变（<a href="https://phemex.com/academy/david-goeckeler-cisco-spin-off-success" target="_blank" rel="noopener noreferrer" class="cite-link">Phemex</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">决断 02 · 拒绝“随行就市”，首创 NBM 地板价协议</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">$88.9B 合约保底</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">在卖方市场巅峰期锁死未来数年的需求与价格底线</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 传统存储高管往往在景气高点盲目扩产、低点被迫割肉；戈克勒趁 AI 算力客户极度渴求可靠产能之际，推出要求预付保证金与最低地板价的 NBM 协议，从根源上驯服周期波动（<a href="https://investor.sandisk.com/static-files/4ca97b6e-7da4-4d52-b4ac-0e80f462716f" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk IR</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">决断 03 · 极致克制的资本开支纪律</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">Cash CapEx 1.8%</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">不陷入“为市占率而建厂”的军备竞赛陷阱</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 即使单季营收突破 $110亿，戈克勒仍将全年毛资本开支严格控制在营收中个位数百分比，聚焦 <strong>BiCS8 工艺节点升级</strong> 而非盲目新增晶圆厂建筑面积，确保利润高质量转化为真金白银（<a href="https://www.fool.com/earnings/call-transcripts/2026/10/30/sandisk-sndk-q1-2027-earnings-call-transcript/" target="_blank" rel="noopener noreferrer" class="cite-link">Q1 2027 Call</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">决断 04 · 100% 超额自由现金流回馈股东</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">零债务 + 巨额回购</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">清零债务后立刻启动百亿美元级股份回购注销</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 拒绝乱花账面巨额现金进行低效跨界并购，戈克勒在 2026 年初清偿全部债务后连续两季大手笔回购约 600 万股（占总股本 4%，仍有 $105亿授权额度），持续增厚每股内在价值（<a href="https://investor.sandisk.com/static-files/4ca97b6e-7da4-4d52-b4ac-0e80f462716f" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk IR</a>）。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级投资与商业启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>从闪迪（SNDK）逆袭提炼的三条半导体与周期股投资黄金法则</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 关注“多元集团分拆（Spin-Off）”的戴维斯双击</div>
+ <p class="text-slate-300 leading-relaxed">
+ 当高增长、高弹性的核心资产长期被困在传统低估值母公司内部时，具有强执行力 CEO 主导的彻底分拆往往能同时释放基本面活力与估值倍数重估。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 寻找能把“强周期大宗品”改造成“契约长约”的领袖</div>
+ <p class="text-slate-300 leading-relaxed">
+ 行业上行期人人皆可赚钱，但唯有能在景气高点签下预付款、底价保护与 RPO 锁单条款（如闪迪 $889亿 NBM 协议）的管理层，才能在潮水退去后留住超额利润。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 自由现金流转化率与回购纪律决定长牛高度</div>
+ <p class="text-slate-300 leading-relaxed">
+ 重资产半导体企业最大的价值毁灭源于景气顶部盲目扩产；戈克勒将现金 CapEx 压在 2% 以内并把超额现金全数用于零债务与股票回购，是教科书级股东友好典范。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “戈克勒法则”企业与半导体标的评估交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Goeckeler Enterprise &amp; Semiconductor Diagnostic Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “戈克勒法则”企业与半导体标的评估交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于审视任何硬科技、半导体或经历业务分拆重组的公司是否具备“新闪迪式”超级回报潜质（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 业务纯度与独立定价权：是否已剥离低效拖累资产？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">分拆重估锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验公司核心高增长业务是否被传统低毛利部门拖累估值，管理层是否具备大刀阔斧分拆或剥离的决断力。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 长约锁价与 RPO 可见度：能否平滑行业周期剧烈波动？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">契约护城河</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查企业是否通过多年期保底协议（如闪迪 $889亿 NBM 合约）与客户预付款锁定未来盈利下限。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 高价值客户结构迁移：AI 数据中心与企业级占比是否持续提升？</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">产品结构升级</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察管理层是否敢于在供给偏紧时主动削减低端价格战份额，将产能倾斜至超大规模云厂商与车规高毛利市场。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 资本开支（CapEx）克制度与自由现金流转化率</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">轻资产杠杆</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 对比行业重资产扩产冲动，检验企业是否通过合资联盟或工艺升级将现金 CapEx 占营收比控制在个位数水平。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 下一代架构前瞻卡位（BiCS8 放量与 HBF 高带宽突破）</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">技术代际壁垒</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查企业在享受当前周期红利的同时，是否已布局下一代颠覆性架构（如面向 AI 推理内存墙的 HBF 芯片）。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 零有息负债资产负债表与 100% 超额现金回购纪律</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">股东回报铁律</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验公司是否优先还清有息债务构筑安全垫，并将充沛自由现金流直接用于注销股本以最大化每股长期收益。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>大卫·戈克勒 David Goeckeler 深度商业与战略研究报告 · 闪迪 (SanDisk Corp., Nasdaq: SNDK) 专题</span>
+ <span>核心数据出处：Sandisk SEC Form 10 / Form 8-K (FY2025–FY2027 Q1) · Morningstar</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务、业务分部与治理数据均核验自美国证监会（SEC EDGAR）公开披露的 <a href="https://www.sec.gov/Archives/edgar/data/2023554/000162828026068243/sndkq1-27ex991xpressrelease.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk FY2027 Q1 财报公告（2026年10月29日）</a>、<a href="https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-fourth-quarter-2026-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk FY2026 Q4 及全年财报</a>、<a href="https://www.sec.gov/Archives/edgar/data/2023554/000095012324006221/filename2.htm" target="_blank" rel="noopener noreferrer" class="cite-link">西部数据分拆闪迪 Form 10 注册文件</a>、<a href="https://investor.sandisk.com/static-files/4ca97b6e-7da4-4d52-b4ac-0e80f462716f" target="_blank" rel="noopener noreferrer" class="cite-link">Sandisk 投资者演示文稿</a> 及 Morningstar 公开行情数据（注：闪迪于 2026 年 11 月 19–20 日实施 1 拆 8 拆股，文中历史每股数据按拆股前口径列示）。报告内置的模拟器仅用于量化推演，不构成任何证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ // 清理运行态临时样式与画布缓存属性，确保导出的 HTML 在任何本地浏览器打开时干净重绘
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'David_Goeckeler_SanDisk_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：David_Goeckeler_SanDisk_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 存储与半导体领袖横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “戈克勒分拆重估”股东价值与周期复利动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ sndk_spinoff: {
+ principal: 10000,
+ years: 2,
+ cagr: 312.0,
+ caption: '当前测算基准：对应 2025 年 2 月 24 日闪迪纳斯达克首个常规交易日收盘价 $48.60 持有至 2026 年 11 月（约 $840 区间，累计上涨超 17.3 倍）的独立分拆重估实绩斜率。'
+ },
+ ai_steady_5y: {
+ principal: 10000,
+ years: 5,
+ cagr: 22.0,
+ caption: '当前测算基准：模拟 2027–2031 财年进入 AI 推理存储常态化扩张阶段，依托 $889亿 NBM 地板价长约与 HBF 新产品放量实现的 22.0% 稳健年化内生复合增速情景。'
+ },
+ goeckeler_wdc_era: {
+ principal: 10000,
+ years: 7,
+ cagr: 38.0,
+ caption: '当前测算基准：对应 2020 年 3 月戈克勒出任西部数据 CEO 以来历经存储周期低谷并完成 WDC + SNDK 彻底分拆释放的总股东价值复合增速（~38.0% CAGR）。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-principal').value = preset.principal;
+ document.getElementById('sim-years').value = preset.years;
+ const growthSlider = document.getElementById('sim-growth');
+ if (preset.cagr > parseFloat(growthSlider.max)) {
+ growthSlider.max = 320;
+ } else {
+ growthSlider.max = 65;
+ }
+ growthSlider.value = preset.cagr;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ const growthSlider = document.getElementById('sim-growth');
+ if (parseFloat(growthSlider.value) <= 65) {
+ growthSlider.max = 65;
+ }
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义周期与回购复利推演模式——自由调节投入本金、持有期限与预期复合增长率，量化评估长期财富放大效应。';
+ }
+
+ function updateValueSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 10000;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 5;
+ const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 22.0;
+ const buybackBonus = document.getElementById('div-bonus-toggle').checked ? 3.5 : 0;
+
+ const effGrowthPct = baseGrowthPct + buybackBonus;
+ const r = effGrowthPct / 100;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+ const finalVal = principal * Math.pow(1 + r, years);
+ const netGain = finalVal - principal;
+ const multiple = principal > 0 ? (finalVal / principal) : 1;
+ const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+ const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+ const midYears = Math.max(1, Math.round(years / 2));
+ const midVal = principal * Math.pow(1 + r, midYears);
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+ document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年资产翻一倍` : '稳健保值';
+ document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+ document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+ document.getElementById('sim-mid-val').textContent = `持有第 ${midYears} 年中期资产约：$${Math.round(midVal).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'dg_sandisk_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“戈克勒法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'end_market';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2026 Q1 vs FY2027 Q1 闪迪三大终端市场单季营收 ($B, 源自 SEC 8-K / IR Deck)
+ const endMarketConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '边缘计算 Edge (AI PC / 旗舰手机 / 汽车)',
+ '数据中心 Datacenter (超大规模云 eSSD)',
+ '消费级市场 Consumer (零售 SSD / 存储卡)'
+ ],
+ datasets: [
+ {
+ label: 'FY2026 Q1 单季营收 ($B · 合计 $2.31B)',
+ data: [1.39, 0.27, 0.65],
+ backgroundColor: 'rgba(100, 116, 139, 0.65)',
+ borderRadius: 6,
+ barThickness: 32
+ },
+ {
+ label: 'FY2027 Q1 单季营收 ($B · 合计 $11.03B)',
+ data: [5.83, 4.80, 0.40],
+ backgroundColor: '#F59E0B',
+ borderRadius: 6,
+ barThickness: 32
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 6.5,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：FY2025 Q4 至 FY2027 Q1 闪迪单季营收与 GAAP 净利润跃迁 ($B, 源自 SEC 8-K)
+ const quarterlyConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY25 Q4 (独立首季)',
+ 'FY26 Q1',
+ 'FY26 Q2',
+ 'FY26 Q3',
+ 'FY26 Q4',
+ 'FY27 Q1 (最新季)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '单季净营收 Revenue ($B)',
+ data: [1.90, 2.31, 3.03, 5.95, 8.97, 11.03],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '单季 GAAP 净利润 Net Income ($B)',
+ data: [-0.02, 0.11, 0.80, 3.62, 6.90, 8.10],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 12.5,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ },
+ y1: {
+ position: 'right',
+ min: -1,
+ max: 9.5,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'end_market' ? endMarketConfig : quarterlyConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'end_market') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2026 Q1 vs FY2027 Q1 闪迪三大终端市场单季营收结构跃迁（$B）';
+ subEl.textContent = '数据中心营收由 $0.27B 暴增 1,685% 至 $4.80B，边缘计算升至 $5.83B，彻底摆脱消费级零售依赖';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2025 Q4 独立至今：闪迪单季营收 5.8 倍扩张与净利润反转轨迹（$B）';
+ subEl.textContent = '从 2025 年 2 月分拆独立初期单季微亏 -$0.02B 跃升至 FY27 Q1 单季净赚 $8.10B，利润率呈现指数级释放';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '战略分拆与资本配置纪律',
+ '长约锁价与商业模式创新',
+ '轻资产合资制造资本效率',
+ '企业级固件与主控系统能力',
+ '全品类存储 (DRAM+NAND) 广度'
+ ],
+ datasets: [
+ {
+ label: '大卫·戈克勒 (Sandisk)',
+ data: [9.8, 9.7, 9.9, 9.2, 7.6],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: '桑杰·梅赫罗特拉 (Micron)',
+ data: [8.4, 8.2, 7.2, 9.1, 9.6],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '陈福阳 (Broadcom)',
+ data: [9.6, 9.8, 9.4, 9.5, 7.4],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ '归一化净资产收益率 (ROE %)',
+ '归一化投入资本回报率 (ROIC %)',
+ '归一化总资产收益率 (ROA %)',
+ '最新单季 Non-GAAP 毛利率 (%)'
+ ],
+ datasets: [
+ {
+ label: '闪迪 Sandisk (SNDK · 大卫·戈克勒掌舵)',
+ data: [137.03, 130.99, 101.12, 85.10],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5,
+ barThickness: 18
+ },
+ {
+ label: '美光科技 Micron (MU · 行业主要可比标杆)',
+ data: [102.18, 90.66, 72.26, 56.50],
+ backgroundColor: '#06B6D4',
+ borderRadius: 5,
+ barThickness: 18
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: ${c.parsed.x.toFixed(2)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 150,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY25 Q4', 'FY26 Q1', 'FY26 Q2', 'FY26 Q3', 'FY26 Q4', 'FY27 Q1'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '单季净营收 Revenue ($B)',
+ data: [1.90, 2.31, 3.03, 5.95, 8.97, 11.03],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 30,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'Non-GAAP 毛利率 Gross Margin (%)',
+ data: [26.4, 29.9, 51.1, 78.4, 84.6, 85.1],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ : `${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 13,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '单季净营收 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 100,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' },
+ title: { display: true, text: 'Non-GAAP 毛利率 (%)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ setSimEra('sndk_spinoff');
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

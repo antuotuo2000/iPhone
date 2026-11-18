@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Reddit (NYSE: RDDT) 深度研究报告：全球人类高纯度语料库、AI 数据授权金矿与广告商业化跃迁</title>
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <!-- Chart.js -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ rddtorange: {
+ 300: '#FDBA74',
+ 400: '#FB923C',
+ 500: '#FF4500',
+ 600: '#EA580C',
+ 700: '#C2410C',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ }
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：Reddit 标志性亮橙渐变 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(255, 69, 0, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #FF4500;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-rddtorange-500 selection:text-white transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-rddtorange-600 via-rddtorange-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-rddtorange-400 to-rddtorange-600 flex items-center justify-center font-extrabold text-white text-xs shadow">
+ RDDT
+ </div>
+ <div>
+ <div class="text-[11px] text-rddtorange-400 font-semibold tracking-wider uppercase">NYSE: RDDT · AI Data & Community</div>
+ <div class="text-sm font-bold leading-tight">Reddit 深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-2">
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">RDDT 研报目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 业务与双引擎收入架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重核心护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 社交搜索与 AI 语料平台对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务高杠杆与 ARPU 推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 投资决策与风险配置</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
+ <p>全球互联网平台与 AI 基础设施研究组</p>
+ <p class="mt-1">数据基准：2026年11月 (Q3 26 / FY26E)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rddtorange-400 via-rddtorange-500 to-rddtorange-600 flex items-center justify-center text-white font-extrabold text-sm shadow-lg shadow-rddtorange-500/25">
+ RDDT
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-rddtorange-400 bg-rddtorange-500/15 px-2 py-0.5 rounded">NYSE: RDDT</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">Reddit 深度研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 人类高纯度兴趣社区帝国 · AI 语料稀缺源头与高意图搜索广告黑马
+ </p>
+ </div>
+
+ <!-- 股票实时快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">参考股价 (52周区间)</span>
+ <span class="font-mono font-bold text-white">~$214.50 <span class="text-slate-400 text-[10px]">($112–$248)</span></span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">2026E 调整后 EBITDA</span>
+ <span class="font-mono font-bold text-emerald-400">~$1.08B <span class="text-slate-400">(利润率 ~37.5%)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">远期估值与毛利率</span>
+ <span class="font-mono font-bold text-rddtorange-400">~12.6x EV/Sales · 毛利 91.2%</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3.5 overflow-y-auto max-h-[calc(100vh-310px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-rddtorange-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>业务与双引擎收入架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重核心护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>社交搜索与 AI 语料平台对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务高杠杆与 ARPU 推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>投资决策与风险配置</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏 -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2.5">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-rddtorange-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-rddtorange-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-rddtorange-500 to-rddtorange-600 hover:from-rddtorange-600 hover:to-rddtorange-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-rddtorange-500/15 text-rddtorange-700 dark:text-rddtorange-400 font-bold border border-rddtorange-500/30">评级：增持 / AI 时代高意图社区核心成长股</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：2026Q3 规模化盈利爆发与 AI 搜索重塑期</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖时间：2026年11月</span>
+ <span>NYSE: RDDT</span>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景亮橙点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#FF4500 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rddtorange-500/20 border border-rddtorange-400/40 text-rddtorange-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-rddtorange-400 animate-pulse"></span>
+ <span>CORE THESIS · 1.48亿 DAUq 人类真实问答护城河 × 91.2% 极致毛利率 × AI 数据授权与搜索商业化</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ Reddit (NYSE: RDDT) 深度研究报告：全球人类高纯度语料库、AI 数据授权金矿与广告商业化跃迁
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 在生成式 AI 导致全网合成垃圾信息泛滥的 2026 年，由超 <strong class="text-white">10 万个活跃子版块（Subreddits）</strong>与 21 年真实人类讨论沉淀而成的 Reddit 成为全球稀缺的“人类真实消费决策与体验源头”。
+ 2026Q3 公司日活用户（DAUq）跃升至 <strong class="text-rddtorange-300">1.48 亿（+31% YoY）</strong>，机器翻译覆盖超 35 种语言引爆海外增长；叠加 Dynamic Product Ads（DPA）动态商品广告与 <strong class="text-emerald-400">Reddit Answers</strong> 原生 AI 搜索商业化落地，公司毛利率高达 <strong class="text-white">91.2%</strong>，调整后 EBITDA 利润率突破 <strong class="text-rddtorange-400">38.4%</strong>，正经历从亏损社交平台向高现金流 AI 时代基础设施的戴维斯双击。
+ </p>
+
+ <!-- 核心投资结论高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">高意图消费决策场景</div>
+ <div class="text-white font-semibold">超 40% 帖子涉及商业购买与评测决策，广告主转化意图远超传统娱乐信息流平台</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">软件级 91%+ 极致毛利</div>
+ <div class="text-rddtorange-400 font-semibold">UGC 零内容采购成本 + 志愿者版主治理，增量营收向 EBITDA 转化率高达 55%+</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">AI 语料授权与搜索期权</div>
+ <div class="text-emerald-400 font-semibold">与 Google、OpenAI 等签署高毛利实时数据 API 协议，同时向百亿级站内搜索广告迈进</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>总市值与最新股价</span>
+ <span class="p-1.5 rounded-lg bg-rddtorange-500/15 text-rddtorange-600 dark:text-rddtorange-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$38.4B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">~$214.50</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 较 2024 年 3 月 IPO 发行价（$34）累计涨幅超 530%，市值稳居全球独立社区平台榜首。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>日活跃独立访客 (DAUq)</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">148.2M</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+31.4% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 登录日活达 7,150 万，AI 全自动多语言翻译驱动欧洲、拉美及亚太非英语区用户爆发。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>2026E 营收与毛利率</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$2.88B</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">毛利 91.2%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 26E 全年营收预计同比增长 +46%，26Q3 单季调整后 EBITDA 利润率跃升至 38.4%。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>全球 ARPU 与高意图搜索</span>
+ <span class="p-1.5 rounded-lg bg-rddtorange-500/15 text-rddtorange-600 dark:text-rddtorange-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$5.18</span>
+ <span class="text-xs font-bold text-rddtorange-700 dark:text-rddtorange-400 bg-rddtorange-500/15 px-2 py-0.5 rounded">美国 $8.45</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 全球单季 ARPU 同比提升 +19%，但仍不足 Meta 全球水平的 1/4，商业化变现天花板极高。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 业务与双引擎收入架构 (Business & Revenue Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-rddtorange-600 dark:text-rddtorange-400">Section 01 · Business & Dual-Engine Revenue Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 业务与双引擎收入架构：高意图效果广告主航道 + AI 实时语料授权金矿</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY26E 广告营收 ~$2.61B (90.6%) · AI 数据授权及其他 ~$270M (9.4%)</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2022–2026E 广告与 AI 数据授权双引擎营收及调整后 EBITDA 演进</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">2024–2026E 营收两年翻倍至 $2.88B，91%+ 毛利率释放惊人经营杠杆，EBITDA 突破 $1.08B</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('rev_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-rddtorange-600 dark:text-rddtorange-400 shadow-sm transition cursor-pointer">视图A：营收结构与EBITDA跃迁</button>
+ <button onclick="switchBizChart('dau_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：活跃用户与地域ARPU拆解</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性拆解核心洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026Q3 三大核心增长飞轮</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-rddtorange-500/15 text-rddtorange-600 dark:text-rddtorange-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">效果广告（Performance Ads）占比突破 62%，DPA 放量</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 借助 CAPI 转化接口升级、自动出价算法及 <strong>Dynamic Product Ads（动态商品广告）</strong>，中型客户与电商广告主 ROAS 大幅提升，带动 Q3 广告收入同比大增 <strong>+48%</strong>。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">AI 大模型实时语料 API 授权构筑近 100% 毛利增量</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 继 Google 与 OpenAI 之后，多家垂直领域大模型及金融舆情机构接入 Reddit 实时数据流（Data API），年化合约运行率已达 <strong>$2.6亿+</strong>，直接转化为纯利润。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">AI 机器翻译打破英语孤岛，国际 DAUq 增速超 +45%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 将海量英语优质帖子实时翻译并索引至法、德、西、葡、日、韩等 35+ 语种 Google 搜索结果，法国、巴西、印度等市场成为新增流量主引擎。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">核心商业化战略定位</span>
+ <span class="font-bold text-rddtorange-600 dark:text-rddtorange-400">从“品牌展示广告”转向“高意图搜索与效果转化”</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大业务与生态模块详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 分部 1：核心信息流与效果广告 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rddtorange-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-rddtorange-500/15 text-rddtorange-700 dark:text-rddtorange-400 text-xs font-bold">第一增长主引擎 · 占总营收 ~90.6%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">26Q3 同比 +48%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 垂直兴趣社区信息流与效果广告矩阵</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2026Q3 广告营收达 <strong>$6.92亿</strong>。与 Instagram/TikTok 依赖个人社交图谱不同，Reddit 基于 <strong>r/personalfinance、r/buildapc、r/skincareaddiction</strong> 等垂类兴趣社区，天然聚集处于主动调研与决策漏斗底部的消费者；叠加自由表单广告（Free-Form Ads）与 DPA 动态商品卡片，中长尾中小广告主数量同比增长超 60%。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Q3 广告收入 $692M / 效果广告占比 62%</span>
+ <span class="text-rddtorange-600 dark:text-rddtorange-400 font-semibold">高意向场景溢价显著</span>
+ </div>
+ </div>
+
+ <!-- 分部 2：AI 数据授权与商业 API -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">纯利润高地 · 占总营收 ~9.4%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">毛利率 ~96%+</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. AI 训练语料授权与企业级实时检索 API</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2026Q3 数据授权及其他收入达 <strong>$7,100万</strong>（全年预计约 <strong>$2.7亿</strong>）。Reddit 拥有超过 <strong>10 亿条帖子与 180 亿条结构化评论</strong>，且具备人类投票（Upvote/Downvote）筛选出的天然 RLHF 质量标签。通过全面封堵未经授权的爬虫并强制执行商业 API 协议，公司将全球大模型巨头与量化金融机构的算力军备竞赛转化为高确定性经常性收入。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>180亿+ 人类点赞标注评论库</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">反 AI 合成污染稀缺水源</span>
+ </div>
+ </div>
+
+ <!-- 分部 3：Reddit Answers 与站内搜索商业化 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">下一代估值期权 · 站内搜索重塑</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">周搜索用户 7,500万+</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. Reddit Answers 原生 AI 问答与搜索关键词竞价</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 过去海量用户在 Google 搜索词后附加 “reddit” 以获取真实评价；如今公司自研对话式 AI 引擎 <strong>Reddit Answers</strong> 已全面整合进主搜索栏，每周独立搜索活跃用户突破 <strong>7,500 万</strong>。随着搜索结果页原生赞助链接（Search Ads）启动测试，Reddit 正直接切入高客单价搜索竞价广告腹地。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>从外链导流转向站内闭环留存</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">搜索广告变现尚处 0→1 初期</span>
+ </div>
+ </div>
+
+ <!-- 分部 4：开发者平台与用户经济生态 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">生态粘性与未来变现 · User Economy</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">净现金 ~$21.5亿</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 开发者应用平台（Devvit）与虚拟经济体系</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 依托 Devvit 开发者工具包，第三方开发者可在子版块内直接嵌入互动小游戏、实时赛事预测及工具组件；叠加黄金打赏（Gold）、限量版头像及未来付费专属子版块（Paid Subreddits）测试，为长远非广告收入打开第二曲线。资产负债表零有息负债，手握超 <strong>$21.5亿</strong> 现金储备。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>零有息负债 + 充沛并购与回购弹药</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">长期非广告变现期权</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 行业地位与四重核心护城河 (Industry Position & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position & Economic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重核心护城河：21年双边网络效应、自治治理与 91% 软件级毛利</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：宽护城河 (Wide Moat · 不可复制的二十年人类知识图谱)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-rddtorange-500/15 text-rddtorange-600 dark:text-rddtorange-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">二十一年沉淀的“不可回溯”真实语料库</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2005–2023 年在生成式 AI 普及前累积的数十亿条纯人类真实问答、排雷避坑与长尾经验具备<strong>不可再生性</strong>；一旦全网充斥 AI 洗稿内容，Reddit 作为“人类真实共识锚点”的稀缺性呈指数级上升。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“兴趣图谱 + 志愿版主”超低边际成本模型</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 数十万名核心志愿者版主（Moderators）基于热爱制定版规并过滤垃圾营销号，使 Reddit 无需像流媒体或短视频平台那样支付天价版权费或创作者分成，支撑起 <strong>91.2%</strong> 的软件级毛利率。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">高商业意图自然聚合，无需入侵式隐私追踪</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 用户进入 <em>r/RunningShoeGeeks</em> 或 <em>r/CreditCards</em> 时已主动暴露明确的品类与预算意图，广告主无需依赖苹果 IDFA 跨站追踪即可实现高转化定向投放，天然免疫隐私政策收紧冲击。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">搜索引擎与 AI 答案引擎的双向流量共生</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 无论是 Google 传统搜索还是 ChatGPT/Perplexity 的实时联网检索，均高频引用 Reddit 讨论作为权威信源；外部搜索引流反哺未登录访客转化（Logged-out → Logged-in），形成正向飞轮。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维护城河雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球社交与高意图平台五维竞争力雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Reddit (RDDT) vs Meta (META) vs Pinterest (PINS)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 社交搜索与 AI 语料平台横向对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-rddtorange-600 dark:text-rddtorange-400">Section 03 · Social, Search & AI Data Platform Comparison</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球社交与高意图平台横向对比：最高 91% 毛利率与最大 ARPU 追赶空间</h2>
+ </div>
+ <!-- 交互式筛选按钮 -->
+ <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-rddtorange-500 text-white shadow-sm transition cursor-pointer">全部平台</button>
+ <button onclick="filterCompetitors('mega')" data-filter="mega" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">超级社交广告巨头</button>
+ <button onclick="filterCompetitors('intent')" data-filter="intent" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">垂类高意图发现平台</button>
+ <button onclick="filterCompetitors('forum')" data-filter="forum" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">问答与海外社区参照</button>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">平台名称与核心生态</th>
+ <th class="py-4 px-4 min-w-[130px]">活跃用户规模</th>
+ <th class="py-4 px-4 min-w-[130px]">2026E 营收增速</th>
+ <th class="py-4 px-4 min-w-[100px]">毛利率</th>
+ <th class="py-4 px-4 min-w-[110px]">单季全球ARPU</th>
+ <th class="py-4 px-4 min-w-[110px]">EV/26E Sales</th>
+ <th class="py-4 px-5 min-w-[230px]">核心优劣势与竞争定位评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：Reddit RDDT 基准 -->
+ <tr data-category="core" class="bg-rddtorange-500/5 dark:bg-rddtorange-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-rddtorange-500 text-white text-[10px] font-extrabold">AI语料霸主</span>
+ <span class="font-bold text-slate-900 dark:text-white">Reddit (RDDT)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">10万+ Subreddits / Reddit Answers</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">1.48亿 DAUq (+31%)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">+46% YoY (领跑同业)</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">91.2%</td>
+ <td class="py-4 px-4 font-mono font-bold text-rddtorange-600 dark:text-rddtorange-400">~$5.18</td>
+ <td class="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">~12.6x</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>最高毛利率与最强结构增速：</strong>独占人类问答语料授权与搜索意图红利，ARPU 仅为 Meta 的 1/4 具备巨大翻倍空间；短板在于外部 Google SEO 流量依赖与估值溢价。
+ </td>
+ </tr>
+
+ <!-- 行 2：Meta Platforms META -->
+ <tr data-category="mega" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Meta Platforms (META)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Instagram / Facebook / WhatsApp / Threads</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">33.5亿+ 家族 DAP</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">+18% YoY (巨无霸体量)</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">81.8%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$15.80</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~7.8x</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全行业商业化天花板标杆：</strong>Advantage+ AI 广告系统成熟度无人能及，为 Reddit 提供了从纯展示广告向自动化效果转化广告演进的清晰路线图。
+ </td>
+ </tr>
+
+ <!-- 行 3：Pinterest PINS -->
+ <tr data-category="intent" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Pinterest (PINS)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">视觉灵感发现与电商购物图谱</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">5.6亿 MAU (+11%)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">+17% YoY</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">79.5%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$1.95</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~4.6x</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>视觉系高购买意图可比公司：</strong>同样具备极强消费规划属性（家居/服饰/美妆），但缺乏文本深度讨论的 AI 语料授权变现能力，用户活跃频次（DAU/MAU）低于 Reddit。
+ </td>
+ </tr>
+
+ <!-- 行 4：Snap SNAP -->
+ <tr data-category="mega" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Snap Inc. (SNAP)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Snapchat 熟人即时通讯与 AR</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">4.6亿 DAU (+9%)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">+14% YoY</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">54.2%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$3.25</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~3.1x</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>高云算力与 AR 成本拖累毛利：</strong>私密熟人聊天难以沉淀公开商业意图，且重度视频与 AR 滤镜推高服务器带宽支出，毛利率较 Reddit 低逾 35 个百分点。
+ </td>
+ </tr>
+
+ <!-- 行 5：知乎 ZH / 哔哩哔哩 BILI -->
+ <tr data-category="forum" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">知乎 (ZH) / 哔哩哔哩 (BILI)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">中文问答社区与兴趣圈层视频</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">8,500万–1.05亿 DAU</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-500/15 text-slate-600 dark:text-slate-300">-4% 至 +16%</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">36%–60%</td>
+ <td class="py-4 px-4 font-mono text-slate-500 dark:text-slate-400">~$1.10–$3.80</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~0.8x–2.2x</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>社区形态相似但商业化土壤迥异：</strong>Reddit 坐拥单价全球最高的北美数字广告市场与强版权保护的 AI 付费生态，盈利能力与货币化效率远胜中文同行。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：毛利率与营收增速对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">全球上市社交与消费社区平台毛利率（Gross Margin）与 2026E 营收增速双维对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">Reddit 凭借轻文本社区架构、志愿版主治理与高毛利 AI 数据授权，以 91.2% 毛利率与 +46.0% 营收增速双项断层领跑</p>
+ </div>
+ <span class="text-xs font-semibold text-rddtorange-700 dark:text-rddtorange-400 bg-rddtorange-500/15 px-2.5 py-1 rounded">91.2% 软件级毛利率行业第一</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 财务高杠杆与 ARPU 推演 (Financial Leverage & ARPU Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Leverage & ARPU Growth Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务高杠杆与估值体系：55%+ 增量利润转化率与“DAUq × ARPU”乘数引擎</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">GAAP 全面盈利转正 · 零有息负债与充沛自由现金流</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-rddtorange-600 dark:text-rddtorange-400 uppercase">Gross Profit Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">91.2%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 规模效应下服务器带宽与云存储成本占比持续摊薄，AI 语料 API 几乎零边际成本进一步拉升综合毛利。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">26E Adj. EBITDA Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">37.5%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 从 2023 年亏损 -8.6% 跃升至 2026E 约 $10.8亿 调整后 EBITDA，增量营收向 EBITDA 转化率超 55%。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">26E Free Cash Flow</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$940M</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 无需自建百亿级重资产 GPU 集群，极轻资本开支令自由现金流转化率高达 87%，账面净现金超 $21.5亿。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Rule of 40 Score</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">83.5%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 46.0% 营收增速 + 37.5% 调整后 EBITDA 利润率 = 83.5%，远超互联网与 SaaS 黄金标杆线（40%）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴剪刀差图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2022–2026E 调整后 EBITDA 利润率爆发 vs 营业费用率（OpEx %）持续收窄剪刀差</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">IPO 一次性股权激励脉冲消退后，研发与销售费用率迅速被高速增长的营收摊薄，盈利弹性全面释放</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-rddtorange-700 dark:text-rddtorange-400 bg-rddtorange-500/15 px-2.5 py-1 rounded">Rule of 40 高达 83.5%</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：Reddit 商业化乘数（DAUq × ARPU × AI授权）3年估值动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-rddtorange-400 font-bold">
+ <span>MONETIZATION MULTIPLIER ENGINE · 2029E 商业化与目标市值推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">Reddit 商业化乘数（DAUq × 全球 ARPU + AI 数据授权）3年动态推演器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：2026E 全球日活 1.48亿 | 2026E 年化广告 ARPU $17.64 ($4.41/季) | 当前总市值 $38.4B (~$214.50/股)</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-rddtorange-500/15 border border-rddtorange-400/30 text-xs font-semibold text-rddtorange-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="search-ads-toggle" checked onchange="updateMonetizationSimulator()" class="w-4 h-4 rounded accent-[#FF4500] cursor-pointer">
+ <span>计入 Reddit Answers 搜索广告商业化增量 (+15% ARPU 乘数)</span>
+ </label>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <!-- DAU 增速滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">未来 3 年 DAUq 年均复合增速 (CAGR)</span>
+ <span id="sim-dau-label" class="font-mono font-bold text-white text-sm">18.0%</span>
+ </div>
+ <input id="sim-dau" type="range" min="8" max="30" step="1" value="18" oninput="updateMonetizationSimulator()" class="w-full accent-[#FF4500] cursor-pointer">
+ </div>
+
+ <!-- ARPU 增速滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">未来 3 年单用户广告 ARPU 年均增速</span>
+ <span id="sim-arpu-label" class="font-mono font-bold text-emerald-400 text-sm">16.0%</span>
+ </div>
+ <input id="sim-arpu" type="range" min="5" max="28" step="1" value="16" oninput="updateMonetizationSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <!-- AI 数据授权规模滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">2029E AI 数据授权与 API 年化营收 ($M)</span>
+ <span id="sim-ai-label" class="font-mono font-bold text-teal-400 text-sm">$650M</span>
+ </div>
+ <input id="sim-ai" type="range" min="250" max="1500" step="50" value="650" oninput="updateMonetizationSimulator()" class="w-full accent-[#06B6D4] cursor-pointer">
+ </div>
+
+ <!-- 目标估值倍数选择按钮组 -->
+ <div class="pt-1">
+ <div class="text-slate-300 font-medium mb-2">2029E 远期 EV/Sales 估值倍数情景：</div>
+ <div class="grid grid-cols-3 gap-2" id="mult-btn-group">
+ <button type="button" onclick="setMultiple(8.0)" data-mult="8" class="mult-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-rddtorange-400 transition cursor-pointer">
+ 8.0x 保守回归<br><span class="text-[10px] text-slate-400">成熟社交平台锚</span>
+ </button>
+ <button type="button" onclick="setMultiple(10.5)" data-mult="10.5" class="mult-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-rddtorange-500 text-white border border-rddtorange-400 shadow transition cursor-pointer">
+ 10.5x 中性基准<br><span class="text-[10px] text-orange-100">高毛利AI溢价</span>
+ </button>
+ <button type="button" onclick="setMultiple(13.5)" data-mult="13.5" class="mult-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-rddtorange-400 transition cursor-pointer">
+ 13.5x 乐观双击<br><span class="text-[10px] text-slate-400">搜索广告爆发</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">2029E 预计年度总营收</div>
+ <div id="sim-2029-rev" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$7.28B</div>
+ <div id="sim-rev-cagr" class="text-xs font-semibold text-emerald-400 mt-1.5">三年营收年均复合增速 +36.2%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">2029E 预计调整后 EBITDA (按46%利润率)</div>
+ <div id="sim-2029-ebitda" class="text-2xl sm:text-3xl font-mono font-extrabold text-rddtorange-400 mt-1.5">$3.35B</div>
+ <div id="sim-ebitda-sub" class="text-xs text-slate-400 mt-1.5">高经营杠杆推动利润规模超 2026E 三倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">2029E 隐含目标总市值 (含净现金)</div>
+ <div id="sim-target-cap" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$79.6B</div>
+ <div id="sim-upside" class="text-xs font-semibold text-emerald-400 mt-1.5">较当前 $38.4B 潜在上涨空间 +107.3%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">2029E 隐含目标股价 & 运营规模</div>
+ <div id="sim-target-price" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$432.50</div>
+ <div id="sim-dau-end" class="text-xs text-slate-400 mt-1.5">2029E 日活 DAUq：2.43亿 | 年化 ARPU：$27.27</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 华尔街多空核心分歧对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">AI 语料垄断 + ARPU 翻倍潜力</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 时代“反熵增”人类语料金矿：</strong>模型越迭代越需要新鲜人类真实反馈避免“模型崩溃（Model Collapse）”，Reddit 实时流具备不可替代的定价权。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>全球 ARPU 尚处商业化早期：</strong>当前每用户平均变现效率远低于 Meta 和 Snap，随着 DPA 动态广告与站内搜索竞价落地，ARPU 具备多年持续扩张通道。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>多语言机器翻译打开 60 亿非英语人群：</strong>无需海外本地内容冷启动，直接将英语社区 20 年精华一键翻译触达全球搜索流量。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">SEO 流量波动 + 高估值敏感度</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>未登录访客高度依赖 Google 搜索算法导流：</strong>约半数 DAUq 来自未登录搜索点击（Logged-out），一旦 Google 核心搜索算法权重微调，单季用户增速易现波动。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>AI 摘要（AI Overviews）可能截流长尾点击：</strong>当用户直接在搜索引擎或聊天机器人界面读完 Reddit 总结后，可能减少点进原帖浏览广告的次数。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>12.6x 远期 EV/Sales 隐含较高业绩兑现预期：</strong>股价大幅上涨后估值倍数为全球社交平台最高，若单季广告增速出现阶段性放缓将引发剧烈贝塔回调。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 投资决策与风险配置框架 (Investment Decision & Risk)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-rddtorange-600 dark:text-rddtorange-400">Section 05 · Investment Decision & Risk Allocation</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 投资决策与风险配置框架：三情景估值推演与高弹性仓位管理纪律</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">配置建议：AI 应用层核心卫星仓 · 9.5x–11.0x EV/Sales 逢波动布局</span>
+ </div>
+
+ <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 牛市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：30%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">15.0x EV/27E Sales ($285–$315)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>Reddit Answers 搜索广告商业化超预期放量，2027 年营收维持 +38% 以上高增；新增两家头部 AI 实验室签订超亿美元年度实时语料合约，国际 ARPU 加速翻倍。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 12个月潜在上行空间：+33% 至 +47%
+ </div>
+ </div>
+
+ <!-- 基准情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rddtorange-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rddtorange-500/15 text-rddtorange-700 dark:text-rddtorange-400 text-xs font-bold">基准情景 (Base Case)</span>
+ <span class="font-mono text-xs font-bold text-rddtorange-600 dark:text-rddtorange-400">概率：50%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">11.5x EV/27E Sales ($230–$250)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>2027 年 DAUq 稳步增长 +20% 至 1.78 亿，DPA 效果广告驱动全年营收增长 +30% 至 ~$3.75B，调整后 EBITDA 利润率迈向 41%–42%，消化当前高倍数后稳步上行。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rddtorange-600 dark:text-rddtorange-400">
+ 12个月稳健预期回报：+8% 至 +17%
+ </div>
+ </div>
+
+ <!-- 熊市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">7.5x EV/27E Sales ($150–$170)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>Google 搜索核心更新导致美国本土未登录 DAUq 环比停滞，AI 语料续约金额不及预期，或北美宏观数字广告预算削减迫使估值倍数向 Meta/Pinterest 均值回归。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 12个月潜在回撤边界：-20% 至 -30%
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心风险矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">四大核心潜在风险评估与跟踪边界</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · Google SEO 算法依赖与 AI 零点击分流</span>
+ <span class="text-xs font-mono text-rose-500 font-semibold">关注度：极高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">外部搜索引擎导流占比高，需盯紧登录用户（Logged-in）转化率</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 历史经验表明，Google 搜索结果页版面变动会直接影响 Reddit 未登录访客（Logged-out DAUq）的季度环比斜率；只有将访客转化为高粘性登录用户并养成站内直接搜索习惯，才能彻底脱敏。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 社区文化抵触过度商业化与版主博弈</span>
+ <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">广告加载率（Ad Load）提升与原教旨极客社区体验的平衡</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ Reddit 核心用户对硬广和伪装软广高度敏感（2023 年曾爆发大规模版主停摆抗议 API 收费事件）。管理层必须在提高广告密度、引入付费子版块与维护社区自治氛围之间保持克制。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">03 · AI 数据授权大客户集中度与合规诉讼</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">头部大模型客户续约节奏及合成数据训练效率演进</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 目前 AI 数据授权收入高度集中于少数头部科技巨头，且涉及用户生成内容版权与隐私合规边界；若未来合成数据（Synthetic Data）技术大幅降低对人类语料的依赖，续约溢价可能承压。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 高成长高贝塔波动与股权激励摊薄</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">估值倍数处于历史中高位，对单季增速边际变化高度敏感</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 约 12.6x 远期 EV/Sales 要求公司持续交出大幅超越华尔街一致预期的季度业绩（Beat & Raise）；此外需持续监控年度股票期权激励（SBC）占营收比重是否稳步降至 12% 以下。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级组合配置纪律横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-rddtorange-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>机构级投资组合配置纪律与“AI 时代互联网”协同策略</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 核心-卫星搭配（META + GOOGL + RDDT）</div>
+ <p class="text-slate-300 leading-relaxed">
+ 以 <strong>META</strong> 与 <strong>GOOGL</strong> 作为低估值、强现金流的 AI 广告基石底仓，配置 <strong>RDDT</strong> 作为高弹性卫星仓位，捕获垂类搜索意图与 AI 语料重估的超额 Alpha。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-rddtorange-400 mb-1">2. 波动率利用与分批建仓锚点</div>
+ <p class="text-slate-300 leading-relaxed">
+ RDDT 单季财报前后隐含波动率极高，忌在估值高于 13.5x EV/Sales 时情绪化追高；若因宏观波动或 SEO 噪音回踩 <strong>$175–$190（~10x EV/26E Sales）</strong>则为高胜率买点。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 聚焦“登录日活 × 美国 ARPU”核心先行指标</div>
+ <p class="text-slate-300 leading-relaxed">
+ 只要登录日活（Logged-in DAUq）保持 20%+ 增长且美国本土单季 ARPU 持续向 $10+ 迈进，说明产品内生粘性与广告算法正在兑现，可忽略短期算法噪音坚定持有。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Fundamental Tracking KPIs</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度基本面跟踪 KPI 交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-rddtorange-500/15 text-rddtorange-700 dark:text-rddtorange-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选季度财报中已验证达标的经营指标（勾选状态自动本地保存），持续校验 Reddit 用户护城河与商业化兑现节奏：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-rddtorange-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 登录日活（Logged-in DAUq）增速是否维持 20%+ 稳健扩张</span>
+ <span class="text-[11px] font-mono text-rddtorange-600 dark:text-rddtorange-400 font-semibold shrink-0">内生粘性核心锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026Q3 登录 DAUq 达 7,150 万；登录用户具备更强社区归属感与广告定向精度，是摆脱 Google 搜索算法波动的根本指标。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-rddtorange-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 美国本土单季 ARPU 是否突破 $8.50 并向 $10 迈进</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">变现效率晴雨表</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 追踪 DPA 动态商品广告与 CAPI 转化接口在中型电商广告主中的渗透率，验证单位流量商业价值提升斜率。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-rddtorange-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 综合毛利率稳守 90%+ 且调整后 EBITDA 利润率迈向 40%</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">经营杠杆校验</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查云算力与内容审核成本增速是否显著低于营收增速，确认增量利润转化率持续高于 50%。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-rddtorange-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. AI 数据授权与商业 API 季度收入突破 $7,500万+ 新台阶</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">高毛利第二曲线</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 关注管理层披露的新签大模型训练及企业级实时检索 API 客户数量，验证数据资产化变现的持续性。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-rddtorange-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. Reddit Answers 搜索周活突破 8,500万 及搜索广告放量进度</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">核心估值催化剂</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 追踪对话式 AI 搜索功能的用户留存率及搜索结果页赞助广告（Search Ads）的正式商业化规模化时间表。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#FF4500] focus:ring-rddtorange-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 股权激励（SBC）占营收比降至 12% 以下且 GAAP 净利稳健</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">股东权益保护</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 监控季度摊薄股本年化增幅控制在 2.5% 以内，确保高速增长的自由现金流切实转化为每股内在价值提升。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明 (Disclaimer Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>Reddit, Inc. (NYSE: RDDT) 深度商业与投资价值分析报告 · 机构研究框架版</span>
+ <span>数据基准：2026Q3 财报及 2026 年 11 月市场一致预期 (FY26E)</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度研究报告基于 Reddit, Inc. 公开财务报告（10-Q/10-K）、2026Q3 业绩电话会议披露数据及全球数字广告与人工智能基础设施行业调研资料整理生成，旨在提供结构化的商业模式与估值分析框架。报告中涉及的盈利预测、DAUq 与 ARPU 增长测算、三情景目标价及 2029E 商业化乘数模拟均基于特定假设条件推演，不构成任何证券买卖建议或收益承诺。高成长科技互联网股伴随显著估值与业绩波动风险，请在独立审慎评估后做出投资决策。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-rddtorange-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-rddtorange-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 同行竞争格局矩阵筛选器
+ // ==========================================
+ function filterCompetitors(category) {
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-rddtorange-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-rddtorange-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ if (category === 'all' || rowCat === 'core' || rowCat === category) {
+ row.style.display = '';
+ } else {
+ row.style.display = 'none';
+ }
+ });
+ }
+
+ // ==========================================
+ // 5. Reddit 商业化乘数（DAUq × ARPU + AI授权）3年动态推演器
+ // ==========================================
+ let currentTargetMult = 10.5; // 默认 10.5x 中性远期 EV/Sales
+
+ function setMultiple(mult) {
+ currentTargetMult = mult;
+ document.querySelectorAll('#mult-btn-group .mult-btn').forEach(btn => {
+ const btnMult = parseFloat(btn.dataset.mult);
+ if (Math.abs(btnMult - mult) < 0.01) {
+ btn.className = 'mult-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-rddtorange-500 text-white border border-rddtorange-400 shadow transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-orange-100';
+ } else {
+ btn.className = 'mult-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-rddtorange-400 transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+ }
+ });
+ updateMonetizationSimulator();
+ }
+
+ function updateMonetizationSimulator() {
+ const dauGrowthPct = parseFloat(document.getElementById('sim-dau').value);
+ const arpuGrowthPct = parseFloat(document.getElementById('sim-arpu').value);
+ const aiRevM = parseFloat(document.getElementById('sim-ai').value);
+ const includeSearchAds = document.getElementById('search-ads-toggle').checked;
+
+ document.getElementById('sim-dau-label').textContent = dauGrowthPct.toFixed(1) + '%';
+ document.getElementById('sim-arpu-label').textContent = arpuGrowthPct.toFixed(1) + '%';
+ document.getElementById('sim-ai-label').textContent = '$' + aiRevM.toLocaleString('en-US') + 'M';
+
+ // 2026E 基准参数
+ const baseDauM = 148.2; // 1.482亿日活
+ const baseAnnualAdArpu = 17.64; // 2026E 广告年化 ARPU ($2.614B / 148.2M)
+ const baseTotalRevB = 2.88;
+ const currentMarketCapB = 38.4;
+ const netCashB = 2.15;
+ const est2029SharesM = 184.0; // 计入温和 SBC 摊薄后的 2029E 股本
+
+ const endDauM = baseDauM * Math.pow(1 + dauGrowthPct / 100, 3);
+ const searchMultiplier = includeSearchAds ? 1.15 : 1.00;
+ const endAnnualAdArpu = baseAnnualAdArpu * Math.pow(1 + arpuGrowthPct / 100, 3) * searchMultiplier;
+
+ const endAdRevB = (endDauM * endAnnualAdArpu) / 1000;
+ const endAiRevB = aiRevM / 1000;
+ const endTotalRevB = endAdRevB + endAiRevB;
+
+ const revCagrPct = (Math.pow(endTotalRevB / baseTotalRevB, 1 / 3) - 1) * 100;
+ const endEbitdaMargin = 0.46; // 规模化高经营杠杆下 2029E EBITDA 利润率
+ const endEbitdaB = endTotalRevB * endEbitdaMargin;
+
+ const targetEvB = endTotalRevB * currentTargetMult;
+ const targetMarketCapB = targetEvB + netCashB;
+ const upsidePct = ((targetMarketCapB - currentMarketCapB) / currentMarketCapB) * 100;
+ const targetPrice = (targetMarketCapB * 1000) / est2029SharesM;
+
+ document.getElementById('sim-2029-rev').textContent = '$' + endTotalRevB.toFixed(2) + 'B';
+ document.getElementById('sim-rev-cagr').textContent = `三年营收年均复合增速 +${revCagrPct.toFixed(1)}% (广告 $${endAdRevB.toFixed(2)}B + AI $${endAiRevB.toFixed(2)}B)`;
+ document.getElementById('sim-2029-ebitda').textContent = '$' + endEbitdaB.toFixed(2) + 'B';
+ document.getElementById('sim-target-cap').textContent = '$' + targetMarketCapB.toFixed(1) + 'B';
+ document.getElementById('sim-upside').textContent = `较当前 $38.4B 潜在回报 ${upsidePct >= 0 ? '+' : ''}${upsidePct.toFixed(1)}%`;
+ document.getElementById('sim-upside').className = upsidePct >= 0
+ ? 'text-xs font-semibold text-emerald-400 mt-1.5'
+ : 'text-xs font-semibold text-rose-400 mt-1.5';
+ document.getElementById('sim-target-price').textContent = '$' + targetPrice.toFixed(2);
+ document.getElementById('sim-dau-end').textContent = `2029E 日活 DAUq：${(endDauM / 100).toFixed(2)}亿 | 年化广告 ARPU：$${endAnnualAdArpu.toFixed(2)}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'rddt_research_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'rev_evolution';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：2022–2026E 广告与 AI 数据授权双引擎营收及调整后 EBITDA 演进 ($B)
+ const evoConfig = {
+ type: 'bar',
+ data: {
+ labels: ['2022', '2023', '2024', '2025', '2026E'],
+ datasets: [
+ {
+ label: '效果与品牌广告营收 ($B)',
+ data: [0.65, 0.79, 1.18, 1.81, 2.61],
+ backgroundColor: '#FF4500',
+ borderRadius: 4,
+ stack: 'rev'
+ },
+ {
+ label: 'AI 数据授权及其他营收 ($B)',
+ data: [0.02, 0.01, 0.12, 0.18, 0.27],
+ backgroundColor: '#10B981',
+ borderRadius: 4,
+ stack: 'rev'
+ },
+ {
+ type: 'line',
+ label: '调整后 EBITDA ($B)',
+ data: [-0.11, -0.07, 0.30, 0.64, 1.08],
+ borderColor: '#06B6D4',
+ backgroundColor: '#06B6D4',
+ borderWidth: 2.8,
+ pointRadius: 4.5,
+ tension: 0.25
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ min: -0.3,
+ max: 3.2,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toFixed(1) + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：2026Q3 活跃用户（DAUq 百万）与单季 ARPU（美元）地域拆解
+ const splitConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '美国本土 DAUq (百万)',
+ '国际市场 DAUq (百万)',
+ '已登录日活 Logged-in (百万)',
+ '未登录搜索日活 Logged-out (百万)'
+ ],
+ datasets: [
+ {
+ label: '2026Q3 活跃用户规模 (百万 DAUq)',
+ data: [65.8, 82.4, 71.5, 76.7],
+ backgroundColor: ['#FF4500', '#10B981', '#06B6D4', '#6366F1'],
+ borderRadius: 6,
+ barThickness: 24
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => {
+ const extra = [
+ ' (美国单季 ARPU $8.45)',
+ ' (国际单季 ARPU $2.56 · 翻倍空间大)',
+ ' (高商业变现价值核心盘)',
+ ' (Google 搜索与多语言翻译引流)'
+ ];
+ return `${ctx.parsed.x}M DAUq${extra[ctx.dataIndex]}`;
+ }
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 100,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'M' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'rev_evolution' ? evoConfig : splitConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'rev_evolution') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-rddtorange-600 dark:text-rddtorange-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2022–2026E 广告与 AI 数据授权双引擎营收及调整后 EBITDA 演进';
+ subEl.textContent = '2024–2026E 营收两年翻倍至 $2.88B，91%+ 毛利率释放惊人经营杠杆，EBITDA 突破 $1.08B';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-rddtorange-600 dark:text-rddtorange-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2026Q3 活跃用户结构拆解（美国 65.8M vs 国际 82.4M · 总计 1.482亿）';
+ subEl.textContent = '国际 DAUq 已反超美国本土但 ARPU 仅为美国 30%，多语言商业化铺开带来巨大变现弹性';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const ctx = document.getElementById('moatRadarChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '人类真实语料与AI稀缺性',
+ '用户主动购买/搜索意图',
+ '软件级毛利率与轻资产',
+ '广告算法与变现成熟度',
+ '全球化流量独立性'
+ ],
+ datasets: [
+ {
+ label: 'Reddit (RDDT)',
+ data: [9.9, 9.5, 9.8, 7.2, 7.4],
+ borderColor: '#FF4500',
+ backgroundColor: 'rgba(255, 69, 0, 0.24)',
+ pointBackgroundColor: '#FF4500',
+ borderWidth: 2.5
+ },
+ {
+ label: 'Meta Platforms (META)',
+ data: [7.5, 8.2, 8.8, 9.9, 9.6],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: 'Pinterest (PINS)',
+ data: [5.0, 9.0, 8.4, 7.8, 8.0],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const ctx = document.getElementById('compMarginChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Reddit (RDDT · AI语料与高意图社区)',
+ 'Meta (META · 全球社交广告霸主)',
+ 'Pinterest (PINS · 视觉购物发现)',
+ 'Snap (SNAP · 即时通讯与AR)',
+ '哔哩哔哩 (BILI · 中文兴趣视频社区)'
+ ],
+ datasets: [
+ {
+ label: '综合毛利率 Gross Margin (%)',
+ data: [91.2, 81.8, 79.5, 54.2, 36.5],
+ backgroundColor: '#FF4500',
+ borderRadius: 5,
+ barThickness: 13
+ },
+ {
+ label: '2026E 营收同比增速 YoY Growth (%)',
+ data: [46.0, 18.0, 17.0, 14.0, 16.0],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 13
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 100,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['2022', '2023', '2024', '2025', '2026E'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '调整后 EBITDA 利润率 (%)',
+ data: [-16.2, -8.6, 22.9, 32.2, 37.5],
+ backgroundColor: 'rgba(255, 69, 0, 0.85)',
+ borderRadius: 5,
+ barThickness: 30,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '非 GAAP 营业费用占营收比 OpEx (%)',
+ data: [100.5, 94.8, 67.6, 58.9, 53.7],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: -25,
+ max: 50,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' },
+ title: { display: true, text: '调整后 EBITDA 利润率 (%)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 40,
+ max: 110,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' },
+ title: { display: true, text: '非 GAAP 营业费用率 (%)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateMonetizationSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

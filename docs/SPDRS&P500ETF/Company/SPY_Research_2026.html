@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>SPDR标普500指数ETF SPDR S&amp;P 500 ETF Trust (NYSE Arca: SPY) 深度研究报告：$7,839亿全球鼻祖ETF全景、十一大行业引擎与十年复利配置框架</title>
+ <!-- Tailwind CSS (Versioned CDN) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Versioned CDN + Fallback) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <script>
+ if (typeof Chart === 'undefined') {
+   document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"><\/script>');
+ }
+ </script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ if (typeof tailwind !== 'undefined') {
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ }
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：道富翡翠绿+琥珀金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(16, 185, 129, 0.24) 0%, rgba(245, 158, 11, 0.08) 100%);
+ border-left: 3px solid #10B981;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-emerald-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-emerald-600 via-teal-400 to-mogold-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 导出成功轻提示 Toast -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-emerald-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已成功导出独立网页文件 SPY.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ SPY
+ </div>
+ <div>
+ <div class="text-[11px] text-emerald-400 font-semibold tracking-wider uppercase">NYSE Arca: SPY · AUM $783.87B</div>
+ <div class="text-sm font-bold leading-tight">SPDR标普500ETF深度研报</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="downloadHtmlFile()" class="px-2.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-navy-950 font-bold text-xs" aria-label="导出HTML">
+ 导出.html
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">SPY 研报目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 指数架构与四大核心支柱</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 编制规则与四重竞争护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 前25大重仓成分股全景矩阵</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 费率估值与定投复利推演器</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三情景估值与竞品横向对比</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度调仓与宏观测评核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+ <button onclick="downloadHtmlFile()" class="w-full py-2 px-3 rounded-lg bg-emerald-500 text-navy-950 font-bold text-xs">一键导出 .html 网页文件</button>
+ <p>全球指数化投资与大盘宽基研究组</p>
+ <p>数据基准：2026年11月18日 State Street 官方披露</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-teal-600 flex items-center justify-center text-navy-950 font-extrabold text-sm shadow-lg shadow-emerald-500/25">
+ SPY
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">NYSE Arca: SPY · 1993年成立</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">SPDR标普500ETF研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ State Street SPDR S&amp;P 500 ETF Trust · $7,839亿全球鼻祖ETF、十一大行业全景与十年 15.29% 年化复利机器
+ </p>
+ </div>
+
+ <!-- 实时基金快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">SPY 最新市场价格 / NAV</span>
+ <span class="font-mono font-bold text-white">$732.44 <span class="text-slate-400 text-[10px]">(NAV $732.16)</span></span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">基金总资产规模 (AUM)</span>
+ <span class="font-mono font-bold text-emerald-400">$783.87B <span class="text-slate-400">(503只成分股)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">总费率 / 前十大集中度</span>
+ <span class="font-mono font-bold text-mogold-400">0.0945% · Top10 占 36.74%</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-340px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-emerald-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>指数架构与四大支柱</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>编制规则与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>前25大重仓成分股矩阵</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>费率估值与复利推演器</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三情景估值与竞品对比</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度调仓跟踪核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏 -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-emerald-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="downloadHtmlFile()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 .html 网页文件</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 font-bold border border-emerald-500/30">评级：全球权益资产配置基石 / 美股核心大盘锚</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">跟踪标的：S&amp;P 500 Index (SPX) · UIT 信托架构</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖时间：2026年11月</span>
+ <a href="https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">State Street SPDR Official Fact Sheet ↗</a>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景翡翠绿点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#10B981 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-semibold">
+ <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+ <span>CORE INDEX THESIS · $7,839亿全球首只ETF × 11大GICS行业全覆盖 × 10年年化回报 15.29%</span>
+ </div>
+ <button onclick="downloadHtmlFile()" class="no-print inline-flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-extrabold text-xs transition shadow cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>一键下载 .html 报告文件</span>
+ </button>
+ </div>
+
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ SPDR标普500指数ETF SPDR S&amp;P 500 ETF Trust (NYSE Arca: SPY) 深度研究报告：$7,839亿全球鼻祖ETF全景、十一大行业引擎与十年复利配置框架
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 创立于 1993 年 1 月 22 日的 <strong class="text-white">State Street SPDR S&amp;P 500 ETF Trust（NYSE Arca: SPY）</strong> 是美国历史上第一只挂牌交易的交易所交易基金，也是全球流动性最强、期权生态最深厚的权益资产标杆。截至 2026 年 11 月 17 日，SPY 资产管理规模（AUM）高达 <strong class="text-emerald-400">$7,838.7亿（流通份额 10.71亿份，NAV $732.16）</strong>，总费率 <strong class="text-teal-300">0.0945%</strong>，过去十年年化净值总回报达 <strong class="text-mogold-400">+15.29%（33年成立以来年化 +10.76%）</strong>。
+ </p>
+ <p class="mt-2.5 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 截至 2026 年 11 月，SPY 持有全部 <strong class="text-white">503 只标普 500 成分股（总计 505 个证券头寸）</strong>，兼具“科技算力进攻性”与“全行业防御均衡”：<strong class="text-emerald-300">苹果（AAPL 8.04%）、微软（MSFT 6.01%）、英伟达（NVDA 5.90%）、亚马逊（AMZN 3.95%）与 Alphabet（GOOGL+GOOG 合计 4.69%）</strong>领衔科技增长引擎，同时纳入 <strong class="text-mogold-300">礼来制药（LLY 1.79%）、伯克希尔（BRK.B 1.72%）、摩根大通（JPM 1.40%）与埃克森美孚（XOM 1.07%）</strong>，实现美国核心经济体的全景映射。
+ </p>
+
+ <!-- 核心投资结论高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">美国核心经济体“全天候旗舰”</div>
+ <div class="text-white font-semibold">涵盖 11 大 GICS 行业与 503 家盈利标杆龙头，信息技术占 35.30%，金融（12.79%）与医疗（10.63%）提供坚实顺周期与防御对冲</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">合理估值中枢与稳健盈利增速</div>
+ <div class="text-emerald-400 font-semibold">TTM 市盈率 23.00x（远期 FY1 P/E 19.43x），预期 3–5 年 EPS 复合增速达 20.57%，30 日 SEC 股息率 1.00%</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">全球第一级做市深度与零滑点期权链</div>
+ <div class="text-mogold-400 font-semibold">前十大重仓集中度 36.74%（远低于 QQQ 的 46.46%），既分散单一科技股波动，又具备全球最深厚的日度/周度期权流动性</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>最新资产管理规模 (AUM)</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$783.87B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">10.71亿份</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 截至 2026 年 11 月 17 日单位净值（NAV）为 $732.16，52 周交易价格区间 $629.28–$781.62。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>3年 / 10年年化净值总回报</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">15.29%</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">3Y年化 23.24%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 截至 2026 年 10 月末，YTD 涨幅 +11.66%，近 1 年回报 +11.98%，1993 年成立至今 33 年年化 +10.76%。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>总管理费率与静态/远期估值</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">0.0945%</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">FY1 P/E 19.43x</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 年费率 0.0945%（每 $10,000 年费仅 $9.45）；静态 P/E 23.00x，30日 SEC 股息率 1.00%（年派息 ~$7.58/份）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>前十大集中度与加权平均市值</span>
+ <span class="p-1.5 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">36.74%</span>
+ <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-500/15 px-2 py-0.5 rounded">科技占 35.30%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 加权平均总市值达 $1.441万亿（成分股市值中位数 $452.2亿），兼顾万亿科技龙头与全美中大型行业冠军。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 指数架构与四大核心产业支柱 (Index Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 01 · GICS Sector Allocation &amp; Economic Pillars</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 指数架构与四大经济支柱：十一大 GICS 行业均衡配置，“科技领跑 + 金融医疗消费托底”</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">GICS 行业分类基准 · 2026年11月16日 State Street 官方持仓统计</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">SPY 2026年11月 十一大 GICS 行业权重分布全景（%）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">信息技术（35.30%）、金融（12.79%）、医疗健康（10.63%）与可选消费（9.51%）构成四大核心压舱行业</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('sector_split')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-emerald-600 dark:text-emerald-400 shadow-sm transition cursor-pointer">视图A：十一大行业权重拆解</button>
+ <button onclick="switchBizChart('perf_history')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：SPY vs QQQ 多周期回报</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：2026 SPY 三大配置与结构特征拆解 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026 年 SPY 资产配置与标普 500 指数三大核心特征</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“七巨头科技底色 + 全行业分散缓冲”黄金配比</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ <strong>苹果（8.04%）、微软（6.01%）、英伟达（5.90%）、亚马逊（3.95%）、Alphabet（合计 4.69%）、博通（2.48%）、Meta（2.16%）</strong> 构筑 33.23% 科技数字底座；同时其余 66% 仓位均匀分布于金融、医疗、工业与消费，显著降低单一赛道回撤冲击。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">伯克希尔（BRK.B）与礼来制药（LLY）跻身前十重仓</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 全球代谢减重药龙头 <strong>礼来（LLY 1.79%）</strong> 与巴菲特旗下价值旗舰 <strong>伯克希尔（BRK.B 1.72%）</strong> 分别位列第 9 与第 10 大重仓，为组合贡献与硅谷科技股低相关性的强劲盈利增长。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">远期市盈率 19.43x 与 20.57% 预期盈利增速匹配度极佳</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 截至 2026 年 11 月 16 日，标普 500 指数未来 12 个月预期市盈率（FY1 P/E）仅 <strong>19.43 倍</strong>（市现率 17.23 倍），而成分股未来 3–5 年预期 EPS 复合增速达 <strong>20.57%</strong>，PEG 低于 1.0 倍。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">指数编制委员会准入门槛</span>
+ <span class="font-bold text-emerald-600 dark:text-emerald-400">强制要求连续四个季度 GAAP 净利润为正</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心经济支柱卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 支柱 1：信息技术与通信服务数字底座 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第一支柱 · 科技与通信服务集群</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">合计权重 44.16% (市值 ~$346.2B)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. AI 算力芯片、云操作系统与数字广告霸主（AAPL + MSFT + NVDA + GOOGL/G + AVGO + META）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 信息技术（<strong>35.30%</strong>）与通信服务（<strong>8.86%</strong>）合计贡献逾四成仓位，囊括 <strong>苹果（8.04%）、微软（6.01%）、英伟达（5.90%）、Alphabet（4.69%）、博通（2.48%）、Meta（2.16%）、AMD（1.29%）、美光（1.27%）与思科（0.58%）</strong>，完整捕获生成式 AI 基础设施与企业软件商业化红利。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>AAPL 8.04% | MSFT 6.01% | NVDA 5.90% | GOOGL+G 4.69%</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">美国企业盈利增长第一引擎</span>
+ </div>
+ </div>
+
+ <!-- 支柱 2：金融服务、支付网络与综合控股 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二支柱 · 金融银行与全球支付网络</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">板块权重 12.79% (市值 ~$100.3B)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 华尔街顶级投行、价值控股与卡组织双寡头（BRK.B + JPM + V + MA + BAC）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 金融板块（<strong>12.79%</strong>）是标普 500 区别于纳指 100 的关键差异化优势：涵盖 <strong>伯克希尔（BRK.B 1.72%）、摩根大通（JPM 1.40%）、Visa（V 1.14%）、Mastercard（MA 0.84%）、美国银行（BAC）及富国银行</strong>，兼具高净息差盈利韧性、稳定派息与全球跨境支付收费桥垄断。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>BRK.B 1.72% | JPM 1.40% | V 1.14% | MA 0.84%</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">低估值高分红与顺周期价值锚</span>
+ </div>
+ </div>
+
+ <!-- 支柱 3：医疗健康与生物医药创新 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">第三支柱 · 创新制药与医疗器械</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">板块权重 10.63% (市值 ~$83.3B)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. GLP-1 代谢革命与老龄化刚需医疗龙头（LLY + JNJ + ABBV + UNH + MRK）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 医疗健康（<strong>10.63%</strong>）兼具创新爆发力与弱周期防御属性：由全球市值最高药企 <strong>礼来制药（LLY 1.79%）</strong> 领衔，叠加百年医疗巨头 <strong>强生（JNJ 1.06%）、艾伯维（ABBV 0.81%）、联合健康（UNH）与直觉外科</strong>，在宏观经济波动期提供稳健现金流防护垫。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>LLY 1.79% | JNJ 1.06% | ABBV 0.81%</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">长坡厚雪刚需与专利壁垒护城河</span>
+ </div>
+ </div>
+
+ <!-- 支柱 4：大消费、高端工业制造与能源基建 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">第四支柱 · 消费零售、工业与能源资源</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">合计权重 32.42% (市值 ~$254.1B)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 现代商超、电动车、航空制造与能源巨头（AMZN + TSLA + WMT + COST + XOM）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 涵盖可选消费（9.51%）、工业（8.22%）、必需消费（5.30%）、能源（3.62%）、公用事业（2.16%）、房地产（1.88%）与原材料（1.75%）：囊括 <strong>亚马逊（3.95%）、特斯拉（1.67%）、埃克森美孚（XOM 1.07%）、沃尔玛（WMT 0.89%）、开市客（COST 0.77%）、雪佛龙（CVX 0.67%）、宝洁（PG 0.63%）与可口可乐（KO 0.60%）</strong>。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>AMZN 3.95% | TSLA 1.67% | XOM 1.07% | WMT 0.89%</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">全美实体经济与抗通胀实物资产映射</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 指数编制规则与四重核心护城河 (Index Methodology & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · S&amp;P 500 Committee Rules &amp; Structural Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 编制规则与四重结构性护城河：为何标普 500 能跑赢逾 85% 主动型大盘基金？</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">指数机制评级：全球机构业绩基准 (Global Equity Benchmark Standard)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">严格“连续四季度盈利”质量过滤</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 不同于单纯按市值排名的 Russell 1000 指数，标普指数委员会强制要求新入选公司<strong>最近一个季度及过去四个季度累计 GAAP 净利润必须为正</strong>，且具备充裕自由流通盘，天然把纯烧钱概念股挡在门外。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">自由流通市值加权“赢家自动增配”</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 采用自由流通市值加权（Float-Adjusted Market-Cap Weighting）：微软、苹果、英伟达等伟大型企业随基本面扩张自动获得更高权重，而经营恶化或被颠覆的旧巨头权重自然萎缩直至被剔除，实现低换手率动量复利。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">全球第一级流动性与零滑点做市生态</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 作为全球首只 ETF（1993年上市），SPY 拥有 <strong>$7,839亿</strong> 庞大规模与全球无可匹敌的盘口深度、盘前盘后流动性及最密集的期权行权价序列，是主权基金、对冲基金与做市商的第一交易工具。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">跨周期行业轮动自然对冲黑天鹅</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 11 大 GICS 行业全覆盖使 SPY 在任何宏观象限下均有领涨板块接力：科技繁荣期由 AI 半导体驱动，高通胀加息期由能源（XOM/CVX）与银行（JPM）托底，衰退防御期由医疗（LLY/JNJ）与必选消费护航。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维 ETF 竞争力雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">主流美股宽基 ETF 五维竞争力雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">SPDR SPY vs 景顺纳指 QQQ vs 主动型大盘基金均值（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 前 25 大重仓成分股全景矩阵 (Top 25 Holdings Matrix)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 03 · State Street SPY Top 25 Core Holdings Matrix (~48.4% of AUM)</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 SPY 前 25 大核心重仓成分股全景明细表：股数、市值、权重与基本面定位</h2>
+ </div>
+ <!-- 交互式筛选按钮与搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <div class="relative">
+ <input type="text" id="holding-search-input" oninput="searchHoldings()" placeholder="搜索代码或公司名 (如 AAPL, LLY, BRK)..." class="w-48 sm:w-56 pl-3 pr-7 py-1.5 rounded-lg bg-white dark:bg-navy-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:border-emerald-500 text-xs" />
+ </div>
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterHoldings('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-emerald-500 text-navy-950 shadow-sm transition cursor-pointer">全部前25大 (~48.4%)</button>
+ <button onclick="filterHoldings('top10')" data-filter="top10" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">前十大重仓 (36.7%)</button>
+ <button onclick="filterHoldings('tech')" data-filter="tech" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">科技与通信 (11)</button>
+ <button onclick="filterHoldings('finance')" data-filter="finance" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">金融与医疗 (7)</button>
+ <button onclick="filterHoldings('consumer')" data-filter="consumer" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">消费与能源 (7)</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 25只核心成分股完整对比表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="px-5 py-3 bg-slate-50 dark:bg-navy-950/60 border-b border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400">
+ <span id="table-count-label">当前显示：25 / 25 只核心重仓股（合计持仓市值 $379.25B · 占 SPY 总净值 48.38%，其余 480 只成分股合计占 51.62%）</span>
+ <span>数据核实源：<a href="https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 underline">State Street Official SPY Holdings</a> · <a href="https://stockanalysis.com/etf/spy/holdings/" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 underline">Stock Analysis Pro</a></span>
+ </div>
+ <div class="overflow-x-auto max-h-[680px]">
+ <table class="w-full text-left border-collapse">
+ <thead class="sticky top-0 z-10">
+ <tr class="bg-slate-100 dark:bg-navy-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-3.5 px-4 min-w-[60px]">排名</th>
+ <th class="py-3.5 px-4 min-w-[200px]">股票代码与公司名称</th>
+ <th class="py-3.5 px-3 min-w-[115px]">GICS 赛道</th>
+ <th class="py-3.5 px-4 text-right min-w-[125px]">SPY 持股数</th>
+ <th class="py-3.5 px-4 text-right min-w-[115px]">持仓市值</th>
+ <th class="py-3.5 px-3 text-right min-w-[85px]">基金权重</th>
+ <th class="py-3.5 px-4 text-center min-w-[130px]">核心属性标签</th>
+ <th class="py-3.5 px-4 min-w-[250px]">在标普500中的经济地位与护城河解析</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="holdings-table-body">
+ <!-- 由 JS 动态渲染并支持搜索与分类过滤 -->
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：前十大重仓股权重与对应持仓市值对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">SPY 前十大重仓成分股权重（%）与对应持仓金额（$B）双维对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">按 $7,838.7亿总规模折算，前十大重仓合计承载逾 $2,880亿资金（注：Alphabet A类与 C类合并计算权重达 4.69%，位列第4大公司）</p>
+ </div>
+ <span class="text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-500/15 px-2.5 py-1 rounded">Top 10 集中度 36.74%</span>
+ </div>
+ <div class="relative h-80 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 费率估值、历史绩效与定投复利推演器 (Valuation & Compounding Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Valuation Multiples, Historical Returns &amp; Wealth Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 费率估值、历史绩效与定投复利推演器：十年年化 15.29% 复利密码与财富测算</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">数据基准：State Street Global Advisors 2026年10月31日 / 11月17日官方披露</span>
+ </div>
+
+ <!-- 1. 四大核心运作与估值指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Valuation (TTM &amp; FY1 P/E)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">19.43x <span class="text-xs text-mogold-500">TTM 23.0x</span></div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 截至 2026 年 11 月 16 日，标普 500 预期远期市盈率 19.43 倍，市现率 17.23 倍，较纳指 100（~30x）具备更安全估值缓冲。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">3Y / 5Y / 10Y NAV Return</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">15.29% <span class="text-xs text-emerald-500">10Y CAGR</span></div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 截至 2026 年 10 月末：3 年年化 <strong>23.24%</strong>，5 年年化 <strong>11.93%</strong>，10 年年化 <strong>15.29%</strong>，33 年全周期年化 <strong>10.76%</strong>。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Gross Expense Ratio &amp; Tracking</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">0.0945% <span class="text-xs text-slate-400">误差-0.10%</span></div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 年总费率 0.0945%（每 $10,000 年管理费仅 $9.45）；10 年净值年化 15.29% 紧贴基准指数 15.44%，跟踪精度极高。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">30-Day SEC Yield &amp; Payout</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$7.58/yr <span class="text-xs text-emerald-500">1.00%</span></div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 按季派息（最近季息 $1.8888/份，下次除息日 2026年12月18日），近 12 个月累计派息 $7.5827/份，30日 SEC 收益率 1.00%。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴图：2016–2026 十年 $10,000 投资 SPY 复利净值增长轨迹 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2016–2026 十年 $10,000 投资 SPY（含股息再投资）复利净值增长曲线</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">2016 年底投入 $10,000 于 SPY（年化 15.29%），至 2026 年底累计增长至约 $41,490（+314.9%），穿越 2020 疫情与 2022 加息熊市稳步创历史新高</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/15 px-2.5 py-1 rounded">10年累计翻 4.15 倍</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：SPY 一次性底仓 + 每月定投（DCA）复利财富模拟器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">
+ <span>S&amp;P 500 COMPOUNDING ENGINE · SPY 定投复利与股息再投资模拟器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">SPDR SPY“初始底仓 + 每月定投（DCA）”长期财富推演器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：SPY 当前参考价 $732.44 | 总费率 0.0945% | 30日 SEC 股息率 1.00%（33年全周期年化 10.76%，近10年 15.29%）</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-emerald-500/15 border border-emerald-400/30 text-xs font-semibold text-emerald-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="drip-toggle" checked onchange="updateDividendSimulator()" class="w-4 h-4 rounded accent-[#10B981] cursor-pointer">
+ <span>启用季度股息自动再投资 (DRIP +1.00%/年复利滚存)</span>
+ </label>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <!-- 初始本金滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始一次性投入本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$30,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="0" max="300000" step="5000" value="30000" oninput="updateDividendSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <!-- 每月定投滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">每月定期定额追加投资 (Monthly DCA)</span>
+ <span id="sim-monthly-label" class="font-mono font-bold text-emerald-400 text-sm">$1,000 / 月</span>
+ </div>
+ <input id="sim-monthly" type="range" min="0" max="5000" step="250" value="1000" oninput="updateDividendSimulator()" class="w-full accent-[#34D399] cursor-pointer">
+ </div>
+
+ <!-- 持有年限滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期复利定投年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">15 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="30" step="1" value="15" oninput="updateDividendSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <!-- 预期年化资本利得情景按钮组 -->
+ <div class="pt-1">
+ <div class="text-slate-300 font-medium mb-2">预期年化价格增长率（不含股息再投资）情景：</div>
+ <div class="grid grid-cols-3 gap-2" id="tax-btn-group">
+ <button type="button" onclick="setReturnScenario(8.5)" data-rate="8.5" class="tax-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-emerald-400 transition cursor-pointer">
+ 8.5% 稳健长周期<br><span class="text-[10px] text-slate-400">33年历史基准</span>
+ </button>
+ <button type="button" onclick="setReturnScenario(10.5)" data-rate="10.5" class="tax-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-emerald-500 text-navy-950 border border-emerald-400 shadow transition cursor-pointer">
+ 10.5% 均衡中枢<br><span class="text-[10px] text-navy-900">含息约11.5%/年</span>
+ </button>
+ <button type="button" onclick="setReturnScenario(14.0)" data-rate="14.0" class="tax-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-emerald-400 transition cursor-pointer">
+ 14.0% 盈利繁荣<br><span class="text-[10px] text-slate-400">近10年趋势延续</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计账户总资产 (USD)</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$629,480</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计总投入 $210,000 · 净赚 +$419,480 (+199.8%)</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计累计持有 SPY 份额</div>
+ <div id="sim-annual-div" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">192.3 份</div>
+ <div id="sim-monthly-div" class="text-xs text-slate-400 mt-1.5">期末推算 SPY 单份价格：~$3,273 / 份</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末透视底层标普 500 实体企业净资产映射</div>
+ <div id="sim-yoc" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$222,206</div>
+ <div class="text-xs text-slate-400 mt-1.5">按信息技术 35.3% 权重折算的科技龙头归属市值</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计年度被动股息现金流</div>
+ <div id="sim-cum-div" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">$6,295 / 年</div>
+ <div id="sim-shares-end" class="text-xs text-slate-400 mt-1.5">年管理费率仅 0.0945%（首年费用约 $28）</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 华尔街多空核心分歧对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">20.57% 盈利增速 + AI 生产力外溢</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 降本增效正从硅谷向全美 500 强传统企业全面扩散：</strong>金融、医疗、零售与工业龙头借助 AI 自动化大幅提升人均产值与营业利润率，推动未来 3–5 年 EPS 预期增速高达 20.57%。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>巴菲特遗嘱级推荐的终极财富锚：</strong>连续 33 年实现 10.76% 年化复合回报，远期 P/E 19.43x 处于历史合理区间，无需择时即可分享美国经济整体复利。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>全球无可替代的做市与衍生品对冲效率：</strong>机构与高净值个人可利用 SPY 极其活跃的期权链进行备兑增厚（Covered Call）或看跌保护（Protective Put）。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">UIT 信托架构摩擦 + 费率略高于 VOO</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>前十大科技集中度升至 36.74%，与传统“500只平均分散”有别：</strong>苹果、微软、英伟达、亚马逊与谷歌合计占比近 28.6%，大盘指数对头部科技股波动的敏感度较十年前明显上升。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>1993 年 UIT（单位投资信托）架构存在轻微“现金拖累”：</strong>SPY 收到成分股股息后在季度派息前只能以现金留存，无法像 VOO/IVV 那样立即盘中再投资，牛市中每年产生约 3–5 个基点微小跟踪拖累。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>0.0945% 费率高于 VOO / IVV / SPLG（0.02%–0.03%）：</strong>若纯买入持有 30 年且不做期权交易，VOO 或 SPYM（原 SPLG，费率 0.02%）可每年节省约 6.5–7.5 个基点管理费。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三情景估值与标普500家族 ETF 横向对比 (Scenarios & Peer Comparison)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 05 · 12M Target Scenarios &amp; S&amp;P 500 ETF Peer Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 12个月三情景目标价推演与标普500家族 ETF（SPY vs VOO vs IVV vs SPYM）选型指南</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">配置定位：全球权益组合核心压舱石（Core Equity Anchor · 建议配置比例 40%–70%）</span>
+ </div>
+
+ <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 牛市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：25%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$825 – $860 (突破52周新高)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>美国经济实现软着陆且企业盈利全面超预期，标普 500 远期 EPS 增长 16%+，远期估值维持 21x–22x P/E，推动 SPY 强势突破 $781.62 前高。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 12个月潜在总回报（含息）：+13.6% 至 +18.4%
+ </div>
+ </div>
+
+ <!-- 基准情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">基准情景 (Base Case)</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">概率：55%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$785 – $815 (盈利驱动慢牛)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>成分股盈利稳健兑现 11%–13% 增长，远期市盈率平稳消化至 19.0x–19.5x 合理中枢，叠加上约 1.0% 股息分红，延续历史长周期稳健复利节奏。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 12个月稳健预期回报（含息）：+8.2% 至 +12.3%
+ </div>
+ </div>
+
+ <!-- 熊市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$630 – $665 (回踩52周低点支撑)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>宏观消费放缓或长端利率超预期走高引发估值压缩至 16.5x–17.5x FY1 P/E，回踩 52 周低点 $629.28 强支撑位；金融与医疗权重有效缓冲整体跌幅。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 潜在最大回撤：-9.2% 至 -14.0%（长线战略加仓区）
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心竞品横向对比矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">美股标普 500 与核心宽基 ETF 横向选型对比：SPY vs VOO vs IVV vs QQQ</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">01 · SPY (0.0945%) vs VOO / IVV (0.03%)</span>
+ <span class="text-xs font-mono text-emerald-500 font-semibold">交易流动性 vs 极致低费率</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">期权与机构大单选 SPY；纯买入持有长线定投选 VOO / IVV</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 三者跟踪完全相同的标普 500 指数。<strong>SPY</strong>（$7,839亿）拥有全球最活跃的期权链与最小买卖价差，适合期权备兑与波段交易；<strong>VOO</strong>（先锋）与 <strong>IVV</strong>（贝莱德）采用现代开放式基金结构，费率仅 <strong>0.03%</strong> 且支持股息即时再投资，更适合 10 年以上定投。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500/10 text-mogold-600 dark:text-mogold-400 text-xs font-bold">02 · SPY (道富旗舰) vs SPYM (原 SPLG · 道富迷你版)</span>
+ <span class="text-xs font-mono text-mogold-500 font-semibold">同门高低配组合</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">同属 State Street 旗下，SPYM 费率低至 0.02% 且单份门槛更低</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 道富环球针对长期散户推出的同门产品 <strong>SPYM</strong>（State Street SPDR Portfolio S&amp;P 500 ETF），管理费率仅 <strong>0.02%</strong>（全市场最低之一）且支持股息再投资，与 SPY 形成“机构期权交易用 SPY + 个人定投用 SPYM”的完美互补。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">03 · SPY (503只全行业) vs QQQ (102只纳指100)</span>
+ <span class="text-xs font-mono text-teal-500 font-semibold">全天候均衡 vs 科技进攻</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">SPY 纳入金融/医疗/工业/能源，熊市抗跌性显著优于 QQQ</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 过去 10 年 QQQ 年化回报（20.26%）高于 SPY（15.29%），但 QQQ 波动率与最大回撤（2022年跌 -33%）远高于 SPY（2022年跌 -18%）；将 <strong>60% SPY + 40% QQQ</strong> 组合可在控制回撤的同时显著提升夏普比率。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · SPY (市值加权) vs RSP (标普500等权重 ETF)</span>
+ <span class="text-xs font-mono text-indigo-500 font-semibold">龙头集中 vs 均等分散</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">SPY 享受巨头赢家通吃复利，避免频繁再平衡摩擦</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 等权重 ETF（RSP，费率 0.20%）每季度强制卖出涨得最好的科技龙头、买入表现落后的中小市值成分股，在强者恒强的 AI 时代长期跑输 <strong>SPY</strong>；市值加权才是顺应商业自然规律的复利机制。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级组合配置纪律横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-emerald-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>SPDR SPY 全球资产配置三大实战黄金法则</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 确立“核心-卫星（Core-Satellite）”底仓定位</div>
+ <p class="text-slate-300 leading-relaxed">
+ 将资产组合的 <strong>50%–70%</strong> 配置于 <strong>SPY</strong>（或低费率同源 VOO/SPYM）作为永不踏空美国经济与 AI 生产力的核心底仓，其余 30%–50% 配置于 QQQ、BRK.B 或美债高息资产实现超额增强。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">2. 善用 SPY 期权链执行“备兑增强（Covered Call）”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 持有每 100 股 SPY（约 $73,244）即可在盘整市或高估值区间卖出 30–45 天到期的虚值看涨期权（Delta 0.15–0.20），在保留大部分上涨空间的同时额外获取年化 <strong>4%–7%</strong> 的期权权利金现金流。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">3. 关注 18x–19x 远期市盈率估值铁底与分红再投资</div>
+ <p class="text-slate-300 leading-relaxed">
+ 过去十年 SPY 年化 15.29% 的惊人复利中，季度股息再投资（DRIP）贡献了重要复利滚雪球效应；每当市场因短期宏观恐慌将远期 P/E 压低至 17x–18x 区间，均是长线资金提高定投倍数的黄金窗口。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 季度跟踪与宏观估值 KPI 交互式核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Index Rebalance &amp; Macro Tracking KPIs</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 SPY 季度调仓与标普 500 盈利景气度跟踪 KPI 交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">已核查 4 / 6 项 (67%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选持有或跟踪 SPY 期间已验证的核心基本面与估值指标（勾选状态自动本地保存）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#10B981] focus:ring-emerald-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 标普 500 远期市盈率（FY1 P/E 19.43x）与预期 EPS 增速</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">核心估值锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 截至 2026 年 11 月 16 日，SPY 远期 P/E 为 19.43x，预期 3–5 年 EPS 复合增速达 20.57%，验证盈利基本面强劲。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#10B981] focus:ring-emerald-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 前十大重仓集中度（36.74%）与非科技行业盈利扩散度</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">市场广度监测</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪金融（12.79%）、医疗（10.63%）与工业（8.22%）的财报盈利贡献，确认涨势从科技七巨头向全美 500 强广泛扩散。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#10B981] focus:ring-emerald-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 季度股息派发与除息日跟踪（下次除息 2026-12-18）</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">现金流日历</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 过去 12 个月累计派息 $7.5827/份，下一期预计派息 $1.79–$1.98/份（2027年1月29日发放），提前安排券商 DRIP 自动复投。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#10B981] focus:ring-emerald-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 标普指数委员会季度成分股调整（3/6/9/12月第三个周五）</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">优胜劣汰机制</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 关注每季标普 500 指数新纳入高成长盈利龙头与剔除衰落企业公告，理解指数长期保持高 ROE 的内在代谢逻辑。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#10B981] focus:ring-emerald-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 股权风险溢价（ERP）与 10 年期美债收益率利差变化</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">宏观资产定价</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 对比标普 500 盈利收益率（1 / 19.43 = 5.15%）与无风险美债收益率，评估股债配置性价比动态平衡点。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#10B981] focus:ring-emerald-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 阶段性回撤加仓纪律触发线（回撤 -8% / -15%）</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">定投执行锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 当 SPY 较阶段高点（$781.62）回撤 8%–10%（约 $705–$720 区间）维持常规月定投，回撤达 15%（~$665）启动额外储备资金加仓。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与权威数据源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-3 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>SPDR标普500指数ETF SPDR S&amp;P 500 ETF Trust (NYSE Arca: SPY) 深度研究报告 · 机构交互模板标准版</span>
+ <span>数据基准：2026年11月18日 State Street Global Advisors 官方披露 &amp; S&amp;P 500 指数数据</span>
+ </div>
+ <div class="flex flex-wrap gap-x-4 gap-y-1 text-[11px]">
+ <span class="font-semibold text-slate-600 dark:text-slate-300">核实数据源链接：</span>
+ <a href="https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 underline">State Street SPDR SPY 官方主页与实时持仓</a>
+ <a href="https://www.ssga.com/library-content/products/factsheets/etfs/us/factsheet-us-en-spy.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 underline">State Street SPY 官方 Fact Sheet (PDF)</a>
+ <a href="https://stockanalysis.com/etf/spy/holdings/" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 underline">Stock Analysis SPY 完整 505 持仓明细</a>
+ <a href="https://www.morningstar.com/etfs/xmex/spy/portfolio" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 underline">Morningstar SPY 组合与估值档案</a>
+ <a href="https://marketchameleon.com/Overview/SPY/Dividends/" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 underline">Market Chameleon SPY 季度派息日历</a>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度研究报告基于道富环球投资管理（State Street Global Advisors）官方披露的 SPDR S&amp;P 500 ETF Trust 数据及公开市场统计整理生成（截至 2026 年 11 月 18 日）。ETF 持仓权重、单位净值与股息率随成分股价格与派息政策动态变化，历史年化回报（如过去十年 15.29%）不构成未来业绩保证。报告中的复利定投测算与三情景目标价仅作投资分析与学术研究参考，不构成任何证券买卖邀约或投资建议。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 2026年11月16日 State Street SPY 前 25 大核心重仓成分股权威数据集
+ // ==========================================
+ const SPY_TOP25_HOLDINGS = [
+ { rank: 1, sym: 'AAPL', name: 'Apple Inc. (苹果)', sector: '信息技术', shares: 180526549, valB: 63.02, pct: 8.04, cat: 'tech', top10: true, tag: '第一大重仓 · 终端生态', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '标普 500 头号权重股（8.04%），全球超 22 亿活跃设备与高毛利软件服务生态构筑极深护城河。' },
+ { rank: 2, sym: 'MSFT', name: 'Microsoft Corp. (微软)', sector: '信息技术', shares: 91851588, valB: 47.11, pct: 6.01, cat: 'tech', top10: true, tag: '企业云与 AI 霸主', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: 'Azure 云计算与企业级生产力软件垄断者，AAA 级信用评级与超高自由现金流核心压舱石。' },
+ { rank: 3, sym: 'NVDA', name: 'NVIDIA Corp. (英伟达)', sector: '信息技术', shares: 299346892, valB: 46.25, pct: 5.90, cat: 'tech', top10: true, tag: 'AI 算力芯片总龙头', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '全球数据中心 GPU 与 CUDA 加速计算平台绝对领导者，驱动标普 500 盈利增长的核心引擎。' },
+ { rank: 4, sym: 'AMZN', name: 'Amazon.com Inc. (亚马逊)', sector: '可选消费', shares: 121413054, valB: 30.96, pct: 3.95, cat: 'consumer', top10: true, tag: 'AWS 云 + 北美电商霸主', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '可选消费板块第一大权重股，AWS 云基础设施利润释放与北美电商履约降本增效双轮驱动。' },
+ { rank: 5, sym: 'GOOGL', name: 'Alphabet Inc. Class A (谷歌A)', sector: '通信服务', shares: 72591434, valB: 20.38, pct: 2.60, cat: 'tech', top10: true, tag: '合并权重 4.69% 居第4', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '与第 8 名 GOOG（2.09%）合并计算权重高达 4.69%（逾 $367.6亿），实际位列标普 500 第四大公司。' },
+ { rank: 6, sym: 'AVGO', name: 'Broadcom Inc. (博通)', sector: '信息技术', shares: 58854659, valB: 19.44, pct: 2.48, cat: 'tech', top10: true, tag: '定制 AI 芯片 + VMware', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '云巨头定制 AI 加速器（ASIC）与高速数据中心网络芯片核心龙头，叠加企业基础软件高现金流。' },
+ { rank: 7, sym: 'META', name: 'Meta Platforms Inc. (元宇宙平台)', sector: '通信服务', shares: 27278584, valB: 16.93, pct: 2.16, cat: 'tech', top10: true, tag: 'AI 精准数字广告巨头', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '全球超 39 亿日活用户社交护城河，AI 推荐系统大幅提升广告商业化效率与经营利润率。' },
+ { rank: 8, sym: 'GOOG', name: 'Alphabet Inc. Class C (谷歌C)', sector: '通信服务', shares: 58799602, valB: 16.38, pct: 2.09, cat: 'tech', top10: true, tag: 'Alphabet 无投票权股', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '与 GOOGL 共同构成 Alphabet 完整权益敞口，搜索广告现金牛与 Google Cloud AI 协同增长。' },
+ { rank: 9, sym: 'LLY', name: 'Eli Lilly & Co. (礼来制药)', sector: '医疗健康', shares: 9898009, valB: 14.03, pct: 1.79, cat: 'finance', top10: true, tag: '医疗板块第一大重仓', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '全球医药行业市值冠军，凭借 GLP-1 减重与糖尿病创新药物管线实现跨越式营收与利润扩张。' },
+ { rank: 10, sym: 'BRK.B', name: 'Berkshire Hathaway Class B (伯克希尔)', sector: '金融服务', shares: 23038339, valB: 13.48, pct: 1.72, cat: 'finance', top10: true, tag: '金融板块第一大重仓', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '手握逾 $3,523亿国债现金储备与巨型保险铁路能源实业矩阵，是标普 500 最强下行防御压舱石。' },
+ { rank: 11, sym: 'TSLA', name: 'Tesla Inc. (特斯拉)', sector: '可选消费', shares: 34862582, valB: 13.09, pct: 1.67, cat: 'consumer', top10: false, tag: '纯电、储能与自动驾驶', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '集纯电动车、电网级储能、FSD 自动驾驶与人形机器人于一体的高贝塔制造业创新龙头。' },
+ { rank: 12, sym: 'JPM', name: 'JPMorgan Chase & Co. (摩根大通)', sector: '金融服务', shares: 32881562, valB: 10.97, pct: 1.40, cat: 'finance', top10: false, tag: '全美商业银行第一龙头', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '美国资产规模与盈利能力最强的全能型银行，净息差韧性与投行财富管理业务稳居行业第一。' },
+ { rank: 13, sym: 'AMD', name: 'Advanced Micro Devices (超威半导体)', sector: '信息技术', shares: 20193127, valB: 10.11, pct: 1.29, cat: 'tech', top10: false, tag: '数据中心 GPU/CPU 双擎', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '凭借 EPYC 服务器处理器与 Instinct AI 加速卡持续扩大数据中心芯片市场份额。' },
+ { rank: 14, sym: 'MU', name: 'Micron Technology (美光科技)', sector: '信息技术', shares: 13970719, valB: 9.96, pct: 1.27, cat: 'tech', top10: false, tag: 'HBM 高带宽存储龙头', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: 'AI 服务器高带宽内存（HBM）与企业级存储核心供应商，受益于 AI 算力基础设施景气周期。' },
+ { rank: 15, sym: 'V', name: 'Visa Inc. (维萨)', sector: '金融服务', shares: 21079057, valB: 8.94, pct: 1.14, cat: 'finance', top10: false, tag: '全球电子支付网络龙头', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '不承担信贷坏账风险的全球支付清算网络收费桥，营业利润率常年维持 65% 以上。' },
+ { rank: 16, sym: 'XOM', name: 'Exxon Mobil Corp. (埃克森美孚)', sector: '传统能源', shares: 50862416, valB: 8.39, pct: 1.07, cat: 'consumer', top10: false, tag: '能源板块第一大重仓', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '北美最大一体化石油天然气巨头，低成本二叠纪盆地与圭亚那油田提供高股息与抗通胀对冲。' },
+ { rank: 17, sym: 'JNJ', name: 'Johnson & Johnson (强生)', sector: '医疗健康', shares: 29804947, valB: 8.31, pct: 1.06, cat: 'finance', top10: false, tag: 'AAA 级医药器械巨头', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '剥离消费者健康业务后聚焦创新制药与高端医疗器械，连续逾 60 年稳定提高股息。' },
+ { rank: 18, sym: 'WMT', name: 'Walmart Inc. (沃尔玛)', sector: '必需消费', shares: 55114911, valB: 6.98, pct: 0.89, cat: 'consumer', top10: false, tag: '必需消费第一大重仓', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '全美最大全渠道零售商超，强大的供应链议价权与电商高毛利广告业务驱动业绩稳健增长。' },
+ { rank: 19, sym: 'MA', name: 'Mastercard Inc. (万事达卡)', sector: '金融服务', shares: 9999968, valB: 6.58, pct: 0.84, cat: 'finance', top10: false, tag: '跨境支付网络双寡头', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '与 Visa 共同垄断全球跨境卡组织清算网络，具备极高投入资本回报率（ROIC）与通胀自然对冲。' },
+ { rank: 20, sym: 'ABBV', name: 'AbbVie Inc. (艾伯维)', sector: '医疗健康', shares: 21853293, valB: 6.35, pct: 0.81, cat: 'finance', top10: false, tag: '免疫学与肿瘤创新药', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '凭借 Skyrizi 与 Rinvoq 顺利完成专利悬崖过渡，兼具稳健盈利增长与优厚股息回报。' },
+ { rank: 21, sym: 'COST', name: 'Costco Wholesale Corp. (开市客)', sector: '必需消费', shares: 5487512, valB: 6.04, pct: 0.77, cat: 'consumer', top10: false, tag: '会员制仓储零售标杆', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '北美会员续费率超 93%，极致的单品周转效率与会员费盈利模式打造消费零售宽护城河。' },
+ { rank: 22, sym: 'CVX', name: 'Chevron Corp. (雪佛龙)', sector: '传统能源', shares: 24447777, valB: 5.25, pct: 0.67, cat: 'consumer', top10: false, tag: '高股息综合能源巨头', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '伯克希尔前十大重仓能源股，具备稳健资产负债表与持续回购派息能力。' },
+ { rank: 23, sym: 'PG', name: 'Procter & Gamble Co. (宝洁)', sector: '必需消费', shares: 28760400, valB: 4.94, pct: 0.63, cat: 'consumer', top10: false, tag: '全球日化消费品王牌', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '坐拥数十个十亿美元级日用消费品牌，强大定价权使其在经济下行周期表现极为稳健。' },
+ { rank: 24, sym: 'KO', name: 'The Coca-Cola Co. (可口可乐)', sector: '必需消费', shares: 47911647, valB: 4.70, pct: 0.60, cat: 'tech', top10: false, tag: '全球软饮永续消费品牌', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '轻资产浓缩液特许装瓶商业模式，遍布全球 200 多个国家的分销网络提供永恒现金流。' },
+ { rank: 25, sym: 'CSCO', name: 'Cisco Systems Inc. (思科)', sector: '信息技术', shares: 48768437, valB: 4.55, pct: 0.58, cat: 'tech', top10: false, tag: '企业网络与安全基建', url: 'https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy', note: '全球企业级网络交换机与光互联基础设施核心供应商，整合 Splunk 强化软件订阅收入占比。' }
+ ];
+
+ let currentFilterCategory = 'all';
+ let currentSearchQuery = '';
+
+ function renderHoldingsTable() {
+ const tbody = document.getElementById('holdings-table-body');
+ const countLabel = document.getElementById('table-count-label');
+ const q = currentSearchQuery.trim().toLowerCase();
+
+ const filtered = SPY_TOP25_HOLDINGS.filter(item => {
+ let matchCat = true;
+ if (currentFilterCategory === 'top10') matchCat = item.top10;
+ else if (currentFilterCategory === 'tech') matchCat = item.cat === 'tech';
+ else if (currentFilterCategory === 'finance') matchCat = item.cat === 'finance';
+ else if (currentFilterCategory === 'consumer') matchCat = item.cat === 'consumer';
+
+ let matchQuery = true;
+ if (q) {
+ matchQuery = item.sym.toLowerCase().includes(q) ||
+ item.name.toLowerCase().includes(q) ||
+ item.sector.toLowerCase().includes(q) ||
+ item.note.toLowerCase().includes(q);
+ }
+ return matchCat && matchQuery;
+ });
+
+ let sumValB = 0;
+ let sumPct = 0;
+ filtered.forEach(d => {
+ sumValB += d.valB;
+ sumPct += d.pct;
+ });
+
+ countLabel.textContent = `当前显示：${filtered.length} / 25 只核心重仓股（合计持仓市值 $${sumValB.toFixed(2)}B · 占 SPY 总净值 ${sumPct.toFixed(2)}%）`;
+
+ tbody.innerHTML = filtered.map(item => {
+ let badgeColor = 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30';
+ if (item.cat === 'finance') badgeColor = 'bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 border-mogold-500/30';
+ else if (item.cat === 'consumer') badgeColor = 'bg-teal-500/15 text-teal-700 dark:text-teal-300 border-teal-500/30';
+
+ const rowHighlight = item.rank <= 5
+ ? 'bg-emerald-500/5 dark:bg-emerald-500/10 font-medium'
+ : 'hover:bg-slate-50 dark:hover:bg-navy-800/40 transition';
+
+ return `
+ <tr class="${rowHighlight}">
+ <td class="py-3.5 px-4 font-mono font-bold text-slate-500 dark:text-slate-400">#${String(item.rank).padStart(2, '0')}</td>
+ <td class="py-3.5 px-4">
+ <div class="flex items-center space-x-2">
+ <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-navy-900 dark:bg-emerald-500 text-emerald-400 dark:text-navy-950 font-mono text-xs font-extrabold hover:opacity-85">${item.sym} ↗</a>
+ <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">${item.name}</span>
+ </div>
+ </td>
+ <td class="py-3.5 px-3 text-xs text-slate-600 dark:text-slate-300">${item.sector}</td>
+ <td class="py-3.5 px-4 text-right font-mono text-xs sm:text-sm text-slate-800 dark:text-slate-200">${item.shares.toLocaleString('en-US')}</td>
+ <td class="py-3.5 px-4 text-right font-mono font-bold text-slate-900 dark:text-white">$${item.valB.toFixed(2)}B</td>
+ <td class="py-3.5 px-3 text-right font-mono font-bold text-emerald-600 dark:text-emerald-400">${item.pct.toFixed(2)}%</td>
+ <td class="py-3.5 px-4 text-center"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border ${badgeColor}">${item.tag}</span></td>
+ <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${item.note}</td>
+ </tr>
+ `;
+ }).join('');
+ }
+
+ function filterHoldings(category) {
+ currentFilterCategory = category;
+ document.querySelectorAll('#comp-filter-group .comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-emerald-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-emerald-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ renderHoldingsTable();
+ }
+
+ function searchHoldings() {
+ currentSearchQuery = document.getElementById('holding-search-input').value || '';
+ renderHoldingsTable();
+ }
+
+ // ==========================================
+ // 1. 一键导出独立 .html 网页文件功能（净化运行时 DOM 状态）
+ // ==========================================
+ function downloadHtmlFile() {
+ const clone = document.documentElement.cloneNode(true);
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ clone.querySelectorAll('canvas').forEach(c => {
+ c.removeAttribute('width');
+ c.removeAttribute('height');
+ c.removeAttribute('style');
+ });
+
+ const fullHtml = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const a = document.createElement('a');
+ a.href = url;
+ a.download = 'SPY.html';
+ document.body.appendChild(a);
+ a.click();
+ document.body.removeChild(a);
+ URL.revokeObjectURL(url);
+
+ const toast = document.getElementById('export-toast');
+ if (toast) {
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+ }
+
+ // ==========================================
+ // 2. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 3. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 4. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-emerald-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-emerald-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 5. SPY 初始本金 + 每月定投（DCA）复利模拟器
+ // ==========================================
+ let expectedCagrPct = 10.5; // 默认 10.5% 稳健均衡年化价格回报
+
+ function setReturnScenario(rate) {
+ expectedCagrPct = rate;
+ document.querySelectorAll('#tax-btn-group .tax-btn').forEach(btn => {
+ const btnRate = parseFloat(btn.dataset.rate);
+ if (Math.abs(btnRate - rate) < 0.01) {
+ btn.className = 'tax-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-emerald-500 text-navy-950 border border-emerald-400 shadow transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-navy-900';
+ } else {
+ btn.className = 'tax-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-emerald-400 transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+ }
+ });
+ updateDividendSimulator();
+ }
+
+ function updateDividendSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value);
+ const monthlyDca = parseFloat(document.getElementById('sim-monthly').value);
+ const years = parseInt(document.getElementById('sim-years').value, 10);
+ const dripEnabled = document.getElementById('drip-toggle').checked;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-monthly-label').textContent = '$' + monthlyDca.toLocaleString('en-US') + ' / 月';
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+
+ const initPrice = 732.44;
+ const divYield = 0.0100; // 1.00% 30日 SEC 股息率
+ const priceAnnualGrowth = expectedCagrPct / 100;
+ const totalAnnualReturn = priceAnnualGrowth + (dripEnabled ? divYield : 0);
+ const monthlyRate = Math.pow(1 + totalAnnualReturn, 1 / 12) - 1;
+ const totalMonths = years * 12;
+
+ // 按月复利计算未来总价值
+ const fvPrincipal = principal * Math.pow(1 + monthlyRate, totalMonths);
+ const fvDca = monthlyRate > 0
+ ? monthlyDca * ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate)
+ : monthlyDca * totalMonths;
+
+ const finalPortfolioVal = fvPrincipal + fvDca;
+ const totalContributed = principal + (monthlyDca * totalMonths);
+ const netGain = finalPortfolioVal - totalContributed;
+ const netGainPct = totalContributed > 0 ? (netGain / totalContributed) * 100 : 0;
+
+ const finalSharePrice = initPrice * Math.pow(1 + priceAnnualGrowth, years);
+ const finalShares = finalPortfolioVal / finalSharePrice;
+ const techExposureVal = finalPortfolioVal * 0.353; // 信息技术 35.30% 权重
+ const annualDivIncome = finalPortfolioVal * 0.0100;
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalPortfolioVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计本金 $${totalContributed.toLocaleString('en-US')} · 净赚 +$${Math.round(netGain).toLocaleString('en-US')} (+${netGainPct.toFixed(1)}%)`;
+ document.getElementById('sim-annual-div').textContent = finalShares.toFixed(1) + ' 份';
+ document.getElementById('sim-monthly-div').textContent = `期末推算 SPY 单份价格：~$${Math.round(finalSharePrice).toLocaleString('en-US')} / 份`;
+ document.getElementById('sim-yoc').textContent = '$' + Math.round(techExposureVal).toLocaleString('en-US');
+ document.getElementById('sim-cum-div').textContent = '$' + Math.round(annualDivIncome).toLocaleString('en-US') + ' / 年';
+ document.getElementById('sim-shares-end').textContent = `年管理费率仅 0.0945%（首年费用约 $${Math.round(principal * 0.000945)}）`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'spy_etf_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'sector_split';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ if (typeof Chart === 'undefined') return;
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas) return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：SPY 2026年11月 十一大 GICS 行业权重分布 (%)
+ const sectorConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '信息技术 (Info. Tech)',
+ '金融服务 (Financials)',
+ '医疗健康 (Health Care)',
+ '可选消费 (Cons. Disc.)',
+ '通信服务 (Comm. Services)',
+ '工业制造 (Industrials)',
+ '必需消费 (Cons. Staples)',
+ '传统能源 (Energy)',
+ '公用事业 (Utilities)',
+ '房地产 (Real Estate)',
+ '基础材料 (Materials)'
+ ],
+ datasets: [
+ {
+ label: '占 SPY 总净值行业权重 (%)',
+ data: [35.30, 12.79, 10.63, 9.51, 8.86, 8.22, 5.30, 3.62, 2.16, 1.88, 1.75],
+ backgroundColor: [
+ '#10B981',
+ '#F59E0B',
+ '#06B6D4',
+ '#3B82F6',
+ '#8B5CF6',
+ '#6366F1',
+ '#34D399',
+ '#F97316',
+ '#14B8A6',
+ '#EC4899',
+ '#64748B'
+ ],
+ borderRadius: 4,
+ barThickness: 14
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `行业配置权重: ${ctx.parsed.x.toFixed(2)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 40,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ // 视图 B：SPY vs QQQ 多周期年化净值总回报率对比 (%)
+ const perfConfig = {
+ type: 'bar',
+ data: {
+ labels: ['1 年期 (1Y)', '3 年期年化 (3Y)', '5 年期年化 (5Y)', '10 年期年化 (10Y)', '全周期年化 (Inception)'],
+ datasets: [
+ {
+ label: 'SPDR SPY (S&P 500) 年化总回报 (%)',
+ data: [11.98, 23.24, 11.93, 15.29, 10.76],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 22
+ },
+ {
+ label: '景顺 QQQ (Nasdaq-100) 参考年化回报 (%)',
+ data: [10.25, 26.01, 13.00, 20.26, 10.57],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5,
+ barThickness: 22
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: +${ctx.parsed.y.toFixed(2)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 30,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'sector_split' ? sectorConfig : perfConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'sector_split') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-emerald-600 dark:text-emerald-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'SPY 2026年11月 十一大 GICS 行业权重分布全景（%）';
+ subEl.textContent = '信息技术（35.30%）、金融（12.79%）、医疗健康（10.63%）与可选消费（9.51%）构成四大核心压舱行业';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-emerald-600 dark:text-emerald-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'SPY vs QQQ 多周期年化净值总回报率对比（截至 2026年10月末）';
+ subEl.textContent = 'SPY 3年期年化达 +23.24%、10年期年化 +15.29%，33年全周期年化 +10.76% 稳健领跑宽基';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ if (typeof Chart === 'undefined') return;
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas) return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '十一大行业均衡分散度',
+ '全球做市与期权流动性',
+ '低费率成本控制 (0.0945%)',
+ '成分股强制盈利质量门槛',
+ '熊市抗跌与夏普比率表现'
+ ],
+ datasets: [
+ {
+ label: 'SPDR SPY (S&P 500)',
+ data: [9.8, 10.0, 9.5, 9.7, 8.8],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.24)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.5
+ },
+ {
+ label: '景顺 QQQ (Nasdaq-100)',
+ data: [6.5, 9.8, 9.0, 8.8, 7.0],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.14)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.0
+ },
+ {
+ label: '主动型大盘共同基金均值',
+ data: [7.8, 4.5, 4.0, 7.5, 6.2],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ if (typeof Chart === 'undefined') return;
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas) return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ '#1 AAPL (苹果 · 8.04%)',
+ '#2 MSFT (微软 · 6.01%)',
+ '#3 NVDA (英伟达 · 5.90%)',
+ '#4 AMZN (亚马逊 · 3.95%)',
+ '#5 GOOGL (谷歌A · 2.60%)',
+ '#6 AVGO (博通 · 2.48%)',
+ '#7 META (Meta · 2.16%)',
+ '#8 GOOG (谷歌C · 2.09%)',
+ '#9 LLY (礼来制药 · 1.79%)',
+ '#10 BRK.B (伯克希尔 · 1.72%)'
+ ],
+ datasets: [
+ {
+ label: '占 SPY 总净值权重 (%)',
+ data: [8.04, 6.01, 5.90, 3.95, 2.60, 2.48, 2.16, 2.09, 1.79, 1.72],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 12
+ },
+ {
+ label: '折算持仓市值 ($B · 按$783.9B规模)',
+ data: [63.02, 47.11, 46.25, 30.96, 20.38, 19.44, 16.93, 16.38, 14.03, 13.48],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5,
+ barThickness: 12
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.datasetIndex === 0
+ ? `基金权重: ${ctx.parsed.x.toFixed(2)}%`
+ : `对应持仓市值: $${ctx.parsed.x.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 70,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + ' (% / $B)' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ if (typeof Chart === 'undefined') return;
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas) return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'line',
+ data: {
+ labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'],
+ datasets: [
+ {
+ label: 'SPDR SPY ($10,000 初始投资含息净值增长, USD)',
+ data: [10000, 12183, 11648, 15315, 18130, 23335, 19110, 24130, 30160, 36680, 41490],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.16)',
+ fill: true,
+ borderWidth: 3,
+ pointRadius: 4,
+ pointHoverRadius: 6,
+ tension: 0.25
+ },
+ {
+ label: '全球平衡股债组合 (60/40 Reference, USD)',
+ data: [10000, 11420, 11080, 13260, 15020, 17490, 14850, 17210, 19680, 22310, 24450],
+ borderColor: '#F59E0B',
+ backgroundColor: 'transparent',
+ borderWidth: 2.2,
+ borderDash: [5, 4],
+ pointRadius: 3,
+ tension: 0.25
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toLocaleString('en-US')}`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ min: 5000,
+ max: 46000,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + (v / 1000) + 'K' },
+ title: { display: true, text: '账户累计净值 (USD)', color: colors.text, font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ renderHoldingsTable();
+ loadKpiChecklist();
+ updateDividendSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>
