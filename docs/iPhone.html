@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>苹果公司 Apple Inc. (NASDAQ: AAPL) & iPhone 生态深度研究报告：$2541亿超级换机周期、iPhone Duo折叠破局与25亿终端现金流帝国</title>
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <!-- Chart.js -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ aaplblue: {
+ 300: '#7DD3FC',
+ 400: '#38BDF8',
+ 500: '#0284C7',
+ 600: '#0369A1',
+ 700: '#075985',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ amber: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ }
+ }
+ }
+ }
+ }
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：电光冰蓝渐变标识 Apple Silicon & iPhone Pro 科技底色 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(56, 189, 248, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #38BDF8;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-aaplblue-400 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-aaplblue-500 via-aaplblue-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 导出成功轻量级提示条 (Toast) -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-aaplblue-400/50 shadow-2xl text-xs font-medium no-print">
+ <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+ <span id="export-toast-text">已导出独立 HTML 研报文件 (AAPL_iPhone_Analysis.html)</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-aaplblue-400 to-aaplblue-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ AAPL
+ </div>
+ <div>
+ <div class="text-[11px] text-aaplblue-300 font-semibold tracking-wider uppercase">NASDAQ: AAPL · iPhone Ecosystem</div>
+ <div class="text-sm font-bold leading-tight">iPhone 与苹果生态深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-2">
+ <button onclick="exportStandaloneHtml()" class="p-2 rounded-lg bg-aaplblue-500/20 hover:bg-aaplblue-500/30 text-aaplblue-300" aria-label="导出HTML文件" title="导出独立HTML文件">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">AAPL / iPhone 研报导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. iPhone 产品矩阵与收入架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重生态护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球高端手机巨头横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务健康与回购复利推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 投资决策与存储涨价风险</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-aaplblue-500 text-navy-950 font-bold text-xs flex items-center justify-center space-x-1.5">
+ <span>一键下载独立 HTML 文件</span>
+ </button>
+ <p>全球科技硬件与生态资产研究组</p>
+ <p>数据基准：2026年11月 (FY2026年报)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-aaplblue-300 via-aaplblue-500 to-indigo-600 flex items-center justify-center text-navy-950 font-extrabold text-sm shadow-lg shadow-aaplblue-500/25">
+ AAPL
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-aaplblue-300 bg-aaplblue-500/15 px-2 py-0.5 rounded">NASDAQ: AAPL</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">iPhone 生态深度研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 全球高端智能手机霸主 · 25亿活跃硬件底座与 $1361亿 自由现金流复利帝国
+ </p>
+ </div>
+
+ <!-- 股票实时快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">参考股价 (总市值)</span>
+ <span class="font-mono font-bold text-white">~$353.80 <span class="text-aaplblue-300 text-[10px]">($5.16T)</span></span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY26 iPhone 净营收</span>
+ <span class="font-mono font-bold text-emerald-400">$254.1B <span class="text-slate-400">(+21.2%)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">FY26 EPS 与市盈率</span>
+ <span class="font-mono font-bold text-amber-400">$8.98 (+20%) · ~39.5x P/E</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-340px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-aaplblue-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>iPhone 产品矩阵与收入架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重生态护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球高端手机巨头横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务健康与回购复利推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>投资决策与存储涨价风险</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏 -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-aaplblue-400 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-aaplblue-400 to-aaplblue-500 hover:from-aaplblue-500 hover:to-aaplblue-600 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 研报文件</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-aaplblue-500/15 text-aaplblue-700 dark:text-aaplblue-300 font-bold border border-aaplblue-500/30">评级：核心持有 / 逢回调增配 (Hold / Accumulate on Dips)</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：FY2026 创纪录年报与 iPhone Duo / 18 Pro 错峰换机潮</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖时间：2026年11月</span>
+ <span>NASDAQ: AAPL</span>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景电光蓝点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#38BDF8 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-aaplblue-500/20 border border-aaplblue-400/40 text-aaplblue-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-aaplblue-400 animate-pulse"></span>
+ <span>CORE THESIS · iPhone 年入 $2,541亿 (+21%) × iPhone Duo 折叠形态破局 × 25亿活跃设备驱动 $1,233亿 高毛利服务飞轮</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 苹果公司 Apple Inc. (NASDAQ: AAPL) &amp; iPhone 深度研究报告：$2,541亿超级换机周期、折叠屏破局与 25 亿终端现金流帝国
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 新任 CEO <strong class="text-white">John Ternus</strong>（原硬件工程高级副总裁，2026年9月1日正式接棒转任执行董事长的 Tim Cook）在 2026 年 11 月交出苹果史上最强劲的 <a href="https://www.apple.com/newsroom/2026/11/apple-reports-fourth-quarter-results/" target="_blank" rel="noopener noreferrer" class="text-aaplblue-300 underline hover:text-white">FY2026 全年及 Q4 财报</a>：受益于 <strong class="text-aaplblue-300">iPhone 17 系列首年破 $1,700亿 销售纪录</strong>以及 2026 年 9 月错峰首发的<strong class="text-emerald-400">首款折叠屏 iPhone Duo 与 iPhone 18 Pro / Pro Max</strong>，FY2026 全年 iPhone 净营收飙升 <strong class="text-white">+21.2% 至 $2,541.0亿</strong>（占集团总营收 <strong class="text-white">53.1%</strong>），大中华区全年营收强劲反弹 <strong class="text-emerald-400">+28% 至 $824亿</strong>。
+ 集团全年总营收创下 <strong class="text-aaplblue-300">$4,788.3亿（+15.1% YoY）</strong> 历史新高，摊薄 EPS 增长 <strong class="text-emerald-400">+20.4% 至 $8.98</strong>，全年自由现金流暴增 <strong class="text-white">+38% 至 $1,361亿</strong>，推动市值突破 <strong class="text-amber-300">$5.16万亿美元</strong>。
+ </p>
+
+ <!-- 核心投资结论高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">错峰发布策略拉升 iPhone ASP</div>
+ <div class="text-white font-semibold">2026秋季优先发布 iPhone Duo 折叠机与 18 Pro 系列（延后标准版 iPhone 18），Q4 单季 iPhone 营收同比增长 17.5% 至 $575.8亿</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">25亿装机量托底 76% 毛利服务业务</div>
+ <div class="text-aaplblue-300 font-semibold">全球活跃设备逾 25 亿台、付费订阅超 15 亿份，驱动 FY26 服务营收达 $1,233亿（Q4 毛利率高达 76.0%，贡献全公司约 44% 毛利）</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">核心矛盾：~39.5x 高估值 vs 存储涨价</div>
+ <div class="text-amber-300 font-semibold">AI 服务器挤占产能引爆 DRAM/NAND 芯片涨价潮，叠加关税退税红利消退与 ~39.5x TTM P/E 溢价，考验 FY27 利润率韧性</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>总市值与最新股价</span>
+ <span class="p-1.5 rounded-lg bg-aaplblue-500/15 text-aaplblue-600 dark:text-aaplblue-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$5.16T</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">~$353.80</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2026年11月首次站上 $350 大关（流通股约 145.3 亿股），静态市盈率 ~39.5x（远期 FY27E P/E ~37.6x）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2026 iPhone 净营收</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$254.1B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+21.2% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 占苹果总营收（$478.83B）的 53.1%；其中 FY26Q4 单季 iPhone 营收达 $57.58B（+17.5% YoY）创 9 月季度历史最高纪录。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2026 综合毛利率 &amp; FCF</span>
+ <span class="p-1.5 rounded-lg bg-aaplblue-500/15 text-aaplblue-600 dark:text-aaplblue-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">48.8%</span>
+ <span class="text-xs font-bold text-aaplblue-600 dark:text-aaplblue-400 bg-aaplblue-500/15 px-2 py-0.5 rounded">FCF $136.1B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 全年毛利率同比扩张 1.9pp 至 48.8%（Q4 硬件毛利率 37.2%、服务毛利率 76.0%）；轻资本 CapEx（$9.0B）推升自由现金流大增 +38%。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2026 摊薄 EPS 与股东回报</span>
+ <span class="p-1.5 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$8.98</span>
+ <span class="text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded">回购 $86.4B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 全年净利润 $1,321.8亿（+18% YoY），叠加 $864亿 股票回购注销与 $1.08/股 年化股息，推动摊薄 EPS 跃升 +20.4%。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 iPhone 产品矩阵与收入架构 (Business & Revenue Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-aaplblue-600 dark:text-aaplblue-400">Section 01 · iPhone Product Lineup &amp; Ecosystem Revenue Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 iPhone 产品矩阵与收入架构：错峰旗舰周期、折叠机破局与服务高毛利变现</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2026 总营收 $478.83B · iPhone 营收 $254.10B (53.1%) · 服务营收 $123.30B (25.8%)</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2022–FY2026 iPhone 净营收、服务营收与集团总营收演进 ($B)</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">iPhone 突破三年 ~$200B–$210B 平台期跃升至 $254.1B (+21.2%)，与 $123.3B 服务营收共筑双引擎</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('rev_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-aaplblue-600 dark:text-aaplblue-400 shadow-sm transition cursor-pointer">视图A：五年营收结构演进</button>
+ <button onclick="switchBizChart('growth_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：FY26核心增速与利润拆解</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性拆解核心洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026 财年 iPhone 三大结构性跃迁引擎</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-aaplblue-500/15 text-aaplblue-600 dark:text-aaplblue-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">秋季错峰发布策略：优先锁定 Pro 与 iPhone Duo 超高端需求</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 据 <a href="https://counterpointresearch.com/cn/reports/apple-iphone-18-launch-pro-model-strategy" target="_blank" rel="noopener noreferrer" class="text-aaplblue-600 dark:text-aaplblue-400 underline">Counterpoint Research</a> 与 <a href="https://www.reconanalytics.com/62-of-base-iphone-18-buyers-interested-in-switching-to-more-expensive-pro-pro-max-or-fold-models/" target="_blank" rel="noopener noreferrer" class="text-aaplblue-600 dark:text-aaplblue-400 underline">Recon Analytics 调研</a>，苹果在 2026 年 9 月率先推出 <strong>iPhone Duo（首款折叠屏）</strong>与 <strong>iPhone 18 Pro / Pro Max</strong> 并延后基础款 iPhone 18，促使高达 <strong>62%</strong> 原计划购买基础款的美国消费者转向高溢价机型。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">大中华区强势逆袭：全年营收大增 +28%，重夺高端增量</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 扭转 FY2025（-4%）颓势，FY2026 大中华区净营收激增 <strong>+28% 至 $824亿</strong>（Q4 单季 +21%）。<a href="https://shattered.io/iphone-18-pro-sales-3-1-percent-above-iphone-17-counterpoint-2026/" target="_blank" rel="noopener noreferrer" class="text-aaplblue-600 dark:text-aaplblue-400 underline">iPhone 18 Pro 系列上市前三周中国销量同比飙升 +29%</a>，带动全球首发期销量超越 17 Pro 同期 <strong>+3.1%</strong>。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">iPhone 17 基本盘霸榜全球：首年营收突破 $1,700亿</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 据 <a href="https://counterpointresearch.com/cn/insights/iphone-17-series-outpaces-previous-series-first-year-revenue-over-170-billion-dollars" target="_blank" rel="noopener noreferrer" class="text-aaplblue-600 dark:text-aaplblue-400 underline">Counterpoint 统计</a>，iPhone 17 系列首年累计创收逾 <strong>$1,700亿</strong> 超越历代机型；2026Q2 标准版 iPhone 17 以 <strong>6.0%</strong> 全球单机份额蝉联全球最畅销手机，17 Pro Max 与 17 Pro 包揽亚军与季军。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">FY2027Q1 官方业绩指引</span>
+ <span class="font-bold text-aaplblue-600 dark:text-aaplblue-400">总营收同比 +7%~+10% (服务 +8%~+9%)</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心业务与产品矩阵详细卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 分部 1：iPhone Pro & iPhone Duo 超高端旗舰矩阵 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-aaplblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-aaplblue-500/15 text-aaplblue-700 dark:text-aaplblue-300 text-xs font-bold">第一增长极 · 占集团总营收 53.1%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">FY26 $254.1B (+21.2%)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 超高端旗舰矩阵（iPhone 18 Pro / Pro Max + 折叠屏 iPhone Duo）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2026 年 9 月 18 日开售的 <strong>iPhone 18 Pro / Pro Max</strong> 与苹果首款折叠屏手机 <strong>iPhone Duo</strong> 仅计入 FY26Q4 财报最后 9 天，即推动 Q4 iPhone 营收增长 <strong>+17.5% 至 $575.8亿</strong>。COO Sabih Khan 在<a href="https://fifthperson.com/apple-q4-2026/" target="_blank" rel="noopener noreferrer" class="text-aaplblue-600 dark:text-aaplblue-400 underline">业绩会上指出</a>，iPhone Duo 初期需求极其火爆但处于严重产能受限状态（Supply-Constrained），将把大量未交付订单顺延至 FY2027Q1 假日季兑现。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Q4 iPhone 营收 $57.58B (+17.5%)</span>
+ <span class="text-aaplblue-600 dark:text-aaplblue-400 font-semibold">Pro + Duo 显著抬升平均售价 (ASP)</span>
+ </div>
+ </div>
+
+ <!-- 分部 2：iPhone 17 走量基本盘与运营商补贴引擎 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">全球份额基石 · 单机销量全球前三</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">首年营收 &gt;$170B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 全球走量与份额基石（iPhone 17 系列 &amp; 存量换机潮）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 在全球智能手机大盘因存储芯片短缺于 2026Q2 下滑 6.7%~7.4% 的逆风下，<a href="https://counterpointresearch.com/en/insights/apple-iphone-market-share" target="_blank" rel="noopener noreferrer" class="text-aaplblue-600 dark:text-aaplblue-400 underline">苹果 Q2 全球出货量逆势大增 +13% YoY</a>（其中韩国 +35%、中国 +23%、欧洲 +22%、美国与日本 +6%）。美国运营商 T-Mobile 与 AT&amp;T 将以旧换新补贴上限从 $1,000 提升至 <strong>$1,100</strong>，强力支撑存量 iPhone 用户的跨代升级。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>iPhone 17 占全球单机销量 6.0%</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">运营商最高 $1,100 补贴锁死换机率</span>
+ </div>
+ </div>
+
+ <!-- 分部 3：Apple Services 生态软件与订阅变现飞轮 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-amber-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs font-bold">超高毛利印钞机 · 占总营收 25.8%</span>
+ <span class="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">Q4 毛利率 76.0%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. iPhone 衍生服务生态（App Store / iCloud / Apple Pay / Maps 广告）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 依托超 <strong>25 亿台活跃设备底座</strong>，FY2026 服务业务净营收增长 <strong>+12.9% 至 $1,233.0亿</strong>（Q4 单季达 <strong>$315.7亿</strong>，以 27.6% 的营收占比贡献了全公司约 <strong>44% 的毛利润</strong>）。全球付费订阅数突破 <strong>15 亿份</strong>，并且苹果已在美加地区正式上线 <strong>Apple Maps 原生搜索广告</strong>，开辟全新高毛利变现渠道。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>FY26 服务营收 $123.3B (+13%)</span>
+ <span class="text-amber-600 dark:text-amber-400 font-semibold">付费订阅超 15 亿份 · Maps 广告落地</span>
+ </div>
+ </div>
+
+ <!-- 分部 4：Apple Intelligence 端侧 AI 与全场景硬件协同 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">生态协同护城河 · 占总营收 21.1%</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">研发投入 $45.8B (+32%)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 端侧 AI 与跨终端协同（新版 Siri AI + Mac / iPad / Wearables）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ FY2026 苹果研发费用激增 <strong>+32.4% 至 $458亿</strong>（占营收 9.6%），集中投向全新架构 <strong>Siri AI</strong> 与 Apple Silicon 端侧算力。iPhone 强力拉动全生态硬件协同：FY26Q4 <strong>Mac 营收大增 +23.7% 至 $108亿</strong>（受 MacBook Neo、Pro 及触控 Mac 驱动创财年新高），与 iPad（Q4 $62亿）及可穿戴设备（Q4 $83亿）构成高粘性闭环。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>FY26 硬件协同营收 ~$101.4B</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">CapEx 仅 $9.0B · 混合云算力轻资产策略</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 行业地位与四重核心护城河 (Industry Position & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position &amp; Economic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重核心护城河：芯片垂直整合、25亿生态闭环与供应链霸权</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：极宽 (Wide Moat · 全球智能手机利润池占比超 80%)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-aaplblue-500/15 text-aaplblue-600 dark:text-aaplblue-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">25亿活跃设备与 iOS 极高迁移成本</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ iMessage、iCloud、Apple Watch、AirPods 与超过 <strong>15 亿份付费订阅</strong>将全球逾 <strong>25 亿台活跃设备</strong>深度锁入 iOS 闭环。一旦用户拥有 2 件以上苹果设备，跨系统流失率不足 5%，赋予 iPhone 极强的复购确定性。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">Apple Silicon 芯片与软硬一体垂直整合</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 从 A 系列 Pro 芯片、M 系列芯片到自研调制解调器与端侧神经网络引擎，苹果掌控底层架构与台积电先进制程首发产能，不仅大幅降低对第三方芯片溢价的依赖，更筑起端侧 AI 能效壁垒。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">$800+ 超高端定价权与二手保值率护城河</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ iPhone 长期垄断全球 $800 以上超高端市场逾 65% 份额。极高的二手残值率令运营商（如 T-Mobile/AT&amp;T 高达 $1,100 补贴）与官方 Trade-in 能够以更低净成本撬动用户升级至 $1,199+ 的 Pro Max 与 Duo 折叠机型。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">供应链议价霸权与轻资本 AI 现金转化率</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 不同于云巨头每年耗资 $1,750亿+ 建设算力中心，苹果 FY2026 资本开支仅 <strong>$90亿</strong>（占营收 1.9%），令 <strong>$1,451亿</strong> 经营现金流中高达 <strong>93.8%（$1,361亿）</strong> 直接转化为自由现金流；同时在存储芯片危机中享有优先保供权。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维护城河雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球智能手机巨头五维护城河雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">苹果 iPhone (AAPL) vs 三星 Galaxy (005930) vs 小米 (1810.HK)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 全球智能手机与生态巨头横向对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-aaplblue-600 dark:text-aaplblue-400">Section 03 · Global Smartphone &amp; Ecosystem Competitive Landscape</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球智能手机巨头横向对比：存储涨价潮分化市场，iPhone 与三星头部通吃</h2>
+ </div>
+ <!-- 交互式筛选按钮 -->
+ <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-aaplblue-500 text-navy-950 shadow-sm transition cursor-pointer">全部核心厂商</button>
+ <button onclick="filterCompetitors('flagship')" data-filter="flagship" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">全球双寡头 (Apple/Samsung)</button>
+ <button onclick="filterCompetitors('china')" data-filter="china" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">中国本土与新兴旗舰 (华为/小米)</button>
+ <button onclick="filterCompetitors('ecosystem')" data-filter="ecosystem" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">移动系统与AI平台 (Google Pixel)</button>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">厂商名称与核心旗舰</th>
+ <th class="py-4 px-4 min-w-[140px]">2026 市场份额与动能</th>
+ <th class="py-4 px-4 min-w-[145px]">高端与 AI 生态卡位</th>
+ <th class="py-4 px-4 min-w-[100px]">市盈率 P/E</th>
+ <th class="py-4 px-4 min-w-[105px]">营业利润率</th>
+ <th class="py-4 px-4 min-w-[115px]">抗存储涨价韧性</th>
+ <th class="py-4 px-5 min-w-[230px]">核心优劣势与 2026 竞争格局评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：苹果 AAPL 基准 -->
+ <tr data-category="core" class="bg-aaplblue-500/5 dark:bg-aaplblue-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-aaplblue-400 text-navy-950 text-[10px] font-extrabold">生态利润霸主</span>
+ <span class="font-bold text-slate-900 dark:text-white">苹果 (AAPL)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">iPhone 18 Pro / iPhone Duo / 17</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">全球活跃份额 27.6% · Q2出货 +13% / 中国 Q2 +23%</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">包揽全球畅销机 Top 3</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">~39.5x TTM</td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">31.1%–32.0%</td>
+ <td class="py-4 px-4 font-mono font-bold text-aaplblue-600 dark:text-aaplblue-400">极强 (高ASP+76%服务毛利)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全行业利润池绝对统治者：</strong>凭 iPhone 17/18 Pro 与首款折叠机 iPhone Duo 独占全球超高端换机潮；风险在于 ~39.5x 估值处于十年高位且面临 DRAM/NAND 成本上行。
+ </td>
+ </tr>
+
+ <!-- 行 2：三星电子 Samsung -->
+ <tr data-category="flagship" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">三星电子 (005930.KS)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Galaxy S26 Ultra / Z Fold 系列</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">2026Q2 出货 6,270万台 (+8.1% YoY · 份额 22.6%)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-aaplblue-500/15 text-aaplblue-700 dark:text-aaplblue-300">S26 Ultra 跃居畅销榜前列</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~6.4x TTM</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~14.5%</td>
+ <td class="py-4 px-4 font-mono text-emerald-600 dark:text-emerald-400">极强 (自有DRAM/NAND产线)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>存储涨价最大受益者与折叠屏先驱：</strong>与苹果各占全球畅销 Top 10 机型中的 5 席，自有半导体业务直接受益于 AI 内存涨价，但缺乏独立操作系统与高毛利软件生态。
+ </td>
+ </tr>
+
+ <!-- 行 3：华为终端 Huawei -->
+ <tr data-category="china" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">华为终端 (Huawei)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Mate 系列 / Pura 系列 / 三折叠</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">2026Q2 中国市场份额攀升至 23% 居首 (与苹果合占 41%)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">原生鸿蒙 HarmonyOS 高增</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-500 dark:text-slate-400">未上市 (非公开发行)</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~11.0%–13.5%</td>
+ <td class="py-4 px-4 font-mono text-amber-600 dark:text-amber-400">较强 (本土供应链协同)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>iPhone 大中华区头号劲敌：</strong>凭借麒麟芯片迭代与 HarmonyOS 生态在中国高端市场与苹果贴身肉搏（2026Q2 中国份额 23% vs 苹果 18%），但海外 GMS 受限制约全球扩张。
+ </td>
+ </tr>
+
+ <!-- 行 4：小米集团 Xiaomi -->
+ <tr data-category="china" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">小米集团 (1810.HK)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Xiaomi 16/17 系列 / Redmi / 人车家生态</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">2026Q2 全球出货 3,120万台 (-26.3% YoY · 全球份额 ~11.8%)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">中低端受存储涨价严重挤压</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~21.5x</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~8.2%</td>
+ <td class="py-4 px-4 font-mono text-rose-600 dark:text-rose-400">较弱 (走量机BOM占比高)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“人车家全生态”突围但手机受困内存危机：</strong>据 <a href="https://commandlinux.com/statistics/android-oem-market-share-samsung-xiaomi-google-motorola/" target="_blank" rel="noopener noreferrer" class="text-aaplblue-600 dark:text-aaplblue-400 underline">IDC 2026Q2 数据</a>，因 AI 服务器推高 DRAM/NAND 价格冲击中低端机型利润，小米 Q2 出货下滑 26.3%，凸显苹果超高端定位的抗周期优势。
+ </td>
+ </tr>
+
+ <!-- 行 5：谷歌 Alphabet / Pixel -->
+ <tr data-category="ecosystem" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">谷歌 Alphabet (GOOGL)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Pixel 10/11 系列 / Android (69% OS份额)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">2026Q2 Pixel 全球出货同比 +16% (Android 占全球 69.0% 份额)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">Gemini 原生 AI + 搜索分成盟友</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~18.8x Fwd</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">33.3% (集团)</td>
+ <td class="py-4 px-4 font-mono text-emerald-600 dark:text-emerald-400">强 (软件与云广告高毛利补贴)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>既是 AI 对手又是百亿搜索分成金主：</strong>Pixel 硬件体量虽小但增速达 +16%；谷歌每年向苹果支付巨额 Safari 默认搜索引擎授权费（计入苹果 Services），但面临美国反垄断与高额 AI CapEx（$1,750–$1,850亿）压力。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：营业利润率与2026Q2出货增速对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">全球主流手机与移动生态巨头营业利润率（Operating Margin）与 2026Q2 出货量同比增速对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">在 2026 年全球存储芯片涨价危机导致大众市场萎缩 6.7%~7.4% 的背景下，苹果凭借 31.1% 营业利润率与 +13.0% 出货增速展现统治力</p>
+ </div>
+ <span class="text-xs font-semibold text-aaplblue-700 dark:text-aaplblue-300 bg-aaplblue-500/15 px-2.5 py-1 rounded">IDC / Counterpoint 2026 实证数据</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 财务健康与回购复利推演 (Financial Health & Compounding Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Health &amp; Capital Return Compounding Engine</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务健康度与估值体系：$1,361亿自由现金流与“千亿级回购注销”复利机器</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2026 股票回购 $86.4B · 5年累计注销 12.7% 摊薄总股本</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-aaplblue-600 dark:text-aaplblue-400 uppercase">Gross &amp; Operating Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">48.8% / 31.1%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ FY26 综合毛利率跃升至 48.8%（同比 +1.9pp），其中 Q4 硬件毛利率 37.2%（含 ~1pp 关税退税提振），服务毛利率高达 76.0%。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">FY2026 Free Cash Flow</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$136.1B</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 全年经营现金流高达 <strong>$1,451亿</strong>，扣除仅 <strong>$90亿</strong> 的资本开支（CapEx），自由现金流同比暴增 <strong>+38%</strong>，扣除 $138亿 SBC 后股东盈余达 ~$1,223亿。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Net Cash &amp; Balance Sheet</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">+$56.8B 净现金</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 截至 FY26Q4 末持有现金及有价证券 <strong>$1,369亿</strong>，总债务 <strong>$801亿</strong>；CFO Kevan Parekh 正式确认苹果不再强求“净现金中性”目标，留存充沛流动性。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">FY2026 Capital Return</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$102.0B</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ FY2026 全年投入 <strong>$864亿</strong> 回购股票（仅 Q4 单季即回购 $240亿 + 派息 $39亿），年化股息上调至 <strong>$1.08/股</strong>（季度 $0.27/股）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴剪刀差图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2021–FY2026 摊薄每股收益（Diluted EPS）飙升 vs 加权平均稀释总股本持续注销缩减（剪刀差效应）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">依靠每年 $800亿–$900亿 级别的持续股票回购，苹果稀释总股本从 FY21 的 168.65 亿股降至 FY26 的 147.20 亿股，助力 EPS 从 $5.61 跃升至 $8.98</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-aaplblue-700 dark:text-aaplblue-300 bg-aaplblue-500/15 px-2.5 py-1 rounded">5年累计注销 21.45亿股 (-12.7%)</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：苹果“回购注销 + 股息再投”每股权益复利动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-aaplblue-300 font-bold">
+ <span>BUYBACK + DIVIDEND COMPOUNDING ENGINE · 苹果资本回报复利模拟器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">iPhone 现金流机器：“股票回购注销增厚 + 股息复利”总回报动态推演器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：参考股价 $353.80 | FY26 EPS $8.98 | 年化股息 $1.08/股 | 可模拟不同内生业务增速与每年回购注销股本比例对长期市值与持仓收益的复利放大效应</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-aaplblue-500/15 border border-aaplblue-400/30 text-xs font-semibold text-aaplblue-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="drip-toggle" checked onchange="updateCompoundSimulator()" class="w-4 h-4 rounded accent-[#38BDF8] cursor-pointer">
+ <span>开启股息自动再投资 (DRIP)</span>
+ </label>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <!-- 本金滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始投入本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$50,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="5000" max="250000" step="5000" value="50000" oninput="updateCompoundSimulator()" class="w-full accent-[#38BDF8] cursor-pointer">
+ </div>
+
+ <!-- 年限滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">10 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="20" step="1" value="10" oninput="updateCompoundSimulator()" class="w-full accent-[#38BDF8] cursor-pointer">
+ </div>
+
+ <!-- 内生净利润增速滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年均内生净利润与股息增长率 (Organic Growth)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">8.0%</span>
+ </div>
+ <input id="sim-growth" type="range" min="2" max="15" step="0.5" value="8.0" oninput="updateCompoundSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <!-- 年均股票回购注销率选择按钮组 -->
+ <div class="pt-1">
+ <div class="text-slate-300 font-medium mb-2">年均股票回购注销股本比例（Buyback Share Retirement）：</div>
+ <div class="grid grid-cols-3 gap-2" id="buyback-btn-group">
+ <button type="button" onclick="setBuybackBoost(0.012)" data-bb="0.012" class="bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-aaplblue-400 transition cursor-pointer">
+ 1.2% 保守注销<br><span class="text-[10px] text-slate-400">高估值期缩量回购</span>
+ </button>
+ <button type="button" onclick="setBuybackBoost(0.018)" data-bb="0.018" class="bb-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-aaplblue-400 text-navy-950 border border-aaplblue-300 shadow transition cursor-pointer">
+ 1.8% 基准注销<br><span class="text-[10px] text-navy-900">FY26当前回购速率</span>
+ </button>
+ <button type="button" onclick="setBuybackBoost(0.028)" data-bb="0.028" class="bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-aaplblue-400 transition cursor-pointer">
+ 2.8% 加速注销<br><span class="text-[10px] text-slate-400">近5年历史均值</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计持仓总市值 (含复利)</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$135,420</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计总回报 +170.8% (年化 ~10.5%)</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计摊薄 EPS (含回购注销增厚)</div>
+ <div id="sim-end-eps" class="text-2xl sm:text-3xl font-mono font-extrabold text-aaplblue-300 mt-1.5">$23.21</div>
+ <div id="sim-eps-cagr" class="text-xs text-slate-400 mt-1.5">综合 EPS 年化复合增速：9.98% (起始 $8.98)</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">持仓穿透底层利润份额增幅 (Ownership Boost)</div>
+ <div id="sim-ownership-boost" class="text-2xl sm:text-3xl font-mono font-extrabold text-amber-400 mt-1.5">+23.4%</div>
+ <div class="text-xs text-slate-400 mt-1.5">无需追加本金，由公司回购注销与DRIP自动提升</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">持有期累计获配现金分红总额</div>
+ <div id="sim-cum-div" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$2,385</div>
+ <div id="sim-shares-end" class="text-xs text-slate-400 mt-1.5">期末持仓股数：145.6 股 (起始 141.3 股)</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 华尔街多空核心分歧对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">折叠屏超级周期 + 端侧AI轻资本壁垒</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>iPhone Duo 折叠机与错峰发布打开 ASP 天花板：</strong>苹果首次切入超高端折叠屏市场即出现一机难求，配合 2027 春季补齐标准版 iPhone 18 的双波段节奏，彻底平滑传统淡旺季波动。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>大中华区 +28% 强劲反转证伪份额流失论：</strong>FY2026 大中华区营收反弹至 $824亿，iPhone 18 Pro 前三周中国销量大增 +29%，证明超高端用户对 iOS 生态粘性不可替代。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>不做重资产 AI 军备竞赛的现金流赢家：</strong>FY26 CapEx 仅 $90亿（不及谷歌/微软单季度的 1/4），却凭 25 亿终端入口坐享第三方大模型集成红利与 $1,361亿 自由现金流。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">~40x 历史估值极值 + 存储成本挤压</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>DRAM 与 NAND 闪存成本暴涨直接威胁硬件毛利率：</strong>管理层在 10-K 与 Q4 电话会明确警告，AI 服务器抢占产能导致移动端内存与存储合约价急剧飙升，且 FY26Q4 约 1pp 的一次性关税退税红利不可持续。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>服务业务增速放缓至高个位数（8%~9%）：</strong>受欧盟 DMA、美国法院外部支付链接强制令、第三方授权及手游疲软影响，FY26Q4 服务增速降至 +9.8%，并指引 FY27Q1 放缓至 +8%~+9%。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>~39.5x 市盈率与 2.4% 股东盈余收益率透支预期：</strong>当前估值较 10 年均值（23.5x）溢价近 70%，在 10 年期美债收益率约 5.1% 环境下，高股价使每年 $864亿 回购仅能注销约 1.7% 股本。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 投资决策与风险配置框架 (Investment Decision & Risk)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-aaplblue-600 dark:text-aaplblue-400">Section 05 · Investment Decision &amp; Risk Allocation</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 投资决策与风险配置框架：FY2027 三情景估值推演与硬件-生态配对策略</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">配置建议：长线底仓锁定复利 · 静待 32x–34x ($300–$320) 回调窗口加仓</span>
+ </div>
+
+ <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 牛市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：25%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">40.0x FY27E EPS $10.00 ($400)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>iPhone Duo 折叠机良率爬坡后在 FY27 全面放量，叠加 2027 春季标准版 iPhone 18 接力与新版 Siri AI 引爆换机潮；高端机型涨价完全转嫁内存成本，综合毛利率守稳 49%+。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 12个月潜在总回报：+13.0% 至 +15.0%（市值冲击 $5.8T）
+ </div>
+ </div>
+
+ <!-- 基准情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-aaplblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-aaplblue-500/15 text-aaplblue-700 dark:text-aaplblue-300 text-xs font-bold">基准情景 (Base Case)</span>
+ <span class="font-mono text-xs font-bold text-aaplblue-600 dark:text-aaplblue-400">概率：50%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">36.0x–38.0x EPS $9.40 ($338–$357)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>FY2027 营收在 FY26 超高基数（+15%）上实现 7%–9% 稳健增长，存储芯片涨价与服务增速放缓（~8.5%）使 EPS 温和增长至华尔街共识 $9.40，估值在高位震荡消化。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-aaplblue-600 dark:text-aaplblue-400">
+ 12个月预期总回报：-3.0% 至 +4.0%（以时间换空间消化估值）
+ </div>
+ </div>
+
+ <!-- 熊市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：25%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">30.0x–32.0x EPS $8.90 ($267–$285)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>DRAM/NAND 价格暴涨导致硬件毛利率回落 200bps+，关税退税消失；同时欧美 App Store 反垄断整改与 Google 搜索分成调整冲击高毛利服务收入，触发估值向 30x 均值回归。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 潜在回调区间：-19% 至 -24%（提供黄金长线买点）
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心风险矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">四大核心潜在风险评估与跟踪边界（基于 FY2026 10-K 披露）</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 存储芯片涨价与关税退税退坡</span>
+ <span class="text-xs font-mono text-rose-500 font-semibold">关注度：极高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">DRAM / NAND 合约价飙升叠加 ~1pp 关税退税一次性红利消退</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 苹果在 <a href="https://www.tradingview.com/news/tradingview:3fa053e38b41a:0-apple-fy-2026-revenue-478-83b-eps-8-98-10-k-summary/" target="_blank" rel="noopener noreferrer" class="text-aaplblue-600 dark:text-aaplblue-400 underline">FY2026 10-K 年报</a>中明确警示，内存与闪存供应紧张及涨价预计将在 FY2027 进一步加剧，且提价可能无法完全抵消成本并抑制需求。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 服务业务监管逆风与增速换挡</span>
+ <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">美国法院外部支付链接禁令、欧盟 DMA 与第三方许可收入减速</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ Q4 服务营收同比增速已从 Q3 的 +12.1% 放缓至 +9.8%，且管理层指引 FY27Q1 进一步放缓至 8%–9%，需密切跟踪 App Store 抽成率与 Google TAC 许可费变动。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-aaplblue-500/10 text-aaplblue-600 dark:text-aaplblue-400 text-xs font-bold">03 · 新품产能瓶颈（iPhone Duo / Mac / iPad）</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">折叠屏精密铰链/柔性屏良率与存储缺货限制假日季交付</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ COO Sabih Khan 坦言目前无法给出 iPhone Duo 供需平衡的明确时间表，同时存储器件短缺正直接限制 Mac 与 iPad 在 FY27Q1 假日旺季的出货上限。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 高估值压缩安全边际与第三方算力依赖</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">~39.5x P/E 较十年均值溢价 70%，且部分云端 AI 算力依赖外部伙伴</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 苹果在 10-K 风险因素中将“部分 AI 计算依赖第三方基础设施”列入潜在风险；同时在 5.1% 无风险美债利率下，2.6% 的 FCF 收益率对任何业绩低于预期极为敏感。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级组合配置纪律横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-aaplblue-300 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>机构级投资组合配置纪律与“终端入口 + 供应链上游”杠铃策略</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 软硬生态与上游存储对冲配对</div>
+ <p class="text-slate-300 leading-relaxed">
+ 以 <strong>AAPL</strong> 作为 25 亿终端入口与端侧 AI 核心底仓，同时适度搭配上游存储与晶圆代工龙头（如 <strong>台积电 TSM / 三星 / 美光</strong>），自然对冲 DRAM/NAND 涨价对苹果硬件毛利率的阶段性侵蚀。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-aaplblue-300 mb-1">2. 严守估值纪律：不追高 ~40x，逢回调分批吸筹</div>
+ <p class="text-slate-300 leading-relaxed">
+ 当前 ~$354 股价（~39.5x TTM P/E）已充分定价 FY26 创纪录业绩；建议存量持仓继续持有享受回购复利，新增资金等待回踩 <strong>$305–$320（对应 FY27E 32x–34x P/E）</strong>时分批建仓。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 备兑看涨期权（Covered Call）增厚现金收益</div>
+ <p class="text-slate-300 leading-relaxed">
+ 鉴于苹果直接股息率仅 ~0.30% 且短期估值处于历史高位，机构持仓者可通过卖出 30–45 天到期、行权价在 $375–$385 的虚值看涨期权，额外获取年化 3%–5% 的权利金现金流。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Fundamental Tracking KPIs</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度基本面跟踪 KPI 交互式核查清单（FY2027 重点监测）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-aaplblue-500/15 text-aaplblue-700 dark:text-aaplblue-300 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选季度财报中已验证达标的经营指标（勾选状态自动本地保存），持续校验 iPhone 换机周期成色、存储成本传导及服务变现韧性：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. iPhone Duo 折叠机产能爬坡与 18 Pro 系列全球交付节奏</span>
+ <span class="text-[11px] font-mono text-aaplblue-600 dark:text-aaplblue-400 font-semibold shrink-0">ASP 核心引擎</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 26Q4 首发期 18 Pro 系列全球销量同比 +3.1%（中国 +29%）；需跟踪 FY27Q1 假日季 iPhone Duo 发货周期是否从当前的严重缺货显著缩短。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 大中华区营收反弹延续性（FY26 全年 +28% / Q4 +21%）</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">区域胜负手</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 大中华区 FY26 营收重返 $824亿 高位；后续季度需核查面对华为 Mate/Pura 新品竞争，苹果中国市场份额（Q2 为 18%）能否守住正增长。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 25亿+ 活跃设备底座与 15亿+ 付费订阅双位数扩张</span>
+ <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">生态基本盘</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 已验证全球活跃设备突破 25 亿台、付费订阅超 15 亿份且保持双位数增长，这是支撑 $1,233亿 服务收入的最底层基石。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 硬件毛利率（Q4 37.2%）抵御 DRAM/NAND 涨价的能力</span>
+ <span class="text-[11px] font-mono text-rose-600 dark:text-rose-400 font-semibold shrink-0">利润率警戒线</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 剔除 Q4 约 1pp 关税退税一次性收益后，检验 FY27 各季集团综合毛利率能否守住 47.0%–48.0% 区间而不被内存涨价大幅侵蚀。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 服务业务增速守住 8%–10% 底线及 Maps 原生广告放量</span>
+ <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">第二曲线韧性</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪美加地区 Apple Maps 搜索广告的 ARPU 贡献能否对冲外部支付链接分流与手游疲软，确保服务毛利率稳居 75%+。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 2027春季标准版 iPhone 18 补齐节奏与每季 $200亿+ 回购力度</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">双波段与资本回报</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察错峰至 2027 上半年发布的标准版 iPhone 18 能否激活大众换机盘，同时监测每季股票回购金额是否维持在 $200亿–$240亿 高位。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明 (Disclaimer Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>苹果公司 Apple Inc. (NASDAQ: AAPL) &amp; iPhone 生态深度商业与投资价值分析报告 · 机构研究框架版</span>
+ <span>数据基准：FY2026 10-K 年报、2026Q4 财报及 Counterpoint / IDC 2026 行业数据</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度研究报告基于苹果公司公开财务报告（FY2022–FY2026 Form 10-K / 8-K）、2026年11月 Q4 业绩电话会议披露数据及 Counterpoint Research、IDC、StatCounter 全球智能手机跟踪报告整理生成，旨在提供结构化的产业分析与资本回报估值框架。报告中涉及的 FY2027 盈利预测、三情景目标价及股票回购+股息复利模拟均基于特定假设条件推演，不构成任何证券买卖建议或收益承诺。投资者应结合自身风险承受能力独立核实后审慎决策。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立 HTML 研报文件 (Standalone Export)
+ // ==========================================
+ function exportStandaloneHtml() {
+ const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const a = document.createElement('a');
+ a.href = url;
+ a.download = 'AAPL_iPhone_Analysis.html';
+ document.body.appendChild(a);
+ a.click();
+ document.body.removeChild(a);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+
+ const toast = document.getElementById('export-toast');
+ if (toast) {
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-aaplblue-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-aaplblue-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 同行竞争格局矩阵筛选器
+ // ==========================================
+ function filterCompetitors(category) {
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-aaplblue-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-aaplblue-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ if (category === 'all' || rowCat === 'core' || rowCat === category) {
+ row.style.display = '';
+ } else {
+ row.style.display = 'none';
+ }
+ });
+ }
+
+ // ==========================================
+ // 5. 苹果“回购注销 + 股息复利”总回报动态推演器
+ // ==========================================
+ let currentBuybackRate = 0.018; // 默认 1.8% 年均回购注销股本比例
+
+ function setBuybackBoost(rate) {
+ currentBuybackRate = rate;
+ document.querySelectorAll('#buyback-btn-group .bb-btn').forEach(btn => {
+ const btnRate = parseFloat(btn.dataset.bb);
+ if (Math.abs(btnRate - rate) < 0.001) {
+ btn.className = 'bb-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-aaplblue-400 text-navy-950 border border-aaplblue-300 shadow transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-navy-900';
+ } else {
+ btn.className = 'bb-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-aaplblue-400 transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+ }
+ });
+ updateCompoundSimulator();
+ }
+
+ function updateCompoundSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value);
+ const years = parseInt(document.getElementById('sim-years').value, 10);
+ const organicGrowthPct = parseFloat(document.getElementById('sim-growth').value);
+ const drip = document.getElementById('drip-toggle').checked;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = organicGrowthPct.toFixed(1) + '%';
+
+ const initPrice = 353.80;
+ const initEps = 8.98;
+ const initDps = 1.08;
+ const g = organicGrowthPct / 100;
+ // 每股收益复合增长率 = (1 + 内生净利润增速) / (1 - 回购注销股本比例) - 1
+ const epsGrowthRate = ((1 + g) / (1 - currentBuybackRate)) - 1;
+
+ const initialShares = principal / initPrice;
+ let shares = initialShares;
+ let sharePrice = initPrice;
+ let eps = initEps;
+ let dps = initDps;
+ let cashPool = 0;
+ let cumulativeDiv = 0;
+
+ for (let y = 1; y <= years; y++) {
+ const annualDiv = shares * dps;
+ cumulativeDiv += annualDiv;
+
+ const nextPrice = sharePrice * (1 + epsGrowthRate);
+ eps = eps * (1 + epsGrowthRate);
+
+ if (drip) {
+ const avgReinvestPrice = (sharePrice + nextPrice) / 2;
+ shares += annualDiv / avgReinvestPrice;
+ } else {
+ cashPool += annualDiv;
+ }
+ sharePrice = nextPrice;
+ dps = dps * (1 + epsGrowthRate);
+ }
+
+ const finalPortfolioVal = (shares * sharePrice) + cashPool;
+ const totalReturnPct = ((finalPortfolioVal - principal) / principal) * 100;
+ const annualizedReturnPct = (Math.pow(finalPortfolioVal / principal, 1 / years) - 1) * 100;
+
+ // 底层公司持股比例自动增厚 = 股数增加比例 × (1 / (1 - buybackRate)^years) - 1
+ const companyShareShrinkFactor = Math.pow(1 - currentBuybackRate, years);
+ const ownershipBoostPct = (((shares / initialShares) / companyShareShrinkFactor) - 1) * 100;
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalPortfolioVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计总回报 +${totalReturnPct.toFixed(1)}% (年化 ~${annualizedReturnPct.toFixed(1)}%)`;
+ document.getElementById('sim-end-eps').textContent = '$' + eps.toFixed(2);
+ document.getElementById('sim-eps-cagr').textContent = `综合 EPS 年化复合增速：${(epsGrowthRate * 100).toFixed(2)}% (起始 $8.98)`;
+ document.getElementById('sim-ownership-boost').textContent = '+' + ownershipBoostPct.toFixed(1) + '%';
+ document.getElementById('sim-cum-div').textContent = '$' + Math.round(cumulativeDiv).toLocaleString('en-US');
+ document.getElementById('sim-shares-end').textContent = `期末持仓股数：${shares.toFixed(1)} 股 (起始 ${initialShares.toFixed(1)} 股)`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'aapl_iphone_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'rev_evolution';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2022–FY2026 iPhone 净营收、服务营收与集团总营收 ($B)
+ const evoConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2022', 'FY2023', 'FY2024', 'FY2025', 'FY2026'],
+ datasets: [
+ {
+ label: 'iPhone 净营收 ($B)',
+ data: [205.49, 200.58, 201.18, 209.60, 254.10],
+ backgroundColor: '#38BDF8',
+ borderRadius: 4,
+ stack: 'core'
+ },
+ {
+ label: 'Services 服务净营收 ($B)',
+ data: [78.13, 85.20, 96.17, 109.20, 123.30],
+ backgroundColor: '#10B981',
+ borderRadius: 4,
+ stack: 'core'
+ },
+ {
+ type: 'line',
+ label: '苹果集团总净营收 ($B)',
+ data: [394.33, 383.29, 391.04, 416.16, 478.83],
+ borderColor: '#F59E0B',
+ backgroundColor: '#F59E0B',
+ borderWidth: 2.5,
+ pointRadius: 4,
+ tension: 0.25
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 520,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：FY2026 & Q4 核心业务指标与增速拆解 (%)
+ const splitConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Services 服务业务 Q4 毛利率',
+ 'iPhone 占 FY2026 集团总营收比例',
+ '苹果 FY2026 全年综合毛利率',
+ '大中华区 FY2026 全年营收同比增速',
+ 'Q4 Mac 营收同比增速 (M系列/触控/Neo)',
+ 'FY2026 iPhone 全年净营收同比增速'
+ ],
+ datasets: [
+ {
+ label: 'FY2026 核心指标 / 同比增速 (%)',
+ data: [76.0, 53.1, 48.8, 28.0, 23.7, 21.2],
+ backgroundColor: [
+ '#F59E0B',
+ '#38BDF8',
+ '#0284C7',
+ '#10B981',
+ '#6366F1',
+ '#22D3EE'
+ ],
+ borderRadius: 6,
+ barThickness: 22
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `验证数值: ${ctx.dataIndex >= 3 ? '+' : ''}${ctx.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 85,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'rev_evolution' ? evoConfig : splitConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'rev_evolution') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-aaplblue-600 dark:text-aaplblue-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2022–FY2026 iPhone 净营收、服务营收与集团总营收演进 ($B)';
+ subEl.textContent = 'iPhone 突破三年 ~$200B–$210B 平台期跃升至 $254.1B (+21.2%)，与 $123.3B 服务营收共筑双引擎';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-aaplblue-600 dark:text-aaplblue-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2026 & Q4 核心利润率与区域/品类增速拆解 (%)';
+ subEl.textContent = '服务毛利率高达 76.0%，iPhone 贡献 53.1% 营收，大中华区 (+28%) 与 iPhone (+21.2%) 领跑增长';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const ctx = document.getElementById('moatRadarChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '超高端定价权与二手残值',
+ '自研芯片与OS垂直整合',
+ '软件服务高毛利变现力',
+ '25亿终端跨设备留存粘性',
+ '上游存储与供应链抗风险力'
+ ],
+ datasets: [
+ {
+ label: '苹果 iPhone (AAPL)',
+ data: [9.9, 9.8, 9.9, 9.9, 9.2],
+ borderColor: '#38BDF8',
+ backgroundColor: 'rgba(56, 189, 248, 0.24)',
+ pointBackgroundColor: '#38BDF8',
+ borderWidth: 2.5
+ },
+ {
+ label: '三星 Galaxy (005930)',
+ data: [8.3, 7.6, 5.8, 7.2, 9.8],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '小米集团 (1810.HK)',
+ data: [6.8, 6.8, 6.9, 8.2, 6.2],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.12)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const ctx = document.getElementById('compMarginChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ '苹果 (AAPL · iPhone + iOS 生态)',
+ '谷歌 (GOOGL · Android + Pixel)',
+ '三星电子 (005930 · Galaxy + 存储)',
+ '华为终端 (Huawei · 鸿蒙 + 麒麟)',
+ '小米集团 (1810.HK · 手机 + AIoT)'
+ ],
+ datasets: [
+ {
+ label: '集团营业利润率 Operating Margin (%)',
+ data: [31.1, 33.3, 14.5, 12.2, 8.2],
+ backgroundColor: '#38BDF8',
+ borderRadius: 5,
+ barThickness: 13
+ },
+ {
+ label: '2026Q2 智能手机出货量同比增速 YoY (%)',
+ data: [13.0, 16.0, 8.1, 18.5, -26.3],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 13
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.x > 0 ? '+' : ''}${ctx.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: -30,
+ max: 40,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025', 'FY2026'],
+ datasets: [
+ {
+ type: 'bar',
+ label: 'GAAP 摊薄每股收益 Diluted EPS ($/股)',
+ data: [5.61, 6.11, 6.13, 6.08, 7.46, 8.98],
+ backgroundColor: 'rgba(56, 189, 248, 0.85)',
+ borderRadius: 5,
+ barThickness: 28,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '加权平均稀释流通总股本 (百万股)',
+ data: [16865, 16326, 15813, 15408, 15000, 14720],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.dataset.yAxisID === 'y'
+ ? `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}`
+ : `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString('en-US')}M 股`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 4.0,
+ max: 10.0,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toFixed(1) },
+ title: { display: true, text: 'GAAP 摊薄 EPS ($/股)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 14000,
+ max: 17500,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => (v / 1000).toFixed(1) + 'B' },
+ title: { display: true, text: '稀释流通总股本 (十亿股)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateCompoundSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>
