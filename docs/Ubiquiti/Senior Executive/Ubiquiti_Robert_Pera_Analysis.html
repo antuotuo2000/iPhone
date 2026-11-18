@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>罗伯特·佩拉 Robert Pera 与 Ubiquiti (UI) 深度商业与产品战略研究报告：93%绝对控股、零直销团队飞轮与 UniFi 软硬全栈帝国</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：琥珀金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Ubiquiti_Robert_Pera_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ RP
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Ubiquiti (NYSE: UI) · UniFi</div>
+ <div class="text-sm font-bold leading-tight">罗伯特·佩拉深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">佩拉与Ubiquiti专题导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 商业版图与产品架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 产品哲学与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 网络巨头与极客领袖对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务反转与价值复利推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与管理遗产复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 佩拉法则核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>企业网络与创始人治理研究组</p>
+ <p>财报与估值基准：SEC FY2026 10-K</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-base shadow-lg shadow-mogold-500/25">
+ RP
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CEO MONOGRAPH</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">罗伯特·佩拉研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 前苹果硬件工程师 · Ubiquiti (UI) 创始人兼绝对控股 CEO · 灰熊队老板
+ </p>
+ </div>
+
+ <!-- 核心人物历史财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">个人持股与流通盘</span>
+ <span class="font-mono font-bold text-mogold-400">~93% 控股 / ~7% 流通</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY2026 营收 / 净利</span>
+ <span class="font-mono font-bold text-emerald-400">$3.27B / $960.3M</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">毛利率与全球编制</span>
+ <span class="font-mono font-bold text-white">45.8% · ~1,600 员工</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>商业版图与产品架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>产品哲学与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>网络巨头与极客领袖对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务表现与价值复利推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与管理遗产复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>佩拉法则核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">商业史定评：企业网络界的“反直销”乔布斯门徒</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：Apple 研发经历 → Ubiquiti (2005–2026) → NBA 孟菲斯灰熊队</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖基准：FY2026 财年 (截至 2026.06)</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 93% 绝对控股权 × 零直销团队轻量化飞轮 × UniFi 免授权费软硬闭环</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 罗伯特·佩拉 Robert Pera 与 Ubiquiti (UI) 深度研究报告：孤傲的极客独裁者、无销售员的效率怪兽与百亿美元网络帝国
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 2005 年，曾在苹果公司担任 Wi-Fi 硬件测试工程师的 <a href="https://en.wikipedia.org/wiki/Robert_Pera" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">罗伯特·佩拉（Robert Pera）</a> 仅凭约 <strong class="text-white">$30,000 个人积蓄</strong> 创立了 Ubiquiti。师承乔布斯对“完美有机体（Perfect Organisms）”软硬一体化的执念，佩拉在传统企业级网络设备（思科、Aruba 等）长达数十年的高价暴利与繁重年度软件授权费壁垒下，撕开了一道颠覆性缺口：<strong class="text-white">不设传统企业直销团队、不砸高昂传统广告费、免除核心控制器软件年费（Zero Licensing Fees）</strong>。
+ 至 <a href="https://ir.ui.com/sites/ubiquiti-ir/files/2026-08/ui-06-30-2026-10k-2026.pdf" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">2026 财年（FY2026）</a>，Ubiquiti 全年净营收同比大增 <strong class="text-emerald-400">27.2% 至 $32.7亿</strong>，净利润跃升 <strong class="text-emerald-400">34.9% 至 $9.60亿</strong>（FY27Q1 单季营收更突破 $10.3亿）。尤为罕见的是，作为一家纽约证券交易所上市公司，佩拉至今个人牢牢掌控着约 <a href="https://www.revenuememo.com/p/who-owns-ubiquiti" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-400 font-semibold">93% 的普通股股权</a>，将华尔街短期业绩指引与机构博弈彻底隔绝在门外。
+ </p>
+
+ <!-- 核心商业遗产高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">极致人效与轻资产费用率</div>
+ <div class="text-white font-semibold">全球仅约 1,600 名员工支撑 $32.7亿年营收（人均创收超 $200万），彻底省去思科式庞大直销人员薪酬提成</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">93% 股权锁定与激进回购飞轮</div>
+ <div class="text-mogold-400 font-semibold">佩拉持有约 5,630 万股（占 ~93%），多年持续回购注销流通股（仅剩 ~7% 流通）并将季度股息上调 25% 至 $1.00/股</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">UniFi 软硬全栈降维打击</div>
+ <div class="text-emerald-400 font-semibold">从企业级 Wi-Fi 7 延伸至万兆交换、Cloud Gateway 路由、AI 安防摄像头与门禁，一套免费控制台统一纳管</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>创始人股权与控制权集中度</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~93.0%</span>
+ <span class="text-xs font-bold text-mogold-600 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">流通仅 ~7%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 美股大盘科技股中罕见的“准私有化”股权结构，佩拉无需召开季度业绩电话会即可贯彻十年期战略（<a href="https://247wallst.com/investing/2026/08/22/this-ceo-owns-93-of-his-company-he-just-raised-the-dividend-25/" target="_blank" rel="noopener noreferrer" class="cite-link">24/7 Wall St</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2026 净营收与净利润</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$3.27B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">净利 $960.3M</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ FY26 营收同比 +27.2%、营业利润 $11.9亿 (+41.8%)，综合毛利率稳定在 ~45.8% 高位（<a href="https://ir.ui.com/sites/ubiquiti-ir/files/2026-08/ui-06-30-2026-10k-2026.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">UI FY26 10-K</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>人均创收效率与零直销基因</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$2.04M</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">~1,600 名员工</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 靠全球 100+ 分销商、官方商城与数百万极客社区自然裂变，单兵产出远超传统通信巨头（<a href="https://www.factiq.com/catalog/companies/united-states/UI" target="_blank" rel="noopener noreferrer" class="cite-link">FactIQ</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>跨界体育资产与个人净值</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$33B+</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">NBA 灰熊队老板</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2012 年以 $3.77亿收购 NBA 孟菲斯灰熊队控股权，至今仍是全联盟最年轻的球队大老板之一（<a href="https://www.fastcompany.com/3003767/apple-taught-ubiquitis-robert-pera-about-perfect-organisms-now-he-owns-memphis-grizzlies" target="_blank" rel="noopener noreferrer" class="cite-link">Fast Company</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 商业版图与产品架构 (Business & Product Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Business Empire & Product Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 商业版图与产品架构：从偏远无线 ISP 起步到 UniFi 企业全栈操作系统</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2026 企业科技板块同比大增 32% · 贡献超 86% 核心营收</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2021–FY2026 Ubiquiti 年度净营收与净利润跨越曲线（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">突破供应链去库存周期后，FY2025 (+33%) 与 FY2026 (+27.2%) 连续两年迎来爆发式加速</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('growth_trajectory')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：营收与净利跃迁</button>
+ <button onclick="switchBizChart('segment_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：两大业务板块拆解</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">罗伯特·佩拉产品帝国三大底层重构动作</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">早期切入巨头的盲区：新兴市场无线宽带（WISP）</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2005 年创业初期，佩拉避开思科重兵把守的北美大企业，用超远程高功率 Wi-Fi 模组（airMAX / airFiber）帮助全球偏远地区和新兴市场运营商以十分之一成本搭建无线互联网（<a href="https://www.leadersmag.com/issues/2013.4_oct/ROB/LEADERS-Robert-Pera-Ubiquiti-Networks-Memphis-Grizzlies.html" target="_blank" rel="noopener noreferrer" class="cite-link">Leaders Mag</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">打造软件定义的“企业网苹果”：UniFi 平台化扩张</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2010 年代推出 <strong>UniFi</strong>，将工业级简约白色圆盘 AP 与直观可视化控制器结合，并不断把触角延伸至交换机、Cloud Gateway 安全网关、4K AI 摄像头与门禁考勤，FY26 企业板块增速高达 <strong>+32%</strong>（<a href="https://es.tradingview.com/news/tradingview:c078706bf831e:0-ubiquiti-inc-fy-2026-revenue-3-27b-eps-15-85-10-k-summary/" target="_blank" rel="noopener noreferrer" class="cite-link">UI 10-K Summary</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“硬件一次买断 + 软件终身免费”颠覆订阅税</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 当思科 Meraki 与传统安防厂商向企业按年按设备收取高昂云端 License 续费时，Ubiquiti 坚持购买硬件即免费提供全套 UniFi OS 本地与混合云管理，引爆全球系统集成商（IT Installers）自发替其带货。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">苹果任职经历烙印</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">“硬件、固件与UI必须像有机生命体般无缝咬合”</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心产品与生态矩阵卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 分部 1：UniFi 企业无线与交换路由 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一核心增长极 · 企业网络底座</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">企业板块占总营收 &gt;86%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. UniFi Wi-Fi 7、万兆交换与 Cloud Gateway 网关</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 覆盖从小型办公室、酒店连锁、学校园区到大型商业综合体的全栈网络连接需求。通过 <strong>UniFi Cloud Gateway</strong> 整合多 WAN 负载均衡、SD-WAN 零配置组网与深度包检测防火墙，配合支持 PoE+++ 供电的旗舰交换机与 Wi-Fi 7 接入点，单界面即可管理成千上万台分布在全球的节点（<a href="https://ir.ui.com/sites/ubiquiti-ir/files/2026-08/ui-06-30-2026-10k-2026.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">UI FY26 10-K</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>UniFi Network / Cloud Gateway / Pro Max Switch</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">SMB 与高端住宅市场统治级份额</span>
+ </div>
+ </div>
+
+ <!-- 分部 2：UniFi Protect 智能安防与物理门禁 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第二爆款引擎 · 边缘 AI 视觉与物理空间</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">本地 NVR 存储 · 零月费</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. UniFi Protect 视频安防、Access 门禁与 Talk 语音</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 佩拉敏锐发现企业弱电工程中“网络布线”与“安防监控/门禁”高度同源，遂推出 <strong>UniFi Protect</strong> 4K AI 摄像头与硬盘录像机（NVR），内置人脸/车牌识别且所有录像本地加密存储、不收云订阅费；进一步联动 <strong>UniFi Access</strong> 手机 NFC/刷脸门禁与 <strong>UniFi Talk</strong> 桌面电话，锁死企业物理空间全套 IT 预算。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>UniFi Protect / Access / Talk / Connect</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">跨品类交叉销售拉高单客 ARPU</span>
+ </div>
+ </div>
+
+ <!-- 分部 3：运营商级无线回传与光纤接入 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">现金流基石 · 全球 WISP 运营商基础设施</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">远距离点对点传输标杆</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. Service Provider 运营商解决方案（airMAX / airFiber / UISP）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 面向全球数以万计的中小型无线互联网服务商（WISP），提供数十公里级点对点微波回传（airFiber）、基站扇区天线（airMAX / LTU）以及光纤到户（UFiber GPON）设备，并通过 <strong>UISP 平台</strong>实现全网基站自动拓扑监控、计费与带宽管理，在拉美、东欧、东南亚与北美农村拥有极高装机量。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>airMAX / airFiber / Wave 60GHz / UISP</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">全球数字鸿沟连接器</span>
+ </div>
+ </div>
+
+ <!-- 分部 4：全渠道直达与极客社区引擎 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">分发渠道革命 · 零直销团队</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">Webstore + 100+ 全球分销商</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 社区驱动型（Community-Led）去中间化商业通道</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 传统通信设备商销售费用（SG&amp;A）往往吞噬 20%–35% 营收；Ubiquiti 彻底砍掉销售代表，通过 <strong>ui.com 官方直营商城（Webstore）</strong> 与全球逾 100 家区域分销商直接出货（<a href="https://ir.ui.com/sites/ubiquiti-ir/files/2026-08/ui-06-30-2026-10k-2026.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">UI FY26 10-K</a>）。其官方技术社区、Reddit r/Ubiquiti 板块与 YouTube 极客评测自发承担了产品培训、方案设计与口碑裂变职责。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>UI Store 直营占比持续提升 · 增厚毛利</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">全行业最低获客成本结构</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 产品哲学与四重核心护城河 (Philosophy & Economic Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Product Philosophy & Economic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 产品哲学与四重核心护城河：“反传统商业教科书”的成本与生态壁垒</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：宽护城河 (Wide Moat · 成本结构优势 + 软硬生态转换成本)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">去销售化带来的结构性成本护城河</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 思科、HPE Aruba 等巨头必须维持数万名高薪销售与售前工程师，只能维持高定价并向客户收取软件年费；Ubiquiti 零直销团队使 SG&amp;A 费率仅为同业零头，得以在保持 <strong>45.8% 毛利率</strong> 的同时以竞品 1/3 的价格降维打击。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“完美有机体”式苹果美学与交互体验</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 佩拉在离开苹果时领悟到乔布斯制造“伟大且平易近人产品”的秘诀（<a href="https://www.fastcompany.com/3003767/apple-taught-ubiquitis-robert-pera-about-perfect-organisms-now-he-owns-memphis-grizzlies" target="_blank" rel="noopener noreferrer" class="cite-link">Fast Company</a>）。他把工业设计的精致感与手机 App 般的傻瓜化图形界面带入枯燥的网络机房，让中小 IT 管理员无需考取复杂认证即可轻松部署。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">单控制台多品类锁定的极高转换成本</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 当一家酒店、学校或企业部署了 UniFi 网关、交换机、Wi-Fi 6/7 AP、Protect 摄像头和门禁后，所有设备拓扑、VLAN 策略与远程运维均深度绑定在单一 UniFi OS 面板上，系统集成商（MSP）一旦习惯该工作流便极难替换。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">精英工程小团队与 93% 股权战略定力</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 全球研发与运营团队集中在台北、东欧、印度与美国小规模精英据点，仅约 <strong>1,600 名员工</strong>（<a href="https://www.revenuememo.com/p/who-owns-ubiquiti" target="_blank" rel="noopener noreferrer" class="cite-link">RevenueMemo</a>）。佩拉亲自把控核心架构与芯片选型，拒绝委员会平庸妥协。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维创始人与商业模式雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">商业范式五维竞争力模型对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Ubiquiti (Robert Pera) vs 思科 (Cisco) vs 传统消费路由厂商（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 传奇科技领袖与网络巨头横向对比 (Comparative Matrix)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Network Giants & Founder-Led Leaders Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 网络巨头与硬科技领袖横向对比：93% 极权治理 vs 机构化大厂</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索企业 / 创始人 / 商业模式..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部标的</button>
+ <button onclick="filterCompetitors('network')" data-filter="network" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">网络设备同业</button>
+ <button onclick="filterCompetitors('founder_icon')" data-filter="founder_icon" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">硬科技灵魂领袖</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">领袖与核心企业</th>
+ <th class="py-4 px-4 min-w-[145px]">商业与分发模式</th>
+ <th class="py-4 px-4 min-w-[135px]">治理结构与控股度</th>
+ <th class="py-4 px-4 min-w-[130px]">关键盈利与人效指标</th>
+ <th class="py-4 px-4 min-w-[120px]">软件收费策略</th>
+ <th class="py-4 px-5 min-w-[235px]">与佩拉 (Ubiquiti) 模式的对比评价</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：罗伯特·佩拉基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">罗伯特·佩拉</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Ubiquiti Inc. (NYSE: UI)</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">零直销团队 + 社区口碑 + 分销/直营商城</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">创始人控股 ~93%</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">毛利 45.8% / 净利 29.4%</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">核心控制器零年费</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>行业异类之王：</strong>人均年创收超 $204万，不设业绩电话会，用极致精简组织实现超高营业利润率（36.4%）（<a href="https://ir.ui.com/sites/ubiquiti-ir/files/2026-08/ui-06-30-2026-10k-2026.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">UI FY26 10-K</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：思科 Cisco -->
+ <tr data-category="network" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">思科系统 (Cisco / Meraki)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">全球传统企业网络绝对霸主</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">庞大直销铁军 + 全球金牌认证代理体系</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-500/15 text-slate-700 dark:text-slate-300">完全机构化分散持股</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">硬件毛利高但 SG&amp;A 重</td>
+ <td class="py-4 px-4 font-mono text-rose-600 dark:text-rose-400">强制高昂年度 License</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>佩拉的头号颠覆靶心：</strong>掌控《财富》500强数据中心骨干，但在中小企业市场因“不续费就变砖”的昂贵 Meraki 订阅模式被 UniFi 持续蚕食。
+ </td>
+ </tr>
+
+ <!-- 行 3：HPE Aruba -->
+ <tr data-category="network" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">慧与科技 (HPE / Aruba)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">企业园区无线与网络即服务 (NaaS)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">B2B 招投标直销 + 传统大型集成商</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-500/15 text-slate-700 dark:text-slate-300">职业经理人 + 机构股东</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">人均营收约 $45万–$55万</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">Aruba Central 云订阅</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>重资产大厂范式：</strong>政企大型项目交付经验深厚，但人员规模与销售开支远高于 Ubiquiti，难以向下渗透追求高性价比的敏捷企业。
+ </td>
+ </tr>
+
+ <!-- 行 4：史蒂夫·乔布斯 -->
+ <tr data-category="founder_icon" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">史蒂夫·乔布斯 (Steve Jobs)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Apple（佩拉的前雇主与精神导师）</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">软硬芯垂直整合 + 品牌体验零售</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">精神领袖级产品独裁</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利 40.5% / 净利 24%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">系统免费绑定硬件溢价</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>同源产品哲学：</strong>佩拉在苹果任职期间深受乔布斯“端到端掌控体验、用极简软件免费赋能硬件”哲学熏陶，并将其移植到商用网络领域（<a href="https://www.fastcompany.com/3003767/apple-taught-ubiquitis-robert-pera-about-perfect-organisms-now-he-owns-memphis-grizzlies" target="_blank" rel="noopener noreferrer" class="cite-link">Fast Company</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 5：黄仁勋 -->
+ <tr data-category="founder_icon" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">黄仁勋 (Jensen Huang)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">NVIDIA（AI 时代软硬全栈典范）</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">芯片+高速互联+CUDA 软件栈闭环</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">创始人长期掌舵扁平管理</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">超高人均创利与高毛利</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">CUDA 免费锁定硬件算力</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“硬件卖钱 + 软件免费构筑生态”共鸣：</strong>与佩拉一样摒弃官僚事业部制，依靠免费好用的软件平台把开发者与工程师死死绑定在自家硬件上。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的领袖或企业记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：人均年创收效率对比 ($百万/人) -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">零直销团队的组织杠杆奇迹：Ubiquiti 人均年创收 vs 传统网络与通信设备商（$百万 / 员工）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">全球仅约 1,600 名员工创造 $32.7亿年营收，单兵创收效率是传统企业网络大厂的 3 至 4 倍（基于 FY2026 公开财报及员工规模测算）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">~$2.04M/人 组织效率冠绝网络硬件业</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 财务表现与价值复利推演 (Financial Performance & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Strength & Value Creation Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务表现与价值复利推演：36.4% 营业利润率与缩股回购复利飞轮</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2026 营业利润 $11.9亿 (+41.8%) · 净利润 $9.60亿 (+34.9%)</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">FY2026 Gross &amp; Op Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">45.8% / 36.4%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 营业利润率高达 36.4%（$11.9亿），极低的销售及行政开支使毛利几乎无损耗转化为税前利润（<a href="https://247wallst.com/investing/2026/08/22/this-ceo-owns-93-of-his-company-he-just-raised-the-dividend-25/" target="_blank" rel="noopener noreferrer" class="cite-link">24/7 Wall St</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">FY2026 Net Income &amp; EPS</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$960.3M ($15.85)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 净利润较 FY25 ($712M) 暴增 34.9%，紧随其后的 FY27Q1 单季净利再创 $3.20亿 (+54.2%) 新高（<a href="https://www.factiq.com/catalog/companies/united-states/UI" target="_blank" rel="noopener noreferrer" class="cite-link">FactIQ</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Buyback Cannibalization</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~93% 锁定</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 上市以来长期用自由现金流回购注销流通股，在不减持一股的前提下让佩拉持仓占比从 65% 自然升至 ~93%（<a href="https://www.revenuememo.com/p/who-owns-ubiquiti" target="_blank" rel="noopener noreferrer" class="cite-link">RevenueMemo</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Cash Dividend Hike</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$1.00 / 季 (+25%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 2026 年 8 月宣布季度现金分红上调 25% 至 $1.00/股（年化 $4.00/股），佩拉每年个人分红即超 $2.25亿（<a href="https://247wallst.com/investing/2026/08/22/this-ceo-owns-93-of-his-company-he-just-raised-the-dividend-25/" target="_blank" rel="noopener noreferrer" class="cite-link">24/7 Wall St</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2021–FY2026 Ubiquiti 营业利润 vs 净利润增长剪刀差曲线（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">经历 FY2023 供应链芯片与运费成本峰值后，伴随自建商城（Webstore）占比提升与 Wi-Fi 7 放量，盈利能力实现强劲 V 型反转</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">FY23–FY26 净利3年复合增速 +45.8%</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“佩拉复利飞轮”长期股东价值与复利动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>PERA COMPOUNDING ENGINE · Ubiquiti 缩股回购与高 ROE 复利模拟器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">高毛利轻资产 + 持续注销流通股：历史真实周期与自定义回报推演器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实历史锚点（2011 IPO 至今长牛 / 2023 周期底部反转 / 稳健分红复利基准）或手动拖动滑块</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>叠加季度股息再投资效应 (+1.0%/年)</span>
+ </label>
+ </div>
+
+ <!-- 真实历史周期预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('ipo_to_2026')" data-era="ipo_to_2026" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 2011 IPO 至今 15 年长牛周期</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">15年 · 发行价 $15 → ~$580+ (~27.6% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('rebound_2023')" data-era="rebound_2023" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 2023 周期低谷至 2026 反转周期</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">3年 · 去库存底部强势翻倍 (~38.0% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('steady_compound')" data-era="steady_compound" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 未来 10 年稳健高毛利复利情景</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">10年 · 企业网持续渗透 (~18.5% CAGR)</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始投入本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$10,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="1000" max="100000" step="1000" value="10000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">15 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="30" step="1" value="15" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年化复合回报率 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">27.6%</span>
+ </div>
+ <input id="sim-growth" type="range" min="5" max="42" step="0.1" value="27.6" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：对应 2011 年 10 月 Ubiquiti 纳斯达克/纽交所上市发行价（$15.00/股）持有 15 年至 2026 年的真实复利增长斜率，充分体现“极低资本开支 + 持续缩股回购”的威力。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计总资产市值</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$387,125</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计净增值 +3,771%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">本金增值倍数 (MOIC Multiple)</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">38.71x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 2.8 年资产翻一倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">累计创造净资本利得</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$377,125</div>
+ <div class="text-xs text-slate-400 mt-1.5">扣除初始投入本金后的纯复利收益</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效综合年化复合增长率</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">27.60%</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">持有半程（第 8 年）资产约：$70,350</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角投资与治理定评对比 (Bull Case vs Bear Risks) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心逻辑与独特优势 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">零直销成本壁垒 + 创始人利益高度一致</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>极致纯粹的股东利益对齐：</strong>佩拉没有天价期权激励包，其 93% 股权决定了唯有公司内生价值增长与现金分红才能最大化其财富（<a href="https://www.revenuememo.com/p/who-owns-ubiquiti" target="_blank" rel="noopener noreferrer" class="cite-link">RevenueMemo</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>全球 IT 工程社区自发护城河：</strong>数百万网络管理员和弱电承包商成为免费推广员，在通胀与企业降本周期中，高性价比 UniFi 反而加速替代思科与 HPE。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>多品类单面板交叉渗透空间巨大：</strong>从单一 Wi-Fi AP 拓展至路由、交换、4K AI 摄像头、智能门禁与 EV 充电桩，单个企业客户的全生命周期硬件采购额翻倍提升。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">治理瑕疵与潜在风险警示 (Bear &amp; Governance Risks)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">93% 极权黑箱 + 小流通盘高波动</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“一人公司”极权与信息披露极简：</strong>佩拉长期拒绝召开常规分析师电话会，外部中小股东对董事会与管理层几乎零制衡，存在极高的“关键人物依赖症”。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>7% 极窄流通盘引发股价剧烈波动与做空争议：</strong>流通股稀缺导致买卖价差较大、易受资金挤兑或做空机构质疑库存与关联分销商透明度（如 2017 年香橼做空风波）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>外包代工供应链与跨界精力分散风险：</strong>制造高度依赖亚洲代工厂与博通/高通等芯片供应（<a href="https://ir.ui.com/sites/ubiquiti-ir/files/2026-08/ui-06-30-2026-10k-2026.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">UI 10-K Risk Factors</a>），且佩拉同时身兼 NBA 灰熊队老板。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕演进与管理遗产复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Evolution & Management Lessons</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕演进与管理复盘：从苹果不满现状的测试工程师到 93% 控股隐形富豪</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">理解佩拉的关键：用“硅谷极客工程师思维”彻底重写“传统 B2B 硬件营销规则”</span>
+ </div>
+
+ <!-- 1. 三幕演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 叛逆出走与起步</span>
+ <span class="font-mono text-xs font-bold text-slate-500">2003–2010</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$3万积蓄引爆无线 ISP 市场</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2003 年佩拉进入苹果负责 Wi-Fi 硬件测试，因认为大公司官僚低效且不愿采纳其提升无线传输功率的构想，刷爆信用卡凑足约 $3万离职创业；推出超远距无线网卡与 airMAX 基站，迅速席卷全球偏远宽带市场（<a href="https://en.wikipedia.org/wiki/Robert_Pera" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段启示：大公司忽视的技术边缘痛点，往往孕育着百亿美元细分霸主
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 上市与 UniFi 破局</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2011–2019</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">上市敲钟 · 收购灰熊 · 击穿思科防线</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2011 年登陆美股；2012 年以 $3.77亿买下 NBA 孟菲斯灰熊队；同年坚决力推企业级 UniFi 系列，顶住仿冒假货与做空机构质疑，凭借“免订阅费+苹果级工业设计”将企业网络业务推升为公司第一支柱（<a href="https://www.fastcompany.com/3003767/apple-taught-ubiquitis-robert-pera-about-perfect-organisms-now-he-owns-memphis-grizzlies" target="_blank" rel="noopener noreferrer" class="cite-link">Fast Company</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：用消费电子的用户体验降维改造传统 B2B 商用基础设施
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 全栈帝国与缩股复利</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2020–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$32.7亿年营收与 93% 持股帝国</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>从单一 Wi-Fi 拓展至 UniFi Protect AI 安防、Access 门禁、Cloud Gateway 与万兆企业交换矩阵，同时大规模回购流通股将个人持股比例推至 ~93%，FY26 营收达 $32.7亿、净利近 $10亿，个人净值跃升至 ~$330亿（<a href="https://ir.ui.com/sites/ubiquiti-ir/files/2026-08/ui-06-30-2026-10k-2026.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">UI FY26 10-K</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段启示：极致的成本纪律 + 持续回购吞噬股本 = 复利核武器
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大商业折戟与进化复盘矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：佩拉与 Ubiquiti 穿越四大危机后的进化闭环</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">教训 01 · 早期假冒伪劣与供应链品控危机</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2012 年山寨盗版事件</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">高性价比爆红引来代工厂流出的高仿假货冲击口碑</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2012 年代工厂擅自生产并低价倾销高仿 Ubiquiti 设备，一度导致季度营收骤降、股价腰斩；佩拉随即亲赴亚洲重组供应链安全芯片加密验证与防伪溯源体系，彻底封死盗版漏洞。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">教训 02 · 消费级硬件跨界试水的边界教训</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">FrontRow 穿戴相机受挫</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">脱离弱电安装商核心优势的纯 C 端小众硬件难成气候</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2017 年 Ubiquiti 曾尝试推出消费级直播项链相机 FrontRow，因脱离企业网络与弱电集成商生态迅速折戟；此后佩拉果断收缩战线，把全部研发弹药聚焦回 <strong>UniFi OS 统一软硬矩阵</strong>。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">教训 03 · 缺芯周期中的库存与现金流考验</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">FY2022–FY2023 供应链阵痛</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">高加急空运费一度拉低毛利，催生自营商城与长协锁芯</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 疫情后全球芯片荒期间，Ubiquiti 为保交付被迫支付高昂现货加价与空运费导致 FY23 净利下滑至 $3.1亿；随后管理层大幅扩充直营 Webstore 份额并优化备货节奏，FY25–FY26 净利润迅速反弹翻三倍至 $9.60亿。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">教训 04 · 商业电邮诈骗与云端安全治理升级</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">内部风控与零信任加固</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">极简精干组织必须匹配银行级财务审批与云安全审计</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 早年曾遭遇海外子公司电邮诈骗（BEC）损失与云端账户安全事件，促使 Ubiquiti 在保持小团队敏捷性的同时全面重构双因素认证、端到端加密与内部财务风控流程。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级商业与投资启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给创业者与长期价值投资者的三条“罗伯特·佩拉商业法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 最好的销售团队，是好到让用户自发安利的产品</div>
+ <p class="text-slate-300 leading-relaxed">
+ 传统 B2B 厂商迷信高尔夫球场与酒桌公关，却把高昂销售成本转嫁给客户；把本来要付给销售员的 25% 佣金全部投入研发和让利定价，就能形成对手无法招架的降维打击。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 在所有人收“SaaS 订阅税”时，“零订阅费”就是最强杀器</div>
+ <p class="text-slate-300 leading-relaxed">
+ 当软件订阅泛滥引发企业“SaaS 疲劳”时，提供买断硬件即享终身免费云端管理与固件升级，反而成为抢占中小企业 IT 预算的核武器。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 高度集中持股的创始人 CEO 是长期复利的放大器</div>
+ <p class="text-slate-300 leading-relaxed">
+ 像佩拉这样持有 93% 股权、不看华尔街脸色、不稀释股本反而持续用自由现金流注销在外股票的创始人，真正做到了把上市公司当成百年家族基业来经营。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “佩拉法则”企业与投资评估交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Robert Pera &amp; Ubiquiti Investment Diagnostic Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “佩拉法则”高人效硬科技标的评估交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于追踪 Ubiquiti 季度基本面演进或筛选同类“社区驱动 + 创始人强控股”硬科技公司（点击勾选自动本地保存）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 社区驱动获客验证：SG&amp;A 销售管理费率是否远低于同业？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">费用率优势锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查销售及管理费用率是否维持在 10% 以下极低水平，验证无需直销铁军即可实现自然订单增长。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 企业科技（Enterprise Tech）增速与直营商城（Webstore）占比</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">毛利扩张引擎</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 追踪 UniFi 系列收入增速及官方 Webstore 直销占比，直营比例越高，综合毛利率越能稳守 45% 以上。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 跨品类连带率：Protect 安防与 Access 门禁是否放量？</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">单客 ARPU 指标</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察弱电集成商在采购 UniFi Wi-Fi 与交换机时，是否同步打包采购 AI 摄像头与门禁系统。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 存货周转天数与成品库存健康度（防范渠道压货）</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">供应链安全阀</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 紧盯资产负债表中存货（Inventories）与应收账款变化，确保高增长源于真实终端拉动而非分销商积压。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 自由现金流转化率与股本回购注销节奏</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">股东回报检验</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查年度自由现金流是否覆盖股息支出并持续用于二级市场回购注销流通股。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 佩拉持股比例与私有化动向监测（警惕低溢价私有化风险）</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">治理风险红线</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 当创始人持股逼近 93%–95% 时，需评估其维持上市地位的意愿及小流通盘流动性折溢价风险。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>罗伯特·佩拉 Robert Pera 与 Ubiquiti (UI) 深度商业、产品战略与复利研究报告 · 机构框架版</span>
+ <span>核心数据出处：Ubiquiti Inc. SEC Form 10-K (FY2021–FY2026) &amp; FY2027 Q1 10-Q</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务与股权指标均严格核验自美国证监会（SEC EDGAR）及 Ubiquiti 投资者关系官网公开披露的 <a href="https://ir.ui.com/sites/ubiquiti-ir/files/2026-08/ui-06-30-2026-10k-2026.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Ubiquiti Inc. FY2026 Form 10-K</a>、<a href="https://www.factiq.com/catalog/companies/united-states/UI" target="_blank" rel="noopener noreferrer" class="cite-link">FactIQ SEC 财务数据库</a>、<a href="https://www.revenuememo.com/p/who-owns-ubiquiti" target="_blank" rel="noopener noreferrer" class="cite-link">RevenueMemo 股权结构分析</a> 及权威商业媒体资料。报告内置的复利模拟器旨在复盘高毛利缩股回购模型的长期资本增值规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ // 清理运行态临时样式与画布缓存属性，确保导出的 HTML 在任何本地浏览器打开时干净重绘
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Ubiquiti_Robert_Pera_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Ubiquiti_Robert_Pera_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用浏览器另存为功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “佩拉复利飞轮”长期股东价值与复利动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ ipo_to_2026: {
+ principal: 10000,
+ years: 15,
+ cagr: 27.6,
+ caption: '当前测算基准：对应 2011 年 10 月 Ubiquiti 上市发行价（$15.00/股）持有 15 年至 2026 年的真实复利增长斜率，充分体现“极低资本开支 + 持续缩股回购”的威力。'
+ },
+ rebound_2023: {
+ principal: 10000,
+ years: 3,
+ cagr: 38.0,
+ caption: '当前测算基准：模拟 FY2023 供应链去库存周期低点后，伴随 Wi-Fi 7 与 UniFi Protect 爆发带来的 3 年盈利与估值修复复利斜率。'
+ },
+ steady_compound: {
+ principal: 10000,
+ years: 10,
+ cagr: 18.5,
+ caption: '当前测算基准：展望未来 10 年 Ubiquiti 在全球中小企业网络、AI 安防及门禁持续渗透下的稳健内生复合回报情景。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-principal').value = preset.principal;
+ document.getElementById('sim-years').value = preset.years;
+ document.getElementById('sim-growth').value = preset.cagr;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义复利推演模式——自由探索不同本金、持有期限与高 ROE 企业的长期财富放大效应。';
+ }
+
+ function updateValueSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 10000;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 15;
+ const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 20;
+ const divBonus = document.getElementById('div-bonus-toggle').checked ? 1.0 : 0;
+
+ const effGrowthPct = baseGrowthPct + divBonus;
+ const r = effGrowthPct / 100;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+ const finalVal = principal * Math.pow(1 + r, years);
+ const netGain = finalVal - principal;
+ const multiple = principal > 0 ? (finalVal / principal) : 1;
+ const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+ const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+ const midYears = Math.max(1, Math.round(years / 2));
+ const midVal = principal * Math.pow(1 + r, midYears);
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+ document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年资产翻一倍` : '稳健保值';
+ document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+ document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+ document.getElementById('sim-mid-val').textContent = `持有第 ${midYears} 年中期资产约：$${Math.round(midVal).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'pera_ubiquiti_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“佩拉法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'growth_trajectory';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2021–FY2026 Ubiquiti 年度净营收与净利润跨越曲线 ($B, SEC 10-K)
+ const trajectoryConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2021',
+ 'FY2022',
+ 'FY2023 (去库存谷底)',
+ 'FY2024',
+ 'FY2025 (+33.2%)',
+ 'FY2026 (+27.2%)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年度净营收 Revenue ($B)',
+ data: [1.90, 1.69, 1.94, 1.93, 2.57, 3.27],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '年度净利润 Net Income ($B)',
+ data: [0.62, 0.38, 0.41, 0.35, 0.71, 0.96],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 3.8,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toFixed(1) + 'B' }
+ },
+ y1: {
+ position: 'right',
+ min: 0,
+ max: 1.2,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v.toFixed(2) + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：两大核心业务板块营收拆解对比 ($B)
+ const splitConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2023', 'FY2024', 'FY2025', 'FY2026 (最新)'],
+ datasets: [
+ {
+ label: 'Enterprise Technology (UniFi 企业网与安防, $B)',
+ data: [1.52, 1.54, 2.13, 2.82],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5
+ },
+ {
+ label: 'Service Provider Technology (运营商无线/光纤, $B)',
+ data: [0.42, 0.39, 0.44, 0.45],
+ backgroundColor: '#06B6D4',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ stacked: true,
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ stacked: true,
+ min: 0,
+ max: 3.8,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toFixed(1) + 'B' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'growth_trajectory' ? trajectoryConfig : splitConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'growth_trajectory') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2021–FY2026 Ubiquiti 年度净营收与净利润跨越曲线（SEC 10-K）';
+ subEl.textContent = '突破供应链去库存周期后，FY2025 (+33%) 与 FY2026 (+27.2%) 连续两年迎来爆发式加速';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2023–FY2026 两大核心业务板块营收堆叠拆解（$B）';
+ subEl.textContent = 'Enterprise Technology 板块 FY26 同比劲增 32% 至 ~$2.82B，占全公司净营收逾 86%';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '极低销售管理费用率优势',
+ '软硬一体UI交互与美学',
+ '零订阅费性价比杀伤力',
+ '创始人长期持股战略定力',
+ '大型政企复杂定制直销纵深'
+ ],
+ datasets: [
+ {
+ label: 'Ubiquiti (Robert Pera)',
+ data: [9.9, 9.4, 9.7, 9.9, 6.2],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: '思科系统 (Cisco / Meraki)',
+ data: [4.8, 7.6, 4.2, 6.8, 9.8],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '传统消费级路由器厂商',
+ data: [7.2, 5.8, 7.8, 6.0, 3.5],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Ubiquiti (零直销 + 约 1,600 精锐员工)',
+ 'Arista Networks (云数据中心交换机龙头)',
+ 'Cisco Systems (传统企业网络霸主)',
+ 'Juniper Networks (运营商与企业网)',
+ 'HPE (大型政企 IT 与 Aruba 无线)'
+ ],
+ datasets: [
+ {
+ label: '单名员工年均创造营业收入 ($百万 / 人)',
+ data: [2.04, 1.58, 0.62, 0.50, 0.49],
+ backgroundColor: [
+ '#F59E0B',
+ '#10B981',
+ '#06B6D4',
+ '#64748B',
+ '#94A3B8'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `人均年营收: $${c.parsed.x.toFixed(2)}M / 员工`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 2.3,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toFixed(1) + 'M' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025', 'FY2026'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年度营业利润 Operating Income ($B)',
+ data: [0.74, 0.48, 0.52, 0.55, 0.84, 1.19],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 30,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '年度净利润 Net Income ($B)',
+ data: [0.62, 0.38, 0.41, 0.35, 0.71, 0.96],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 1.4,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toFixed(1) + 'B' },
+ title: { display: true, text: '年度营业利润 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 1.2,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v.toFixed(2) + 'B' },
+ title: { display: true, text: '年度净利润 ($B)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateValueSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

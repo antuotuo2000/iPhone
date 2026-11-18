@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>陈立武系运营宗师 · 谭庆祥 Irving Tan 深度商业与战略研究报告：西部数据 (WDC) 世纪分拆、纯血近线 HDD 复兴与 AI 数据基建重估</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Irving_Tan_WDC_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ IT
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Western Digital · NASDAQ: WDC</div>
+ <div class="text-sm font-bold leading-tight">谭庆祥 Irving Tan 深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">西部数据 CEO 专题目录</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 分拆重构与纯血 HDD 战略</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 运营哲学与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 存储与硬件领袖横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务反转与周期复利推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕职业跃迁与治理复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. WDC 运营与周期核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>半导体存储与数据中心基建研究组</p>
+ <p>财报与估值基准：SEC 10-K / FY27Q1</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-base shadow-lg shadow-mogold-500/25">
+ IT
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CEO MONOGRAPH · WDC</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">谭庆祥 Irving Tan</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 西部数据 (Western Digital) CEO · 供应链铁腕统帅与世纪分拆架构师
+ </p>
+ </div>
+
+ <!-- 核心人物与公司财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">Sandisk 世纪分拆落地</span>
+ <span class="font-mono font-bold text-white">2025年2月21日</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">Q1 FY27 营收 / Non-GAAP毛利</span>
+ <span class="font-mono font-bold text-emerald-400">$4.38B / 58.1%</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">Q2 FY27 指引营收 / 毛利</span>
+ <span class="font-mono font-bold text-mogold-400">$5.10B · 60.5%</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>分拆重构与纯血 HDD 战略</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>运营哲学与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>存储与硬件领袖横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务反转与周期复利推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕职业跃迁与治理复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>WDC 运营与周期核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏 -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">管理层深度研究 · 供应链实战派 CEO</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">履历横跨：HP → Cisco (EVP/COO) → Western Digital (EVP → CEO)</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据截止：FY2027 Q1 (2026年11月)</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · “世纪分拆”战略减法 × 亚太制造供应链掌控力 × AI 冷温数据存储重估</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 谭庆祥 Irving Tan 深度研究报告：西部数据 (WDC) 世纪分拆统帅、纯血近线 HDD 复兴与 AI 数据洪流下的毛利跃迁
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 出身新加坡工程背景、曾任思科（Cisco）首席运营官及亚太区掌门人的 <strong class="text-white">谭庆祥（Irving Tan）</strong>，于 2022 年以全球运营执行副总裁身份空降西部数据（WDC），并在 2025 年 2 月 21 日公司正式分拆闪存业务 <a href="https://investor.wdc.com/static-files/f97228d0-28c2-4360-8fed-f8ddfa15020e" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">Sandisk（NASDAQ: SNDK）</a> 后出任纯血 HDD 时代的西部数据 CEO。
+ 他果断终结了 WDC 自 2016 年斥资 $190亿并购 SanDisk 后长达九年的“资本开支黑洞与双业务估值折价”，将研发与产能精准聚焦于超大规模云厂商的 <strong class="text-white">UltraSMR 与 HAMR 大容量企业级硬盘</strong>。至 FY2027 Q1（截至 2026 年 10 月 2 日），WDC 单季营收同比飙升 <strong class="text-emerald-400">+55% 至 $43.81亿</strong>，Non-GAAP 毛利率从 2023 财年周期谷底的 15.3% 历史性跃升至 <a href="https://investor.wdc.com/news-releases/news-release-details/wd-reports-fiscal-first-quarter-2027-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">58.1%</a>，彻底改写了传统磁存储的商业估值逻辑。
+ </p>
+
+ <!-- 核心商业成就高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">分拆释放“1+1 &gt; 2”估值红利</div>
+ <div class="text-white font-semibold">完成 Sandisk 独立上市并保留 19.9% 股权用于去杠杆，WDC 与 SNDK 独立后双双迎来价值重估</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">毛利率从 15.3% 到 60.5% 的结构剧变</div>
+ <div class="text-mogold-400 font-semibold">凭借 32TB+ UltraSMR 产能锁单与长协机制，Q2 FY27 Non-GAAP 毛利率指引高达 60.5%</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">股东回报重启与强劲自由现金流</div>
+ <div class="text-emerald-400 font-semibold">Q1 FY27 单季自由现金流达 $13.8亿，上调季度股息 17% 并将逾 100% FCF 回馈股东</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Q1 FY2027 单季营收与增速</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$4.38B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+55% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 远超华尔街 $4.14B 一致预期，Q2 FY27 指引中值进一步上探至 $5.10B（+69% YoY）（<a href="https://investor.wdc.com/news-releases/news-release-details/wd-reports-fiscal-first-quarter-2027-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link">WDC IR</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Non-GAAP 毛利率跨越式跃升</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">58.1%</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+1,420 bps</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 打破传统硬盘 25%–32% 毛利天花板，AI 训练与推理海量近线存储供不应求驱动溢价（<a href="https://investor.wdc.com/news-releases/news-release-details/wd-reports-fiscal-first-quarter-2027-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link">Q1FY27 8-K</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2026 全年营收与自由现金流</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$12.90B</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">+35.7% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 分拆后首个完整财年（FY26）营收较 FY25（$9.52B）大增 36%，Q1 FY27 单季 FCF 达 $1.38B（<a href="https://investor.wdc.com/news-releases/news-release-details/wd-reports-fiscal-fourth-quarter-and-fiscal-year-2026-financial" target="_blank" rel="noopener noreferrer" class="cite-link">WDC FY26 10-K</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>库存周转优化与公司总市值</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$116B</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">周转天数腰斩</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 将库存周转天数由 FY23 危机期的 109.6 天压降至 49.5 天以内，资本开支强度严控在 ~4.3%（<a href="https://www.cm-term.com/analytics/companies/wdc" target="_blank" rel="noopener noreferrer" class="cite-link">CM Terminal</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 分拆重构与纯血 HDD 战略 (Spin-off & Pure-Play HDD Strategy)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Strategic Separation &amp; Pure-Play HDD Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 分拆重构与纯血 HDD 战略：终结九年并购内耗，卡位 AI 数据湖冷温存储底座</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2025年2月21日完成 Sandisk 分拆 · 云数据中心需求成为绝对主引擎</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">分拆后 WDC 单季营收与 Non-GAAP 毛利率加速爬坡轨迹（Q4 FY25–Q2 FY27E）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">剥离高波动 NAND 业务后，近线大容量 HDD 凭借长协锁价与产品组合升级推动毛利率从 41.3% 跃升至 60.5%E</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('quarterly_ramp')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：分拆后单季爆发曲线</button>
+ <button onclick="switchBizChart('cycle_turnaround')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：FY21–FY26年度周期反转</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">谭庆祥重塑西部数据的三大手术刀动作</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">执行“世纪分拆”：解决资本配置冲突与估值折价</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2016 年 WDC 以 $190亿收购 SanDisk 后，晶圆厂巨额 CapEx 长期抽干 HDD 现金流，且两类业务投资者偏好截然不同。2025 年 2 月分拆后，前任 CEO 大卫·戈克勒转掌独立的 <strong>Sandisk</strong>，谭庆祥专注执掌轻资本、高现金流的纯血 <strong>WDC</strong>（<a href="https://mlq.ai/research/sandisk-the-pure-play-sandisk-insurgent-at-the-center-of-the-ai-storage-supercycle/" target="_blank" rel="noopener noreferrer" class="cite-link">MLQ Research</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">构建“按单生产 + 多年期长协”反周期商业契约</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 汲取 2023 财年行业盲目扩产导致全行业亏损的惨痛教训，谭庆祥将思科全球供应链预测体系引入 WDC，与北美及全球头部云厂商签订<strong>多季度量价锁定协议（LTA）</strong>，杜绝盲目备货导致的价格战（<a href="https://investor.wdc.com/news-releases/news-release-details/wd-reports-fiscal-first-quarter-2027-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link">WDC Earnings Call</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">UltraSMR 商业化抢跑：在 HAMR 成熟前收割超额利润</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 不同于竞品过早押注高良率风险的热辅助磁记录（HAMR），谭庆祥带领团队率先规模量产 <strong>28TB/32TB ePMR + UltraSMR</strong> 硬盘，在确保云端客户零故障率的同时，提前吃下 AI 数据湖扩容的第一波高毛利订单。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">核心投资逻辑重构</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">从“夕阳 PC 硬件”重估为“AI 算力冷存储基石”</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心业务与技术支柱卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 支柱 1：云数据中心近线存储引擎 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一增长主引擎 · 云端容量主导</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">Q1 FY27 营收 $4.38B (+55%)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 超大规模云数据中心（Cloud / Hyperscale Nearline HDD）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 生成式 AI 与多模态大模型训练催生海量原始语料、检查点（Checkpoints）与视频数据沉淀。由于企业级 SSD 单 TB 采购成本仍是近线 HDD 的 <strong>5–7 倍</strong>，超大规模云厂商（AWS、Azure、Google、Meta 等）将 80% 以上的海量冷温数据部署在 WDC 的 <strong>26TB–32TB+ 近线企业级硬盘</strong>上，驱动出货总容量（Exabytes）持续创历史新高（<a href="https://www.westerndigital.com/company/newsroom/press-releases/2025/2025-07-30-western-digital-reports-fiscal-fourth-quarter-and-fiscal-year-2025-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link">WDC Press Release</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Ultrastar DC HC580 / HC680 / HC690</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">AI 数据湖不可替代的 TCO 性价比之王</span>
+ </div>
+ </div>
+
+ <!-- 支柱 2：ePMR + UltraSMR 渐进式技术路线 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">工程务实主义 · 良率与容量双赢</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">单盘容量迈向 32TB → 40TB+</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. ePMR + UltraSMR 叠瓦磁记录与 HAMR 双轨技术路线</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 工程师出身的谭庆祥深谙“实验室突破不等于供应链商业化”。他确立了稳健的双轨路径：一方面通过 <strong>11 碟片充氦封装 + 能量辅助垂直磁记录（ePMR）+ 专有软件栈 UltraSMR</strong>，无需更换昂贵激光读写头即可额外榨取 10%–20% 存储密度；另一方面协同头部云客户有序验证下一代 <strong>HAMR（热辅助磁记录）</strong>，实现技术代际无缝衔接。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>11-Disk HelioSeal / ePMR / UltraSMR</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">低 CapEx 实现高单盘毛利跃迁</span>
+ </div>
+ </div>
+
+ <!-- 支柱 3：亚太制造版图与运营韧性 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">核心护城河底座 · 亚洲制造深耕</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">库存周转 110天 → 49天</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 泰国·马来西亚·新加坡精密制造与磁头/盘片垂直协同</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 谭庆祥曾长期常驻新加坡统管思科亚太及大中华区运营，对东南亚半导体与精密机电集群了如指掌（<a href="https://www.edb.gov.sg/news-and-insights/from-singapore-to-san-jose-tech-veteran-irving-tan-rides-ai-wave-in-his-latest-role" target="_blank" rel="noopener noreferrer" class="cite-link">Singapore EDB</a>）。他重构了 WDC 在<strong>泰国（盘体组装）与马来西亚（磁头与介质制造）</strong>的超级工厂产能调度，使单盘制造成本随容量提升显著摊薄，带动毛利率突破 58%。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Thailand · Malaysia · Singapore Hubs</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">全球顶级供应链操盘手的降维打击</span>
+ </div>
+ </div>
+
+ <!-- 支柱 4：企业级平台与消费级品牌现金牛 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">全场景补充矩阵 · 高粘性长尾</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">WD_BLACK / My Passport / NAS</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 企业级 JBOD 存储平台与消费级标志性硬盘品牌</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 除向云巨头直接供应裸盘外，WDC 通过 <strong>Ultrastar Data60 / Data102 高密度存储机箱</strong>切入主权 AI 与企业私有云市场；在消费与专业创作端，保留了极具全球品牌认知度的 <strong>WD Red（NAS 专用盘）、WD Purple（安防监控盘）与 WD_BLACK（游戏存储）</strong>，提供稳定的高周转现金流补充（<a href="https://umbrex.com/resources/company-profiles/western-digital/" target="_blank" rel="noopener noreferrer" class="cite-link">Umbrex Profile</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Enterprise Platforms &amp; Branded HDD</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">B2B 定制与 B2C 渠道双轮缓冲垫</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 运营哲学与四重核心护城河 (Operational Philosophy & Economic Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Operational Philosophy &amp; Economic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 运营哲学与四重核心护城河：全球寡头垄断格局下的精密供应链壁垒</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：宽护城河 (Wide Moat · 双寡头供给约束 + 精密磁头自研壁垒 + 云端认证转换成本)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">全球近线 HDD 高度寡头垄断壁垒</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 历经数十年整合，全球企业级大容量硬盘市场仅剩 <strong>Western Digital、Seagate（希捷）与 Toshiba（东芝）</strong>三家玩家（前两家占据近线市场超 80% 份额）。磁头量子隧穿效应与纳米级空气动力学机械加工壁垒极高，几乎不存在任何新进入者风险。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“积木式模块化”工程与供应链纪律</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 自称“乐高（Lego）狂热爱好者”的谭庆祥，把复杂硬件拆解为可复用标准化模块（统一氦气密封腔体、通用控制器固件与阶梯化碟片配置），使 WDC 资本开支占营收比严控在 <strong>4%–5%</strong> 区间，远低于晶圆厂动辄 25%+ 的重资产负担（<a href="https://www.edb.gov.sg/news-and-insights/from-singapore-to-san-jose-tech-veteran-irving-tan-rides-ai-wave-in-his-latest-role" target="_blank" rel="noopener noreferrer" class="cite-link">EDB Interview</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">超大规模云厂商 6–12 个月严苛认证锁定</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 每一代新款企业级硬盘进入 AWS、微软或谷歌数据中心前，均需经历长达数季度的极端震动、热衰减与年度故障率（AFR &lt; 0.35%）联合验证。一旦写入云厂商服务器 BOM 清单，客户转换成本极高且订单可见度延伸至未来 4–6 个季度。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">数据中心物理空间与 TCO 不可替代性</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ AI 时代电力与机柜空间极度稀缺。将同一机架的硬盘从 18TB 升级至 32TB UltraSMR，可在<strong>不增加额外机房占地与供电配额</strong>的前提下提升近 80% 存储容量，赋予 WDC 极强的单盘 ASP（平均售价）提价权。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维存储领袖战略特征雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球存储三大掌门人五维管理能力模型对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">谭庆祥 (WDC) vs 戴夫·莫斯利 (Seagate) vs 桑杰·梅赫罗特拉 (Micron)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 存储与硬件领袖横向对比 (Storage & Hardware Leaders Matrix)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Storage &amp; Silicon Infrastructure Leaders Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 存储与硬件领袖横向对比：AI 存储超级周期下的四大掌门人与毛利跃迁</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索 CEO / 公司 / 技术路线..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部存储巨头</button>
+ <button onclick="filterCompetitors('hdd')" data-filter="hdd" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">近线 HDD 双雄</button>
+ <button onclick="filterCompetitors('nand')" data-filter="nand" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">NAND / DRAM 晶圆派</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">CEO 与执掌企业</th>
+ <th class="py-4 px-4 min-w-[140px]">核心存储介质与路线</th>
+ <th class="py-4 px-4 min-w-[145px]">最新披露季度/年度规模</th>
+ <th class="py-4 px-4 min-w-[125px]">最新毛利率表现</th>
+ <th class="py-4 px-4 min-w-[125px]">领导风格与管理基因</th>
+ <th class="py-4 px-5 min-w-[240px]">与谭庆祥 (WDC) 战略打法的异同评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：谭庆祥基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">谭庆祥 (Irving Tan)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Western Digital (NASDAQ: WDC)</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">纯血近线 HDD (ePMR + UltraSMR + HAMR)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">Q1FY27 $4.38B (+55% YoY)</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">58.1% (Q2指引 60.5%)</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">思科 COO 级供应链铁腕</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>稳健商用化典范：</strong>先靠成熟 ePMR+UltraSMR 大规模交付锁死云端大单，CapEx 极低（~4.3%），现金流转化率行业领先（<a href="https://investor.wdc.com/news-releases/news-release-details/wd-reports-fiscal-first-quarter-2027-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link">WDC Q1FY27</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：戴夫·莫斯利 (Seagate) -->
+ <tr data-category="hdd" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">戴夫·莫斯利 (Dave Mosley)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Seagate Technology (NASDAQ: STX)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">近线 HDD (激进押注 Mozaic 3+ HAMR)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">年营收约 $9B–$11B 区间</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">由谷底回升至 35%–42%+</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">内部技术派老兵 (1995年加入)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>最直接双寡头镜像：</strong>希捷从未并购 NAND 业务，且比 WDC 更早全速押注 HAMR 激光磁头，早期良率爬坡阵痛较大，近年与 WDC 共同受益于近线 HDD 供需紧平衡。
+ </td>
+ </tr>
+
+ <!-- 行 3：大卫·戈克勒 (Sandisk) -->
+ <tr data-category="nand" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">大卫·戈克勒 (David Goeckeler)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Sandisk Corp. (NASDAQ: SNDK)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">纯血 NAND Flash 与企业级 SSD (BiCS8)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">Q3FY26 单季营收 $5.95B</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">Non-GAAP 毛利率 78.4%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">前思科安全业务掌门 · 资本运作派</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>分拆双子星另一极：</strong>2020–2025 年任 WDC CEO 期间主导策划分拆，并亲自延揽前思科同僚谭庆祥；分拆后执掌独立 Sandisk 吃满 AI 推理高速 SSD 暴涨红利（<a href="https://www.indmoney.com/blog/us-stocks/micron-stock-vs-sandisk-stock-ai-memory-stock-analysis" target="_blank" rel="noopener noreferrer" class="cite-link">INDmoney</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 4：桑杰·梅赫罗特拉 (Micron) -->
+ <tr data-category="nand" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">桑杰·梅赫罗特拉 (Sanjay Mehrotra)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Micron Technology (NASDAQ: MU)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">HBM3E/HBM4 + DRAM + NAND 全栈半导体</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">FY2026 营收暴增至 $133.2B</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">Q4FY26 GAAP 毛利率 86.8%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">SanDisk 联合创始人 · 晶圆工艺宗师</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>历史渊源极深的竞争对手：</strong>2016 年将 SanDisk 卖给 WDC 后转任美光 CEO，带领美光在 HBM 算力内存封神；但其年均逾 $300亿重资产晶圆 CapEx 与谭庆祥的轻 CapEx 路线形成鲜明对比（<a href="https://sec-api.io/insights/financial-analysis-of-micron-q4-fy2026-memory-revenue-pricing-and-scenarios-to-fy2029" target="_blank" rel="noopener noreferrer" class="cite-link">SEC-API</a>）。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的存储领袖记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：WDC 历史毛利率跨越式重构对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">从周期地狱到定价霸权：西部数据 (WDC) 不同战略阶段毛利率结构性跃迁 (%)</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">分拆掉高资本开支的闪存业务并叠加 AI 数据中心大容量近线 HDD 供需紧缺后，WDC 毛利率彻底脱离 20%–31% 历史波动区间（<a href="https://investor.wdc.com/news-releases/news-release-details/wd-reports-fiscal-first-quarter-2027-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link">WDC SEC Filings</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">较 FY23 谷底提升 +4,520 bps</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 财务反转与周期复利推演 (Financial Turnaround & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Turnaround &amp; Cycle Value Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务反转与周期复利推演：去杠杆资产负债表重塑与 AI 存储超级周期</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">从 FY2023 营业亏损 -10.4% 到 Q1 FY2027 单季净赚 $17.8亿的盈利爆发</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Q1 FY27 Non-GAAP EPS</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$4.64 (+161%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 较去年同期 $1.78 暴增 161%，且公司给出 Q2 FY27 Non-GAAP EPS 中值指引高达 <strong>$5.80</strong>（<a href="https://investor.wdc.com/news-releases/news-release-details/wd-reports-fiscal-first-quarter-2027-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link">WDC Q1FY27 8-K</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Free Cash Flow Engine</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$1.38B / 季</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ Q1 FY27 经营现金流 $16.0亿、自由现金流 $13.8亿（FCF 利润率高达 <strong>31.5%</strong>），连续多季实现超 100% FCF 股东回馈（<a href="https://www.westerndigital.com/company/newsroom/press-releases/2026/2026-01-29-western-digital-reports-fiscal-second-quarter-2026-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link">WDC IR</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Deleveraging &amp; Dividend</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">股息再增 +17%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 借助分拆 Sandisk 股权处置与强劲现金流大幅削减并购遗留债务，2026 年 10 月宣布将季度现金股息再次上调 17%（<a href="https://www.futunn.com/en/stock/WDC-US/earnings" target="_blank" rel="noopener noreferrer" class="cite-link">Futunn</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Operating Leverage</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">OpEx 仅 ~9.2%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 在营收增长 55% 的同时，Non-GAAP 运营费用严格控制在 $4.0亿左右（占营收不足 10%），释放惊人经营杠杆。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2022–FY2026 年度财务大反转：西部数据营收规模 vs 营业利润率 V 型深蹲起跳（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">注：FY2022–FY2024 为分拆前含闪存合并口径；FY2025（$9.52B）与 FY2026（$12.90B）为分拆 Sandisk 后的纯血持续经营口径，营业利润率由 -10.4% 飙升至 +34.5%</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">FY26 营业利润 $4.45B (+90.8%)</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“WDC 周期反转与 AI 存储复利”动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>WDC TURNAROUND &amp; AI STORAGE SIMULATOR · 西部数据价值重估推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">从存储周期谷底到纯血龙头重估：真实周期锚点与自定义复利模拟器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实/情景锚点（2023周期谷底反转 / 2025分拆后 AI 存储主升浪 / 未来5年稳健现金牛情景）或手动调节参数</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>叠加股息与回购缩股增益 (+1.8%/年)</span>
+ </label>
+ </div>
+
+ <!-- 周期预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('spinoff_rerating')" data-era="spinoff_rerating" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 2023–2026 周期谷底与分拆重估</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">3.5年 · 估值修复与盈利爆发 (~68% 情景斜率)</div>
+ </button>
+ <button type="button" onclick="setSimEra('ai_nearline_base')" data-era="ai_nearline_base" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 未来 5 年 AI 近线存储稳健基准</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">5年 · 假定 18.0% 年化复合总回报</div>
+ </button>
+ <button type="button" onclick="setSimEra('decade_compounder')" data-era="decade_compounder" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 十年双寡头现金牛长周期推演</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">10年 · 假定 14.5% 穿越周期年化回报</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始投入本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$10,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="1000" max="100000" step="1000" value="10000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">持有周期年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">3.5 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="15" step="0.5" value="3.5" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年化复合回报率 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">68.0%</span>
+ </div>
+ <input id="sim-growth" type="range" min="5" max="75" step="0.5" value="68.0" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：复盘 2023 年存储行业至暗时刻以来，随着谭庆祥主导供应链瘦身、2025 年分拆 Sandisk 独立上市及 AI 数据湖驱动近线 HDD 量价齐升所带来的戴维斯双击斜率。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计总资产市值</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$61,575</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计净增值 +516%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">本金增值倍数 (MOIC Multiple)</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">6.16x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 1.3 年资产翻一倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">累计创造净资本利得</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$51,575</div>
+ <div class="text-xs text-slate-400 mt-1.5">扣除初始投入本金后的纯复利收益</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效综合年化复合增长率</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">68.00%</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">持有半程资产约：$24,814</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角治理与投资定评 (Bull Thesis vs Risk Lens) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心投资论点 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">低CapEx + 58%+毛利重估</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>运营型 CEO 完美匹配成熟寡头赛道：</strong>在无需颠覆性从零发明品类的近线 HDD 赛道，供应链调度、良率爬坡与长协锁价就是最硬核的印钞机。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 视频与多模态生成引爆长尾冷数据：</strong>文本转向高清视频生成与合成数据训练后，企业级海量数据存储刚需具备极强跨周期韧性。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>资本开支克制带来极致自由现金流：</strong>CapEx 仅占营收 ~4.3%，使得 WDC 能够将超过 100% 的自由现金流持续用于回购注销与提高股息。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头风险与结构性挑战 (Risk &amp; Bear Lens)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">QLC SSD 替代 + 云端砍单周期</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>60%+ 毛利率处于历史极高分位，警惕周期均值回归：</strong>存储硬件历史上从未完全摆脱“供不应求—大赚—云厂商消化库存—ASP 回落”的周期规律。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>大容量 QLC 企业级 SSD 的长期边界侵蚀：</strong>一旦 NAND 晶圆价格周期性下跌，64TB/128TB QLC SSD 将在部分温数据层对近线 HDD 构成替代压力。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>前四大云客户高度集中与地缘制造敞口：</strong>超大规模云巨头议价能力极强，且核心盘体与磁头产能高度集中于东南亚（泰国/马来西亚），需持续防范供应链扰动。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕职业跃迁与治理复盘 (Three-Act Career Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Career Evolution &amp; Governance Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕职业跃迁与治理复盘：从新加坡工程师到硅谷顶级硬科技首席执行官</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">跨界履历解析：为何思科供应链与亚太商业智慧成为改造西部数据的最佳钥匙</span>
+ </div>
+
+ <!-- 1. 三幕职业演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">第一幕 · 亚太深耕</span>
+ <span class="font-mono text-xs font-bold text-slate-500">早年 – 2018</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">HP 历练与执掌思科亚太</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>机械工程科班出身，早年任职惠普（HP），后加入思科（Cisco）并一路晋升为<strong>亚太、日本及大中华区总裁</strong>，在亚洲数字基建浪潮中主导构建了复杂跨国渠道与政企大客户销售网络（<a href="https://www.sats.com.sg/about-us/leadership-team/irving-tan" target="_blank" rel="noopener noreferrer" class="cite-link">SATS Profile</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-teal-600 dark:text-teal-400">
+ 阶段沉淀：深谙亚洲制造生态文化与 B2B 大客户长周期采购逻辑
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 全球操盘</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2018 – 2022</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">思科全球 COO 扛过芯片荒</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>出任思科执行副总裁兼<strong>首席运营官（COO）</strong>，统筹全球数十亿美元级供应链采购、代工制造与交付，并在 2020–2022 年全球半导体世纪缺芯危机中保住思科网络设备交付生命线，同时担任新翔集团（SATS）董事会主席（<a href="https://koalagains.com/stocks/NASDAQ/WDC/management-team" target="_blank" rel="noopener noreferrer" class="cite-link">Koalagains</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段沉淀：在极端缺芯环境下锤炼出多级供应商锁定与缓冲库存调度艺术
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 帅印登顶</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2022 – 至今</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">空降 WDC 与分拆后执掌全局</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2022 年以全球运营 EVP 身份加入 WDC 整顿制造体系；2025 年 2 月 21 日随着 Sandisk 分拆交割正式出任 WDC 首席执行官及董事，在短短一年半内将公司带入 <strong>单季营收破 $43.8亿、毛利率破 58%</strong> 的黄金巅峰（<a href="https://www.sec.gov/Archives/edgar/data/106040/000162828025044298/wdc-20251006.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Filing</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段沉淀：以“战略减法 + 运营极致化”重塑美股硬科技经典反转案例
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 战略治理四大关键博弈复盘 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">企业治理与资本配置镜鉴：谭庆祥破解的四大核心困局</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500/10 text-mogold-600 dark:text-mogold-400 text-xs font-bold">破局 01 · 破解“并购消化不良症”</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">剥离 2016 年 SanDisk 合并体</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">敢于否定前任千亿级并购遗产，释放双边独立潜能</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 硬盘与闪存看似同属存储，实则一个是精密机械规模经济、一个是重资本晶圆摩尔定律。彻底分拆后，WDC 不再需要为闪存晶圆厂输血，股东得以获得纯粹的现金牛回报（<a href="https://umbrex.com/resources/company-profiles/western-digital/" target="_blank" rel="noopener noreferrer" class="cite-link">Umbrex</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">破局 02 · 告别“盲目扩产自杀循环”</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">Build-to-Order 订单驱动模式</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">用云端长协机制替代过往的“渠道压货博弈”</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 过去存储厂商在景气顶峰过度扩产，一旦云厂商放缓资本开支便陷入全行业亏本清库存；谭庆祥推行按确认订单排产（Build-to-Order），宁可放弃低毛利边际份额也要捍卫价格纪律。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">破局 03 · 工程路线“商业实用主义”</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">UltraSMR 抢占窗口期</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">用软件与固件算法榨取现有产线的最高边际回报</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ UltraSMR 本质上是通过控制器纠错算法与主机端协同软件优化，在成熟 ePMR 硬件平台上实现 32TB 容量突破，避免了全新磁头产线爬坡期的良率折损。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">破局 04 · 亚太与硅谷跨文化执行桥接</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">San Jose 研发 × 东南亚制造</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">消除硅谷总部与亚洲工厂之间的决策时差与摩擦</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 谭庆祥兼具硅谷上市科技公司高管视野与新加坡/东南亚深厚政商制造人脉，极大加速了工程设计向泰国与马来西亚大规模量产导入的转化速度（<a href="https://www.edb.gov.sg/news-and-insights/from-singapore-to-san-jose-tech-veteran-irving-tan-rides-ai-wave-in-his-latest-role" target="_blank" rel="noopener noreferrer" class="cite-link">EDB</a>）。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级商业与投资启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>从谭庆祥改造西部数据提炼的三条硬科技投资与管理法则</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 成熟赛道的“COO 型 CEO”往往能创造惊人超额收益</div>
+ <p class="text-slate-300 leading-relaxed">
+ 当行业格局已收敛为双寡头或三寡头（如近线 HDD），决定胜负的不再是天马行空的讲故事能力，而是库克式或谭庆祥式的供应链精益管理、库存周转与供给纪律。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 战略分拆是释放综合集团估值折价的最强催化剂</div>
+ <p class="text-slate-300 leading-relaxed">
+ 当一家公司同时包含“高 CapEx 强周期业务”与“低 CapEx 稳态现金牛”时，市场往往给予最差业务的低估值倍数；果断分拆能同时激活两块资产的独立定价权。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. AI 算力投资的第二阶段必向“存储与数据底座”外溢</div>
+ <p class="text-slate-300 leading-relaxed">
+ 算力芯片（GPU）训练出的海量模型权重、多模态语料与企业私有数据必须有高性价比载体沉淀；近线 HDD 与企业级 SSD 共同构成了 AI 基建的“黄金存储双翼”。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 西部数据 (WDC) 运营与周期追踪交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · WDC Operational &amp; Cycle Diagnostic Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 西部数据 (WDC) 运营与存储周期追踪交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 用于季度财报追踪谭庆祥团队执行力及存储周期景气拐点的六大核心观测锚（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 云数据中心出货总容量（Exabytes）与 32TB+ UltraSMR 渗透率</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">量价核心锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 追踪超大规模云客户大容量盘出货占比是否持续提升，这是支撑单 TB 售价与毛利率维持 55%–60%+ 高位的第一驱动力。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 库存周转天数（DIO）是否稳守 50 天健康警戒线以内</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">供应链纪律锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验谭庆祥“按单生产”机制是否严格执行；若 DIO 重新向 75–90 天攀升，往往预示下游云厂商进入去库存周期。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 资本开支强度（CapEx / Revenue）是否严控在 4%–6% 区间</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">自由现金流锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 纯血 HDD 商业模式的估值溢价高度依赖轻资本属性，需密切监控公司是否保持极度克制的产线扩张纪律。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 下一代 40TB+ HAMR 硬盘在头部云厂商的认证与放量进度</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">技术代际锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 对比希捷 Mozaic 3+ 进度，核查 WDC 在 36TB–40TB+ 节点切换时能否延续“高良率、零客户事故”的商业化节奏。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 每 TB 近线 HDD vs 企业级 QLC SSD 的采购价差倍数</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">替代边界锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 只要每 TB 价格比维持在 4.5 倍以上，近线 HDD 在云端海量冷温数据湖的统治地位便稳如磐石。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 净负债清零进度与逾 100% 自由现金流回购/分红兑现度</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">股东回报锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 追踪剩馀 Sandisk 股权处置去杠杆完成后的纯净资产负债表状态，以及管理层持续提升股息与回购股票的执行力度。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>西部数据 CEO 谭庆祥 (Irving Tan) 深度商业、供应链战略与周期反转研究报告 · 机构框架版</span>
+ <span>核心数据出处：Western Digital SEC Form 10-K / Form 10-Q (FY2022–Q1 FY2027)</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务与治理指标均严格核验自美国证监会（SEC EDGAR）及西部数据投资者关系官网披露的 <a href="https://investor.wdc.com/news-releases/news-release-details/wd-reports-fiscal-first-quarter-2027-financial-results" target="_blank" rel="noopener noreferrer" class="cite-link">WDC Q1 FY2027 财报公告（2026年10月22日）</a>、<a href="https://investor.wdc.com/news-releases/news-release-details/wd-reports-fiscal-fourth-quarter-and-fiscal-year-2026-financial" target="_blank" rel="noopener noreferrer" class="cite-link">WDC FY2026 全年财报（2026年8月5日）</a>、<a href="https://investor.wdc.com/static-files/f97228d0-28c2-4360-8fed-f8ddfa15020e" target="_blank" rel="noopener noreferrer" class="cite-link">WDC FY2025 Form 10-K</a> 及新加坡经济发展局（EDB）公开访谈资料。报告内置的复利与周期重估模拟器旨在辅助理解运营杠杆与周期反转规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Irving_Tan_WDC_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Irving_Tan_WDC_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用浏览器保存功能保存网页。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 存储与硬件领袖横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “WDC 周期反转与 AI 存储复利”动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ spinoff_rerating: {
+ principal: 10000,
+ years: 3.5,
+ cagr: 68.0,
+ caption: '当前测算基准：复盘 2023 年存储行业至暗时刻以来，随着谭庆祥主导供应链瘦身、2025 年分拆 Sandisk 独立上市及 AI 数据湖驱动近线 HDD 量价齐升所带来的戴维斯双击斜率。'
+ },
+ ai_nearline_base: {
+ principal: 10000,
+ years: 5,
+ cagr: 18.0,
+ caption: '当前测算基准：模拟未来 5 年 AI 训练与推理海量数据沉淀持续驱动 32TB–40TB+ 近线 HDD 出货量（Exabytes）稳健增长，叠加公司逾 100% FCF 回购缩股的基准年化复合回报。'
+ },
+ decade_compounder: {
+ principal: 10000,
+ years: 10,
+ cagr: 14.5,
+ caption: '当前测算基准：模拟穿越完整半导体与云资本开支大小周期后，双寡头竞争格局与轻资产运营纪律带来的 10 年稳健现金牛复利斜率。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-principal').value = preset.principal;
+ document.getElementById('sim-years').value = preset.years;
+ document.getElementById('sim-growth').value = preset.cagr;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义存储周期与股东回报推演模式——自由探索不同本金、持有期限与年化复合增速下的长期资产增值空间。';
+ }
+
+ function updateValueSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 10000;
+ const years = parseFloat(document.getElementById('sim-years').value) || 3.5;
+ const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 18.0;
+ const divBonus = document.getElementById('div-bonus-toggle').checked ? 1.8 : 0;
+
+ const effGrowthPct = baseGrowthPct + divBonus;
+ const r = effGrowthPct / 100;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+ const finalVal = principal * Math.pow(1 + r, years);
+ const netGain = finalVal - principal;
+ const multiple = principal > 0 ? (finalVal / principal) : 1;
+ const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+ const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+ const midYears = Math.max(0.5, Number((years / 2).toFixed(1)));
+ const midVal = principal * Math.pow(1 + r, midYears);
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+ document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年资产翻一倍` : '稳健保值';
+ document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+ document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+ document.getElementById('sim-mid-val').textContent = `持有第 ${midYears} 年中期资产约：$${Math.round(midVal).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'wdc_irving_tan_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {}
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {}
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“西部数据运营与周期”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'quarterly_ramp';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：分拆后 WDC 单季营收与 Non-GAAP 毛利率加速曲线 (SEC 8-K / 10-Q)
+ const quarterlyConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Q4 FY25',
+ 'Q1 FY26',
+ 'Q2 FY26',
+ 'Q3 FY26',
+ 'Q4 FY26',
+ 'Q1 FY27',
+ 'Q2 FY27E (指引)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '单季净营收 Revenue ($B)',
+ data: [2.61, 2.82, 3.02, 3.34, 3.75, 4.38, 5.10],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'Non-GAAP 毛利率 Gross Margin (%)',
+ data: [41.3, 43.9, 46.1, 47.5, 54.4, 58.1, 60.5],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ : `${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 6.0,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toFixed(1) + 'B' }
+ },
+ y1: {
+ position: 'right',
+ min: 30,
+ max: 68,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：FY2021–FY2026 年度营收与库存周转天数改善对比
+ const cycleConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2021',
+ 'FY2022',
+ 'FY2023 (周期谷底)',
+ 'FY2024 (原合并口径)',
+ 'FY2025 (纯血持续经营)',
+ 'FY2026 (纯血爆发年)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年度总营收 ($B)',
+ data: [16.92, 18.79, 12.32, 13.00, 9.52, 12.90],
+ backgroundColor: 'rgba(6, 182, 212, 0.8)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '库存周转天数 DIO (天 · 越低越高效)',
+ data: [78.0, 70.7, 109.6, 93.8, 49.5, 46.0],
+ borderColor: '#F59E0B',
+ backgroundColor: '#F59E0B',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ : `${c.dataset.label}: ${c.parsed.y.toFixed(1)} 天`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 22,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ },
+ y1: {
+ position: 'right',
+ min: 20,
+ max: 120,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#F59E0B', font: { size: 11, weight: '600' }, callback: v => v + '天' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'quarterly_ramp' ? quarterlyConfig : cycleConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'quarterly_ramp') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '分拆后 WDC 单季营收与 Non-GAAP 毛利率加速爬坡轨迹（Q4 FY25–Q2 FY27E）';
+ subEl.textContent = '剥离高波动 NAND 业务后，近线大容量 HDD 凭借长协锁价与产品组合升级推动毛利率从 41.3% 跃升至 60.5%E';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2021–FY2026 年度营收口径切换与库存周转天数（DIO）大幅压缩曲线';
+ subEl.textContent = '谭庆祥空降整顿供应链后，库存周转天数从 FY23 危机期的 109.6 天腰斩至 50 天以内，释放巨额营运现金流';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '全球供应链与制造调度力',
+ '轻资本开支与FCF转化效率',
+ '超大规模云端长协锁价能力',
+ '工程商用化稳健与良率把控',
+ '跨存储介质全栈布局广度'
+ ],
+ datasets: [
+ {
+ label: '谭庆祥 Irving Tan (WDC)',
+ data: [9.8, 9.5, 9.4, 9.3, 7.6],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: '戴夫·莫斯利 (Seagate)',
+ data: [8.6, 8.8, 8.9, 8.4, 7.2],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '桑杰·梅赫罗特拉 (Micron)',
+ data: [9.1, 6.8, 9.2, 9.5, 9.6],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Q2 FY2027E 指引 (AI 近线 HDD 供需紧平衡巅峰)',
+ 'Q1 FY2027 实际 (32TB UltraSMR 全面放量)',
+ 'FY2025 全年 (分拆 Sandisk 后首个纯血财年)',
+ 'FY2018 周期高点 (原并购 SanDisk 后景气顶峰)',
+ 'FY2023 周期谷底 (存储行业全线去库存至暗时刻)'
+ ],
+ datasets: [
+ {
+ label: '西部数据 (WDC) 阶段毛利率 Gross Margin (%)',
+ data: [60.5, 58.1, 38.8, 37.3, 15.3],
+ backgroundColor: [
+ '#F59E0B',
+ '#10B981',
+ '#06B6D4',
+ '#64748B',
+ '#EF4444'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `阶段毛利率: ${c.parsed.x.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 70,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2022', 'FY2023', 'FY2024', 'FY2025 (分拆后)', 'FY2026 (纯血首年)'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年度净营收 Net Revenue ($B)',
+ data: [18.79, 12.32, 13.00, 9.52, 12.90],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 32,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'GAAP 营业利润率 Operating Margin (%)',
+ data: [12.7, -10.4, -2.4, 24.5, 34.5],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ : `${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 22,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '年度净营收 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: -15,
+ max: 45,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' },
+ title: { display: true, text: 'GAAP 营业利润率 (%)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateValueSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

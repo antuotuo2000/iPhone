@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>安德鲁·费尔德曼 Andrew Feldman (Cerebras Systems CEO) 深度商业与算力架构研究报告：晶圆级芯片霸权、20倍营收跃迁与千亿美元推理重构</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：琥珀金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Cerebras_CEO_Andrew_Feldman_Analysis-v2.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ AF
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Cerebras (NASDAQ: CBRS)</div>
+ <div class="text-sm font-bold leading-tight">安德鲁·费尔德曼深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">Cerebras CEO 专题目录</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 商业版图与晶圆级算力架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 系统思维与四重核心护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. AI 算力与基础架构领袖横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 商业回报、IPO 估值与订单推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕创业演进与战略复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 费尔德曼法则核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>AI 算力半导体与基础架构研究组</p>
+ <p>财报与估值基准：SEC S-1/10-Q · 2026Q4</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-base shadow-lg shadow-mogold-500/25">
+ AF
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CEO MONOGRAPH · CBRS</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">安德鲁·费尔德曼研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 打破“内存墙”的晶圆级系统架构师 · Cerebras / SeaMicro / Force10 连续创业复盘
+ </p>
+ </div>
+
+ <!-- 核心人物实时与历史财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">2026 IPO 首日 / 近期市值</span>
+ <span class="font-mono font-bold text-white">~$95B → ~$26B–$33B</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY25 / FY26E 核心营收</span>
+ <span class="font-mono font-bold text-emerald-400">$510M / ~$885M</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">在手订单 RPO / 推理速度</span>
+ <span class="font-mono font-bold text-mogold-400">$25.4B · 2,000+ tok/s</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>商业版图与晶圆级架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>系统思维与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>AI算力领袖横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>商业回报与RPO交付推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕创业演进与战略复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>费尔德曼法则核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">AI 算力架构定评：晶圆级工程破壁者 · NASDAQ: CBRS</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">连续创业履历：Force10 ($800M) · SeaMicro ($334M) · Cerebras Systems</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖基准：2026年11月</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 整片晶圆级芯片（WSE）× 极速推理分类定义 × $25.4B 巨额积压订单</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 安德鲁·费尔德曼 Andrew Feldman (Cerebras CEO) 深度研究报告：晶圆级计算革命、从主权大单到 OpenAI/AWS 的惊险一跃
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 在过去半个世纪的半导体工业中，把整片 300mm 硅晶圆直接做成像餐盘大小的单一处理器（Wafer-Scale Integration）一直被视作良率与散热的双重死局。然而，<strong class="text-white">Cerebras Systems 联合创始人兼 CEO 安德鲁·费尔德曼（Andrew Feldman）</strong> 凭借其在 <a href="https://en.wikipedia.org/wiki/Andrew_Feldman_(businessman)" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">Force10 Networks（$8亿售予戴尔）</a> 与 <a href="https://investors.cerebras.ai/board-member/andrew-feldman" target="_blank" rel="noopener noreferrer" class="cite-link text-white font-semibold">SeaMicro（$3.34亿售予 AMD）</a> 积累的互连与系统工程功底，硬生生攻克了芯片冗余重构与液冷供电难题。
+ 2022 至 2025 年间，Cerebras 年营收在三年内暴增 <strong class="text-emerald-400">20.7 倍至 $5.10亿</strong>，并于 2025 年底至 2026 年初接连斩获 <a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">OpenAI 750MW 算力大单（$20B+ 主协议）</a> 与 <strong class="text-white">AWS Bedrock 集成协议</strong>，推动公司于 <a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">2026 年 5 月成功登陆纳斯达克（NASDAQ: CBRS）</a>，手握高达 <strong class="text-mogold-400">$254亿 剩余履约义务（RPO）</strong>。
+ </p>
+
+ <!-- 核心商业逻辑高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">物理级片上 SRAM 破壁</div>
+ <div class="text-white font-semibold">WSE-3 集成 4 万亿晶体管与 44GB 片上 SRAM，无需昂贵 HBM 即实现 GPU 20 倍以上推理速度</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">非传统硅谷资本与客户破局</div>
+ <div class="text-mogold-400 font-semibold">早期借阿联酋 G42 / MBZUAI 预付款造血度过寒冬，2026 年成功切换至 OpenAI / AWS 全球商用双轮</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">极高估值弹性与交付大考</div>
+ <div class="text-emerald-400 font-semibold">IPO 首日市值冲高 ~$950亿后回落至 ~$260亿–$330亿理性区间，2026–2027 年百兆瓦级交付成胜负手</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>年度核心营收与 2026 指引</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$510.0M</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">FY25 +76% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2022–2025 年营收从 $24.6M 跃增 20.7 倍；2026 全年核心营收指引达 <strong>$880M–$890M</strong>（<a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link">Okara / SEC</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>在手剩余履约义务 (RPO 积压)</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$25.4B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">~50x 年营收</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 截至 2026Q2 末在手未确认合同额达 $25.4B，主力源自 OpenAI 750MW 推理算力长约（<a href="https://futurumgroup.com/insights/cerebras-s-1-teardown-is-the-23b-wafer-scale-ipo-the-end-of-gpu-homogeneity/" target="_blank" rel="noopener noreferrer" class="cite-link">Futurum Group</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>WSE-3 芯片晶体管与面积规模</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">4.0 Trillion</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">57x 最大 GPU</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 单片面积 46,225 mm²，集成 90 万 AI 核心与 44GB 片上 SRAM，片上内存带宽高达 <strong>21 PB/s</strong>（<a href="https://hyperaccel.ai/techblog/en/posts/cerebras-wse/" target="_blank" rel="noopener noreferrer" class="cite-link">HyperAccel Tech</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>IPO 估值演进与人效指标</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$26B–$33B</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">人效 $720K</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2026 年 5 月发行价 $185（首日冲高 ~$95B），10 月回归 ~$26B（流通）/$33B（完全稀释）；708 名员工人均创收 $720K（<a href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener noreferrer" class="cite-link">Mostly Metrics</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 商业版图与晶圆级算力架构 (Business & Wafer-Scale Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Business Empire &amp; Wafer-Scale Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 商业版图与晶圆级算力架构：从 CS-3 系统到全栈云推理引擎</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">业务双轮驱动：CS-3 硬件系统销售 (70.3%) + 云端极速推理服务 (29.7%, +94% YoY)</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2022–FY2026E Cerebras 营收爆发轨迹与业务结构演变（SEC 披露口径）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">2025 年营收达 $510.0M（云服务同比近翻倍至 $151.6M），2026 年核心营收指引剑指 $885M</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('rev_trajectory')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：2022–26E 营收结构</button>
+ <button onclick="switchBizChart('customer_shift')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：客户集中度演变</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">费尔德曼打破英伟达垄断的三大系统级破局</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">把整个机房集群微缩进一块硅晶圆</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 传统 GPU 需切割成小芯片并依赖 NVLink 跨卡通信，面临严重的“内存墙”与延迟开销。费尔德曼将一整片 300mm 晶圆铸造成 <strong>WSE-3 处理器</strong>，片内带宽达 21 PB/s，从物理层消灭跨芯片通信瓶颈（<a href="https://hyperaccel.ai/techblog/en/posts/cerebras-wse/" target="_blank" rel="noopener noreferrer" class="cite-link">HyperAccel</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">2024 年战略奇袭：用“极致推理速度”重新定义赛道</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 面对英伟达在训练端近乎铁桶的 CUDA 护城河，费尔德曼于 2024 年 8 月推出 <strong>Cerebras Inference</strong>，将大模型推理速度推升至 2,000+ tokens/秒（较主流 GPU 快 20 倍），成功把“速度”转化为独立产品品类（<a href="https://futurumgroup.com/insights/cerebras-s-1-teardown-is-the-23b-wafer-scale-ipo-the-end-of-gpu-homogeneity/" target="_blank" rel="noopener noreferrer" class="cite-link">Futurum</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">纵横合纵连横：锁定 OpenAI、AWS 与 AMD 生态同盟</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2025 年底至 2026 年，费尔德曼连续签下 <strong>OpenAI 750MW 推理部署大单</strong>（支撑 Codex Spark 等实时编码模型）、<strong>AWS Bedrock 托管合作</strong>及 <strong>AMD Helios 异构推理协同方案</strong>，彻底洗刷单一主权客户依赖标签（<a href="https://ir.amd.com/news-events/press-releases/detail/1293/amd-and-cerebras-announce-industry-leading-ultra-low-latency-and-high-throughput-ai-inference-solution" target="_blank" rel="noopener noreferrer" class="cite-link">AMD IR</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">核心产品哲学信条</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">“一旦体验过极致速度，便再也回不去了”</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心业务与产品技术架构卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 分部 1：WSE-3 晶圆级芯片与 CS-3 AI 超算系统 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">核心硬件基石 · 占 FY25 营收 70.3%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">硬件营收 $358.4M · 毛利率 43%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. WSE-3 晶圆级处理器与 CS-3 集成超算系统</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 采用台积电 5nm 工艺制造的 <strong>Wafer-Scale Engine 3 (WSE-3)</strong> 是计算史上最大单芯片（4 万亿晶体管、90 万核），搭载于高度集成液冷与多相垂直供电的 <strong>CS-3 整机柜系统</strong>中。单台 CS-3 即可替代数百张 GPU 复杂网络拓扑，大幅降低大模型分布式并行编程复杂度（<a href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener noreferrer" class="cite-link">Mostly Metrics</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>WSE-1 (2019) → WSE-2 (2021) → WSE-3 (2024)</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">入选《时代》2024 最佳发明</span>
+ </div>
+ </div>
+
+ <!-- 分部 2：Cerebras Inference 极速推理云与 Token 经济 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第二增长极 · 占 FY25 营收 29.7%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">云及服务营收 $151.6M (+93.6%)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. Cerebras Cloud 与毫秒级智能体推理云服务</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 随着 AI 从单次对话迈向需要多步推理的 Coding Agent（如 Cognition Devin、Lovable）与实时语音交互，推理延迟成为体验生死线。Cerebras 云服务从 2024 年 $78.3M 飙升至 2025 年 <strong>$151.6M</strong>（当前阶段毛利率约 30%），已切入 <strong>OpenAI、Perplexity、Mistral、GSK、Figma、CrowdStrike</strong> 等头部客户工作流（<a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link">Okara</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>OpenAI 750MW 合约 / AWS Bedrock 合作</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">驱动 2026–2027 商业化放量主力</span>
+ </div>
+ </div>
+
+ <!-- 分部 3：SwarmX 互连与 Weight Streaming 软件栈 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">软件与集群扩展层 · 破解大模型参数上限</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">支持高达 24 万亿参数模型</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. Weight Streaming 权重流架构与 CSoft 编译器栈</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 为突破单晶圆 44GB SRAM 的容量边界，费尔德曼团队独创 <strong>MemoryX 外部权重存储 + SwarmX 互连结构</strong>：将模型权重存放在外部内存池中流式注入晶圆，而将激活值死死锁在高速片上 SRAM 中计算，同时提供原生支持 PyTorch 的 <strong>CSoft 软件栈</strong>，让开发者无需重写底层 CUDA 核函数即可平滑迁移（<a href="https://hyperaccel.ai/techblog/en/posts/cerebras-wse/" target="_blank" rel="noopener noreferrer" class="cite-link">HyperAccel</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>MemoryX / SwarmX / CSoft (PyTorch兼容)</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">实现“写一次代码，无缝横向扩展”</span>
+ </div>
+ </div>
+
+ <!-- 分部 4：连续创业基因谱系 (Force10 → SeaMicro → Cerebras) -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">创始人硬科技履历 · 三战皆成高价值标的</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">$800M + $334M + IPO</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 斯坦福经济学家出身的“硬核系统架构师”轨迹</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 与多数拥有电子工程博士头衔的芯片 CEO 不同，费尔德曼本科与 MBA 均毕业于<strong>斯坦福大学经济与商学系</strong>（<a href="https://en.wikipedia.org/wiki/Andrew_Feldman_(businessman)" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>）。他早期操盘万兆以太网交换机巨头 <strong>Force10 Networks</strong>（后以约 $8亿售予 Dell）；2007 年联合创办高密度微服务器公司 <strong>SeaMicro</strong>，2012 年以 <strong>$3.34亿售予 AMD</strong> 并出任 AMD 数据中心服务器事业部总经理，随后于 2015–2016 年集结原班人马创立 Cerebras。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Force10 (Dell) → SeaMicro (AMD) → Cerebras</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">商业嗅觉 + 顶级硬件CTO搭档(Gary Lauterbach)</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 系统思维与四重核心护城河 (Systems Thinking & Economic Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Systems Thinking &amp; Four-Pillar Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 系统思维与四重核心护城河：以架构升维绕开 HBM 与传统封装红海</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：差异化硬核壁垒 (Niche-to-Mainstream Moat · 物理工艺独占 + 客户预付款飞轮)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">跨越 CoWoS 与 HBM 供应链卡脖子的物理奇招</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 当全行业都在疯狂抢夺台积电 CoWoS 先进封装与 SK 海力士 HBM 高带宽内存产能时，WSE-3 直接在单片逻辑晶圆内部集成 <strong>44GB 超高速 SRAM</strong>，无需外部 HBM 堆叠与复杂中介层封装，在内存带宽与能效比上走出完全独立的技术路线（<a href="https://hyperaccel.ai/techblog/en/posts/cerebras-wse/" target="_blank" rel="noopener noreferrer" class="cite-link">HyperAccel</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">整晶圆良率冗余容错与热机械应力专有工艺</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 制造 46,225 mm² 巨型芯片的三大死穴是硅片缺陷、热膨胀翘曲与千安培级供电。Cerebras 研发了全自动片上备用核心动态绕行路由（Defect Tolerance）与独家柔性互连接口，形成竞争对手难以在 3–5 年内复制的工程工艺壁垒（<a href="https://foundationcapital.com/ideas/reinventing-computing-for-ai-a-decade-with-cerebras" target="_blank" rel="noopener noreferrer" class="cite-link">Foundation Capital</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">超低延迟带来的“推理推理链（Reasoning）”不可替代性</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 随着 o1/o3 与 AI 编程代理兴起，单次回答需生成数万思考 Token。WSE-3 高达 2,000+ tok/s 的吐字速度将原本需等待 30 秒的复杂代码生成压缩至 1.5 秒内，使 <strong>OpenAI 与 Cognition</strong> 愿意签下百兆瓦级长期锁量协议（<a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link">Okara</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“客户预付款 + 战略认股权证”非对称商业谈判术</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 费尔德曼极擅用大客户预付款替高昂的晶圆流片与集群扩建融资：2024 年借 G42 斩获 <strong>$6.40亿客户预付款</strong> 实现经营现金流大幅转正；2026 年则通过向 OpenAI、AWS 授予绑定算力采购里程碑的认股权证（Warrants），锁定了 <strong>$254亿 RPO 订单池</strong>（<a href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener noreferrer" class="cite-link">Mostly Metrics</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维 AI 算力领袖战略特征雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">AI 算力芯片创始人五维商业能力模型对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Andrew Feldman (Cerebras) vs 黄仁勋 (NVIDIA) vs 苏姿丰 (AMD)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 AI 算力与基础架构领袖横向对比 (AI Compute Founders Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · AI Silicon &amp; Compute Leaders Comparative Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 AI 算力与基础架构领袖横向对比：晶圆级巨无霸 vs GPU 生态帝国</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索领袖 / 公司 / 架构路线..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部算力领袖</button>
+ <button onclick="filterCompetitors('incumbent')" data-filter="incumbent" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">通用 GPU 霸主派</button>
+ <button onclick="filterCompetitors('challenger')" data-filter="challenger" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">ASIC 与极速推理派</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">领袖与统帅企业</th>
+ <th class="py-4 px-4 min-w-[140px]">核心芯片与算力架构</th>
+ <th class="py-4 px-4 min-w-[145px]">2026 市值/并购规模标杆</th>
+ <th class="py-4 px-4 min-w-[115px]">毛利率与盈利阶段</th>
+ <th class="py-4 px-4 min-w-[125px]">核心客户与绑定模式</th>
+ <th class="py-4 px-5 min-w-[240px]">与费尔德曼 (Cerebras) 路线异同评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：Andrew Feldman 基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">安德鲁·费尔德曼</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Cerebras Systems (NASDAQ: CBRS)</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">300mm 整晶圆芯片 WSE-3 + 44GB 片上 SRAM</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">IPO首日~$95B · 现~$26B–$33B</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">综合毛利 39% (硬件43%)</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">OpenAI / AWS / G42 ($25.4B RPO)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>架构颠覆者：</strong>唯一成功商业化整片晶圆级处理器的独立上市公司，凭物理级低延迟在实时推理赛道撕开切口（<a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link">Okara</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：黄仁勋 -->
+ <tr data-category="incumbent" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">黄仁勋 (Jensen Huang)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">NVIDIA (Blackwell / Vera Rubin)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">多芯粒 GPU + HBM3e/4 + NVLink + CUDA</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">数万亿美元全局算力霸主</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利率 71%–75%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">全云厂 + 百万级 CUDA 开发者</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>正面围剿与防御：</strong>训练与通用推理绝对王者，2025–2026 年斥资约 $20B 整合 Groq 技术并推出 Vera Rubin 异构机架以防堵 Cerebras（<a href="https://futurumgroup.com/insights/cerebras-s-1-teardown-is-the-23b-wafer-scale-ipo-the-end-of-gpu-homogeneity/" target="_blank" rel="noopener noreferrer" class="cite-link">Futurum</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 3：苏姿丰 -->
+ <tr data-category="incumbent" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">苏姿丰 (Lisa Su)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">AMD (Instinct MI350/MI400 + Helios)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">Chiplet 芯粒封装 GPU + ROCm 开源软件栈</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">稳居全球第二大 AI GPU 巨头</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">非GAAP毛利 ~50%–54%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">微软 / Meta / Oracle / OpenAI</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>从老东家到战略盟友：</strong>费尔德曼曾于 2012–2014 年任 AMD 副总裁；2026 年 7 月 AMD 与 Cerebras 正式联手推出 Helios + WSE 分离式推理架构（<a href="https://ir.amd.com/news-events/press-releases/detail/1293/amd-and-cerebras-announce-industry-leading-ultra-low-latency-and-high-throughput-ai-inference-solution" target="_blank" rel="noopener noreferrer" class="cite-link">AMD IR</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 4：乔纳森·罗斯 -->
+ <tr data-category="challenger" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">乔纳森·罗斯 (Jonathan Ross)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Groq (LPU 确定性推理架构)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">纯片上 SRAM 确定性流式处理单元 (LPU)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">~$20B 级技术资产整合入英伟达</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">早期高投入低利润阶段</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">开发者 API + 主权算力集群</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>SRAM 路线直接宿敌：</strong>同样放弃 HBM 押注片上 SRAM，但 Groq 采用多颗常规尺寸芯片拼接（需海量卡间互联），Cerebras 则将算力浓缩进单晶圆（<a href="https://futurumgroup.com/insights/cerebras-s-1-teardown-is-the-23b-wafer-scale-ipo-the-end-of-gpu-homogeneity/" target="_blank" rel="noopener noreferrer" class="cite-link">Futurum</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 5：霍克·陈 -->
+ <tr data-category="challenger" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">陈福阳 (Hock Tan)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Broadcom 博通 (定制 XPU / ASIC)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">为超大规模云厂定制专用 ASIC + Tomahawk 交换</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">万亿美元定制芯片与网络巨头</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">综合毛利 ~75% / 净现金流强劲</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">Google TPU / Meta / 字节定制</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>白牌定制 vs 自有品牌全栈：</strong>博通帮巨头做后台“代工式定制 ASIC”，费尔德曼则坚持打造自有品牌整机与云推理标准。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的算力领袖记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：单芯片硅面积与片上内存带宽物理参数代差对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">物理尺度代差：Cerebras WSE-3 vs 旗舰 AI GPU 单芯片硅片面积对比（mm²）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">受光刻机曝光掩模版（Reticle Limit ~858 mm²）限制，传统芯片无法做大；费尔德曼通过光刻拼接技术造出 46,225 mm² 整晶圆怪兽（<a href="https://hyperaccel.ai/techblog/en/posts/cerebras-wse/" target="_blank" rel="noopener noreferrer" class="cite-link">HyperAccel 技术白皮书口径</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">单芯片面积达光刻极限的 53.9 倍</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 商业回报、IPO 估值与 RPO 订单推演 (Financials & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financials, IPO Valuation &amp; RPO Delivery Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 商业回报、IPO 估值与订单推演：穿透账面盈利迷雾与 $25.4B 履约兑现</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">财务真相拆解：高成长确定性 × 云服务毛利爬坡 × 非现金会计增益剔除</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">FY2025 Gross Margin Split</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">39.0% (硬件 43%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 较 2024 年 42% 小幅回落，主因毛利率 30% 的云推理业务占比从 27% 提升至 30%，随集群利用率提升具备修复空间（<a href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener noreferrer" class="cite-link">Mostly Metrics</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase">GAAP vs Non-GAAP Earnings</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">-$75.7M Non-GAAP</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ FY25 账面 GAAP 净利 $237.8M 含 $363.3M 优先股远期合约重组一次性非现金收益；剔除后非 GAAP 净亏损 $75.7M（<a href="https://futurumgroup.com/insights/cerebras-s-1-teardown-is-the-23b-wafer-scale-ipo-the-end-of-gpu-homogeneity/" target="_blank" rel="noopener noreferrer" class="cite-link">Futurum</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">IPO Capital &amp; Valuation Reset</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$5.55B 募资额</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 2026 年 5 月以 $185 发行募资 $5.55B（充实量产资本开支），股价经历首日狂热冲高（~$95B 市值）后于 10 月回归 $108.94（~$26B–$33B）（<a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link">Okara</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Founder Net Worth &amp; Alignment</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$1.9B–$3.2B</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 费尔德曼兼任董事长、总裁与 CEO，IPO 时期持股价值一度达 $32亿（彭博），2026 年 7 月福布斯估值约 $19亿，利益深度绑定（<a href="https://en.wikipedia.org/wiki/Andrew_Feldman_(businessman)" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2025Q1–2026Q3E 季度核心营收爬坡 vs 在手未确认订单 RPO 蓄水池演进（SEC 披露口径）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">季度核心营收从 2025Q1 的 $99.5M 稳步攀升至 2026Q3 指引的 $215M（翻倍有余），而 OpenAI 与 AWS 签约推动 RPO 池跃升至 $25.4B</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">6个季度单季营收增长 +116%</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“Cerebras $25.4B RPO 履约转化与远期估值”动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>RPO BACKLOG &amp; VALUATION ENGINE · Cerebras 订单兑现与远期估值推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">从 $25.4B 积压订单到 2028 稳态盈利：三大情景压力测试器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基于 S-1 披露的 RPO 确认节奏（未来 24 个月确认约 15%、随后 24 个月确认约 43%），测算不同交付进度与估值倍数下的远期市值弹性</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>计入 WSE-4 液冷集群规模化毛利改善 (+5% 净利率)</span>
+ </label>
+ </div>
+
+ <!-- 真实情景预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('base_case')" data-era="base_case" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 中性基准情景 (Base Case · 2028E)</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">2028年营收 ~$3.6B · 12x PS 估值</div>
+ </button>
+ <button type="button" onclick="setSimEra('bull_hyperscale')" data-era="bull_hyperscale" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 乐观超大规模放量 (OpenAI 2GW 扩张)</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">2028年营收 ~$5.8B · 16x PS 估值</div>
+ </button>
+ <button type="button" onclick="setSimEra('bear_delay')" data-era="bear_delay" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 谨慎交付延期与重资产折旧压力</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">2028年营收 ~$2.1B · 8x PS 估值</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">2028E 远期年化营收规模 ($B)</span>
+ <span id="sim-rev-label" class="font-mono font-bold text-white text-sm">$3.60 B</span>
+ </div>
+ <input id="sim-rev" type="range" min="1.2" max="7.5" step="0.1" value="3.6" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">稳态非 GAAP 营业利润率 (%)</span>
+ <span id="sim-margin-label" class="font-mono font-bold text-white text-sm">22.0%</span>
+ </div>
+ <input id="sim-margin" type="range" min="5" max="40" step="1" value="22" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">远期企业价值/营收倍数 (EV / Sales)</span>
+ <span id="sim-ps-label" class="font-mono font-bold text-emerald-400 text-sm">12.0x</span>
+ </div>
+ <input id="sim-ps" type="range" min="5" max="25" step="0.5" value="12.0" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：对应 OpenAI 750MW 合约按期爬坡、AWS Bedrock 商业推理放量，2028 年确认约 $3.6B 年营收并享有 12x 远期 PS（参照主流 AI 基础设施硬件商区间）。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">2028E 隐含目标企业估值</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$43.20 B</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">较 $26B 流通市值隐含空间 +66.2%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">较 2025 年营收 ($510M) 扩张倍数</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">7.06x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">3 年营收复合增速 CAGR +91.8%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">2028E 预计年化非 GAAP 营业利润</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$792 M</div>
+ <div class="text-xs text-slate-400 mt-1.5">有效综合营业利润率：<span id="sim-eff-margin-text" class="text-white font-semibold">22.0%</span></div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">隐含远期市盈率 (隐含 EV / 营业利润)</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">54.5x</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">占当前 $25.4B RPO 池年均转化率：14.2%</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角机构投资辩论 (Bull Case vs Bear Case) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">看多核心逻辑 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">推理算力海啸 + 订单能见度</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 工作负载重心从训练不可逆地转向推理：</strong>多步推理与实时 Coding Agent 对低延迟有刚性付费意愿，WSE-3 物理带宽优势直接变现（<a href="https://futurumgroup.com/insights/cerebras-s-1-teardown-is-the-23b-wafer-scale-ipo-the-end-of-gpu-homogeneity/" target="_blank" rel="noopener noreferrer" class="cite-link">Futurum</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>$254亿 RPO 提供罕见的多年营收能见度：</strong>相当于 2025 年营收的近 50 倍，且 OpenAI、AWS 的加入提供了顶级商业背书与扩产确定性（<a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link">Okara</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>连续创业团队卓越的工程落地履历：</strong>费尔德曼与联合创始人 Gary Lauterbach 连续三次将复杂系统硬件公司推向成功，执行力远超普通学院派 AI 芯片初创公司。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">看空与核心风险 (Bear Case &amp; Risks)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">客户高度集中 + 重资产交付</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>极端客户集中度风险：</strong>2024 年 G42 占营收 85%，2025 年 MBZUAI（62%）与 G42（24%）合计占 86%，未来数年又高度依赖 OpenAI 单一履约节奏（<a href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener noreferrer" class="cite-link">Mostly Metrics</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>云服务扩张带来的重资产 CapEx 与毛利稀释：</strong>转向自建云推理集群需巨额前期资本开支，且云业务当前毛利率（30%）显著低于纯硬件销售（43%）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>英伟达与谷歌 TPU 的全栈反击：</strong>英伟达收购 Groq 技术并推进 Rubin 架构、谷歌迭代铁木真 TPU，持续压缩独立芯片厂的生态空间。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕创业演进与战略复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Entrepreneurial Evolution &amp; Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕创业演进与战略复盘：从网络交换机到高密度微服务器，再到晶圆级 AI</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">贯穿费尔德曼二十五年职业生涯的唯一红线：系统级“互连效率”与“能耗比重构”</span>
+ </div>
+
+ <!-- 1. 三幕创业演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-teal-500/15 text-teal-600 dark:text-teal-400 text-xs font-bold">第一幕 · 数据中心高速网络</span>
+ <span class="font-mono text-xs font-bold text-slate-500">2000–2006</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">Riverstone &amp; Force10 ($800M)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>斯坦福 MBA 毕业后先后在 Riverstone Networks 与 Force10 Networks 掌管产品、市场与企业发展，协助将万兆以太网交换机打入全球大型数据中心与超算中心（Force10 后以约 $8亿被戴尔收购），深刻洞悉大规模集群中“数据传输才是最大成本”的底层规律（<a href="https://en.wikipedia.org/wiki/Andrew_Feldman_(businessman)" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-teal-600 dark:text-teal-400">
+ 能力沉淀：掌握超算数据中心客户痛点与高可靠系统销售基因
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 颠覆传统服务器机架</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2007–2014</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">SeaMicro ($334M 售予 AMD)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>联合创立 SeaMicro 并出任 CEO，发明 Freedom Supercompute Fabric 互连架构，将数百颗低功耗处理器高密度塞入单个机箱，砍掉传统服务器 75% 功耗与空间。2012 年以 <strong>$3.34亿售予 AMD</strong>，费尔德曼随即在 AMD 执掌数据中心服务器业务两年，亲历大厂内部决策摩擦（<a href="https://investors.cerebras.ai/board-member/andrew-feldman" target="_blank" rel="noopener noreferrer" class="cite-link">Cerebras IR</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 能力沉淀：验证“用超高速内部互连替代笨重外围组件”的系统哲学
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 晶圆级 AI 登顶</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2015–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">Cerebras 十年磨剑与 IPO</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2015–2016 年离开 AMD 创立 Cerebras，前四年闭门研发于 2019 年震撼发布初代 WSE；在 2024 年首次递交 IPO 因 CFIUS 审查暂缓后，迅速引入阿布扎比以外的全球商用大单（OpenAI 750MW + AWS），最终于 <strong>2026 年 5 月成功上市</strong>，实现从硬科技苦旅到资本市场百亿美元级巨擘的跨越（<a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link">Okara</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 能力沉淀：在巨头环伺中凭物理第一性原理开辟百亿美元新大陆
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大实战危机应对与关键转折复盘 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业实战镜鉴：费尔德曼带领 Cerebras 穿越生死线的四大关键决策</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">决策 01 · 非对称冷启动破局</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">阿联酋 G42 / MBZUAI 战略合作</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">当硅谷云巨头全押英伟达时，向主权 AI 寻求第一桶金</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2023–2024 年北美云巨头尚不愿轻易切换非 CUDA 架构，费尔德曼果断签约阿联酋 G42 建设 Condor Galaxy 超级计算机，换回 $14.3亿意向合同与 $6.40亿真金白银预付款，成功供血完成 WSE-3 量产（<a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link">Okara</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">决策 02 · 化解 2024 IPO 审查危机</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2024 暂缓 → 2026 华丽重启</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">主动调整股权架构并攻克 OpenAI 与 AWS 彻底破局</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2024 年 9 月首次冲刺 IPO 因外资审查与单一客户风险受阻后，费尔德曼在 18 个月内完成 G42 协议重组、斩获两轮逾 $21亿私募融资，并拿下 OpenAI 与 AWS 合约，使 2026 年 5 月二次 IPO 估值飙升至发行价 $56.4B（<a href="https://futurumgroup.com/insights/cerebras-s-1-teardown-is-the-23b-wafer-scale-ipo-the-end-of-gpu-homogeneity/" target="_blank" rel="noopener noreferrer" class="cite-link">Futurum</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">决策 03 · 切入推理痛点而非硬拼训练</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">Cerebras Inference 闪电战</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">用单 API 接口隐藏底层硬件复杂性，直击开发者体验</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 早期卖整机超算周期漫长；2024 年推出兼容 OpenAI API 格式的云推理服务后，开发者无需购买昂贵硬件、仅需修改一行 API 端点即可享受 2,000+ tok/s 极速响应，迅速引爆病毒式口碑（<a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link">Okara</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">决策 04 · 联合 AMD 构建开放推理联盟</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2026.07 AMD Helios × WSE</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">“高吞吐 GPU 预填充 + 超低延迟 WSE 解码”异构协同</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 费尔德曼深知单一架构无法通吃所有计算阶段，2026 年 7 月携手老东家 AMD 推出分离式推理方案（Prefill 交给高吞吐 AMD Instinct GPU，Decode 交给高带宽 Cerebras WSE），打造对抗英伟达 Vera Rubin 机架的最强统一战线（<a href="https://ir.amd.com/news-events/press-releases/detail/1293/amd-and-cerebras-announce-industry-leading-ultra-low-latency-and-high-throughput-ai-inference-solution" target="_blank" rel="noopener noreferrer" class="cite-link">AMD IR</a>）。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级商业与投资启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给硬科技创业者与 AI 算力投资者的三条“费尔德曼底层法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 在巨头统治区，用“架构级 10 倍代差”而非“15% 性价比”破局</div>
+ <p class="text-slate-300 leading-relaxed">
+ 模仿英伟达设计一张“便宜 20% 的类 GPU 芯片”必死无疑；只有从硅片物理边界与内存层级重构问题，做出快 10–20 倍的体验代差，才能撬动头部大模型客户迁移。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 硬科技商业化的生命线是“大客户预付款 + 渐进式客户去集中化”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 早期依靠单一主权或灯塔客户预付款活下来是生存智慧，但上市前后能否顺利过渡到多云与主流商业客户（如 OpenAI/AWS），决定了估值能否穿越周期。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 关注 RPO 积压订单的“季度转化率”与“云端毛利爬坡曲线”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 面对百亿美元级 RPO 与波动剧烈的新股估值，机构投资者应紧盯每季度核心营收兑现进度、百兆瓦集群通电节点及云推理业务毛利率是否向 40%+ 靠拢。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “费尔德曼法则”硬科技与算力企业核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · AI Silicon &amp; Systems Diagnostic Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “费尔德曼法则”AI 算力与硬科技企业评估交互核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于跟踪 Cerebras (CBRS) 季报基本面或评估其他挑战英伟达的 AI 芯片/基础设施标的（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 架构级性能代差验证：是否解决“内存墙”而非盲目堆算力？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">物理第一性原理</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查产品在真实大模型推理（Decode 阶段）中的片上内存带宽与端到端延迟是否具备数量级领先。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 软件迁移零摩擦测试：开发者能否 1 天内完成工作负载切换？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">生态软件栈壁垒</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验 CSoft 编译器与云端推理 API 是否原生兼容 PyTorch 与主流大模型框架，无需客户重写底层算子。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 客户结构多元化进度：前两大客户营收占比是否降至 50% 以下？</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">去集中化健康度</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪 2026Q3–2027 年 OpenAI、AWS Bedrock 与企业级云客户营收占比提升，降低单一主权客户依赖。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 百兆瓦（MW）级集群准时通电与 RPO 季度确认节奏</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">重资产交付大考</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查 OpenAI 750MW 算力部署是否按期交付并转化为 GAAP 核心营收（2026 全年核心营收目标 $880M–$890M）。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 云推理服务毛利率爬坡与非 GAAP 经营现金流转正节点</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">单位经济模型</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察云服务毛利率能否从 30% 逐步向 40%+ 改善，以及在不依赖一次性预付款的情况下实现内生正向现金流。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 创始人控制权稳定性与下一代 WSE-4 制程演进路线图</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">治理与技术迭代</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查 AB 股架构下费尔德曼与联合创始人 Gary Lauterbach 的长期留任承诺，以及下一代 3nm/2nm 晶圆引擎流片进度。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>安德鲁·费尔德曼 Andrew Feldman (Cerebras Systems CEO) 深度研究报告 · 机构框架版</span>
+ <span>核心数据出处：Cerebras SEC Form S-1 / 10-Q (2024–2026) · AMD &amp; OpenAI 公开披露</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务、订单与技术参数均核验自美国证监会（SEC EDGAR）披露的 <a href="https://investors.cerebras.ai/corporate-governance/board-of-directors" target="_blank" rel="noopener noreferrer" class="cite-link">Cerebras Systems 招股说明书与季度财报</a>、<a href="https://okara.ai/blog/cerebras-revenue-growth" target="_blank" rel="noopener noreferrer" class="cite-link">Cerebras 2026 IPO 与 Q2/Q3 营收数据汇总</a>、<a href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener noreferrer" class="cite-link">S-1 财务结构拆解</a>、<a href="https://ir.amd.com/news-events/press-releases/detail/1293/amd-and-cerebras-announce-industry-leading-ultra-low-latency-and-high-throughput-ai-inference-solution" target="_blank" rel="noopener noreferrer" class="cite-link">AMD 与 Cerebras 联合公告</a> 及公开技术白皮书。报告内置的 RPO 与远期估值模拟器仅供情景分析参考，不构成任何具体证券投资建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Cerebras_CEO_Andrew_Feldman_Analysis-v2.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Cerebras_CEO_Andrew_Feldman_Analysis-v2.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. AI 算力领袖横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “Cerebras $25.4B RPO 履约转化与远期估值”动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ base_case: {
+ rev: 3.6,
+ margin: 22,
+ ps: 12.0,
+ caption: '当前测算基准：对应 OpenAI 750MW 合约按期爬坡、AWS Bedrock 商业推理放量，2028 年确认约 $3.6B 年营收并享有 12x 远期 PS（参照主流 AI 基础设施硬件商区间）。'
+ },
+ bull_hyperscale: {
+ rev: 5.8,
+ margin: 28,
+ ps: 16.0,
+ caption: '当前测算基准：对应 OpenAI 主协议向 2GW 满载扩建、且多家超大规模云厂商跟进采购 WSE-4 推理集群，2028 年营收冲击 $5.8B 并获 16x 高成长估值溢价。'
+ },
+ bear_delay: {
+ rev: 2.1,
+ margin: 14,
+ ps: 8.0,
+ caption: '当前测算基准：模拟数据中心电力/液冷交付延后及英伟达/定制 ASIC 激烈价格战导致云端毛利率承压，2028 年营收仅达 $2.1B 且估值倍数收缩至 8x PS。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-rev').value = preset.rev;
+ document.getElementById('sim-margin').value = preset.margin;
+ document.getElementById('sim-ps').value = preset.ps;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义 RPO 履约转化推演模式——自由探索不同营收确认速度、利润率结构与估值倍数下的远期企业市值。';
+ }
+
+ function updateValueSimulator() {
+ const revB = parseFloat(document.getElementById('sim-rev').value) || 3.6;
+ const baseMarginPct = parseFloat(document.getElementById('sim-margin').value) || 22;
+ const psMult = parseFloat(document.getElementById('sim-ps').value) || 12.0;
+ const scaleBonus = document.getElementById('div-bonus-toggle').checked ? 5.0 : 0;
+
+ const effMarginPct = Math.min(48, baseMarginPct + scaleBonus);
+ const impliedEvB = revB * psMult;
+ const baseMarketCapB = 26.0;
+ const upsidePct = ((impliedEvB - baseMarketCapB) / baseMarketCapB) * 100;
+ const revMultiple2025 = revB / 0.51;
+ const cagr3Yr = (Math.pow(revMultiple2025, 1 / 3) - 1) * 100;
+ const opProfitM = revB * 1000 * (effMarginPct / 100);
+ const impliedEvToOp = opProfitM > 0 ? (impliedEvB * 1000) / opProfitM : 0;
+ const rpoConvPct = (revB / 25.4) * 100;
+
+ document.getElementById('sim-rev-label').textContent = '$' + revB.toFixed(2) + ' B';
+ document.getElementById('sim-margin-label').textContent = baseMarginPct.toFixed(1) + '%';
+ document.getElementById('sim-ps-label').textContent = psMult.toFixed(1) + 'x';
+
+ document.getElementById('sim-final-value').textContent = '$' + impliedEvB.toFixed(2) + ' B';
+ const signStr = upsidePct >= 0 ? '+' : '';
+ document.getElementById('sim-total-return').textContent = `较 $26B 流通市值隐含空间 ${signStr}${upsidePct.toFixed(1)}%`;
+ document.getElementById('sim-total-return').className = upsidePct >= 0 ? 'text-xs font-semibold text-emerald-400 mt-1.5' : 'text-xs font-semibold text-rose-400 mt-1.5';
+
+ document.getElementById('sim-multiple').textContent = `${revMultiple2025.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = `3 年营收复合增速 CAGR +${cagr3Yr.toFixed(1)}%`;
+ document.getElementById('sim-net-gain').textContent = '$' + Math.round(opProfitM).toLocaleString('en-US') + ' M';
+ document.getElementById('sim-eff-margin-text').textContent = effMarginPct.toFixed(1) + '%';
+ document.getElementById('sim-eff-cagr').textContent = impliedEvToOp.toFixed(1) + 'x';
+ document.getElementById('sim-mid-val').textContent = `占当前 $25.4B RPO 池年均转化率：${rpoConvPct.toFixed(1)}%`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'cbrs_ceo_analysis_checklist_v2';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱存储限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱存储限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“费尔德曼法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'rev_trajectory';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function showChartFallbackNotice() {
+ document.querySelectorAll('canvas').forEach(cv => {
+ if (cv.parentElement && !cv.parentElement.querySelector('.chart-fallback-tip')) {
+ const tip = document.createElement('div');
+ tip.className = 'chart-fallback-tip absolute inset-0 flex items-center justify-center text-xs text-slate-500 bg-slate-100/80 dark:bg-navy-800/80 rounded-xl p-4 text-center';
+ tip.textContent = '图表脚本未加载完成，请确保设备已连接互联网以加载 Chart.js 组件并刷新页面。';
+ cv.parentElement.appendChild(tip);
+ }
+ });
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas) return;
+ if (typeof Chart === 'undefined') {
+ showChartFallbackNotice();
+ return;
+ }
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2022–FY2026E Cerebras 营收结构演变 ($M, 源自 SEC S-1 / 2026 指引)
+ const revConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2022',
+ 'FY2023',
+ 'FY2024',
+ 'FY2025 (IPO基准)',
+ 'FY2026E (管理层指引中值)'
+ ],
+ datasets: [
+ {
+ label: 'CS-3 硬件系统营收 ($M)',
+ data: [24.6, 78.7, 212.0, 358.4, 565.0],
+ backgroundColor: '#F59E0B',
+ borderRadius: 4
+ },
+ {
+ label: 'Cerebras 云与服务营收 ($M)',
+ data: [0.0, 0.0, 78.3, 151.6, 320.0],
+ backgroundColor: '#10B981',
+ borderRadius: 4
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(1)}M`
+ }
+ }
+ },
+ scales: {
+ x: {
+ stacked: true,
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ stacked: true,
+ min: 0,
+ max: 980,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：客户集中度结构演变 (2023 vs 2024 vs 2025 vs 2026Q2 Backlog 占比 %)
+ const customerConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2023 营收结构',
+ 'FY2024 营收结构',
+ 'FY2025 营收结构',
+ '2026Q2 $25.4B 订单池主力'
+ ],
+ datasets: [
+ {
+ label: '阿联酋 G42 占比 (%)',
+ data: [83, 85, 24, 6],
+ backgroundColor: '#64748B',
+ borderRadius: 4
+ },
+ {
+ label: '阿布扎比 MBZUAI 占比 (%)',
+ data: [0, 0, 62, 8],
+ backgroundColor: '#06B6D4',
+ borderRadius: 4
+ },
+ {
+ label: 'OpenAI / AWS / 全球商业客户 (%)',
+ data: [17, 15, 14, 86],
+ backgroundColor: '#F59E0B',
+ borderRadius: 4
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: ${c.parsed.y}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ stacked: true,
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ stacked: true,
+ min: 0,
+ max: 100,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'rev_trajectory' ? revConfig : customerConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'rev_trajectory') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2022–FY2026E Cerebras 营收爆发轨迹与业务结构演变（SEC 披露口径）';
+ subEl.textContent = '2025 年营收达 $510.0M（云服务同比近翻倍至 $151.6M），2026 年核心营收指引剑指 $885M';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '客户结构破局演进：从单一中东主权大客户到 OpenAI / AWS 全球商业订单池';
+ subEl.textContent = '2024–2025 年超八成营收来自 G42 与 MBZUAI，而 2026 年 $25.4B RPO 积压订单已由 OpenAI 750MW 等全球商业巨头主导';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '芯片与互连物理架构颠覆力',
+ '大客户非对称交易谈判力',
+ '连续硬科技创业工程落地',
+ '通用开发者软件生态广度',
+ '供应链与规模化盈利护城河'
+ ],
+ datasets: [
+ {
+ label: '安德鲁·费尔德曼 (Cerebras)',
+ data: [9.8, 9.5, 9.3, 7.2, 7.4],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: '黄仁勋 (NVIDIA)',
+ data: [9.5, 9.2, 9.8, 9.9, 9.9],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '苏姿丰 (AMD)',
+ data: [8.6, 8.5, 9.4, 8.2, 8.8],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Cerebras WSE-3 (300mm 整晶圆级处理器)',
+ 'NVIDIA B200 Blackwell (双裸片封装合计)',
+ 'NVIDIA H100 Hopper (单光刻掩模上限)',
+ 'Groq LPU v1 (单芯片确定性流式处理器)'
+ ],
+ datasets: [
+ {
+ label: '单处理器硅片面积 (mm² · 决定片上 SRAM 容量与互联密度)',
+ data: [46225, 1600, 814, 725],
+ backgroundColor: [
+ '#F59E0B',
+ '#10B981',
+ '#06B6D4',
+ '#64748B'
+ ],
+ borderRadius: 6,
+ barThickness: 22
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `硅片面积: ${c.parsed.x.toLocaleString('en-US')} mm²`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 50000,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v.toLocaleString('en-US') + ' mm²' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['2025Q1', '2025Q2', '2025Q3', '2025Q4', '2026Q2 (IPO后)', '2026Q3E (指引)'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '单季核心营收 Core Revenue ($M)',
+ data: [99.5, 112.0, 127.1, 171.4, 209.9, 215.0],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 30,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '在手剩余履约义务 RPO 积压池 ($B)',
+ data: [1.1, 1.2, 1.4, 24.6, 25.4, 25.4],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: $${c.parsed.y.toFixed(1)}M`
+ : `${c.dataset.label}: $${c.parsed.y.toFixed(1)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 250,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' },
+ title: { display: true, text: '单季核心营收 ($M)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 30,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '在手 RPO 订单池 ($B)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateValueSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>
