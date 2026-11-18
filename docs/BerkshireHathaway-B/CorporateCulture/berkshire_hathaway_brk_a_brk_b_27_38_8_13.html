@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>伯克希尔·哈撒韦 Berkshire Hathaway (BRK.A / BRK.B) 企业文化与治理架构深度研究报告：27人总部统御38.8万员工、极端分权、零成本浮存金与13条股东手册法则</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：琥珀金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Berkshire_Hathaway_Corporate_Culture_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ BRK
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Omaha · 1965–2026+</div>
+ <div class="text-sm font-bold leading-tight">伯克希尔企业文化深度研报</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">伯克希尔文化专题导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 文化架构与资本机器</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 股东手册与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 治理范式与同业横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 文化复利与股东回报推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与跨代传承复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 伯克希尔文化核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>企业文化与长期资本配置研究组</p>
+ <p>财报与治理基准：SEC 10-K / 2026Q3 10-Q</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-sm shadow-lg shadow-mogold-500/25">
+ BRK
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CORPORATE CULTURE</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">伯克希尔企业文化研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 合伙人精神 × 极端分权自治 × 零成本浮存金复利 · 巴菲特与芒格六十年治理圣经
+ </p>
+ </div>
+
+ <!-- 核心组织与财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">1965–2025 年化复利</span>
+ <span class="font-mono font-bold text-white">19.7% vs 标普 10.5%</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">总部 vs 全集团员工</span>
+ <span class="font-mono font-bold text-emerald-400">27人 / ~387,800人</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">浮存金与国债储备</span>
+ <span class="font-mono font-bold text-mogold-400">$178.5B · $336.7B</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>文化架构与资本机器</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>股东手册与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>治理范式与同业横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>文化复利与股东回报推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与跨代传承复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>伯克希尔文化核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">治理史定评：人类商业史最伟大的分权自治与复利操作系统</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：巴菲特与芒格时代 (1965–2025) · 阿贝尔接棒新纪元 (2026+)</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据基准：2025 10-K / 2026Q3 10-Q</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 13条股东手册契约 × 27人总部极端分权 × 零成本保险浮存金 × 家族企业永久归宿</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 伯克希尔·哈撒韦 Berkshire Hathaway 企业文化深度研究报告：无官僚分权联邦、声誉铁律与跨越六十年的制度化复利机器
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 如果说史蒂夫·乔布斯以“端到端垂直集权”定义了消费科技的极限，那么沃伦·巴菲特（Warren Buffett）与查理·芒格（Charlie Munger）缔造的<strong class="text-white">伯克希尔·哈撒韦（Berkshire Hathaway）</strong>则展示了另一种截然不同却同样封神的组织范式——<strong class="text-mogold-300">“经营权极端下放（几乎接近放任不管）+ 资本配置权绝对集中”</strong>的无官僚联邦制（<a href="https://buffett.cnbc.com/video/1998/05/04/afternoon-session---1998-berkshire-hathaway-annual-meeting.html" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">1998 股东大会实录</a>）。
+ 坐落于内布拉斯加州奥马哈的集团总部仅有 <a href="https://www.good-investing.net/berkshire-hathaway-annual-meeting/transcripts/2025-transcript/" target="_blank" rel="noopener noreferrer" class="cite-link text-white font-semibold">27 名员工</a>（无总部法务部、人力资源部、公关部或战略企划部），却统御着逾 60 家全资运营子公司与约 <a href="https://www.quantumrun.com/consulting/berkshire-hathaway-statistics/" target="_blank" rel="noopener noreferrer" class="cite-link text-white font-semibold">38.78万–39.24万名员工</a>，在 2025 财年创造出 <a href="https://www.businesswire.com/news/home/20260228505745/en/Berkshire-Hathaway-Inc.-News-Release" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$3,714.44亿总营收</a> 与 <a href="https://www.sec.gov/Archives/edgar/data/1067983/000119312526085801/d117283dex991.htm" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$444.86亿营业利润</a>（2024 年更达历史峰值 $474.37亿）。自 1965 年至 2025 年，伯克希尔以 <a href="https://www.berkshirehathaway.com/2025ar/2025ar.pdf" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-400 font-semibold">19.7% 年化复合收益率</a> 碾压标普 500 指数的 10.5%，并在 2026 年顺利完成由 <a href="https://myequityresearch.com/greg-abel-and-berkshire-hathaways-a-track-record-built-for-continuity-and-growth/" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">格雷格·阿贝尔（Greg Abel）接任 CEO</a>、霍华德·巴菲特出任非执行董事长守护文化的历史性交接。
+ </p>
+
+ <!-- 核心文化基因高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">《股东手册》13条所有权原则</div>
+ <div class="text-white font-semibold">“虽为公司形式，但秉持合伙人态度”——管理层自掏真金白银持股，零股票期权激励，与股东利益 100% 绑定</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">所罗门兄弟“头版测试”声誉铁律</div>
+ <div class="text-mogold-400 font-semibold">“为公司亏钱我能理解；但若损害公司哪怕一丝一毫的名誉，我将毫不留情（Ruthless）”</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">$1,785亿浮存金与 $3,367亿美债堡垒</div>
+ <div class="text-emerald-400 font-semibold">严守承保纪律（2025 综合成本率 87.1%）带来负成本长期资金池，叠加截至 2026Q3 达 $3,367.35亿短期美债储备</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>60年长期复利神话 (1965–2025)</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">19.7%</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">标普 10.5%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 1965–2025 年化超额收益达 +9.2 个百分点；1964–2024 累计总回报高达 5,502,284%（<a href="https://www.berkshirehathaway.com/2025ar/2025ar.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">2025 Annual Report</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>奥马哈极简总部杠杆比</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">27 人</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">1 : 14,530</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 总部仅 27 名员工却覆盖全集团 ~38.78万–39.24万名员工，彻底消灭大企业总部官僚主义内耗（<a href="https://www.good-investing.net/berkshire-hathaway-annual-meeting/transcripts/2025-transcript/" target="_blank" rel="noopener noreferrer" class="cite-link">2025 AGM Transcript</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2025 营收与常态化营业利润</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$44.49B</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">营收 $371.4B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 剔除账面股票公允价值波动后，FY25 营业利润达 $444.86亿（FY24 为 $474.37亿，近五年均值 $375亿）（<a href="https://www.sec.gov/Archives/edgar/data/1067983/000119312526085801/d117283dex991.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC EX-99.1</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>零成本浮存金与短期美债堡垒</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$178.5B</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">美债 $336.7B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 保险浮存金由 1970 年 $3,900万扩至 2025 年末 $1,760亿（2026Q3 达 $1,785亿）（<a href="https://sec-api.io/insights/berkshire-hathaway-brk-b-q3-2026-earnings-analysis-geico-combined-ratio-91-4-vs-84-3-bnsf-19-3-9-6bn-q3-buybacks-in-greg-abel-s-first-year-as-ceo" target="_blank" rel="noopener noreferrer" class="cite-link">SEC-API Q3 2026</a>）；短期美债达 $3,367.35亿（<a href="https://www.stocktitan.net/sec-filings/BRK.A/10-q.html" target="_blank" rel="noopener noreferrer" class="cite-link">10-Q</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 文化架构与资本机器 (Cultural Architecture & Capital Engine)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Cultural Architecture &amp; Capital Allocation Engine</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 文化架构与资本机器：“日常经营极端分权 + 自由现金流中央统配”</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2025 营业利润 $44.49B · 2026Q3 总资产突破 $1.304万亿</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2024 vs FY2025 伯克希尔六大业务板块营业利润拆解（SEC EX-99.1）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">制造/服务/零售 ($13.65B)、BNSF铁路 ($5.48B) 与能源 ($3.98B) 逆势增长，保险双引擎贡献 $19.77B</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('fy25_mix')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：六大板块利润结构</button>
+ <button onclick="switchBizChart('float_trajectory')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：浮存金半世纪扩张</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">伯克希尔文化驱动的三大组织设计奇迹</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“接近放任不管”的子公司经营自主权</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 查理·芒格曾总结：“我们把运营企业的权力下放到了<strong>几乎完全不管（just short of total abdication）</strong>的地步。”奥马哈总部从不要求子公司提交厚重的年度预算报告，也不召开冗长的跨部门协调会，让企业家精神在各自赛道自由生长（<a href="https://buffett.cnbc.com/video/1998/05/04/afternoon-session---1998-berkshire-hathaway-annual-meeting.html" target="_blank" rel="noopener noreferrer" class="cite-link">CNBC Buffett Archive</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">无摩擦内部资本市场：现金统一上缴奥马哈</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 巴菲特明确划定边界：“<strong>我们集中管理资金，除此之外几乎一切分权</strong>。”喜诗糖果、GEICO、BNSF 产生的超额自由现金流无需困在低回报原行业盲目扩张，而是零税收摩擦调配至全市场最高风险收益比的标的中（<a href="https://pictureperfectportfolios.com/warren-buffetts-philosophy-and-views-on-corporate-governance/" target="_blank" rel="noopener noreferrer" class="cite-link">Picture Perfect Portfolios</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“旧约圣经式”承保纪律锻造免费杠杆</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 多数保险公司为抢保费规模容忍承保亏损，而伯克希尔将“承保盈利高于保费规模”视为宗教铁律（<a href="https://finmasters.com/warren-buffett-insurance-float/" target="_blank" rel="noopener noreferrer" class="cite-link">FinMasters</a>），使高达 <strong>$1,760亿–$1,785亿</strong> 的浮存金不仅零成本，还在 2025 年倒赚 <strong>$72.58亿税后承保利润</strong>（<a href="https://agencychecklists.com/2026/03/02/berkshire-reports-lower-2025-operating-earnings-insurance-combined-ratio-at-87-1-80260/" target="_blank" rel="noopener noreferrer" class="cite-link">Agency Checklists</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">2026 年治理权杖平稳交接</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">Greg Abel (CEO) × Howard Buffett (董事长)</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大业务与文化支柱分部详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 支柱 1：保险帝国与浮存金宗教 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一资本支柱 · 占 FY25 营业利润 44.4%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">承保+投资 $19.77B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 保险承保宗教与负成本浮存金引擎（GEICO / BH Primary / BHRG）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 由保险业务副董事长阿吉特·贾恩（Ajit Jain）与 GEICO 团队领衔，伯克希尔要求承保人在费率不足时宁可大幅缩减保费也绝不写亏本保单（<a href="https://www.artemis.bm/news/reinsurance-capital-build-up-means-berkshire-hathaway-expects-to-write-less-premium-abel/" target="_blank" rel="noopener noreferrer" class="cite-link">Artemis</a>）。2025 年财产与意外险综合成本率（Combined Ratio）低至 <strong>87.1%</strong>，创造 <strong>$72.58亿承保净利</strong> 与 <strong>$125.13亿保险投资收益</strong>，浮存金规模较 1967 年增长逾 8,000 倍至 <strong>$1,760亿</strong>（2026Q3 升至 $1,785亿）（<a href="https://agencychecklists.com/2026/03/02/berkshire-reports-lower-2025-operating-earnings-insurance-combined-ratio-at-87-1-80260/" target="_blank" rel="noopener noreferrer" class="cite-link">Agency Checklists</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>承保净利 $7.26B / 投资收益 $12.51B</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">全美财险法定盈余高达 $3,330亿</span>
+ </div>
+ </div>
+
+ <!-- 支柱 2：制造、服务与零售分权联邦 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">实业自治联邦 · 占 FY25 营业利润 30.7%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">MSR 营业利润 $13.65B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 制造、服务与零售自治集群（MSR ~70 家实业企业）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 涵盖从喜诗糖果（See's Candies）、精密机件（PCC）、伊斯卡金属加工（IMC）、路博润到麦克莱恩物流与 Pilot 旅途中心等约 70 家独立子公司（<a href="https://intrinsicvaluepershare.com/berkshire/msr/" target="_blank" rel="noopener noreferrer" class="cite-link">IVPS</a>）。许多家族创始人在将企业卖给伯克希尔套现数亿美元后，依然每天清晨自愿上班——因为伯克希尔承诺<strong>永不转手倒卖、不派驻总部钦差指手画脚</strong>。2026 年初更斥资 <strong>$94亿现金收购 OxyChem</strong> 并在 7 月以 <strong>$68亿收购 Taylor Morrison</strong> 持续扩充实业版图（<a href="https://www.stocktitan.net/sec-filings/BRK.A/10-q.html" target="_blank" rel="noopener noreferrer" class="cite-link">Stock Titan 10-Q</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>PCC / IMC / See's / OxyChem ($9.4B)</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">对抗华尔街私募拆卖的“永久避风港”</span>
+ </div>
+ </div>
+
+ <!-- 支柱 3：重资产基础设施长周期复利 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">重资产国脉底座 · 占 FY25 营业利润 21.3%</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">BNSF $5.48B + BHE $3.98B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 北美铁路大动脉与公用事业电网（BNSF + BHE）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 伯克希尔能源（BHE，由阿贝尔深耕逾 25 年打造）自 2000 年被收购以来<strong>从未向母公司支付过一分钱股息</strong>，而是将全部留存利润用于电网现代化与清洁能源长周期资本开支；叠加全美最大货运铁路之一 <strong>BNSF（FY25 营业利润 $54.76亿，同比 +8.8%）</strong>，两大重资产支柱在 FY2025 合计贡献 <strong>$94.55亿</strong> 稳健税后利润（<a href="https://www.sec.gov/Archives/edgar/data/1067983/000119312526085801/d117283dex991.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC EX-99.1</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>BNSF 铁路 + BHE 公用事业与管道</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">拒绝短期季度EPS绑架的跨十年基建投资</span>
+ </div>
+ </div>
+
+ <!-- 支柱 4：奥马哈资本配置与二级市场股权组合 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">奥马哈中枢大脑 · 股票+美债超 $6,300亿</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">13F 持仓 ~$299.3B + 美债 $336.7B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 股权合伙投资组合与反脆弱国债金库（Equity &amp; T-Bills）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 将买股票视为“购买伟大企业的一部分而非交易代码”，重仓持有苹果（Apple）、美国运通（持股 22.5%）、可口可乐、西方石油（持股 26.7%）与日本五大商社（<a href="https://www.quantumrun.com/consulting/berkshire-hathaway-statistics/" target="_blank" rel="noopener noreferrer" class="cite-link">Quantumrun</a>）。当市场估值高企时，纪律严明地囤积 <strong>$3,367.35亿短期美国国债</strong>；当自家股价低于内在价值时果断出手（2026 年前 9 个月已回购 <strong>$137.57亿</strong> 库藏股，且严守 $300亿最低现金红线）（<a href="https://www.stocktitan.net/sec-filings/BRK.A/10-q.html" target="_blank" rel="noopener noreferrer" class="cite-link">Stock Titan 10-Q</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Apple / Amex (22.5%) / Coca-Cola / OXY</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">永远留有抵御百年一遇金融海啸的诺亚方舟</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 《股东手册》与四重文化护城河 (Owner's Manual & Cultural Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Owner's Manual 13 Principles &amp; Cultural Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 《股东手册》与四重文化护城河：为什么华尔街无法复制伯克希尔？</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极宽 (Wide Moat · 制度信任壁垒 + 零代理成本 + 永久收购声誉)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重文化护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“自己吃自己做的饭”合伙人契约</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 源自 1983 年蓝筹印花合并时确立的 <a href="https://www.berkshirehathaway.com/owners.html" target="_blank" rel="noopener noreferrer" class="cite-link">《股东手册》13条原则</a> 第 1–3 条：虽然组织形式是股份公司，但内核是合伙企业。巴菲特家族将逾 99% 净资产锁在伯克希尔股票中，新任 CEO 阿贝尔更在 2022 年自掏 <strong>$6,800万现金</strong> 在公开市场买入 168 股 A 类股（<a href="https://en.wikipedia.org/wiki/Greg_Abel" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>），从根源消灭职业经理人“慷股东之慨”的代理成本。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">所罗门“头版测试”与声誉零容忍</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 1991 年巴菲特临危出任所罗门兄弟临时董事长并在国会作证时立下铁律：“<strong>为公司亏钱，我能理解；损害公司哪怕一丝一毫的名誉，我将毫不留情。</strong>”（<a href="https://www.businessinsider.com/jensen-huang-nvidia-ceo-warren-buffett-charlie-munger-memes-reputation-2026-11" target="_blank" rel="noopener noreferrer" class="cite-link">Business Insider</a>）他要求全员自问：若明早你的行为被刻薄但聪明的记者登在当地报纸头版让家人阅读，你是否依然坦然？
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">家族企业的“大都会艺术博物馆”</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 《股东手册》第 11 条明确宣示：“<strong>只要能产生合理现金流，我们绝无兴趣出售任何一家好企业。</strong>”（<a href="https://www.fool.com/investing/2018/03/02/warren-buffetts-13-principles-for-berkshire-hathaw.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Motley Fool</a>）对于珍视数十年心血与员工福祉的家族创始人而言，华尔街私募（PE）意味着加杠杆、裁员与 5 年后转卖，而伯克希尔是独一无二的永久家园，从而享有无竞标议价优势。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">绝对坦诚的信息披露与拒绝业绩指引</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 《股东手册》第 12 条承诺“无论好坏，向股东坦诚相告”：从不提供季度 EPS 预测、不设投资者关系部讨好华尔街分析师，周六上午准时发布财报以便全体散户与机构同步研读，并在年报中主动剖析每一次收购减值失误（如 2025 年坦承卡夫亨氏与西方石油 $82.55亿减值）（<a href="https://news.futunn.com/en/post/69404787/berkshire-hathaway-s-q4-operating-profit-declined-nearly-30-year" target="_blank" rel="noopener noreferrer" class="cite-link">Futunn</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维企业治理与文化模型雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">三大资本与企业集团治理文化五维对比雷达</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">伯克希尔 (BRK) vs 华尔街并购私募 (PE Buyout) vs 传统工业多元集团 (GE式)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 治理范式与同业横向对比 (Governance Paradigms Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Corporate Governance &amp; Culture Comparative Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 组织与治理范式横向对比：五种顶级商业文化与承保纪律统治力</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索范式 / 代表企业 / 机制关键词..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部治理范式</button>
+ <button onclick="filterCompetitors('capital')" data-filter="capital" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">资本配置与并购派</button>
+ <button onclick="filterCompetitors('operating')" data-filter="operating" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">集权管控与工业派</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">治理范式与代表人物</th>
+ <th class="py-4 px-4 min-w-[140px]">总部规模与管控模式</th>
+ <th class="py-4 px-4 min-w-[140px]">资本来源与持有周期</th>
+ <th class="py-4 px-4 min-w-[125px]">高管薪酬与激励机制</th>
+ <th class="py-4 px-4 min-w-[120px]">标志性财务绩效</th>
+ <th class="py-4 px-5 min-w-[240px]">与伯克希尔企业文化的深度对比评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：伯克希尔基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">伯克希尔·哈撒韦</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">巴菲特 / 芒格 / 阿贝尔</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">奥马哈 27人极简总部 · 极端分权自治</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">$178.5B浮存金 · 永久持有</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">零期权 + 可控ROIC挂钩</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">60年 19.7% CAGR</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>分权复利终极标杆：</strong>靠无条件信任、声誉铁律与自由现金流集中配置，实现零总部官僚内耗与跨半世纪超额复利（<a href="https://www.berkshirehathaway.com/2025ar/2025ar.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">2025 AR</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：华尔街私募股权并购模式 -->
+ <tr data-category="capital" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">华尔街 LBO 私募并购派</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Blackstone / KKR / Apollo</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">投行精英强介入 · 派驻高管重组降本</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">高息债务杠杆 · 3–7年退出</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">2/20 提成 + 退出期权</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">依赖 7%+ 高息债与估值倍数</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“金融交易商” vs “永久家园”：</strong>PE 依赖高息负债（7%+）且到期必须出售；伯克希尔使用负成本保险浮存金且承诺永不转卖（<a href="https://finmasters.com/warren-buffett-insurance-float/" target="_blank" rel="noopener noreferrer" class="cite-link">FinMasters</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 3：马克·莱纳德 / Constellation Software -->
+ <tr data-category="capital" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">垂直软件并购联邦派</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Mark Leonard (Constellation / Danaher)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">精简总部 + 标准化 ROIC/DBS 赋能</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">经营现金流滚雪球 · 永久持有</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">奖金强制二级市场买股</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">長期 ROIC &gt; 25%</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>伯克希尔精神的最佳现代门徒：</strong>同样奉行分权自治、永久持有与高管二级市场买股，但比巴菲特更强调标准化运营手册与高频中小型并购（<a href="https://pictureperfectportfolios.com/warren-buffetts-philosophy-and-views-on-corporate-governance/" target="_blank" rel="noopener noreferrer" class="cite-link">Governance Study</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 4：传统工业多元化帝国 (GE 韦尔奇模式) -->
+ <tr data-category="operating" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">传统工业集权多元集团</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Jack Welch 时代通用电气 (GE)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">数千人庞大总部 + 轮岗与预算强管控</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">商业票据短融 · 频繁买进卖出</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">海量股票期权 + 10%末位淘汰</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">追求平滑季度 EPS 最终分拆</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>巴菲特反复警示的反面教材：</strong>靠 GE Capital 短期高杠杆与迎合华尔街季度预期美化报表，最终在金融危机与债务重压下走向解体（<a href="https://pictureperfectportfolios.com/warren-buffetts-philosophy-and-views-on-corporate-governance/" target="_blank" rel="noopener noreferrer" class="cite-link">Corporate Governance</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 5：乔布斯式产品垂直集权帝国 -->
+ <tr data-category="operating" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">科技产品端到端集权派</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Steve Jobs / Tim Cook (Apple Inc.)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">按职能高度集权 (Functional Org)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">内生软硬一体现金流 + 巨额回购</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">长期受限股 RSU + DRI责任制</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">伯克希尔头号重仓股</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>集权造极品 vs 分权管百业：</strong>单一科技生态需要乔布斯式跨部门高度协同与 2×2 减法；而跨 60 个异质行业控股集团则必须依赖伯克希尔式分权（<a href="https://gulfnews.com/business/markets/how-steve-jobs-and-tim-cook-turned-apple-into-a-48-trillion-giant-1.500664931" target="_blank" rel="noopener noreferrer" class="cite-link">Gulf News</a>）。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的治理范式记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：保险承保纪律综合成本率 (Combined Ratio) 历史统治力对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">把承保纪律当宗教信仰：伯克希尔财险综合成本率（Combined Ratio %）多周期对比（越低越优，&lt;100% 即为负成本浮存金）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">阿贝尔在首封 CEO 股东信中披露：2025 年伯克希尔 P&amp;C 综合成本率低至 87.1%（每收 1 美元保费仅赔付及支出 87.1 美分），显著优于过去 5 年、10 年及 20 年均值与 100% 行业盈亏平衡线（<a href="https://agencychecklists.com/2026/03/02/berkshire-reports-lower-2025-operating-earnings-insurance-combined-ratio-at-87-1-80260/" target="_blank" rel="noopener noreferrer" class="cite-link">2025 Annual Letter / Agency Checklists</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">2025年 87.1% · 浮存金净赚 12.9% 承保利润率</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 文化复利与股东回报推演 (Cultural Compounding & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Cultural Compounding &amp; Shareholder Value Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 文化复利与股东回报推演：当“零总部内耗 + 零成本浮存金”运转六十年</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">用财务硬指标验证企业文化：文化不是墙上的标语，而是穿越牛熊的 ROIC 与每股内在价值</span>
+ </div>
+
+ <!-- 1. 文化驱动的四大财务护城河指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">P&amp;C Combined Ratio (2025)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">87.1% (+$7.26B)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 拒绝盲目冲保费规模的激励文化，使伯克希尔在手握 $1,760亿浮存金的同时，2025 全年净赚 $72.58亿税后承保利润（<a href="https://agencychecklists.com/2026/03/02/berkshire-reports-lower-2025-operating-earnings-insurance-combined-ratio-at-87-1-80260/" target="_blank" rel="noopener noreferrer" class="cite-link">Agency Checklists</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">U.S. Treasury Bill Fortress</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$336.74B (2026Q3)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ “永远不依赖陌生人的善意”——截至 2026 年 9 月 30 日持有 $3,367.35亿短期美国国债，总资产达 $1.304万亿（<a href="https://www.stocktitan.net/sec-filings/BRK.A/10-q.html" target="_blank" rel="noopener noreferrer" class="cite-link">Stock Titan 10-Q</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">HQ Overhead Efficiency</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">0.007% 总部人效</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 奥马哈总部 27 人仅占全集团员工总数的约万分之零点七，省下每年数十亿美元的总部冗余管理费与顾问费（<a href="https://www.good-investing.net/berkshire-hathaway-annual-meeting/transcripts/2025-transcript/" target="_blank" rel="noopener noreferrer" class="cite-link">2025 AGM</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Disciplined Buybacks (9M26)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$13.76B 回购</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 绝不为支撑股价而盲目回购：仅在市价低于保守内在价值时出手，2026 前三季度回购 $137.57亿直接增厚每股权益（<a href="https://www.stocktitan.net/sec-filings/BRK.A/10-q.html" target="_blank" rel="noopener noreferrer" class="cite-link">SEC 10-Q</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2021–FY2025 伯克希尔保险浮存金规模 vs 常态化营业利润（Operating Earnings）双轮跃升曲线（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">五年间保险浮存金从 $1,470亿稳步攀升至 $1,760亿（2026Q3 达 $1,785亿），常态化营业利润从 $274.55亿跃升至 $444.86亿–$474.37亿高平台期</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">5年营业利润均值 $37.5B · 浮存金 +$29B</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“伯克希尔合伙人复利”长期股东价值动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>BERKSHIRE SNOWBALL ENGINE · 伯克希尔合伙人文化与复利动态推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">滚雪球与长坡厚雪：历史真实基准与自定义文化复利模拟器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实历史锚点（1965–2025 巴菲特 19.7% 复利 / 同周期标普 500 指数 10.5% 基准 / 后巴菲特万亿体量稳健复利）或手动调节参数</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>叠加折价股票回购每股增厚 (+1.2%/年)</span>
+ </label>
+ </div>
+
+ <!-- 真实历史周期预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('buffett_60yr')" data-era="buffett_60yr" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 1965–2025 伯克希尔合伙复利率</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">30年推演 · 历史真实年化 19.7% CAGR</div>
+ </button>
+ <button type="button" onclick="setSimEra('sp500_benchmark')" data-era="sp500_benchmark" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 1965–2025 标普500指数全收益基准</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">30年推演 · 含股息再投年化 10.5% CAGR</div>
+ </button>
+ <button type="button" onclick="setSimEra('abel_era')" data-era="abel_era" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 2026+ 阿贝尔新纪元万亿体量稳健档</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">20年推演 · 实业+浮存金稳健 11.5% CAGR</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始合伙投入本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$10,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="1000" max="100000" step="1000" value="10000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">30 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="60" step="1" value="30" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年化复合回报率 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">19.7%</span>
+ </div>
+ <input id="sim-growth" type="range" min="5" max="25" step="0.1" value="19.7" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：采用伯克希尔 2025 年报披露的 1965–2025 六十年真实年化复合收益率（19.7% CAGR），直观展示“零代理成本 + 留存收益内部复利”在 30 年及更长周期的指数级财富放大效应（可将年限滑块拉至 60 年查看完整传奇）。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计总资产市值</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$2,203,982</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计净增值 +21,940%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">本金增值倍数 (MOIC Multiple)</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">220.4x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 3.9 年资产翻一倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">累计创造净资本利得</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$2,193,982</div>
+ <div class="text-xs text-slate-400 mt-1.5">扣除初始投入本金后的纯复利收益</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效综合年化复合增长率</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">19.70%</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">持有半程（第 15 年）资产约：$148,458</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角历史定评对比 (Bull Legacy vs Critical Reflection) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">正向文化遗产定评 (Enduring Cultural Moat)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">结构性反脆弱 + 信任复利</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>商业史最成功的“去官僚化”大型组织实验：</strong>证明了年营收超 $3,700亿的巨型企业无需设置千人总部即可高效运转，极大降低了组织熵增（<a href="https://pictureperfectportfolios.com/warren-buffetts-philosophy-and-views-on-corporate-governance/" target="_blank" rel="noopener noreferrer" class="cite-link">Corporate Governance</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>筛选长期主义股东的“双向选择”文化：</strong>不拆 A 股、不派息、不给业绩指引、开办奥马哈股东朝圣大会，使伯克希尔拥有全球换手率最低、最理性的股东群体（<a href="https://www.berkshirehathaway.com/2009ar/2009ar.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">2009 AR</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>跨越创始人周期的制度设计：</strong>将 CEO（格雷格·阿贝尔管运营与资本配置）与非执行董事长（霍华德·巴菲特专职守护文化）分立，确保企业文化在巴菲特卸任后永不变质（<a href="https://www.quantumrun.com/consulting/berkshire-hathaway-statistics/" target="_blank" rel="noopener noreferrer" class="cite-link">Quantumrun</a>）。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">客观局限与治理挑战反思 (Critical Lens)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">分权盲区 + 万亿体量引力</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“过度信任”偶发的监管滞后：</strong>高度放权且“不愿轻易解雇平庸高管”的温情文化，曾导致 GEICO 远程信息处理（Telematics）数字化转型滞后，以及 Pilot 旅途中心收购过渡期管理失序（2025 税前利润跌 69.1%）（<a href="https://www.forbes.com/sites/bill_stone/2026/03/01/berkshire-hathaway-q4-2025-buffetts-finale-abels-debut/" target="_blank" rel="noopener noreferrer" class="cite-link">Forbes</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>子公司间缺乏横向协同：</strong>坚持各子公司完全独立运作意味着放弃集中采购、统一 IT 架构（如早年 BNSF 与 GEICO 各自为战）等规模协同红利——直到阿贝尔接任后才开始适度强化跨部门运营纪律（<a href="https://www.inc.com/warren-buffett" target="_blank" rel="noopener noreferrer" class="cite-link">Inc. Magazine</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>$3,367亿巨额现金的“大数定律”诅咒：</strong>当净资产突破 $6,500亿、总资产达 $1.3万亿时，能实质性拨动业绩指针的“大象级”猎物凤毛麟角，超额收益率客观上面临均值回归压力。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕演进与跨代际传承复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Cultural Evolution &amp; Governance Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕文化演进与跨代传承复盘：从濒死新英格兰纺织厂到不朽治理圣殿</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">理解伯克希尔的关键：它并非天生完美，而是在芒格催化与一次次实战纠错中进化成形</span>
+ </div>
+
+ <!-- 1. 三幕演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 破茧与心智跃迁</span>
+ <span class="font-mono text-xs font-bold text-slate-500">1965–1982</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">告别烟蒂股 · 喜诗糖果顿悟</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>1965 年巴菲特因意气用事控股濒死纺织厂伯克希尔；1967 年斥资 $860万收购国民赔偿公司（NICO）首次获得保险浮存金；1972 年在查理·芒格力推下以 $2,500万买下<strong>喜诗糖果（See's Candies）</strong>，彻底领悟“以合理价格买下拥有定价权与优秀管理层的伟大企业，并完全放权让其为你源源不断产出现金”的核心文化密码（<a href="https://economistwritingeveryday.com/2023/03/07/warren-buffetts-secret-sauce-investing-the-insurance-float/" target="_blank" rel="noopener noreferrer" class="cite-link">Economist Writing</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段启示：好骑手必须骑在好马上，烂行业消耗最优秀的管理智慧
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 法典化与帝国成型</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">1983–2024</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">13条股东手册与声誉铁律</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>1983 年合并蓝筹印花时正式颁布《与所有者相关的 13 条商业原则》（1996 年升级为《股东手册》）；1991 年亲赴国会化解所罗门国债丑闻，将“声誉零容忍”刻入集团基因；先后全资并入 GEICO、通用再保、BNSF 铁路与 BHE 能源，并在 2016 年起建仓苹果，将分权帝国推向万亿美元市值（<a href="https://www.berkshirehathaway.com/owners.html" target="_blank" rel="noopener noreferrer" class="cite-link">Owner's Manual</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：建立一套“哪怕我明天离世也能自动运转数十年”的契约文化
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 制度永续与新纪元</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2025–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">阿贝尔掌舵与文化长青</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2025 年 5 月巴菲特宣布年底交棒；2026 年 1 月 1 日格雷格·阿贝尔正式出任 CEO，并在首封年度股东信中宣示坚定捍卫分权模式、承保纪律与资产负债表堡垒；2026 年 9 月 18 日 96 岁的巴菲特改任荣誉董事长（Chairman Emeritus），由霍华德·巴菲特出任董事长守护企业文化，完成人类商业史上最从容的万亿帝国交班（<a href="https://www.quantumrun.com/consulting/berkshire-hathaway-statistics/" target="_blank" rel="noopener noreferrer" class="cite-link">Quantumrun 2026</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段启示：真正的伟大文化不依赖个人神格，而内化为制度本能
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大治理实战教训与文化进化闭环矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：伯克希尔企业文化在四大实战挫折中的自我进化</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">进化 01 · 德克斯特鞋业（Dexter Shoe）换股之痛</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">1993 换股并购教训</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">绝不轻易增发自家高价值股票去购买平庸资产</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 1993 年巴菲特用占伯克希尔 1.6% 的优质股份收购了很快失去竞争力的 Dexter Shoe，令其痛心疾首并强化了《股东手册》第 10 条铁律：“<strong>只有当我们获得的内在商业价值不低于我们付出的价值时，才会增发普通股</strong>”，此后收购优先使用现金（<a href="https://www.fool.com/investing/2018/03/02/warren-buffetts-13-principles-for-berkshire-hathaw.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Motley Fool</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">进化 02 · 所罗门与大卫·索科尔（Lubrizol）抢跑事件</span>
+ <span class="text-xs text-mono text-slate-500 font-semibold">1991 &amp; 2011 道德红线</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">即便是最能赚钱的明星高管，触碰声誉红线也立即出局</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 无论是 1991 年彻底清洗所罗门违规管理层，还是 2011 年昔日热门接班人选索科尔在向巴菲特推荐收购路博润前个人突击买股而黯然离职，均向全集团近 40 万员工证明：<strong>合规与体面高于一切财务贡献</strong>（<a href="https://buffettfanatic.com/essays/a-shred-of-reputation/" target="_blank" rel="noopener noreferrer" class="cite-link">Buffett Fanatic</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">进化 03 · 坦诚面对收购出价过高与减值（PCC / KHC）</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2020 &amp; 2025 商誉减值</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">把“我犯了个大错”直接写进致股东信的第一人</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 面对早年 PCC 约百亿美元减值以及 2025 年对卡夫亨氏与西方石油计提的 <strong>$82.55亿税后非暂时性减值</strong>（<a href="https://news.futunn.com/en/post/69404787/berkshire-hathaway-s-q4-operating-profit-declined-nearly-30-year" target="_blank" rel="noopener noreferrer" class="cite-link">Futunn</a>），管理层从不推诿于宏观环境或下属，而是践行《股东手册》第 9 条“定期用客观结果检验崇高意图”，以极致诚实赢得资本市场长久敬意。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">进化 04 · 阿贝尔对非保险运营纪律的适度升级</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2026 CEO 运营新政</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">在守护分权精髓的同时补齐跨子公司运营对标短板</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 针对巴菲特时代对落后子公司过于宽容的弱点（如 Pilot 过渡期管理混乱），阿贝尔接任后在保持自治的前提下引入更清晰的资本回报率（ROIC）与同行利润率对标纪律，推动 2025 年非保险实业营业利润逆势增长 <strong>+7%</strong>（<a href="https://www.forbes.com/sites/bill_stone/2026/03/01/berkshire-hathaway-q4-2025-buffetts-finale-abels-debut/" target="_blank" rel="noopener noreferrer" class="cite-link">Forbes</a>）。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级企业管理与长期价值投资启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给企业家、组织架构师与长期投资者的三条“伯克希尔底层文化法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 最好的管理是“选对热爱事业的正直之人，然后别碍事”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 如果你需要雇佣几百人的总部审计、KPI 巡视组与流程审批官才能管住下属，说明你从一开始就买错了生意或选错了人；给真正自驱的经营者最大尊严与自主权，是激发长期超额 ROIC 的最低成本方式。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 区分“日常经营权”与“自由现金流再投资权”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 伟大的实业家往往擅长打磨本行业产品，却容易因“帝国建造癖”把挣来的现金盲目砸向低回报项目；将经营权彻底下放、将增量资本配置权集中于理性的总舵手，是破解企业生命周期律的密钥。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 声誉与资产负债表冗余是穿越一切危机的终极护城河</div>
+ <p class="text-slate-300 leading-relaxed">
+ 建立声誉需要 20 年，毁掉它只需 5 分钟；当全市场在顺境中加满杠杆裸泳时，保持 $3,367亿美债现金储备与零容忍合规底线，才能在危机来临时成为全场唯一拥有定价权的最后买家。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “伯克希尔文化法则”企业治理交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Berkshire Hathaway Corporate Culture Diagnostic Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “伯克希尔文化法则”企业治理与投资评估交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于审视任何上市公司、控股集团或拟投资标的是否具备“伯克希尔式”健康的股东文化与治理基因（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. “自己吃自己做的饭”测试：高管是否用真金白银买股？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">利益绑定锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验核心管理层与董事的主要身家是否来自自己掏钱买入的普通股（如阿贝尔斥资 $6,800万买股），还是靠零成本期权旱涝保收。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 总部臃肿度测试：总部非一线人员占比是否极度克制？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">反官僚壁垒</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 对标奥马哈 27 人总部统管 38.8 万员工：若一家集团总部充斥着成千上万不生产也不销售产品的行政人员，其文化往往正在侵蚀股东回报。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. “报纸头版测试”与报忧机制：坏消息能否第一时间直达？</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">声誉防火墙</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验企业是否遵循巴菲特“我能处理坏消息，但讨厌坏消息发酵后再告诉我”的训诫，对任何损害客户与声誉的擦边球行为零容忍。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 每股内在价值优先：是否拒绝为了扩大规模而稀释老股东？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">资本配置纪律</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查管理层考核是否锚定“每股自由现金流与 ROIC”，而非为了满足个人虚荣心去进行高溢价并购或低价增发股票。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 财报坦诚度测试：年报是否直面失误而非粉饰 Non-GAAP？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">沟通诚信度</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察管理层在逆风期是否像巴菲特与阿贝尔一样坦率剖析经营短板与投资减值，并把真实股权激励成本计入费用。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 极端压力下的资产负债表堡垒：是否永不依赖短期借新还旧？</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">反脆弱安全垫</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 对标伯克希尔 $300亿现金底线与 $3,367亿美债储备，检验企业在信贷冻结期能否独善其身并逆向抄底优质资产。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>伯克希尔·哈撒韦 Berkshire Hathaway 企业文化、分权治理与长期复利深度研究报告 · 机构框架版</span>
+ <span>核心数据出处：Berkshire Hathaway 2024–2025 Form 10-K · 2026Q3 Form 10-Q · An Owner's Manual</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务、治理与历史指标均严格核验自美国证监会（SEC EDGAR）公开披露的 <a href="https://www.berkshirehathaway.com/2025ar/2025ar.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Berkshire Hathaway 2025 Annual Report</a>、<a href="https://www.sec.gov/Archives/edgar/data/1067983/000119312526085801/d117283dex991.htm" target="_blank" rel="noopener noreferrer" class="cite-link">FY2025 Earnings Release (SEC EX-99.1)</a>、<a href="https://www.stocktitan.net/sec-filings/BRK.A/10-q.html" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 Form 10-Q</a>、<a href="https://www.berkshirehathaway.com/owners.html" target="_blank" rel="noopener noreferrer" class="cite-link">《股东手册》（An Owner's Manual）</a> 及历年奥马哈股东大会实录。报告内置的复利模拟器旨在复盘长期合伙制文化与资本配置增值规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ // 清理运行态临时样式与画布缓存属性，确保导出的 HTML 在任何本地浏览器打开时干净重绘
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Berkshire_Hathaway_Corporate_Culture_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Berkshire_Hathaway_Corporate_Culture_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 治理范式横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “伯克希尔合伙人复利”长期股东价值动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ buffett_60yr: {
+ principal: 10000,
+ years: 30,
+ cagr: 19.7,
+ caption: '当前测算基准：采用伯克希尔 2025 年报披露的 1965–2025 六十年真实年化复合收益率（19.7% CAGR），直观展示“零代理成本 + 留存收益内部复利”在 30 年及更长周期的指数级财富放大效应（可将年限滑块拉至 60 年查看完整传奇）。'
+ },
+ sp500_benchmark: {
+ principal: 10000,
+ years: 30,
+ cagr: 10.5,
+ caption: '当前测算基准：对应 1965–2025 年间标普 500 指数（含股息再投资）的真实历史年化复合收益率（10.5% CAGR），用于对比伯克希尔每年 +9.2% 超额收益在长周期下拉开的百倍差距。'
+ },
+ abel_era: {
+ principal: 10000,
+ years: 20,
+ cagr: 11.5,
+ caption: '当前测算基准：模拟 2026 年格雷格·阿贝尔接任 CEO 后，在 $1.3万亿总资产与 $1,785亿浮存金底座上实现年化 11.5% 稳健内生复合增长的 20 年财富滚雪球路径。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-principal').value = preset.principal;
+ document.getElementById('sim-years').value = preset.years;
+ document.getElementById('sim-growth').value = preset.cagr;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义合伙复利推演模式——自由探索不同初始本金、持有年限与企业年化资本回报率下的长期复利放大效应。';
+ }
+
+ function updateValueSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 10000;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 30;
+ const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 15;
+ const divBonus = document.getElementById('div-bonus-toggle').checked ? 1.2 : 0;
+
+ const effGrowthPct = baseGrowthPct + divBonus;
+ const r = effGrowthPct / 100;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+ const finalVal = principal * Math.pow(1 + r, years);
+ const netGain = finalVal - principal;
+ const multiple = principal > 0 ? (finalVal / principal) : 1;
+ const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+ const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+ const midYears = Math.max(1, Math.round(years / 2));
+ const midVal = principal * Math.pow(1 + r, midYears);
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+ document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年资产翻一倍` : '稳健保值';
+ document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+ document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+ document.getElementById('sim-mid-val').textContent = `持有半程（第 ${midYears} 年）资产约：$${Math.round(midVal).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'brk_culture_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“伯克希尔文化法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'fy25_mix';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2024 vs FY2025 伯克希尔六大业务分部税后营业利润 ($B, 100% 源自 SEC EX-99.1)
+ const mixConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '制造、服务与零售 (MSR)',
+ '保险投资收益 (Inv. Income)',
+ '保险承保利润 (Underwriting)',
+ 'BNSF 北美货运铁路',
+ '伯克希尔能源 (BHE)',
+ '其他非控股及集团项'
+ ],
+ datasets: [
+ {
+ label: 'FY2024 营业利润 ($B · 总计 $47.44B)',
+ data: [13.07, 13.67, 9.02, 5.03, 3.73, 2.91],
+ backgroundColor: 'rgba(100, 116, 139, 0.65)',
+ borderRadius: 5
+ },
+ {
+ label: 'FY2025 营业利润 ($B · 总计 $44.49B)',
+ data: [13.65, 12.51, 7.26, 5.48, 3.98, 1.61],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 16,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：1970–2026Q3 保险浮存金半世纪跨越曲线 ($B, 源自 Berkshire Annual Reports & 10-Q)
+ const trajectoryConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '1970 (早期起步)',
+ '2015 (十年前基准)',
+ '2021 (疫后扩张)',
+ '2022 (并入Alleghany)',
+ '2023 (稳步增长)',
+ '2024 (GEICO大反转)',
+ '2025 (阿贝尔交接)',
+ '2026Q3 (最新披露)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '保险浮存金规模 Insurance Float ($B)',
+ data: [0.039, 88.0, 147.0, 164.0, 169.0, 171.0, 176.0, 178.5],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 200,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'fy25_mix' ? mixConfig : trajectoryConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'fy25_mix') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2024 vs FY2025 伯克希尔六大业务板块营业利润拆解（SEC EX-99.1）';
+ subEl.textContent = '制造/服务/零售 ($13.65B)、BNSF铁路 ($5.48B) 与能源 ($3.98B) 逆势增长，保险双引擎贡献 $19.77B';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '1970–2026Q3 伯克希尔保险浮存金（Insurance Float）8,000倍扩张史（$B）';
+ subEl.textContent = '从 1970 年仅 $3,900万、2015 年 $880亿一路增长至 2025 年末 $1,760亿与 2026Q3 的 $1,785亿零成本长钱';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '子公司经营自主权与信任度',
+ '总部反官僚极简人效比',
+ '管理层与股东长期利益绑定',
+ '永久持有承诺与创始人友好度',
+ '资产负债表反脆弱与现金储备'
+ ],
+ datasets: [
+ {
+ label: '伯克希尔·哈撒韦 (Berkshire)',
+ data: [9.9, 10.0, 9.8, 9.9, 10.0],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: '华尔街并购私募 (PE Buyout)',
+ data: [4.5, 6.2, 7.5, 2.5, 4.0],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '传统工业多元集团 (GE式)',
+ data: [4.0, 3.0, 5.2, 4.5, 5.0],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ '伯克希尔 2025 全年财险综合成本率 (Combined Ratio)',
+ '伯克希尔近 5 年平均综合成本率 (Five-Year Avg)',
+ '伯克希尔近 20 年平均综合成本率 (Twenty-Year Avg)',
+ '伯克希尔近 10 年平均综合成本率 (Ten-Year Avg)',
+ '财险行业承保盈亏平衡红线 (Breakeven Threshold)'
+ ],
+ datasets: [
+ {
+ label: '财险综合成本率 Combined Ratio (% · 低于100%即意味着浮存金为负成本)',
+ data: [87.1, 90.7, 92.2, 93.0, 100.0],
+ backgroundColor: [
+ '#F59E0B',
+ '#10B981',
+ '#06B6D4',
+ '#6366F1',
+ '#EF4444'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `综合成本率: ${c.parsed.x.toFixed(1)}% (承保利润率 ${(100 - c.parsed.x).toFixed(1)}%)`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 75,
+ max: 105,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年末保险浮存金规模 Insurance Float ($B)',
+ data: [147.0, 164.0, 169.0, 171.0, 176.0],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 32,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '常态化营业利润 Operating Earnings ($B)',
+ data: [27.46, 30.85, 37.35, 47.44, 44.49],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 100,
+ max: 190,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '保险浮存金规模 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 55,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '年度营业利润 ($B)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateValueSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>伯克希尔哈撒韦 Berkshire Hathaway Inc. (NYSE: BRK.B) 深度研究报告：$3,042亿 2026Q3 13F 组合全景、阿贝尔时代调仓脉络与 $3,523亿现金堡垒</title>
+  <!-- Tailwind CSS (Versioned CDN) -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- Chart.js (Versioned CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+  <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              navy: {
+                950: '#070B14',
+                900: '#0F172A',
+                800: '#1E293B',
+                700: '#334155',
+              },
+              mogold: {
+                300: '#FCD34D',
+                400: '#FBBF24',
+                500: '#F59E0B',
+                600: '#D97706',
+                700: '#B45309',
+              },
+              emerald: {
+                400: '#34D399',
+                500: '#10B981',
+                600: '#059669',
+              },
+              teal: {
+                400: '#22D3EE',
+                500: '#06B6D4',
+                600: '#0891B2',
+              }
+            }
+          }
+        }
+      };
+    }
+  </script>
+
+  <style>
+    /* 自定义滚动条与机构研报细节排版 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+
+    /* 打印友好优化 */
+    @media print {
+      #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+        display: none !important;
+      }
+      main {
+        margin-left: 0 !important;
+        padding: 0 !important;
+      }
+      section {
+        break-inside: avoid;
+      }
+    }
+
+    /* 卡片悬浮微光与上移过渡 */
+    .report-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .report-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 侧边导航激活态：琥珀金渐变标识奥马哈价值底色 */
+    .nav-link.active {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+      border-left: 3px solid #F59E0B;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+  <!-- 顶部全局阅读进度条 -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+  </div>
+
+  <!-- 导出成功轻提示 Toast -->
+  <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="export-toast-msg">已成功导出独立网页文件 BRK.B.html</span>
+  </div>
+
+  <!-- 移动端顶部导航栏 -->
+  <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+        BRK
+      </div>
+      <div>
+        <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">NYSE: BRK.B / BRK.A · 2026Q3 13F</div>
+        <div class="text-sm font-bold leading-tight">伯克希尔持仓全景深度研报</div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-1.5">
+      <button onclick="downloadHtmlFile()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 font-bold text-xs" aria-label="导出HTML">
+        导出.html
+      </button>
+      <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 移动端折叠抽屉菜单 -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+    <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <span class="font-bold text-white text-base">BRK 持仓研报目录导航</span>
+          <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+          <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 持仓架构与四大战略支柱</a></li>
+          <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 投资哲学与四重护城河</a></li>
+          <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 2026Q3 全部30只持仓全景矩阵</a></li>
+          <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 现金堡垒与回购复利推演</a></li>
+          <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 投资决策与抄作业配置框架</a></li>
+          <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度 13F/10-Q 跟踪核查清单</a></li>
+        </ul>
+      </div>
+      <div class="pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+        <button onclick="downloadHtmlFile()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-xs">一键导出 .html 网页文件</button>
+        <p>全球价值投资与机构 13F 追踪研究组</p>
+        <p>数据基准：2026年11月16日 13F-HR / Q3 10-Q</p>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+  <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+    <div>
+      <!-- 机构品牌头 -->
+      <div class="p-5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-sm shadow-lg shadow-mogold-500/25">
+            BRK
+          </div>
+          <div>
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">NYSE: BRK.B · CIK 0001067983</span>
+            <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">伯克希尔持仓研报</h2>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          巴菲特与阿贝尔资本配置全景 · $3,042亿 13F 美股持仓与 $3,523亿国债现金堡垒
+        </p>
+      </div>
+
+      <!-- 实时组合快照徽章 -->
+      <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">BRK.B / BRK.A 股价</span>
+          <span class="font-mono font-bold text-white">$592.85 <span class="text-slate-400 text-[10px]">($887.5K)</span></span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">2026Q3 13F 美股总值</span>
+          <span class="font-mono font-bold text-emerald-400">$304.20B <span class="text-slate-400">(30只标的)</span></span>
+        </div>
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+          <span class="text-slate-400">前10大重仓集中度</span>
+          <span class="font-mono font-bold text-mogold-400">89.37% · 现金 $352.3B</span>
+        </div>
+      </div>
+
+      <!-- 七大核心章节目录导航 -->
+      <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-340px)]">
+        <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+        <nav id="desktop-nav" class="space-y-1 text-[13px]">
+          <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+          </a>
+          <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>持仓架构与四大支柱</span>
+          </a>
+          <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>投资哲学与四重护城河</span>
+          </a>
+          <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全部30只13F持仓矩阵</span>
+          </a>
+          <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>现金堡垒与复利推演</span>
+          </a>
+          <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>估值决策与风险配置</span>
+          </a>
+          <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度 13F 跟踪核查清单</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 侧边栏底部工具栏 -->
+    <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-slate-400">阅读模式切换</span>
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span class="dark:hidden">深色护眼模式</span>
+          <span class="hidden dark:inline">机构亮色模式</span>
+        </button>
+      </div>
+      <button onclick="downloadHtmlFile()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        <span>导出独立 .html 网页文件</span>
+      </button>
+      <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>打印 / 导出 PDF 研报</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="lg:ml-[280px] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+      <!-- =========================================================
+      00. Hero 研报封面区与执行摘要
+      ========================================================= -->
+      <section id="sec-exec" class="scroll-mt-20">
+        <!-- 顶部研报元数据标签栏 -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">评级：核心复利压舱石 / 价值配置典范</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">文件基准：SEC Form 13F-HR (2026-11-16 披露) &amp; Q3 10-Q</span>
+          </div>
+          <div class="flex items-center space-x-3 font-mono">
+            <span>覆盖时间：2026年11月</span>
+            <a href="https://www.sec.gov/Archives/edgar/data/1067983/000119312526463399/0001193125-26-463399-index.htm" target="_blank" rel="noopener noreferrer" class="text-mogold-600 dark:text-mogold-400 hover:underline">SEC Accession: 0001193125-26-463399 ↗</a>
+          </div>
+        </div>
+
+        <!-- Hero 标题卡片 -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+          <!-- 背景琥珀金点阵纹理 -->
+          <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+          <div class="relative z-10">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold">
+                <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+                <span>PORTFOLIO THESIS · 前五大重仓占比 ~71.5% × $3,523亿国债现金堡垒 × 单季 $96.5亿巨额回购</span>
+              </div>
+              <button onclick="downloadHtmlFile()" class="no-print inline-flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-mogold-500 hover:bg-mogold-400 text-navy-950 font-extrabold text-xs transition shadow cursor-pointer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                <span>一键下载 .html 报告文件</span>
+              </button>
+            </div>
+
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+              伯克希尔哈撒韦 Berkshire Hathaway Inc. (NYSE: BRK.B / BRK.A) 深度研究报告：$3,042亿 2026Q3 13F 组合全景、阿贝尔调仓脉络与现金复利机器
+            </h1>
+            <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+              据 2026 年 11 月 16 日披露的 <a href="https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026" target="_blank" rel="noopener noreferrer" class="text-mogold-300 underline hover:text-mogold-200">2026Q3 Form 13F-HR</a>，在 CEO <strong class="text-white">Greg Abel（阿贝尔，2026年1月正式接棒）</strong>与巴菲特协同掌舵下，伯克希尔美股 13F 持仓攀升至 <strong class="text-mogold-400">$3,041.97亿（$304.20B，共 30 个证券条目 / 27 家公司）</strong>，计入日本五大商社等非美股权后全球股票组合达 <strong class="text-emerald-400">$3,576亿</strong>，并坐拥 <strong class="text-teal-300">$3,523亿</strong> 国债与现金堡垒。
+            </p>
+            <p class="mt-2.5 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+              本季调仓呈现<strong class="text-white">“核心压舱石纹丝不动、金融去杠杆换仓实体地产与航空、重金回购自家股票”</strong>三大特征：<strong class="text-mogold-300">苹果（AAPL 24.95%）、美国运通（AXP 15.16%）、Alphabet（GOOGL+GOOG 合计 11.96%）、可口可乐（KO 11.32%）</strong>四大基石零减持；同时减持美银（BAC -5.7%）、第一资本（COF -61.7%）与威瑞信（VRSN -34.1%），近翻倍增持 <strong class="text-emerald-400">莱纳房产（LEN +98.6%）</strong>、加仓 <strong class="text-emerald-400">达美航空（DAL +12.4%）</strong>、新进 <strong class="text-teal-400">Bending Spoons（BSP）</strong>，更在 Q3 豪掷 <strong class="text-mogold-400">$96.5亿</strong> 回购自家股份。
+            </p>
+
+            <!-- 核心投资结论高亮条 -->
+            <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">极致集中度与皇冠明珠定力</div>
+                <div class="text-white font-semibold">前5大公司占 71.54%（前5只证券占 68.50%）、前10大集中度达 89.37%；AAPL、AXP、KO、GOOGL、CVX、OXY、MCO、CB 零减持</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">“弃银行、加地产与航空”精准轮动</div>
+                <div class="text-mogold-400 font-semibold">顺应利率周期减持 BAC(-5.7%)/COF(-61.7%)，近翻倍增持 Lennar 住宅建筑至 $21.7亿，并新进 Bending Spoons</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">$3,523亿现金堡垒 + $96.5亿大回购</div>
+                <div class="text-emerald-400 font-semibold">Q3 按 ~1.41x P/B（BRK.B 均价 ~$503.68）回购 $96.5亿，前三季净买入股票 $112亿，攻守兼备</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4个核心 KPI 卡片 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+          <!-- KPI 1 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>2026Q3 13F 美股组合总市值</span>
+              <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$304.20B</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+12.9% YoY</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              较 2026Q2（$299.25B）环比提升 +1.65%，过去一年组合回报率 +12.9%，跑赢同期标普 500（+10.1%）。
+            </p>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>全球权益总持仓 (含日本商社)</span>
+              <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$357.6B</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">海外 ~$53.4B</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              除 $3,042亿美股 13F 标的之外，持有伊藤忠、三菱、三井、丸红、住友五大商社各超 10% 股权。
+            </p>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>现金与短期美债储备 (净额)</span>
+              <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$352.3B</span>
+              <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">浮存金 $178.5B</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              扣除未结算国债应付款后净现金与美债达 $3,523亿（较 Q2 末 $3,592亿微降，主因大额回购投入）。
+            </p>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>Q3 自身股票回购与总市值</span>
+              <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$9.65B</span>
+              <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">市值 $1.263T</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Q3 以 ~$503.68 均价（约 1.41x P/B）回购 1,238.5万股 BRK.B 及 4,536 股 BRK.A，当前股价已升至 ~$593。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      一、 持仓架构与四大战略支柱 (Portfolio Architecture)
+      ========================================================= -->
+      <section id="sec-biz" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Portfolio Architecture &amp; Q3 Trade Moves</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 持仓架构与调仓脉络：核心支柱稳守逾 96% 权重，果断“减银行、加地产与航空”</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Q3 买入股票 $2.37B / 卖出 $2.79B（前三季累计净买入 +$11.20B）</span>
+        </div>
+
+        <!-- 交互式 Chart.js 双视图切换面板 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- 左侧：双视图图表 -->
+          <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2025Q3–2026Q3 伯克希尔 13F 持仓规模演进与核心板块拆解</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">13F 总市值稳步攀升至 $304.2B，前五大公司（AAPL/AXP/Alphabet/KO/BAC）合计贡献 71.54% 权重</p>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+                <button onclick="switchBizChart('sector_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：季度规模与结构演进</button>
+                <button onclick="switchBizChart('trade_moves')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：2026Q3 增减持幅度榜</button>
+              </div>
+            </div>
+            <div class="relative h-72 w-full">
+              <canvas id="bizArchitectureChart"></canvas>
+            </div>
+          </div>
+
+          <!-- 右侧：2026Q3 三大核心调仓洞察 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026Q3 三大核心资本配置动作拆解</h3>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">“弃美银、翻倍莱纳房产”：利率敏感资产大腾挪</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      如 <a href="https://www.morningstar.com/stocks/berkshire-hathaway-13f-sales-outweighed-purchases-swapping-bank-america-stock-lennar" target="_blank" rel="noopener noreferrer" class="text-mogold-600 dark:text-mogold-400 underline">Morningstar 研报</a>所指出，伯克希尔在 Q3 继续减持 <strong>美国银行（BAC -5.70% 至 4.56亿股）</strong> 并猛砍 <strong>第一资本（COF -61.67%）</strong>，同时将全美住宅建筑龙头 <strong>Lennar A类股（LEN）</strong> 持仓近乎翻倍（<strong>+98.56% 至 2,603万股，连同 B 类股 53.3万股合计 $21.68亿</strong>），直指美国住房结构性短缺红利。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">新进欧洲科技独角兽 Bending Spoons，持续加码达美航空</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      Q3 唯一新进标的为意大利应用软件整合平台 <a href="https://seekingalpha.com/news/4673289-berkshire-hathaways-q3-top-trades-include-bending-spoons-stake-increased-delta-air-lines-holding" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 underline">Bending Spoons (BSP)</a>（7月 IPO 认购 2,069万股，季末市值 <strong>$6.89亿</strong>，10月29日再追加 $3.3亿/1,000万股）；同时将 <strong>达美航空（DAL）</strong> 增持 <strong>+12.44%</strong> 至 6,445万股（市值 $53.8亿）。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">最大手笔买入其实是“伯克希尔自己”：单季回购 $96.5亿</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      相比二级市场股票单季净卖出 $4.26亿，阿贝尔与巴菲特在 Q3 抓住 BRK.B 股价回调至 ~$503（约 1.41 倍账面价值）的窗口，单季斥资 <strong>$96.5亿</strong> 回购自家股票，创近年单季回购峰值。
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-slate-500 dark:text-slate-400">2026Q3 仓位变动总览</span>
+              <span class="font-bold text-mogold-600 dark:text-mogold-400">1只新进 · 4只增持 · 6只减持 · 19只锁仓不动</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大持仓战略支柱卡片矩阵 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- 支柱 1：科技与消费生态印钞机 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一支柱 · 占 13F 权重 ~52.11%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">合计市值 $158.52B (其中四大龙头 $154.11B)</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 科技生态与日常消费品牌（AAPL + GOOGL/GOOG + KO + KHC 等）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                <strong>苹果（AAPL）</strong>以 2.279 亿股、<strong>$759.0亿（24.95%）</strong>稳居头号重仓，本季一股未动且随股价上涨贡献近百亿美元浮盈；<strong>Alphabet（GOOGL 7,879万股 + GOOG 2,719万股）</strong>合并市值达 <strong>$363.7亿（11.96%）</strong>，成为实质第三大重仓；<strong>可口可乐（KO）</strong>4 亿股（<strong>$344.3亿，11.32%</strong>，成本仅 $3.25/股）与 <strong>卡夫亨氏（KHC $74.0亿，2.43%）</strong> 四大龙头合计达 $1,541.1亿（50.66%），叠加上游商超 <strong>KR（$20.5亿）</strong>、域名垄断者 <strong>VRSN（$16.7亿）</strong> 与新进 <strong>BSP（$6.9亿）</strong> 共筑 $1,585.2亿科技消费基本盘。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>AAPL 24.95% | GOOGL+GOOG 11.96% | KO 11.32%</span>
+              <span class="text-mogold-600 dark:text-mogold-400 font-semibold">Q3 核心仓位 100% 零减持</span>
+            </div>
+          </div>
+
+          <!-- 支柱 2：金融、支付与保险护城河矩阵 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第二支柱 · 占 13F 权重 ~31.07%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">合计市值 $94.52B (四大核心 $93.26B)</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 金融支付、信用评级与财险龙头（AXP + BAC + MCO + CB 等）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                <strong>美国运通（AXP 1.516亿股，$461.0亿，15.16%，成本 $8.49）</strong>与<strong>穆迪（MCO 2,467万股，$112.0亿，3.68%，成本 $10.05，占总股本 ~13%）</strong>作为永不出售的收费桥资产一股未动；<strong>安达保险（Chubb, CB 3,425万股，$111.4亿，3.66%，占总股本 ~8.5%）</strong>与 <strong>盟友金融（ALLY $10.2亿）</strong> 稳守阵地；仅对纯利差或消费信贷敏感型银行 <strong>BAC（-5.7% 至 $248.1亿）</strong> 和 <strong>COF（-61.7% 至 $2.22亿）</strong> 实施战术瘦身。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>AXP 15.16% | BAC 8.16% | MCO 3.68% | CB 3.66%</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">留存轻资本收费桥、压降信贷敞口</span>
+            </div>
+          </div>
+
+          <!-- 支柱 3：传统能源、航空与住宅建筑 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">第三支柱 · 占 13F 权重 ~13.23%</span>
+                <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">合计市值 $40.24B (另含医疗与传媒 $10.92B)</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 传统能源巨头与实体周期龙头（CVX + OXY + DAL + LEN 等）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                能源双雄 <strong>雪佛龙（CVX 8,438万股，$172.3亿，5.66%）</strong> 与 <strong>西方石油（OXY 2.649亿股，$146.6亿，4.82%，另持 $100亿 8%优先股）</strong> 在 Q3 随油气估值修复显著增厚净值；同时阿贝尔主导加码 <strong>达美航空（DAL +12.44% 至 $53.8亿）</strong> 与 <strong>莱纳房产（LEN+LEN-B 合计 $21.7亿）</strong> 及建材钢铁（LPX/NUE/NVR/DHI 合计 $8.0亿），连同医疗与传媒仓位（DVA/SIRI/LLYV/NYT/M 合计 $109.2亿）完整拼合 100% 美股组合。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>CVX+OXY 10.48% | DAL 1.77% | LEN 0.71%</span>
+              <span class="text-teal-600 dark:text-teal-400 font-semibold">高股息抗通胀 + 地产周期复苏催化</span>
+            </div>
+          </div>
+
+          <!-- 支柱 4：海外非13F持仓（日本五大商社） -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">第四支柱 · 非美 13F 豁免披露资产</span>
+                <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">持股市值 ~$53.4B</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 日本五大商社永久性战略持仓（持股均超 10%）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                根据 <a href="https://www.morningstar.com/stocks/berkshire-hathaway-13f-sales-outweighed-purchases-swapping-bank-america-stock-lennar" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 underline">Morningstar</a> 与 <a href="https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 underline">Seeking Alpha 追踪报告</a>，伯克希尔全球股票总持仓达 <strong>$3,576亿</strong>，其中未计入美股 13F 的约 <strong>$534亿</strong> 主要为日本五大综合商社（<strong>伊藤忠商事、三菱商事、三井物产、丸红、住友商事</strong>，自 2025Q1 起持股比例均已突破 10%；比亚迪 BYDDY 已于 2025Q3 全部清仓完毕）。通过发行超低息日元债完全对冲汇率并坐享巨额利差与分红增长。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>占伯克希尔全球股票总组合 ~14.9%</span>
+              <span class="text-indigo-600 dark:text-indigo-400 font-semibold">低息日元债杠杆套利典范（浮盈超3倍）</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      二、 投资哲学与四重核心护城河 (Investment Philosophy & Moat)
+      ========================================================= -->
+      <section id="sec-moat" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Capital Allocation Philosophy &amp; Structural Moat</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 投资哲学与四重结构性护城河：为何普通基金无法复制奥马哈复利引擎？</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">组合架构评级：极宽护城河 (Wide Moat · 零赎回压力永久资本)</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- 左侧：四重护城河深度解析 -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 护城河 1 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">89.37% 极致集中度与皇冠资产垄断</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                摒弃平庸分散化，前十大重仓占据 <strong>89.37%</strong> 仓位。被投企业（AAPL、AXP、KO、GOOGL、MCO）均具备全球心智垄断、极高投入资本回报率（ROIC &gt;30%）与无需高资本开支即可提价的定价霸权。
+              </p>
+            </div>
+
+            <!-- 护城河 2 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">$1,785亿负成本保险浮存金永续杠杆</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                截至 2026Q3 保险浮存金达 <strong>$1,785亿</strong>（Q3 单季保险承保利润仍达 <strong>$13.52亿</strong>）。不同于面临客户赎回与保证金强平的对冲基金，伯克希尔拥有永不强制平仓的零/负成本长期资金池。
+              </p>
+            </div>
+
+            <!-- 护城河 3 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">双重回购复利与十年级资本利得税递延</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                在被投端，苹果、美运通、雪佛龙与 DaVita（持股已被动升至 ~38%）每年百亿级回购自动推高伯克希尔持股比例；在集团端，伯克希尔自身 Q3 回购 $96.5亿，实现<strong>“底层资产回购 + 集团母体回购”双重每股净值加速</strong>。
+              </p>
+            </div>
+
+            <!-- 护城河 4 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">$3,523亿国债现金库与危机最后买家地位</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                高达 <strong>$3,523亿</strong> 的现金与短期美国国库券不仅每年贡献超百亿美元无风险利息，更赋予阿贝尔在市场剧烈动荡或 IPO 折价窗口（如 7 月及 10 月累计 $9.3亿 投资 Bending Spoons）中一锤定音的战略机动性。
+              </p>
+            </div>
+          </div>
+
+          <!-- 右侧：五维组合质量雷达图 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">投资组合五维护城河与资本效率雷达图</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">伯克希尔 13F 组合 vs 标普 500 指数 vs 华尔街对冲基金均值（满分 10 分）</p>
+            <div class="relative h-72 w-full">
+              <canvas id="moatRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      三、 2026Q3 全部 30 只 13F 持仓全景明细矩阵 (Complete 30 Holdings Table)
+      ========================================================= -->
+      <section id="sec-comp" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Complete 2026Q3 SEC 13F-HR Holdings Matrix (30 Positions)</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 2026Q3 全部 30 个 13F 持仓全景明细表：股数、市值、权重与季度调仓逐一拆解</h2>
+          </div>
+          <!-- 交互式筛选按钮与搜索框 -->
+          <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+            <div class="relative">
+              <input type="text" id="holding-search-input" oninput="searchHoldings()" placeholder="搜索代码或公司名 (如 AAPL, LEN)..." class="w-48 sm:w-56 pl-3 pr-7 py-1.5 rounded-lg bg-white dark:bg-navy-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:border-mogold-500 text-xs" />
+            </div>
+            <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+              <button onclick="filterHoldings('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部持仓 (30)</button>
+              <button onclick="filterHoldings('top10')" data-filter="top10" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">前十大重仓 (89.4%)</button>
+              <button onclick="filterHoldings('added')" data-filter="added" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">Q3 新进/增持 (5)</button>
+              <button onclick="filterHoldings('reduced')" data-filter="reduced" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">Q3 减持调仓 (6)</button>
+              <button onclick="filterHoldings('unchanged')" data-filter="unchanged" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">Q3 锁仓不动 (19)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 30只持仓完整对比表格 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="px-5 py-3 bg-slate-50 dark:bg-navy-950/60 border-b border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400">
+            <span id="table-count-label">当前显示：30 / 30 个 SEC 13F 证券条目（合计市值 $304.20B · 精确汇总 $304,196,569,000）</span>
+            <span>数据核实源：<a href="https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026" target="_blank" rel="noopener noreferrer" class="text-mogold-600 dark:text-mogold-400 underline">13f.info Q3 2026</a> · <a href="https://13f.info/13f/000119312526463399/compare/000119312526352200" target="_blank" rel="noopener noreferrer" class="text-mogold-600 dark:text-mogold-400 underline">Q2 vs Q3 对比</a></span>
+          </div>
+          <div class="overflow-x-auto max-h-[680px]">
+            <table class="w-full text-left border-collapse">
+              <thead class="sticky top-0 z-10">
+                <tr class="bg-slate-100 dark:bg-navy-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                  <th class="py-3.5 px-4 min-w-[60px]">排名</th>
+                  <th class="py-3.5 px-4 min-w-[195px]">股票代码与公司名称</th>
+                  <th class="py-3.5 px-3 min-w-[105px]">行业分类</th>
+                  <th class="py-3.5 px-4 text-right min-w-[125px]">2026Q3 持股数</th>
+                  <th class="py-3.5 px-4 text-right min-w-[120px]">Q3 持仓市值</th>
+                  <th class="py-3.5 px-3 text-right min-w-[85px]">组合权重</th>
+                  <th class="py-3.5 px-4 text-center min-w-[130px]">Q3 股数变动</th>
+                  <th class="py-3.5 px-4 min-w-[250px]">巴菲特 / 阿贝尔持仓逻辑与成本安全垫</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="holdings-table-body">
+                <!-- 由 JS 从经过 100% 校验的 30 条 SEC 13F 数据动态渲染并支持搜索与分类过滤 -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 配套 Chart.js 横向条形图：前十大重仓股持仓市值与组合权重对比 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">伯克希尔 2026Q3 前十大 13F 持仓市值（$B）与组合权重（%）双维对比</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">前十大重仓合计市值达 $2,718.5亿，占 13F 总组合的 89.37%（注：GOOGL 与 GOOG 分列第4与第10，合并后达 $363.7亿 / 11.96%）</p>
+            </div>
+            <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">Top 10 集中度 89.37%</span>
+          </div>
+          <div class="relative h-80 w-full">
+            <canvas id="compMarginChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      四、 财务健康度与复利推演 (Financial Health & Compounding Simulator)
+      ========================================================= -->
+      <section id="sec-fin" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Q3 2026 10-Q Financial Health &amp; Compounding Simulator</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 资产负债表健康度与复利推演：$3,523亿国债现金池与 $96.5亿回购加速器</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">数据来源：<a href="https://www.crowdfundedwealth.com/articles/berkshire-hathaway-10-q-q3-2026-cash-buybacks-stock-sales" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 underline">2026Q3 Form 10-Q (0001193125-26-452412)</a></span>
+        </div>
+
+        <!-- 1. 财务健康度四大硬核指标卡 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">9M 2026 Operating Earnings</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$37.03B <span class="text-xs text-emerald-500">+8.0%</span></div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              2026 前三季营业利润达 $370.34亿（同比 +8.0%），前三季经营现金流约 <strong>$339亿</strong>；Q3 单季营业利润 $127亿（GAAP 净利润 $221.12亿）。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Cash &amp; T-Bills (Net)</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$352.3B</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              扣除未结算国债应付款后，保险及其他部门持有 $3,523亿现金与美债（含短期美债 $3,367.35亿 + 现金 $360.34亿未扣口径为 $3,727.7亿），远超 $300亿底线。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">9M Net Stock Purchases</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">+$11.20B</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              2026 前三季累计买入股票 <strong>$418亿</strong>、卖出 <strong>$306亿</strong>，彻底扭转 2024–2025 连续净卖出态势；Q3 单季买入 $23.7亿、卖出 $27.9亿（微幅净卖出 $4.26亿）。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Q3 Share Buybacks &amp; P/B</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$9.65B <span class="text-xs text-mogold-500">1.41x P/B</span></div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              Q3 回购单价对应账面价值（~$357/B股）约 141%；按最新股价 $592.85 测算，当前静态 P/B 约 <strong>1.66x</strong>，总市值达 <strong>$1.263万亿</strong>。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. 交互式 Chart.js 双轴图：2025Q3–2026Q3 13F 市值演进与回购/现金动态 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">2025Q3–2026Q3 伯克希尔 13F 持仓市值攀升 vs 净现金及国债储备演进</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">2026 年阿贝尔接任 CEO 后积极将超额现金投入二级市场优质股权（前三季净买入 $112亿）与大额回购（Q3 回购 $96.5亿）</p>
+            </div>
+            <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">股票+现金双轮总资产逾 $7,100亿</span>
+          </div>
+          <div class="relative h-72 w-full">
+            <canvas id="valEvolutionChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 3. 交互式组件：伯克希尔“股票组合+国债利息+自身回购”内在价值复利动态推演器 -->
+        <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+            <div>
+              <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+                <span>OMAHA COMPOUNDING ENGINE · 伯克希尔内在价值与回购增厚模拟器</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-1">伯克希尔（BRK.B）长期持仓复利与每股账面价值（BVPS）动态推演器</h3>
+              <p class="text-xs text-slate-400 mt-0.5">基准参数：BRK.B 当前参考股价 $592.85 | 2026Q3 账面价值 ~$357.00/股（当前 ~1.66x P/B）| 零分红免预扣税复利</p>
+            </div>
+            <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+              <input type="checkbox" id="drip-toggle" checked onchange="updateDividendSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+              <span>启用集团常态化股票回购增厚 (+1.5%/年每股净值增益)</span>
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <!-- 左侧参数控制区 -->
+            <div class="lg:col-span-5 space-y-4 text-xs">
+              <!-- 本金滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">初始配置本金 (USD)</span>
+                  <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$50,000</span>
+                </div>
+                <input id="sim-principal" type="range" min="10000" max="500000" step="10000" value="50000" oninput="updateDividendSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+              </div>
+
+              <!-- 年限滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+                  <span id="sim-years-label" class="font-mono font-bold text-white text-sm">10 年</span>
+                </div>
+                <input id="sim-years" type="range" min="1" max="20" step="1" value="10" oninput="updateDividendSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+              </div>
+
+              <!-- 内生账面价值增速滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">内生营业利润 + 13F 股票组合年化回报率</span>
+                  <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">9.5%</span>
+                </div>
+                <input id="sim-growth" type="range" min="5" max="15" step="0.5" value="9.5" oninput="updateDividendSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+              </div>
+
+              <!-- 期末目标 P/B 估值倍数选择按钮组 -->
+              <div class="pt-1">
+                <div class="text-slate-300 font-medium mb-2">期末退出 / 估值市净率（Target P/B Multiple）情景：</div>
+                <div class="grid grid-cols-3 gap-2" id="tax-btn-group">
+                  <button type="button" onclick="setPbMultiple(1.40)" data-pb="1.4" class="tax-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+                    1.40x 保守底线<br><span class="text-[10px] text-slate-400">Q3回购触发线</span>
+                  </button>
+                  <button type="button" onclick="setPbMultiple(1.60)" data-pb="1.6" class="tax-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-mogold-500 text-navy-950 border border-mogold-400 shadow transition cursor-pointer">
+                    1.60x 稳态中枢<br><span class="text-[10px] text-navy-900">历史合理均值</span>
+                  </button>
+                  <button type="button" onclick="setPbMultiple(1.80)" data-pb="1.8" class="tax-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+                    1.80x 溢价重估<br><span class="text-[10px] text-slate-400">牛市扩张期</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右侧四大实时测算结果卡片 -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">期末预计持仓总市值 (USD)</div>
+                <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$137,420</div>
+                <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计总回报 +174.8% (CAGR 10.6%)</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">期末 BRK.B 推算每股账面价值</div>
+                <div id="sim-annual-div" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">$1,018</div>
+                <div id="sim-monthly-div" class="text-xs text-slate-400 mt-1.5">期末推算目标股价：~$1,629 / B股</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">期末透视底层 13F 组合权益归属额</div>
+                <div id="sim-yoc" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$66,850</div>
+                <div class="text-xs text-slate-400 mt-1.5">按股票+现金占市值权重折算的透明底层资产</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">回购注销带来的被动持股增厚比例</div>
+                <div id="sim-cum-div" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">+16.05%</div>
+                <div id="sim-shares-end" class="text-xs text-slate-400 mt-1.5">起始购入：84.3 股 BRK.B（等效享有 97.9 股权益）</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 华尔街多空核心分歧对比 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">阿贝尔平稳接棒 + 回购重启</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>阿贝尔果断打破“零回购”僵局：</strong>2025 年前三季伯克希尔零回购，而 2026Q3 在 ~$503（1.41x P/B）果断回购 $96.5亿，证明新管理层资本配置极其敏锐。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AAPL + GOOGL 双科技巨头驱动净值：</strong>苹果（$759亿）与 Alphabet（$363.7亿）合计占 13F 近 37%，在 AI 终端与云搜索商业化浪潮中具备极强现金流复利能力。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>$3,523亿现金提供无可比拟的下行保护：</strong>无论美股发生何种宏观黑天鹅，伯克希尔手握全球最大规模国债池，随时可以折价收购优质大象级资产。</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">估值溢价 + 保险承保周期见顶</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>1.66x P/B 短期安全边际收窄：</strong>随着 BRK.B 升至 ~$593（市值 $1.263T），较 Q3 回购均价 $503.68 已上涨 +17.7%，部分机构（如 Seeking Alpha 部分评级）提示短期估值偏满。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>保险承保利润与国债利息面临双双放缓：</strong>Q3 保险承保利润同比从 $23.69亿降至 $13.52亿（-42.9%），且若美联储持续降息，$3,367亿短期美债的利息收入将随之回落。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>卡夫亨氏（KHC）等传统消费存量滞涨：</strong>KHC（持仓 $74.0亿，2026年1月曾提交潜在减持登记）面临增长瓶颈，Todd Combs / Ted Weschler 历史仓位仍在持续清理中。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      五、 投资决策与“抄作业”风险配置框架 (Investment Decision & Allocation)
+      ========================================================= -->
+      <section id="sec-inv" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Valuation Scenarios &amp; 13F Replication Strategy</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 投资决策与“13F 抄作业”配置框架：三情景估值与核心跟投法则</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">策略建议：底仓直接持有 BRK.B · 逢 1.40x–1.45x P/B 重锤加仓</span>
+        </div>
+
+        <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- 牛市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：25%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">1.75x–1.85x P/B ($660–$700)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>苹果与 Alphabet 领涨带动 13F 组合突破 $3,400亿；美国按揭利率回落引爆 Lennar 等地产建筑股业绩；BNSF 铁路与 BHE 能源利润率显著改善，推动 2027E 账面价值升至 ~$380/B股。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              12个月潜在上行空间：+11.3% 至 +18.1%
+            </div>
+          </div>
+
+          <!-- 基准情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">基准情景 (Base Case)</span>
+                <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">概率：55%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">1.55x–1.68x P/B ($590–$640)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>全年营业利润维持 ~$500亿稳健水平，13F 股票组合与日本五大商社提供 ~10% 内生回报，管理层在股价回调时持续执行每年 $150亿–$250亿回购，股价随账面价值稳步上移。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+              12个月稳健预期回报：+6.0% 至 +10.0%
+            </div>
+          </div>
+
+          <!-- 熊市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+                <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">1.35x–1.42x P/B ($500–$525)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>美股科技权重股（AAPL/GOOGL）经历估值回调导致 13F 账面浮盈缩水，或巨灾理赔拖累保险承保利润；但一旦回到 ~$503（1.41x P/B）区域，伯克希尔将再次启动百亿级回购托底。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+              潜在最大回撤：-11.4% 至 -15.6%（$503 回购铁底）
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 四大核心风险矩阵 -->
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">跟踪伯克希尔 13F 持仓的四大核心认知误区与风险边界</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 13F 披露滞后性与小仓位归属区分</span>
+                <span class="text-xs font-mono text-rose-500 font-semibold">关注度：高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">45 天披露时滞，且 $25亿以下仓位多由副手管理</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                13F 反映的是季度末（9月30日）静态截面。诸如 COF、VRSN、NUE、M 等占组合 0.05%–0.7% 的调仓多属于投资经理组合调整，切忌把 0.2% 的战术试水等同于巴菲特 25% 重仓苹果的确定性。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 13F 盲区：不含非美股票、优先股与实业子公司</span>
+                <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">$534亿日本商社、$100亿西方石油优先股及后续动作不在表内</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                SEC 13F 仅统计美国挂牌权益证券，不包含 $3,523亿国债现金、$534亿日本五大商社及 10 月 29 日追加购买的 $3.3亿 Bending Spoons 股份，需结合 10-Q 与海外监管披露立体研判。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">03 · 单一科技龙头集中度敞口（AAPL + GOOGL = 36.9%）</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">苹果（24.95%）与 Alphabet（11.96%）反垄断与硬件周期波动</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                两大科技巨头合计市值达 $1,122.8亿，占 13F 比重高达 36.91%。若美国司法部反垄断裁决或消费电子换机周期放缓冲击估值，将直接影响伯克希尔季度账面净值表现。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 卡夫亨氏（KHC）潜在退出与银行股减持尾声</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">KHC 登记减持意向悬而未决，BAC 减持或随估值修复延续</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                尽管 Q3 伯克希尔持有的 3.256 亿股卡夫亨氏（$74.0亿）尚未实际抛售，但 2026 年 1 月备案文件已释放潜在退出信号，投资者抄底 KHC 需警惕潜在大宗供给冲击。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 机构级组合配置纪律横幅 -->
+        <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+          <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>普通投资者如何高效借鉴伯克希尔 2026Q3 13F？（三大实操法则）</span>
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-white mb-1">1. 锚定“阿贝尔回购线”波段配置 BRK.B</div>
+              <p class="text-slate-300 leading-relaxed">
+                2026Q3 伯克希尔用真金白银标出内部估值锚：<strong>1.41x P/B（对应当时 ~$503.68）是管理层大举回购 $96.5亿的击球区</strong>。未来每当 BRK.B 回调至 1.40x–1.45x P/B 区间，即是最具确定性的右侧买点。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-mogold-400 mb-1">2. 精选“连续加仓+行业拐点”高胜率标的</div>
+              <p class="text-slate-300 leading-relaxed">
+                比起盲目追高已翻数倍的旧仓，重点跟踪连续两个季度以上获逆势增持且估值尚在低位的标的：如 Q3 翻倍加仓的住宅龙头 <strong>Lennar (LEN)</strong>、持续加码的 <strong>Delta (DAL)</strong> 以及安达保险 <strong>Chubb (CB)</strong>。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-emerald-400 mb-1">3. 善用 BRK.B 零分红特性优化跨境税盾</div>
+              <p class="text-slate-300 leading-relaxed">
+                对于需要缴纳 10%–30% 美股股息预扣税的非美投资者，直接持有 <strong>BRK.B</strong> 可将底层苹果、可口可乐、美运通与国债的利息分红在集团内部留存再投资与回购，实现<strong>合法零股息预扣税损耗复利</strong>。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      六、 季度 13F & 10-Q 跟踪 KPI 交互式核查清单 (Checklist)
+      ========================================================= -->
+      <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly 13F &amp; 10-Q Tracking KPIs</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度 13F 与 10-Q 跟踪 KPI 交互式核查清单（Checklist）</h2>
+          </div>
+          <div class="flex items-center space-x-2 no-print">
+            <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 4 / 6 项 (67%)</span>
+            <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            点击勾选季度 13F / 10-Q 披露后已验证达标的核心指标（勾选状态自动本地保存），持续追踪阿贝尔与巴菲特资本配置动向：
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+            <!-- KPI 1 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">1. 四大压舱石（AAPL / AXP / KO / GOOGL）股数是否保持零减持</span>
+                  <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">核心定力锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  2026Q3 苹果（2.279亿股）、美运通（1.516亿股）、可口可乐（4.00亿股）、Alphabet（合计 1.060亿股）股数 100% 持平，验证长期持有逻辑稳固。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 2 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">2. 单季股票回购规模与回购触发估值倍数（~1.40x P/B）</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">估值安全垫</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Q3 在 ~$503.68（约 141% 账面价值）大举回购 $96.5亿；后续观察股价站上 $590（~1.66x P/B）后 Q4 回购节奏是否放缓。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 3 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">3. 莱纳房产（LEN）与达美航空（DAL）增持延续性验证</span>
+                  <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">周期轮动风向</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Q3 LEN 股数激增 +98.56% 至 2,603万股，DAL 增持 +12.44% 至 6,445万股；跟踪 2026Q4 是否继续加码住宅建筑与航空龙头。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 4 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-4" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">4. Bending Spoons (BSP) 10月追加认购后的 2026Q4 合并持仓</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">新进科技跟踪</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Q3 末持有 BSP 2,069万股（$6.89亿），叠加 2026年10月29日追加购买的 1,000万股（$3.3亿），核查 Q4 13F 持仓是否突破 3,069万股。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 5 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">5. 美国银行（BAC）减持节奏与 4.0 亿股整数关口动向</span>
+                  <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">银行仓位监测</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Q3 减持 BAC 2,753万股（-5.70%）至 4.559亿股（占组合 8.16%）；关注后续季度是否稳守 4 亿股以上长期底仓。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 6 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">6. 卡夫亨氏（KHC）3.256亿股持仓去留与日本商社增持动态</span>
+                  <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">潜在调仓预警</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  留意 KHC 在发布 $7亿增长计划后伯克希尔是否启动实质减持，以及 2027 年初年报披露的日本五大商社最新持股百分比。
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      页脚免责声明与权威数据源索引 (Disclaimer & Sources Footer)
+      ========================================================= -->
+      <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-3 pb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+          <span>伯克希尔·哈撒韦 Berkshire Hathaway Inc. (NYSE: BRK.B / BRK.A) 2026Q3 13F 持仓深度研究报告 · MO 机构模板标准版</span>
+          <span>数据基准：2026年11月16日 SEC Form 13F-HR &amp; 2026年11月9日 Form 10-Q</span>
+        </div>
+        <div class="flex flex-wrap gap-x-4 gap-y-1 text-[11px]">
+          <span class="font-semibold text-slate-600 dark:text-slate-300">核实数据源链接：</span>
+          <a href="https://www.sec.gov/Archives/edgar/data/1067983/000119312526463399/0001193125-26-463399-index.htm" target="_blank" rel="noopener noreferrer" class="hover:text-mogold-500 underline">SEC EDGAR 2026Q3 13F-HR 原件</a>
+          <a href="https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026" target="_blank" rel="noopener noreferrer" class="hover:text-mogold-500 underline">13f.info 2026Q3 完整30只持仓表</a>
+          <a href="https://13f.info/13f/000119312526463399/compare/000119312526352200" target="_blank" rel="noopener noreferrer" class="hover:text-mogold-500 underline">13f.info Q2 vs Q3 持仓变动对比</a>
+          <a href="https://www.morningstar.com/stocks/berkshire-hathaway-13f-sales-outweighed-purchases-swapping-bank-america-stock-lennar" target="_blank" rel="noopener noreferrer" class="hover:text-mogold-500 underline">Morningstar 2026Q3 13F 深度评析</a>
+          <a href="https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update" target="_blank" rel="noopener noreferrer" class="hover:text-mogold-500 underline">Seeking Alpha Q3 2026 持仓追踪</a>
+          <a href="https://www.crowdfundedwealth.com/articles/berkshire-hathaway-10-q-q3-2026-cash-buybacks-stock-sales" target="_blank" rel="noopener noreferrer" class="hover:text-mogold-500 underline">Q3 2026 10-Q 现金与回购解析</a>
+          <a href="https://whalewisdom.com/filer/berkshire-hathaway-inc" target="_blank" rel="noopener noreferrer" class="hover:text-mogold-500 underline">WhaleWisdom 机构档案</a>
+        </div>
+        <p class="leading-relaxed">
+          <strong>免责声明：</strong>本深度研究报告严格基于伯克希尔·哈撒韦向美国证券交易委员会（SEC）提交的 2026Q3 Form 13F-HR（截至 2026 年 9 月 30 日）、2026Q2 Form 13F-HR 及 2026Q3 Form 10-Q 季报数据整理生成。13F 报告仅反映管理人截至季度末的美国可报告权益证券持仓，不包括非美上市证券（如日本五大商社）、现金与美国国库券、固定收益债券及优先股（如西方石油优先股）。报告中的内在价值复利模拟与三情景估值仅作学术与研究参考，不构成任何证券投资建议。
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+  <script>
+    // ==========================================
+    // 0. 2026Q3 SEC 13F-HR 全部 30 个持仓条目完整权威数据集
+    // ==========================================
+    const BRK_HOLDINGS_2026Q3 = [
+      { rank: 1, sym: 'AAPL', name: 'Apple Inc. (苹果)', sector: '科技生态与硬件', shares: 227917808, valK: 75901188, pct: 24.95, q2Shares: 227917808, chgPct: 0.00, status: 'unchanged', top10: true, url: 'https://13f.info/cusip/037833100', note: '头号压舱石（占13F近1/4），Q3一股未动，随iPhone与AI生态估值修复单季市值大增近$100亿。' },
+      { rank: 2, sym: 'AXP', name: 'American Express Co. (美国运通)', sector: '金融与高端支付', shares: 151610700, valK: 46104813, pct: 15.16, q2Shares: 151610700, chgPct: 0.00, status: 'unchanged', top10: true, url: 'https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026', note: '永不出售的闭环支付网络收费桥，每股成本仅约$8.49，近10年零减持。' },
+      { rank: 3, sym: 'KO', name: 'The Coca-Cola Co. (可口可乐)', sector: '必需消费饮品', shares: 400000000, valK: 34432000, pct: 11.32, q2Shares: 400000000, chgPct: 0.00, status: 'unchanged', top10: true, url: 'https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026', note: '4亿股铁打底仓，每股历史成本约$3.25，每年贡献超$8亿稳定现金分红。' },
+      { rank: 4, sym: 'GOOGL', name: 'Alphabet Inc. Class A (谷歌A类)', sector: '科技与AI云搜索', shares: 78791167, valK: 27110464, pct: 8.91, q2Shares: 78791167, chgPct: 0.00, status: 'unchanged', top10: true, url: 'https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026', note: '与第10名GOOG合并计算共1.06亿股、总市值$363.75亿（占11.96%），位列实质第三大重仓。' },
+      { rank: 5, sym: 'BAC', name: 'Bank of America Corp. (美国银行)', sector: '大型商业银行', shares: 455860908, valK: 24812509, pct: 8.16, q2Shares: 483394015, chgPct: -5.70, status: 'reduced', top10: true, url: 'https://www.morningstar.com/stocks/berkshire-hathaway-13f-sales-outweighed-purchases-swapping-bank-america-stock-lennar', note: 'Q3战术减持2,753万股（-5.70%）以腾挪资金加码地产，但仍以$248.1亿稳居前五大重仓。' },
+      { rank: 6, sym: 'CVX', name: 'Chevron Corp. (雪佛龙)', sector: '传统综合能源', shares: 84375856, valK: 17230393, pct: 5.66, q2Shares: 84375856, chgPct: 0.00, status: 'unchanged', top10: true, url: 'https://13f.info/cusip/166764100/2026/1', note: 'Q3锁仓不动，受益油气现金流与高股息回报，单季持仓市值由$139.9亿增至$172.3亿。' },
+      { rank: 7, sym: 'OXY', name: 'Occidental Petroleum (西方石油)', sector: '传统油气与碳捕集', shares: 264941431, valK: 14656559, pct: 4.82, q2Shares: 264941431, chgPct: 0.00, status: 'unchanged', top10: true, url: 'https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026', note: '除2.649亿普通股外，伯克希尔还持有$100亿清算价值的8%优先股及认股权证。' },
+      { rank: 8, sym: 'MCO', name: "Moody's Corp. (穆迪)", sector: '信用评级与金融数据', shares: 24669778, valK: 11203286, pct: 3.68, q2Shares: 24669778, chgPct: 0.00, status: 'unchanged', top10: true, url: 'https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update', note: '全球债券评级双寡头之一，巴菲特持仓成本仅$10.05/股，控有穆迪约13%股权。' },
+      { rank: 9, sym: 'CB', name: 'Chubb Limited (安达保险)', sector: '全球财产与意外险', shares: 34249183, valK: 11139546, pct: 3.66, q2Shares: 34249183, chgPct: 0.00, status: 'unchanged', top10: true, url: 'https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update', note: '2023下半年起保密建仓并多次加码的精品财险龙头，目前持有安达保险约8.5%股权。' },
+      { rank: 10, sym: 'GOOG', name: 'Alphabet Inc. Class C (谷歌C类)', sector: '科技与AI云搜索', shares: 27188433, valK: 9264186, pct: 3.05, q2Shares: 27188433, chgPct: 0.00, status: 'unchanged', top10: true, url: 'https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026', note: '与GOOGL同属Alphabet核心仓位，Q3保持2,719万股不变，合计持仓逾$363.7亿。' },
+      { rank: 11, sym: 'KHC', name: 'The Kraft Heinz Co. (卡夫亨氏)', sector: '包装食品与调味品', shares: 325634818, valK: 7398423, pct: 2.43, q2Shares: 325634818, chgPct: 0.00, status: 'unchanged', top10: false, url: 'https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026', note: 'Q3股数未变，但2026年1月监管文件曾披露潜在减持登记意向，需留意后续处置进展。' },
+      { rank: 12, sym: 'DAL', name: 'Delta Air Lines Inc. (达美航空)', sector: '航空运输与客运', shares: 64450000, valK: 5378997, pct: 1.77, q2Shares: 57320000, chgPct: 12.44, status: 'added', top10: false, url: 'https://seekingalpha.com/news/4673289-berkshire-hathaways-q3-top-trades-include-bending-spoons-stake-increased-delta-air-lines-holding', note: '2026Q1重新建仓后持续加码，Q3再增持713万股（+12.44%），看重高端商务航线与会员现金流。' },
+      { rank: 13, sym: 'DVA', name: 'DaVita Inc. (德维特肾透析)', sector: '医疗健康服务', shares: 28697229, valK: 5019719, pct: 1.65, q2Shares: 28880209, chgPct: -0.63, status: 'reduced', top10: false, url: 'https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update', note: 'Ted Weschler经典长线仓位，因DaVita自身大额回购使伯克希尔持股比例维持在~38%，仅做微幅比例调节。' },
+      { rank: 14, sym: 'SIRI', name: 'SiriusXM Holdings (天狼星XM)', sector: '卫星广播与流媒体', shares: 124807117, valK: 3230008, pct: 1.06, q2Shares: 124807117, chgPct: 0.00, status: 'unchanged', top10: false, url: 'https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026', note: '2025Q1完成Liberty追踪股合并换股后锁仓1.248亿股，具备高自由现金流与车载订阅粘性。' },
+      { rank: 15, sym: 'LEN', name: 'Lennar Corp. Class A (莱纳房产A)', sector: '住宅建筑与地产', shares: 26034436, valK: 2124149, pct: 0.70, q2Shares: 13111741, chgPct: 98.56, status: 'added', top10: false, url: 'https://www.morningstar.com/stocks/berkshire-hathaway-13f-sales-outweighed-purchases-swapping-bank-america-stock-lennar', note: 'Q3最亮眼加仓！单季增持1,292万股（+98.56%近翻倍），连同LEN-B合计持仓达$21.68亿。' },
+      { rank: 16, sym: 'KR', name: 'The Kroger Co. (克罗格超市)', sector: '生鲜商超零售', shares: 35000000, valK: 2051700, pct: 0.67, q2Shares: 39000000, chgPct: -10.26, status: 'reduced', top10: false, url: 'https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update', note: '2019Q4以$24–$29建仓的商超龙头，Q3逢高减持400万股（-10.26%）锁定丰厚长线利润。' },
+      { rank: 17, sym: 'VRSN', name: 'VeriSign Inc. (威瑞信)', sector: '互联网域名基础设施', shares: 5922136, valK: 1670101, pct: 0.55, q2Shares: 8989880, chgPct: -34.12, status: 'reduced', top10: false, url: 'https://www.indmoney.com/blog/us-stocks/berkshire-hathaway-portfolio-q3', note: '.com/.net顶级域名注册局垄断者，Q3减持306.8万股（-34.12%），保留592万股（$16.7亿）。' },
+      { rank: 18, sym: 'LLYVK', name: 'Liberty Live Holdings Ser C', sector: '现场娱乐与赛事股权', shares: 10587143, valK: 1029599, pct: 0.34, q2Shares: 10587143, chgPct: 0.00, status: 'unchanged', top10: false, url: 'https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026', note: '持有Live Nation核心权益的自由传媒系追踪股，与Series A（LLYVA）合计持仓$15.02亿。' },
+      { rank: 19, sym: 'ALLY', name: 'Ally Financial Inc. (盟友金融)', sector: '数字银行与汽车金融', shares: 27000000, valK: 1015740, pct: 0.33, q2Shares: 27000000, chgPct: 0.00, status: 'unchanged', top10: false, url: 'https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update', note: 'Q3保持2,700万股未动（占Ally总股本约9%），印证伯克希尔并非无差别抛售所有金融股。' },
+      { rank: 20, sym: 'NYT', name: 'The New York Times Co. (纽约时报)', sector: '数字新闻订阅媒体', shares: 15700000, valK: 1000090, pct: 0.33, q2Shares: 15700000, chgPct: 0.00, status: 'unchanged', top10: false, url: 'https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update', note: '2025Q4–2026Q1在$54–$86区间建仓的数字订阅媒体龙头，Q3稳守1,570万股（$10.0亿）。' },
+      { rank: 21, sym: 'BSP', name: 'Bending Spoons S.p.A.', sector: '应用软件与数字平台', shares: 20689655, valK: 689379, pct: 0.23, q2Shares: 0, chgPct: 100.00, status: 'added', top10: false, url: 'https://www.indmoney.com/blog/us-stocks/berkshire-hathaway-portfolio-q3', note: 'Q3唯一新进标的！7月IPO投入$6.0亿获2,069万股；10月29日再追加$3.3亿（1,000万股）。' },
+      { rank: 22, sym: 'LLYVA', name: 'Liberty Live Holdings Ser A', sector: '现场娱乐与赛事股权', shares: 4986588, valK: 471930, pct: 0.16, q2Shares: 4986588, chgPct: 0.00, status: 'unchanged', top10: false, url: 'https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026', note: 'Liberty Live A类有投票权股份，Q3保持498.7万股不变。' },
+      { rank: 23, sym: 'NUE', name: 'Nucor Corp. (纽柯钢铁)', sector: '电炉钢铁与工业制造', shares: 1580776, valK: 369506, pct: 0.12, q2Shares: 1857752, chgPct: -14.91, status: 'reduced', top10: false, url: 'https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update', note: '北美最大电弧炉钢铁商，2025Q1建仓，2026Q3小幅减持27.7万股（-14.91%）。' },
+      { rank: 24, sym: 'LPX', name: 'Louisiana-Pacific Corp. (路易斯安那太平洋)', sector: '高端建材与OSB板材', shares: 5664793, valK: 365662, pct: 0.12, q2Shares: 5664793, chgPct: 0.00, status: 'unchanged', top10: false, url: 'https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update', note: '北美房屋外墙板材龙头，与Lennar形成地产链协同，持有其约8%股权，Q3锁仓不动。' },
+      { rank: 25, sym: 'COF', name: 'Capital One Financial (第一资本)', sector: '信用卡与消费信贷', shares: 1150000, valK: 222030, pct: 0.07, q2Shares: 3000000, chgPct: -61.67, status: 'reduced', top10: false, url: 'https://www.indmoney.com/blog/us-stocks/berkshire-hathaway-portfolio-q3', note: 'Q3减持比例最大标的：大砍185万股（-61.67%），大幅收缩高违约敏感度的信用卡信贷敞口。' },
+      { rank: 26, sym: 'M', name: "Macy's Inc. (梅西百货)", sector: '百货零售与自有物业', shares: 7538800, valK: 171658, pct: 0.06, q2Shares: 7347426, chgPct: 2.60, status: 'added', top10: false, url: 'https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026', note: 'Q3小幅增持19.1万股（+2.60%）至753.9万股，属于深度价值与商业地产重估观察仓。' },
+      { rank: 27, sym: 'NVR', name: 'NVR Inc.', sector: '轻资产住宅建筑', shares: 11112, valK: 68387, pct: 0.02, q2Shares: 11112, chgPct: 0.00, status: 'unchanged', top10: false, url: 'https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update', note: '采用土地期权轻资产模式的精品房企，Q3保持11,112股不变。' },
+      { rank: 28, sym: 'LEN-B', name: 'Lennar Corp. Class B (莱纳房产B)', sector: '住宅建筑与地产', shares: 533000, valK: 44234, pct: 0.01, q2Shares: 298117, chgPct: 78.79, status: 'added', top10: false, url: 'https://seekingalpha.com/news/4673289-berkshire-hathaways-q3-top-trades-include-bending-spoons-stake-increased-delta-air-lines-holding', note: '配合LEN A类股同步大举加仓23.49万股（+78.79%至53.3万股），彰显对美国新房建造景气度的强烈信心。' },
+      { rank: 29, sym: 'JEF', name: 'Jefferies Financial Group (杰富瑞)', sector: '投资银行与资本市场', shares: 433558, valK: 19826, pct: 0.01, q2Shares: 433558, chgPct: 0.00, status: 'unchanged', top10: false, url: 'https://seekingalpha.com/article/4968848-tracking-berkshire-hathaway-portfolio-q3-2026-update', note: '精品投行观察仓位，Q3保持43.36万股不变。' },
+      { rank: 30, sym: 'DHI', name: 'D.R. Horton Inc. (霍顿房屋)', sector: '住宅建筑与地产', shares: 3564, valK: 487, pct: 0.0002, q2Shares: 3564, chgPct: 0.00, status: 'unchanged', top10: false, url: 'https://13f.info/13f/000119312526463399-berkshire-hathaway-inc-q3-2026', note: '保留极小底仓3,564股（地产主攻方向已集中至Lennar）。' }
+    ];
+
+    let currentFilterCategory = 'all';
+    let currentSearchQuery = '';
+
+    function formatValueBillions(valK) {
+      if (valK >= 1000000) {
+        return '$' + (valK / 1000000).toFixed(2) + 'B';
+      }
+      return '$' + (valK / 1000).toFixed(2) + 'M';
+    }
+
+    function renderHoldingsTable() {
+      const tbody = document.getElementById('holdings-table-body');
+      const countLabel = document.getElementById('table-count-label');
+      const q = currentSearchQuery.trim().toLowerCase();
+
+      const filtered = BRK_HOLDINGS_2026Q3.filter(item => {
+        let matchCat = true;
+        if (currentFilterCategory === 'top10') matchCat = item.top10;
+        else if (currentFilterCategory === 'added') matchCat = item.status === 'added';
+        else if (currentFilterCategory === 'reduced') matchCat = item.status === 'reduced';
+        else if (currentFilterCategory === 'unchanged') matchCat = item.status === 'unchanged';
+
+        let matchQuery = true;
+        if (q) {
+          matchQuery = item.sym.toLowerCase().includes(q) ||
+                       item.name.toLowerCase().includes(q) ||
+                       item.sector.toLowerCase().includes(q) ||
+                       item.note.toLowerCase().includes(q);
+        }
+        return matchCat && matchQuery;
+      });
+
+      let sumValK = 0;
+      let sumPct = 0;
+      filtered.forEach(d => {
+        sumValK += d.valK;
+        sumPct += d.pct;
+      });
+
+      countLabel.textContent = `当前显示：${filtered.length} / 30 个 SEC 13F 证券条目（合计市值 $${(sumValK / 1000000).toFixed(2)}B · 占 13F 总组合 ${sumPct.toFixed(2)}%）`;
+
+      tbody.innerHTML = filtered.map(item => {
+        let badgeHtml = '';
+        if (item.sym === 'BSP') {
+          badgeHtml = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-teal-500/15 text-teal-700 dark:text-teal-300 border border-teal-500/30">★ Q3 新进建仓</span>';
+        } else if (item.chgPct > 0) {
+          badgeHtml = `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">▲ +${item.chgPct.toFixed(2)}%</span>`;
+        } else if (item.chgPct < 0) {
+          badgeHtml = `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-500/15 text-rose-700 dark:text-rose-400">▼ ${item.chgPct.toFixed(2)}%</span>`;
+        } else {
+          badgeHtml = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-200/80 dark:bg-navy-800 text-slate-600 dark:text-slate-400">持平 (0.0%)</span>';
+        }
+
+        const rowHighlight = item.rank <= 5
+          ? 'bg-mogold-500/5 dark:bg-mogold-500/10 font-medium'
+          : 'hover:bg-slate-50 dark:hover:bg-navy-800/40 transition';
+
+        return `
+          <tr class="${rowHighlight}">
+            <td class="py-3.5 px-4 font-mono font-bold text-slate-500 dark:text-slate-400">#${String(item.rank).padStart(2, '0')}</td>
+            <td class="py-3.5 px-4">
+              <div class="flex items-center space-x-2">
+                <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-navy-900 dark:bg-mogold-500 text-mogold-400 dark:text-navy-950 font-mono text-xs font-extrabold hover:opacity-85">${item.sym} ↗</a>
+                <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">${item.name}</span>
+              </div>
+            </td>
+            <td class="py-3.5 px-3 text-xs text-slate-600 dark:text-slate-300">${item.sector}</td>
+            <td class="py-3.5 px-4 text-right font-mono text-xs sm:text-sm text-slate-800 dark:text-slate-200">${item.shares.toLocaleString('en-US')}</td>
+            <td class="py-3.5 px-4 text-right font-mono font-bold text-slate-900 dark:text-white">${formatValueBillions(item.valK)}</td>
+            <td class="py-3.5 px-3 text-right font-mono font-bold text-mogold-600 dark:text-mogold-400">${item.pct < 0.01 ? '<0.01%' : item.pct.toFixed(2) + '%'}</td>
+            <td class="py-3.5 px-4 text-center">${badgeHtml}</td>
+            <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${item.note}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function filterHoldings(category) {
+      currentFilterCategory = category;
+      document.querySelectorAll('#comp-filter-group .comp-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+          btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        } else {
+          btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+          btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        }
+      });
+      renderHoldingsTable();
+    }
+
+    function searchHoldings() {
+      currentSearchQuery = document.getElementById('holding-search-input').value || '';
+      renderHoldingsTable();
+    }
+
+    // ==========================================
+    // 1. 一键导出独立 .html 网页文件功能（净化运行时 DOM 状态）
+    // ==========================================
+    function downloadHtmlFile() {
+      const clone = document.documentElement.cloneNode(true);
+      const toastClone = clone.querySelector('#export-toast');
+      if (toastClone) {
+        toastClone.classList.add('hidden');
+        toastClone.classList.remove('flex');
+      }
+      const drawerClone = clone.querySelector('#mobile-drawer');
+      if (drawerClone) {
+        drawerClone.classList.add('hidden');
+      }
+      clone.querySelectorAll('canvas').forEach(c => {
+        c.removeAttribute('width');
+        c.removeAttribute('height');
+        c.removeAttribute('style');
+      });
+
+      const fullHtml = '<!DOCTYPE html>\n' + clone.outerHTML;
+      const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'BRK.B.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      const toast = document.getElementById('export-toast');
+      if (toast) {
+        toast.classList.remove('hidden');
+        toast.classList.add('flex');
+        setTimeout(() => {
+          toast.classList.add('hidden');
+          toast.classList.remove('flex');
+        }, 3200);
+      }
+    }
+
+    // ==========================================
+    // 2. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+    // ==========================================
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      updateChartsTheme();
+    }
+
+    // ==========================================
+    // 3. 移动端抽屉菜单切换
+    // ==========================================
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    // ==========================================
+    // 4. 阅读进度条与左侧导航滚动联动高亮
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+      let currentId = 'sec-exec';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 160;
+        if (scrollTop >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const numSpan = link.querySelector('span span');
+        if (numSpan) {
+          numSpan.classList.remove('text-mogold-400');
+          numSpan.classList.add('text-slate-500');
+        }
+        if (link.dataset.target === currentId) {
+          link.classList.add('active');
+          if (numSpan) {
+            numSpan.classList.remove('text-slate-500');
+            numSpan.classList.add('text-mogold-400');
+          }
+        }
+      });
+    });
+
+    // ==========================================
+    // 5. 伯克希尔内在价值与回购增厚动态模拟器
+    // ==========================================
+    let targetPbMultiple = 1.60; // 默认 1.60x 历史稳态 P/B
+
+    function setPbMultiple(pb) {
+      targetPbMultiple = pb;
+      document.querySelectorAll('#tax-btn-group .tax-btn').forEach(btn => {
+        const btnPb = parseFloat(btn.dataset.pb);
+        if (Math.abs(btnPb - pb) < 0.01) {
+          btn.className = 'tax-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-mogold-500 text-navy-950 border border-mogold-400 shadow transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-navy-900';
+        } else {
+          btn.className = 'tax-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+        }
+      });
+      updateDividendSimulator();
+    }
+
+    function updateDividendSimulator() {
+      const principal = parseFloat(document.getElementById('sim-principal').value);
+      const years = parseInt(document.getElementById('sim-years').value, 10);
+      const organicGrowthPct = parseFloat(document.getElementById('sim-growth').value);
+      const buybackBoost = document.getElementById('drip-toggle').checked;
+
+      document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+      document.getElementById('sim-years-label').textContent = years + ' 年';
+      document.getElementById('sim-growth-label').textContent = organicGrowthPct.toFixed(1) + '%';
+
+      const initPrice = 592.85;
+      const initBvps = 357.00;
+      const buybackAnnualAccretion = buybackBoost ? 0.015 : 0.0;
+      const totalBvpsGrowth = (organicGrowthPct / 100) + buybackAnnualAccretion;
+
+      const initialShares = principal / initPrice;
+      const finalBvps = initBvps * Math.pow(1 + totalBvpsGrowth, years);
+      const finalSharePrice = finalBvps * targetPbMultiple;
+      const finalPortfolioVal = initialShares * finalSharePrice;
+      const totalReturnPct = ((finalPortfolioVal - principal) / principal) * 100;
+      const cagrPct = (Math.pow(finalPortfolioVal / principal, 1 / years) - 1) * 100;
+
+      // 股票+现金占伯克希尔总市值的透明资产映射比例 (~48.6%)
+      const lookThroughAssets = finalPortfolioVal * 0.486;
+      const ownershipAccretionPct = (Math.pow(1 + buybackAnnualAccretion, years) - 1) * 100;
+      const effectiveShares = initialShares * (1 + ownershipAccretionPct / 100);
+
+      document.getElementById('sim-final-value').textContent = '$' + Math.round(finalPortfolioVal).toLocaleString('en-US');
+      document.getElementById('sim-total-return').textContent = `累计总回报 +${totalReturnPct.toFixed(1)}% (年化 CAGR ${cagrPct.toFixed(1)}%)`;
+      document.getElementById('sim-annual-div').textContent = '$' + Math.round(finalBvps).toLocaleString('en-US');
+      document.getElementById('sim-monthly-div').textContent = `期末推算目标股价 (@${targetPbMultiple.toFixed(2)}x P/B)：~$${Math.round(finalSharePrice).toLocaleString('en-US')}`;
+      document.getElementById('sim-yoc').textContent = '$' + Math.round(lookThroughAssets).toLocaleString('en-US');
+      document.getElementById('sim-cum-div').textContent = `+${ownershipAccretionPct.toFixed(2)}%`;
+      document.getElementById('sim-shares-end').textContent = `起始购入：${initialShares.toFixed(1)} 股 BRK.B（等效享有 ${effectiveShares.toFixed(1)} 股底层权益）`;
+    }
+
+    // ==========================================
+    // 6. KPI 核查清单状态持久化与计数更新
+    // ==========================================
+    const KPI_STORAGE_KEY = 'brk_13f_kpi_state_v1';
+
+    function loadKpiChecklist() {
+      try {
+        const saved = localStorage.getItem(KPI_STORAGE_KEY);
+        if (saved) {
+          const stateMap = JSON.parse(saved);
+          document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+            if (typeof stateMap[cb.id] === 'boolean') {
+              cb.checked = stateMap[cb.id];
+            }
+          });
+        }
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+      updateKpiChecklist();
+    }
+
+    function updateKpiChecklist() {
+      const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      const stateMap = {};
+
+      checkboxes.forEach(cb => {
+        stateMap[cb.id] = cb.checked;
+        if (cb.checked) checkedCount++;
+      });
+
+      const pct = Math.round((checkedCount / total) * 100);
+      document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+      try {
+        localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+    }
+
+    function resetKpiChecklist() {
+      document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      updateKpiChecklist();
+    }
+
+    // ==========================================
+    // 7. Chart.js 数据可视化初始化与主题自适应
+    // ==========================================
+    let bizChartInstance = null;
+    let radarChartInstance = null;
+    let compMarginChartInstance = null;
+    let valEvolutionChartInstance = null;
+    let currentBizMode = 'sector_evolution';
+
+    function getChartColors() {
+      const isDark = document.documentElement.classList.contains('dark');
+      return {
+        text: isDark ? '#CBD5E1' : '#475569',
+        grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+        radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+      };
+    }
+
+    function initBizChart() {
+      if (typeof Chart === 'undefined') return;
+      const canvas = document.getElementById('bizArchitectureChart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      // 视图 A：2025Q3–2026Q3 13F 持仓市值结构演进 ($B)
+      const evoConfig = {
+        type: 'bar',
+        data: {
+          labels: ['2025Q3', '2025Q4', '2026Q1', '2026Q2', '2026Q3'],
+          datasets: [
+            {
+              label: '前五大核心重仓市值 (AAPL/AXP/KO/GOOGL/BAC, $B)',
+              data: [185.2, 194.8, 187.5, 205.4, 208.4],
+              backgroundColor: '#F59E0B',
+              borderRadius: 4,
+              stack: 'portfolio'
+            },
+            {
+              label: '其余 25 个 13F 持仓市值 ($B)',
+              data: [72.3, 79.4, 75.5, 93.9, 95.8],
+              backgroundColor: '#10B981',
+              borderRadius: 4,
+              stack: 'portfolio'
+            },
+            {
+              type: 'line',
+              label: '13F 美股报告持仓总市值 ($B)',
+              data: [257.5, 274.2, 263.0, 299.3, 304.2],
+              borderColor: '#06B6D4',
+              backgroundColor: '#06B6D4',
+              borderWidth: 2.5,
+              pointRadius: 4,
+              tension: 0.25
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(1)}B`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              min: 0,
+              max: 340,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+            }
+          }
+        }
+      };
+
+      // 视图 B：2026Q3 重点调仓标的股数变动幅度 (%)
+      const splitConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            'LEN (莱纳房产A · 翻倍加码地产)',
+            'LEN-B (莱纳房产B · 同步增持)',
+            'DAL (达美航空 · 持续加仓)',
+            'M (梅西百货 · 小幅增持)',
+            'BAC (美国银行 · 战术减持5.7%)',
+            'KR (克罗格超市 · 止盈减持)',
+            'NUE (纽柯钢铁 · 减持14.9%)',
+            'VRSN (威瑞信 · 减持约1/3)',
+            'COF (第一资本 · 大砍61.7%)'
+          ],
+          datasets: [
+            {
+              label: '2026Q3 持股数量环比变动 (%)',
+              data: [98.56, 78.79, 12.44, 2.60, -5.70, -10.26, -14.91, -34.12, -61.67],
+              backgroundColor: [
+                '#10B981',
+                '#34D399',
+                '#06B6D4',
+                '#22D3EE',
+                '#F59E0B',
+                '#F97316',
+                '#FB7185',
+                '#F43F5E',
+                '#E11D48'
+              ],
+              borderRadius: 5,
+              barThickness: 18
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `2026Q3 股数变动: ${ctx.parsed.x > 0 ? '+' : ''}${ctx.parsed.x.toFixed(2)}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: -75,
+              max: 110,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => (v > 0 ? '+' : '') + v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      };
+
+      if (bizChartInstance) bizChartInstance.destroy();
+      bizChartInstance = new Chart(ctx, currentBizMode === 'sector_evolution' ? evoConfig : splitConfig);
+    }
+
+    function switchBizChart(mode) {
+      currentBizMode = mode;
+      const btnEvo = document.getElementById('btn-chart-evo');
+      const btnSplit = document.getElementById('btn-chart-split');
+      const titleEl = document.getElementById('biz-chart-title');
+      const subEl = document.getElementById('biz-chart-sub');
+
+      if (mode === 'sector_evolution') {
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '2025Q3–2026Q3 伯克希尔 13F 持仓规模演进与核心板块拆解';
+        subEl.textContent = '13F 总市值稳步攀升至 $304.2B，前五大公司（AAPL/AXP/Alphabet/KO/BAC）合计贡献 71.54% 权重';
+      } else {
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '2026Q3 伯克希尔重点调仓标的股数增减持幅度拆解（不含新进 BSP）';
+        subEl.textContent = '近翻倍加仓莱纳房产（LEN +98.6% / LEN-B +78.8%）与增持达美航空（DAL +12.4%），减持第一资本（-61.7%）、威瑞信（-34.1%）与美银（-5.7%）';
+      }
+      initBizChart();
+    }
+
+    function initRadarChart() {
+      if (typeof Chart === 'undefined') return;
+      const canvas = document.getElementById('moatRadarChart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (radarChartInstance) radarChartInstance.destroy();
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: [
+            '重仓商业模式护城河',
+            '低换手与税盾复利效率',
+            '零成本保险浮存金加持',
+            '下行抗跌与国债现金安全垫',
+            '股东回报与双重回购增厚'
+          ],
+          datasets: [
+            {
+              label: '伯克希尔组合 (BRK)',
+              data: [9.8, 9.9, 10.0, 9.9, 9.5],
+              borderColor: '#F59E0B',
+              backgroundColor: 'rgba(245, 158, 11, 0.24)',
+              pointBackgroundColor: '#F59E0B',
+              borderWidth: 2.5
+            },
+            {
+              label: '标普 500 指数 (S&P 500)',
+              data: [8.2, 8.0, 5.0, 6.8, 7.8],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.14)',
+              pointBackgroundColor: '#10B981',
+              borderWidth: 2.0
+            },
+            {
+              label: '华尔街对冲基金均值',
+              data: [7.4, 4.5, 4.0, 5.8, 6.2],
+              borderColor: '#06B6D4',
+              backgroundColor: 'rgba(6, 182, 212, 0.12)',
+              pointBackgroundColor: '#06B6D4',
+              borderWidth: 1.8,
+              borderDash: [4, 4]
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            }
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 10,
+              ticks: { display: false, stepSize: 2 },
+              grid: { color: colors.grid },
+              angleLines: { color: colors.radarAngle },
+              pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initCompMarginChart() {
+      if (typeof Chart === 'undefined') return;
+      const canvas = document.getElementById('compMarginChart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (compMarginChartInstance) compMarginChartInstance.destroy();
+      compMarginChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            '#1 AAPL (苹果 · 2.28亿股)',
+            '#2 AXP (美国运通 · 1.52亿股)',
+            '#3 KO (可口可乐 · 4.00亿股)',
+            '#4 GOOGL (谷歌A · 7,879万股)',
+            '#5 BAC (美国银行 · 4.56亿股)',
+            '#6 CVX (雪佛龙 · 8,438万股)',
+            '#7 OXY (西方石油 · 2.65亿股)',
+            '#8 MCO (穆迪 · 2,467万股)',
+            '#9 CB (安达保险 · 3,425万股)',
+            '#10 GOOG (谷歌C · 2,719万股)'
+          ],
+          datasets: [
+            {
+              label: '2026Q3 持仓市值 ($B)',
+              data: [75.90, 46.10, 34.43, 27.11, 24.81, 17.23, 14.66, 11.20, 11.14, 9.26],
+              backgroundColor: '#F59E0B',
+              borderRadius: 5,
+              barThickness: 12
+            },
+            {
+              label: '占 13F 组合权重 (%)',
+              data: [24.95, 15.16, 11.32, 8.91, 8.16, 5.66, 4.82, 3.68, 3.66, 3.05],
+              backgroundColor: '#10B981',
+              borderRadius: 5,
+              barThickness: 12
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.datasetIndex === 0
+                  ? `持仓市值: $${ctx.parsed.x.toFixed(2)}B`
+                  : `组合权重: ${ctx.parsed.x.toFixed(2)}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              max: 80,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + ' ($B / %)' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initValEvolutionChart() {
+      if (typeof Chart === 'undefined') return;
+      const canvas = document.getElementById('valEvolutionChart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+      valEvolutionChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['2025Q3', '2025Q4', '2026Q1 (阿贝尔接棒)', '2026Q2', '2026Q3'],
+          datasets: [
+            {
+              type: 'bar',
+              label: '13F 美股持仓总市值 ($B)',
+              data: [257.5, 274.2, 263.0, 299.3, 304.2],
+              backgroundColor: 'rgba(245, 158, 11, 0.85)',
+              borderRadius: 5,
+              barThickness: 28,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: '保险及其他部门净现金与美债储备 ($B)',
+              data: [325.2, 334.2, 347.7, 359.2, 352.3],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 3,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(1)}B`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 200,
+              max: 340,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+              title: { display: true, text: '13F 美股持仓总市值 ($B)', color: colors.text, font: { size: 11 } }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 280,
+              max: 390,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' },
+              title: { display: true, text: '净现金与美债储备 ($B)', color: '#10B981', font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartsTheme() {
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderHoldingsTable();
+      loadKpiChecklist();
+      updateDividendSimulator();
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    });
+  </script>
+</body>
+</html>

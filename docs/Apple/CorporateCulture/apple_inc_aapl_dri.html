@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>苹果公司 Apple Inc. (AAPL) 企业文化与组织架构深度研究报告：单一损益表职能制、专家领导专家、DRI直接责任人与跨三代产品复利</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：琥珀金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Apple_Corporate_Culture_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ AAPL
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Cupertino · 1976–2026+</div>
+ <div class="text-sm font-bold leading-tight">苹果企业文化深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">苹果企业文化目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 职能制与单一P&amp;L架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 四大文化支柱与护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 科技巨头文化横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 文化复利与财务绩效推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三代演进与管理得失复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 苹果文化法则核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>科技组织架构与创新文化研究组</p>
+ <p>财报与治理基准：Apple FY25–FY26 10-K / HBR</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-xs shadow-lg shadow-mogold-500/25">
+ AAPL
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CORPORATE CULTURE</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">苹果企业文化研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 职能制集权 × 专家领导专家 × DRI直接责任人 · 全球最大“初创公司”的创新密码
+ </p>
+ </div>
+
+ <!-- 核心组织与财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">组织形态与损益表</span>
+ <span class="font-mono font-bold text-white">职能制 · 全公司单一P&amp;L</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY25 人均创收/工程师占比</span>
+ <span class="font-mono font-bold text-emerald-400">~$2.50M / 41%工程师</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">FY26 营收与毛利率</span>
+ <span class="font-mono font-bold text-mogold-400">$478.8B · 毛利 47.9%</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>职能制与单一P&amp;L架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>四大文化支柱与护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>科技巨头文化横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>文化复利与财务绩效推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三代演进与管理得失复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>苹果文化法则核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">组织史定评：全球唯一以“初创公司职能制”运转的 $4.8万亿帝国</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：乔布斯重塑 (1997–2011) · 库克倍增 (2011–2026) · 特努斯接棒 (2026+)</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据基准：FY2025–FY2026 10-K</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 职能制单一损益表 × 专家领导专家 × DRI直接责任人 × 对1,000件事说“不”</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 苹果公司 Apple Inc. 企业文化与组织架构深度研究报告：专家统治、全栈协同与“世界最大初创企业”的创新法则
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 如果说伯克希尔·哈撒韦证明了“极端分权”在跨行业资本配置中的奇迹，那么<strong class="text-white">苹果公司（Apple Inc.）</strong>则构建了人类商业史上另一座截然相反却同样无敌的组织巅峰——<strong class="text-mogold-300">“按专业职能高度集权（Functional Organization）+ 全公司唯一一张损益表（Single P&amp;L）”</strong>的端到端创新机器（<a href="https://www.apple.com/careers/pdf/HBR_How_Apple_Is_Organized_For_Innovation-4.pdf" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">HBR · Podolny &amp; Hansen</a>）。
+ 1997 年乔布斯重返苹果后，在一天之内解雇了所有独立事业部（Business Units）的总经理，彻底废除各产品线各自算账的诸侯割据，确立了<strong class="text-white">“专家领导专家（Experts Leading Experts）”</strong>与<strong class="text-white">“直接责任人（DRI）”</strong>文化（<a href="https://fasterthannormal.co/mental-models/directly-responsible-individual" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">Lashinsky · Inside Apple</a>）。这一架构让苹果在营收扩大逾 60 倍后依然像初创公司一样协同：截至 FY2025，苹果仅凭 <a href="https://sqmagazine.co.uk/how-many-people-work-at-apple/" target="_blank" rel="noopener noreferrer" class="cite-link text-white font-semibold">16.6 万名全职员工</a>（其中 41% 为工程师）创造出 <a href="https://www.globalbankingandfinance.com/markets/aapl/annual-report/" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$4,161.61亿净营收</a> 与创纪录的 <a href="https://www.publicnow.com/view/2E8549E8779DAE4AEEC44B8BA480D4B7780C43E2?1761907672" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">46.9% 综合毛利率</a>（FY2026 营收进一步跃升至 <a href="https://capital.com/en-int/analysis/apple-near-record-highs-record-iphone-sales-but-memory-costs-could-squeeze-margins" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-400 font-semibold">$4,788亿、净利 $1,322亿</a>），并在 2026 年 9 月由硬件工程统帅 <a href="https://sqmagazine.co.uk/how-many-people-work-at-apple/" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">约翰·特努斯（John Ternus）接替库克出任 CEO</a>，开启第三代工程师文化传承。
+ </p>
+
+ <!-- 核心文化基因高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">全公司唯一损益表（Single P&amp;L）</div>
+ <div class="text-white font-semibold">iPhone、Mac、芯片与软件高管不背独立利润指标，全公司只有财务部看总账，让工程师免于短期成本掣肘</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">DRI 直接责任人 × 零委员会制</div>
+ <div class="text-mogold-400 font-semibold">每项功能、每个供应链节点必有唯一署名的 DRI，杜绝大企业集体推诿与跨部门扯皮</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">Apple University 制度化审美</div>
+ <div class="text-emerald-400 font-semibold">以毕加索《公牛》石版画诠释极简抽象哲学，把“对 1,000 个好点子说不”沉淀为跨代组织基因</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>人均创收与工程师密度 (FY25)</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$2.50M</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">41% 工程研发</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 16.6 万全职员工（含约 6.8 万名工程师）人均创收约 $250万，较 FY2011 的 $179万大幅跃升（<a href="https://sqmagazine.co.uk/how-many-people-work-at-apple/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine 10-K</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2025–FY2026 营收与净利纪录</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$478.8B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">净利 $132.2B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ FY25 营收 $4,161.6亿、净利 $1,120.1亿（净利率 26.9%）；FY26 进一步刷新纪录至 $4,788亿与 $1,322亿（<a href="https://capital.com/en-int/analysis/apple-near-record-highs-record-iphone-sales-but-memory-costs-could-squeeze-margins" target="_blank" rel="noopener noreferrer" class="cite-link">Capital.com</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>软硬一体综合毛利率护城河</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">46.9%</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">服务毛利 75.4%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 自研 Apple Silicon 与高粘性服务生态推动总毛利率由 FY22 的 43.3% 升至 FY25 的 46.9%（FY26 达 47.9%）（<a href="https://www.publicnow.com/view/2E8549E8779DAE4AEEC44B8BA480D4B7780C43E2?1761907672" target="_blank" rel="noopener noreferrer" class="cite-link">Apple 2025 10-K</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>全球活跃设备底座与研发投入</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">&gt;2.5B</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">研发 $34.55B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 全球超 25 亿台活跃设备与 540 家直营店同享一套操作系统与设计语言（<a href="https://sqmagazine.co.uk/apple-statistics/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine</a>）；FY25 研发投入 $345.5亿。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 职能制组织与单一损益表架构 (Functional Org & Single P&L)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Functional Organization &amp; Single Unified P&amp;L</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 职能制组织与单一损益表：为什么苹果拒绝按产品线拆分成独立事业部？</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">没有“iPhone事业部总经理”，只有芯片、硬件、软件、设计与运营五大职能协同</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2025 vs FY2026 苹果五大生态产品线净营收协同增长（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">单一损益表消除了部门墙：iPhone ($254.1B) 与 Services ($123.3B, 75.4%毛利率) 共享底层芯片与系统研发</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('fy26_mix')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：五大生态营收拆解</button>
+ <button onclick="switchBizChart('headcount_productivity')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：员工克制与人效跃迁</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">苹果职能制（Functional Org）三大反直觉设计</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">砍掉事业部 P&amp;L：把研发从短期利润考核中解放</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 传统大企业按产品设事业部（M-Form），导致总经理为保当季利润不愿投入高成本颠覆性技术。苹果全公司<strong>只有一张统一损益表</strong>：当摄像头团队研发出突破性双摄模组但成本高昂时，工程高管只需评估“用户体验是否物有所值”，成本与定价由财务与运营统一平衡（<a href="https://www.apple.com/careers/pdf/HBR_How_Apple_Is_Organized_For_Innovation-4.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">HBR · Podolny &amp; Hansen</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">拒绝重复造轮子：一套底层技术赋能五大终端</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 在苹果内部，没有“Mac 芯片团队”或“iPad 相机团队”，而是由 Johny Srouji 统管全公司硬件技术（芯片）、Craig Federighi 统管全公司软件工程、John Ternus 统管硬件工程。同一颗自研架构与同一个神经引擎可无缝复用于 <strong>iPhone、Mac、iPad 与 Vision Pro</strong>（<a href="https://nsobelman.medium.com/how-apple-is-organized-for-innovation-commentary-1fedea571f88" target="_blank" rel="noopener noreferrer" class="cite-link">HBR Analysis</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">极度克制的招人纪律：避免疫情期硅谷式大裁员</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 当 Meta、谷歌、亚马逊在 2020–2022 年盲目扩招数万人随后大举裁员时，苹果凭借严苛的 A 级人才筛选，在 FY2021–FY2025 四年间净增员工仅约 <strong>1.2 万人（从 15.4万至 16.6万）</strong>，维持极高组织稳定性与士气（<a href="https://sqmagazine.co.uk/how-many-people-work-at-apple/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">2026年9月1日 CEO 换届里程碑</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">John Ternus (CEO) × Tim Cook (执行董事长)</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大组织与文化运作单元详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 单元 1：硬件技术与芯片自研文化 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">底层算力心脏 · 41% 员工为工程研发人员</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">FY25 研发投入 $34.55B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 跨职能芯片与硬件工程协同（Apple Silicon × Hardware Eng.）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 苹果不买通用芯片拼凑参数，而是让芯片架构师在产品立项前 3–4 年就与工业设计、iOS/macOS 算法团队同桌办公，定制专属加速单元（如人像模式 ISP 与端侧 AI 神经网络引擎）。这种无部门利益掣肘的跨职能耦合，使 Mac 在切换自研 M 系列芯片后不仅性能功耗比领先，更直接节省数十亿美元外部采购成本，推动产品毛利率站稳 <strong>36.8%</strong>（<a href="https://www.publicnow.com/view/2E8549E8779DAE4AEEC44B8BA480D4B7780C43E2?1761907672" target="_blank" rel="noopener noreferrer" class="cite-link">Apple FY25 10-K</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>A系列 / M系列芯片 + 约68,000名工程师</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">提前3–4年跨职能联合定义硅片</span>
+ </div>
+ </div>
+
+ <!-- 单元 2：工业设计与人机交互工作室 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">审美最高法院 · 设计驱动工程而非迁就工程</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">iPhone FY26 营收 $254.1B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 工业设计与人机界面至上主义（ID &amp; Human Interface）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 从乔布斯与 Jony Ive 时代确立的传统：工业设计工作室（ID Studio）与人机界面（HI）团队直接向最高管理层汇报，拥有一票否决权。工程师不能以“加工太难”驳回设计，而必须发明全新的 CNC 阳极氧化、钛金属焊接或微晶玻璃工艺去实现设计愿景——连主板内部排线这种用户看不见的角落也追求艺术品级对称（“好木匠不会用劣质木板做柜子背面”），支撑起 FY2026 高达 <strong>$2,541亿的 iPhone 营收</strong>（<a href="https://bullfincher.io/companies/apple/revenue-by-segment" target="_blank" rel="noopener noreferrer" class="cite-link">Bullfincher</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>像素级细节偏执 + 开箱阻尼感标准</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">将消费电子转化为高溢价情感符号</span>
+ </div>
+ </div>
+
+ <!-- 单元 3：统一操作系统与高毛利服务生态 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">软件与服务飞轮 · 占总毛利约 44%</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">FY26 服务营收 $123.3B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 无缝软件生态与隐私价值观护城河（iOS / macOS / Services）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 库克将“<strong>隐私是基本人权</strong>”确立为苹果核心价值观，拒绝像广告互联网公司那样靠出卖用户画像变现，而是通过端侧加密、隔空投送（AirDrop）、统一剪贴板与 iCloud 将 <strong>25 亿+ 活跃设备</strong>锁入高信任闭环（<a href="https://sqmagazine.co.uk/apple-statistics/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine</a>）。在此底座上，Services 板块在 FY2025 创收 <strong>$1,091.6亿（毛利率高达 75.4%）</strong>，并于 FY2026 进一步增至 <strong>$1,233.0亿</strong>（<a href="https://bullfincher.io/companies/apple/revenue-by-segment" target="_blank" rel="noopener noreferrer" class="cite-link">Bullfincher</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>App Store / iCloud / Apple Pay / AppleCare</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">服务毛利率 75.4% 成为利润压舱石</span>
+ </div>
+ </div>
+
+ <!-- 单元 4：供应链铁腕与直营店体验闭环 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">精密执行神经 · 全球 540 家 Apple Store</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">外包制造协同 ~45万人</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 零库存供应链铁律与零售文化神殿（Operations &amp; Retail）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 库克将供应链管理比作“乳制品行业（多放一天就变质）”：苹果自身轻资产运作（FY25 账面存货仅 $57.18亿，占年营收不足 1.4%）（<a href="https://www.globalbankingandfinance.com/markets/aapl/annual-report/" target="_blank" rel="noopener noreferrer" class="cite-link">2025 10-K</a>），却派驻制造设计工程师常驻全球供应商产线共同研发定制机床；终端则通过全球 <strong>540 家 Apple Store</strong> 推行不按销售提成考核的“丰富顾客生活（Enriching Lives）”与 Genius Bar 服务文化（<a href="https://sqmagazine.co.uk/how-many-people-work-at-apple/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Apple Park 1.2万研发中枢 + 540家直营店</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">FY26 自由现金流高达 $1,361亿</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 四大文化支柱与创新护城河 (Cultural Pillars & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Four Cultural Pillars &amp; Innovation Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 四大核心文化支柱：专家领导专家、DRI 问责、Apple University 与极致保密</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极宽 (Wide Moat · 跨职能协同深度 + 极简聚焦能力 + 制度化品味传承)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重文化护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“专家领导专家”的领导力三维模型</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 苹果大学院长 Joel Podolny 指出，苹果从不培养“懂管理但不懂技术的全能通才（General Managers）”，而是坚持<strong>让顶尖领域专家管理专家</strong>：例如 600 多名相机硬件工程师由顶尖相机专家统领，且要求各级管理者同时具备<strong>纵深专业造诣、沉浸细节（深入向下三层）与跨团队激烈辩论协作</strong>三大特质（<a href="https://www.apple.com/careers/pdf/HBR_How_Apple_Is_Organized_For_Innovation-4.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">HBR 深度研报</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">DRI 直接责任人与周一高管评审会</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 在苹果没有任何委员会，从高管团队每周一的产品评审会到每一个微小工程模块，会议纪要旁都必须写上唯一一个名字——<strong>DRI（Directly Responsible Individual，直接责任人）</strong>（<a href="https://fasterthannormal.co/mental-models/directly-responsible-individual" target="_blank" rel="noopener noreferrer" class="cite-link">FasterThanNormal</a>）。成功归功于 DRI，延期或故障也由 DRI 唯一担责，彻底消灭了大企业“集体负责等于无人负责”的组织迷雾。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">Apple University 与毕加索《公牛》极简课</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2008 年乔布斯延揽耶鲁管理学院院长创办内部保密商学院 <strong>Apple University</strong>：用毕加索从繁复写实历经 11 次雕琢最终凝练为寥寥数笔线条的《公牛（The Bull）》石版画，向新晋高管传授苹果“删繁就简”的设计哲学（如 Apple TV 遥控器砍到仅剩 3 个按键）（<a href="https://www.bestcollegereviews.org/apple-university/" target="_blank" rel="noopener noreferrer" class="cite-link">BestCollegeReviews</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">ANPP 新品流程与蜂巢式加密仓（Secrecy）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 苹果通过 <strong>ANPP（Apple New Product Process）</strong> 将充满不确定性的硬件创新分解为可复制的里程碑，同时实行严格的“需知原则（Need-to-Know）”物理隔离与代号保密：一方面防止竞品提前抄袭并保护在售机型销量，另一方面让工程师免受外界舆论干扰，专注打磨尚未成熟的新技术（<a href="https://fortune.com/article/how-apple-works-inside-the-worlds-biggest-startup/" target="_blank" rel="noopener noreferrer" class="cite-link">Fortune Inside Apple</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维企业文化与组织模型雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">三大标杆企业组织文化五维特征对比雷达</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">苹果 (职能集权) vs 伯克希尔 (极端分权) vs 传统多事业部科技巨头（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 科技巨头企业文化横向对比 (Tech Corporate Culture Matrix)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Big Tech &amp; Iconic Corporate Cultures Comparative Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 顶级企业文化横向对比：五种组织基因与人才利润率统治力</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索企业 / 组织模式 / 文化关键词..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部标杆企业</button>
+ <button onclick="filterCompetitors('product')" data-filter="product" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">职能集权与全栈派</button>
+ <button onclick="filterCompetitors('platform')" data-filter="platform" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">分权自治与事业部派</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">企业与文化掌舵人</th>
+ <th class="py-4 px-4 min-w-[140px]">底层组织架构形态</th>
+ <th class="py-4 px-4 min-w-[145px]">核心决策与问责机制</th>
+ <th class="py-4 px-4 min-w-[125px]">员工规模与人效特征</th>
+ <th class="py-4 px-4 min-w-[120px]">代表性利润率表现</th>
+ <th class="py-4 px-5 min-w-[240px]">与苹果企业文化的异同及适配场景评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：苹果基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">苹果公司 (Apple Inc.)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">乔布斯 / 库克 / 约翰·特努斯</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">职能制集权 (Functional Org) + 单一P&amp;L</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">专家领导专家 + DRI责任制</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">16.6万人 · ~$2.5M/人</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">毛利 46.9%–47.9%</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全栈协同终极形态：</strong>取消事业部利润墙，让芯片、硬件、系统与工业设计像初创公司一样深度咬合，打造极少但极精的全球爆品（<a href="https://www.apple.com/careers/pdf/HBR_How_Apple_Is_Organized_For_Innovation-4.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">HBR</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：英伟达 NVIDIA -->
+ <tr data-category="product" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">英伟达 (NVIDIA)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">黄仁勋 (Jensen Huang)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">超扁平职能架构 + 60余名高管直管</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-700 dark:text-amber-400">Top-5 邮件 + 飞行员Mission机制</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~3.6万人 · 人效冠绝科技界</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利 71–75% / 营业 ~65%</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>最接近苹果的硬科技同盟：</strong>同样拒绝事业部割据、坚持软硬件全栈一体，但英伟达信息全透明共享，而苹果实行严格物理隔离保密（<a href="https://businessquant.com/metrics/nvda/gross-margin" target="_blank" rel="noopener noreferrer" class="cite-link">Business Quant</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 3：伯克希尔 Berkshire Hathaway -->
+ <tr data-category="platform" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">伯克希尔·哈撒韦</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">巴菲特 / 芒格 / 阿贝尔</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">27人极简总部 + 60+子公司极端分权</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">经营完全放权 + 资金中央统配</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">38.8万人 · 总部仅27人</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">FY25 营业利润 $44.49B</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>集权与分权的双子星：</strong>伯克希尔管异质百业靠“绝不干预子公司协同”，苹果造单一生态靠“跨部门100%深度协同”——巴菲特却重仓苹果为第一大股（<a href="https://www.berkshirehathaway.com/2025ar/2025ar.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">BRK AR</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 4：亚马逊 Amazon -->
+ <tr data-category="platform" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">亚马逊 (Amazon)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">贝索斯 / 安迪·贾西</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">解耦 API 微服务 + 双披萨自治小队</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-500/15 text-teal-700 dark:text-teal-400">16条领导力准则 + 六页纸备忘录</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~155万人 (含仓储物流)</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">AWS 高营业利润驱动</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>广度飞轮 vs 深度精品：</strong>亚马逊通过双披萨小队并行试错数千个新业务（容忍 Fire Phone 等失败），苹果则严控 SKU 数量追求每一款必成爆款（<a href="https://fortune.com/2021/02/02/jeff-bezos-steps-down-amazon-stock-net-worth-andy-jassy/" target="_blank" rel="noopener noreferrer" class="cite-link">Fortune</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 5：微软与谷歌 Microsoft / Alphabet -->
+ <tr data-category="platform" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">微软 / 谷歌 (MS / Google)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">纳德拉 (成长型思维) / 皮查伊</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">多事业部 P&amp;L 矩阵 (Cloud / Ads / OS)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">事业部GM负责制 + OKR自下而上</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">18万–22万人级软件大厂</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">软件/云毛利率 ~68–70%</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>平台广度 vs 软硬闭环：</strong>微软靠“刷新（Hit Refresh）”同理心文化打通云与企业AI，但在消费硬件端始终难以复制苹果的工业设计与系统统一性。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的标杆企业文化记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：苹果组织与商业模式核心利润率及人才密度拆解 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">把组织文化转化为利润率与人才密度：苹果核心生态毛利率、营业利润率与工程师占比拆解（%）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">高达 41% 的研发工程师员工占比支撑起自研芯片与系统壁垒，使 Services 毛利率高达 75.4%、全公司综合毛利率突破 46.9%–47.9%（<a href="https://www.publicnow.com/view/2E8549E8779DAE4AEEC44B8BA480D4B7780C43E2?1761907672" target="_blank" rel="noopener noreferrer" class="cite-link">Apple FY25–FY26 10-K</a> &amp; <a href="https://sqmagazine.co.uk/how-many-people-work-at-apple/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">服务毛利 75.4% · 硬件毛利 36.8% · 净利率 26.9%</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 文化复利与财务绩效推演 (Cultural Compounding & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Cultural Compounding &amp; Financial Performance Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 文化复利与财务绩效推演：从 $250万超高人效到 $1,361亿年度自由现金流</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">用财务结果检验组织架构：职能制集权如何转化为连续刷新的历史最高净利率</span>
+ </div>
+
+ <!-- 1. 文化驱动的四大财务护城河指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Services Gross Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">75.4% ($109.2B)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 软硬一体生态带来的超高留存率，使 FY2025 服务业务以 26.2% 营收占比贡献约 44% 的全公司毛利（<a href="https://www.publicnow.com/view/2E8549E8779DAE4AEEC44B8BA480D4B7780C43E2?1761907672" target="_blank" rel="noopener noreferrer" class="cite-link">Apple 10-K</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">FY2026 Free Cash Flow</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$136.1B (+38%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 轻资产制造与审慎资本开支（FY26 CapEx 仅 $90亿）推动年度自由现金流飙升 38% 至 $1,361亿（<a href="https://capital.com/en-int/analysis/apple-near-record-highs-record-iphone-sales-but-memory-costs-could-squeeze-margins" target="_blank" rel="noopener noreferrer" class="cite-link">Capital.com</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Engineering Concentration</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~68,000 工程师</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 全公司 16.6 万员工中高达 41% 为工程技术岗（商业管理仅占 15%），确保专家拥有绝对话语权（<a href="https://sqmagazine.co.uk/how-many-people-work-at-apple/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Record Net Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">26.9%–27.6%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ FY2025 净利率达 26.9%（净利 $1,120.1亿），FY2026 进一步升至 27.6%（净利 $1,322亿），创公司创立近 50 年最高纪录（<a href="https://www.scribd.com/document/1068364808/Apple-Income-Statement-Vertical-Analysis-Report" target="_blank" rel="noopener noreferrer" class="cite-link">Vertical Analysis</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2022–FY2026 苹果全栈自研红利释放期：年度净利润与综合毛利率双升曲线（SEC Form 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">伴随 Apple Silicon 全线导入与高毛利 Services 占比提升，苹果综合毛利率五年连跨四个台阶（43.3% → 47.9%），年度净利润跃上 $1,322亿新高度</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">毛利率 +460 bps · FY26 净利 $132.2B</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“苹果组织文化复利”跨代际股东回报动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>FUNCTIONAL INNOVATION FLYWHEEL · 苹果三代掌舵人文化复利动态模拟器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">从乔布斯重塑、库克倍增到特努斯新纪元：组织文化复利推演器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实历史周期（1997–2011 乔布斯职能制重塑期 / 2011–2026 库克全球化与服务扩张期 / 1997–2026 完整 29 年跨代长牛）或自定义测算</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>叠加巨额回购注销与股息再投 (+1.5%/年)</span>
+ </label>
+ </div>
+
+ <!-- 真实历史周期预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('cook_scaling')" data-era="cook_scaling" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 2011–2026 库克制度化扩张期</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">15年 · 市值 ~$350B→$4.8T (~23.7% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('jobs_comeback')" data-era="jobs_comeback" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 1997–2011 乔布斯职能制重塑期</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">14年 · 股价 ~$0.13→$13.44 (~39.3% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('full_29yr')" data-era="full_29yr" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 1997–2026 苹果 29 年跨代长牛</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">29年 · 股价 ~$0.13→$325.13 (~31.0% CAGR)</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始投入本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$10,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="1000" max="100000" step="1000" value="10000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">15 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="30" step="1" value="15" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年化复合回报率 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">23.7%</span>
+ </div>
+ <input id="sim-growth" type="range" min="5" max="42" step="0.1" value="23.7" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：对应 2011 年 8 月蒂姆·库克接任 CEO（拆股调整股价约 $13.44）至 2026 年 9 月交棒约翰·特努斯（股价约 $325.13，总市值约 $4.8万亿）的 15 年制度化复利表现，打破了外界“没有乔布斯苹果必衰”的质疑。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计总资产市值</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$243,316</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计净增值 +2,333%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">本金增值倍数 (MOIC Multiple)</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">24.33x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 3.3 年资产翻一倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">累计创造净资本利得</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$233,316</div>
+ <div class="text-xs text-slate-400 mt-1.5">扣除初始投入本金后的纯复利收益</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效综合年化复合增长率</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">23.70%</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">持有半程（第 8 年）资产约：$54,845</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角历史定评对比 (Bull Legacy vs Critical Reflection) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">正向组织文化遗产定评 (Enduring Cultural Moat)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">无部门墙 + 跨代产品本位</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>商业史罕见摆脱“事业部封建割据”的超大型企业：</strong>单一 P&amp;L 与职能制让苹果在近 $4,800亿年营收规模下依然保持软硬芯浑然一体的用户体验（<a href="https://www.apple.com/careers/pdf/HBR_How_Apple_Is_Organized_For_Innovation-4.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">HBR</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>“专家领导专家”守住工程师尊严与技术纯度：</strong>拒绝外行职业经理人指挥内行，并在 2026 年选拔深耕苹果 25 年的硬件工程统帅 John Ternus 出任第三任黄金期 CEO（<a href="https://sqmagazine.co.uk/how-many-people-work-at-apple/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>高度自律的人才扩张与长期主义研发定力：</strong>不盲目跟风风口扩招裁员，敢于在自研基带、Apple Silicon 与折叠/端侧 AI 上进行长达 5–10 年的秘密深潜投入。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">客观局限与组织张力反思 (Critical Lens)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">跨部门瓶颈 + 保密与开源冲突</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>职能制对高层协调带宽的极致消耗：</strong>由于所有决定都需多职能横向对齐，当项目缺乏清晰战略共识（如耗时十年最终砍掉的 Titan 造车项目）时，容易陷入跨职能拉锯。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>极致保密文化与生成式 AI 开源学术生态的张力：</strong>硬件时代的孤岛保密无往不利，但在需要发表论文、共享权重与大规模云算力投入（FY26 CapEx $90亿远低于云巨头）的前沿大模型竞赛中曾一度制约招募与迭代速度（<a href="https://capital.com/en-int/analysis/apple-near-record-highs-record-iphone-sales-but-memory-costs-could-squeeze-margins" target="_blank" rel="noopener noreferrer" class="cite-link">Capital.com</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>封闭花园文化的全球监管逆风：</strong>对端到端控制权的极致执念，使欧盟《数字市场法案》（DMA）与美国司法部（DOJ）反垄断诉讼持续冲击 App Store 高毛利围墙。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三代文化演进与管理得失复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Generation Cultural Evolution &amp; Strategic Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三代文化演进与管理复盘：从“海盗旗创业帮”到跨世纪制度化机器</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">理解苹果文化的关键：它经历过 1985–1997 年“传统事业部制”濒临破产的惨痛教训</span>
+ </div>
+
+ <!-- 1. 三代演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 海盗基因与割据危机</span>
+ <span class="font-mono text-xs font-bold text-slate-500">1976–1997</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">海盗旗精神与事业部乱局</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>早年乔布斯带领 Mac 团队升起海盗旗（“宁做海盗，不做海军”），奠定叛逆与极致美学基因；但 1985 年乔布斯出走后，历任 CEO 引入传统大企业的多事业部制（各产品线自负盈亏），导致内部山头林立、型号繁杂互搏，至 1997 年全年净亏 $10.45亿、距破产仅剩 90 天（<a href="https://www.meritshot.com/case-studies/apple-case-study" target="_blank" rel="noopener noreferrer" class="cite-link">Meritshot</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段启示：用平庸通才事业部制管理创新企业必将扼杀灵魂
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 职能集权与文化定型</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">1997–2011</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">一日废藩与单一P&amp;L革命</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>乔布斯回归后单日裁撤所有事业部总经理，确立全公司唯一损益表与职能制架构（<a href="https://hbsp.harvard.edu/product/R2006F-PDF-ENG" target="_blank" rel="noopener noreferrer" class="cite-link">HBR</a>）；推行 2×2 产品聚焦、DRI 直接责任人、Top 100 核心高管秘密峰会，并在 2008 年创立 Apple University，将个人直觉转化为可传承的组织制度。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：把“苹果公司本身”打造成乔布斯最伟大的作品
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 协作进化与三代传承</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2011–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">库克稳健倍增 · 特努斯接棒</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>库克在不改变职能制骨架的前提下，将高压咆哮文化柔化为沉稳、包容且高度自律的跨部门协作，带领苹果开发出 AirPods、Apple Watch 与 Apple Silicon，市值从 $3,500亿跃升至 ~$4.8万亿；2026 年 9 月 1 日，库克转任执行董事长，由硬件工程高级副总裁 <strong>John Ternus 接任 CEO</strong>（<a href="https://sqmagazine.co.uk/how-many-people-work-at-apple/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段启示：由主导 iPad/Mac/iPhone 硬件工程的专家接班，延续工程师治企传统
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大组织文化实战案例与进化闭环矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：苹果企业文化在四大标志性战役中的检验与进化</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">案例 01 · MobileMe 与 Apple Maps 早期翻车问责</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2008 &amp; 2012 DRI 铁腕</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">当产品辜负用户期望时，DRI 问责绝不留情面</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2008 年 MobileMe 同步服务故障频发，乔布斯在礼堂召集全员严厉质问“谁是 DRI”并当场更换负责人以重构出 iCloud；2012 年 Apple Maps 首发体验不佳且负责人拒绝签署公开致歉信，库克同样果断更换 iOS 高管推动跨团队融合（<a href="https://fortune.com/article/how-apple-works-inside-the-worlds-biggest-startup/" target="_blank" rel="noopener noreferrer" class="cite-link">Fortune</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">案例 02 · Apple Silicon 告别英特尔的跨职能豪赌</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2020 M1 芯片革命</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">唯有单一损益表职能制才能完成的“软硬芯同步换心手术”</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 若按传统事业部制，Mac 部门绝不愿承担更换底层指令集的兼容风险与巨额芯片研发分摊；但在苹果职能制下，Johny Srouji 芯片团队、Craig Federighi 系统团队与 John Ternus 硬件团队零内耗协同，一举重塑 PC 能效天花板（<a href="https://www.apple.com/careers/pdf/HBR_How_Apple_Is_Organized_For_Innovation-4.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">HBR</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">案例 03 · 十年泰坦（Project Titan）造车果断止损</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2024 战略减法纪律</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">“对伪机会说不”同样适用于已投入百亿美元的内部项目</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 面对整车制造低毛利与自动驾驶L5迟迟无法达到苹果端到端体验标准，管理层克服沉没成本谬误，果断终止造车并将数千名顶尖工程师转调至端侧生成式 AI 与机器人研发，推动 FY25–FY26 研发与利润率再创新高。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">案例 04 · 2026 年库克交棒约翰·特努斯（John Ternus）</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2026.09 CEO 平稳换届</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">选拔硬件工程与产品架构统帅接班，锚定下一个十年</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2026 年 4 月 20 日苹果宣布由主导 Mac 向 Apple Silicon 转型及 iPhone/iPad 硬件工程的高级副总裁 <strong>John Ternus 于 9 月 1 日接任 CEO</strong>（库克出任执行董事长）（<a href="https://sqmagazine.co.uk/how-many-people-work-at-apple/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine</a>），确保在折叠屏 iPhone 与 AI 硬件新周期中继续由顶尖产品专家掌舵。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级组织设计与管理启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给科技创业者、研发管理者与长期投资者的三条“苹果组织文化法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 决策权必须跟着“专业深度”走，而非跟着“行政头衔”走</div>
+ <p class="text-slate-300 leading-relaxed">
+ 在技术快速迭代的行业，让不懂底层技术的综合管理通才（Generalists）根据短期财务表格拍板，必然导致产品平庸化；必须让最懂行的专家领导专家，并要求高管向下深入三层细节。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 若产品需要极度紧密的软硬耦合，切勿过早拆分事业部 P&amp;L</div>
+ <p class="text-slate-300 leading-relaxed">
+ 一旦各产品线独立核算利润，部门之间就会开始争夺研发资源、收取内部转移定价并拒绝共享底层技术；单一损益表是维持全公司“一盘棋”与极致用户体验的制度前提。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 用 DRI 消灭模糊地带，用残酷的减法守护人才密度</div>
+ <p class="text-slate-300 leading-relaxed">
+ 16.6 万人能跑出 $250万/人的人效，秘诀在于不设冗杂委员会、每件事明确唯一 DRI，并且每年砍掉 90% 看似诱人的平庸项目，让 A 级工程团队永远只打必胜的歼灭战。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “苹果文化法则”组织与产品评估交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Apple Corporate Culture &amp; Organization Diagnostic Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “苹果文化法则”企业组织与创新力交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于诊断任何科技公司、产品团队或拟投资标的是否具备“苹果式”高人效组织文化与产品护城河（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. “专家领导专家”测试：拍板者是否懂向下三层的技术细节？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">专业决策权</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查各核心部门负责人是否为本领域顶尖专家（而非只会看 PPT 与财务报表的职业经理人），能否亲自参与一线技术与设计评审。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. DRI 直接责任人测试：每个行动项旁是否只有一个名字？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">零委员会问责</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验公司会议与项目看板是否严格杜绝“某几个部门共同负责”，确保每项交付都有唯一可拍板、可追责的 DRI。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 单一损益表协同测试：工程团队是否免于部门利润墙内耗？</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">打破部门孤岛</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察硬件、软件与底层算法团队是围绕同一用户体验目标无缝协同，还是因各自背负独立 P&amp;L 而在内部结算与抢功中内耗。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 毕加索《公牛》极简测试：是否敢于砍掉 90% 的冗余功能与 SKU？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">战略聚焦纪律</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验管理层是否具备“对 1,000 个好主意说不”的定力，将有限的顶尖研发带宽集中于极少数能做到世界第一的旗舰产品上。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 人才密度与招聘克制测试：人均创收是否随规模持续提升？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">$2.5M/人效标杆</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 对标苹果 41% 工程师占比与 1%–2% 的年均极低净增员率，检验企业是否靠提高 A 级人才密度而非盲目堆人头来驱动增长。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 软硬服一体化粘性测试：生态服务毛利率是否跑赢硬件？</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">75.4%服务毛利</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查硬件存量底座是否能自然衍生出高毛利、高复购的软件与服务现金流，形成抵御硬件周期波动的第二曲线。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>苹果公司 Apple Inc. (AAPL) 企业文化、职能制组织架构与长期复利深度研究报告 · 机构框架版</span>
+ <span>核心数据出处：Apple FY2024–FY2026 Form 10-K · Harvard Business Review (Podolny &amp; Hansen)</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务、员工结构与组织治理指标均严格核验自美国证监会（SEC EDGAR）公开披露的 <a href="https://s2.q4cdn.com/470004039/files/doc_financials/2025/ar/_10-K-2025-As-Filed.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Apple Inc. FY2025 Form 10-K</a>、<a href="https://capital.com/en-int/analysis/apple-near-record-highs-record-iphone-sales-but-memory-costs-could-squeeze-margins" target="_blank" rel="noopener noreferrer" class="cite-link">FY2026 全年财务披露</a>、苹果大学院长 Joel M. Podolny 与 Morten T. Hansen 发表于《哈佛商业评论》的权威文献 <a href="https://www.apple.com/careers/pdf/HBR_How_Apple_Is_Organized_For_Innovation-4.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">《How Apple Is Organized for Innovation》</a>、Adam Lashinsky 专著《Inside Apple》及 <a href="https://sqmagazine.co.uk/how-many-people-work-at-apple/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine 苹果员工与换届统计</a>。报告内置的复利模拟器旨在复盘组织架构与创新周期的长期价值创造规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ // 清理运行态临时样式与画布缓存属性，确保导出的 HTML 在任何本地浏览器打开时干净重绘
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Apple_Corporate_Culture_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Apple_Corporate_Culture_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 科技巨头文化横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “苹果组织文化复利”跨代际股东回报动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ cook_scaling: {
+ principal: 10000,
+ years: 15,
+ cagr: 23.7,
+ caption: '当前测算基准：对应 2011 年 8 月蒂姆·库克接任 CEO（拆股调整股价约 $13.44）至 2026 年 9 月交棒约翰·特努斯（股价约 $325.13，总市值约 $4.8万亿）的 15 年制度化复利表现，打破了外界“没有乔布斯苹果必衰”的质疑。'
+ },
+ jobs_comeback: {
+ principal: 10000,
+ years: 14,
+ cagr: 39.3,
+ caption: '当前测算基准：对应 1997 年 7 月乔布斯回归苹果并推翻事业部制、确立单一 P&L 职能制（拆股调整均价约 $0.13）至 2011 年 8 月卸任 CEO（约 $13.44）的 14 年绝地反转复利斜率。'
+ },
+ full_29yr: {
+ principal: 1000,
+ years: 29,
+ cagr: 31.0,
+ caption: '当前测算基准：对应 1997 年 7 月职能制重塑起点投入 $1,000 买入苹果股票并跨越乔布斯与库克两代掌舵人持有至 2026 年（价值约 $250万）的 29 年组织文化复利奇迹。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-principal').value = preset.principal;
+ document.getElementById('sim-years').value = preset.years;
+ document.getElementById('sim-growth').value = preset.cagr;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义文化复利推演模式——自由探索不同初始本金、持有期限与创新企业年化复合增速下的长期财富放大效应。';
+ }
+
+ function updateValueSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 10000;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 15;
+ const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 20;
+ const divBonus = document.getElementById('div-bonus-toggle').checked ? 1.5 : 0;
+
+ const effGrowthPct = baseGrowthPct + divBonus;
+ const r = effGrowthPct / 100;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+ const finalVal = principal * Math.pow(1 + r, years);
+ const netGain = finalVal - principal;
+ const multiple = principal > 0 ? (finalVal / principal) : 1;
+ const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+ const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+ const midYears = Math.max(1, Math.round(years / 2));
+ const midVal = principal * Math.pow(1 + r, midYears);
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+ document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年资产翻一倍` : '稳健保值';
+ document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+ document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+ document.getElementById('sim-mid-val').textContent = `持有半程（第 ${midYears} 年）资产约：$${Math.round(midVal).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'apple_culture_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“苹果文化法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'fy26_mix';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：Apple FY2025 vs FY2026 五大生态板块净营收 ($B, 源自 SEC 10-K / Bullfincher)
+ const mixConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'iPhone 智能手机生态',
+ 'Services 软件与服务生态',
+ 'Mac 台式与便携电脑',
+ 'Wearables 可穿戴与家居',
+ 'iPad 平板电脑生态'
+ ],
+ datasets: [
+ {
+ label: 'FY2025 净营收 ($B · 总计 $416.16B)',
+ data: [209.59, 109.16, 33.71, 35.69, 28.02],
+ backgroundColor: 'rgba(100, 116, 139, 0.65)',
+ borderRadius: 5
+ },
+ {
+ label: 'FY2026 净营收 ($B · 总计 $478.80B)',
+ data: [254.10, 123.30, 37.93, 35.58, 27.93],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 280,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：FY2010–FY2025 全职员工规模克制增长 vs 年度净营收爆发 ($B, 源自 SEC 10-K / SQ Magazine)
+ const trajectoryConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2010',
+ 'FY2015',
+ 'FY2020',
+ 'FY2021',
+ 'FY2022',
+ 'FY2023',
+ 'FY2024',
+ 'FY2025'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '全职员工人数 Full-Time Equivalent (千人)',
+ data: [46.6, 110.0, 147.0, 154.0, 164.0, 161.0, 164.0, 166.0],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '苹果年度净营收 Net Sales ($B)',
+ data: [65.23, 233.72, 274.52, 365.82, 394.33, 383.29, 391.04, 416.16],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.datasetIndex === 0 ? `全职员工: ${c.parsed.y.toFixed(1)}k 人` : `年度净营收: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 200,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'k' }
+ },
+ y1: {
+ position: 'right',
+ min: 0,
+ max: 450,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'fy26_mix' ? mixConfig : trajectoryConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'fy26_mix') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2025 vs FY2026 苹果五大生态产品线净营收协同增长（SEC 10-K）';
+ subEl.textContent = '单一损益表消除了部门墙：iPhone ($254.1B) 与 Services ($123.3B, 75.4%毛利率) 共享底层芯片与系统研发';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2010–FY2025 苹果极度克制的员工扩张（千人）vs 营收腾飞（$B）';
+ subEl.textContent = 'FY2021–FY2025 四年间员工仅从 15.4万微增至 16.6万，人均创收高达 ~$250万，免遭硅谷裁员潮冲击';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '跨职能软硬芯端到端协同深度',
+ '专家技术话语权与细节沉浸度',
+ '战略减法与SKU极致聚焦力',
+ 'DRI单点问责与保密执行力',
+ '子公司/业务单元独立自治度'
+ ],
+ datasets: [
+ {
+ label: '苹果公司 (Apple · 职能制集权)',
+ data: [10.0, 9.9, 9.8, 9.9, 3.0],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: '伯克希尔 (Berkshire · 极端分权)',
+ data: [2.5, 8.8, 8.5, 9.2, 10.0],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '传统多事业部科技巨头 (M-Form)',
+ data: [5.5, 6.5, 4.8, 6.0, 7.8],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Services 软件与服务业务毛利率 (FY2025 10-K)',
+ '全公司综合毛利率 (FY2026 全年披露)',
+ '全公司综合毛利率 (FY2025 10-K 披露)',
+ '工程研发人员占全公司员工总人数比例 (FY2025)',
+ 'Products 硬件产品综合毛利率 (FY2025 10-K)',
+ '全公司营业利润率 Operating Margin (FY2025)'
+ ],
+ datasets: [
+ {
+ label: '苹果组织与商业模式关键比率 (% · SEC Form 10-K & Workforce Report)',
+ data: [75.4, 47.9, 46.9, 41.0, 36.8, 32.0],
+ backgroundColor: [
+ '#F59E0B',
+ '#10B981',
+ '#06B6D4',
+ '#6366F1',
+ '#8B5CF6',
+ '#EC4899'
+ ],
+ borderRadius: 6,
+ barThickness: 18
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `指标数值: ${c.parsed.x.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 85,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2022', 'FY2023', 'FY2024', 'FY2025', 'FY2026'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '苹果年度净利润 Net Income ($B)',
+ data: [99.80, 97.00, 93.74, 112.01, 132.20],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 32,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '全公司综合毛利率 Gross Margin (%)',
+ data: [43.3, 44.1, 46.2, 46.9, 47.9],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.datasetIndex === 0 ? `年度净利润: $${c.parsed.y.toFixed(2)}B` : `综合毛利率: ${c.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 60,
+ max: 145,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '年度净利润 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 40,
+ max: 50,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' },
+ title: { display: true, text: '综合毛利率 (%)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateValueSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

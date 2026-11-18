@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tempus AI (NASDAQ: TEM) 深度研究报告：全球最大临床分子多模态数据库、AI 精准肿瘤学与“检测+数据+算法”闭环</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#070B14',
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+            },
+            temblue: {
+              300: '#93C5FD',
+              400: '#60A5FA',
+              500: '#2563EB',
+              600: '#1D4ED8',
+              700: '#1E40AF',
+            },
+            mogold: {
+              300: '#FCD34D',
+              400: '#FBBF24',
+              500: '#F59E0B',
+              600: '#D97706',
+              700: '#B45309',
+            },
+            emerald: {
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+            },
+            teal: {
+              400: '#22D3EE',
+              500: '#06B6D4',
+              600: '#0891B2',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 自定义滚动条与机构研报细节排版 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+
+    /* 打印友好优化 */
+    @media print {
+      #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+        display: none !important;
+      }
+      main {
+        margin-left: 0 !important;
+        padding: 0 !important;
+      }
+      section {
+        break-inside: avoid;
+      }
+    }
+
+    /* 卡片悬浮微光与上移过渡 */
+    .report-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .report-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 侧边导航激活态：医疗AI深蓝与青色渐变 */
+    .nav-link.active {
+      background: linear-gradient(90deg, rgba(37, 99, 235, 0.28) 0%, rgba(6, 182, 212, 0.08) 100%);
+      border-left: 3px solid #2563EB;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-temblue-500 selection:text-white transition-colors duration-200">
+
+  <!-- 顶部全局阅读进度条 -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-temblue-600 via-teal-500 to-emerald-500 w-0 transition-all duration-150"></div>
+  </div>
+
+  <!-- 移动端顶部导航栏 -->
+  <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-temblue-500 to-teal-500 flex items-center justify-center font-extrabold text-white text-xs shadow">
+        TEM
+      </div>
+      <div>
+        <div class="text-[11px] text-teal-400 font-semibold tracking-wider uppercase">NASDAQ: TEM · AI Precision Medicine</div>
+        <div class="text-sm font-bold leading-tight">Tempus AI 深度研究报告</div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-2">
+      <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 移动端折叠抽屉菜单 -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+    <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <span class="font-bold text-white text-base">TEM 研报目录导航</span>
+          <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+          <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 业务与收入架构</a></li>
+          <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重护城河</a></li>
+          <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 精准医疗与AI巨头横向对比</a></li>
+          <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务健康与SOTP估值推演</a></li>
+          <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 投资决策与风险配置</a></li>
+          <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+        </ul>
+      </div>
+      <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
+        <p>全球医疗科技与AI精准医疗研究组</p>
+        <p class="mt-1">数据基准：2026年11月 (Q3 26 / FY26E)</p>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+  <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+    <div>
+      <!-- 机构品牌头 -->
+      <div class="p-5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-temblue-500 via-temblue-600 to-teal-500 flex items-center justify-center text-white font-extrabold text-sm shadow-lg shadow-temblue-500/25">
+            TEM
+          </div>
+          <div>
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">NASDAQ: TEM</span>
+            <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">Tempus AI 深度研报</h2>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          全球临床多模态数据底座 · “基因测序 + 药企数据授权 + AI诊疗算法”飞轮龙头
+        </p>
+      </div>
+
+      <!-- 股票实时快照徽章 -->
+      <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">参考股价 (52周区间)</span>
+          <span class="font-mono font-bold text-white">~$76.80 <span class="text-slate-400 text-[10px]">($36.2-$104.3)</span></span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">2026E 全年营收指引</span>
+          <span class="font-mono font-bold text-emerald-400">~$1.61B <span class="text-slate-400">(+26.5%)</span></span>
+        </div>
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+          <span class="text-slate-400">估值与数据合约积压</span>
+          <span class="font-mono font-bold text-teal-400">~8.5x P/S · TCV $1.2B+</span>
+        </div>
+      </div>
+
+      <!-- 七大核心章节目录导航 -->
+      <div class="px-3 py-3.5 overflow-y-auto max-h-[calc(100vh-310px)]">
+        <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+        <nav id="desktop-nav" class="space-y-1 text-[13px]">
+          <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-temblue-400 mr-2">00</span>执行摘要与核心指标</span>
+          </a>
+          <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>业务与收入架构</span>
+          </a>
+          <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重护城河</span>
+          </a>
+          <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>精准医疗与AI巨头横向对比</span>
+          </a>
+          <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务健康与SOTP估值推演</span>
+          </a>
+          <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>投资决策与风险配置</span>
+          </a>
+          <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 侧边栏底部工具栏 -->
+    <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2.5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-slate-400">阅读模式切换</span>
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-3.5 h-3.5 text-temblue-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span class="dark:hidden">深色护眼模式</span>
+          <span class="hidden dark:inline">机构亮色模式</span>
+        </button>
+      </div>
+      <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-temblue-600 to-teal-500 hover:from-temblue-700 hover:to-teal-600 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>打印 / 导出 PDF 研报</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="lg:ml-[280px] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+      <!-- =========================================================
+           00. Hero 研报封面区与执行摘要
+      ========================================================= -->
+      <section id="sec-exec" class="scroll-mt-20">
+        <!-- 顶部研报元数据标签栏 -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-temblue-500/15 text-temblue-600 dark:text-temblue-400 font-bold border border-temblue-500/30">评级：增持 / 医疗AI数据底座核心成长标的</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：2026Q3 财报复盘与盈利拐点兑现期</span>
+          </div>
+          <div class="flex items-center space-x-3 font-mono">
+            <span>覆盖时间：2026年11月</span>
+            <span>NASDAQ: TEM</span>
+          </div>
+        </div>
+
+        <!-- Hero 标题卡片 -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+          <!-- 背景科技蓝点阵纹理 -->
+          <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#3B82F6 1.3px, transparent 1.3px); background-size: 24px 24px;"></div>
+          <div class="relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-temblue-500/20 border border-temblue-400/40 text-teal-300 text-xs font-semibold mb-4">
+              <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+              <span>CORE THESIS · 350PB+ 多模态临床数据库 × 78%+ 数据授权毛利率 × 阿斯利康 2 亿美元多模态基座模型</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+              Tempus AI (NASDAQ: TEM) 深度研究报告：全球最大临床分子多模态数据库、AI 精准肿瘤学与“检测+数据+算法”闭环
+            </h1>
+            <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+              创始人兼 CEO <strong class="text-white">Eric Lefkofsky</strong> 打造的 Tempus AI 正加速兑现“以诊断测序为数据入口、以药企数据授权为高毛利引擎”的商业飞轮：2026Q3 单季营收达 <strong class="text-teal-300">$4.18亿（+26.8% YoY）</strong>，Non-GAAP 毛利率攀升至 <strong class="text-emerald-400">63.8%</strong>，调整后 EBITDA 持续扩正至 <strong class="text-white">$2,450万</strong>。
+              借助 Ambry Genetics 遗传检测整合与 <strong class="text-mogold-400">xT CDx 获 FDA 批准（享 Medicare ADLT 溢价报销）</strong>，公司将 2026 全年营收指引上调至 <strong class="text-teal-300">~$16.1亿（+26.5% YoY）</strong>；同时手握超 <strong class="text-emerald-400">$12.2亿</strong> 药企数据合同总价值（TCV）及 140%+ 净收入留存率，稳居全球医疗垂直大模型训练底座龙头。
+            </p>
+
+            <!-- 核心投资结论高亮条 -->
+            <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">不可复制的去标识化数据壁垒</div>
+                <div class="text-white font-semibold">连接全美超 65% 学术医疗中心，沉淀逾 850 万患者去标识化临床+基因组+影像数据（>350 PB）</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">高毛利数据业务结构性抬升</div>
+                <div class="text-teal-300 font-semibold">Data & Services 板块毛利率高达 78%+，全球 Top 20 药企中 19 家已签约，TCV 突破 $1.22B</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">诊断升级与盈利拐点共振</div>
+                <div class="text-emerald-400 font-semibold">xT CDx 伴随诊断溢价放量、MRD 液态活检商业化提速，全年实现可持续正向调整后 EBITDA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4个核心 KPI 卡片 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+          <!-- KPI 1 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>总市值与最新股价</span>
+              <span class="p-1.5 rounded-lg bg-temblue-500/15 text-temblue-600 dark:text-temblue-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$13.7B</span>
+              <span class="text-xs font-bold text-temblue-600 dark:text-temblue-400 bg-temblue-500/15 px-2 py-0.5 rounded">~$76.80</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              对应 2026E 远期市销率（Forward P/S）约 8.5x，2027E 远期 P/S 约 6.8x，兼具高成长与商业化兑现度。
+            </p>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>2026E 全年营收指引</span>
+              <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$1.61B</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+26.5% YoY</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              26Q3 单季营收 $4.18B 超越一致预期，肿瘤测序与遗传检测（Ambry）双轮带动规模效应加速释放。
+            </p>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>Non-GAAP 毛利率 & EBITDA</span>
+              <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">63.8%</span>
+              <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">EBITDA +$68M</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              高毛利数据授权占比提升驱动毛利率同比扩张 +3.2pp，2026 全年调整后 EBITDA 指引上调至 ~$6,800万。
+            </p>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>数据合同积压 TCV & NDR</span>
+              <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$1.22B+</span>
+              <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">NDR ~140%</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              与阿斯利康、Pathos 等签署多年期大额基础模型共建协议，头部药企客户续约增购率（NDR）超 140%。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           一、 业务与收入架构 (Business & Revenue Architecture)
+      ========================================================= -->
+      <section id="sec-biz" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-temblue-600 dark:text-temblue-400">Section 01 · Business & Revenue Architecture</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 业务与收入架构：“基因测序获客 + 药企数据变现”双飞轮与 64% 毛利跃迁</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">FY26E 预计营收 ~$1.61B · Genomics ~73% / Data & AI ~27%</span>
+        </div>
+
+        <!-- 交互式 Chart.js 双视图切换面板 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- 左侧：双视图图表 -->
+          <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2022–2026E 两大核心板块营收规模（$M）与 Non-GAAP 毛利率演进</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">基因测序稳定贡献现金流底座，Data & Services 高速放量拉动集团毛利率从 46% 跃升至 ~64%</p>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+                <button onclick="switchBizChart('rev_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-temblue-600 dark:text-temblue-400 shadow-sm transition cursor-pointer">视图A：营收结构与毛利率</button>
+                <button onclick="switchBizChart('segment_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：各业务毛利率与增速对比</button>
+              </div>
+            </div>
+            <div class="relative h-72 w-full">
+              <canvas id="bizArchitectureChart"></canvas>
+            </div>
+          </div>
+
+          <!-- 右侧：结构性拆解核心洞察 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026Q3 三大核心商业化突破引擎</h3>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-temblue-500/15 text-temblue-600 dark:text-temblue-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">xT CDx 获 FDA 批准及 ADLT 溢价认证，单例报销大幅抬升</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      旗舰实体瘤广谱基因检测 <strong>xT CDx</strong> 正式切换为 FDA 批准伴随诊断版本并获得 CMS 先进诊断实验室检测（ADLT）定价资格，推动临床测序平均单价（ASP）显著上行。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">Data & Services 营收同比飙升 +36%，药企多模态模型订单爆发</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      26Q3 数据与服务板块收入达 <strong>$1.12亿</strong>，毛利率高达 <strong>78.5%</strong>。继阿斯利康（AstraZeneca）与 Pathos 签署价值 2 亿美元多模态肿瘤基础模型协议后，多家跨国药企追加 R&D 数据采购。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">Ambry 遗传检测协同放量 + 液态活检 MRD 打开百亿新空间</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      收购 Ambry Genetics 后实现肿瘤体细胞检测与遗传性胚系检测的全面交叉销售；超敏微小残留病灶监测（<strong>xM / MRD</strong>）临床渗透率快速攀升，成为测序板块新增长极。
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-slate-500 dark:text-slate-400">核心商业飞轮逻辑</span>
+              <span class="font-bold text-temblue-600 dark:text-temblue-400">临床测序沉淀数据 → 药企付费反哺研发</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大业务板块详细卡片矩阵 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- 分部 1：基因组学诊断 Genomics -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-temblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-temblue-500/15 text-temblue-700 dark:text-temblue-400 text-xs font-bold">数据获取入口与营收底座 · 占总营收 ~73.2%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">Q3 营收 $306M (+23.6%)</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 基因组学诊断板块（xT 实体瘤 + xF 液态活检 + Ambry 遗传学）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                在芝加哥、罗利及加州搭建全美自动化下一代测序（NGS）实验室网络，涵盖组织活检（<strong>xT / xT CDx</strong>）、全转录组 RNA 测序（<strong>xR</strong>）、液体活检（<strong>xF / xM MRD</strong>）及遗传病筛查（<strong>Ambry</strong>）。26Q3 临床测序总量突破 32 万例，板块毛利率稳步提升至 <strong>~58.4%</strong>。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>ADLT 医保溢价推动 ASP 稳步上行</span>
+              <span class="text-temblue-600 dark:text-temblue-400 font-semibold">全美超 50% 肿瘤医生常态化使用</span>
+            </div>
+          </div>
+
+          <!-- 分部 2：数据与药企研发服务 Data & Services -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">高毛利利润引擎 · 占总营收 ~26.8%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">毛利率 78.5% (+36.4% YoY)</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 数据与药企研发赋能板块（Insights 授权 + TIME 临床试验入组）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                通过 <strong>Lens</strong> 多模态分析平台向全球 Top 20 药企中的 19 家提供去标识化分子+临床纵向追踪数据，助力新药靶点发现与生物标志物筛选；同时依托 <strong>TIME 临床试验网络</strong> 将患者入组周期从数月缩短至 10 天内，合同剩余履约义务（TCV）高达 <strong>$1.22B+</strong>。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>Q3 单季收入 $112M · NDR ~140%</span>
+              <span class="text-teal-600 dark:text-teal-400 font-semibold">AI 制药时代的“水电煤”基建</span>
+            </div>
+          </div>
+
+          <!-- 分部 3：AI 临床应用算法 Algos -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">高弹性软件期权 · 软件级 85%+ 毛利</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">多项 FDA SaMD 获批</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. AI 诊断算法与临床决策系统（Tempus One + ECG-AF / Next）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                在测序与电子病历（EHR）基础上叠加专有 AI 算法模型：包括获 FDA 510(k) 许可的心电图房颤预警算法 <strong>Tempus ECG-AF</strong>、免疫治疗疗效预测模型 <strong>IPS</strong>、以及嵌入医生工作流的生成式临床助手 <strong>Tempus One</strong> 与患者端个人健康应用 <strong>Olivia</strong>。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>肿瘤学向心血管/神经疾病跨科室复制</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">边际成本近乎为零的算法变现</span>
+            </div>
+          </div>
+
+          <!-- 分部 4：医疗 AI 算力与多模态基础模型 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">AI 基础设施护城河 · 自建专有算力集群</span>
+                <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">数据规模 &gt;350 PB</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 专有医疗大模型训练底座与算力网络（与英伟达/阿斯利康深度协同）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                不同于通用大模型缺乏高质量隐私医疗语料，Tempus AI 拥有直接与全美医院 EHR 系统双向直连的清洗管道，每日新增海量结构化病理切片、影像与基因序列，已成为跨国药企训练专有生物基础模型（Foundation Models）的首选合作平台。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>超 2,500 家医疗机构 EHR 深度直连</span>
+              <span class="text-indigo-600 dark:text-indigo-400 font-semibold">多模态数据飞轮壁垒持续加深</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           二、 行业地位与四重核心护城河 (Industry Position & Moat)
+      ========================================================= -->
+      <section id="sec-moat" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position & Economic Moat</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重核心护城河：EHR 深度直连、多模态数据闭环与 140% 留存</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：宽广 (Wide Moat · 全球唯一规模化“诊断+多模态数据+AI算法”闭环体)</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- 左侧：四重护城河深度解析 -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 护城河 1 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-temblue-500/15 text-temblue-600 dark:text-temblue-400 flex items-center justify-center font-bold text-sm">01</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">全美超 65% 学术医疗中心 EHR 直连网络</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                耗时十年与全美逾 <strong>2,500 家医院及超 65% 的学术医学中心（AMC）</strong>建立底层电子病历（EHR）系统直连，自动提取患者用药方案、随访结局与影像病理，这是纯基因测序公司无法获取的纵向临床金矿。
+              </p>
+            </div>
+
+            <!-- 护城河 2 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">02</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“一次检测、多次变现”的双边网络飞轮</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                临床测序不仅通过医保产生首轮收入，其沉淀的去标识化多模态数据还可向数百家药企反复授权（LTV 无限拉长），进而反哺测序价格竞争力与 AI 研发，形成典型的<strong>数据双边网络效应</strong>。
+              </p>
+            </div>
+
+            <!-- 护城河 3 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">03</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">Top 20 药企 95% 覆盖率与 ~140% 净留存</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                全球前 20 大跨国制药巨头中 <strong>19 家</strong>已是 Tempus 客户，数据授权净美元留存率（NDR）高达 <strong>~140%</strong>。随着新药研发全面转向 AI 驱动，药企对真实世界多模态数据的依赖呈刚性化。
+              </p>
+            </div>
+
+            <!-- 护城河 4 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">FDA 审批与 Medicare 医保准入壁垒</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                先后斩获 xT CDx 的 FDA 伴随诊断 PMA 批准、CMS ADLT 溢价定价及多项 AI 医疗软件（SaMD）认证，构建起极高的监管合规与商业保险覆盖护城河，新进入者需耗费数年方能追赶。
+              </p>
+            </div>
+          </div>
+
+          <!-- 右侧：五维护城河雷达图 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">精准医疗与 AI 生物科技五维护城河雷达图</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Tempus AI (TEM) vs Guardant Health (GH) vs Recursion (RXRX)（满分 10 分）</p>
+            <div class="relative h-72 w-full">
+              <canvas id="moatRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           三、 精准医疗与 AI 巨头横向对比 (Competitive Landscape)
+      ========================================================= -->
+      <section id="sec-comp" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-temblue-600 dark:text-temblue-400">Section 03 · Precision Medicine & Healthcare AI Landscape</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 精准医疗与 AI 巨头横向对比：兼具诊断规模化现金流与 64% 软件级高毛利</h2>
+          </div>
+          <!-- 交互式筛选按钮 -->
+          <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+            <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-temblue-600 text-white shadow-sm transition cursor-pointer">全部同行</button>
+            <button onclick="filterCompetitors('dx')" data-filter="dx" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">肿瘤基因检测龙头</button>
+            <button onclick="filterCompetitors('ai')" data-filter="ai" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">AI 医疗与药物研发</button>
+          </div>
+        </div>
+
+        <!-- 横向对比矩阵表格 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                  <th class="py-4 px-5 min-w-[180px]">企业名称与核心管线</th>
+                  <th class="py-4 px-4 min-w-[130px]">商业模式定位</th>
+                  <th class="py-4 px-4 min-w-[140px]">2026E 营收规模与增速</th>
+                  <th class="py-4 px-4 min-w-[100px]">远期 P/S</th>
+                  <th class="py-4 px-4 min-w-[115px]">调整后毛利率</th>
+                  <th class="py-4 px-4 min-w-[115px]">盈利能力状态</th>
+                  <th class="py-4 px-5 min-w-[230px]">核心优劣势与竞合定位评估</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+                <!-- 行 1：Tempus AI TEM 基准 -->
+                <tr data-category="core" class="bg-temblue-500/5 dark:bg-temblue-500/10 font-medium">
+                  <td class="py-4 px-5">
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-0.5 rounded bg-temblue-600 text-white text-[10px] font-extrabold">数据闭环龙头</span>
+                      <span class="font-bold text-slate-900 dark:text-white">Tempus AI (TEM)</span>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">xT CDx / Ambry / Lens 数据平台</div>
+                  </td>
+                  <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">NGS 诊断 + 多模态数据授权 + AI 算法</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">~$1.61B (+26.5% YoY)</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono font-bold text-temblue-600 dark:text-temblue-400">~8.5x</td>
+                  <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">~63.8%</td>
+                  <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">Adj. EBITDA 转正</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>全行业唯一“临床检测+药企数据+AI”双轮自洽平台：</strong>营收规模与增速领跑同业，数据业务 78%+ 毛利率驱动持续盈利；短板在于液态活检市占率仍低于 Guardant。
+                  </td>
+                </tr>
+
+                <!-- 行 2：Guardant Health GH -->
+                <tr data-category="dx" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Guardant Health (GH)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Guardant360 / Shield 肠癌血检</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">肿瘤液态活检与早筛诊断龙头</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-500/15 text-teal-700 dark:text-teal-400">~$1.05B (+21.0% YoY)</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~6.2x</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~61.5%</td>
+                  <td class="py-4 px-4 font-mono text-amber-600 dark:text-amber-400">接近盈亏平衡</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>液态活检先发霸主：</strong>Guardant360 占据晚期肿瘤血检高份额且 Shield 获批肠癌早筛，但缺乏大规模全院 EHR 纵向临床数据与高毛利软件授权第二曲线。
+                  </td>
+                </tr>
+
+                <!-- 行 3：Natera NTRA -->
+                <tr data-category="dx" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Natera (NTRA)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Signatera MRD / Panorama NIPT</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">肿瘤 MRD 监测与无创产前基因检测</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">~$2.25B (+22.5% YoY)</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~10.8x</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~62.0%</td>
+                  <td class="py-4 px-4 font-mono text-emerald-600 dark:text-emerald-400">现金流转正</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>MRD 细分赛道绝对统治者：</strong>Signatera 肿瘤复发监测放量迅猛并享有 10.8x 高估值溢价；Tempus 正通过 Ambry 与 xM 管线加速向其腹地渗透。
+                  </td>
+                </tr>
+
+                <!-- 行 4：Veeva Systems VEEV -->
+                <tr data-category="ai" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Veeva Systems (VEEV)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Veeva Vault / Crossix 医药云</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">生命科学行业垂直 SaaS 与临床云</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-500/15 text-slate-700 dark:text-slate-300">~$3.15B (+13.5% YoY)</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~12.5x</td>
+                  <td class="py-4 px-4 font-mono text-emerald-600 dark:text-emerald-400">~75.5%</td>
+                  <td class="py-4 px-4 font-mono text-emerald-600 dark:text-emerald-400">高盈利现金牛</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>医药企业服务标杆参照系：</strong>印证跨国药企对研发数据与软件的极强付费意愿和 12x+ P/S 估值天花板，Tempus 的 Data 板块正沿着类似高粘性路径扩张。
+                  </td>
+                </tr>
+
+                <!-- 行 5：Recursion Pharmaceuticals RXRX -->
+                <tr data-category="ai" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Recursion (RXRX)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Recursion OS / BioHive-2 算力</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">AI 湿实验表型筛选与自研管线 Biotech</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">~$0.11B (早期里程碑)</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">&gt;25.0x</td>
+                  <td class="py-4 px-4 font-mono text-slate-500 dark:text-slate-400">研发期波动大</td>
+                  <td class="py-4 px-4 font-mono text-rose-600 dark:text-rose-400">大幅研发亏损</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>纯 AI 制药高风险对照：</strong>依赖自身临床管线成败且年度烧钱数亿美元；Tempus 则选择“卖水人”模式，不承担新药临床失败风险即可稳收药企数据授权费。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 配套 Chart.js 横向条形图：营收增速与毛利率对比 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">精准医疗与生命科学平台 2026E 营收同比增速（%）与调整后毛利率（%）双维对比</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Tempus AI 以 +26.5% 的 2026E 营收增速领跑规模化诊断同行，同时凭借高毛利数据业务实现 63.8% 综合毛利率</p>
+            </div>
+            <span class="text-xs font-semibold text-temblue-700 dark:text-temblue-400 bg-temblue-500/15 px-2.5 py-1 rounded">营收增速 +26.5% 同业第一</span>
+          </div>
+          <div class="relative h-64 w-full">
+            <canvas id="compMarginChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           四、 财务健康与 SOTP 估值推演 (Financial Health & Valuation Simulator)
+      ========================================================= -->
+      <section id="sec-fin" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Health & SOTP Valuation Engine</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务健康度与估值体系：EBITDA 盈利拐点确立与“诊断+数据”SOTP 重估模型</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">在手现金 ~$6.4亿 · 2026E 调整后 EBITDA 迈向 ~$6,800万</span>
+        </div>
+
+        <!-- 1. 财务健康度四大硬核指标卡 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-temblue-600 dark:text-temblue-400 uppercase">Non-GAAP Gross Margin</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">63.8%</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              受益于 78%+ 毛利的 Data & Services 占比持续扩大及 xT CDx 获批后的医保单价提升，综合毛利率向 65%+ 稳步迈进。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Adjusted EBITDA Inflection</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">+$68M (FY26E)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              2024 年亏损 $1.05B → 2025 年收窄至近盈亏平衡 → 2026 年全年实现正向 ~$6,800万 调整后 EBITDA，经营杠杆全面显现。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Remaining TCV Backlog</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$1.22B+</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              未确认药企数据合同总价值（TCV）超 12.2 亿美元，为未来 3–5 年数据业务高双位数增长锁定极高收入能见度。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Cash & Liquidity Runway</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$640M</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              账面现金及有价证券约 $6.4亿，随经营性现金流逐步转正，已彻底摆脱早期生物科技公司的股权融资稀释周期。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. 交互式 Chart.js 双轴成长与盈利拐点图表 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">2022–2027E 集团总营收高速扩张（$M）vs 调整后 EBITDA 利润率（%）盈利拐点曲线</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">总营收 5 年复合增速超 35%，而调整后 EBITDA 利润率从 2022 年的 -75% 跨越式收敛至 2026E 的 +4.2% 及 2027E 的 +10.5%</p>
+            </div>
+            <span class="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/15 px-2.5 py-1 rounded">经营杠杆释放 · 盈利剪刀差加速张开</span>
+          </div>
+          <div class="relative h-72 w-full">
+            <canvas id="valEvolutionChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 3. 交互式组件：Tempus AI 分部加总（SOTP）目标市值与回报动态推演器 -->
+        <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+            <div>
+              <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-teal-400 font-bold">
+                <span>SOTP VALUATION ENGINE · “临床诊断 + AI 数据授权”分部加总估值模拟器</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-1">Tempus AI (TEM) 2027E 分部市销率（SOTP P/S）目标股价动态推演器</h3>
+              <p class="text-xs text-slate-400 mt-0.5">基准参数：当前参考股价 $76.80 | 稀释总股本 ~1.784 亿股（总市值 ~$13.7B）| 2027E 预计总营收 ~$2.02B（诊断 $1.44B + 数据 $0.58B）</p>
+            </div>
+            <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-temblue-500/20 border border-temblue-400/30 text-xs font-semibold text-teal-300 cursor-pointer shrink-0">
+              <input type="checkbox" id="ai-premium-toggle" checked onchange="updateValuationSimulator()" class="w-4 h-4 rounded accent-[#2563EB] cursor-pointer">
+              <span>计入 FDA SaMD 算法与基础模型期权 (+$1.5B)</span>
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <!-- 左侧参数控制区 -->
+            <div class="lg:col-span-5 space-y-4 text-xs">
+              <!-- Data & Services 估值倍数滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">Data & Services 数据业务目标 P/S (参照 Veeva 12x)</span>
+                  <span id="sim-data-ps-label" class="font-mono font-bold text-teal-400 text-sm">13.0x</span>
+                </div>
+                <input id="sim-data-ps" type="range" min="7" max="20" step="0.5" value="13.0" oninput="updateValuationSimulator()" class="w-full accent-[#06B6D4] cursor-pointer">
+              </div>
+
+              <!-- Genomics 诊断业务估值倍数滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">Genomics 基因检测目标 P/S (参照 Guardant/Natera)</span>
+                  <span id="sim-dx-ps-label" class="font-mono font-bold text-temblue-400 text-sm">6.0x</span>
+                </div>
+                <input id="sim-dx-ps" type="range" min="3" max="10" step="0.5" value="6.0" oninput="updateValuationSimulator()" class="w-full accent-[#2563EB] cursor-pointer">
+              </div>
+
+              <!-- 2027E 营收增速调节滑块 -->
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">2027E 集团整体营收增速假设 (基准: 25.5%)</span>
+                  <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">25.5%</span>
+                </div>
+                <input id="sim-growth" type="range" min="15" max="38" step="0.5" value="25.5" oninput="updateValuationSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+              </div>
+
+              <!-- 情景一键预设按钮组 -->
+              <div class="pt-1">
+                <div class="text-slate-300 font-medium mb-2">一键切换机构估值情景：</div>
+                <div class="grid grid-cols-3 gap-2" id="scenario-btn-group">
+                  <button type="button" onclick="applyPresetScenario('bear')" data-scen="bear" class="scen-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-temblue-400 transition cursor-pointer">
+                    熊市回调情景<br><span class="text-[10px] text-slate-400">数据9x · 检测4x</span>
+                  </button>
+                  <button type="button" onclick="applyPresetScenario('base')" data-scen="base" class="scen-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-temblue-600 text-white border border-temblue-400 shadow transition cursor-pointer">
+                    基准重估情景<br><span class="text-[10px] text-blue-100">数据13x · 检测6x</span>
+                  </button>
+                  <button type="button" onclick="applyPresetScenario('bull')" data-scen="bull" class="scen-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-temblue-400 transition cursor-pointer">
+                    牛市 AI 溢价情景<br><span class="text-[10px] text-slate-400">数据17x · 检测8x</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右侧四大实时测算结果卡片 -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">SOTP 分部加总目标股价 (USD)</div>
+                <div id="sim-target-price" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$99.10</div>
+                <div id="sim-upside" class="text-xs font-semibold text-emerald-400 mt-1.5">较当前股价 ($76.80) 潜在上涨空间 +29.0%</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">对应目标总市值 & 2027E 隐含 P/S</div>
+                <div id="sim-target-mcap" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$17.68B</div>
+                <div id="sim-implied-ps" class="text-xs text-slate-400 mt-1.5">隐含 2027E 综合市销率：8.75x P/S</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">Data & Services 数据业务评估价值</div>
+                <div id="sim-data-val" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$7.54B</div>
+                <div id="sim-data-share" class="text-xs text-slate-400 mt-1.5">贡献单股价值：$42.26 (占总价值 ~43%)</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">Genomics 基因检测业务评估价值</div>
+                <div id="sim-dx-val" class="text-2xl sm:text-3xl font-mono font-extrabold text-temblue-400 mt-1.5">$8.64B</div>
+                <div id="sim-dx-share" class="text-xs text-slate-400 mt-1.5">贡献单股价值：$48.43 (占总价值 ~49%)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 华尔街多空核心分歧对比 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">数据壁垒 + 盈利加速</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 制药基建最稀缺标的：</strong>阿斯利康 2 亿美元多模态基础模型大单只是起点，未来每家跨国药企开发专有癌症/免疫大模型均需采购 Tempus 清洗后的纵向多模态数据。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>ADLT 医保重定价直接增厚毛利：</strong>xT CDx 获 FDA 批准并获得 Medicare ADLT 溢价定价后，同一份实验室测序成本下实现更高的医保报销单价。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>已跨过调整后 EBITDA 盈亏平衡点：</strong>随着高毛利数据业务占比向 30%+ 迈进，2027 年有望释放超 $2.1亿 调整后 EBITDA，吸引主流基本面长线机构配置。</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">医保控费 + 股权激励稀释</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>商业保险（Commercial Payers）赔付率仍存摩擦：</strong>美国部分商业医疗保险对广谱肿瘤 NGS 检测存在预授权审批壁垒，实际平均回款额仍低于 CMS 标杆价格。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>GAAP 净利润受股权激励（SBC）拖累：</strong>虽然调整后 EBITDA 已转正，但较高的员工股权激励费用使 GAAP 口径净利润在 2027 年前仍处于微亏状态。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>MRD 液态活检赛道面临 Natera 强力阻击：</strong>在利润率丰厚的肿瘤微小残留病灶（MRD）领域，Signatera 临床证据链极为深厚，Tempus 需持续投入商业化教育成本。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           五、 投资决策与风险配置框架 (Investment Decision & Risk)
+      ========================================================= -->
+      <section id="sec-inv" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-temblue-600 dark:text-temblue-400">Section 05 · Investment Decision & Risk Allocation</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 投资决策与风险配置框架：三情景估值推演与 AI 医疗卫星仓配置纪律</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">配置建议：AI 医疗高弹性卫星成长仓 · $65–$72 区间逢回调分批布局</span>
+        </div>
+
+        <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- 牛市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：25%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">10.5x–11.5x 27E P/S ($125–$138)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>2027 年营收增速维持 30%+，Data & Services 收入突破 $6.5亿（毛利率 80%+），xM MRD 获 Medicare 全面覆盖，市场给予其生命科学 AI 平台 11x 估值溢价。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              潜在上涨空间：+63% 至 +80%
+            </div>
+          </div>
+
+          <!-- 基准情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-temblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-temblue-500/15 text-temblue-700 dark:text-temblue-400 text-xs font-bold">基准情景 (Base Case)</span>
+                <span class="font-mono text-xs font-bold text-temblue-600 dark:text-temblue-400">概率：55%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">8.5x–9.0x 27E P/S ($96–$103)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>2026–2027 年保持 25%+ 稳健增长，综合毛利率稳定在 64%–65%，调整后 EBITDA 利润率向 10% 迈进，股价随业绩兑现同步消化估值并稳步抬升。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-temblue-600 dark:text-temblue-400">
+              潜在上涨空间：+25% 至 +34%（基本面驱动稳健回报）
+            </div>
+          </div>
+
+          <!-- 熊市情景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+                <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">5.0x–5.5x 27E P/S ($52–$58)</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心假设：</strong>大型药企削减外部数据预算导致 Data & Services 增速放缓至 15% 以下，且商业医保对基因检测收紧报销，估值倍数回落至传统诊断服务商水平。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+              潜在回撤边界：-24% 至 -32%
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 四大核心风险矩阵 -->
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">四大核心潜在风险评估与跟踪边界</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 美国医保报销政策与商保拒赔率</span>
+                <span class="text-xs font-mono text-rose-500 font-semibold">关注度：高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">CMS 实验室定价周期调整及商业保险理赔周期拉长</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                临床基因检测高度依赖联邦医保（Medicare）和商业保险赔付；若商业保险商提高基因测序报销门槛，可能直接影响测序板块的 ASP 提升斜率与应收账款周转。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 医疗数据隐私合规与 HIPAA 监管边界</span>
+                <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">患者去标识化数据商业授权的伦理与联邦隐私立法</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                随着 AI 医疗数据商业化规模扩大，任何关于医院数据合作授权透明度或患者隐私保护的监管收紧，都可能对 Data & Services 板块构成核心商业模式冲击。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">03 · 肿瘤液态活检与 MRD 领域巨头竞争</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">直面 Guardant Health、Natera 与罗氏 Foundation Medicine</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                肿瘤分子诊断属于技术迭代极快的赛道，若竞争对手在超深度测序成本或临床试验循证医学数据上取得代际领先，可能分流临床样本量。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 高贝塔科技成长股波动率与创始人投票权</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">52 周振幅超 180%，且创始人 Eric Lefkofsky 持有超级投票权</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                TEM 属于典型高弹性医疗科技股，对美债利率及 AI 板块情绪高度敏感；此外双重股权结构下创始人掌握绝对控制权，并购扩张节奏较激进。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 机构级组合配置纪律横幅 -->
+        <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+          <h3 class="text-base font-bold text-teal-400 mb-4 flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>机构级投资组合配置纪律与“AI 医疗应用层”波段交易策略</span>
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-white mb-1">1. 高贝塔成长卫星仓定位（3%–6% 仓位）</div>
+              <p class="text-slate-300 leading-relaxed">
+                TEM 属于尚未产生大额 GAAP 净利润的高成长医疗 AI 标的，适合作为科技组合中的<strong>高弹性卫星仓</strong>，与成熟现金牛底仓形成风险收益互补。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-teal-400 mb-1">2. 锚定 6.5x–7.5x Forward P/S 回调买点</div>
+              <p class="text-slate-300 leading-relaxed">
+                避免在情绪亢奋突破 $95+（&gt;10.5x P/S）时追高；当随科技股情绪回撤至 <strong>$64–$72 区间（对应 26E P/S 7.0x–7.9x）</strong>时，赔率与基本面安全边际最佳。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-emerald-400 mb-1">3. 紧盯 Data & Services 增速单一核心指标</div>
+              <p class="text-slate-300 leading-relaxed">
+                整个估值溢价的灵魂在于数据业务能否持续保持 <strong>30%+ 增速与 75%+ 毛利率</strong>。只要药企数据订单保持高景气，任何因诊断季节性波动引起的回调均为买点。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+      ========================================================= -->
+      <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Fundamental Tracking KPIs</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度基本面跟踪 KPI 交互式核查清单（Checklist）</h2>
+          </div>
+          <div class="flex items-center space-x-2 no-print">
+            <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-temblue-500/15 text-temblue-700 dark:text-temblue-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+            <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            点击勾选季度财报中已验证达标的经营指标（勾选状态自动本地保存），持续校验 Tempus AI 数据商业化飞轮与盈利拐点成色：
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+            <!-- KPI 1 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-temblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">1. Data & Services 板块营收增速是否稳居 30%+ 且毛利率 &gt;75%</span>
+                  <span class="text-[11px] font-mono text-temblue-600 dark:text-temblue-400 font-semibold shrink-0">估值溢价核心锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  26Q3 数据业务同比增 +36.4% 至 $1.12亿，毛利率达 78.5%；需确认药企 AI 模型训练数据需求持续高增。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 2 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-temblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">2. 数据合约剩余履约价值（TCV）是否突破 $1.2B+ 且 NDR &gt;130%</span>
+                  <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">长期能见度指标</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  跟踪 Top 20 药企大客户续约增购率（当前 ~140%）以及是否新增类似阿斯利康 2 亿美元级别的多年期基础模型订单。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 3 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-temblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">3. xT CDx 切换 ADLT 医保定价后临床测序 ASP 与毛利率提升</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">诊断盈利改善锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  核查 Genomics 板块毛利率能否从当前的 58.4% 进一步向 60%+ 爬坡，验证 FDA 获批与商保覆盖推进成效。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 4 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-temblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">4. 调整后 EBITDA 利润率是否逐季扩张并向 2027E 10% 迈进</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">经营杠杆晴雨表</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  26Q3 单季调整后 EBITDA 达 +$2,450万；观察研发与销售费用率是否随营收规模扩大持续摊薄。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 5 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-temblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">5. xM 液态活检 MRD 临床样本放量及 Ambry 交叉销售协同度</span>
+                  <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">第二诊断曲线</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  追踪微小残留病灶监测（MRD）获医保报销适应症扩围进度，以及肿瘤与遗传检测客户群双向导流效率。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 6 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-temblue-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">6. AI 临床算法（ECG-AF / Tempus One）独立商业化变现进展</span>
+                  <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">非线性增长期权</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  关注心血管等非肿瘤专科算法在大型医院集团的付费部署数量，验证多模态 AI 跨科室复制能力。
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           页脚免责声明 (Disclaimer Footer)
+      ========================================================= -->
+      <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+          <span>Tempus AI, Inc. (NASDAQ: TEM) 深度商业与投资价值分析报告 · 机构研究框架版</span>
+          <span>数据基准：2026Q3 财报及 2026 年 11 月市场一致预期 (FY26E / FY27E)</span>
+        </div>
+        <p class="leading-relaxed">
+          <strong>免责声明：</strong>本深度研究报告基于 Tempus AI 公开财务报告（Form 10-Q / 10-K）、2026Q3 业绩电话会议披露数据及全球精准医疗与 AI 生物科技行业调研资料整理生成，旨在提供结构化的商业模式分析与估值测算框架。报告中涉及的盈利预测、三情景目标价及 SOTP 分部加总估值模拟器均基于特定市销率与增速假设推演，不构成任何证券买卖建议或收益承诺。高成长医疗科技股受医保政策、监管审批及市场估值情绪波动影响较大，请在独立核实后审慎决策。
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+  <script>
+    // ==========================================
+    // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+    // ==========================================
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      updateChartsTheme();
+    }
+
+    // ==========================================
+    // 2. 移动端抽屉菜单切换
+    // ==========================================
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    // ==========================================
+    // 3. 阅读进度条与左侧导航滚动联动高亮
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+      let currentId = 'sec-exec';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 160;
+        if (scrollTop >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const numSpan = link.querySelector('span span');
+        if (numSpan) {
+          numSpan.classList.remove('text-temblue-400');
+          numSpan.classList.add('text-slate-500');
+        }
+        if (link.dataset.target === currentId) {
+          link.classList.add('active');
+          if (numSpan) {
+            numSpan.classList.remove('text-slate-500');
+            numSpan.classList.add('text-temblue-400');
+          }
+        }
+      });
+    });
+
+    // ==========================================
+    // 4. 同行竞争格局矩阵筛选器
+    // ==========================================
+    function filterCompetitors(category) {
+      document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('bg-temblue-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        } else {
+          btn.classList.remove('bg-temblue-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        }
+      });
+
+      const rows = document.querySelectorAll('#comp-table-body tr');
+      rows.forEach(row => {
+        const rowCat = row.dataset.category;
+        if (category === 'all' || rowCat === 'core' || rowCat === category) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // ==========================================
+    // 5. Tempus AI SOTP 分部加总与目标股价动态推演器
+    // ==========================================
+    function applyPresetScenario(type) {
+      document.querySelectorAll('#scenario-btn-group .scen-btn').forEach(btn => {
+        if (btn.dataset.scen === type) {
+          btn.className = 'scen-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-temblue-600 text-white border border-temblue-400 shadow transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-blue-100';
+        } else {
+          btn.className = 'scen-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-temblue-400 transition cursor-pointer';
+          const subSpan = btn.querySelector('span');
+          if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+        }
+      });
+
+      const dataPsSlider = document.getElementById('sim-data-ps');
+      const dxPsSlider = document.getElementById('sim-dx-ps');
+      const growthSlider = document.getElementById('sim-growth');
+
+      if (type === 'bear') {
+        dataPsSlider.value = 9.0;
+        dxPsSlider.value = 4.0;
+        growthSlider.value = 18.0;
+      } else if (type === 'base') {
+        dataPsSlider.value = 13.0;
+        dxPsSlider.value = 6.0;
+        growthSlider.value = 25.5;
+      } else if (type === 'bull') {
+        dataPsSlider.value = 17.0;
+        dxPsSlider.value = 8.0;
+        growthSlider.value = 31.0;
+      }
+      updateValuationSimulator();
+    }
+
+    function updateValuationSimulator() {
+      const dataPs = parseFloat(document.getElementById('sim-data-ps').value);
+      const dxPs = parseFloat(document.getElementById('sim-dx-ps').value);
+      const growthPct = parseFloat(document.getElementById('sim-growth').value);
+      const includeAiOption = document.getElementById('ai-premium-toggle').checked;
+
+      document.getElementById('sim-data-ps-label').textContent = dataPs.toFixed(1) + 'x';
+      document.getElementById('sim-dx-ps-label').textContent = dxPs.toFixed(1) + 'x';
+      document.getElementById('sim-growth-label').textContent = growthPct.toFixed(1) + '%';
+
+      const currentPrice = 76.80;
+      const dilutedSharesMillion = 178.4; // ~178.4M shares ($13.7B mcap)
+      const fy26TotalRevBillion = 1.61;
+      const g = growthPct / 100;
+
+      // 2027E 预计总营收及分部拆分（假设高增长下 Data 占比进一步提升至 ~28.7%）
+      const fy27TotalRevBillion = fy26TotalRevBillion * (1 + g);
+      const dataMixRatio = 0.287;
+      const fy27DataRevBillion = fy27TotalRevBillion * dataMixRatio;
+      const fy27DxRevBillion = fy27TotalRevBillion * (1 - dataMixRatio);
+
+      const dataValuationBillion = fy27DataRevBillion * dataPs;
+      const dxValuationBillion = fy27DxRevBillion * dxPs;
+      const aiAlgoOptionBillion = includeAiOption ? 1.50 : 0.0;
+
+      const totalTargetMcapBillion = dataValuationBillion + dxValuationBillion + aiAlgoOptionBillion;
+      const targetPrice = (totalTargetMcapBillion * 1000) / dilutedSharesMillion;
+      const upsidePct = ((targetPrice - currentPrice) / currentPrice) * 100;
+      const impliedForwardPs = totalTargetMcapBillion / fy27TotalRevBillion;
+
+      const dataPerShare = (dataValuationBillion * 1000) / dilutedSharesMillion;
+      const dxPerShare = (dxValuationBillion * 1000) / dilutedSharesMillion;
+      const dataWeightPct = (dataValuationBillion / totalTargetMcapBillion) * 100;
+      const dxWeightPct = (dxValuationBillion / totalTargetMcapBillion) * 100;
+
+      document.getElementById('sim-target-price').textContent = '$' + targetPrice.toFixed(2);
+      const upsideEl = document.getElementById('sim-upside');
+      if (upsidePct >= 0) {
+        upsideEl.className = 'text-xs font-semibold text-emerald-400 mt-1.5';
+        upsideEl.textContent = `较当前股价 ($${currentPrice.toFixed(2)}) 潜在上涨空间 +${upsidePct.toFixed(1)}%`;
+      } else {
+        upsideEl.className = 'text-xs font-semibold text-rose-400 mt-1.5';
+        upsideEl.textContent = `较当前股价 ($${currentPrice.toFixed(2)}) 潜在回撤空间 ${upsidePct.toFixed(1)}%`;
+      }
+
+      document.getElementById('sim-target-mcap').textContent = `$${totalTargetMcapBillion.toFixed(2)}B`;
+      document.getElementById('sim-implied-ps').textContent = `隐含 2027E 综合市销率：${impliedForwardPs.toFixed(2)}x P/S (27E营收 $${fy27TotalRevBillion.toFixed(2)}B)`;
+      document.getElementById('sim-data-val').textContent = `$${dataValuationBillion.toFixed(2)}B`;
+      document.getElementById('sim-data-share').textContent = `贡献单股价值：$${dataPerShare.toFixed(2)} (占总价值 ~${dataWeightPct.toFixed(0)}%)`;
+      document.getElementById('sim-dx-val').textContent = `$${dxValuationBillion.toFixed(2)}B`;
+      document.getElementById('sim-dx-share').textContent = `贡献单股价值：$${dxPerShare.toFixed(2)} (占总价值 ~${dxWeightPct.toFixed(0)}%)`;
+    }
+
+    // ==========================================
+    // 6. KPI 核查清单状态持久化与计数更新
+    // ==========================================
+    const KPI_STORAGE_KEY = 'tem_research_kpi_state_v1';
+
+    function loadKpiChecklist() {
+      try {
+        const saved = localStorage.getItem(KPI_STORAGE_KEY);
+        if (saved) {
+          const stateMap = JSON.parse(saved);
+          document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+            if (typeof stateMap[cb.id] === 'boolean') {
+              cb.checked = stateMap[cb.id];
+            }
+          });
+        }
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+      updateKpiChecklist();
+    }
+
+    function updateKpiChecklist() {
+      const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      const stateMap = {};
+
+      checkboxes.forEach(cb => {
+        stateMap[cb.id] = cb.checked;
+        if (cb.checked) checkedCount++;
+      });
+
+      const pct = Math.round((checkedCount / total) * 100);
+      document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+      try {
+        localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+      } catch (e) {
+        // 忽略本地存储权限限制
+      }
+    }
+
+    function resetKpiChecklist() {
+      document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      updateKpiChecklist();
+    }
+
+    // ==========================================
+    // 7. Chart.js 数据可视化初始化与主题自适应
+    // ==========================================
+    let bizChartInstance = null;
+    let radarChartInstance = null;
+    let compMarginChartInstance = null;
+    let valEvolutionChartInstance = null;
+    let currentBizMode = 'rev_evolution';
+
+    function getChartColors() {
+      const isDark = document.documentElement.classList.contains('dark');
+      return {
+        text: isDark ? '#CBD5E1' : '#475569',
+        grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+        radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+      };
+    }
+
+    function initBizChart() {
+      const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+      const colors = getChartColors();
+
+      // 视图 A：2022–2026E 两大板块营收 ($M) 与 Non-GAAP 毛利率 (%) 演进
+      const evoConfig = {
+        type: 'bar',
+        data: {
+          labels: ['2022', '2023', '2024', '2025', '2026E'],
+          datasets: [
+            {
+              label: 'Genomics 基因测序诊断营收 ($M)',
+              data: [198, 363, 452, 955, 1175],
+              backgroundColor: '#2563EB',
+              borderRadius: 4,
+              stack: 'rev',
+              yAxisID: 'y'
+            },
+            {
+              label: 'Data & Services 数据与药企服务营收 ($M)',
+              data: [123, 169, 241, 318, 435],
+              backgroundColor: '#06B6D4',
+              borderRadius: 4,
+              stack: 'rev',
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: 'Non-GAAP 综合毛利率 (%)',
+              data: [46.2, 53.8, 57.5, 61.2, 63.8],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 2.5,
+              pointRadius: 4,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.dataset.yAxisID === 'y1'
+                  ? `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)}%`
+                  : `${ctx.dataset.label}: $${ctx.parsed.y}M`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 1800,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 35,
+              max: 75,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' }
+            }
+          }
+        }
+      };
+
+      // 视图 B：2026Q3 各业务板块毛利率与同比增速横向拆解 (%)
+      const splitConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            'AI 临床算法模块预期边际毛利率',
+            'Data & Services 板块 Non-GAAP 毛利率',
+            '全集团 26Q3 Non-GAAP 综合毛利率',
+            'Genomics 基因检测板块 Non-GAAP 毛利率',
+            'Data & Services 板块 26Q3 营收同比增速',
+            'Genomics 板块 26Q3 营收同比增速'
+          ],
+          datasets: [
+            {
+              label: '2026Q3 盈利与增速指标 (%)',
+              data: [85.0, 78.5, 63.8, 58.4, 36.4, 23.6],
+              backgroundColor: [
+                '#6366F1',
+                '#06B6D4',
+                '#10B981',
+                '#2563EB',
+                '#F59E0B',
+                '#3B82F6'
+              ],
+              borderRadius: 6,
+              barThickness: 22
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `2026Q3 指标值: ${ctx.dataIndex >= 4 ? '+' : ''}${ctx.parsed.x}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 95,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      };
+
+      if (bizChartInstance) bizChartInstance.destroy();
+      bizChartInstance = new Chart(ctx, currentBizMode === 'rev_evolution' ? evoConfig : splitConfig);
+    }
+
+    function switchBizChart(mode) {
+      currentBizMode = mode;
+      const btnEvo = document.getElementById('btn-chart-evo');
+      const btnSplit = document.getElementById('btn-chart-split');
+      const titleEl = document.getElementById('biz-chart-title');
+      const subEl = document.getElementById('biz-chart-sub');
+
+      if (mode === 'rev_evolution') {
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-temblue-600 dark:text-temblue-400 shadow-sm transition cursor-pointer';
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '2022–2026E 两大核心板块营收规模（$M）与 Non-GAAP 毛利率演进';
+        subEl.textContent = '基因测序稳定贡献现金流底座，Data & Services 高速放量拉动集团毛利率从 46% 跃升至 ~64%';
+      } else {
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-temblue-600 dark:text-temblue-400 shadow-sm transition cursor-pointer';
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '2026Q3 分业务板块毛利率结构与同比增速对比';
+        subEl.textContent = 'Data & Services 板块毛利率高达 78.5% 且保持 +36.4% 高速扩张，带动整体盈利质量跃迁';
+      }
+      initBizChart();
+    }
+
+    function initRadarChart() {
+      const ctx = document.getElementById('moatRadarChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (radarChartInstance) radarChartInstance.destroy();
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: [
+            '全院 EHR 纵向临床数据沉淀',
+            '药企数据授权商业化能力',
+            '临床测序实验室规模与资质',
+            'AI 多模态基础模型研发实力',
+            '当前自由现金流与盈利成熟度'
+          ],
+          datasets: [
+            {
+              label: 'Tempus AI (TEM)',
+              data: [9.8, 9.7, 9.0, 9.5, 6.8],
+              borderColor: '#2563EB',
+              backgroundColor: 'rgba(37, 99, 235, 0.24)',
+              pointBackgroundColor: '#2563EB',
+              borderWidth: 2.5
+            },
+            {
+              label: 'Guardant Health (GH)',
+              data: [6.2, 6.8, 9.5, 6.5, 6.2],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.14)',
+              pointBackgroundColor: '#10B981',
+              borderWidth: 2.0
+            },
+            {
+              label: 'Recursion (RXRX)',
+              data: [5.0, 5.5, 4.0, 9.2, 3.0],
+              borderColor: '#06B6D4',
+              backgroundColor: 'rgba(6, 182, 212, 0.12)',
+              pointBackgroundColor: '#06B6D4',
+              borderWidth: 1.8,
+              borderDash: [4, 4]
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            }
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 10,
+              ticks: { display: false, stepSize: 2 },
+              grid: { color: colors.grid },
+              angleLines: { color: colors.radarAngle },
+              pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initCompMarginChart() {
+      const ctx = document.getElementById('compMarginChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (compMarginChartInstance) compMarginChartInstance.destroy();
+      compMarginChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            'Tempus AI (TEM · 多模态数据闭环)',
+            'Natera (NTRA · MRD 复发监测龙头)',
+            'Guardant Health (GH · 液态活检先驱)',
+            'Veeva Systems (VEEV · 生命科学云)',
+            'Exact Sciences (EXAS · 肿瘤早筛)'
+          ],
+          datasets: [
+            {
+              label: '2026E 调整后毛利率 Gross Margin (%)',
+              data: [63.8, 62.0, 61.5, 75.5, 70.2],
+              backgroundColor: '#2563EB',
+              borderRadius: 5,
+              barThickness: 13
+            },
+            {
+              label: '2026E 预计营收同比增速 YoY Growth (%)',
+              data: [26.5, 22.5, 21.0, 13.5, 12.8],
+              backgroundColor: '#10B981',
+              borderRadius: 5,
+              barThickness: 13
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.x}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              max: 85,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initValEvolutionChart() {
+      const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+      const colors = getChartColors();
+
+      if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+      valEvolutionChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['2022', '2023', '2024', '2025', '2026E', '2027E'],
+          datasets: [
+            {
+              type: 'bar',
+              label: '集团年度总营收 ($M)',
+              data: [321, 532, 693, 1273, 1610, 2020],
+              backgroundColor: 'rgba(37, 99, 235, 0.85)',
+              borderRadius: 5,
+              barThickness: 28,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: '调整后 EBITDA 利润率 (%)',
+              data: [-75.4, -36.8, -15.2, 0.2, 4.2, 10.5],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 3,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.dataset.yAxisID === 'y'
+                  ? `${ctx.dataset.label}: $${ctx.parsed.y}M`
+                  : `${ctx.dataset.label}: ${ctx.parsed.y > 0 ? '+' : ''}${ctx.parsed.y.toFixed(1)}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 2400,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' },
+              title: { display: true, text: '年度总营收 ($M)', color: colors.text, font: { size: 11 } }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: -90,
+              max: 25,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' },
+              title: { display: true, text: '调整后 EBITDA 利润率 (%)', color: '#10B981', font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartsTheme() {
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadKpiChecklist();
+      updateValuationSimulator();
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    });
+  </script>
+</body>
+</html>

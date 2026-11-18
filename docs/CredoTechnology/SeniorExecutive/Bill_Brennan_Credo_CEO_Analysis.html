@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>比尔·布伦南 Bill Brennan 深度商业与战略研究报告：Credo Technology 舵手、AI 数据中心“ZeroFlap 零掉线”互连架构师与 100 倍级价值跃迁</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#D8B4FE',
+ 400: '#C084FC',
+ 500: '#9333EA',
+ 600: '#7E22CE',
+ 700: '#6B21A8',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：Credo 标志性电光紫渐变 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(147, 51, 234, 0.28) 0%, rgba(6, 182, 212, 0.08) 100%);
+ border-left: 3px solid #A855F7;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #C084FC;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-white transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-teal-400 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Bill_Brennan_Credo_CEO_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-white text-xs shadow">
+ BB
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">NASDAQ: CRDO · Credo CEO</div>
+ <div class="text-sm font-bold leading-tight">比尔·布伦南深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-white text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">布伦南专题目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 商业版图与互连架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 商业哲学与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 高速互连领袖横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 商业回报与财富复利推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与管理遗产复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 布伦南法则核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-white font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>AI 算力网络与半导体领袖研究组</p>
+ <p>财报与治理基准：SEC DEF 14A / FY26–FY27Q1</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-white font-extrabold text-base shadow-lg shadow-mogold-500/25">
+ BB
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CEO MONOGRAPH · CRDO</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">比尔·布伦南研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ AI 数据中心“ZeroFlap 零掉线”布道者 · Credo 商业化与系统级可靠性总舵手
+ </p>
+ </div>
+
+ <!-- 核心人物与公司最新财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">TTM 营收 / GAAP 净利</span>
+ <span class="font-mono font-bold text-white">$1.59B / $538.3M</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY26 全年营收爆发</span>
+ <span class="font-mono font-bold text-emerald-400">$1.34B (同比 &gt;3x)</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">CEO 持仓与 FY26 薪酬</span>
+ <span class="font-mono font-bold text-mogold-400">~217万股 · $14.4M</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>商业版图与互连架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>商业哲学与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>高速互连领袖横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>商业回报与财富复利推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与管理遗产复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>布伦南法则核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">管理层定评：从 SerDes IP 卖水人到系统级 AI 互连架构师</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：TI (1986) · Marvell (2000–2011) · Credo CEO &amp; Chairman (2013–2026)</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据基准：2026年11月</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景电光紫点阵纹理 -->
+ <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#A855F7 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · “全栈垂直闭环”定义 AEC 霸主 × “ZeroFlap 零掉线”重塑光通信 × TTM 营收突破 $15.9亿</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 比尔·布伦南 Bill Brennan 深度研究报告：Credo Technology 商业化总舵手、AI 集群“零掉线”哲学与百倍级市值跃迁
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 2013 年底，拥有科罗拉多大学电子工程与计算机背景、先后深耕德州仪器（TI）与美满电子（Marvell）存储事业部的 <strong class="text-white">威廉·“比尔”·布伦南（Bill Brennan）</strong>，受 Marvell 老同事 <strong class="text-mogold-300">Lawrence Cheng（CTO）与 Job Lam（COO）</strong> 邀请出任 Credo Technology 总裁兼 CEO（<a href="https://investors.credosemi.com/governance/executive-management/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">Credo Executive Bio</a>）。彼时 Credo 仍是一家靠授权高速 SerDes IP 维生的隐形设计室；布伦南凭借敏锐的产业商业嗅觉，主导公司完成从“IP 授权商”向“自研 DSP 芯片 + 线缆模组 + 系统级遥测软件全栈解决方案商”的惊险跃迁，首创并垄断 <strong class="text-white">AEC（有源电缆）</strong> 赛道。
+ 在 AI 算力军备竞赛爆发的 <strong class="text-emerald-400">2026 财年及 FY27Q1</strong>，Credo 年营收暴增逾三倍至 <a href="https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Technology-Group-Holding-Ltd-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$13.35亿美元</a>（TTM 营收达 <a href="https://www.macrotrends.net/stocks/charts/CRDO/credo-technology/revenue" target="_blank" rel="noopener noreferrer" class="cite-link text-white font-semibold">$15.91亿</a>，FY26 非 GAAP 净利润激增逾 5 倍至 <strong class="text-emerald-400">$6.62亿</strong>），市值一路冲破 <a href="https://www.fool.com/coverage/filings/2026/10/01/credo-technology-ceo-sells-company-shares-worth-usd2-5-million/" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">$290亿–$340亿美元</a>，布伦南本人亦兼任董事会主席并持有约 <a href="https://siliconfloor.com/insiders/1896237" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-400 font-semibold">217 万股 CRDO 股票（价值逾 $3.3亿–$4.1亿）</a>。
+ </p>
+
+ <!-- 核心领袖遗产高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">从“卖线缆”升维为“卖集群可靠性”</div>
+ <div class="text-white font-semibold">直击万卡 GPU 集群单点链路抖动（Link Flap）痛点，用“ZeroFlap 零掉线”定义超大规模云厂商采购标准</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">“更宽、更慢、更优”第一性原理</div>
+ <div class="text-mogold-400 font-semibold">2026年10月 OCP 峰会发布 1.6T ZeroFlap ALC（Micro-LED 宽并行光互连），功耗直降 30%–60%</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">务实反炒作的工程商业定力</div>
+ <div class="text-emerald-400 font-semibold">拒绝盲目追捧不成熟的 CPO（共封装光学），死磕可大规模量产交付的 AEC、ZF 光模块与 OmniConnect 内存墙方案</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>CRDO 市值与股价跃迁</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$29.6B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">&gt;16x IPO价</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 较 2022 年 1 月纳斯达克 IPO 发行价（$10/股）累计飙升逾 15 倍，成为 AI 基础设施最耀眼黑马（<a href="https://www.fool.com/coverage/filings/2026/10/01/credo-technology-ceo-sells-company-shares-worth-usd2-5-million/" target="_blank" rel="noopener noreferrer" class="cite-link">Motley Fool</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>TTM 营收与非 GAAP 净利</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$1.59B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">FY26净利$662M</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ FY27Q1（截至 2026年8月1日）单季营收达 $4.79亿（+115% YoY），TTM GAAP 净利润达 $5.38亿（<a href="https://www.macrotrends.net/stocks/charts/CRDO/credo-technology/revenue" target="_blank" rel="noopener noreferrer" class="cite-link">Macrotrends</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>CEO 个人持股与股权身家</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$340M+</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">2.17M 股</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 直接持股约 36.6 万股 + 家族信托间接持股约 180 万股（约占 1.1%–1.2%），高度绑定股东长期利益（<a href="https://www.fool.com/coverage/filings/2026/10/01/credo-technology-ceo-sells-company-shares-worth-usd2-5-million/" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Form 4</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2026 CEO 薪酬结构</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$14.4M</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">88% 股权激励</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 底薪 $65万 + 现金绩效 $110万 + 股票奖励 $1,264万（<a href="https://rentseek.ing/t/CRDO" target="_blank" rel="noopener noreferrer" class="cite-link">2026 DEF 14A</a>），现金底薪极其克制。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 商业版图与互连架构 (Business & Interconnect Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Business Architecture &amp; AI Connectivity Stack</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 商业版图与互连架构：从 AEC 铜缆霸主向“光 + 铜 + 内存墙”三层互连版图演进</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">TTM 营收 $1.591B · 覆盖 0–7米铜缆、3–50米 Micro-LED ALC 与跨机柜光通信</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2022–FY2026 Credo 年度营收与非 GAAP 净利润爆发曲线（$M）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">FY2026 年营收跃升至 $1,335M（同比 +205%），非 GAAP 净利润由 $128M 暴增逾 5 倍至 $662M</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('annual_leap')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：年度营收与净利跃迁</button>
+ <button onclick="switchBizChart('quarterly_momentum')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：近四季单季爆发斜率</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">布伦南主导的三大商业化破局转型</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">打破“卖 SerDes IP 天花板”，开创 AEC 整线产品化</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2014 年布伦南接手时，纯卖高速接口 IP 市场规模不过数亿美元；他敏锐洞察到 400G/800G 时代无源铜缆（DAC）过粗过短、光模块过贵过耗电的中间痛点，果断推动自研 Retimer 芯片+定制线缆的 <strong>HiWire AEC</strong>，开辟出百亿美元级增量赛道（<a href="https://www.hdinresearch.com/news/1561" target="_blank" rel="noopener noreferrer" class="cite-link">HDIN Research</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">抓住超大规模云巨头（Hyperscalers）液冷与零掉线刚需</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 布伦南在 Barclays 科技峰会指出，万卡 GPU 训练集群中单根链路闪断（Link Flap）即可导致整网训练中断、损失数百万美元算力；他带领团队直接拿下微软、亚马逊、xAI 与 Oracle 等头部大单（<a href="https://www.simpletechtrend.com/en/post/barclays-23rd-annual-global-technologyconference-credo-technology-group-en" target="_blank" rel="noopener noreferrer" class="cite-link">Barclays Conf</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">从短距铜缆向 1.6T 光通信与内存墙（OmniConnect）拓疆</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 不满足于 7 米内机柜互连，布伦南在 2025–2026 年连续推出 <strong>ZeroFlap 光模块、1.6T Micro-LED ALC 有源光缆</strong> 以及破解 HBM 内存容量瓶颈的 <strong>Weaver / OmniConnect</strong> 方案，打开 2027 财年以后第二成长曲线（<a href="https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Unveils-1-6T-ZeroFlap-Active-Light-Cable-Industrys-First-Row-Scale-Wide-Parallel-Optical-Interconnect-for-AI-Data-Centers/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Credo OCP 2026</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">2026年10月 OCP 全球峰会核心口号</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">“Wider. Slower. Better.”（更宽、更慢、更优）</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大产品与系统级互连支柱详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 支柱 1：HiWire ZeroFlap AEC -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一现金牛支柱 · 机柜内 0–7米统治者</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">400G / 800G / 1.6T AEC</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. HiWire ZeroFlap AEC（有源电缆）：全栈自研构筑垄断份额</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 与传统线缆厂商外购芯片组装不同，Credo 在布伦南坚持下实现了 <strong>SerDes IP + Retimer DSP 芯片 + 线缆精密制造 + 固件遥测</strong> 100% 内部全栈自研。AEC 在 7 米以内传输距离上以一半功耗与更高可靠性碾压短距光模块，支撑公司 AEC 业务同比暴增逾 200%（<a href="https://www.hdinresearch.com/news/1561" target="_blank" rel="noopener noreferrer" class="cite-link">HDIN Research</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>GPU 机柜至架顶交换机 (ToR) 标配</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">全栈自研赋予超 65% 毛利率</span>
+ </div>
+ </div>
+
+ <!-- 支柱 2：ZeroFlap Optics & PILOT 软件 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第二增长曲线 · 800G / 1.6T 光DSP与光模块</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">PILOT 预测性遥测黑箱</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. ZeroFlap 光通信与 PILOT 遥测软件（跨机柜 Scale-Out）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 针对传统光模块在液冷高密数据中心故障率高且难以排查责任的痛点，布伦南把 AEC“零掉线”理念复制到光通信领域：在自研光 DSP 中植入实时链路诊断，结合 <strong>PILOT 软件遥测平台</strong> 实现信号衰减提前预警与主动无感切换，正式切入百亿美元光模块主战场（<a href="https://credosemi.com/blogs/the-path-to-zero-flap-reinventing-optical-reliability-for-scalable-ai-clusters/" target="_blank" rel="noopener noreferrer" class="cite-link">Credo Blog</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>光 DSP 芯片 + ZF 光模块 + PILOT 软件</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">从硬件组件商跃迁为系统方案商</span>
+ </div>
+ </div>
+
+ <!-- 支柱 3：1.6T ZeroFlap ALC (Micro-LED) -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">2027 量产重磅新品 · 3–50米机柜排级互连</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">功耗低 30%–60% · 轻 10 倍</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 1.6T ZeroFlap ALC（Micro-LED 有源光缆）：填补铜光真空带</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2026 年 10 月布伦南在 OCP 全球峰会发布业内首款机柜排级（Row-Scale）宽并行 <strong>1.6T ZeroFlap ALC</strong>（将于 2027 年正式出货）。采用低速宽并行 Micro-LED 通道，单端功耗仅 <strong>12W</strong>（较同级 AEC 再降约 30%、较传统光模块降高达 60%），重量仅为铜缆 1/10 且传输延伸至 <strong>50 米</strong>，并内置物理层冗余通道实现零中断容错（<a href="https://credosemi.com/blogs/wider-slower-better-why-credo-is-pushing-for-micro-emitter-optics-in-ai-infrastructure/" target="_blank" rel="noopener noreferrer" class="cite-link">Credo Micro-Emitter</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>单 GPU 省电 80W / 单机柜省电 6kW</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">直接替代昂贵脆弱的早期 CPO 方案</span>
+ </div>
+ </div>
+
+ <!-- 支柱 4：OmniConnect / Weaver 内存墙互连 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">下一代战略期权 · AI 推理内存墙突破</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">DDR 替代昂贵 HBM 扩充</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. OmniConnect（Weaver）与 PCIe Retimer：攻克推理内存墙</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 面对 AI 推理与视频生成模型对超大内存容量的渴求，高带宽内存（HBM）不仅天价且受限于 25 毫米紧邻封装距离。布伦南推动 Credo 推出 <strong>OmniConnect（Weaver）变速箱芯片架构</strong>，使 AI 加速器能通过高速低延迟接口调用低成本、大容量的外部 DDR 内存池，同时叠加 PCIe Gen6/Gen7 Retimer 进一步拓宽芯片单机价值量（<a href="https://www.simpletechtrend.com/en/post/barclays-23rd-annual-global-technologyconference-credo-technology-group-en" target="_blank" rel="noopener noreferrer" class="cite-link">Barclays Conf</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>AI 推理内存扩展 + PCIe Retimer</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">从网络互连向计算内存互连延伸</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 商业哲学与四重核心护城河 (Philosophy & Economic Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Leadership Philosophy &amp; Structural Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 商业哲学与四重核心护城河：“全栈内部自研”壁垒与“商业+创始双极”治理黄金三角</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极强 (Wide Moat · 芯片-线缆-软件联合调优 + 云巨头深度定制粘性)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“100% 全栈内部开发”拒绝拼凑组装</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 传统连接器巨头（安费诺、莫仕）依赖外购 DSP 芯片，芯片厂则不懂线缆物理损耗；布伦南坚持芯片设计、信号完整性建模、线缆工艺与固件遥测全栈自主掌控，大幅缩短定制开发周期并锁定超额利润率（<a href="https://www.simpletechtrend.com/en/post/barclays-23rd-annual-global-technologyconference-credo-technology-group-en" target="_blank" rel="noopener noreferrer" class="cite-link">Barclays Conf</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“职业商业 CEO + 联合创始人 CTO/COO”黄金铁三角</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 布伦南与联合创始人 <strong>Lawrence Cheng（CTO）</strong>、<strong>Job Lam（COO）</strong> 及 <strong>Dan Fleming（CFO）</strong> 均为前 Marvell 同袍，共事合作逾十余年（<a href="https://investors.credosemi.com/governance/executive-management/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Credo Governance</a>）：两位创始人死磕模拟/混合信号芯片极限，布伦南负责客户定义与资本破局，组织零内耗。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">算 TCO 经济账而非单根线缆BOM成本</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 布伦南在客户谈判中擅长算系统总拥有成本（TCO）大账：传统 16W 功耗互连方案全生命周期电费与散热机会成本高达 $1,600，而 Credo 低功耗方案可为单座大型 AI 数据中心省出数千万美元电力额度（<a href="https://credosemi.com/blogs/wider-slower-better-why-credo-is-pushing-for-micro-emitter-optics-in-ai-infrastructure/" target="_blank" rel="noopener noreferrer" class="cite-link">Credo Blog</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">务实反泡沫技术路线选择（不盲从 CPO）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 当全市场热炒遥远的共封装光学（CPO）时，布伦南公开指出 CPO 在可维护性与良率上仍不成熟，坚持优先交付立即可大规模商用的 800G/1.6T AEC 与 Micro-LED ALC，使 Credo 率先将 AI 故事转化为实打实的 <strong>$6.62亿年度净利润</strong>。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维领袖战略特征雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">AI 高速互连领军 CEO 五维商业能力对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">比尔·布伦南 (Credo) vs 陈福阳 (Broadcom) vs 墨菲 (Marvell)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 高速互连领袖横向对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · High-Speed Interconnect &amp; AI Networking CEOs Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 高速互连领军 CEO 横向对比：纯血弹性冠军 vs 综合半导体巨头</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索 CEO / 芯片公司 / 护城河..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-white shadow-sm transition cursor-pointer">全部掌门</button>
+ <button onclick="filterCompetitors('pureplay')" data-filter="pureplay" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">AI 互连纯血黑马派</button>
+ <button onclick="filterCompetitors('giant')" data-filter="giant" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">大型平台与连接器巨头</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">CEO 与执掌企业</th>
+ <th class="py-4 px-4 min-w-[140px]">核心 AI 互连主航道</th>
+ <th class="py-4 px-4 min-w-[130px]">最新财季营收增速</th>
+ <th class="py-4 px-4 min-w-[115px]">非GAAP净利率/毛利</th>
+ <th class="py-4 px-4 min-w-[125px]">核心打法与领袖特质</th>
+ <th class="py-4 px-5 min-w-[240px]">与比尔·布伦南的战略及竞合评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：比尔·布伦南基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-white text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">比尔·布伦南</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Credo Technology (NASDAQ: CRDO)</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">ZeroFlap AEC + 光DSP + ALC光缆</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">+115% YoY (FY26 +205%)</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">毛利 ~65% / 净利 ~44%</td>
+ <td class="py-4 px-4 text-slate-900 dark:text-white">垂直全栈 + 零掉线系统方案</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>AI 互连纯度最高、爆发力最强：</strong>聚焦高速低功耗互连单一主航道，以极小体量撬动百亿市值；短板在于早期头部云客户集中度较高（<a href="https://www.macrotrends.net/stocks/charts/CRDO/credo-technology/revenue" target="_blank" rel="noopener noreferrer" class="cite-link">Macrotrends</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：吉滕德拉·莫汉 Jitendra Mohan -->
+ <tr data-category="pureplay" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">吉滕德拉·莫汉 (Jitendra Mohan)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Astera Labs (NASDAQ: ALAB)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">PCIe / CXL / UALink 智能连接芯片</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">+100%+ YoY (高速扩张)</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利 ~75% (纯Fabless芯片)</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">TI 出身技术创始人、专注板级芯片</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>同赛道直接对标双子星：</strong>Astera 主攻服务器内部 PCIe/CXL Retimer 芯片（毛利率更高），Credo 主攻机柜间 AEC 整线与光模块，两家在 PCIe 与 Scale-Up 互连领域正逐步交叉交锋。
+ </td>
+ </tr>
+
+ <!-- 行 3：陈福阳 Hock Tan -->
+ <tr data-category="giant" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">陈福阳 (Hock Tan)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Broadcom (NASDAQ: AVGO)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">定制 ASIC + Tomahawk 交换芯片 + DSP</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">AI 半导体业务 +60%+</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">综合毛利 ~76% / 营业 60%+</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">冷酷并购整合 + 霸主定价权</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全栈系统巨无霸参照：</strong>博通掌控以太网交换机与光 DSP 龙头份额；布伦南采取“错位切入”策略，用自研 AEC 与 ZeroFlap 遥测软件在博通未深度涉足的整线可靠性环节建立壁垒。
+ </td>
+ </tr>
+
+ <!-- 行 4：马特·墨菲 Matt Murphy -->
+ <tr data-category="giant" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">马特·墨菲 (Matt Murphy)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Marvell Technology (NASDAQ: MRVL)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">800G/1.6T PAM4 光DSP + 定制ASIC</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">数据中心业务 +70%+</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">非GAAP毛利 ~60%</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">大刀阔斧砍掉传统消费存储转型云AI</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>Credo 管理层的“老东家镜像”：</strong>布伦南、Lawrence Cheng 与 Job Lam 均出身 Marvell；昔日老东家以 Inphi 光 DSP 见长，如今 Credo 携 ZeroFlap 光模块反向杀入其核心领地。
+ </td>
+ </tr>
+
+ <!-- 行 5：亚当·诺维茨基 R. Adam Norwitt -->
+ <tr data-category="giant" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">亚当·诺维茨基 (Adam Norwitt)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Amphenol 安费诺 (NYSE: APH)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">英伟达 GB200/GB300 背板高速铜缆</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">+25%–30% YoY (千亿体量)</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">营业利润率 ~22%–24%</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">高度分权创业单元 + 精密制造之王</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>有源（AEC）vs 无源（DAC）路线之争：</strong>安费诺统治机柜内超短距无源铜缆（DAC），而当速率迈向 1.6T 导致无源铜缆传输距离急剧缩短时，布伦南的 AEC 与 ALC 迎来结构性替代红利。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的 CEO 记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：最新单季营收同比增速对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">AI 数据中心互连赛道领军企业单季营收同比增速（YoY Growth % · 2026最新财季口径）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">凭借 AEC 在超大云厂商集群中的标配渗透及新客户放量，布伦南带领 Credo 以 +114.8% 的单季同比增速领跑全球 AI 互连板块（<a href="https://www.macrotrends.net/stocks/charts/CRDO/credo-technology/revenue" target="_blank" rel="noopener noreferrer" class="cite-link">公开财报统计口径</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">+114.8% 营收增速行业领跑</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 商业回报与财富复利推演 (Financial Leverage & Wealth Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Leverage &amp; CEO Wealth Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 商业回报与财富复利推演：经营杠杆爆发、88% 股权薪酬绑定与 217 万股财富映射</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">SEC Form 4 &amp; 2026 DEF 14A：直接及家族信托持有约 217 万股 · 高贝塔（Beta &gt; 3）财富弹性</span>
+ </div>
+
+ <!-- 1. 治理与财务四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Non-GAAP Net Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">49.6% ($662M)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ FY2026 全年非 GAAP 净利润高达 $6.62亿（占 $13.35亿营收近一半），芯片+软件高毛利模式释放惊人经营杠杆（<a href="https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Technology-Group-Holding-Ltd-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Credo FY26 Release</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">CEO Equity Stake (Form 4)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~2.17M 股 (~1.1%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 截至 2026 年 9 月 Form 4 披露：个人直接持有 ~36.6 万股，Brennan 家族信托等间接持有 ~180 万股，持仓价值超 $3.3亿–$4.1亿（<a href="https://www.fool.com/coverage/filings/2026/10/01/credo-technology-ceo-sells-company-shares-worth-usd2-5-million/" target="_blank" rel="noopener noreferrer" class="cite-link">Motley Fool</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">FY2026 Executive Pay</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$14.40M (88%股权)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 2026 年 8 月 DEF 14A 披露：基本年薪仅 $65万，现金奖金 $110万，其余 $1,264万（88%）全部为长期股票奖励（<a href="https://rentseek.ing/t/CRDO" target="_blank" rel="noopener noreferrer" class="cite-link">SEC DEF 14A</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">10b5-1 Insider Discipline</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">0.78% 计划减持</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 2026 年 9 月仅通过预设 10b5-1 计划减持 16,672 股（套现 ~$250万，仅占其总持仓 0.78%），保留逾 99% 核心头寸看多未来（<a href="https://www.fool.com/coverage/filings/2026/10/01/credo-technology-ceo-sells-company-shares-worth-usd2-5-million/" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Form 4</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 季度营收与 GAAP 净利润爆发曲线 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY26Q2–FY27Q1 Credo 单季营收与 GAAP 净利润连续台阶式跃迁（$M）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">单季营收从 $268M 连续跨过 $407M、$437M 直达 $479M（年化运行率近 $20亿美元），单季 GAAP 净利润同步攀升至 $157.1M</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">TTM 营收 $1.59B · 年化近 $2.0B</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：Credo 互连版图扩容与 CEO 持股价值动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>INTERCONNECT SCALE &amp; CEO EQUITY ENGINE · Credo 估值与布伦南持仓推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">不同 AI 互连营收规模与远期市盈率（P/E）情景下：CRDO 市值与布伦南家族持仓价值测算</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：布伦南直接及家族信托持有约 217 万股（2.17M）| CRDO 完全稀释总股本约 1.83 亿股 | 2022 IPO 发行价：$10.00/股</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="alc-upside-toggle" checked onchange="updateWealthSimulator()" class="w-4 h-4 rounded accent-[#9333EA] cursor-pointer">
+ <span>计入 2027 1.6T ALC 光缆与 OmniConnect 新增量 (+20% 营收乘数)</span>
+ </label>
+ </div>
+
+ <!-- 历史与情景估值预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimScenario('fy26_actual')" data-era="fy26_actual" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>① FY2026 已实现财年基准</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">营收 $1.34B · 净利率 45% · 35x P/E</div>
+ </button>
+ <button type="button" onclick="setSimScenario('fy27_runrate')" data-era="fy27_runrate" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-white font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>② FY2027E 年化运行率基准</div>
+ <div class="text-[11px] opacity-90 font-mono mt-0.5">营收 $1.95B · 净利率 46% · 32x P/E</div>
+ </button>
+ <button type="button" onclick="setSimScenario('fy28_bull')" data-era="fy28_bull" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 1.6T ALC 与光通信放量牛市情景</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">营收 $2.80B · 净利率 48% · 35x P/E</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">基础互连业务年度营收 ($B)</span>
+ <span id="sim-rev-label" class="font-mono font-bold text-white text-sm">$1.95B</span>
+ </div>
+ <input id="sim-rev" type="range" min="1.2" max="4.0" step="0.05" value="1.95" oninput="markCustomEra(); updateWealthSimulator()" class="w-full accent-[#9333EA] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">非 GAAP 净利润率 (%)</span>
+ <span id="sim-margin-label" class="font-mono font-bold text-emerald-400 text-sm">46.0%</span>
+ </div>
+ <input id="sim-margin" type="range" min="35" max="55" step="1" value="46" oninput="markCustomEra(); updateWealthSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">市场给予远期市盈率倍数 (Forward P/E)</span>
+ <span id="sim-pe-label" class="font-mono font-bold text-white text-sm">32.0x</span>
+ </div>
+ <input id="sim-pe" type="range" min="18" max="50" step="1" value="32" oninput="markCustomEra(); updateWealthSimulator()" class="w-full accent-[#9333EA] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：基于 FY27Q1 单季 $4.79亿营收年化运行率（~$1.95B），叠加 2027 年 1.6T ALC 光缆与 OmniConnect 放量预期，测算 CRDO 市值与布伦南持仓增值。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">Credo 隐含目标总市值</div>
+ <div id="sim-target-cap" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$34.4B</div>
+ <div id="sim-target-price" class="text-xs font-semibold text-emerald-400 mt-1.5">对应隐含股价：~$188.20 / 股 (较 IPO +1,782%)</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">布伦南个人及家族信托持仓价值 (2.17M股)</div>
+ <div id="sim-ceo-stake" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">$408.4M</div>
+ <div id="sim-ceo-sub" class="text-xs text-slate-400 mt-1.5">另含未归属绩效 RSU/PSU 长期激励池</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效年度总营收（含新品乘数）</div>
+ <div id="sim-eff-rev" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$2.34B</div>
+ <div id="sim-rev-sub" class="text-xs text-slate-400 mt-1.5">较 FY2025 营收（$437M）扩张超 5.3 倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">预计年度非 GAAP 净利润</div>
+ <div id="sim-net-income" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$1.08B</div>
+ <div id="sim-ni-sub" class="text-xs text-slate-400 mt-1.5">跨越十亿美元年度净利润超级俱乐部门槛</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 多空双视角商业评估对比 (Bull Case vs Key Risks) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Case for Brennan &amp; CRDO)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">全栈护城河 + 铜光双吃</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 集群规模越大，互连带宽与可靠性痛点越指数级放大：</strong>从万卡向十万卡集群演进，ZeroFlap 遥测能力使 Credo 从单纯硬件供应商升级为云巨头不可或缺的网络可靠性伙伴。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>产品边界持续向外破圈，TAM 扩张数倍：</strong>从 400G/800G AEC 延伸至 1.6T Micro-LED ALC、ZeroFlap 光模块及 OmniConnect 内存墙芯片，单机柜可触达价值量（TAM）持续翻倍。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>管理层高度稳定且具备极强工程执行口碑：</strong>布伦南与两位联合创始人携手共事逾 12 年，连续多个季度交出大幅超越华尔街预期的交付成绩。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">潜在风险与高贝塔波动警示 (Bear / Risk Lens)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">大客户集中 + 巨头入局</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>头部云客户高度集中与资本开支周期波动：</strong>超大规模云厂商（如微软、亚马逊、xAI）单家占比较高，若某一云巨头出现机柜架构切换或季度拉货节奏调整，易引发营收环比波动。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>博通、Marvell 与安费诺对 AEC 赛道的正面反扑：</strong>当 AEC 市场膨胀至数十亿美元后，传统芯片与连接器巨头正加速推出兼容方案抢夺二供份额，考验长期毛利率守卫战。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>股价高贝塔剧烈震荡（Beta &gt; 3）：</strong>由于市场对 AI 算力情绪高度敏感，CRDO 股价单月波幅常超 30%–40%，对投资者仓位管理与风险承受力提出极高要求（<a href="https://www.fool.com/coverage/filings/2026/10/01/credo-technology-ceo-sells-company-shares-worth-usd2-5-million/" target="_blank" rel="noopener noreferrer" class="cite-link">Motley Fool</a>）。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕演进与管理遗产复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Career Evolution &amp; Strategic Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕职业演进与管理复盘：从德州仪器销售工程师到 AI 算力互连掌门</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">理解布伦南的关键：兼备科罗拉多大学电子工程学位与一线大客户商业开拓实战经验</span>
+ </div>
+
+ <!-- 1. 三幕职业演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 芯片大厂锤炼</span>
+ <span class="font-mono text-xs font-bold text-slate-500">1986–2013</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">TI → Marvell 存储副总裁</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>1986 年起在德州仪器（TI）担任客户经理积累半导体产业根基；2000 年加入 Marvell 历任高管直至存储业务部副总裁（2000–2011），深谙企业级客户导入与大规模量产交付；2011–2013 年在生物传感器公司 Vital Connect 任执行副总裁负责战略合作（<a href="https://investors.credosemi.com/governance/executive-management/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Credo Bio</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段启示：懂技术的商业拓展者最能识别大客户的真实系统级痛点
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 转型重塑与敲钟</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2013–2023</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">重构 Credo 与 2022 纳斯达克上市</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2013 年底受昔日 Marvell 模拟设计总监 Lawrence Cheng 与 Job Lam 邀请出任 Credo CEO，主导公司从纯 IP 授权向全栈 SerDes 芯片与 HiWire AEC 模组转型；2022 年 1 月带领 Credo 登陆纳斯达克，顶住 2023 年早期单一大客户订单削减的至暗时刻稳住研发投入（<a href="https://investors.credosemi.com/governance/executive-management/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Credo IR</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：敢于跨越“IP 舒适区”承担供应链与模组交付重任
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · AI 爆发与三栖扩张</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2024–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">年赚 6.6 亿美元与光通信破局</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>随全球 AI 训练与推理集群爆发，Credo 营收在 FY26 翻三倍突破 $13.3亿、FY27Q1 单季破 $4.79亿；布伦南兼任董事长并率队在 2026 年全面打响 ZeroFlap 光模块、1.6T Micro-LED ALC 与 OmniConnect 内存墙三大战役，向千亿美元平台级互连巨头进发（<a href="https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Unveils-1-6T-ZeroFlap-Active-Light-Cable-Industrys-First-Row-Scale-Wide-Parallel-Optical-Interconnect-for-AI-Data-Centers/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Credo Release</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段启示：顺势而为乘上 AI 算力东风，以系统级可靠性建立长期定价权
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大关键战略转折与管理启示矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：布伦南掌舵 Credo 期间的四大关键战略转折复盘</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">转折 01 · 2023 年单一最大客户砍单危机后的多客户分散化</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">危机淬炼与客户破圈</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">从高度依赖单一客户，成功拓展至 4+ 家超大规模云巨头</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2023 年初 Credo 曾因最大云客户下调需求预测导致单日股价腰斩；布伦南迅速带领销售与 FAE 团队深耕微软、亚马逊、xAI 与 Oracle，至 2026 年已拥有多家占营收 10% 以上的超大规模客户，抗风险能力脱胎换骨。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">转折 02 · 把“零掉线（ZeroFlap）”提炼为全公司最高产品哲学</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">差异化心智占位</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">当全行业比拼单通道 224G 速率时，布伦南锁定“集群零中断”</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 在万卡 AI 集群中，算力闲置一小时的损失远超整批线缆价格。布伦南将“ZeroFlap”注册为品牌护城河，把底层芯片的误码率控制与上层 PILOT 遥测诊断结合，精准击中云厂商基础设施负责人最深的焦虑（<a href="https://credosemi.com/blogs/the-path-to-zero-flap-reinventing-optical-reliability-for-scalable-ai-clusters/" target="_blank" rel="noopener noreferrer" class="cite-link">Credo Blog</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">转折 03 · 收购 Hyperlume 等布局 Micro-LED 光互连前沿</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">精准卡位 3–50 米真空带</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">用“更宽、更慢、更优”宽并行光学破解铜缆物理极限</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 随着单通道速率冲向 224G/448G，无源铜缆传输距离缩至不足 1–2 米，而传统激光光模块功耗与失效率高企；布伦南主导推出的 1.6T Micro-LED ALC 以 1 亿小时 MTBF 可靠性与 12W 超低功耗抢占下一代机柜排级互连标准（<a href="https://credosemi.com/blogs/wider-slower-better-why-credo-is-pushing-for-micro-emitter-optics-in-ai-infrastructure/" target="_blank" rel="noopener noreferrer" class="cite-link">Credo Micro-Emitter</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">转折 04 · 积极主导行业开放标准（OCP / UALink / PCIe）</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">从追随者到标准制定者</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">在开放计算项目（OCP）推举宽并行光学工作组</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 布伦南深知大型云巨头最忌讳被单一封闭接口锁死，因此主动联合产业伙伴在 OCP 推动 ALC 与光学可靠性标准制定，既打消大客户对供应链单一来源的顾虑，又稳坐标准定义者与头号受益者席位。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级商业与投资启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给硬科技创业者与 AI 算力投资者的三条“布伦南实战法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 当核心技术遇到瓶颈时，向下延伸做完整系统交付</div>
+ <p class="text-slate-300 leading-relaxed">
+ 纯卖 SerDes IP 永远只能赚辛苦授权费；只有把芯片嵌入自研线缆、光模块与遥测软件做成端到端交付件，才能在万亿美元 AI 基建中切下十亿美元级营收蛋糕。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 在技术路线喧嚣中坚守“可量产的工程经济性”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 资本市场热衷追捧远期概念（如早期 CPO），但云厂商真金白银买单的是今天就能插上机柜、降低 30% 功耗且零掉线的产品——聚焦可规模化量产落地才是硬道理。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 关注“创始人技术底盘 + 资深商业 CEO”的组合纯度</div>
+ <p class="text-slate-300 leading-relaxed">
+ 布伦南与两位联合创始人共事十余年零内斗、88% 薪酬绑定长期股权且减持极其克制（仅 0.78%），是评估高成长半导体设计公司治理健康度的黄金样本。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “布伦南战略与 Credo 基本面”季度跟踪核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · CEO Execution &amp; CRDO Fundamental Tracking Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 布伦南战略兑现与 Credo 基本面季度跟踪核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于持续追踪比尔·布伦南及其管理团队在 FY2027–FY2028 的新品落地与客户多元化进展（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 超大规模云厂商（Hyperscaler）客户结构多元化进展</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">客户集中度核心锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查季度 10-Q 披露的 10%+ 大客户数量是否稳步保持在 3–4 家以上，避免单一大客户资本开支节奏波动冲击。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 800G / 1.6T AEC 升级换代与非 GAAP 毛利率守卫（63%–66%）</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">定价权晴雨表</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 面对博通与安费诺的竞争，追踪新一代 1.6T AEC 单线 ASP 提升能否有效对冲成熟产品线自然降价。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 创始管理层铁三角稳定性与 Form 4 内部人减持节奏</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">治理健康校验</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪 Bill Brennan、Lawrence Cheng 与 Job Lam 的核心持仓留存率（目前布伦南保留逾 99% 核心头寸）。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. ZeroFlap 光模块（ZF Optics）与光 DSP 批量出货放量进度</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">第二增长极指标</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 验证 PILOT 遥测软件加持下的 ZeroFlap 光通信方案能否在跨机柜 Scale-Out 场景斩获头部云厂商规模订单。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 1.6T ZeroFlap ALC（Micro-LED）2027 年量产交付时间表</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">3–50米颠覆催化剂</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 关注 OCP 峰会发布后的客户送样认证进度及 2027 年正式商用出货节点，评估其对传统短距光模块的替代斜率。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#9333EA] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. OmniConnect（Weaver）破解 AI 推理内存墙商业化落地</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">远期估值期权锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 追踪超大规模云厂与 AI 芯片厂商采用 Weaver 变速箱扩展 DDR 内存池的设计导入（Design Win）公告。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>比尔·布伦南 Bill Brennan · Credo Technology (NASDAQ: CRDO) 深度商业与战略研究报告</span>
+ <span>核心数据出处：Credo SEC Form 10-K / DEF 14A (Aug 2026) · OCP Global Summit 2026</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务、治理与产品数据均核验自美国证监会（SEC EDGAR）披露的 <a href="https://rentseek.ing/t/CRDO" target="_blank" rel="noopener noreferrer" class="cite-link">Credo Technology Group Holding Ltd 2026 Proxy Statement (DEF 14A, Filed Aug 25, 2026)</a>、<a href="https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Technology-Group-Holding-Ltd-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">Credo FY2026 全年及 FY27Q1 财报公告</a>、<a href="https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Unveils-1-6T-ZeroFlap-Active-Light-Cable-Industrys-First-Row-Scale-Wide-Parallel-Optical-Interconnect-for-AI-Data-Centers/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">2026年10月 OCP 全球峰会 1.6T ZeroFlap ALC 发布公告</a>及 SEC Form 4 内部人持股申报。报告内置的估值与持仓模拟器旨在辅助研究企业商业化成长弹性，不构成任何证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ // 清理运行态临时样式与画布缓存属性，确保导出的 HTML 在任何本地浏览器打开时干净重绘
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Bill_Brennan_Credo_CEO_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Bill_Brennan_Credo_CEO_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 高速互连领军 CEO 横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. Credo 估值与布伦南持仓动态推演器
+ // ==========================================
+ const SCENARIO_PRESETS = {
+ fy26_actual: {
+ rev: 1.34,
+ margin: 45,
+ pe: 35,
+ caption: '当前测算基准：对应 Credo FY2026 已实现全年财报口径（营收 $1.335B、非 GAAP 净利润 $662M），以 35x 成长倍数映射当前市值水平。'
+ },
+ fy27_runrate: {
+ rev: 1.95,
+ margin: 46,
+ pe: 32,
+ caption: '当前测算基准：基于 FY27Q1 单季 $4.79亿营收年化运行率（~$1.95B），叠加 2027 年 1.6T ALC 光缆与 OmniConnect 放量预期，测算 CRDO 市值与布伦南持仓增值。'
+ },
+ fy28_bull: {
+ rev: 2.80,
+ margin: 48,
+ pe: 35,
+ caption: '当前测算基准：模拟 2027–2028 财年 1.6T Micro-LED ALC、ZeroFlap 光模块与 OmniConnect 内存墙全面放量，Credo 跻身十亿美元年净利润俱乐部。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-white font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-90 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimScenario(eraKey) {
+ const preset = SCENARIO_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-rev').value = preset.rev;
+ document.getElementById('sim-margin').value = preset.margin;
+ document.getElementById('sim-pe').value = preset.pe;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateWealthSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义盈利与估值倍数模拟模式——自由调节 Credo 互连业务营收、非 GAAP 净利率与远期市盈率，观察市值与 CEO 持仓变化。';
+ }
+
+ function updateWealthSimulator() {
+ const baseRevB = parseFloat(document.getElementById('sim-rev').value) || 1.95;
+ const marginPct = parseFloat(document.getElementById('sim-margin').value) || 46;
+ const pe = parseFloat(document.getElementById('sim-pe').value) || 32;
+ const includeAlc = document.getElementById('alc-upside-toggle').checked;
+
+ const effRevB = baseRevB * (includeAlc ? 1.20 : 1.00);
+ const netIncomeB = effRevB * (marginPct / 100);
+ const targetCapB = netIncomeB * pe;
+
+ const dilutedSharesM = 183.0; // 约 1.83 亿稀释总股本
+ const targetPrice = (targetCapB * 1000) / dilutedSharesM;
+ const ipoGainPct = ((targetPrice - 10) / 10) * 100;
+
+ const ceoSharesM = 2.17; // SEC Form 4 披露约 217 万股直接及信托持仓
+ const ceoStakeM = ceoSharesM * targetPrice;
+
+ document.getElementById('sim-rev-label').textContent = '$' + baseRevB.toFixed(2) + 'B';
+ document.getElementById('sim-margin-label').textContent = marginPct.toFixed(1) + '%';
+ document.getElementById('sim-pe-label').textContent = pe.toFixed(1) + 'x';
+
+ document.getElementById('sim-target-cap').textContent = '$' + targetCapB.toFixed(1) + 'B';
+ document.getElementById('sim-target-price').textContent = `对应隐含股价：~$${targetPrice.toFixed(2)} / 股 (较 IPO +${Math.round(ipoGainPct).toLocaleString('en-US')}%)`;
+ document.getElementById('sim-ceo-stake').textContent = ceoStakeM >= 1000
+ ? '$' + (ceoStakeM / 1000).toFixed(2) + 'B'
+ : '$' + ceoStakeM.toFixed(1) + 'M';
+ document.getElementById('sim-eff-rev').textContent = '$' + effRevB.toFixed(2) + 'B';
+ document.getElementById('sim-net-income').textContent = '$' + netIncomeB.toFixed(2) + 'B';
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'bb_credo_ceo_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置布伦南战略与 Credo 基本面核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'annual_leap';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2022–FY2026 Credo 年度营收与非 GAAP 净利润跃迁 ($M, 源自 Credo SEC 财报)
+ const annualConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2022', 'FY2023', 'FY2024', 'FY2025', 'FY2026'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年度总营收 Revenue ($M)',
+ data: [106, 184, 193, 437, 1335],
+ backgroundColor: 'rgba(147, 51, 234, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '年度非 GAAP 净利润 ($M)',
+ data: [-18, -12, 16, 128, 662],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toLocaleString('en-US')}M`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 1500,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' }
+ },
+ y1: {
+ position: 'right',
+ min: -50,
+ max: 750,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'M' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：近四个财季（FY26Q2–FY27Q1）单季营收与同比增速斜率
+ const quarterlyConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY26 Q2 (2025-10)',
+ 'FY26 Q3 (2026-01)',
+ 'FY26 Q4 (2026-04)',
+ 'FY27 Q1 (2026-07)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '单季营收 Quarterly Revenue ($M)',
+ data: [268.0, 407.0, 437.0, 479.0],
+ backgroundColor: 'rgba(147, 51, 234, 0.85)',
+ borderRadius: 6,
+ barThickness: 34,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '单季营收同比增速 YoY (%)',
+ data: [272.0, 201.5, 157.1, 114.8],
+ borderColor: '#06B6D4',
+ backgroundColor: '#06B6D4',
+ borderWidth: 3,
+ pointRadius: 5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: $${c.parsed.y.toFixed(1)}M`
+ : `${c.dataset.label}: +${c.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 550,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' }
+ },
+ y1: {
+ position: 'right',
+ min: 0,
+ max: 300,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#06B6D4', font: { size: 11, weight: '600' }, callback: v => '+' + v + '%' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'annual_leap' ? annualConfig : quarterlyConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'annual_leap') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2022–FY2026 Credo 年度营收与非 GAAP 净利润爆发曲线（$M）';
+ subEl.textContent = 'FY2026 年营收跃升至 $1,335M（同比 +205%），非 GAAP 净利润由 $128M 暴增逾 5 倍至 $662M';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY26Q2–FY27Q1 近四个财季单季营收与同比增速斜率（$M / %）';
+ subEl.textContent = '连续四个财季保持三位数同比高增长，FY27Q1 单季营收达 $479M（年化运行率接近 $20亿美元）';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '芯片+模组+软件全栈闭环力',
+ '超大云厂(Hyperscaler)大单攻坚',
+ '零掉线(ZeroFlap)差异化定义力',
+ '务实反泡沫工程落地节奏',
+ '全品类半导体平台规模体量'
+ ],
+ datasets: [
+ {
+ label: '比尔·布伦南 (Credo)',
+ data: [9.8, 9.6, 9.9, 9.7, 7.2],
+ borderColor: '#9333EA',
+ backgroundColor: 'rgba(147, 51, 234, 0.25)',
+ pointBackgroundColor: '#9333EA',
+ borderWidth: 2.5
+ },
+ {
+ label: '陈福阳 (Broadcom)',
+ data: [9.5, 9.8, 8.8, 9.4, 9.9],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '马特·墨菲 (Marvell)',
+ data: [8.8, 9.0, 8.5, 8.9, 9.2],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Credo Technology (布伦南 · AEC与ZeroFlap互连)',
+ 'Astera Labs (莫汉 · PCIe/CXL智能连接芯片)',
+ 'Marvell (墨菲 · 数据中心光DSP与定制ASIC)',
+ 'Broadcom (陈福阳 · AI网络芯片与ASIC)',
+ 'Amphenol 安费诺 (诺维茨基 · 高速背板铜缆)'
+ ],
+ datasets: [
+ {
+ label: '最新代表性季度营收同比增速 YoY Growth (%)',
+ data: [114.8, 104.0, 72.0, 63.0, 28.0],
+ backgroundColor: [
+ '#9333EA',
+ '#10B981',
+ '#06B6D4',
+ '#64748B',
+ '#94A3B8'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `单季同比营收增速: +${c.parsed.x.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 130,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '+' + v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY26 Q2', 'FY26 Q3', 'FY26 Q4', 'FY27 Q1'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '单季总营收 Quarterly Revenue ($M)',
+ data: [268.0, 407.0, 437.0, 479.0],
+ backgroundColor: 'rgba(147, 51, 234, 0.85)',
+ borderRadius: 5,
+ barThickness: 34,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '单季 GAAP 净利润 ($M)',
+ data: [82.6, 128.4, 170.2, 157.1],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(1)}M`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 540,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' },
+ title: { display: true, text: '单季总营收 ($M)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 220,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'M' },
+ title: { display: true, text: '单季 GAAP 净利润 ($M)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateWealthSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>
