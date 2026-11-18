@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>史蒂夫·乔布斯 Steve Jobs (1955–2011) 深度商业与产品战略研究报告：端到端垂直整合宗师、15倍绝地逆转与三大产业重构</title>
+  <!-- Tailwind CSS (Pinned Version) -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- Chart.js (Pinned Version) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#070B14',
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+            },
+            mogold: {
+              300: '#FCD34D',
+              400: '#FBBF24',
+              500: '#F59E0B',
+              600: '#D97706',
+              700: '#B45309',
+            },
+            emerald: {
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+            },
+            teal: {
+              400: '#22D3EE',
+              500: '#06B6D4',
+              600: '#0891B2',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* 自定义滚动条与机构研报细节排版 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+
+    /* 打印友好优化 */
+    @media print {
+      #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+        display: none !important;
+      }
+      main {
+        margin-left: 0 !important;
+        padding: 0 !important;
+      }
+      section {
+        break-inside: avoid;
+      }
+    }
+
+    /* 卡片悬浮微光与上移过渡 */
+    .report-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .report-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 侧边导航激活态：琥珀金渐变标识 */
+    .nav-link.active {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+      border-left: 3px solid #F59E0B;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    /* 引用信源外链微标签样式 */
+    .cite-link {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+      transition: color 0.15s ease;
+    }
+    .cite-link:hover {
+      color: #F59E0B;
+      text-decoration-style: solid;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+  <!-- 顶部全局阅读进度条 -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+  </div>
+
+  <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+  <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="export-toast-msg">已导出独立 HTML 报告文件：Steve_Jobs_Analysis.html</span>
+  </div>
+
+  <!-- 移动端顶部导航栏 -->
+  <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+        SJ
+      </div>
+      <div>
+        <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Apple · Pixar · NeXT</div>
+        <div class="text-sm font-bold leading-tight">史蒂夫·乔布斯深度研究报告</div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-1.5">
+      <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+        导出HTML
+      </button>
+      <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 移动端折叠抽屉菜单 -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+    <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <span class="font-bold text-white text-base">乔布斯专题目录导航</span>
+          <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+          <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 商业版图与产品架构</a></li>
+          <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 产品哲学与四重护城河</a></li>
+          <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 传奇科技领袖横向对比</a></li>
+          <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 商业回报与价值复利推演</a></li>
+          <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与管理遗产复盘</a></li>
+          <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 乔布斯法则核查清单</a></li>
+        </ul>
+      </div>
+      <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+        <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+          一键导出独立 HTML 文件
+        </button>
+        <p>科技商业领袖与产品战略研究组</p>
+        <p>历史财报与估值基准：SEC 10-K / 2026Q3</p>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+  <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+    <div>
+      <!-- 机构品牌头 -->
+      <div class="p-5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-base shadow-lg shadow-mogold-500/25">
+            SJ
+          </div>
+          <div>
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">FOUNDER MONOGRAPH</span>
+            <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">史蒂夫·乔布斯研报</h2>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          科技与人文十字路口的架构师 · Apple / Pixar / NeXT 跨产业商业复盘
+        </p>
+      </div>
+
+      <!-- 核心人物历史财务快照徽章 -->
+      <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">二次执掌市值跃升</span>
+          <span class="font-mono font-bold text-white">~$3B → ~$350B</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">苹果 FY11 营收/净利</span>
+          <span class="font-mono font-bold text-emerald-400">$108.2B / $25.9B</span>
+        </div>
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+          <span class="text-slate-400">Pixar 并购与专利数</span>
+          <span class="font-mono font-bold text-mogold-400">$7.4B · 450+ 专利</span>
+        </div>
+      </div>
+
+      <!-- 七大核心章节目录导航 -->
+      <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+        <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+        <nav id="desktop-nav" class="space-y-1 text-[13px]">
+          <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+          </a>
+          <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>商业版图与产品架构</span>
+          </a>
+          <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>产品哲学与四重护城河</span>
+          </a>
+          <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>传奇科技领袖横向对比</span>
+          </a>
+          <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>商业回报与价值复利推演</span>
+          </a>
+          <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与管理遗产复盘</span>
+          </a>
+          <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>乔布斯法则核查清单</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+    <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-slate-400">阅读模式切换</span>
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span class="dark:hidden">深色护眼模式</span>
+          <span class="hidden dark:inline">机构亮色模式</span>
+        </button>
+      </div>
+      <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        <span>导出独立 HTML 文件 (.html)</span>
+      </button>
+      <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>打印 / 导出 PDF 研报</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="lg:ml-[280px] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+      <!-- =========================================================
+           00. Hero 研报封面区与执行摘要
+           ========================================================= -->
+      <section id="sec-exec" class="scroll-mt-20">
+        <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">商业史定评：现代消费科技第一架构师</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：Apple (1976–1985 / 1997–2011) · NeXT · Pixar</span>
+          </div>
+          <div class="flex items-center space-x-3 font-mono">
+            <span>覆盖基准：2026年11月回溯</span>
+            <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span>下载 .html</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero 标题卡片 -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+          <!-- 背景琥珀金点阵纹理 -->
+          <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+          <div class="relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+              <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+              <span>CORE THESIS · 2×2 极简战略减法 × 软硬芯云垂直整合 × 连续重塑六大现代产业</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+              史蒂夫·乔布斯 Steve Jobs (1955–2011) 深度研究报告：绝境救亡宗师、端到端垂直整合霸权与跨世纪商业复利遗产
+            </h1>
+            <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+              商业史上极少有创始人能在同一生中缔造两家重塑人类文化与技术范式的旗舰企业。1997 年 7 月，当史蒂夫·乔布斯重返距离破产清算仅剩 <a href="https://www.meritshot.com/case-studies/apple-case-study" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">90 天现金流</a>、年度净亏损高达 <a href="https://d18rn0p25nwr6d.cloudfront.net/CIK-0000320193/05f33405-0995-465d-9e1d-9fb882bb5124.xls" target="_blank" rel="noopener noreferrer" class="cite-link text-white font-semibold">$10.45亿</a> 的苹果时，他以冷酷的 <a href="https://www.jerrycards.com/news/apple-at-50-part5-the-greatest-comeback-1997-2001" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">2×2 四象限减法</a> 砍掉逾 70% 冗余产品线，并在随后 14 年间连续推出 <strong class="text-white">iMac、iPod、iTunes Store、iPhone、App Store 与 iPad</strong>。
+              至 2011 年谢幕之年，苹果年营收跃升 <strong class="text-emerald-400">15.3 倍至 $1,082.49亿</strong>、净利润达 <a href="https://www.sec.gov/Archives/edgar/data/320193/000119312511282113/d220209d10k.htm" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$259.22亿</a>，并于 2011 年 8 月超越埃克森美孚登顶<a href="https://www.geekwire.com/2011/steve-jobs-apple-tops-exxon-mobil-claim-valuable-company-title/" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-400 font-semibold">全球市值第一（~$3,500亿）</a>；与此同时，他早年以 $1,000 万收购并苦撑十年的 <strong class="text-white">皮克斯（Pixar）</strong> 以 <a href="https://thewaltdisneycompany.com/press-releases/disney-to-acquire-pixar/" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">$74亿全股票交易</a> 并入华特迪士尼，使他成为迪士尼最大个人股东。
+            </p>
+
+            <!-- 核心商业遗产高亮条 -->
+            <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">极致研发杠杆与毛利护城河</div>
+                <div class="text-white font-semibold">FY2011 仅用 2.2% 研发费率（$24.3亿）撬动 $1,082.5亿营收、40.5% 毛利率与 31.2% 营业利润率</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">零负债 $815.7亿 现金堡垒</div>
+                <div class="text-mogold-400 font-semibold">告别 1997 年流动性危机，2011 财年末苹果账面现金及有价证券高达 $815.70亿且零长期债务</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">跨代际制度与生态复利</div>
+                <div class="text-emerald-400 font-semibold">其奠定的 iPhone + App Store + Apple Store 飞轮，支撑苹果在库克时代向 ~$4.7万亿–$4.8万亿市值演进</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4个核心 KPI 卡片 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+          <!-- KPI 1 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>二次回归市值跃迁 (1997–2011)</span>
+              <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$350B</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">&gt;100x 回报</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              从 1997 年约 $30亿低谷跃居全球第一；拆股调整股价由 ~$0.13 涨至卸任日 ~$13.44（<a href="https://gulfnews.com/business/markets/how-steve-jobs-and-tim-cook-turned-apple-into-a-48-trillion-giant-1.500664931" target="_blank" rel="noopener noreferrer" class="cite-link">Gulf News</a>）。
+            </p>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>FY2011 苹果营收与净利润</span>
+              <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$108.25B</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">净利 $25.92B</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              对比 FY1997 营收 $7.08B 与净亏损 -$1.045B，14 年间实现营收 15.3 倍扩张与高盈利反转（<a href="https://www.sec.gov/Archives/edgar/data/320193/000119312511282113/d220209d10k.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Apple 2011 10-K</a>）。
+            </p>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>皮克斯 (Pixar) 跨界资本传奇</span>
+              <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$7.40B</span>
+              <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">迪士尼 7.7% 股权</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              1986 年出资 $1,000万收购卢卡斯电脑动画部，2006 年并入迪士尼换得 1.38 亿股 DIS 股票（<a href="https://www.cbsnews.com/sanfrancisco/news/steve-jobs-4-6b-in-disney-shares-go-to-trust/" target="_blank" rel="noopener noreferrer" class="cite-link">CBS News</a>）。
+            </p>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>署名专利资产与直营店坪效</span>
+              <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">450+</span>
+              <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">坪效 ~$4,032/ft²</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              生前署名 346 项美国专利及逝后追授 141 项（<a href="https://en.wikipedia.org/wiki/Steve_Jobs" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>）；Apple Store 坪效远超珠宝巨头 Tiffany（<a href="https://www.macworld.com/article/211968/applestoresinancials.html" target="_blank" rel="noopener noreferrer" class="cite-link">Macworld</a>）。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           一、 商业版图与产品架构 (Business & Product Architecture)
+           ========================================================= -->
+      <section id="sec-biz" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Business Empire & Product Architecture</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 商业版图与产品架构：从 2×2 救亡四宫格到千亿美元多终端数字帝国</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">FY2011 苹果净营收 $108.25B · 移动终端矩阵占比达 69.2%</span>
+        </div>
+
+        <!-- 交互式 Chart.js 双视图切换面板 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- 左侧：双视图图表 -->
+          <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2010 vs FY2011 苹果六大业务线净营收结构拆解（SEC 10-K）</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">iPhone ($47.06B, +87%) 与 iPad ($20.36B, +311%) 爆发式接棒，主动完成对 iPod (-10%) 的自我迭代</p>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+                <button onclick="switchBizChart('fy11_mix')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：FY11产品矩阵拆解</button>
+                <button onclick="switchBizChart('turnaround_trajectory')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：1997–2011逆转轨迹</button>
+              </div>
+            </div>
+            <div class="relative h-72 w-full">
+              <canvas id="bizArchitectureChart"></canvas>
+            </div>
+          </div>
+
+          <!-- 右侧：结构性战略洞察 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">乔布斯产品帝国三大底层重构动作</h3>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">白板上的 2×2 极简手术：砍掉 70% 失血产品线</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      1997 年回归首季即叫停 Newton 掌上电脑、Pippin 游戏机、打印机与 Mac 兼容机授权，将 350+ 混乱 SKU 压缩至“消费/专业 × 台式/便携”仅 <strong>4 款核心电脑</strong>，使苹果在 1998 财年迅速扭亏为盈（<a href="https://www.jerrycards.com/news/apple-at-50-part5-the-greatest-comeback-1997-2001" target="_blank" rel="noopener noreferrer" class="cite-link">JerryCards</a>）。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">从“Mac 数字中枢”跃升至“iOS + iCloud 平台”</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      2001–2003 年借 <strong>iPod + iTunes Store</strong>（兼容 Windows）打破 Mac 小众圈层；2007–2008 年借 <strong>iPhone + App Store</strong> 将硬件一次性销售升级为全球第三方开发者共创的移动生态税底座（<a href="https://www.moomoo.com/community/feed/1980-to-now-the-journey-of-apple-s-market-cap-112088738562453" target="_blank" rel="noopener noreferrer" class="cite-link">Moomoo</a>）。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">铁血“自我蚕食”定律：用 iPhone 主动颠覆 iPod</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      2005 年 iPod 已占据全美便携音乐播放器 <strong>76%</strong> 垄断份额（<a href="https://en.wikipedia.org/wiki/History_of_Apple_Inc." target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>），乔布斯仍坚决把音乐模块装入手机：FY2011 iPod 营收虽降 10% 至 $74.5亿，iPhone 却暴增 87% 至 <strong>$470.6亿</strong>（<a href="https://www.sec.gov/Archives/edgar/data/320193/000119312511282113/d220209d10k.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC 10-K</a>）。
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-slate-500 dark:text-slate-400">2007 年公司更名里程碑</span>
+              <span class="font-bold text-mogold-600 dark:text-mogold-400">去掉“Computer”更名为 Apple Inc.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大商业与技术资产分部详细卡片矩阵 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- 分部 1：移动智能终端引擎 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一增长主引擎 · 占 FY11 净营收 69.2%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">合计营收 $74.87B</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 移动多点触控革命（iPhone + iPad + iPod）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                2007 年初代 <strong>iPhone</strong> 以电容式 Multi-Touch 彻底淘汰物理键盘，FY2011 年销量达 7,200 万台、营收达 <strong>$470.57亿（同比 +87%）</strong>；2010 年发布的 <strong>iPad</strong> 开创平板新品类，第二个财年（FY11）营收即狂飙 <strong>+311% 至 $203.58亿</strong>（占总营收 18.8%），连同累计销量破亿的 <strong>iPod（$74.53亿）</strong> 共同构成移动帝国铁三角（<a href="https://www.sec.gov/Archives/edgar/data/320193/000119312511282113/d220209d10k.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Apple FY11 10-K</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>iPhone $47.06B / iPad $20.36B / iPod $7.45B</span>
+              <span class="text-mogold-600 dark:text-mogold-400 font-semibold">重新定义现代智能手机与平板</span>
+            </div>
+          </div>
+
+          <!-- 分部 2：Mac 与 NeXTSTEP 操作系统底座 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">个人计算与系统灵魂 · 占 FY11 净营收 20.1%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">Mac 营收 $21.78B (+25%)</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 个人计算基石与系统内核（Mac + NeXTSTEP / OS X）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                1985 年被迫离开苹果后，乔布斯创办 <strong>NeXT</strong> 打造出基于 UNIX 的面向对象操作系统 <strong>NeXTSTEP</strong>（蒂姆·伯纳斯-李正是在 NeXT 工作站上发明了万维网首个浏览器与服务器）。1997 年苹果以 <strong>$4.29亿现金 + 150万股苹果股票</strong> 收购 NeXT（<a href="https://computerhistory.org/blog/next-steve-jobs-dot-com-ipo-that-never-happened/" target="_blank" rel="noopener noreferrer" class="cite-link">CHM</a>），其 OpenStep/Cocoa 架构直接演化为 <strong>Mac OS X、iOS、iPadOS 与 watchOS</strong> 的统一技术地基（<a href="https://en.wikipedia.org/wiki/NeXTSTEP" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>iMac / MacBook Air / MacBook Pro</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">$429M 收购换回未来三十年系统灵魂</span>
+            </div>
+          </div>
+
+          <!-- 分部 3：软件生态与直营零售网络 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">分发渠道与服务飞轮 · 占 FY11 净营收 10.7%</span>
+                <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">单店年均营收 $43.3M</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 数字分发与实体零售神殿（App Store + Apple Store）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                线上端，2003 年 <strong>iTunes Store</strong> 以 $0.99 单曲重塑正版音乐产业，2008 年 <strong>App Store</strong> 确立三七分成应用经济（FY11 音乐与应用相关服务营收达 <strong>$63.14亿</strong>）；线下端，乔布斯顶住质疑于 2001 年力推直营店，至 FY2011 全球 <strong>357 家 Apple Store</strong> 平均单店营收高达 <strong>$4,330万</strong>，坪效冠绝全美零售业（<a href="https://www.scribd.com/presentation/76521529/Apple-Supply-Chain" target="_blank" rel="noopener noreferrer" class="cite-link">Apple 10-K Retail</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>iTunes / App Store / Genius Bar</span>
+              <span class="text-teal-600 dark:text-teal-400 font-semibold">后续千亿美元年服务收入的源头</span>
+            </div>
+          </div>
+
+          <!-- 分部 4：皮克斯与迪士尼娱乐版图 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">独立商业奇迹 · 好莱坞数字动画先驱</span>
+                <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">$10M 收购 → $7.4B 退出</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 皮克斯动画工作室与华特迪士尼（Pixar &amp; Disney）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                1986 年乔布斯出资 <strong>$1,000万</strong> 买下乔治·卢卡斯旗下电脑图形部门并先后个人垫资约 $5,000万支撑研发。1995 年全球首部全电脑动画长片《玩具总动员》上映一周后 <strong>Pixar 登陆纳斯达克（估值 $15亿）</strong>，助乔布斯身家首次突破十亿美元（<a href="https://fortune.com/article/how-did-apple-cofounder-steve-jobs-become-billionaire-pixar-success/" target="_blank" rel="noopener noreferrer" class="cite-link">Fortune</a>）；2006 年迪士尼以 <strong>$74亿</strong> 收购 Pixar，乔布斯进入迪士尼董事会并成为其最大个人股东（<a href="https://www.sec.gov/Archives/edgar/data/1001039/000119312506010897/dex991.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Exhibit 99.1</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>《玩具总动员》《海底总动员》《超人总动员》</span>
+              <span class="text-indigo-600 dark:text-indigo-400 font-semibold">个人财富第一大基石（2011年持仓 $4.6B）</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           二、 产品哲学与四重核心护城河 (Philosophy & Economic Moat)
+           ========================================================= -->
+      <section id="sec-moat" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Product Philosophy & Economic Moat</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 产品哲学与四重核心护城河：“Whole Widget”全栈闭环与 2.2% 极简研发杠杆</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极宽 (Wide Moat · 品牌溢价 + 操作系统转换成本 + 双边网络效应)</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- 左侧：四重护城河深度解析 -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 护城河 1 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“Whole Widget”软硬芯云垂直整合</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                引述艾伦·凯“真正热爱软件的人会自己造硬件”的信条，乔布斯坚持同步自研工业硬件（乃至 2008 年收购 P.A. Semi 启动自研 A4 芯片）、操作系统（OS X / iOS）与云端同步，在消费电子普遍惨烈杀价的环境中稳守 <strong>40.5% 硬件高毛利率</strong>（<a href="https://www.sec.gov/Archives/edgar/data/320193/000119312511282113/d220209d10k.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Apple 10-K</a>）。
+              </p>
+            </div>
+
+            <!-- 护城河 2 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">对 100 个好点子说“不”的研发杠杆</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                乔布斯确立按职能划分（Functional Organization）而非事业部割据的组织架构，拒绝内部山头重复造轮子。FY2011 苹果研发支出仅 <strong>$24.3亿（占营收仅 2.2%）</strong>，却以极小精锐团队创造出远超同业的爆品命中率（<a href="https://www.sec.gov/Archives/edgar/data/320193/000119312512444068/d411355d10k.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC FY12 10-K</a>）。
+              </p>
+            </div>
+
+            <!-- 护城河 3 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">禅宗极简审美与工业设计定价霸权</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                受禅宗美学与包豪斯风格启发，乔布斯与设计总监 <strong>Jony Ive 联名逾 200 项工业设计专利</strong>（涵盖果冻色 iMac、一体成型铝制机身到第五大道玻璃立方体门店），将冰冷的科技硬件升维为具有文化图腾属性的情感奢侈品（<a href="https://en.wikipedia.org/wiki/Steve_Jobs" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>）。
+              </p>
+            </div>
+
+            <!-- 护城河 4 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">生态转换壁垒与供应链预付款护城河</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                iTunes 媒体库、App Store 已购应用与 2011 年发布的 <strong>iCloud</strong> 形成极高用户留存；同时手握 <strong>$815.7亿零负债现金池</strong>，使苹果能向全球闪存、屏幕与精密加工供应商提前锁死数年独家先进产能（<a href="https://www.sec.gov/Archives/edgar/data/320193/000119312511282113/d220209d10k.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Apple FY11 10-K</a>）。
+              </p>
+            </div>
+          </div>
+
+          <!-- 右侧：五维创始人战略特征雷达图 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">传奇科技创始人五维商业能力模型对比</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">乔布斯 (Apple/Pixar) vs 盖茨 (Microsoft) vs 贝索斯 (Amazon)（满分 10 分）</p>
+            <div class="relative h-72 w-full">
+              <canvas id="moatRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           三、 传奇科技领袖横向对比 (Tech Founders Landscape)
+           ========================================================= -->
+      <section id="sec-comp" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Iconic Tech Founders Comparative Matrix</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 传奇科技领袖横向对比：五种商业范式与零售坪效统治力</h2>
+          </div>
+          <!-- 交互式筛选按钮 + 实时搜索框 -->
+          <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+            <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索人物 / 企业 / 范式关键词..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+            <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+              <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部宗师</button>
+              <button onclick="filterCompetitors('platform')" data-filter="platform" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">软件与云生态派</button>
+              <button onclick="filterCompetitors('hardtech')" data-filter="hardtech" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">硬科技与算力全栈派</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 横向对比矩阵表格 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                  <th class="py-4 px-5 min-w-[180px]">创始人与缔造企业</th>
+                  <th class="py-4 px-4 min-w-[140px]">核心商业护城河范式</th>
+                  <th class="py-4 px-4 min-w-[145px]">标志性市值/财富里程碑</th>
+                  <th class="py-4 px-4 min-w-[115px]">代表性利润率特征</th>
+                  <th class="py-4 px-4 min-w-[125px]">组织与战略方法论</th>
+                  <th class="py-4 px-5 min-w-[240px]">与乔布斯商业模式的异同评估</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+                <!-- 行 1：乔布斯基准 -->
+                <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+                  <td class="py-4 px-5">
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+                      <span class="font-bold text-slate-900 dark:text-white">史蒂夫·乔布斯</span>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Apple / Pixar / NeXT</div>
+                  </td>
+                  <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">软硬芯云垂直闭环 + 人文设计溢价</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">2011登顶 ~$350B (今~$4.8T)</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">毛利 40.5% / 营业 31.2%</td>
+                  <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">职能型组织 + 2×2极简</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>消费科技终极标杆：</strong>唯一横跨个人电脑、数字动画电影、音乐、手机、平板与实体零售六大产业均登顶的创始人（<a href="https://gulfnews.com/business/markets/how-steve-jobs-and-tim-cook-turned-apple-into-a-48-trillion-giant-1.500664931" target="_blank" rel="noopener noreferrer" class="cite-link">Gulf News</a>）。
+                  </td>
+                </tr>
+
+                <!-- 行 2：比尔·盖茨 -->
+                <tr data-category="platform" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">比尔·盖茨 (Bill Gates)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Microsoft (Windows / Office)</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">水平操作系统授权 + B2B 企业软件标准</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">1999首破 $500B (今~$3.8T)</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">巅峰净利率 ~40.0%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">OEM 广度绑定 + 开发者生态</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>一生竞合镜像：</strong>1980–90 年代盖茨凭水平软件授权击败封闭 Mac（1997 年向苹果注资 $1.5亿达成世纪和解），但移动时代乔布斯凭软硬一体反超（<a href="https://www.latimes.com/archives/la-xpm-1999-jul-17-fi-56769-story.html" target="_blank" rel="noopener noreferrer" class="cite-link">LA Times</a>）。
+                  </td>
+                </tr>
+
+                <!-- 行 3：杰夫·贝索斯 -->
+                <tr data-category="platform" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">杰夫·贝索斯 (Jeff Bezos)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Amazon / AWS / Blue Origin</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">无限选品规模飞轮 + AWS 基础设施云化</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">2021卸任市值 $1.7T–$1.9T</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">零售 1–2% / AWS 25–30%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">Day 1 机制 + 六页纸备忘录</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>做加法 vs 做减法：</strong>乔布斯靠极少高毛利精品取胜，贝索斯靠海量 SKU 让利（“你的利润就是我的机会”）与底层云基础设施实现 225,233% 股价涨幅（<a href="https://fortune.com/2021/02/02/jeff-bezos-steps-down-amazon-stock-net-worth-andy-jassy/" target="_blank" rel="noopener noreferrer" class="cite-link">Fortune</a>）。
+                  </td>
+                </tr>
+
+                <!-- 行 4：黄仁勋 -->
+                <tr data-category="hardtech" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">黄仁勋 (Jensen Huang)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">NVIDIA (GPU + CUDA AI 全栈)</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">芯片+网络+CUDA软件栈端到端协同</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">AI算力时代全球市值领跑</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利 71–75% / 营业 ~65.2%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">扁平直管数十高管 + 零帝国化</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>AI 时代的“全栈门徒”：</strong>与乔布斯一样拒绝事业部制、坚持职能扁平架构与软硬全栈垂直整合，在算力基础设施层复刻了垄断级高毛利（<a href="https://businessquant.com/metrics/nvda/gross-margin" target="_blank" rel="noopener noreferrer" class="cite-link">Business Quant</a>）。
+                  </td>
+                </tr>
+
+                <!-- 行 5：埃隆·马斯克 -->
+                <tr data-category="hardtech" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">埃隆·马斯克 (Elon Musk)</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Tesla / SpaceX / xAI</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">第一性原理极限工程制造与产线垂直化</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">2026福布斯个人身家 ~$839B</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">重资产制造波动周期</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">五步工程法 + 极限时间线驱动</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>重工业版现实扭曲力场：</strong>共享极致设计直觉与高压执行力，但乔布斯采用轻资产外包制造（富士康等），马斯克则亲自深入重资产超级工厂制造机器（<a href="https://www.forbes.com/billionaires/" target="_blank" rel="noopener noreferrer" class="cite-link">Forbes 2026</a>）。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+            未找到匹配的领袖记录，请尝试清空搜索词或切换分类标签。
+          </div>
+        </div>
+
+        <!-- 配套 Chart.js 横向条形图：Apple Store 坪效 vs 全美顶级零售标杆对比 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">把门店当产品打磨：乔布斯时代 Apple Store 单位面积年坪效 vs 全美零售标杆（$/平方英尺）</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">2001 年外界普遍嘲讽苹果自建门店必败，但凭借极简体验桌与 Genius Bar，Apple Store 坪效超越奢侈珠宝巨头 Tiffany 逾 50%–90%（<a href="https://en.wikipedia.org/wiki/Ron_Johnson_(businessman)" target="_blank" rel="noopener noreferrer" class="cite-link">Fortune / Macworld 数据口径</a>）</p>
+            </div>
+            <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">$4,032/ft² 登顶全美零售效率王</span>
+          </div>
+          <div class="relative h-64 w-full">
+            <canvas id="compMarginChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           四、 商业回报与价值复利推演 (Financial Turnaround & Simulator)
+           ========================================================= -->
+      <section id="sec-fin" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Turnaround & Value Creation Simulator</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 商业回报与价值复利推演：$816亿零负债现金池与跨周期股东回报</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">从 1997 年净亏损 -$10.45亿 到 2011 年净赚 $259.22亿的教科书级财务反转</span>
+        </div>
+
+        <!-- 1. 财务健康度四大硬核指标卡 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">FY2011 Gross Margin</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">40.5% ($43.8B)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              在 PC 与手机硬件惨烈同质化竞争中，依靠差异化系统体验斩获 40.5% 毛利率与 31.2% 营业利润率（<a href="https://www.sec.gov/Archives/edgar/data/320193/000119312511282113/d220209d10k.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC 10-K</a>）。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Cash &amp; Securities Fortress</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$81.57B ($0债)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              铭记 1997 年濒临断流教训，乔布斯奉行极致保守零有息负债策略，5 年将现金储备从 $153.9亿推升至 $815.7亿（<a href="https://www.forbes.com/sites/chuckjones/2019/10/07/apples-tim-cook-does-not-get-the-credit-he-deserves/" target="_blank" rel="noopener noreferrer" class="cite-link">Forbes</a>）。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">R&amp;D Efficiency Ratio</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">2.2% ($2.43B)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              印证乔布斯“创新与你有多少研发经费无关”名言：用极精简 SKU 分摊研发，单位研发产出傲视全球科技巨头（<a href="https://www.sec.gov/Archives/edgar/data/320193/000119312512444068/d411355d10k.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Apple 10-K</a>）。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Pixar Equity Multiplier</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$4.60B 信托</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              个人持有的 1.38 亿股迪士尼股票在 2011 年价值约 $46亿（超过其当时所持苹果股票市值），展现顶级耐心资本眼光（<a href="https://www.cbsnews.com/sanfrancisco/news/steve-jobs-4-6b-in-disney-shares-go-to-trust/" target="_blank" rel="noopener noreferrer" class="cite-link">CBS News</a>）。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. 交互式 Chart.js 双轴演进图 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2007–FY2011 iPhone 黄金五年：苹果现金及有价证券储备 vs 年度净利润爆发曲线（SEC 10-K）</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">自 2007 年初代 iPhone 问世起，短短 4 个财年内年度净利润暴增 7.4 倍，账面净现金储备扩张 5.3 倍，奠定后世万亿美元回购与分红底气</p>
+            </div>
+            <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">4年净利复合增速 CAGR +65.0%</span>
+          </div>
+          <div class="relative h-72 w-full">
+            <canvas id="valEvolutionChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 3. 交互式组件：“乔布斯创新周期”长期股东价值与复利动态推演器 -->
+        <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+            <div>
+              <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+                <span>INNOVATION COMPOUNDING ENGINE · 乔布斯创新周期价值复利模拟器</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-1">从绝境反转到生态永续：历史真实周期与自定义创新复利推演器</h3>
+              <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实历史锚点（1997–2011 二次执掌苹果 / 1986–2006 皮克斯奇迹 / 1997–2026 跨时代生态复利）或手动调节参数</p>
+            </div>
+            <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+              <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+              <span>叠加生态成熟期股息再投 (+0.8%/年)</span>
+            </label>
+          </div>
+
+          <!-- 真实历史周期预设按钮组 -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+            <button type="button" onclick="setSimEra('apple_turnaround')" data-era="apple_turnaround" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+              <div>① 1997–2011 苹果二次回归周期</div>
+              <div class="text-[11px] opacity-85 font-mono mt-0.5">14年 · 股价 ~$0.13→$13.44 (~39.3% CAGR)</div>
+            </button>
+            <button type="button" onclick="setSimEra('pixar_journey')" data-era="pixar_journey" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+              <div>② 1986–2006 皮克斯耐心资本周期</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">20年 · 累计投入~$60M→$4.6B (~24.2% CAGR)</div>
+            </button>
+            <button type="button" onclick="setSimEra('legacy_2026')" data-era="legacy_2026" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+              <div>③ 1997–2026 苹果全生态延续周期</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">29年 · 股价 ~$0.13→$325.13 (~31.0% CAGR)</div>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <!-- 左侧参数控制区 -->
+            <div class="lg:col-span-5 space-y-4 text-xs">
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">初始投入本金 (USD)</span>
+                  <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$10,000</span>
+                </div>
+                <input id="sim-principal" type="range" min="1000" max="100000" step="1000" value="10000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+                  <span id="sim-years-label" class="font-mono font-bold text-white text-sm">14 年</span>
+                </div>
+                <input id="sim-years" type="range" min="1" max="30" step="1" value="14" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">年化复合回报率 (CAGR %)</span>
+                  <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">39.3%</span>
+                </div>
+                <input id="sim-growth" type="range" min="5" max="42" step="0.1" value="39.3" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+              </div>
+
+              <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+                当前测算基准：对应 1997 年 7 月乔布斯回归苹果初期（拆股调整均价约 $0.13）持有至 2011 年 8 月 24 日卸任 CEO 当日（拆股调整收盘约 $13.44）的真实股价增值斜率。
+              </p>
+            </div>
+
+            <!-- 右侧四大实时测算结果卡片 -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">期末预计总资产市值</div>
+                <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$1,036,527</div>
+                <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计净增值 +10,265%</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">本金增值倍数 (MOIC Multiple)</div>
+                <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">103.7x</div>
+                <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 2.1 年资产翻一倍</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">累计创造净资本利得</div>
+                <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$1,026,527</div>
+                <div class="text-xs text-slate-400 mt-1.5">扣除初始投入本金后的纯复利收益</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">有效综合年化复合增长率</div>
+                <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">39.30%</div>
+                <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">持有半程（第 7 年）资产约：$101,810</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 正反双视角历史定评对比 (Bull Legacy vs Critical Reflection) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">正向商业遗产定评 (Enduring Genius)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">品类创造 + 组织制度化</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>商业史最伟大的绝地反击样本：</strong>在未依赖大规模举债或财务工程前提下，纯粹依靠产品定义力将濒死企业打造为全球市值第一巨头（<a href="https://www.meritshot.com/case-studies/apple-case-study" target="_blank" rel="noopener noreferrer" class="cite-link">Meritshot</a>）。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>先于用户洞察未被言说的需求：</strong>不用焦点小组替未来投票，而是把图形界面（Mac）、口袋千首音乐（iPod）与指尖互联网（iPhone）变为大众直觉工具。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>搭建了超越创始人生命周期的继任体系：</strong>2008 年创办 <strong>Apple University</strong> 沉淀决策案例，并选定供应链大师蒂姆·库克接班，打破“人亡政息”魔咒（<a href="https://www.bestcollegereviews.org/apple-university/" target="_blank" rel="noopener noreferrer" class="cite-link">BestCollegeReviews</a>）。</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-rose-700 dark:text-rose-400 text-base">客观局限与管理争议反思 (Critical Lens)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">高压文化 + 封闭花园边界</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“现实扭曲力场”的组织磨损：</strong>二元化的“天才/蠢货”严苛评判虽激发出极限潜能，但也造成极高员工高压与早年（1985 年前）组织剧烈动荡。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>围墙花园（Walled Garden）的长期反垄断双刃剑：</strong>严密闭环确保了安全与体验一致，但也使 App Store 抽成机制在十年后成为欧美监管机构的核心反垄断靶心。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>云服务与社交基因相对薄弱：</strong>相较硬件交互的封神表现，乔布斯任内推出的 MobileMe 与音乐社交 Ping 均告折戟，大型分布式云架构并非其天然长板。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           五、 三幕演进与管理遗产复盘 (Three-Act Evolution & Takeaways)
+           ========================================================= -->
+      <section id="sec-inv" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Career Evolution & Strategic Takeaways</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕人生演进与管理复盘：从孤傲少年天才到成熟商业帝国统帅</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">理解乔布斯的关键：1985–1997 年十二年“荒野流放”才是其商业心智质变的熔炉</span>
+        </div>
+
+        <!-- 1. 三幕人生演进卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- 第一幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 拓荒与折戟</span>
+                <span class="font-mono text-xs font-bold text-slate-500">1976–1985</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">Apple II 崛起与 Mac 阵痛</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>21 岁与沃兹尼亚克在车库创立苹果，凭 Apple II 引爆个人电脑商业化；1984 年发布划时代图形界面 Macintosh，但因硬件性能受限、定价高昂及与 CEO 约翰·斯卡利爆发路线冲突，于 30 岁被剥夺管理权遗憾出走（<a href="https://en.wikipedia.org/wiki/Steve_Jobs" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+              阶段启示：仅有超前产品直觉而缺乏商业成本与组织成熟度难以持久
+            </div>
+          </div>
+
+          <!-- 第二幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 荒野淬炼</span>
+                <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">1985–1997</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">NeXT 炼内功 · Pixar 封神</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>NeXT 高价硬件遭遇冷遇，逼迫乔布斯转向软件架构深耕（OpenStep / WebObjects）；同时在 Pixar 学会放权赋能艾德·卡特姆与约翰·拉塞特，苦熬十年迎来《玩具总动员》与 1995 年 $15亿估值 IPO，完成从任性创业者到战略投资家与耐心领袖的蜕变（<a href="https://www.southampton.ac.uk/news/2020/11/malcolm-cook-toy-story-25.page" target="_blank" rel="noopener noreferrer" class="cite-link">Univ. of Southampton</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+              阶段启示：“被苹果解雇是我这辈子发生过的最好的事”
+            </div>
+          </div>
+
+          <!-- 第三幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 登峰与永续</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">1997–2011+</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">王者归来与万亿基业</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>重掌苹果后将顶级审美、供应链铁腕（延揽库克将库存周期压缩至数天）与平台战略融会贯通，14 年连推 iMac、iPod、iPhone、iPad 四代现象级产品，使苹果从 $30亿濒危股成长为今日 <strong>~$4.7万亿–$4.8万亿</strong> 商业巨擘（<a href="https://en.oninvest.com/article/tim-cook-is-stepping-down-as-apple-s-ceo-what-were-his-major-successes-and-failures-over-the-past-15-years" target="_blank" rel="noopener noreferrer" class="cite-link">Oninvest</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              阶段启示：把“产品公司”锻造为乔布斯本人最伟大的终极产品
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 四大商业折戟教训复盘矩阵 -->
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：乔布斯生涯四大关键挫折与进化闭环</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">教训 01 · 脱离大众购买力的过度完美主义</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">Apple Lisa / NeXT Cube</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">忽视价格甜点会导致技术杰作沦为博物馆展品</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                早年 Lisa 与 NeXT 工作站虽技术惊艳却因高昂售价销量惨淡（<a href="https://en.wikipedia.org/wiki/NeXT" target="_blank" rel="noopener noreferrer" class="cite-link">Wikipedia</a>）；回归后乔布斯痛定思痛，让 iMac ($1,299) 与初代 iPad ($499 起) 精准卡位主流甜点价位，直接击碎山寨与竞品生存空间。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">教训 02 · 孤岛封闭与跨平台引流的辩证统一</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">iTunes for Windows 转折</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">2003 年力排众议开放 Windows 版 iTunes 彻底盘活全局</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                初代 iPod 若一直仅限连接 Mac（当时市占率不足 5%），绝不可能席卷全球；乔布斯放下洁癖向数亿 Windows 用户开放 iTunes（自嘲“给地狱里的人递一杯冰水”），带来光环效应反哺 Mac 与 iPhone。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">教训 03 · 排斥第三方原生应用到拥抱 App Store</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">2007 Web App → 2008 SDK</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">顶级领袖的标志是面对事实时迅速修正自我执念</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                2007 年初代 iPhone 发布时乔布斯曾拒绝开放原生第三方 App 以防系统崩溃；但在高管与开发者力谏下，他仅隔数月便掉头推出 iOS SDK 与 App Store，开启了数万亿美元移动互联网黄金时代（<a href="https://www.sec.gov/Archives/edgar/data/320193/000119312510012091/d10ka.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Apple 10-K/A</a>）。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">教训 04 · 创客浪漫主义必须配对世界级运营家</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">Jobs × Tim Cook 双核</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">没有世界级供应链执行，天才工业设计无法规模化兑现</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                早年 Mac 工厂曾因自动化执念积压库存亏损；1998 年乔布斯三顾茅庐挖来蒂姆·库克重塑全球外包制造与零库存周转，形成“极致产品远见 + 极致精密运营”的黄金双核（<a href="https://www.businessinsider.com/tim-cook-visions-predictions-for-apple-2026-4" target="_blank" rel="noopener noreferrer" class="cite-link">Business Insider</a>）。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 机构级商业与投资启示横幅 -->
+        <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+          <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>写给创业者、产品人与长期价值投资者的三条“乔布斯底层法则”</span>
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-white mb-1">1. 聚焦不是对一件事说“是”，而是对百件事说“不”</div>
+              <p class="text-slate-300 leading-relaxed">
+                评估企业竞争力时，不要看它铺开了多少热门赛道，而要看管理层敢于砍掉多少诱人但平庸的副线，把最顶尖的 A 级人才死磕在 1–3 款定义品类的旗舰产品上。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-mogold-400 mb-1">2. 寻找拥有“硬件入口 + 系统粘性 + 服务税”闭环的标的</div>
+              <p class="text-slate-300 leading-relaxed">
+                单纯硬件终将沦为苦生意，单纯应用易被底层卡脖子；只有掌握软硬芯全栈闭环（如苹果 iOS 生态或英伟达 GPU+CUDA 生态），才能长期维持超额毛利率与自由现金流。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-emerald-400 mb-1">3. 利润是极致产品的副产品，而非首要出发点</div>
+              <p class="text-slate-300 leading-relaxed">
+                乔布斯指出当销售与财务思维主导产品定义（如 1980 年代末的苹果或早年 IBM），创新护城河便开始瓦解；始终由懂产品的灵魂人物掌握终审权，是科技股长牛的头号领先指标。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           六、 “乔布斯法则”企业与产品评估交互核查清单 (Checklist)
+           ========================================================= -->
+      <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Steve Jobs Product &amp; Enterprise Diagnostic Checklist</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “乔布斯法则”企业与产品评估交互式核查清单（Checklist）</h2>
+          </div>
+          <div class="flex items-center space-x-2 no-print">
+            <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+            <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            可用于审视任何科技公司、创业项目或新产品矩阵是否具备“乔布斯式”长期护城河（点击勾选自动本地保存状态）：
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+            <!-- KPI 1 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">1. 2×2 四宫格清晰度测试：30秒能否向朋友讲清买哪款？</span>
+                  <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">极简战略锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  检验企业产品线是否存在定位重叠、型号繁杂内耗；优秀的矩阵每个象限只保留一款无可争议的拳头产品。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 2 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">2. “Whole Widget”端到端掌控力：核心体验是否受制于人？</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">垂直整合壁垒</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  核查企业是否掌握关键底层技术（芯片/内核/算法）与前端交互的联合调优权，而非沦为公版方案组装商。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 3 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">3. 主动自我蚕食勇气：是否敢于亲手颠覆存量现金牛？</span>
+                  <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">反创新者窘境</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  观察管理层是否因保护旧业务利润而对新技术畏首畏尾，抑或像 iPhone 取代 iPod 般果断拥抱下一代计算范式。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 4 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">4. A 级人才密度与研发转化效率（警惕盲目堆砌研发费）</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">组织杠杆指标</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  对标苹果 FY11 仅 2.2% 研发费率创造 $1,082.5亿营收，检验研发支出是否真正转化为爆款单品与高毛利回报。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 5 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">5. 科技与人文交叉点的品牌定价权（毛利率跑赢同行）</span>
+                  <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">品牌溢价检验</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  检验用户在无需补贴折扣的前提下是否愿为工业设计、开箱体验与情感共鸣支付显著高于竞品的溢价。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 6 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">6. DRI 直接责任人机制与零有息负债现金安全垫</span>
+                  <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">执行与韧性锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  每项关键任务是否有明确唯一责任人（DRI），资产负债表是否留有抵御技术代际突变的充沛净现金储备。
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+           ========================================================= -->
+      <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+          <span>史蒂夫·乔布斯 Steve Jobs (1955–2011) 深度商业、产品战略与长期复利研究报告 · 机构框架版</span>
+          <span>核心数据出处：Apple SEC Form 10-K (1997–2012) · Walt Disney / Pixar SEC Filings</span>
+        </div>
+        <p class="leading-relaxed">
+          <strong>数据来源与研究说明：</strong>本深度报告所有财务与历史指标均严格核验自美国证监会（SEC EDGAR）公开披露的 <a href="https://www.sec.gov/Archives/edgar/data/320193/000119312511282113/d220209d10k.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Apple Inc. FY2011 Form 10-K</a>、<a href="https://d18rn0p25nwr6d.cloudfront.net/CIK-0000320193/05f33405-0995-465d-9e1d-9fb882bb5124.xls" target="_blank" rel="noopener noreferrer" class="cite-link">Apple FY1997 Form 10-K</a>、<a href="https://www.sec.gov/Archives/edgar/data/1001039/000119312506010897/dex991.htm" target="_blank" rel="noopener noreferrer" class="cite-link">迪士尼收购皮克斯联合公告</a>、美国专利商标局（USPTO）及权威商业媒体公开资料。报告内置的复利模拟器旨在复盘创新周期长期资本增值规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+  <script>
+    // ==========================================
+    // 0. 一键导出独立自包含 HTML 文件 (.html)
+    // ==========================================
+    let toastTimer = null;
+
+    function showToast(msg) {
+      const toast = document.getElementById('export-toast');
+      const msgEl = document.getElementById('export-toast-msg');
+      if (!toast || !msgEl) return;
+      msgEl.textContent = msg;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3200);
+    }
+
+    function exportStandaloneHtml() {
+      try {
+        const clone = document.documentElement.cloneNode(true);
+        // 清理运行态临时样式与画布缓存属性，确保导出的 HTML 在任何本地浏览器打开时干净重绘
+        const toastClone = clone.querySelector('#export-toast');
+        if (toastClone) {
+          toastClone.classList.add('hidden');
+          toastClone.classList.remove('flex');
+        }
+        const drawerClone = clone.querySelector('#mobile-drawer');
+        if (drawerClone) {
+          drawerClone.classList.add('hidden');
+        }
+        const progressClone = clone.querySelector('#reading-progress');
+        if (progressClone) {
+          progressClone.style.width = '0%';
+        }
+        clone.querySelectorAll('canvas').forEach(cv => {
+          cv.removeAttribute('width');
+          cv.removeAttribute('height');
+          cv.removeAttribute('style');
+        });
+
+        const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Steve_Jobs_Analysis.html';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+        showToast('已成功导出独立 HTML 文件：Steve_Jobs_Analysis.html');
+      } catch (err) {
+        showToast('导出失败，请使用右上角文件下载功能保存。');
+      }
+    }
+
+    // ==========================================
+    // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+    // ==========================================
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      updateChartsTheme();
+    }
+
+    // ==========================================
+    // 2. 移动端抽屉菜单切换
+    // ==========================================
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      if (drawer) drawer.classList.toggle('hidden');
+    }
+
+    // ==========================================
+    // 3. 阅读进度条与左侧导航滚动联动高亮
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      const prog = document.getElementById('reading-progress');
+      if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+      let currentId = 'sec-exec';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 160;
+        if (scrollTop >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const numSpan = link.querySelector('span span');
+        if (numSpan) {
+          numSpan.classList.remove('text-mogold-400');
+          numSpan.classList.add('text-slate-500');
+        }
+        if (link.dataset.target === currentId) {
+          link.classList.add('active');
+          if (numSpan) {
+            numSpan.classList.remove('text-slate-500');
+            numSpan.classList.add('text-mogold-400');
+          }
+        }
+      });
+    });
+
+    // ==========================================
+    // 4. 传奇科技领袖横向对比筛选 + 关键词搜索联动
+    // ==========================================
+    let activeLeaderCategory = 'all';
+
+    function filterCompetitors(category) {
+      activeLeaderCategory = category;
+      document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+          btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        } else {
+          btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+          btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        }
+      });
+      applyLeaderFilters();
+    }
+
+    function applyLeaderFilters() {
+      const searchInput = document.getElementById('leader-search-input');
+      const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+      const rows = document.querySelectorAll('#comp-table-body tr');
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const rowCat = row.dataset.category;
+        const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+        const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+        if (catMatch && textMatch) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      const emptyState = document.getElementById('leader-empty-state');
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+    }
+
+    // ==========================================
+    // 5. “乔布斯创新周期”长期股东价值与复利动态推演器
+    // ==========================================
+    const ERA_PRESETS = {
+      apple_turnaround: {
+        principal: 10000,
+        years: 14,
+        cagr: 39.3,
+        caption: '当前测算基准：对应 1997 年 7 月乔布斯回归苹果初期（拆股调整均价约 $0.13）持有至 2011 年 8 月 24 日卸任 CEO 当日（拆股调整收盘约 $13.44）的真实股价增值斜率。'
+      },
+      pixar_journey: {
+        principal: 10000,
+        years: 20,
+        cagr: 24.2,
+        caption: '当前测算基准：模拟 1986 年乔布斯收购卢卡斯电脑动画部并累计注资约 $6,000万，至 2006 年 $74亿并入迪士尼并成长为约 $46亿持股市值的 20 年耐心资本复利斜率。'
+      },
+      legacy_2026: {
+        principal: 1000,
+        years: 29,
+        cagr: 31.0,
+        caption: '当前测算基准：对应 1997 年 7 月投入 $1,000 买入苹果股票并跨越库克时代持有至 2026 年 9 月（股价约 $325.13，总市值约 $4.8万亿，价值约 $250万）的 29 年生态长牛奇迹。'
+      }
+    };
+
+    function highlightEraButton(eraKey) {
+      document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+        const subDiv = btn.querySelectorAll('div')[1];
+        if (btn.dataset.era === eraKey) {
+          btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+          if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+        } else {
+          btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+          if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+        }
+      });
+    }
+
+    function setSimEra(eraKey) {
+      const preset = ERA_PRESETS[eraKey];
+      if (!preset) return;
+      document.getElementById('sim-principal').value = preset.principal;
+      document.getElementById('sim-years').value = preset.years;
+      document.getElementById('sim-growth').value = preset.cagr;
+      document.getElementById('sim-era-caption').textContent = preset.caption;
+      highlightEraButton(eraKey);
+      updateValueSimulator();
+    }
+
+    function markCustomEra() {
+      highlightEraButton('custom');
+      document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义创新复利推演模式——自由探索不同本金、持有期限与创新企业年化复合增速下的长期财富放大效应。';
+    }
+
+    function updateValueSimulator() {
+      const principal = parseFloat(document.getElementById('sim-principal').value) || 10000;
+      const years = parseInt(document.getElementById('sim-years').value, 10) || 14;
+      const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 20;
+      const divBonus = document.getElementById('div-bonus-toggle').checked ? 0.8 : 0;
+
+      const effGrowthPct = baseGrowthPct + divBonus;
+      const r = effGrowthPct / 100;
+
+      document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+      document.getElementById('sim-years-label').textContent = years + ' 年';
+      document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+      const finalVal = principal * Math.pow(1 + r, years);
+      const netGain = finalVal - principal;
+      const multiple = principal > 0 ? (finalVal / principal) : 1;
+      const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+      const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+      const midYears = Math.max(1, Math.round(years / 2));
+      const midVal = principal * Math.pow(1 + r, midYears);
+
+      document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+      document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+      document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+      document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年资产翻一倍` : '稳健保值';
+      document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+      document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+      document.getElementById('sim-mid-val').textContent = `持有第 ${midYears} 年中期资产约：$${Math.round(midVal).toLocaleString('en-US')}`;
+    }
+
+    // ==========================================
+    // 6. KPI 核查清单状态持久化与计数更新
+    // ==========================================
+    const KPI_STORAGE_KEY = 'sj_analysis_checklist_v1';
+
+    function loadKpiChecklist() {
+      try {
+        const saved = localStorage.getItem(KPI_STORAGE_KEY);
+        if (saved) {
+          const stateMap = JSON.parse(saved);
+          document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+            if (typeof stateMap[cb.id] === 'boolean') {
+              cb.checked = stateMap[cb.id];
+            }
+          });
+        }
+      } catch (e) {
+        // 忽略沙箱本地存储权限限制
+      }
+      updateKpiChecklist();
+    }
+
+    function updateKpiChecklist() {
+      const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      const stateMap = {};
+
+      checkboxes.forEach(cb => {
+        stateMap[cb.id] = cb.checked;
+        if (cb.checked) checkedCount++;
+      });
+
+      const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+      const badge = document.getElementById('kpi-progress-badge');
+      if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+      try {
+        localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+      } catch (e) {
+        // 忽略沙箱本地存储权限限制
+      }
+    }
+
+    function resetKpiChecklist() {
+      document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      updateKpiChecklist();
+      showToast('已重置“乔布斯法则”核查清单状态');
+    }
+
+    // ==========================================
+    // 7. Chart.js 数据可视化初始化与主题自适应
+    // ==========================================
+    let bizChartInstance = null;
+    let radarChartInstance = null;
+    let compMarginChartInstance = null;
+    let valEvolutionChartInstance = null;
+    let currentBizMode = 'fy11_mix';
+
+    function getChartColors() {
+      const isDark = document.documentElement.classList.contains('dark');
+      return {
+        text: isDark ? '#CBD5E1' : '#475569',
+        grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+        radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+      };
+    }
+
+    function initBizChart() {
+      const canvas = document.getElementById('bizArchitectureChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      // 视图 A：Apple FY2010 vs FY2011 产品线净营收拆解 ($B, 100% 源自 SEC Form 10-K)
+      const mixConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            'iPhone 及相关服务',
+            'Mac 台式与便携电脑',
+            'iPad 及相关服务',
+            'iPod 数字音乐播放器',
+            'iTunes / App Store 等',
+            '软件、外设及其他'
+          ],
+          datasets: [
+            {
+              label: 'FY2010 净营收 ($B)',
+              data: [25.18, 17.48, 4.96, 8.27, 4.95, 4.39],
+              backgroundColor: 'rgba(100, 116, 139, 0.65)',
+              borderRadius: 5
+            },
+            {
+              label: 'FY2011 净营收 ($B · 总计 $108.25B)',
+              data: [47.06, 21.78, 20.36, 7.45, 6.31, 5.28],
+              backgroundColor: '#F59E0B',
+              borderRadius: 5
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            },
+            y: {
+              min: 0,
+              max: 52,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+            }
+          }
+        }
+      };
+
+      // 视图 B：FY1997 回归低谷 vs FY2007–FY2011 营收与净利润跃迁 ($B, 100% 源自 SEC 10-K)
+      const trajectoryConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            'FY1997 (回归年)',
+            'FY2007 (iPhone元年)',
+            'FY2008 (App Store)',
+            'FY2009 (危机逆增)',
+            'FY2010 (iPad元年)',
+            'FY2011 (谢幕巅峰)'
+          ],
+          datasets: [
+            {
+              type: 'bar',
+              label: '苹果年度净营收 Net Sales ($B)',
+              data: [7.08, 24.58, 37.49, 42.91, 65.23, 108.25],
+              backgroundColor: 'rgba(245, 158, 11, 0.85)',
+              borderRadius: 5,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: '苹果年度净利润 Net Income ($B)',
+              data: [-1.05, 3.50, 6.12, 8.24, 14.01, 25.92],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 3,
+              pointRadius: 4.5,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            },
+            y: {
+              position: 'left',
+              min: -5,
+              max: 120,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+            },
+            y1: {
+              position: 'right',
+              min: -3,
+              max: 30,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' }
+            }
+          }
+        }
+      };
+
+      if (bizChartInstance) bizChartInstance.destroy();
+      bizChartInstance = new Chart(ctx, currentBizMode === 'fy11_mix' ? mixConfig : trajectoryConfig);
+    }
+
+    function switchBizChart(mode) {
+      currentBizMode = mode;
+      const btnEvo = document.getElementById('btn-chart-evo');
+      const btnSplit = document.getElementById('btn-chart-split');
+      const titleEl = document.getElementById('biz-chart-title');
+      const subEl = document.getElementById('biz-chart-sub');
+
+      if (mode === 'fy11_mix') {
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = 'FY2010 vs FY2011 苹果六大业务线净营收结构拆解（SEC 10-K）';
+        subEl.textContent = 'iPhone ($47.06B, +87%) 与 iPad ($20.36B, +311%) 爆发式接棒，主动完成对 iPod (-10%) 的自我迭代';
+      } else {
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = 'FY1997 回归低谷至 FY2011 谢幕巅峰：苹果营收 15.3 倍与净利反转曲线';
+        subEl.textContent = '从 1997 财年净亏损 -$1.05B 逆转至 2011 财年净利润 $25.92B，跨越 2008 金融危机持续加速增长';
+      }
+      initBizChart();
+    }
+
+    function initRadarChart() {
+      const canvas = document.getElementById('moatRadarChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (radarChartInstance) radarChartInstance.destroy();
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: [
+            '端到端产品美学与交互体验',
+            '战略聚焦与SKU减法纪律',
+            '平台双边生态锁定力',
+            '跨产业连续颠覆广度',
+            '云与物流基础设施规模纵深'
+          ],
+          datasets: [
+            {
+              label: '史蒂夫·乔布斯 (Apple/Pixar)',
+              data: [9.9, 9.8, 9.4, 9.7, 8.2],
+              borderColor: '#F59E0B',
+              backgroundColor: 'rgba(245, 158, 11, 0.24)',
+              pointBackgroundColor: '#F59E0B',
+              borderWidth: 2.5
+            },
+            {
+              label: '比尔·盖茨 (Microsoft)',
+              data: [6.8, 7.2, 9.8, 7.6, 8.5],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.14)',
+              pointBackgroundColor: '#10B981',
+              borderWidth: 2.0
+            },
+            {
+              label: '杰夫·贝索斯 (Amazon)',
+              data: [7.8, 6.4, 9.5, 9.2, 9.9],
+              borderColor: '#06B6D4',
+              backgroundColor: 'rgba(6, 182, 212, 0.12)',
+              pointBackgroundColor: '#06B6D4',
+              borderWidth: 1.8,
+              borderDash: [4, 4]
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            }
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 10,
+              ticks: { display: false, stepSize: 2 },
+              grid: { color: colors.grid },
+              angleLines: { color: colors.radarAngle },
+              pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initCompMarginChart() {
+      const canvas = document.getElementById('compMarginChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (compMarginChartInstance) compMarginChartInstance.destroy();
+      compMarginChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            'Apple Store 直营店 (乔布斯体验零售范式)',
+            'Tiffany & Co. 蒂芙尼 (传统奢侈珠宝零售标杆)',
+            'Best Buy 百思买 (传统消费电子大卖场龙头)',
+            'Walmart 沃尔玛 (大众综合商超巨头)',
+            'Saks Fifth Avenue 萨克斯第五大道 (高端百货)'
+          ],
+          datasets: [
+            {
+              label: '年度单位面积销售额 / 坪效 (USD / 平方英尺 · Fortune/Macworld 口径)',
+              data: [4032, 2666, 930, 400, 362],
+              backgroundColor: [
+                '#F59E0B',
+                '#10B981',
+                '#06B6D4',
+                '#64748B',
+                '#94A3B8'
+              ],
+              borderRadius: 6,
+              barThickness: 20
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `年度坪效: $${c.parsed.x.toLocaleString('en-US')} / 平方英尺`
+              }
+            }
+          },
+          scales: {
+            x: {
+              max: 4500,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toLocaleString('en-US') }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initValEvolutionChart() {
+      const canvas = document.getElementById('valEvolutionChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+      valEvolutionChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['FY2007', 'FY2008', 'FY2009', 'FY2010', 'FY2011'],
+          datasets: [
+            {
+              type: 'bar',
+              label: '账面现金及有价证券总额 ($B · 零长期债务)',
+              data: [15.39, 24.49, 33.99, 51.01, 81.57],
+              backgroundColor: 'rgba(245, 158, 11, 0.85)',
+              borderRadius: 5,
+              barThickness: 32,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: '苹果年度净利润 Net Income ($B)',
+              data: [3.50, 6.12, 8.24, 14.01, 25.92],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 3,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 90,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+              title: { display: true, text: '现金及有价证券储备 ($B)', color: colors.text, font: { size: 11 } }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 0,
+              max: 30,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' },
+              title: { display: true, text: '年度净利润 ($B)', color: '#10B981', font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartsTheme() {
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadKpiChecklist();
+      updateValueSimulator();
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    });
+  </script>
+</body>
+</html>

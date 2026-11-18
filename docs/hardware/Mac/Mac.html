@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>苹果 Mac 产品线与计算生态深度分析报告：FY2026 创收 $379.3亿、MacBook Neo 破圈与 PROLED 触控跃迁</title>
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <!-- Chart.js -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ aaplblue: {
+ 300: '#7DD3FC',
+ 400: '#38BDF8',
+ 500: '#0284C7',
+ 600: '#0369A1',
+ 700: '#075985',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ amber: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ }
+ }
+ }
+ }
+ }
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：电光冰蓝渐变标识 Apple Silicon & Mac Pro 科技底色 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(56, 189, 248, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #38BDF8;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-aaplblue-400 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-aaplblue-500 via-aaplblue-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 导出成功轻量级提示条 (Toast) -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-aaplblue-400/50 shadow-2xl text-xs font-medium no-print">
+ <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+ <span id="export-toast-text">已导出独立 HTML 研报文件 (Apple_Mac_Product_Analysis.html)</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-aaplblue-400 to-aaplblue-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ MAC
+ </div>
+ <div>
+ <div class="text-[11px] text-aaplblue-300 font-semibold tracking-wider uppercase">Apple Mac · Computing Product Line</div>
+ <div class="text-sm font-bold leading-tight">Mac 产品线与个人计算生态深度分析</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-2">
+ <button onclick="exportStandaloneHtml()" class="p-2 rounded-lg bg-aaplblue-500/20 hover:bg-aaplblue-500/30 text-aaplblue-300" aria-label="导出HTML文件" title="导出独立HTML文件">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">Mac 产品深度分析导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. Mac 业务核心执行摘要</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. Mac 全系产品矩阵与芯片架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. Mac 四重技术壁垒与护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球 PC 巨头与 OS 横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 装机量变现与 ASP 模拟测算</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 市场前景、内存危机与策略评估</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. Mac 产品线季度追踪 KPI 清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-aaplblue-500 text-navy-950 font-bold text-xs flex items-center justify-center space-x-1.5">
+ <span>一键下载独立 HTML 文件</span>
+ </button>
+ <p>个人计算硬件与芯片生态研究组</p>
+ <p>数据基准：2026年11月 (FY2026年报)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-aaplblue-300 via-aaplblue-500 to-indigo-600 flex items-center justify-center text-navy-950 font-extrabold text-sm shadow-lg shadow-aaplblue-500/25">
+ MAC
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-aaplblue-300 bg-aaplblue-500/15 px-2 py-0.5 rounded">MAC COMPUTING</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">Mac 产品生态深度研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 专注 Mac 个人电脑业务线拆解 · Apple Silicon 芯片架构、MacBook Neo 破圈与 PROLED 触控革命
+ </p>
+ </div>
+
+ <!-- Mac 业务核心快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY26 Mac 全年净营收</span>
+ <span class="font-mono font-bold text-emerald-400">$37.93B <span class="text-slate-400">(+12.5%)</span></span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY26Q4 单季营收</span>
+ <span class="font-mono font-bold text-white">$10.80B <span class="text-aaplblue-300 text-[10px]">(+23.7% YoY)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">全球 PC 销量 / 营收份额</span>
+ <span class="font-mono font-bold text-amber-400">9.5%–10.6% / ~24% 营收</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-340px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Mac 专项研究目录</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-aaplblue-400 mr-2">00</span>Mac 业务核心执行摘要</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>Mac 全系产品矩阵与芯片架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>Mac 四重技术壁垒与护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球 PC 巨头与 OS 横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>装机量变现与 ASP 模拟测算</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>市场前景、内存危机与策略评估</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>Mac 产品线季度追踪 KPI 清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏 -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-aaplblue-400 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-aaplblue-400 to-aaplblue-500 hover:from-aaplblue-500 hover:to-aaplblue-600 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 研报文件</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-aaplblue-500/15 text-aaplblue-700 dark:text-aaplblue-300 font-bold border border-aaplblue-500/30">研究对象：Mac 个人电脑产品线与 macOS 生态 (非集团整体财报)</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：FY2026 创纪录销量之年 · MacBook Neo 破圈与 PROLED 触控 MacBook Pro 问世</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖时间：2026年11月</span>
+ <span>Mac Division</span>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景电光蓝点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#38BDF8 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-aaplblue-500/20 border border-aaplblue-400/40 text-aaplblue-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-aaplblue-400 animate-pulse"></span>
+ <span>MAC LINEUP THESIS · FY2026 年入 $379.3亿 (+12.5%) × 史上最高年度出货量 × MacBook Neo 下沉破圈与 OLED 触控旗舰</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ Mac 产品线与个人计算生态深度分析报告：$379.3亿年度营收、MacBook Neo 破圈与 PROLED 触控时代
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ CEO John Ternus 在 2026 年 11 月财报会上正式确认：<strong class="text-white">“苹果在 2026 财年卖出了史上最多的 Mac 电脑（Never sold more Macs in a fiscal year）”</strong>。得益于 2026 年 3 月推出的亲民爆款 <strong class="text-aaplblue-300">MacBook Neo（A18 Pro 芯片，首发 $599 / 现 $699）</strong>成功打破 Windows 阵营价格防线，以及下半年 <strong class="text-emerald-400">M5 Pro/Max 旗舰与 M6 系列芯片</strong>的迭代，FY2026 全年 Mac 净营收攀升 <strong class="text-white">+12.5% 至 $379.3亿</strong>（超越 FY2025 的 $337.1亿），其中 FY26Q4 单季营收飙升 <strong class="text-aaplblue-300">+23.7% 至 $108.0亿</strong>。紧随财报之后，苹果更于 2026 年 10 月底打破数十年禁令，正式发布首款搭载 <strong class="text-amber-300">双层串联 PROLED XDR 触控屏的全新 MacBook Pro</strong>，开启个人电脑交互与端侧 AI 算力新纪元。
+ </p>
+
+ <!-- 核心投资结论高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">“哑铃型”双端扩张打开增量空间</div>
+ <div class="text-white font-semibold">低端以 $699 MacBook Neo 狂揽学生与 Windows 转换用户（推动 2026Q2 macOS 全球出货大增 17.4%），高端以 $2,499+ PROLED 触控 MacBook Pro 锁定超额利润</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">寒冬逆势突围：PC 市场暴跌下的份额赢家</div>
+ <div class="text-aaplblue-300 font-semibold">2026Q3 全球 PC 总出货因存储涨价暴跌 20.1%（联想 -22.6%、惠普 -30.9%、戴尔 -25%），而 Mac 全球份额逆势提升 1.0pp 至 9.5%（Q2 笔记本营收占比高达 24%）</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">核心矛盾：RAMageddon 内存危机与提价考验</div>
+ <div class="text-amber-300 font-semibold">AI 数据中心吞噬 DRAM/NAND 产能引发全线涨价，苹果于 2026 年 6 月及 10 月被迫对 MacBook Neo/Air/Pro 上调 $100–$300 售价以对冲 BOM 成本</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2026 Mac 全年净营收</span>
+ <span class="p-1.5 rounded-lg bg-aaplblue-500/15 text-aaplblue-600 dark:text-aaplblue-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$37.93B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+12.5% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 较 FY2025 的 $33.71B 净增 $42.2亿，连续两年保持 12.4%+ 双位数高速扩张，占苹果硬件收入比重稳步提升。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY26Q4 Mac 单季营收</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$10.80B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+23.7% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 较去年同期（$8.73B）暴增逾 $20亿，在严格供应受限（Supply-Constrained）状态下仍创下史上最强 9 月返校季表现。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>全球 PC 出货份额 &amp; 营收占比</span>
+ <span class="p-1.5 rounded-lg bg-aaplblue-500/15 text-aaplblue-600 dark:text-aaplblue-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">9.5%–16%</span>
+ <span class="text-xs font-bold text-aaplblue-600 dark:text-aaplblue-400 bg-aaplblue-500/15 px-2 py-0.5 rounded">24% 营收份额</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2026Q3 全球全品类 PC 份额升至 9.5%（+1.0pp YoY）；Counterpoint 显示 2026Q2 MacBook 占全球笔记本出货 16% 与营收 24%。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>活跃装机底座 &amp; 首次购机占比</span>
+ <span class="p-1.5 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">&gt;1.2亿台</span>
+ <span class="text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded">新客转化率 ~50%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 全球活跃 Mac 装机量创历史新高，新兴市场及 MacBook Neo 买家中有近半数属于首次购买 Mac 的 Windows 转换用户。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 Mac 全系产品矩阵与芯片架构 (Mac Product Matrix & Silicon)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-aaplblue-600 dark:text-aaplblue-400">Section 01 · Mac Product Lineup &amp; Apple Silicon Multi-Tier Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 Mac 全系产品矩阵与芯片架构：从 A18 Pro 普及型 Neo 到 PROLED 触控旗舰</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2026 Mac 净营收 $37.93B · 覆盖 $699 至 $5,000+ 全价格带</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2021–FY2026 Mac 年度净营收 ($B) 与同比增长率演进</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">消化 FY2022 疫情居家办公透支后，Mac 连续两年实现 +12.4% / +12.5% 强劲复苏并逼近 $380亿 大关</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('rev_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-aaplblue-600 dark:text-aaplblue-400 shadow-sm transition cursor-pointer">视图A：六年 Mac 营收曲线</button>
+ <button onclick="switchBizChart('lineup_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：FY26 产品线营收结构</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性拆解核心洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026 年 Mac 产品战略三大历史性转折</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-aaplblue-500/15 text-aaplblue-600 dark:text-aaplblue-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">首次将 iPhone 旗舰芯片下放至 Mac：MacBook Neo 引爆破圈</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026 年 3 月苹果推出搭载 <strong>A18 Pro（3nm N3E 工艺）</strong>的 13 英寸 MacBook Neo（教育价 $599 / 零售价 $699，提供柑橘、靛蓝等四色全铝机身），以 16 小时续航与 macOS Golden Gate 系统降维打击 $500–$800 价位 Windows 笔记本，直接拉动 2026Q2 全球 macOS 出货同比激增 <strong>+17.4%</strong>。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">终结数十年“无触控”信条：PROLED XDR 触控 MacBook Pro 登场</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026 年 10 月底，苹果正式发布全新超轻薄模具设计的 <strong>MacBook Pro with PROLED XDR Display</strong>（搭载 M5 Pro / M5 Max 芯片与双层串联 OLED 触控屏），将 iPadOS 的直觉触控手势与 macOS 专业桌面生产力深度融合，开启高端笔记本换代大周期。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">M6 芯片率先落地桌面与入门 Pro：统一内存成端侧大模型标配</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 最新一代 <strong>Apple M6 芯片</strong>已于 2026 年秋季陆续装备在 Mac mini、iMac 与 14 英寸基础款 MacBook Pro（起售价 $1,999）上；高带宽统一内存架构令 Mac Studio 与 Mac mini 成为全球本地部署开源大模型（Local LLM）最受欢迎的桌面算力节点。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">最新桌面操作系统</span>
+ <span class="font-bold text-aaplblue-600 dark:text-aaplblue-400">macOS Golden Gate 27.2 (原生集成 Apple Intelligence)</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心 Mac 产品线详细卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 分部 1：MacBook Pro 旗舰矩阵 (M6 基础款 + M5 Pro/Max 传统模具 + PROLED 触控旗舰) -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-aaplblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-aaplblue-500/15 text-aaplblue-700 dark:text-aaplblue-300 text-xs font-bold">第一利润支柱 · 占 Mac 营收约 46%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">ASP ~$2,250+</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. MacBook Pro 家族（M6 14" / M5 Pro &amp; Max / PROLED 触控旗舰）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2026 年 10 月更新后形成清晰的“三层金字塔”结构：<strong>入门级 14 英寸 M6 款</strong>（$1,999 起，120Hz mini-LED 屏与 24 小时超长续航）；<strong>经典模具 M5 Pro/Max 14"/16" 款</strong>；以及全新超薄轻量化 <strong>PROLED XDR 触控版</strong>（配备串联式 OLED 触摸屏与 M5 Pro/Max 芯片）。专业开发者、影视剪辑与企业级 IT 采购贡献了 Mac 部门逾半数毛利。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>首次引入串联 OLED 触控交互</span>
+ <span class="text-aaplblue-600 dark:text-aaplblue-400 font-semibold">内存涨价推动均价上移 $300</span>
+ </div>
+ </div>
+
+ <!-- 分部 2：MacBook Neo & MacBook Air 大众与教育破圈引擎 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">出货量第一引擎 · 占 Mac 营收约 38%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">$699 Neo + $1,299 Air</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 大众轻薄双子星（MacBook Neo &amp; 13"/15" MacBook Air）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>MacBook Neo</strong>（1.22kg 无风扇全铝机身、13 英寸 500 尼特 Liquid 视网膜屏、A18 Pro 芯片与 35 TOPS 神经网络引擎）在 2026 年春季首发即全网售罄，即便 6 月因内存涨价上调 $100 至 $699（教育优惠仍为 $599），依然与 <strong>MacBook Air（$1,299 起）</strong>形成 $600 完美价差梯队，横扫全球校园与年轻白领市场。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>2026Q2 macOS 出货同比 +17.4%</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Windows 阵营用户转化利器</span>
+ </div>
+ </div>
+
+ <!-- 分部 3：Mac mini & Mac Studio 桌面端 AI 算力与本地大模型工作站 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-amber-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs font-bold">高增速黑马 · 占 Mac 营收约 11%</span>
+ <span class="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">统一内存大模型神器</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 桌面微型计算与工作站（M6 Mac mini &amp; Mac Studio）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 凭借巴掌大小的紧凑机身与高达 800GB/s 级别的统一内存带宽（最高支持 192GB–512GB 共享显存），<strong>Mac Studio</strong> 与全新 <strong>M6 Mac mini</strong> 无需昂贵的独立显卡即可在本地流畅推理 70B–400B 参数开源大模型，成为硅谷及全球 AI 初创团队、独立开发者标配的桌面边缘计算节点。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>每瓦算力与显存性价比领先同级 PC</span>
+ <span class="text-amber-600 dark:text-amber-400 font-semibold">AI 开发者与工作室集群刚需</span>
+ </div>
+ </div>
+
+ <!-- 分部 4：iMac 一体机、Mac Pro 与 Studio Display 生态配件 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">商用与设计标杆 · 占 Mac 营收约 5%</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">M6 iMac + Apple Creator Studio</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 一体化桌面与专业外设（M6 iMac / Mac Pro / Pro Display）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2026 年 10 月同步焕新的 <strong>M6 芯片版 24 英寸 4.5K iMac</strong> 凭借极简超薄一体美学主导高端零售、医疗及设计机构桌面场景；配合 <strong>Apple Creator Studio</strong> 专业音视频软件套件（Final Cut Pro / Logic Pro）与高毛利 Studio Display 外接显示器，完整覆盖专业内容创作全链路。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>软硬一体化专业创作闭环</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">高毛利显示器与软件附件联动</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 Mac 四重技术壁垒与护城河 (Mac Competitive Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Mac Technical Barriers &amp; Ecosystem Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 Mac 四重技术壁垒与护城河：Apple Silicon 架构代差、跨端连续互通与残值霸权</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">Mac 硬件毛利率估算：~36%–39%（约为传统 Windows OEM 厂商的 2 倍）</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-aaplblue-500/15 text-aaplblue-600 dark:text-aaplblue-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">Apple Silicon 统一内存与能效比降维打击</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 自 2020 年摆脱 Intel x86 架构以来，M 系列与 A18 Pro 芯片实现 CPU、GPU、Neural Engine 与高带宽统一内存的片上封装。MacBook 在不插电电池模式下仍保持 100% 满血算力与 16–24 小时续航，直接瓦解传统 Wintel 笔记本性能体验。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">iPhone 镜像与连续互通（Continuity）生态锁死</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 全球逾 15 亿 iPhone 活跃用户构成 Mac 天然的获客漏斗。借助 iPhone 屏幕镜像操控、通用剪贴板、AirDrop、iCloud 桌面同步与 Apple Watch 自动解锁，拥有 iPhone 的用户选购 Mac 后的留存率超过 90%。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">全产业链垂直整合与免交“Windows 授权税”</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 传统 PC 厂商（联想、惠普、戴尔）必须在硬件利润中向微软支付高昂 Windows OS 授权费并向 Intel/AMD/NVIDIA 支付芯片溢价；苹果自研芯片与 macOS 免费迭代模式，令 Mac 硬件毛利率高出传统 OEM 15–20 个百分点。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">极高二手保值率与企业 TCO（总拥有成本）优势</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 苹果全铝 CNC 一体机身与长达 7 年的 macOS 安全更新赋予 Mac 行业最高的二手残值率（使用 3 年后残值仍达 45%–55%），使大型科技企业为员工批量采购 Mac 的三年净折旧与运维成本反而低于同级商用 Windows 本。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维护城河雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球个人电脑（PC）主力阵营五维竞争力雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">苹果 Mac (macOS) vs 联想 Lenovo (Windows) vs 戴尔 Dell (Windows)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 全球 PC 巨头与 OS 阵营横向对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-aaplblue-600 dark:text-aaplblue-400">Section 03 · Global PC Vendors &amp; Operating System Competitive Landscape</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球 PC 巨头横向对比：2026Q3 全球出货暴跌 20.1%，Mac 逆势扩张份额</h2>
+ </div>
+ <!-- 交互式筛选按钮 -->
+ <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-aaplblue-500 text-navy-950 shadow-sm transition cursor-pointer">全部 Top 5 PC 巨头</button>
+ <button onclick="filterCompetitors('enterprise')" data-filter="enterprise" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">传统商用三巨头 (联想/惠普/戴尔)</button>
+ <button onclick="filterCompetitors('consumer')" data-filter="consumer" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">消费与创新旗舰 (Apple Mac / 华硕)</button>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">PC 厂商与核心产品线</th>
+ <th class="py-4 px-4 min-w-[155px]">2026Q3 全球出货与份额 (IDC)</th>
+ <th class="py-4 px-4 min-w-[140px]">2026Q3 出货同比变化</th>
+ <th class="py-4 px-4 min-w-[105px]">硬件毛利率</th>
+ <th class="py-4 px-4 min-w-[125px]">芯片与系统自主权</th>
+ <th class="py-4 px-5 min-w-[235px]">2026 年市场表现与竞争格局评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：苹果 Mac 基准 -->
+ <tr data-category="core" class="bg-aaplblue-500/5 dark:bg-aaplblue-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-aaplblue-400 text-navy-950 text-[10px] font-extrabold">利润与高端霸主</span>
+ <span class="font-bold text-slate-900 dark:text-white">苹果 Mac (Apple)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">MacBook Pro / Air / Neo / Studio</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">590万台 · 份额 9.5% (+1.0pp YoY)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">-11.3% (大幅跑赢大盘 -20.1%)</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">~36%–39%</td>
+ <td class="py-4 px-4 font-mono font-bold text-aaplblue-600 dark:text-aaplblue-400">100% 自研 (M/A芯片+macOS)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>行业盈利收割机：</strong>Q2 macOS 出货逆势暴涨 +17.4%，Q3 在全行业暴跌 20.1% 时份额反升 1.0pp 至 9.5%；以不足 10% 销量贡献全球笔记本 <strong>24% 营收</strong>与过半利润。
+ </td>
+ </tr>
+
+ <!-- 行 2：联想 Lenovo -->
+ <tr data-category="enterprise" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">联想集团 (Lenovo · 0992.HK)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">ThinkPad / Yoga / 小新 / Legion</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">1,490万台 · 份额 23.8% (全球第一)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-500/15 text-rose-700 dark:text-rose-400">-22.6% YoY</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~16.5%</td>
+ <td class="py-4 px-4 font-mono text-slate-600 dark:text-slate-400">外部依赖 (Intel/AMD/高通+Win)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全球出货量龙头但受困内存涨价：</strong>2026Q2 仍居笔记本（25.6%）与台式机（20.2%）销量榜首，但因 Q2 提前备货透支需求及存储涨价压缩中低端利润，Q3 出货回调 22.6%。
+ </td>
+ </tr>
+
+ <!-- 行 3：惠普 HP Inc. -->
+ <tr data-category="enterprise" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">惠普 (HP Inc. · HPQ)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">EliteBook / Spectre / OmniBook</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">1,030万台 · 份额 16.4% (全球第二)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">-30.9% YoY (跌幅居首)</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~19.2%</td>
+ <td class="py-4 px-4 font-mono text-slate-600 dark:text-slate-400">外部依赖 (Wintel 阵营)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>北美消费与商用承压最重：</strong>消费级平价笔记本受存储成本飙升与终端提价冲击需求大幅萎缩，Q3 出货暴跌 30.9%，在 $600–$800 价位段正面遭受 MacBook Neo 虹吸。
+ </td>
+ </tr>
+
+ <!-- 行 4：戴尔科技 Dell Technologies -->
+ <tr data-category="enterprise" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">戴尔科技 (Dell · DELL)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Latitude / Precision 工作站 / XPS</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">760万台 · 份额 12.1% (全球第三)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">-25.0% YoY</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~21.0%</td>
+ <td class="py-4 px-4 font-mono text-slate-600 dark:text-slate-400">外部依赖 (商用工作站护城河)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>专业工作站王者但消费端流失：</strong>IDC 显示戴尔仍占据全球专业工作站 40.0% 份额，但消费级 XPS 与企业通用本在 Silicon Mac 持续渗透下，Q3 整体 PC 出货下滑 25.0%。
+ </td>
+ </tr>
+
+ <!-- 行 5：华硕 ASUS -->
+ <tr data-category="consumer" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">华硕 (ASUS · 2357.TW)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Zenbook / ROG 玩家国度 / ProArt</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">550万台 · 份额 8.8% (紧追苹果)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">-8.6% YoY (Top 5 抗跌最佳)</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~15.8%</td>
+ <td class="py-4 px-4 font-mono text-slate-600 dark:text-slate-400">外部依赖 (电竞与创意差异化)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>高端电竞与创作者细分赢家：</strong>凭借 ROG 游戏本（Mac 相对薄弱的 3A 游戏生态）与 OLED 轻薄本稳住基本盘，Q3 环比逆势增长 19.4%，与苹果共同挤压传统商用三巨头空间。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：2026Q3 全球 Top 5 PC 厂商出货同比增速与硬件毛利率对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">全球 Top 5 PC 厂商 2026Q3 出货量同比变化 (%) 与硬件毛利率估算对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">在 2026Q3 全球 PC 总出货量（6,270万台）同比暴跌 20.1% 的行业寒冬中，苹果 Mac 以 ~37.5% 毛利率和显著优于三大 Windows 巨头的抗跌表现稳居利润高地</p>
+ </div>
+ <span class="text-xs font-semibold text-aaplblue-700 dark:text-aaplblue-300 bg-aaplblue-500/15 px-2.5 py-1 rounded">IDC 2026Q3 Worldwide PC Tracker 实证数据</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 装机量变现与 ASP 模拟测算 (Installed Base & ASP Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Mac Installed Base Economics &amp; Revenue Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 Mac 业务经济学：1.2亿活跃装机量飞轮与“出货量 × ASP”营收动态推演器</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2026 Mac 营收 $37.93B · Q2 单季占全球笔记本营收高达 24%</span>
+ </div>
+
+ <!-- 1. Mac 业务经济学四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-aaplblue-600 dark:text-aaplblue-400 uppercase">Mac Revenue Share vs Volume</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">16% 销量 → 24% 营收</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ Counterpoint 2026Q2 数据显示，MacBook 以全球 16% 的笔记本出货量斩获了全行业 <strong>24% 的销售收入</strong>，高溢价能力尽显。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">FY2026 Annual Mac Sales</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$37.93B (+12.5%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 继 FY2025 增长 12.4%（$33.71B）后，FY2026 Mac 营收再增 $42.2亿，其中 Q4 单季营收达 <strong>$10.80B（+23.7% YoY）</strong>。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Active Base &amp; Switchers</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">&gt;1.2亿台 活跃底座</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ Mac 活跃安装基数连创历史新高；亚太（不含大中华区）与新兴市场买家中，近 50% 为首次购买 Mac 的 Windows 转化用户。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Ecosystem Attach &amp; LTV</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">高 ARPU 生产力订阅</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ Mac 用户是大容量 iCloud+（2TB–12TB）、Apple Creator Studio、Xcode 开发者年费及 AppleCare+ 附加率最高的客群。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴图：MacBook 全球出货量占比 vs 营收占比剪刀差 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2021–FY2026 Mac 年度净营收 ($B) 与全球 PC 市场份额 (%) 演进轨迹</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">2026 年随着 MacBook Neo 拓宽入门底座、PROLED MacBook Pro 抬升旗舰天花板，Mac 营收与全球 PC 市占率同步进入上升通道</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-aaplblue-700 dark:text-aaplblue-300 bg-aaplblue-500/15 px-2.5 py-1 rounded">2026Q3 全球 PC 份额升至 9.5% (+1.0pp)</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：Mac 产品线“出货结构 × 内存成本传导”年度营收与毛利动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-aaplblue-300 font-bold">
+ <span>MAC UNIT ECONOMICS &amp; MARGIN SIMULATOR · Mac 产品组合与毛利推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">Mac 产品线结构演进：“出货量 × 平均售价 (ASP) × 内存涨价压力”测算模型</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：FY2026 Mac 营收 $37.93B | 年出货量约 2,580 万台 | 综合 ASP ~$1,470 | 模拟不同机型占比与 DRAM/NAND 成本压力对 FY27 Mac 部门毛利的影响</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-aaplblue-500/15 border border-aaplblue-400/30 text-xs font-semibold text-aaplblue-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="proled-boost-toggle" checked onchange="updateMacSimulator()" class="w-4 h-4 rounded accent-[#38BDF8] cursor-pointer">
+ <span>计入 PROLED 触控 MacBook Pro 溢价提振</span>
+ </label>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <!-- 年度出货量滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">FY2027 预计 Mac 年出货量 (百万台)</span>
+ <span id="sim-units-label" class="font-mono font-bold text-white text-sm">27.5M 台</span>
+ </div>
+ <input id="sim-units" type="range" min="22.0" max="34.0" step="0.5" value="27.5" oninput="updateMacSimulator()" class="w-full accent-[#38BDF8] cursor-pointer">
+ </div>
+
+ <!-- MacBook Neo 占总销量比例滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">入门爆款 MacBook Neo 占总出货比例 (%)</span>
+ <span id="sim-neo-share-label" class="font-mono font-bold text-emerald-400 text-sm">28%</span>
+ </div>
+ <input id="sim-neo-share" type="range" min="15" max="45" step="1" value="28" oninput="updateMacSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <!-- 存储涨价对硬件毛利率的净影响滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">RAMageddon 内存涨价净毛利冲击 (bps)</span>
+ <span id="sim-mem-drag-label" class="font-mono font-bold text-amber-400 text-sm">-120 bps</span>
+ </div>
+ <input id="sim-mem-drag" type="range" min="0" max="350" step="10" value="120" oninput="updateMacSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <!-- 选配升级率 (高配内存/SSD选装) 按钮组 -->
+ <div class="pt-1">
+ <div class="text-slate-300 font-medium mb-2">用户高配统一内存 / 大容量 SSD 选装率（BTO 溢价）：</div>
+ <div class="grid grid-cols-3 gap-2" id="bto-btn-group">
+ <button type="button" onclick="setBtoTier(0.95)" data-bto="0.95" class="bto-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-aaplblue-400 transition cursor-pointer">
+ 保守选装 (0.95x)<br><span class="text-[10px] text-slate-400">消费降级偏好基础款</span>
+ </button>
+ <button type="button" onclick="setBtoTier(1.00)" data-bto="1.00" class="bto-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-aaplblue-400 text-navy-950 border border-aaplblue-300 shadow transition cursor-pointer">
+ 基准选装 (1.00x)<br><span class="text-[10px] text-navy-900">维持 FY26 选配结构</span>
+ </button>
+ <button type="button" onclick="setBtoTier(1.07)" data-bto="1.07" class="bto-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-aaplblue-400 transition cursor-pointer">
+ AI 开发者升级 (1.07x)<br><span class="text-[10px] text-slate-400">本地LLM驱动32GB+选配</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">预计 FY2027 Mac 部门总营收</div>
+ <div id="sim-mac-rev" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$40.48B</div>
+ <div id="sim-mac-yoy" class="text-xs font-semibold text-emerald-400 mt-1.5">较 FY26 ($37.93B) 同比增长：+6.7%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">加权平均单机售价 (Blended ASP)</div>
+ <div id="sim-mac-asp" class="text-2xl sm:text-3xl font-mono font-extrabold text-aaplblue-300 mt-1.5">$1,472</div>
+ <div id="sim-asp-note" class="text-xs text-slate-400 mt-1.5">PROLED 旗舰拉升均价，有效平衡 Neo 走量稀释</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">预计 Mac 硬件毛利率 (Gross Margin)</div>
+ <div id="sim-mac-gm" class="text-2xl sm:text-3xl font-mono font-extrabold text-amber-400 mt-1.5">36.3%</div>
+ <div id="sim-gm-note" class="text-xs text-slate-400 mt-1.5">基准 37.5% 扣除内存涨价净冲击后仍居行业之巅</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">预计 Mac 部门年度硬件毛利总额</div>
+ <div id="sim-mac-gp" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$14.69B</div>
+ <div id="sim-gp-note" class="text-xs text-slate-400 mt-1.5">单部门硬件毛利规模超越绝大多数 PC 整机厂全营收</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. Mac 业务多空核心驱动与阻力对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">增长催化剂 (Bull Drivers)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">Neo 扩圈 + PROLED 触控换代 + 本地 AI</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>MacBook Neo 打破 $700 以下价格禁区：</strong>首次以 A18 Pro 芯片切入全球主流平价笔记本市场，在全行业 PC 下滑期实现双位数扩容，为生态引入大量年轻新用户。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>PROLED 触控屏激活 M1/M2 老用户换机潮：</strong>自 2020–2022 年购入首批 M1/M2 MacBook Pro 的数千万专业用户已进入 4–6 年换机窗口，串联 OLED 触控与轻薄新模具提供强劲升级理由。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>端侧大模型本地运行催生大内存选配潮：</strong>统一内存架构使高配 Mac Studio 与 MacBook Pro 成为开发者运行本地 AI Agent 的性价比首选，推升高毛利 BTO 选配收入。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">核心阻力与风险 (Bear Risks)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">RAMageddon 涨价 + 游戏生态短板</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“RAMageddon”内存危机迫使全系提价抑制需求：</strong>2026 年 6 月 MacBook Neo 涨价 $100、MacBook Air 涨价 $200，10 月基础款 M6 MacBook Pro 提价 $300（至 $1,999），可能延缓价格敏感型消费者购机节奏。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>PC 换机周期天然长于智能手机（4–6 年 vs 3–4 年）：</strong>Mac 机身做工极其耐用且 M 系列芯片性能过剩，可能导致普通办公用户的自然换机周期进一步拉长。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>3A 商业游戏生态与政企传统软件兼容性仍弱于 Windows：</strong>尽管苹果持续推进 Metal 4 图形接口，但核心硬核 PC 玩家与大型传统政企 ERP 采购仍高度依赖 Windows 平台。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 市场前景、内存危机与策略评估 (Outlook & Strategy)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-aaplblue-600 dark:text-aaplblue-400">Section 05 · Mac FY2027 Outlook &amp; Product Positioning Evaluation</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 FY2027 Mac 业务三情景预测与产品线竞争策略评估</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">展望结论：2027 年全球 PC 大盘承压下，Mac 凭借产品代差实现结构性跑赢</span>
+ </div>
+
+ <!-- 1. FY2027 Mac 业务三情景推演卡片 (Bull / Base / Bear) -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 乐观情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">乐观情景 (Bull Outlook)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：30%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">FY27 营收 $42.5B (+12.0%)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>PROLED 触控 MacBook Pro 在 FY27Q1 假日季引爆专业换机潮，同时内存供应紧张在 2027 下半年缓解；MacBook Neo 教育与新兴市场出货破千万台，全球 PC 份额突破 11.5%。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ Mac 营收突破 $400亿 历史大关（超越 FY22 峰值 $40.19B）
+ </div>
+ </div>
+
+ <!-- 基准情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-aaplblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-aaplblue-500/15 text-aaplblue-700 dark:text-aaplblue-300 text-xs font-bold">基准情景 (Base Outlook)</span>
+ <span class="font-mono text-xs font-bold text-aaplblue-600 dark:text-aaplblue-400">概率：50%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">FY27 营收 $40.2B (+6.0%)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>全球 PC 市场整体维持低迷（IDC 预测 2026–2030 年复合增速仅 1.5%），但 Mac 凭借提价转嫁与产品组合升级实现 5%–7% 稳健正增长，全球 PC 份额稳定在 10.0%–10.8%。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-aaplblue-600 dark:text-aaplblue-400">
+ 显著跑赢 Windows PC 大盘，稳固全球第四大 PC 厂商地位
+ </div>
+ </div>
+
+ <!-- 悲观情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">悲观情景 (Bear Outlook)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">FY27 营收 $36.0B (-5.1%)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>AI 数据中心对 LPDDR5X 与高端 NAND 的挤占持续恶化，存储缺货限制 Mac 假日季交付上限，且 2026 年两次全线提价抑制大众与企业预算，导致销量小幅回落。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段性受制于供应链产能与宏观消费电子需求降温
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心行业风险矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">Mac 产品线四大核心运营与市场风险边界</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · DRAM / NAND 存储供应链瓶颈</span>
+ <span class="text-xs font-mono text-rose-500 font-semibold">关注度：极高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">存储芯片缺货直接限制 FY27Q1 假日季 Mac 交付上限</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ COO Sabih Khan 在 2026 年 11 月业绩会上明确指出，存储器件供应紧张正在直接限制 Mac 与 iPad 在假日旺季的出货能力；且季度内存合约价居高不下，预计 2027 年底前难回 2025 年低位。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 连续提价后的需求弹性考验</span>
+ <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">MacBook Neo ($699) 与 Air ($1,299) 提价后性价比边际变化</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2026 年 6 月 MacBook Air 提价 $200 后，与入门级 M6 MacBook Pro 价格带重新拉开；而 Neo 失去“$599 神话”营销标签后，需观察 2027 年非教育渠道的消费者价格接受度。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-aaplblue-500/10 text-aaplblue-600 dark:text-aaplblue-400 text-xs font-bold">03 · 串联 PROLED 面板良率与交付爬坡</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">大尺寸双层串联 OLED 触控屏良品率爬坡节奏</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 首次应用于 14/16 英寸笔记本的 PROLED XDR 触控面板工艺复杂度极高，初期产能爬坡速度将直接决定高毛利旗舰 MacBook Pro 在 FY27 上半年的收入兑现节奏。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 高通骁龙 X Elite 2 与 AMD/Intel 反扑</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">Windows Copilot+ PC 阵营在能效比与企业端追赶</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 随着高通 ARM 架构 PC 芯片与 Intel/AMD 新一代低功耗制程处理器陆续铺货，Windows 阵营正在缩小续航差距，并依托大型企业既有的 IT 管理体系防守商用大客户。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. Mac 生态战略定位与选型指南横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-aaplblue-300 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>Mac 产品线战略定位总结与不同客群产品矩阵映射</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 大众与教育增量入口：MacBook Neo / Air</div>
+ <p class="text-slate-300 leading-relaxed">
+ 以 <strong>MacBook Neo ($599教育/$699零售)</strong> 承担“生态引流器”角色，降低首次购机门槛；以 <strong>MacBook Air</strong> 承接主流轻薄办公升级，二者共同做大 1.2 亿+ 活跃装机底座。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-aaplblue-300 mb-1">2. 专业创意与企业利润核心：PROLED MacBook Pro</div>
+ <p class="text-slate-300 leading-relaxed">
+ 搭载 <strong>PROLED 触控屏与 M5 Pro/Max</strong> 的旗舰笔记本锁定全球最富有的创意工作室、软件工程师与企业高管，凭超高 ASP 与高配内存选装贡献部门核心毛利。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 桌面端本地 AI 算力基座：Mac mini / Studio</div>
+ <p class="text-slate-300 leading-relaxed">
+ 凭借统一内存架构，<strong>M6 Mac mini 与 Mac Studio</strong> 已超越传统台式 PC 范畴，演化为 AI 时代高性价比的“桌面本地推理工作站”，开辟全新商用增长曲线。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 Mac 产品线季度跟踪 KPI 交互式核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Mac Lineup Quarterly Tracking KPIs</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 Mac 产品线季度基本面跟踪 KPI 交互式核查清单（FY2027 重点监测）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-aaplblue-500/15 text-aaplblue-700 dark:text-aaplblue-300 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选季度财报与供应链追踪中已验证达标的 Mac 业务指标（勾选状态自动本地保存），持续校验 Mac 产品线增长成色：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. FY2026 全年 Mac 净营收创 $379.3亿 (+12.5%) 历史出货纪录</span>
+ <span class="text-[11px] font-mono text-aaplblue-600 dark:text-aaplblue-400 font-semibold shrink-0">已验证达成</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ FY26Q4 单季营收达 $10.80B（+23.7% YoY），CEO John Ternus 确认 2026 财年 Mac 销量创历史最高纪录。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. MacBook Neo 破圈拉动 macOS 全球出货份额逆势扩张</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">已验证达成</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026Q2 macOS 出货同比激增 +17.4%，Q3 在全球 PC 大盘暴跌 20.1% 环境下份额逆势升至 9.5%（+1.0pp）。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. PROLED 触控 MacBook Pro 与 M6 芯片产品线顺利发布</span>
+ <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">已验证达成</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026 年 10 月底正式推出首款串联 OLED 触控 MacBook Pro 及 M6 版 Mac mini / iMac / 14" Pro。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. FY27Q1 假日季 PROLED MacBook Pro 交付节奏与供需平衡</span>
+ <span class="text-[11px] font-mono text-rose-600 dark:text-rose-400 font-semibold shrink-0">待跟踪验证</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 追踪高端触控 OLED 面板在欧美及中国市场 2026 圣诞/新年旺季的发货周期是否顺利缩短，推动 ASP 跃升。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 提价后（Neo $699 / Air $1,299）在 2027 年的销量韧性</span>
+ <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">待跟踪验证</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 监测 DRAM/NAND 涨价导致的终端售价上调是否影响学生与普通消费者对入门级 MacBook 的换机意愿。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#0284C7] focus:ring-aaplblue-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 大中华区与新兴市场 Mac 首次购机用户（Switcher）转化率</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">待跟踪验证</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 持续跟踪在亚太与新兴市场中，首次购买 Mac 用户的比例能否维持在 ~50% 高位，驱动活跃装机量向 1.4 亿迈进。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明 (Disclaimer Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>Mac 产品线与个人计算生态深度分析报告 · 专项产品研究框架版</span>
+ <span>数据基准：FY2026 Form 10-K、2026Q4 财报电话会、2026年10月新品发布及 IDC / Counterpoint PC 跟踪报告</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度分析报告聚焦于苹果公司旗下 Mac 个人电脑业务线（MacBook Pro、MacBook Air、MacBook Neo、Mac mini、Mac Studio、iMac、Mac Pro 及 macOS 生态），基于公开财报分部披露数据（FY2021–FY2026 Mac 净营收）、2026 年 10–11 月最新硬件发布信息及 IDC Worldwide Personal Computing Device Tracker、Counterpoint Research 行业追踪数据整理而成，旨在提供结构化的硬件产品竞争与单元经济学分析框架。文中涉及的 FY2027 Mac 出货量、ASP 与毛利模拟基于特定参数假设推演，不构成任何商业或投资承诺。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立 HTML 研报文件 (Standalone Export)
+ // ==========================================
+ function exportStandaloneHtml() {
+ const htmlContent = '<!DOCTYPE html>\\n' + document.documentElement.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const a = document.createElement('a');
+ a.href = url;
+ a.download = 'Apple_Mac_Product_Analysis.html';
+ document.body.appendChild(a);
+ a.click();
+ document.body.removeChild(a);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+
+ const toast = document.getElementById('export-toast');
+ if (toast) {
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-aaplblue-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-aaplblue-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 全球 PC 竞争格局矩阵筛选器
+ // ==========================================
+ function filterCompetitors(category) {
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-aaplblue-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-aaplblue-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ if (category === 'all' || rowCat === 'core' || rowCat === category) {
+ row.style.display = '';
+ } else {
+ row.style.display = 'none';
+ }
+ });
+ }
+
+ // ==========================================
+ // 5. Mac 产品线“出货量 × ASP × 内存成本”动态推演器
+ // ==========================================
+ let currentBtoMultiplier = 1.00; // 默认基准高配选装乘数
+
+ function setBtoTier(mult) {
+ currentBtoMultiplier = mult;
+ document.querySelectorAll('#bto-btn-group .bto-btn').forEach(btn => {
+ const btnMult = parseFloat(btn.dataset.bto);
+ if (Math.abs(btnMult - mult) < 0.005) {
+ btn.className = 'bto-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-aaplblue-400 text-navy-950 border border-aaplblue-300 shadow transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-navy-900';
+ } else {
+ btn.className = 'bto-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-aaplblue-400 transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+ }
+ });
+ updateMacSimulator();
+ }
+
+ function updateMacSimulator() {
+ const unitsMillion = parseFloat(document.getElementById('sim-units').value);
+ const neoSharePct = parseInt(document.getElementById('sim-neo-share').value, 10);
+ const memDragBps = parseInt(document.getElementById('sim-mem-drag').value, 10);
+ const proledBoost = document.getElementById('proled-boost-toggle').checked;
+
+ document.getElementById('sim-units-label').textContent = unitsMillion.toFixed(1) + 'M 台';
+ document.getElementById('sim-neo-share-label').textContent = neoSharePct + '%';
+ document.getElementById('sim-mem-drag-label').textContent = '-' + memDragBps + ' bps';
+
+ const neoShare = neoSharePct / 100;
+ const proShare = proledBoost ? 0.34 : 0.28;
+ const otherShare = Math.max(0.10, 1 - neoShare - proShare);
+
+ const neoAsp = 685; // 含教育优惠与零售加权
+ const proAsp = proledBoost ? 2350 : 2100;
+ const otherAsp = 1260; // Air + mini + Studio + iMac 加权
+
+ const blendedAsp = ((neoShare * neoAsp) + (proShare * proAsp) + (otherShare * otherAsp)) * currentBtoMultiplier;
+ const totalRevBillion = (unitsMillion * blendedAsp) / 1000;
+ const fy26Rev = 37.93;
+ const yoyPct = ((totalRevBillion - fy26Rev) / fy26Rev) * 100;
+
+ // 基准毛利率 37.5% + PROLED 旗舰结构优化 (+0.6%) - 内存涨价净冲击
+ const baseGm = 37.5 + (proledBoost ? 0.6 : 0) + ((currentBtoMultiplier - 1.0) * 12);
+ const netGmPct = Math.max(28.0, baseGm - (memDragBps / 100));
+ const grossProfitBillion = totalRevBillion * (netGmPct / 100);
+
+ document.getElementById('sim-mac-rev').textContent = '$' + totalRevBillion.toFixed(2) + 'B';
+ document.getElementById('sim-mac-yoy').textContent = `较 FY26 ($37.93B) 同比增长：${yoyPct >= 0 ? '+' : ''}${yoyPct.toFixed(1)}%`;
+ document.getElementById('sim-mac-yoy').className = `text-xs font-semibold mt-1.5 ${yoyPct >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+ document.getElementById('sim-mac-asp').textContent = '$' + Math.round(blendedAsp).toLocaleString('en-US');
+ document.getElementById('sim-mac-gm').textContent = netGmPct.toFixed(1) + '%';
+ document.getElementById('sim-mac-gp').textContent = '$' + grossProfitBillion.toFixed(2) + 'B';
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'aapl_mac_lineup_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'rev_evolution';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2021–FY2026 Mac 年度净营收 ($B) 与同比增速 (%)
+ const evoConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025', 'FY2026'],
+ datasets: [
+ {
+ label: 'Mac 全年净营收 ($B)',
+ data: [35.19, 40.18, 29.36, 29.98, 33.71, 37.93],
+ backgroundColor: '#38BDF8',
+ borderRadius: 5,
+ barThickness: 28,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '年度营收同比增速 YoY (%)',
+ data: [23.0, 14.2, -26.9, 2.1, 12.4, 12.5],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 2.5,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.dataset.yAxisID === 'y'
+ ? `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}B`
+ : `${ctx.dataset.label}: ${ctx.parsed.y > 0 ? '+' : ''}${ctx.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 46,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: -35,
+ max: 35,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => (v > 0 ? '+' : '') + v + '%' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：FY2026 Mac 各细分产品线收入占比与核心指标 (%)
+ const splitConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'MacBook Pro 系列营收占比 (M5/M6/PROLED)',
+ 'MacBook Air + Neo 大众轻薄线营收占比',
+ '2026Q2 MacBook 占全球笔记本营收份额',
+ 'FY2026Q4 Mac 单季净营收同比增速 ($10.8B)',
+ '2026Q2 全球 macOS 终端出货量同比增速',
+ 'Mac mini / Mac Studio 桌面工作站营收占比'
+ ],
+ datasets: [
+ {
+ label: 'Mac 业务结构与增长指标 (%)',
+ data: [46.0, 38.0, 24.0, 23.7, 17.4, 11.0],
+ backgroundColor: [
+ '#38BDF8',
+ '#10B981',
+ '#F59E0B',
+ '#0284C7',
+ '#22D3EE',
+ '#6366F1'
+ ],
+ borderRadius: 6,
+ barThickness: 22
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `验证数据: ${ctx.dataIndex === 3 || ctx.dataIndex === 4 ? '+' : ''}${ctx.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 55,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'rev_evolution' ? evoConfig : splitConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'rev_evolution') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-aaplblue-600 dark:text-aaplblue-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2021–FY2026 Mac 年度净营收 ($B) 与同比增长率演进';
+ subEl.textContent = '消化 FY2022 疫情居家办公透支后，Mac 连续两年实现 +12.4% / +12.5% 强劲复苏并逼近 $380亿 大关';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-aaplblue-600 dark:text-aaplblue-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2026 Mac 细分产品线结构与全球笔记本份额拆解 (%)';
+ subEl.textContent = 'MacBook Pro 与 Air/Neo 合计贡献 84% 营收，MacBook 以 16% 全球出货量斩获 24% 行业收入';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const ctx = document.getElementById('moatRadarChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '芯片能效比与统一内存架构',
+ '硬件毛利率与二手残值溢价',
+ '跨设备生态连续互通粘性',
+ '全球商用渠道与政企渗透率',
+ '大型 3A 游戏与传统软件兼容'
+ ],
+ datasets: [
+ {
+ label: '苹果 Mac (macOS)',
+ data: [9.9, 9.8, 9.9, 7.6, 6.2],
+ borderColor: '#38BDF8',
+ backgroundColor: 'rgba(56, 189, 248, 0.24)',
+ pointBackgroundColor: '#38BDF8',
+ borderWidth: 2.5
+ },
+ {
+ label: '联想 Lenovo (Windows)',
+ data: [7.4, 6.4, 6.8, 9.6, 9.2],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '戴尔 Dell (Windows)',
+ data: [7.3, 7.2, 6.5, 9.5, 9.0],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.12)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const ctx = document.getElementById('compMarginChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ '苹果 Mac (Apple Silicon + macOS)',
+ '戴尔科技 (Dell · 工作站与商用)',
+ '惠普 (HP Inc. · 消费与商用 PC)',
+ '联想集团 (Lenovo · 全球销量第一)',
+ '华硕 (ASUS · 电竞与创作者)'
+ ],
+ datasets: [
+ {
+ label: 'PC 硬件毛利率估算 (%)',
+ data: [37.5, 21.0, 19.2, 16.5, 15.8],
+ backgroundColor: '#38BDF8',
+ borderRadius: 5,
+ barThickness: 13
+ },
+ {
+ label: '2026Q3 全球出货量同比变化 YoY (%)',
+ data: [-11.3, -25.0, -30.9, -22.6, -8.6],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5,
+ barThickness: 13
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.x > 0 ? '+' : ''}${ctx.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: -35,
+ max: 45,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025', 'FY2026'],
+ datasets: [
+ {
+ type: 'bar',
+ label: 'Mac 部门年度净营收 ($B)',
+ data: [35.19, 40.18, 29.36, 29.98, 33.71, 37.93],
+ backgroundColor: 'rgba(56, 189, 248, 0.85)',
+ borderRadius: 5,
+ barThickness: 28,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '全球 PC 市场出货份额估算 (%)',
+ data: [8.0, 9.8, 8.5, 8.8, 8.9, 9.5],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.dataset.yAxisID === 'y'
+ ? `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}B`
+ : `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 20,
+ max: 45,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: 'Mac 年度净营收 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 6.0,
+ max: 12.0,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v.toFixed(1) + '%' },
+ title: { display: true, text: '全球 PC 市场份额 (%)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateMacSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>无创健康传感与生物光学监测技术深度研究报告：光学无创血糖、连续血压测量、多模态生物传感器与万亿数字医疗生态帝国</title>
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <!-- Chart.js -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ healthblue: {
+ 300: '#93C5FD',
+ 400: '#60A5FA',
+ 500: '#3B82F6',
+ 600: '#2563EB',
+ 700: '#1D4ED8',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ amber: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ }
+ }
+ }
+ }
+ }
+ </script>
+
+ <style>
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(59, 130, 246, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #3B82F6;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-healthblue-400 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-healthblue-500 via-healthblue-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 导出成功 Toast -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-healthblue-400/50 shadow-2xl text-xs font-medium no-print">
+ <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+ <span id="export-toast-text">已导出无创健康传感分析独立 HTML 文件 (NonInvasive_Health_Sensor_Analysis.html)</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-healthblue-400 to-healthblue-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ NIH
+ </div>
+ <div>
+ <div class="text-[11px] text-healthblue-300 font-semibold tracking-wider uppercase">Medical Sensor Tech</div>
+ <div class="text-sm font-bold leading-tight">无创健康传感与生物光学分析</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-2">
+ <button onclick="exportStandaloneHtml()" class="p-2 rounded-lg bg-healthblue-500/20 hover:bg-healthblue-500/30 text-healthblue-300" aria-label="导出HTML文件" title="导出独立HTML文件">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">传感研报导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 核心摘要与行业总览</a></li>
+ <li><a href="#sec-tech" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 无创血糖与多光谱光学监测</a></li>
+ <li><a href="#sec-bp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 连续血压与 PPG 光电容积脉搏波</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 核心技术路线与竞品横向对比</a></li>
+ <li><a href="#sec-med" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 医疗级临床认证与FDA监管壁垒</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 商业化前景、投资机遇与风险评估</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 产业跟踪 KPI 检核清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-healthblue-500 text-navy-950 font-bold text-xs flex items-center justify-center space-x-1.5">
+ <span>一键下载独立 HTML 文件</span>
+ </button>
+ <p>无创健康传感与数字医疗研究组</p>
+ <p>基准时间：2026年11月</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-healthblue-300 via-healthblue-500 to-indigo-600 flex items-center justify-center text-navy-950 font-extrabold text-sm shadow-lg shadow-healthblue-500/25">
+ NIH
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-healthblue-300 bg-healthblue-500/15 px-2 py-0.5 rounded">Non-Invasive Sensing</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">无创健康传感研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 光学无创血糖 · 连续血压脉搏波 · 多模态生物传感器 · 临床数字医疗前沿
+ </p>
+ </div>
+
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">全球无创传感市场规模</span>
+ <span class="font-mono font-bold text-white">~$385亿 <span class="text-healthblue-300 text-[10px]">(2026E)</span></span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">预计 2032 年市场空间</span>
+ <span class="font-mono font-bold text-emerald-400">~$1,240亿 <span class="text-slate-400">(CAGR 18.2%)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">核心突破方向</span>
+ <span class="font-mono font-bold text-amber-400">拉曼光谱 / 中红外 / PPG血压</span>
+ </div>
+ </div>
+
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-340px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-healthblue-400 mr-2">00</span>核心摘要与行业总览</span>
+ </a>
+ <a href="#sec-tech" data-target="sec-tech" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>无创血糖与多光谱光学监测</span>
+ </a>
+ <a href="#sec-bp" data-target="sec-bp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>连续血压与 PPG 光电容积脉搏波</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>核心技术路线与竞品横向对比</span>
+ </a>
+ <a href="#sec-med" data-target="sec-med" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>临床认证与FDA监管壁垒</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>商业化前景、投资机遇与风险</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>产业跟踪 KPI 检核清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-healthblue-400 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-healthblue-400 to-healthblue-500 hover:from-healthblue-500 hover:to-healthblue-600 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 研报文件</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面与摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-healthblue-500/15 text-healthblue-700 dark:text-healthblue-300 font-bold border border-healthblue-500/30">前沿产业赛道：无创生物传感与多光谱健康监测 (Non-Invasive Health Sensing)</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">覆盖周期：2026–2032 年技术突破与临床商业化元年</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>发布时间：2026年11月</span>
+ <span>医疗科技行业研究组</span>
+ </div>
+ </div>
+
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#60A5FA 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-healthblue-500/20 border border-healthblue-400/40 text-healthblue-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-healthblue-400 animate-pulse"></span>
+ <span>CORE ANALYSIS · 光学无创血糖突破 × 连续血压无创监测 × 机器学习多模态算法 × 医疗级FDA监管合规</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 无创健康传感与生物光学监测技术深度研究报告：告别扎针时代的无创血糖、连续血压与多模态数字医疗万亿蓝海
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 随着半导体硅光子学、多波长短波红外（SWIR）激光器以及先进微型化光谱仪的飞速成熟，2026 年全球无创健康传感迎来历史性拐点。传统有创扎针（如指血血糖仪、有创动脉压导管）正加速向<strong class="text-healthblue-300">非侵入式（Non-Invasive）光学、电化学皮肤贴片与微波谐振传感</strong>演进。本报告深度剖析无创血糖检测（拉曼光谱与吸收光谱法）、连续血压监测（PPG脉搏波时差与PTT算法）、核心硬件模组厂商竞争格局及 FDA 医疗器械临床认证路径，全面揭示数字医疗下一个十年的万亿增长级。
+ </p>
+
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">无创血糖核心技术路线</div>
+ <div class="text-white font-semibold">以短波红外吸收光谱（SWIR）、拉曼光谱与光热声谱为核心，攻克组织液与血液皮下微血管光学散射瓶颈</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">连续血压监测（cBP）</div>
+ <div class="text-healthblue-300 font-semibold">结合 PPG 光电容积脉搏波与 ECG 心电信号的脉搏传导时间（PTT）算法，实现佩戴式动态无创血压管理</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">市场空间与CAGR</div>
+ <div class="text-amber-300 font-semibold">全球无创传感市场规模预计从 2026 年的 ~$385亿 增长至 2032 年的 ~$1,240亿（CAGR 高达 18.2%）</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>2026全球无创传感市场</span>
+ <span class="p-1.5 rounded-lg bg-healthblue-500/15 text-healthblue-600 dark:text-healthblue-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$38.5B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+16.5% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 消费级与临床级无创传感设备渗透率加速提升，驱动市场整体规模突破 380 亿美元大关。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>光学生物传感器渗透率</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">31.4%</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">高速上升期</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 智能手表、手环及无创医疗腕带标配多波长光学传感模组，替代传统单绿光心率监测。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>慢病管理与院外监护占比</span>
+ <span class="p-1.5 rounded-lg bg-healthblue-500/15 text-healthblue-600 dark:text-healthblue-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">64.2%</span>
+ <span class="text-xs font-bold text-healthblue-600 dark:text-healthblue-400 bg-healthblue-500/15 px-2 py-0.5 rounded">核心应用场景</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 糖尿病、高血压及心血管疾病患者群体是无创传感设备的核心购买与复购主力军。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FDA/CE 医疗级认证通过率</span>
+ <span class="p-1.5 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">22.8%</span>
+ <span class="text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded">高壁垒红海</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 绝大多数消费级手表仅具健康参考功能，仅少部分算法获 II 类/III 类医疗器械注册证。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 无创血糖与多光谱光学监测
+ ========================================================= -->
+ <section id="sec-tech" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-healthblue-600 dark:text-healthblue-400">Section 01 · Non-Invasive Glucose &amp; Multi-Spectral Optics</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 无创血糖与多光谱光学监测：打破皮下组织液散射壁垒的下一代光学传感</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">核心挑战：人体皮肤组织强散射、皮下微血管葡萄糖浓度低与体温/出汗噪声干扰</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2022–2032 全球无创健康传感与无创血糖市场规模演进 ($B)</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">从传统有创针刺血糖仪向光学无创监测演进的十倍成长曲线</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <span class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-healthblue-600 dark:text-healthblue-400 shadow-sm">市场规模预测</span>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="glucoseMarketChart"></canvas>
+ </div>
+ </div>
+
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">无创血糖三大主流光学技术路线解析</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-healthblue-500/15 text-healthblue-600 dark:text-healthblue-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">近红外/短波红外吸收光谱 (NIR/SWIR)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 利用 1000nm–2500nm 波长光穿透手指或耳垂，通过葡萄糖分子特定化学键（C-H、O-H）的倍频与合频吸收特性测定浓度，是目前便携式光学手表探索的主要方向。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">拉曼光谱法 (Raman Spectroscopy)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 通过单色激光照射组织液，分析散射光频率偏移（指纹光谱）。其特征峰信号独立于水分子干扰，准确度较高，但对微弱信号的信噪比和激光功率控制要求极高。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">光热声谱与非侵入电化学传感</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 脉冲光照射皮肤后产生微弱超声波（光声效应），通过检测声波振幅反演葡萄糖含量；或借助微流控汗液/组织液渗透提取，实现间接无创监测。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">临床准确度标准 (ISO 15197)</span>
+ <span class="font-bold text-healthblue-600 dark:text-healthblue-400">要求误差在 ±15% 以内 (A+B区 > 95%)</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 连续血压与 PPG 光电容积脉搏波
+ ========================================================= -->
+ <section id="sec-bp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Continuous Blood Pressure &amp; PPG Pulse Wave Analysis</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 连续血压（cBP）与 PPG 光电容积脉搏波：从间断袖带加压到全天候无感监测</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">核心算法：脉搏传导时间 (PTT)、脉搏波形特征提取 (PWV) 与机器学习校准</span>
+ </div>
+
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-healthblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-healthblue-500/15 text-healthblue-700 dark:text-healthblue-300 text-xs font-bold">基础技术 · PPG 信号</span>
+ <span class="font-mono text-xs font-bold text-healthblue-600 dark:text-healthblue-400">光学容积描记</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">多波长光电容积脉搏波</h3>
+ <p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 利用绿光、红光及红外光照射手腕微血管，通过反射光强弱变化捕捉血液容积随心动周期的脉动。先进算法可分离出动脉血管弹性、舒张压与收缩压的动态特征。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-mono text-slate-500">
+ 需配合气囊或初始血压计标定校准
+ </div>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">核心算法 · PTT/PWV</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">脉搏传导时间</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">ECG + PPG 联合测压</h3>
+ <p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 结合心电图（ECG）测定心脏射血起点，与 PPG 检测脉搏波到达末梢（如手指或手腕）的时间差（PTT）。脉搏波传导速度与血压呈高度正相关，实现真正动态连续血压趋势追踪。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-mono text-slate-500">
+ 临床级动态血压监测 (ABPM) 替代方案
+ </div>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-amber-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs font-bold">前沿突破 · 机器学习</span>
+ <span class="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">AI 神经网络建模</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">深度学习形态学解析</h3>
+ <p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 通过深度卷积神经网络（CNN）与 Transformer 模型分析 PPG 脉搏波的主波、重搏波notch等形态学参数，无需 ECG 即可在单光电传感器上估算绝对血压值。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-mono text-slate-500">
+ 正在向 FDA 医疗器械注册标准大举冲刺
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 核心技术路线与竞品横向对比
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-healthblue-600 dark:text-healthblue-400">Section 03 · Technical Pathways &amp; Competitive Landscape</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 核心技术路线与全球竞品横向对比：消费级健康手表 vs 医疗级无创传感设备</h2>
+ </div>
+ <div class="flex flex-wrap gap-1.5 text-xs no-print">
+ <button onclick="filterSensors('all')" class="sensor-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-healthblue-500 text-navy-950 shadow-sm transition cursor-pointer">全部代表厂商</button>
+ <button onclick="filterSensors('medical')" class="sensor-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">医疗级专业设备</button>
+ <button onclick="filterSensors('consumer')" class="sensor-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">智能穿戴与消费级</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">企业/研究机构与代表产品</th>
+ <th class="py-4 px-4 min-w-[140px]">核心传感监测技术</th>
+ <th class="py-4 px-4 min-w-[145px]">主要监测指标</th>
+ <th class="py-4 px-4 min-w-[100px]">医疗认证级别</th>
+ <th class="py-4 px-4 min-w-[105px]">商业化与临床成熟度</th>
+ <th class="py-4 px-5 min-w-[230px]">技术优势与当前痛点评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="sensor-table-body">
+ <tr data-category="medical" class="bg-healthblue-500/5 dark:bg-healthblue-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Rockley Photonics / 医疗光学</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">硅光子生物传感器芯片组</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">全光谱红外激光吸收与拉曼光谱</td>
+ <td class="py-4 px-4 text-slate-900 dark:text-white font-semibold">无创血糖、乳酸、核心体温、血压</td>
+ <td class="py-4 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">FDA II类临床预研</span></td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">临床样机阶段 (B2B模组供应)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>硅光子集成先驱：</strong>将庞大的实验室光谱仪集成于单枚硅光子芯片，可测多项血液生化指标；痛点在于封装成本高且功耗较大。
+ </td>
+ </tr>
+
+ <tr data-category="consumer" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">华为终端 (Huawei Health)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">HUAWEI WATCH D 系列 /  TruSeen™</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">微型气泵袖带加压 + PPG脉搏波</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">医疗级血压测量、ECG、动脉硬化</td>
+ <td class="py-4 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">NMPA 二类医疗器械</span></td>
+ <td class="py-4 px-4 text-emerald-600 dark:text-emerald-400 font-bold">已实现大规模消费级量产</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>气泵式无创血压标杆：</strong>创新性将微型气泵与充气表带集成在智能手表中，获得国家药监局二类医疗器械注册证，测量准确度极高。
+ </td>
+ </tr>
+
+ <tr data-category="medical" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">CieaHealth / 顶尖科研团队</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">非侵入式光热声谱仪</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">脉冲激光 + 光声共振传感器</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">连续组织液葡萄糖监测</td>
+ <td class="py-4 px-4"><span class="px-2 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs">临床试验期 (IDE)</span></td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">医院临床试验阶段</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>光声效应突破：</strong>利用光声信号穿透皮下脂肪和皮肤屏障，有效降低光散射噪声，但在便携化和小型化方面仍面临攻坚挑战。
+ </td>
+ </tr>
+
+ <tr data-category="consumer" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">欧姆龙健康 (Omron Healthcare)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">HeartGuide 智能血压手表</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">示波法机械加压袖带传感</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">动态血压、日常活动量、睡眠</td>
+ <td class="py-4 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">FDA 510(k) 医疗认证</span></td>
+ <td class="py-4 px-4 text-emerald-600 dark:text-emerald-400 font-bold">全球成熟商业化销售</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>传统医疗巨头数智化：</strong>完全符合传统袖带血压计的医学金标准，但在日常佩戴舒适度、外观时尚度与电池续航上略逊于纯光电手表。
+ </td>
+ </tr>
+
+ <tr data-category="medical" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Apple Inc. (前沿实验室项目)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Project E6 (硅光子无创血糖探测)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">多波长吸收光谱 + 硅光子芯片</td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">葡萄糖趋势预警、血糖异常提示</td>
+ <td class="py-4 px-4"><span class="px-2 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs">内部可行性验证阶段</span></td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">概念验证与原型机测试</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>行业风向标：</strong>苹果已在员工群体中开展大规模可行性盲测，采用台积电制造的硅光子芯片和吸收光谱仪，旨在实现无创血糖趋势的突破。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">全球无创传感细分技术路线市场份额占比结构</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">光电容积脉搏波 (PPG) 与气压袖带占据当前主流，光学光谱无创血糖正迎来爆发前夜</p>
+ </div>
+ <span class="text-xs font-semibold text-healthblue-700 dark:text-healthblue-300 bg-healthblue-500/15 px-2.5 py-1 rounded">医疗传感市场结构分析</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="techShareChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 临床认证与FDA监管壁垒
+ ========================================================= -->
+ <section id="sec-med" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04  Clinical Validation &amp; FDA Regulatory Barriers</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 临床认证与 FDA 监管壁垒：从“消费级健康参考”跨越到“医疗级诊断器械”</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">监管红线：FDA 对未经批准宣称“无创测血糖/高精度血压诊断”智能设备的严厉打击</span>
+ </div>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">医疗级准入合规路径 (FDA 510(k) / De Novo)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">严格临床试验与误差分析</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>大规模盲法临床试验：</strong>必须招募数百名不同肤色、年龄、BMI指数及血糖/血压波动区间的受试者，与实验室生化金标准（如YSI生化分析仪、动脉穿刺压）进行一致性对比。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>ISO 15197 与 AAMI/ISO 81060-2 标准：</strong>血糖测量误差在均值±15%（或±0.83 mmol/L）以外的比例必须极低；血压测量标准差需满足误差小于 5mmHg。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>算法稳定性与防过拟合验证：</strong>由于光学传感易受环境光、出汗、皮肤色素沉淀干扰，FDA 审评极其关注机器学习模型的泛化能力与鲁棒性。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">监管警示与合规风险 (Regulatory Warnings)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">严厉打击虚假医疗宣传</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>FDA 官方安全警示：</strong>美国食品药品监督管理局多次发布公告，警告消费者切勿使用未经 FDA 批准的智能手表或智能戒指宣称的“无创血糖测量”功能来指导胰岛素注射或糖尿病治疗。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>产品定位合规化：</strong>目前绝大多数消费级设备只能将指标标注为“生活方式趋势参考”（Wellness &amp; Fitness），严禁直接用于临床诊断。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>数据隐私与 HIPAA 合规：</strong>海量生物光学与健康隐私数据存储于云端，面临欧盟 GDPR 与美国 HIPAA 的严苛隐私监管法案。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 商业化前景、投资机遇与风险评估
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-healthblue-600 dark:text-healthblue-400">Section 05 · Commercial Outlook, Investment &amp; Risks</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 商业化前景、投资机遇与风险评估：从概念炒作到百亿级医疗赛道的投资方法论</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">投资评级：长期高成长 / 优选掌握核心硅光子与算法壁垒的硬科技标的</span>
+ </div>
+
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：30%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">光学无创血糖实现消费级突破</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>某头部科技巨头（如苹果或华为）在智能手表中成功量产高精度无创血糖趋势传感器，获得 FDA De Novo 医疗认证，引爆全球数亿糖尿病与亚健康群体的换机狂潮，带动整个生物光学传感器产业链年复合增长超 25%。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600">
+ 产业估值天花板彻底打开，上游芯片供应商迎戴维斯双击
+ </div>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-healthblue-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-healthblue-500/15 text-healthblue-700 dark:text-healthblue-300 text-xs font-bold">基准情景 (Base Case)</span>
+ <span class="font-mono text-xs font-bold text-healthblue-600 dark:text-healthblue-400">概率：50%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">渐进式演进与分级渗透</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>无创血糖仍处于趋势参考阶段，但连续血压监测（通过气泵或成熟 PTT 算法）在消费级智能手表中全面普及；医疗级无创监测设备在院外慢病管理与居家养老场景稳步放量，行业实现 15%–18% 的稳健增长。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-healthblue-600">
+ 市场稳步扩容，龙头企业凭借产品矩阵与品牌壁垒占据主导
+ </div>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">物理瓶颈与监管收紧</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>光学无创血糖因皮肤个体差异过大、环境干扰无法克服临床误差红线；各国监管机构（FDA/NEMA）因虚假宣传对无创健康设备开出巨额罚单并发布禁售令，导致资本市场投资情绪迅速冰冻。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600">
+ 行业估值回调，洗牌加剧，伪创新项目黯然退场
+ </div>
+ </div>
+ </div>
+
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-healthblue-300 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>机构级无创传感投资策略与赛道布局建议</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 聚焦具备硅光子与微型光谱核心专利的上游芯片商</div>
+ <p class="text-slate-300 leading-relaxed">
+ 相比组装品牌，掌握核心短波红外激光器、硅光子集成光学模组及高灵敏度光电探测器的上游硬科技公司具备最强议价权与技术壁垒。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-healthblue-300 mb-1">2. 布局已获二类医疗器械注册证的成熟穿戴标的</div>
+ <p class="text-slate-300 leading-relaxed">
+ 优先选择在无创血压（气泵式或高精度 PTT 算法）领域已实现 NMPA/FDA 医疗认证并成功切入院外慢病管理生态的头部商业化公司。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 严控概念炒作，密切跟踪临床盲测真实数据</div>
+ <p class="text-slate-300 leading-relaxed">
+ 警惕仅凭渲染视频和实验室初期概念融资的项目；以 ISO 15197 临床误差率及真实患者盲法测试白皮书作为评估投资价值的唯一金标准。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 产业跟踪 KPI 检核清单
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Tracking KPI Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 无创健康传感产业跟踪 KPI 交互式核查清单（研发与商业化监测）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-healthblue-500/15 text-healthblue-700 dark:text-healthblue-300 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选无创健康传感与数字医疗行业在研发突破、临床试验或监管审批中的关键进展（勾选状态自动本地保存）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#3B82F6]">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 光学无创血糖原型机通过前瞻性多中心临床盲测 (ISO 15197)</span>
+ <span class="text-[11px] font-mono text-healthblue-600 dark:text-healthblue-400 font-semibold shrink-0">血糖圣杯突破</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪是否有消费级或医疗级无创血糖监测仪正式公布其在百人规模以上独立临床试验中的误差率达标数据。
+ </p>
+ </div>
+ </label>
+
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#3B82F6]">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 智能手表连续血压（cBP）算法获得 FDA De Novo 或 NMPA 二类证</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">监管合规验证</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 监测基于纯 PPG 光电脉搏波或创新气泵技术的动态血压监测设备是否获得主流药监局的医疗器械注册证。
+ </p>
+ </div>
+ </label>
+
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#3B82F6]">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 硅光子多光谱传感器模组实现消费级供应链规模化量产</span>
+ <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">硬件成本下探</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 上游晶圆厂与光电模组供应商的产能释放情况，评估其能否将高精度光谱传感器的 BOM 成本降至智能手表可承受区间。
+ </p>
+ </div>
+ </label>
+
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#3B82F6]">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 跨国科技巨头（苹果/三星/华为）无创健康传感专利与发布会动态</span>
+ <span class="text-[11px] font-mono text-rose-600 dark:text-rose-400 font-semibold shrink-0">行业风向标</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 关注全球消费电子巨头在新品发布会中对无创健康监测功能的商业化落地时间表及实际功能宣称。
+ </p>
+ </div>
+ </label>
+
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#3B82F6]">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 院外慢病管理 SaaS 平台与无创传感设备的生态打通率</span>
+ <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold shrink-0">数字医疗商业化</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察远程医疗服务商、保险公司与无创传感硬件厂商合作推出“居家慢病管理订阅制服务”的渗透率与付费用户数。
+ </p>
+ </div>
+ </label>
+
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#3B82F6]">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 各国药监局（FDA/NEMA/EMA）对无创健康传感设备的执法合规风向</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">政策红线监控</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 监测监管机构对夸大宣传无创检测功能的打击力度及对真正医疗级无创传感设备开辟的绿色审批通道（Breakthrough Device Designation）。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- 页脚免责声明 -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>无创健康传感与生物光学监测技术深度研究报告 · 医疗科技产业前沿版</span>
+ <span>数据基准：全球医疗器械行业白皮书、FDA 监管公告及 2026 年行业前沿调研数据</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度研究报告基于公开的医疗科技文献、行业白皮书及生物光学传感前沿进展整理编写，旨在提供结构化的技术路线分析与市场前景展望。报告中涉及的无创血糖、连续血压性能指标及未来市场规模预测基于特定假设条件推演，不构成任何医疗诊断建议、证券投资评级或买卖承诺。读者在涉及自身健康管理或投资决策时，请遵从专业医师指导并独立核实。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互脚本与图表初始化 -->
+ <script>
+ function exportStandaloneHtml() {
+ const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const a = document.createElement('a');
+ a.href = url;
+ a.download = 'NonInvasive_Health_Sensor_Analysis.html';
+ document.body.appendChild(a);
+ a.click();
+ document.body.removeChild(a);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+
+ const toast = document.getElementById('export-toast');
+ if (toast) {
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+ }
+
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ drawer.classList.toggle('hidden');
+ }
+
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-healthblue-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-healthblue-400');
+ }
+ }
+ });
+ });
+
+ function filterSensors(category) {
+ document.querySelectorAll('.sensor-filter-btn').forEach(btn => {
+ if ((category === 'all' && btn.textContent.includes('全部')) ||
+ (category === 'medical' && btn.textContent.includes('医疗级')) ||
+ (category === 'consumer' && btn.textContent.includes('消费级'))) {
+ btn.classList.add('bg-healthblue-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-healthblue-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+
+ const rows = document.querySelectorAll('#sensor-table-body tr');
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ if (category === 'all' || rowCat === category) {
+ row.style.display = '';
+ } else {
+ row.style.display = 'none';
+ }
+ });
+ }
+
+ const KPI_STORAGE_KEY = 'non_invasive_sensor_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {}
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {}
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ }
+
+ let glucoseChartInstance = null;
+ let techShareChartInstance = null;
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)'
+ };
+ }
+
+ function initGlucoseChart() {
+ const ctx = document.getElementById('glucoseMarketChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (glucoseChartInstance) glucoseChartInstance.destroy();
+ glucoseChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['2022', '2023', '2024', '2025', '2026 (E)', '2028 (E)', '2030 (E)', '2032 (E)'],
+ datasets: [
+ {
+ label: '全球无创健康传感与血糖市场规模 ($B)',
+ data: [21.5, 24.2, 28.0, 32.8, 38.5, 58.0, 89.0, 124.0],
+ backgroundColor: '#3B82F6',
+ borderRadius: 6
+ },
+ {
+ type: 'line',
+ label: '市场复合增速趋势 CAGR (%)',
+ data: [15.2, 16.0, 17.1, 17.5, 18.2, 18.5, 18.8, 19.0],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 2.5,
+ pointRadius: 4,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 140,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 10,
+ max: 25,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' }
+ }
+ }
+ }
+ });
+ }
+
+ function initTechShareChart() {
+ const ctx = document.getElementById('techShareChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (techShareChartInstance) techShareChartInstance.destroy();
+ techShareChartInstance = new Chart(ctx, {
+ type: 'doughnut',
+ data: {
+ labels: [
+ '光电容积脉搏波 (PPG) 与 连续血压监测',
+ '短波红外/近红外光学无创血糖感知',
+ '气压袖带与机械示波法智能穿戴',
+ '拉曼光谱与光热声谱前沿医疗设备',
+ '心电 (ECG) 与其他多模态生化贴片'
+ ],
+ datasets: [{
+ data: [42.5, 18.0, 21.5, 7.0, 11.0],
+ backgroundColor: [
+ '#3B82F6',
+ '#10B981',
+ '#F59E0B',
+ '#6366F1',
+ '#EC4899'
+ ],
+ borderWidth: 2,
+ borderColor: document.documentElement.classList.contains('dark') ? '#0F172A' : '#FFFFFF'
+ }]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'right',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initGlucoseChart();
+ initTechShareChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ initGlucoseChart();
+ initTechShareChart();
+ });
+ </script>
+</body>
+</html>
