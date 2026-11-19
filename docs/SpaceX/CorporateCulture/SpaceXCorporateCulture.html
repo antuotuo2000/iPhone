@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>SpaceX 企业文化与组织架构深度研究报告：第一性原理、“白痴指数”极限降本、双首脑制与硬件敏捷迭代飞轮</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <script>
+if (typeof Chart === 'undefined') {
+  document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"><\/script>');
+}
+</script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：琥珀金与深空科技渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：SpaceX_Corporate_Culture_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ SPCX
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Hawthorne &amp; Starbase · 2002–2026+</div>
+ <div class="text-sm font-bold leading-tight">SpaceX 企业文化深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">SpaceX 企业文化目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 双首脑制与垂直整合架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 四大文化支柱与工程壁垒</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 航天与硬科技文化横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 第一性原理降本与组织效能</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三阶演进与管理得失复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. SpaceX 文化法则核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>硬科技组织架构与第一性原理研究组</p>
+ <p>数据基准：2026年11月 (NASDAQ: SPCX / 10-Q)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-xs shadow-lg shadow-mogold-500/25">
+ SPCX
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CORPORATE CULTURE</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">SpaceX 企业文化研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 第一性原理 × “白痴指数”极限降本 × 硬件敏捷迭代 · 火星殖民使命驱动的工程帝国
+ </p>
+ </div>
+
+ <!-- 核心组织与运营快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">最高治理双核模型</span>
+ <span class="font-mono font-bold text-white">Musk(CTO) × Shotwell(运营)</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">核心员工规模与垂直率</span>
+ <span class="font-mono font-bold text-emerald-400">~1.71万人 · 85%+零件自制</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">在轨卫星占比 / 单次入轨</span>
+ <span class="font-mono font-bold text-mogold-400">~75% 全球 · 降本逾 95%</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>双首脑制与垂直整合架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>四大文化支柱与工程壁垒</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>航天与硬科技文化横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>第一性原理降本与组织效能</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三阶演进与管理得失复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>SpaceX 文化法则核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">组织史定评：将“硅谷软件快速试错”植入重型航天的物种革命</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：草创求生 (2002–2008) · 猎鹰与星链腾飞 (2009–2025) · 星舰回收与AI融合 (2026+)</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据基准：2026年11月 (SPCX 10-Q)</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 第一性原理 × “五步工作法” × “远见者-执行者”双首脑制 × 硬件敏捷迭代</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ SpaceX 企业文化与组织架构深度研究报告：第一性原理、“白痴指数”极限降本与超级使命驱动的工程机器
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 传统航空航天巨头（波音、洛克希德·马丁、ULA）长期遵循“瀑布流纸面仿真、外包多层分包、成本加成（Cost-Plus）与零容错官僚审批”的百年教条，致使火箭发射成本居高不下、研发周期动辄十年。自 2002 年创立以来，<strong class="text-white">SpaceX</strong> 将硅谷软件工程的<strong class="text-mogold-300">“硬件敏捷快速试错（Rapid Iteration）”</strong>与物理学的<strong class="text-white">“第一性原理（First Principles）”</strong>强行嫁接至重工业制造——宁愿在得州博卡奇卡（Starbase）炸毁多枚原型机以换取真实飞行遥测数据，也不在会议室里耗费数年撰写完美 PPT（<a href="https://builtin.com/company/spacex/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">Built In · SpaceX Culture</a>）。
+ 在最高治理层，SpaceX 独创了商业史上最稳固的<strong class="text-emerald-400">“远见者（Elon Musk，首席工程师/CTO）× 超级执行者（Gwynne Shotwell，总裁兼 COO）”双首脑分工</strong>（<a href="https://resources.rework.com/libraries/leadership-legends/gwynne-shotwell-leadership" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">Rework · Shotwell Leadership</a>）：即便马斯克同时执掌 Tesla、X 与 xAI，肖特维尔依然稳健统领着 SpaceX 约 <a href="https://www.reveliolabs.com/companies/space-exploration/employees" target="_blank" rel="noopener noreferrer" class="cite-link text-white font-semibold">1.71 万名员工</a>的商业合同、发射排期与供应链交付，支撑起 2026 年完成史上最大 IPO 并实现单季营收 <strong class="text-mogold-400">$145.8亿（+161% YoY）</strong>、星舰 Flight 15 首次实现发射塔“筷子”捕获回收上级飞船的工程奇迹。
+ </p>
+
+ <!-- 核心文化基因高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">“白痴指数（Idiot Index）”极限自研</div>
+ <div class="text-white font-semibold">成品售价与原材料重量成本之比高于 3 倍即视作不合理，逼迫团队自建产线将零件制造成本砍去 90%</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">“时间表可以跳票，野心绝不妥协”</div>
+ <div class="text-mogold-400 font-semibold">拒绝沙袋式保守排期（Sandbagging），用看似不可能的截止日期逼出颠覆性架构简化</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">双首脑制 × “禁止混蛋（No Asshole）”</div>
+ <div class="text-emerald-400 font-semibold">马斯克定义物理极限，肖特维尔掌舵商业兑现并立下“技术再强、欺凌同事也立即开除”的行为底线</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>近地轨道入轨成本降幅</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">-95%+</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">$54k → &lt;$1.5k/kg</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 打破航天飞机时代 ~$54,500/kg 魔咒，猎鹰重型降至 ~$1,500/kg，星舰全复用目标直指 &lt;$100/kg。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>全球活跃在轨卫星统治占比</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~75%</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">1,360万用户</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 依靠“火箭-卫星工厂”垂直迭代飞轮，Starlink 占据地球轨道四分之三活跃卫星，2026Q3 营业利润率达 45.1%。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>核心员工人数与人均年化创收</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~17,125</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">~$3.4M/人年化</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 截至 2026 年中全球员工仅约 1.71 万人（<a href="https://www.reveliolabs.com/companies/space-exploration/employees" target="_blank" rel="noopener noreferrer" class="cite-link">Revelio Labs</a>），以 2026Q3 年化营收 $58.3B 计人均创收超 $340万。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>核心零部件自制垂直整合率</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">85%+</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">拒绝分包加价</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 打破波音/ULA 五层外包体制，猛禽发动机、星链卫星、相控阵芯片与 1.7GW 超算全栈自研自产。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 双首脑治理与全栈垂直整合架构 (Dual-Leadership & Vertical Integration)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Dual-Head Governance &amp; Full-Stack Vertical Integration</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 双首脑治理与全栈垂直整合：马斯克与肖特维尔如何协同运转万亿机器？</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">不设传统外包供应链层级 · 工程师与焊工同楼层办公的“无墙工厂”</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2010–2026E 猎鹰火箭与星舰（Starship）单公斤近地轨道发射成本断崖式下降 ($/kg)</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">第一性原理与火箭可回收文化将入轨成本从航天飞机时代的 $54,500/kg 压缩至百美元级，解锁星链与天基AI经济性</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('cost_curve')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：单公斤入轨成本曲线</button>
+ <button onclick="switchBizChart('headcount_cadence')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：精锐员工与高频发射飞轮</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：核心治理机制拆解 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">SpaceX 组织架构的三大反传统密码</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">不对称双首脑制：造浪者（Musk）× 压舱石（Shotwell）</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 商业史上罕见的“愿景-执行”二元分离：<strong>Elon Musk</strong> 担任首席工程师与董事长，专注定义第一性原理技术边界与颠覆性方向；<strong>Gwynne Shotwell</strong> 担任总裁兼 COO，统管商业合同、发射履约、NASA/军方关系与财务纪律——当马斯克深陷 Twitter/X 或 Tesla 事务时，SpaceX 发射节奏依然零中断（<a href="https://resources.rework.com/libraries/leadership-legends/gwynne-shotwell-leadership" target="_blank" rel="noopener noreferrer" class="cite-link">Rework</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">扁平责任工程师制（Responsible Engineer, RE）</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 拒绝按职能割裂“设计院”与“制造厂”：在霍桑（Hawthorne）与星舰基地（Starbase），每一个阀门、航电板或猛禽喷注器都指派一名<strong>责任工程师（RE）</strong>，从草图设计、结构仿真、CNC 加工到试车台点火全程端到端负责，且任何基层工程师均可越级向马斯克或副总裁直接汇报技术隐患（<a href="https://builtin.com/company/spacex/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“好点子赢（Best Ideas Win）”的去头衔辩论文化</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 会议室里资历与职级无效，一切用物理公式与实测数据说话；年轻刚毕业的工程师常被授予千万美元级硬件子系统全权，以“使命荣誉感”换取极高学习斜率与股权回报（<a href="https://builtin.com/company/spacex/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">终极北极星指标（North Star）</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">让人类成为多行星物种（Making Life Multiplanetary）</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大核心文化运作单元详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 单元 1：第一性原理与白痴指数 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">底层思维算法 · 穿透百年航天价格泡沫</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">BOM 降本 90%–98%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 第一性原理与“白痴指数（Idiot Index）”审计</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 面对传统航天供应商报价 $120万的作动器或 $10万级的太空级芯片，SpaceX 拒绝“行业惯例类比推理”，而是直接计算碳纤维、铝合金、铜与硅晶圆在伦敦金属交易所的<strong>原始物理重量成本</strong>（即“白痴指数 = 成品价格 / 原材料成本”）。若比值过高，立刻抽调工程师自建产线：例如将火箭航电计算机成本从 $1,000万压缩至不足 $1万，并将星舰箭体材料由昂贵碳纤维果断切换为 30X 不锈钢（每吨仅 $2,500 且耐高温）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>30X 不锈钢箭体 + 工业级冗余三投票芯片</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">只受物理定律约束，不受行业陈规约束</span>
+ </div>
+ </div>
+
+ <!-- 单元 2：马斯克五步工作法 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">工程执行铁律 · 猛禽发动机与星舰改造法典</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">零件删减率 &gt;50%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. “五步工作法（The Algorithm）”与减法偏执</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 在得州星舰工厂墙上赫然印着五条铁律：① <strong>让需求不再那么愚蠢</strong>（无论谁提出的需求都必须署名，哪怕是马斯克本人）；② <strong>删掉尽可能多的零件与流程</strong>（若后来没被迫加回至少 10% 的零件，说明删得还不够狠）；③ <strong>简化与优化</strong>（切忌在第一步和第二步前优化不该存在的东西）；④ <strong>加快周期速度</strong>；⑤ <strong>最后才引入自动化</strong>。正是这一算法让猛禽 3 代（Raptor 3）发动机砍掉全部外部隔热罩与繁杂管路，推力提升同时重量锐减。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>“最好的零件就是没有零件”</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Raptor 1 → Raptor 3 极简进化样本</span>
+ </div>
+ </div>
+
+ <!-- 单元 3：硬件敏捷迭代与公开试错 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">研发范式颠覆 · 以炸代算（Hardware-Rich）</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">星舰 Flight 15 塔臂回收</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 硬件富集敏捷迭代（Hardware-Rich Iterative Testing）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 传统航天畏惧一切公开失败（如波音星际客机与 NASA SLS 耗资数百亿美元却十年仅飞一两次）。SpaceX 则奉行<strong>“快速制造、高频试飞、把每次爆炸转化为遥测数据资产”</strong>：从猎鹰 9 号早期海上着陆爆炸集锦（<em>How Not to Land an Orbital Rocket Booster</em>）到星舰连续 15 次高密度测试，直至 2026 年 11 月 Flight 15 历史性用发射塔“筷子”机械臂捕获回收 Ship 上级飞船（<a href="https://fasterthannormal.co/people/gwynne-shotwell" target="_blank" rel="noopener noreferrer" class="cite-link">FasterThanNormal</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>公开失败复盘 + 极速复飞闭环</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">用低成本原型试错替代天价纸面论证</span>
+ </div>
+ </div>
+
+ <!-- 单元 4：跨界垂直协同飞轮 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">组织协同飞轮 · 火箭 × 卫星 × 算力无缝耦合</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">2026Q3 年化营收 $58.3B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. “运载-星座-终端-AI”全栈协同与极致人效</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ SpaceX 内部不存在“内部结算壁垒”：火箭团队专为星链（Starlink）定制折叠堆叠舱与高频复用周转，卫星团队则直接借鉴特斯拉汽车供应链压低相控阵天线成本；2026 年融合 xAI、1.7GW Colossus II 超算与 Cursor 后，全公司仅约 <strong>1.71 万名员工</strong>即支撑起航天发射、1,360 万卫星宽带用户与全球顶级 AI 算力三大万亿级赛道（<a href="https://www.reveliolabs.com/companies/space-exploration/employees" target="_blank" rel="noopener noreferrer" class="cite-link">Revelio Labs</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Hawthorne + Starbase + Redmond + Bastrop</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">“时间表可以跳票，野心绝不妥协”</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 四大文化支柱与工程壁垒 (Cultural Pillars & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Four Cultural Pillars &amp; Engineering Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 四大核心文化支柱：超级使命感、极度紧迫感、坦诚复盘与行为红线</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极宽 (Wide Moat · 传统航天百年体制几乎无法模仿的组织文化鸿沟)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重文化护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“跨行星文明”使命筛选器</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ SpaceX 招聘从不靠高底薪讨好求职者（行业薪资处于中上水平，核心靠期权增值），而是用<strong>“把人类送上火星”</strong>的宏大叙事天然过滤掉混日子的职业倦怠者，吸引全球最顶尖且渴望在有生之年留下历史印记的硬核工程师（<a href="https://builtin.com/company/spacex/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“疯狂紧迫感（Manic Urgency）”</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 马斯克视“时间”为唯一不可再生资源，要求所有排期以<strong>“天和小时”而非“季度和年”</strong>计算。极度压缩的截止日期迫使团队放弃官僚审批与过度设计，直奔最简单有效的工程解法——即使最终按肖特维尔所言“时间表会延期，但技术目标永远达成”（<a href="https://fasterthannormal.co/people/gwynne-shotwell" target="_blank" rel="noopener noreferrer" class="cite-link">FasterThanNormal</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">肖特维尔“禁止混蛋”制度（No Asshole）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 在高压工程环境下，总裁肖特维尔确立了著名的<strong>“No Asshole Policy”</strong>：无论某位工程师的技术能力多么不可替代，只要对同事表现出恶意霸凌、傲慢羞辱或破坏团队协作，一律坚决解雇，以守护高压下的高信任战友情谊（<a href="https://fasterthannormal.co/people/gwynne-shotwell" target="_blank" rel="noopener noreferrer" class="cite-link">FasterThanNormal</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“共同壮观仪式（Spectacles of Purpose）”</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 每一次火箭发射与助推器回收，霍桑总部与各地工厂都会暂停手头工作同步直播欢呼。肖特维尔将发射打造为全员共同见证的震撼时刻，让写代码、拧螺栓或做采购的每一位普通员工都能直观感受到自己作品飞向太空的巅峰成就感（<a href="https://fasterthannormal.co/people/gwynne-shotwell" target="_blank" rel="noopener noreferrer" class="cite-link">FasterThanNormal</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维企业文化与组织模型雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">商业航天与硬科技巨头组织文化五维对比雷达</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">SpaceX (SPCX) vs 传统军工航天 (波音/ULA) vs 苹果 (Apple)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 航天与硬科技企业文化横向对比 (Culture Comparative Matrix)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Aerospace &amp; Hard-Tech Corporate Culture Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 航天与硬科技标杆企业文化横向对比：为什么老牌巨头追不上 SpaceX？</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索企业 / 掌舵人 / 文化标签..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部对比对象</button>
+ <button onclick="filterCompetitors('aerospace')" data-filter="aerospace" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">商业航天同行</button>
+ <button onclick="filterCompetitors('hardtech')" data-filter="hardtech" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">硅谷硬科技标杆</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">企业与领导双核</th>
+ <th class="py-4 px-4 min-w-[140px]">研发与试错哲学</th>
+ <th class="py-4 px-4 min-w-[145px]">供应链与制造模式</th>
+ <th class="py-4 px-4 min-w-[125px]">组织与节奏特征</th>
+ <th class="py-4 px-4 min-w-[120px]">合同与商业模式</th>
+ <th class="py-4 px-5 min-w-[240px]">文化基因优劣势与竞合差距评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：SpaceX 基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">SpaceX (SPCX)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Elon Musk × Gwynne Shotwell</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">硬件敏捷迭代 · 以炸代算快速学习</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">85%+ 极限垂直自研自产</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">~1.71万人 · 疯狂紧迫感</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">固定价格 + 商业订阅</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全栈降维打击：</strong>双首脑制完美平衡技术激进与商业稳健，用“白痴指数”把发射与卫星成本砍去 90%+，唯极高工作强度带来较高基层流动率（<a href="https://builtin.com/company/spacex/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：波音与传统国防航天 (Boeing / ULA) -->
+ <tr data-category="aerospace" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">波音防务 / ULA</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">传统 MBA 职业经理人体系</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">瀑布流文档评审 · 零容错厌恶试飞</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">多层分包外包 + 游说驱动</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">层级森严 · 十年级周期</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">成本加成 (Cost-Plus)</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>财务官僚化反面教材：</strong>“成本加成”合同使延误与超支反而增加账面营收，缺乏降低单次发射成本的内生动力，在星际客机与 SLS 上被 SpaceX 全面超越。
+ </td>
+ </tr>
+
+ <!-- 行 3：蓝色起源 Blue Origin -->
+ <tr data-category="aerospace" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">蓝色起源 (Blue Origin)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Jeff Bezos × Dave Limp</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">“循序渐进（Gradatim Ferociter）”</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">重金自研但早期流程偏慢</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~1.1万人 · 近年引入敏捷</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">贝索斯资金输血 + 商业</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>资金充裕但节奏滞后：</strong>早期追求一次性完美（New Glenn 耗资巨大且首飞屡次推迟），直到挖来前亚马逊硬件高管 Dave Limp 后才逐步向 SpaceX 式敏捷文化靠拢。
+ </td>
+ </tr>
+
+ <!-- 行 4：火箭实验室 Rocket Lab (RKLB) -->
+ <tr data-category="aerospace" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Rocket Lab (RKLB)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Peter Beck (工程师创始人)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">极度务实工程文化 · 聚焦中小型运载</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">高度垂直自研 (碳纤维/3D打印)</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~2,200人 · 精干敏捷</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">固定价格发射 + 航天器</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>最像早期 SpaceX 的追赶者：</strong>同样由重度亲力亲为的工程师执掌、同样坚持垂直自研，稳坐全球商业发射第二把交椅，但资金与重型运力体量仍差一个数量级。
+ </td>
+ </tr>
+
+ <!-- 行 5：特斯拉与英伟达 (Tesla / NVIDIA) -->
+ <tr data-category="hardtech" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">特斯拉 / 英伟达</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Elon Musk / Jensen Huang</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">第一性原理极限工程 / 全栈光速迭代</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-500/15 text-teal-700 dark:text-teal-400">软硬芯生态高度垂直整合</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">极度扁平 · Top-5 直管</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">高毛利科技硬件与算力</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>文化同源的硬科技孪生体：</strong>特斯拉与 SpaceX 共享五步工作法与材料专家（甚至共享特种合金配方），但特斯拉缺少像肖特维尔那样独立掌舵运营的二号人物（<a href="https://intelliversity.org/two-masks-elon-musk-part-2/" target="_blank" rel="noopener noreferrer" class="cite-link">Intelliversity</a>）。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的标杆企业文化记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：SpaceX 组织结构与文化特征量化拆解 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">把组织文化转化为运行指标：SpaceX 人才分布、垂直自制率与核心运营效率拆解（%）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">74% 员工高度集聚北美核心研发制造基地，凭借 85%+ 核心零部件自制率实现全球 ~75% 在轨活跃卫星统治力（<a href="https://www.reveliolabs.com/companies/space-exploration/employees" target="_blank" rel="noopener noreferrer" class="cite-link">Revelio Labs 2026</a> &amp; <a href="https://6figr.com/company/spacex" target="_blank" rel="noopener noreferrer" class="cite-link">6figr</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">85%+ 零件自制 · ~75% 在轨卫星占比 · 45.1% 星链营业利润率</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 第一性原理降本与组织效能推演 (First-Principles Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · First-Principles Cost Compression &amp; Organizational Velocity</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 第一性原理降本与组织效能推演：从 $3.4M 人均创收到星舰全复用经济奇迹</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">用物理与财务指标验证文化威力：如何用 1.71 万人撬动 $58.3B 年化营收</span>
+ </div>
+
+ <!-- 1. 文化驱动的四大组织与财务效能指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Idiot Index Compression</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">10x → 1.5x</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 打破传统航天零件动辄 10–50 倍材料溢价，自建产线将阀门、航电与终端天线成本压缩超 90%。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Starlink Operating Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">45.1% ($2.37B)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 高频复用猎鹰发射摊薄折旧，2026Q3 连接板块单季实现 $52.5亿营收与 $23.7亿营业利润。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Revenue Per Employee</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$3.40M / 年</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 约 17,125 名全职员工（<a href="https://www.reveliolabs.com/companies/space-exploration/employees" target="_blank" rel="noopener noreferrer" class="cite-link">Revelio Labs</a>）支撑 $58.3B 年化营收，人效超越传统波音/洛马近 8 倍。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Booster Reuse Record</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">20+ 次复用</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 猎鹰 9 号一级助推器翻新周转缩短至数周，星舰 Flight 15 更首次实现塔臂捕获上级飞船。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2020–2026E SpaceX 组织速度曲线：年度轨道发射次数爆发 vs 星链付费订户飞轮</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">“硬件敏捷 + 助推器复用”带来的发射频次指数级攀升，直接转化为 Starlink 全球用户数与高毛利现金流的指数级扩张</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">年发射 26次 → 180+次 · 订户突破 1,360万</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“白痴指数”第一性原理降本与星舰复用经济性动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>FIRST-PRINCIPLES &amp; REUSABILITY ENGINE · “白痴指数”降本与复用经济性模拟器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">第一性原理垂直自研 + 火箭复用次数对单次发射边际成本的指数级压缩</h3>
+ <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实历史范式（传统一次性消耗型火箭 / 猎鹰 9 号一级复用模式 / 星舰 V3 全复用目标模式）或自定义测算</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="upper-stage-toggle" checked onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>开启上级飞船塔臂完全回收 (Full Reusability)</span>
+ </label>
+ </div>
+
+ <!-- 真实范式预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('falcon_reuse')" data-era="falcon_reuse" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 猎鹰 9 号部分复用模式 (当前主力)</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">自制率 85% · 复用 20 次 · 上级一次性抛弃</div>
+ </button>
+ <button type="button" onclick="setSimEra('legacy_expendable')" data-era="legacy_expendable" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 传统老牌航天外包一次性模式</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">自制率 25% · 复用 1 次 · 5层分包加价</div>
+ </button>
+ <button type="button" onclick="setSimEra('starship_full')" data-era="starship_full" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 星舰 V3 塔臂双捕获全复用愿景</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">自制率 95% · 复用 100 次 · 推进剂为主成本</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">核心硬件垂直自制率 (压缩“白痴指数” %)</span>
+ <span id="sim-inhouse-label" class="font-mono font-bold text-white text-sm">85%</span>
+ </div>
+ <input id="sim-inhouse" type="range" min="20" max="98" step="1" value="85" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">单枚火箭全生命周期复用次数 (Flights)</span>
+ <span id="sim-reuse-label" class="font-mono font-bold text-white text-sm">20 次</span>
+ </div>
+ <input id="sim-reuse" type="range" min="1" max="120" step="1" value="20" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">单次有效载荷入轨质量 (吨 / Tons to LEO)</span>
+ <span id="sim-payload-label" class="font-mono font-bold text-emerald-400 text-sm">22 吨</span>
+ </div>
+ <input id="sim-payload" type="range" min="10" max="150" step="2" value="22" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：对应猎鹰 9 号 Block 5 成熟运营态——85% 核心部件霍桑自制将初始造价压低至 ~$5,200万，助推器复用 20 次摊薄硬件折旧，仅剩二级火箭与翻新推进剂构成单次边际成本。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">单次发射硬件摊销 + 推进剂边际成本</div>
+ <div id="sim-launch-cost" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$13.8M</div>
+ <div id="sim-cost-saving" class="text-xs font-semibold text-emerald-400 mt-1.5">较传统一次性发射（~$165M）降本 91.6%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">每公斤近地轨道入轨单位成本 ($/kg)</div>
+ <div id="sim-kg-cost" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">$627 / kg</div>
+ <div id="sim-kg-benchmark" class="text-xs text-slate-400 mt-1.5">航天飞机历史均价 ~$54,500/kg 的 1.2%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效“白痴指数”（实际造价 / 物理材料成本）</div>
+ <div id="sim-idiot-index" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">2.1x</div>
+ <div class="text-xs text-slate-400 mt-1.5">传统外包航天供应链普遍高达 12x–25x</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">单次任务可部署 Starlink 卫星容量倍数</div>
+ <div id="sim-starlink-cap" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">1.0x 基准</div>
+ <div id="sim-cadence-note" class="text-xs text-slate-400 mt-1.5">释放高毛利连接现金流反哺研发飞轮</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角组织文化定评对比 (Bull Cultural Moat vs Critical Tension) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">正向组织文化优势定评 (Unrivaled Engineering Moat)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">速度霸权 + 双首脑平衡</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>打破重工业“十年磨一剑”的时间诅咒：</strong>用软件式的每周迭代把航天研发周期压缩 70% 以上，让竞争对手在追赶猎鹰 9 号时不得不面对已经复用的星舰（<a href="https://builtin.com/company/spacex/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>肖特维尔构筑了马斯克体系内最强的商业安全垫：</strong>她不仅能用工程师语言向 NASA 与五角大楼销售激进技术，还能在内部踩下财务刹车、杜绝资源无序失控（<a href="https://covid.expertscape.com/article/how-gwynne-shotwell-built-spacex-s-future" target="_blank" rel="noopener noreferrer" class="cite-link">ExpertScape</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>“数据与物理定律至上”消除了大企业政治内耗：</strong>年轻工程师只要能用实验数据证明方案更优，即可推翻资深主管的旧设计，保持极高技术新陈代谢。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">客观局限与文化张力反思 (Burnout &amp; Governance Risk)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">高压耗竭 + 继任单点依赖</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“燃料式耗竭（Burnout）”与较高的 12 个月流失率：</strong>每周 60–80 小时高压冲刺使许多年轻工程师在工作 3–5 年期权归属后选择离职创业（全公司年流失率约 11.8%，技术岗达 14.1%）（<a href="https://6figr.com/company/spacex" target="_blank" rel="noopener noreferrer" class="cite-link">6figr</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>内部异议容忍度有限与“兄弟文化（Bro Culture）”争议：</strong>2022 年多名员工联名公开信批评马斯克言论遭解雇并引发劳动法诉讼，反映出围绕使命的强一致性对员工心理安全感的挤压（<a href="https://builtin.com/company/spacex/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In</a> &amp; <a href="https://fasterthannormal.co/people/gwynne-shotwell" target="_blank" rel="noopener noreferrer" class="cite-link">FasterThanNormal</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>高度依赖马斯克与肖特维尔双人默契的继任考验：</strong>随着 2026 年 SpaceX 上市并整合 xAI 成为 $2万亿公众巨头，如何制度化培养下一代运营与工程接班梯队成为长期治理课题。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三阶文化演进与管理得失复盘 (Three-Stage Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Stage Cultural Evolution &amp; Management Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三阶文化演进与管理复盘：从“孤岛炸弹客”到万亿商业航天与AI巨头</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">理解 SpaceX 文化的关键：每一次濒临破产的危机都强化了它的自研与敏捷基因</span>
+ </div>
+
+ <!-- 1. 三阶演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 荒岛求生与三连炸淬炼</span>
+ <span class="font-mono text-xs font-bold text-slate-500">2002–2008</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">白痴指数诞生与第四飞生死战</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>赴俄购买洲际导弹遭羞辱后，马斯克在加州废旧仓库创立 SpaceX 并延揽肖特维尔任商业拓展副总裁（<a href="https://intelliversity.org/two-masks-elon-musk-part-2/" target="_blank" rel="noopener noreferrer" class="cite-link">Intelliversity</a>）。猎鹰 1 号前三次试飞连续爆炸，资金耗尽边缘全员睡在夸贾林环礁厂房日夜抢修，2008 年 9 月第四次发射奇迹入轨，随即赢得 NASA $16亿 CRS 商业补给大单。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段启示：绝境中的极限自研与快速排障铸就了公司铁血底色
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 火箭回收与星链第二曲线</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2009–2025</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">可回收垄断与敏捷星座批产</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2015 年猎鹰 9 号首次实现陆地垂直回收，彻底终结“一次性火箭时代”；2018 年马斯克在雷德蒙德断然解雇推进缓慢的卫星高管团队，引入汽车级快速迭代产线，使 Starlink 卫星批量下线并积累超千万付费订户，将发射服务升级为全球卫星通信现金牛。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：用高频复用运载工具哺育高频迭代空间互联网
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 星舰塔臂捕获与AI融合</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">上市公众化与天基算力帝国</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2026 年整合 xAI（1.7GW Colossus II 超算）与 Cursor 并以 $862亿募资登陆纳斯达克；11 月星舰 Flight 15 成功实现发射塔机械臂捕获回收 Ship 上级飞船。双首脑体制在公众公司合规监管与万亿级资本开支周期中迎来全新大考（<a href="https://covid.expertscape.com/article/how-gwynne-shotwell-built-spacex-s-future" target="_blank" rel="noopener noreferrer" class="cite-link">ExpertScape</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段启示：航天运载、低轨通信与超级智能的三维工程文化融合
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大组织文化实战案例与进化闭环矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：SpaceX 企业文化在四大标志性战役中的实战检验</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">战役 01 · 2015 CRS-7 空中解体与公开透明复盘</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">危机公关与根因溯源</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">不遮掩、不甩锅供应商，以极致坦诚赢得 NASA 更高信任</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2015 年猎鹰 9 号因一根外购钢制支撑杆断裂在空中解体。肖特维尔与马斯克第一时间向全行业公开遥测归因，彻底废除对外购结构件批次免检的惰性，自建全检与压力测试实验室，六个月后便完成复飞并实现首次陆地回收（<a href="https://fasterthannormal.co/people/gwynne-shotwell" target="_blank" rel="noopener noreferrer" class="cite-link">FasterThanNormal</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">战役 02 · 2018 雷德蒙德 Starlink 团队“换血重塑”</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">速度与完美主义博弈</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">砍掉“十年磨一颗完美卫星”的传统思路，用迭代抢占频谱</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 早期 Starlink 研发团队沿袭传统卫星巨头路线，追求首代卫星零缺陷但进度严重滞后。马斯克亲赴西雅图解雇多位高级管理人员并从霍桑调入火箭敏捷骨干，确立“先发射 V0.9/V1.0 迭代组网、边飞边改”策略，一举抢占全球低轨频谱制高点。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">战役 03 · 2022–2023 马斯克收购 Twitter 期间的压力测试</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">双首脑制抗脆弱检验</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">创始人注意力大幅分散时，肖特维尔独立稳住全年发射纪录</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 当外界担忧马斯克深陷社交平台改造会拖垮 SpaceX 时，肖特维尔凭借高度制度化的运营体系与完全授权，带领团队在 2023 年完成创纪录的 96 次轨道发射，证明了 SpaceX 组织机器已具备极强的内生运转韧性（<a href="https://resources.rework.com/libraries/leadership-legends/gwynne-shotwell-leadership" target="_blank" rel="noopener noreferrer" class="cite-link">Rework</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">战役 04 · 2026 星舰“筷子”塔臂捕获与 V3 卫星批量部署</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">减法架构的终极兑现</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">放弃传统着陆腿，把重量留给发射塔机械臂</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 遵循“最好的零件就是没有零件”，工程师砍掉了沉重的星舰着陆支架，将复杂性转移至地面发射塔“Mechazilla”机械臂，在 2026 年 11 月 Flight 15 成功捕获 Ship 上级飞船并释放 26 颗 V3 卫星，将重型运载推进全复用时代。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级组织设计与管理启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给硬科技创业者、研发管理者与长期投资者的三条“SpaceX 组织文化法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 先删减再优化，永远用“白痴指数”挑战供应链报价</div>
+ <p class="text-slate-300 leading-relaxed">
+ 当外部供应商声称“行业标准必须这么贵”时，回到原材料重量与基础物理定律重新核算；一旦发现存在 5–10 倍的中间商与官僚溢价，果断垂直自研往往能构建最深的成本护城河。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 激进创始人必须配一位拥有全权交付力的“肖特维尔”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 颠覆性创新者擅长打破常规、不断加码，但组织若没有一位懂技术、能对客户兑现承诺并守住纪律底线的顶级 COO 充当压舱石，再宏大的愿景也容易在现金流断裂与混乱中崩盘。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 用低成本快速实验替代高成本纸面争论</div>
+ <p class="text-slate-300 leading-relaxed">
+ 在未知领域，花六个月开会争论 A 方案还是 B 方案永远不如花两周造出原型机实测；允许系统在受控边界内快速试错，但绝不允许隐瞒数据或推卸责任。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “SpaceX 文化法则”组织与工程力交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · SpaceX Corporate Culture &amp; Engineering Velocity Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “SpaceX 文化法则”硬科技组织与执行力交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于诊断硬科技企业、研发工程团队或拟投资标的是否具备“SpaceX 式”第一性原理降本与极速迭代能力（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 第一性原理“白痴指数”测试：是否按原材料成本审视供应链？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">BOM 穿透力</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查采购与工程团队是否能精确拆解核心部件的金属/芯片/化工原料物理底价，并对超过 3 倍溢价的环节启动垂直自研。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 五步工作法减法测试：每一代新品是否都在大幅删减零件与流程？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">极简架构纪律</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验研发团队是不断做加法叠床架屋，还是像 Raptor 1 到 Raptor 3 那样持续砍掉冗余支架、管路与跨部门审批环节。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 硬件敏捷迭代测试：原型机实测周期是否以“周”而非“年”计？</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">以测代算速度</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察团队是否敢于在受控环境中尽早暴露工程边界与故障，通过高频物理实测而非无休止的 PPT 仿真推进技术成熟度。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 双首脑治理互补测试：激进愿景者身边是否有强悍运营执行官？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">组织抗脆弱性</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 评估最高管理层是否具备“Musk × Shotwell”式的愿景与交付分工，确保技术突破能转化为高履约率与稳健现金流。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 责任工程师（RE）端到端闭环：设计与制造是否零墙协同？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">端到端所有权</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查子系统设计工程师是否直接下沉产线参与制造与测试，杜绝“设计院画图不管好不好造、工厂按图施工不管好不好用”。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. “No Asshole” 行为红线与耗竭防控：高强度下是否守住协作尊严？</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">长期人才可持续</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪核心工程团队流失率与内部协作氛围，确保高压冲刺建立在使命感与尊重之上，而非毒性内耗与恶意霸凌。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>SpaceX (Space Exploration Technologies Corp. · NASDAQ: SPCX) 企业文化、双首脑治理与第一性原理工程研究报告</span>
+ <span>核心数据出处：SpaceX 2026Q3 Form 10-Q · Revelio Labs 2026 · Built In · Rework Leadership</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告组织规模、治理机制与商业运营数据严格核验自 SpaceX 公开披露的 <a href="https://www.reveliolabs.com/companies/space-exploration/employees" target="_blank" rel="noopener noreferrer" class="cite-link">Revelio Labs 2026 全球员工数据库</a>、<a href="https://6figr.com/company/spacex" target="_blank" rel="noopener noreferrer" class="cite-link">6figr 组织与流失率追踪</a>、<a href="https://builtin.com/company/spacex/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In 2026 SpaceX 企业文化调研</a>、总裁兼 COO 格温·肖特维尔公开演讲与领导力研究文献（<a href="https://resources.rework.com/libraries/leadership-legends/gwynne-shotwell-leadership" target="_blank" rel="noopener noreferrer" class="cite-link">Rework</a> / <a href="https://fasterthannormal.co/people/gwynne-shotwell" target="_blank" rel="noopener noreferrer" class="cite-link">FasterThanNormal</a> / <a href="https://covid.expertscape.com/article/how-gwynne-shotwell-built-spacex-s-future" target="_blank" rel="noopener noreferrer" class="cite-link">ExpertScape</a>）以及 2026 年 11 月星舰 Flight 15 任务实况。报告内置的“白痴指数”与复用经济性模拟器旨在量化分析第一性原理与敏捷工程的文化价值，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ // 清理运行态临时样式与画布缓存属性，确保导出的 HTML 在任何本地浏览器打开时干净重绘
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'SpaceX_Corporate_Culture_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：SpaceX_Corporate_Culture_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 航天与硬科技文化横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “白痴指数”第一性原理降本与复用经济性动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ falcon_reuse: {
+ inhouse: 85,
+ reuse: 20,
+ payload: 22,
+ upperReuse: false,
+ caption: '当前测算基准：对应猎鹰 9 号 Block 5 成熟运营态——85% 核心部件霍桑自制将初始造价压低至 ~$5,200万，助推器复用 20 次摊薄硬件折旧，仅剩二级火箭与翻新推进剂构成单次边际成本。'
+ },
+ legacy_expendable: {
+ inhouse: 25,
+ reuse: 1,
+ payload: 20,
+ upperReuse: false,
+ caption: '当前测算基准：对应传统老牌军工航天外包一次性火箭（如早期 Delta IV / Ariane 5 范式）——5 层分包体系导致极高“白痴指数”，且每次发射均将整枚火箭坠毁于大海。'
+ },
+ starship_full: {
+ inhouse: 95,
+ reuse: 100,
+ payload: 120,
+ upperReuse: true,
+ caption: '当前测算基准：对应星舰（Starship V3/V4）成熟全复用目标——30X 不锈钢与 95% 垂直自制把百吨级飞船造价压至极低区间，一级助推器与上级飞船均由塔臂捕获复用 100 次，液氧甲烷推进剂成为主要边际支出。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-inhouse').value = preset.inhouse;
+ document.getElementById('sim-reuse').value = preset.reuse;
+ document.getElementById('sim-payload').value = preset.payload;
+ document.getElementById('upper-stage-toggle').checked = preset.upperReuse;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义第一性原理工程推演模式——自由调节自研垂直整合度、单箭复用次数与有效载荷规模，观察单位入轨成本的非线性坍缩。';
+ }
+
+ function updateValueSimulator() {
+ const inhousePct = parseFloat(document.getElementById('sim-inhouse').value) || 85;
+ const reuseCount = parseInt(document.getElementById('sim-reuse').value, 10) || 20;
+ const payloadTons = parseFloat(document.getElementById('sim-payload').value) || 22;
+ const fullUpperReuse = document.getElementById('upper-stage-toggle').checked;
+
+ document.getElementById('sim-inhouse-label').textContent = inhousePct + '%';
+ document.getElementById('sim-reuse-label').textContent = reuseCount + ' 次';
+ document.getElementById('sim-payload-label').textContent = payloadTons + ' 吨';
+
+ // 物理原材料基准造价随载荷规模线性放大（按约 $0.95M/吨 有效运力计）
+ const rawMaterialBaseM = payloadTons * 0.95;
+ // 有效白痴指数：自制率 20% 时高达 ~11x，自制率 95% 时压缩至 ~1.6x
+ const idiotIndex = Math.max(1.4, 13.5 - (inhousePct / 100) * 12.2);
+ const vehicleBuildCostM = rawMaterialBaseM * idiotIndex;
+
+ // 一级占硬件造价 72%，上级占 28%
+ const boosterShare = 0.72;
+ const upperShare = 0.28;
+ const boosterAmortizedM = (vehicleBuildCostM * boosterShare) / reuseCount;
+ const upperAmortizedM = fullUpperReuse
+ ? (vehicleBuildCostM * upperShare) / Math.max(1, reuseCount * 0.8)
+ : (vehicleBuildCostM * upperShare);
+
+ // 单次推进剂、发射场测控与翻新检测运营成本 ($M)
+ const opsAndPropellantM = (payloadTons * 0.045) + (fullUpperReuse ? 1.2 : 1.8);
+ const totalLaunchCostM = boosterAmortizedM + upperAmortizedM + opsAndPropellantM;
+
+ const costPerKg = (totalLaunchCostM * 1000000) / (payloadTons * 1000);
+ const legacyBenchmarkM = 165.0;
+ const savingPct = ((legacyBenchmarkM - totalLaunchCostM) / legacyBenchmarkM) * 100;
+ const starlinkCapMult = payloadTons / 22.0;
+
+ document.getElementById('sim-launch-cost').textContent = `$${totalLaunchCostM.toFixed(1)}M`;
+ document.getElementById('sim-cost-saving').textContent = savingPct >= 0
+ ? `较传统一次性发射（~$165M）降本 ${savingPct.toFixed(1)}%`
+ : `超大型一次性重箭单次造价高于传统中型箭 ${Math.abs(savingPct).toFixed(1)}%`;
+ document.getElementById('sim-kg-cost').textContent = `$${Math.round(costPerKg).toLocaleString('en-US')} / kg`;
+ document.getElementById('sim-kg-benchmark').textContent = `航天飞机历史均价 ~$54,500/kg 的 ${((costPerKg / 54500) * 100).toFixed(2)}%`;
+ document.getElementById('sim-idiot-index').textContent = `${idiotIndex.toFixed(1)}x`;
+ document.getElementById('sim-starlink-cap').textContent = `${starlinkCapMult.toFixed(1)}x 运力`;
+ document.getElementById('sim-cadence-note').textContent = fullUpperReuse
+ ? '全复用解锁百吨级 V3 卫星批量部署飞轮'
+ : '开启上级回收可进一步砍掉二级一次性硬件损耗';
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'spacex_culture_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“SpaceX 文化法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'cost_curve';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：近地轨道单公斤发射成本历史演进 ($/kg)
+ const costConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'NASA 航天飞机 (1981–2011)',
+ '传统一次性火箭 (Atlas V / Delta IV)',
+ 'Falcon 9 早期一次性发射 (2013)',
+ 'Falcon 9 Block 5 成熟复用 (2024)',
+ 'Falcon Heavy 复用模式 (2025)',
+ 'Starship V3 全复用目标 (2026+)'
+ ],
+ datasets: [
+ {
+ label: '近地轨道有效载荷单位发射报价/成本 ($/kg)',
+ data: [54500, 18500, 4100, 2600, 1500, 120],
+ backgroundColor: [
+ 'rgba(100, 116, 139, 0.65)',
+ 'rgba(148, 163, 184, 0.75)',
+ '#06B6D4',
+ '#10B981',
+ '#F59E0B',
+ '#D97706'
+ ],
+ borderRadius: 6
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `单位入轨成本: $${c.parsed.y.toLocaleString('en-US')} / kg`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 60000,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + (v / 1000) + 'k' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：2021–2026 精锐员工规模克制增长 vs 年度轨道发射频次跃升
+ const trajectoryConfig = {
+ type: 'bar',
+ data: {
+ labels: ['2021', '2022', '2023', '2024', '2025', '2026E'],
+ datasets: [
+ {
+ type: 'bar',
+ label: 'SpaceX 全球核心员工规模 (千人 · Revelio Labs)',
+ data: [9.5, 11.8, 12.0, 13.5, 15.0, 17.1],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'SpaceX 年度成功入轨发射次数 (次/年)',
+ data: [31, 61, 96, 134, 165, 185],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.datasetIndex === 0 ? `核心员工规模: ${c.parsed.y.toFixed(1)}k 人` : `年度入轨发射: ${c.parsed.y} 次`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 22,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'k' }
+ },
+ y1: {
+ position: 'right',
+ min: 0,
+ max: 210,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '次' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'cost_curve' ? costConfig : trajectoryConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'cost_curve') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2010–2026E 猎鹰火箭与星舰（Starship）单公斤近地轨道发射成本断崖式下降 ($/kg)';
+ subEl.textContent = '第一性原理与火箭可回收文化将入轨成本从航天飞机时代的 $54,500/kg 压缩至百美元级，解锁星链与天基AI经济性';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2021–2026E 精锐员工规模（千人）vs 年度轨道发射次数爆发飞轮';
+ subEl.textContent = '员工规模保持克制精干（~1.71万人），依靠复用周转与五步工作法将年发射频次推升近 6 倍至 185 次/年';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '第一性原理与垂直自研深度',
+ '硬件敏捷迭代与试飞容错速度',
+ '超级使命凝聚与紧迫感',
+ '双首脑分工与商业履约稳定性',
+ '工作生活平衡与低流失率'
+ ],
+ datasets: [
+ {
+ label: 'SpaceX (敏捷硬科技工程帝国)',
+ data: [10.0, 10.0, 9.9, 9.6, 4.5],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: '传统军工航天巨头 (波音 / ULA)',
+ data: [3.8, 3.0, 4.5, 6.2, 8.5],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.14)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 2.0,
+ borderDash: [4, 4]
+ },
+ {
+ label: '苹果公司 (Apple · 职能制精品协同)',
+ data: [9.5, 7.8, 9.0, 9.8, 7.5],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ '火箭与卫星核心零部件垂直自制率 (自研体系)',
+ '全球活跃在轨卫星统治占比 (Starlink 星座份额)',
+ '北美核心研发制造基地员工集聚度 (Revelio 2026)',
+ 'Starlink 卫星连接板块营业利润率 (2026Q3 10-Q)',
+ '全公司工程技术岗核心研发密度占比 (2026)',
+ '全公司综合 GAAP 营业利润率 (2026Q3 10-Q)'
+ ],
+ datasets: [
+ {
+ label: 'SpaceX 组织结构与运营效能关键比率 (%)',
+ data: [85.0, 75.0, 74.0, 45.1, 32.3, 19.2],
+ backgroundColor: [
+ '#F59E0B',
+ '#10B981',
+ '#06B6D4',
+ '#6366F1',
+ '#8B5CF6',
+ '#EC4899'
+ ],
+ borderRadius: 6,
+ barThickness: 18
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `指标数值: ${c.parsed.x.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 95,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['2021', '2022', '2023', '2024', '2025', '2026Q3'],
+ datasets: [
+ {
+ type: 'bar',
+ label: 'Starlink 全球消费者付费订户 (百万户)',
+ data: [0.15, 1.00, 2.30, 4.60, 8.90, 13.60],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 30,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'SpaceX 累计成功入轨发射次数 (次)',
+ data: [134, 195, 291, 425, 590, 730],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.datasetIndex === 0 ? `Starlink 订户: ${c.parsed.y.toFixed(2)}M 户` : `累计入轨发射: ${c.parsed.y} 次`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 16,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'M' },
+ title: { display: true, text: 'Starlink 消费者订户 (百万户)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 800,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '次' },
+ title: { display: true, text: '累计入轨发射次数 (次)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateValueSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

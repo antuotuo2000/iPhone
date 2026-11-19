@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>昂跑双联席 CEO 大卫·阿莱曼 &amp; 卡斯帕·科佩蒂 (David Allemann &amp; Caspar Coppetti) 深度商业与战略研究报告：创始人回归一线、67%毛利率引擎与跨十年品牌统治力</title>
+  <!-- Tailwind CSS (Pinned Version) -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- Chart.js (Pinned Version) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#070B14',
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+            },
+            mogold: {
+              300: '#FCD34D',
+              400: '#FBBF24',
+              500: '#F59E0B',
+              600: '#D97706',
+              700: '#B45309',
+            },
+            onvolt: {
+              300: '#BEF264',
+              400: '#A3E635',
+              500: '#84CC16',
+              600: '#65A30D',
+            },
+            emerald: {
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+            },
+            teal: {
+              400: '#22D3EE',
+              500: '#06B6D4',
+              600: '#0891B2',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* 自定义滚动条与机构研报细节排版 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+
+    /* 打印友好优化 */
+    @media print {
+      #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+        display: none !important;
+      }
+      main {
+        margin-left: 0 !important;
+        padding: 0 !important;
+      }
+      section {
+        break-inside: avoid;
+      }
+    }
+
+    /* 卡片悬浮微光与上移过渡 */
+    .report-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .report-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 侧边导航激活态：琥珀金渐变标识 */
+    .nav-link.active {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+      border-left: 3px solid #F59E0B;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    /* 引用信源外链微标签样式 */
+    .cite-link {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+      transition: color 0.15s ease;
+    }
+    .cite-link:hover {
+      color: #F59E0B;
+      text-decoration-style: solid;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+  <!-- 顶部全局阅读进度条 -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+  </div>
+
+  <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+  <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="export-toast-msg">已导出独立 HTML 报告文件：On_Holding_CEO_Analysis.html</span>
+  </div>
+
+  <!-- 移动端顶部导航栏 -->
+  <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+        ON
+      </div>
+      <div>
+        <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">NYSE: ONON · Co-CEOs</div>
+        <div class="text-sm font-bold leading-tight">昂跑创始人联席 CEO 深度研报</div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-1.5">
+      <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+        导出HTML
+      </button>
+      <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 移动端折叠抽屉菜单 -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+    <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <span class="font-bold text-white text-base">昂跑 CEO 研报目录导航</span>
+          <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与权力交接全景</a></li>
+          <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 核心治理结构与分工架构</a></li>
+          <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 创始人战略哲学与四重护城河</a></li>
+          <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球运动鞋服掌门人横向对比</a></li>
+          <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 商业回报与 2029 战略目标推演</a></li>
+          <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕领导力演进与折戟复盘</a></li>
+          <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 联席 CEO 治理观察清单</a></li>
+        </ul>
+      </div>
+      <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+        <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+          一键导出独立 HTML 文件
+        </button>
+        <p>消费科技创始人与公司治理研究组</p>
+        <p>数据基准：2026年11月 (SEC 6-K / 2026Q3)</p>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+  <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+    <div>
+      <!-- 机构品牌头 -->
+      <div class="p-5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-base shadow-lg shadow-mogold-500/25">
+            ON
+          </div>
+          <div>
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CEO MONOGRAPH · ONON</span>
+            <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">昂跑双联席 CEO 研报</h2>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          Allemann &amp; Coppetti 创始人回归一线掌舵 · 60%时间死磕产品热度的瑞士增长引擎
+        </p>
+      </div>
+
+      <!-- 核心人物治理与财务快照徽章 -->
+      <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">现任联席 CEO (2026.05起)</span>
+          <span class="font-mono font-bold text-white">Allemann &amp; Coppetti</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">创始人时间分配法则</span>
+          <span class="font-mono font-bold text-emerald-400">60% 未来创新 / 33% 行政</span>
+        </div>
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+          <span class="text-slate-400">26Q3 内生毛利 / 26E 营收</span>
+          <span class="font-mono font-bold text-mogold-400">66.9% · CHF 3.52B</span>
+        </div>
+      </div>
+
+      <!-- 七大核心章节目录导航 -->
+      <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+        <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+        <nav id="desktop-nav" class="space-y-1 text-[13px]">
+          <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与权力交接全景</span>
+          </a>
+          <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>核心治理结构与分工架构</span>
+          </a>
+          <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>创始人战略哲学与四重护城河</span>
+          </a>
+          <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球运动鞋服掌门人横向对比</span>
+          </a>
+          <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>商业回报与 2029 战略目标推演</span>
+          </a>
+          <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕领导力演进与折戟复盘</span>
+          </a>
+          <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>联席 CEO 治理观察清单</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+    <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-slate-400">阅读模式切换</span>
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span class="dark:hidden">深色护眼模式</span>
+          <span class="hidden dark:inline">机构亮色模式</span>
+        </button>
+      </div>
+      <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        <span>导出独立 HTML 文件 (.html)</span>
+      </button>
+      <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>打印 / 导出 PDF 研报</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="lg:ml-[280px] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+      <!-- =========================================================
+           00. Hero 研报封面区与执行摘要
+      ========================================================= -->
+      <section id="sec-exec" class="scroll-mt-20">
+        <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">治理定评：创始人双核回归一线 · 高专注度“反官僚”样本</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究覆盖：2026年5月交接变局 · 2026Q3 战绩 · 2029 战略目标</span>
+          </div>
+          <div class="flex items-center space-x-3 font-mono">
+            <span>覆盖基准：2026年11月</span>
+            <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span>下载 .html</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero 标题卡片 -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+          <!-- 背景琥珀金点阵纹理 -->
+          <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+          <div class="relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+              <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+              <span>CORE THESIS · 创始人回归掌舵 × 60%精力死磕未来创新 × 66.9%历史新高内生毛利率</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+              昂跑双联席 CEO 大卫·阿莱曼 &amp; 卡斯帕·科佩蒂深度研究报告：创始人重返运营核心、67%毛利率纪律与跨十年高端运动统治力
+            </h1>
+            <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+              2026 年 3 月，在昂跑（On Holding AG, NYSE: ONON）年营收首次突破 30 亿瑞郎的巅峰节点，执掌财务与经营 13 年的职业经理人 CEO 兼 CFO <strong class="text-white">Martin Hoffmann</strong> 宣布功成身退；两位联合创始人兼执行联席董事长 <strong class="text-mogold-300">大卫·阿莱曼（David Allemann）</strong> 与 <strong class="text-mogold-300">卡斯帕·科佩蒂（Caspar Coppetti）</strong> 于 2026 年 5 月 1 日正式出任 <strong class="text-white">联席首席执行官（Co-CEOs）</strong>，并同步提拔前苹果/戴森老将 <strong class="text-emerald-400">Scott Maguire</strong> 为总裁兼首席运营官（President &amp; COO）（<a href="https://investors.on-running.com/news/news-details/2026/On-Co-Founders-to-Lead-Next-Chapter-of-Growth-as-Co-CEOs/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">On IR 公告</a>）。
+              面对一度因突发性换帅引发的股价震荡，双创始人以<strong class="text-white">“仅花 33% 时间做传统 CEO 行政、把 60% 精力投入未来产品与品牌实验”</strong>（<a href="https://www.inc.com/victoria-salves/on-founders-just-33-percent-time-traditional-ceos-what-they-do-instead-fuels-success/91402635" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">Inc. 专访</a>）做出最强有力回应——在 2026Q3 交出单季净营收 <strong class="text-mogold-400">CHF 9.314亿（固定汇率 +17.8%）</strong>、内生毛利率创历史新高 <strong class="text-emerald-400">66.9%</strong>（含退税表观毛利 <strong class="text-white">72.6%</strong>）的硬核战绩（<a href="https://investors.on-running.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">2026Q3 财报</a>）。
+            </p>
+
+            <!-- 核心商业治理高亮条 -->
+            <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">“战略意图 + 运营执行”零摩擦闭环</div>
+                <div class="text-white font-semibold">Allemann 主导品牌与美学势能、Coppetti 统领全球商业版图、Bernhard 深耕运动科技、Maguire 执掌全链条落地</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">抗促销周期的全价豪华毛利壁垒</div>
+                <div class="text-mogold-400 font-semibold">2026Q3 内生毛利率飙升至 66.9%，管理层果断上调全年内生毛利率指引至 ~66.0%（表观 ~67.5%）</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">2026 投资者日与 2029 财务蓝图</div>
+                <div class="text-emerald-400 font-semibold">每年 40–50 天泡在研发一线，推动服饰（+38.7%）与亚太（+31.9%）成为冲刺 2029 战略目标的双引擎</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4个核心 KPI 卡片 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+          <!-- KPI 1 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>创始人时间分配法则</span>
+              <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">60% / 33%</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">40–50天/年研发</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              两位联席 CEO 仅用 33% 时间处理传统 CEO 事务，将 60% 时间倾注于未来产品、零售概念与品牌实验（<a href="https://www.inc.com/victoria-salves/on-founders-just-33-percent-time-traditional-ceos-what-they-do-instead-fuels-success/91402635" target="_blank" rel="noopener noreferrer" class="cite-link">Inc.</a>）。
+            </p>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>2026Q3 单季净营收与增速</span>
+              <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">CHF 931.4M</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+17.8% CC</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              单季营收历史首破 9 亿瑞郎，DTC 直营增长 +25.0%（占比 42.2%），净利润大增 +36.9% 至 CHF 1.628亿（<a href="https://investors.on-running.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On Q3 2026</a>）。
+            </p>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>2026Q3 内生毛利率与表观毛利</span>
+              <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">66.9%</span>
+              <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">表观 72.6%</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              剔除 CHF 52.6M 美国关税退税后内生毛利率仍同比扩张 +120bps 至 66.9%，全价不打折纪律碾压传统鞋企（<a href="https://investors.on-running.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On 6-K</a>）。
+            </p>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>在手现金堡垒与全年营收指引</span>
+              <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">CHF 1.34B</span>
+              <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">FY26E ~3.52B</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              现金及等价物较 2025 年底大增 +31.3% 至 CHF 1,339.0M；全年固定汇率净营收稳守低 20% 区间高增长（<a href="https://investors.on-running.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On IR</a>）。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           一、 核心治理结构与分工架构 (Leadership & Governance Architecture)
+      ========================================================= -->
+      <section id="sec-biz" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Leadership Governance &amp; Organizational Architecture</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 核心治理结构与分工架构：2026 组织进化背后的“创始人四驾马车”</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">2026年5月1日生效 · 杜绝大公司病，把创始人直觉直接嵌入运营中枢</span>
+        </div>
+
+        <!-- 交互式 Chart.js 双视图切换面板 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- 左侧：双视图图表 -->
+          <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">昂跑联席 CEO“反传统时间分配”与战略资源倾斜模型（Inc. 2026 披露）</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">Allemann 与 Coppetti 将 60% 精力投入未来产品与品牌实验，仅花 33% 时间处理传统 CEO 行政事务</p>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+                <button onclick="switchBizChart('time_allocation')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：CEO精力与战略重心</button>
+                <button onclick="switchBizChart('growth_pillars')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：新架构下26Q3战绩</button>
+              </div>
+            </div>
+            <div class="relative h-72 w-full">
+              <canvas id="bizArchitectureChart"></canvas>
+            </div>
+          </div>
+
+          <!-- 右侧：结构性战略洞察 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026 领导层重组（Hoffmann 卸任 → 创始人接棒）三大深层动因</h3>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">为何在业绩破纪录时切换为“创始人 Co-CEOs”？</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      随着营收跨过 30 亿瑞郎门槛，单纯的财务扩张已不足以支撑下一阶段的“多品类运动奢潮平台”跃迁。Allemann 提出<strong>“打破纪录的时刻正是升级打法的最佳时机”</strong>，通过双创始人直管运营消除战略与执行之间的传导损耗（<a href="https://investors.on-running.com/news/news-details/2026/On-Co-Founders-to-Lead-Next-Chapter-of-Growth-as-Co-CEOs/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On IR</a>）。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">Scott Maguire 升任 President &amp; COO 托底日常大运营</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      之所以两位联席 CEO 能把 60% 时间留给未来创新，关键在于他们同步提拔了拥有苹果与戴森背景的 <strong>Scott Maguire</strong> 统筹研发工程、供应链制造、商业运营与数字化后台，实现“创始人造梦 + 顶级 COO 落地”（<a href="https://www.stocktitan.net/sec-filings/ONON/6-k-on-holding-ag-current-report-foreign-issuer-b202463e8d95.html" target="_blank" rel="noopener noreferrer" class="cite-link">SEC 6-K</a>）。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">专业财务老将 Frank Sluis 接任 CFO（2026年5月履新）</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      原 CEO 兼 CFO Martin Hoffmann 留任顾问至 2027 年 3 月，并将财务权杖平稳移交新任 CFO <strong>Frank Sluis</strong>，且 Hoffmann 持有的 B 类超级投票权股启动日落转换机制，进一步优化上市公司治理透明度（<a href="https://www.vsnewsnetwork.com/newsroom/on-holding-ag-appoints-co-founders-david-allemann-and-caspar-coppetti-as-co-ceos" target="_blank" rel="noopener noreferrer" class="cite-link">VS News</a>）。
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-slate-500 dark:text-slate-400">苏黎世总部治理铁律</span>
+              <span class="font-bold text-mogold-600 dark:text-mogold-400">Entrepreneurial Speed · 保持初创敏捷度</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大核心高管角色卡片矩阵 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- 角色 1：David Allemann -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">Co-CEO &amp; 执行联席董事长 · 品牌美学架构师</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">前麦肯锡 / 广告创意掌门</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 大卫·阿莱曼（David Allemann）：定义奢潮破圈与叙事高度</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                拥有麦肯锡咨询与瑞士高端家具品牌 Vitra 首席营销官履历，Allemann 是昂跑将“专业瑞士跑鞋”升维为“都市精英文化符号”的总设计师。他主导了 <strong>Loewe 奢侈品联名</strong>、<strong>Zendaya（赞达亚）全球品牌合作</strong> 以及巴黎、伦敦、东京等全球地标级旗舰店的沉浸式零售美学（<a href="https://www.inc.com/victoria-salves/on-founders-just-33-percent-time-traditional-ceos-what-they-do-instead-fuels-success/91402635" target="_blank" rel="noopener noreferrer" class="cite-link">Inc.</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>主攻：品牌热力、DTC旗舰体验、服饰跨界</span>
+              <span class="text-mogold-600 dark:text-mogold-400 font-semibold">让运动鞋具备奢侈品溢价心智</span>
+            </div>
+          </div>
+
+          <!-- 角色 2：Caspar Coppetti -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">Co-CEO &amp; 执行联席董事长 · 全球商业战略家</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">前麦肯锡 / Y&amp;R 董事总经理</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 卡斯帕·科佩蒂（Caspar Coppetti）：严守全价渠道与全球扩张</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                拥有圣加仑大学博士学位及麦肯锡战略背景，Coppetti 长期深耕全球市场拓展、顶级买手店准入与定价纪律。在 2025–2026 年欧美鞋服行业大打价格战期间，正是他拍板<strong>“假日季零折扣全价策略”</strong>（<a href="https://sgbonline.com/ons-q3-profits-nearly-double-on-35-percent-currency-neutral-growth/" target="_blank" rel="noopener noreferrer" class="cite-link">SGB Online</a>），推动 2026Q3 亚太区大涨 +31.9%、内生毛利率创下 66.9% 纪录。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>主攻：全球战区增长、全价渠道控盘、费德勒结盟</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">用稀缺性换取 67% 级毛利率</span>
+            </div>
+          </div>
+
+          <!-- 角色 3：Olivier Bernhard -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">联合创始人 &amp; 执行董事 · 运动科技灵魂</span>
+                <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">前铁人三项世界冠军</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 奥利维尔·伯恩哈德（Olivier Bernhard）：硬核跑鞋科技与运动员生态</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                作为三届世界铁人两项冠军与六届铁人三项冠军，Bernhard 2010 年用花园软管切割粘在跑鞋底发明了初代 <strong>CloudTec®</strong> 原型。在 2026 新架构下，他专注领导核心竞速产品研发（<strong>Cloudsurfer 3、Cloudboom Strike LS</strong>）与全球顶尖田径/网球运动员签约矩阵（<a href="https://investors.on-running.com/news/news-details/2026/On-Co-Founders-to-Lead-Next-Chapter-of-Growth-as-Co-CEOs/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On IR</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>主攻：CloudTec / LightSpray 实验室、职业选手</span>
+              <span class="text-teal-600 dark:text-teal-400 font-semibold">确保“专业性能”永不向潮流妥协</span>
+            </div>
+          </div>
+
+          <!-- 角色 4：Scott Maguire & Frank Sluis -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">执行铁三角 · 运营与财务双支柱</span>
+                <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">COO Maguire + CFO Sluis</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 斯考特·马奎尔（COO）与弗兰克·斯路易斯（CFO）：规模化精密执行</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                拥有 20 余年硬科技制造经验（曾任戴森 COO 及苹果资深运营高管）的 <strong>Scott Maguire</strong> 全面接管研发工程、自动化制造、市场与商业运营；新任 CFO <strong>Frank Sluis</strong> 接棒 Hoffmann 的财务铁律，确保 2026Q3 存货件数增速（+16%）严格低于销售额增速（<a href="https://www.stocktitan.net/sec-filings/ONON/6-k-on-holding-ag-current-report-foreign-issuer-b202463e8d95.html" target="_blank" rel="noopener noreferrer" class="cite-link">SEC 6-K</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>主攻：LightSpray 机器人量产、库存周转、EBITDA 杠杆</span>
+              <span class="text-indigo-600 dark:text-indigo-400 font-semibold">解放创始人双手去探索下一个十年</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           二、 创始人战略哲学与四重护城河 (Philosophy & Economic Moat)
+      ========================================================= -->
+      <section id="sec-moat" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Founder Philosophy &amp; Four-Pillar Moat</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 创始人战略哲学与四重核心护城河：“非传统 CEO 时间表”与全价神殿</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极强全价壁垒 + 科技奢潮双轮定位 + 机器人自动化近岸制造</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- 左侧：四重护城河深度解析 -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 护城河 1 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“60% 时间造未来”的反官僚研发文化</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                多数大公司 CEO 被周会与报表吞噬，而 Allemann 与 Coppetti 每年亲自泡在苏黎世实验室与产品创新团队 <strong>40–50 天</strong>，将 60% 精力用于孵化前沿原型与零售实验，确保产品热度（Product Heat）永不枯竭（<a href="https://www.inc.com/victoria-salves/on-founders-just-33-percent-time-traditional-ceos-what-they-do-instead-fuels-success/91402635" target="_blank" rel="noopener noreferrer" class="cite-link">Inc.</a>）。
+              </p>
+            </div>
+
+            <!-- 护城河 2 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“运动性能 × 奢侈品美学”交叉生态位</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                传统体育巨头重竞技轻审美，奢侈品牌重外观缺脚感。双创始人凭借<strong>费德勒（运动员股东）+ Loewe（高奢联名）+ Zendaya（时尚顶流）</strong>组合拳，占据了全球唯一兼顾马拉松赛场与巴黎时装周的黄金生态位。
+              </p>
+            </div>
+
+            <!-- 护城河 3 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">近乎苛刻的“零促销全价纪律”与渠道精选</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                在北美批发市场促销泛滥之际，联席 CEO 主动收紧批发配额、拒绝假日季打折，并将 DTC 直营占比推升至 <strong>42.2%</strong>，推动 2026Q3 内生毛利率逆势冲上 <strong>66.9%</strong> 行业天花板（<a href="https://investors.on-running.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On Q3 2026</a>）。
+              </p>
+            </div>
+
+            <!-- 护城河 4 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">LightSpray™ 机器人制造重塑供应链护城河</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                联合 COO Scott Maguire 加速推进瑞士机械臂 <strong>LightSpray™ 3 分钟一步喷织鞋面</strong>量产落地，不仅大幅削减碳排放与人工依赖，更为未来在欧美本土近岸部署自动化工厂、对冲关税壁垒奠定技术底座。
+              </p>
+            </div>
+          </div>
+
+          <!-- 右侧：五维领袖能力雷达图 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球运动鞋服领军掌门人五维治理与战略雷达图</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">昂跑双联席 CEO vs 德克斯户外 (Stefano Caroti) vs 耐克 (Elliott Hill)（满分 10 分）</p>
+            <div class="relative h-72 w-full">
+              <canvas id="moatRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           三、 全球运动鞋服掌门人横向对比 (Sportswear CEOs Landscape)
+      ========================================================= -->
+      <section id="sec-comp" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Global Sportswear Leadership Comparative Matrix</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球运动鞋服掌门人横向对比：创始人锐气 vs 职业经理人守成</h2>
+          </div>
+          <!-- 交互式筛选按钮 + 实时搜索框 -->
+          <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+            <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索 CEO / 品牌 / 战略关键词..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+            <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+              <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部掌门人</button>
+              <button onclick="filterCompetitors('challenger')" data-filter="challenger" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">高增新锐挑战者</button>
+              <button onclick="filterCompetitors('turnaround')" data-filter="turnaround" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">巨头复兴与调整派</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 横向对比矩阵表格 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                  <th class="py-4 px-5 min-w-[190px]">掌门人与执掌企业</th>
+                  <th class="py-4 px-4 min-w-[130px]">治理身份与背景</th>
+                  <th class="py-4 px-4 min-w-[135px]">核心战略打法</th>
+                  <th class="py-4 px-4 min-w-[115px]">毛利率表现</th>
+                  <th class="py-4 px-4 min-w-[115px]">2026E 营收增速</th>
+                  <th class="py-4 px-5 min-w-[240px]">领导力优劣势与对昂跑启示</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+                <!-- 行 1：昂跑联席 CEO 基准 -->
+                <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+                  <td class="py-4 px-5">
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+                      <span class="font-bold text-slate-900 dark:text-white">Allemann &amp; Coppetti</span>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">昂跑 On Holding (NYSE: ONON)</div>
+                  </td>
+                  <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">联合创始人联席 CEO (2026.05回归一线)</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">全价奢潮科技 + DTC直营</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">66.0% (Q3 66.9%)</td>
+                  <td class="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">+20%–22% CC</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>全行业最高毛利与创始人敏锐度：</strong>两位创始人互补极强且无股权内耗；唯一考验在于双首长机制在跨过 50 亿瑞郎规模后的决策边界清晰度。
+                  </td>
+                </tr>
+
+                <!-- 行 2：德克斯户外 Stefano Caroti -->
+                <tr data-category="challenger" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Stefano Caroti</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">德克斯户外 Deckers (HOKA / UGG)</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">职业经理人 CEO (前耐克/彪马高管)</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">厚底跑鞋科技 + 经典雪地靴</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~56.5%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">+10%–12%</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>跑鞋货架最硬核老兵：</strong>深谙批发与全渠道平衡，执掌的 HOKA 在北美专业跑鞋店与昂跑平分秋色，但品牌时尚跨界与高奢溢价逊于 Allemann 操盘的昂跑。
+                  </td>
+                </tr>
+
+                <!-- 行 3：阿迪达斯 Bjørn Gulden -->
+                <tr data-category="challenger" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Bjørn Gulden</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">阿迪达斯 adidas (ADDYY)</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">职业足球运动员出身 · 外部空降 CEO</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">复古薄底潮流 + 去官僚放权</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~50.8%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">+8%–10%</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>巨头快反复苏样本：</strong>向一线团队大幅放权并靠 Samba/Gazelle 复古潮鞋打赢翻身仗，但在顶级跑鞋单价与 66%+ 毛利结构上仍难以撼动昂跑护城河。
+                  </td>
+                </tr>
+
+                <!-- 行 4：耐克 Elliott Hill -->
+                <tr data-category="turnaround" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Elliott Hill</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">耐克 Nike (NYSE: NKE)</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">32年老耐克人 · 退休返聘救火 CEO</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">回归运动本质 + 修复批发关系</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~43.5%</td>
+                  <td class="py-4 px-4 font-mono text-rose-600 dark:text-rose-400">-2% – +2%</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>巨人转身期的窗口红利：</strong>Hill 返聘后正全力清理经典鞋款库存并重夺专业跑步货架，但船大难掉头的去库周期客观上为昂跑留出了宝贵的市占率扩张窗口。
+                  </td>
+                </tr>
+
+                <!-- 行 5：露露乐蒙 Calvin McDonald -->
+                <tr data-category="turnaround" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">Calvin McDonald</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">露露乐蒙 lululemon (NASDAQ: LULU)</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">零售背景职业经理人 CEO</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">高粘性瑜伽社群 + 国际拓店</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~58.5%</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">+6%–8%</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>从鞋向衣反向渗透的参照系：</strong>LULU 拓荒鞋类收效平平，而昂跑在 Allemann 与 Zendaya 联名驱动下服饰单季暴增 +38.7%，正强势抢占北美都市女性衣橱。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+            未找到匹配的掌门人记录，请尝试清空搜索词或切换分类标签。
+          </div>
+        </div>
+
+        <!-- 配套 Chart.js 横向条形图：内生毛利率与营收增速双维对比 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">全球五大运动鞋服集团内生毛利率（Gross Margin）与 2026E 营收增速横向对比</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">在双创始人全价奢潮定位下，昂跑以 66.0% 全年预期内生毛利率（26Q3 实绩 66.9%）与 ~21% 固定汇率增速断层领跑全球同业</p>
+            </div>
+            <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">毛利率领先耐克逾 22.5 个百分点</span>
+          </div>
+          <div class="relative h-64 w-full">
+            <canvas id="compMarginChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           四、 商业回报与 2029 战略目标推演 (Financial Performance & Simulator)
+      ========================================================= -->
+      <section id="sec-fin" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Execution &amp; 2029 Strategic Roadmap Simulator</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 商业回报与 2029 战略目标推演：IPO 以来营收翻 5 倍与“三引擎”复利模型</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">2021 IPO 营收 CHF 7.25亿 → 2026E 指引 CHF 34.7–35.6亿 · 2026年9月发布 2029 新蓝图</span>
+        </div>
+
+        <!-- 1. 财务执行力四大硬核指标卡 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">5-Year Revenue Expansion</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~4.85x (CHF 3.52B)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              自 2021 年纽交所上市（营收 CHF 7.25亿）至 2026E（指引 CHF 3.47B–3.56B），五年间规模扩大近 5 倍且无一年失速（<a href="https://investors.on-running.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On IR</a>）。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">26Q3 Adjusted EBITDA</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">CHF 256.8M (+42.7%)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              联席 CEO 掌舵首个完整完整季（26Q3）调整后 EBITDA 利润率跃升 500bps 至 <strong>27.6%</strong>，全年表观指引达 21.0%–21.5%（<a href="https://investors.on-running.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On Q3 2026</a>）。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Apparel &amp; APAC Velocity</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">+38.7% / +31.9%</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              服饰（+38.7%）与亚太区（+31.9% CC）双双保持超 30% 爆发增速，验证两位创始人将资源重仓高潜力增量曲线的眼光（<a href="https://investors.on-running.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On Q3 2026</a>）。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Cash Conversion &amp; Liquidity</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">CHF 1,339.0M</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              前九月净现金流流入 CHF 2.532亿，期末在手现金较 2025 年底增长 +31.3%，零举债压力支撑全球旗舰店与机器人工厂（<a href="https://investors.on-running.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On 6-K</a>）。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. 交互式 Chart.js 双轴演进图 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">2021–2026E 昂跑净营收高速扩张 vs 调整后 EBITDA 利润阶梯跃升曲线（CHF 百万）</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">从 2021 年调整后 EBITDA CHF 1.10亿攀升至 2026E 约 CHF 7.48亿（增长 6.8 倍），验证“规模扩张 + 毛利提纯”双轮盈利飞轮</p>
+            </div>
+            <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">5年 EBITDA 复合增速 CAGR +46.7%</span>
+          </div>
+          <div class="relative h-72 w-full">
+            <canvas id="valEvolutionChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 3. 交互式组件：“2026–2029 战略蓝图”三引擎增长与目标价值推演器 -->
+        <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+            <div>
+              <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+                <span>2029 STRATEGIC ROADMAP ENGINE · 双联席 CEO 三引擎增长推演器</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-1">昂跑 2026–2029（及 2031 远期）鞋类、服饰与DTC直营复利推演器</h3>
+              <p class="text-xs text-slate-400 mt-0.5">基于 2026 年 9 月 22 日投资者日战略框架：调节未来 3–5 年鞋类基本盘增速、服饰倍增斜率与稳态 EBITDA 利润率</p>
+            </div>
+            <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+              <input type="checkbox" id="leverage-bonus-toggle" checked onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+              <span>计入 2027+ SG&amp;A 经营杠杆 (+1.5pp EBITDA率)</span>
+            </label>
+          </div>
+
+          <!-- 预设战略情景按钮组 -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+            <button type="button" onclick="setSimEra('base_2029')" data-era="base_2029" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+              <div>① 2029 战略目标基准情景 (3年期)</div>
+              <div class="text-[11px] opacity-85 font-mono mt-0.5">鞋类 +16% / 服饰 +32% · 冲击 CHF 5.8B+</div>
+            </button>
+            <button type="button" onclick="setSimEra('bull_2029')" data-era="bull_2029" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+              <div>② 亚太与服饰爆发乐观情景 (3年期)</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">鞋类 +20% / 服饰 +38% · 冲刺 CHF 6.5B+</div>
+            </button>
+            <button type="button" onclick="setSimEra('horizon_2031')" data-era="horizon_2031" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+              <div>③ 2031 全球奢潮巨头远期推演 (5年期)</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">鞋类 +15% / 服饰 +30% · 迈向 CHF 8.0B+</div>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <!-- 左侧参数控制区 -->
+            <div class="lg:col-span-5 space-y-4 text-xs">
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">核心鞋类（Footwear）年均复合增速</span>
+                  <span id="sim-shoe-label" class="font-mono font-bold text-white text-sm">16.0%</span>
+                </div>
+                <input id="sim-shoe" type="range" min="8" max="24" step="0.5" value="16.0" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">服饰与配件（Apparel &amp; Acc.）年均增速</span>
+                  <span id="sim-apparel-label" class="font-mono font-bold text-emerald-400 text-sm">32.0%</span>
+                </div>
+                <input id="sim-apparel" type="range" min="15" max="45" step="1" value="32.0" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">推演时间跨度（基准 2026E = CHF 3.52B）</span>
+                  <span id="sim-years-label" class="font-mono font-bold text-teal-400 text-sm">3 年 (至 2029E)</span>
+                </div>
+                <input id="sim-years" type="range" min="1" max="5" step="1" value="3" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#06B6D4] cursor-pointer">
+              </div>
+
+              <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+                当前测算基准：基于 2026E 营收 CHF 3.52B（鞋类约 CHF 3.19B、服饰配件约 CHF 0.33B），测算两位联席 CEO 带领昂跑迈向 2029 投资者日战略目标的收入结构跃迁。
+              </p>
+            </div>
+
+            <!-- 右侧四大实时测算结果卡片 -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">期末预计集团总净营收 (CHF)</div>
+                <div id="sim-final-rev" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">CHF 5.74B</div>
+                <div id="sim-rev-usd" class="text-xs font-semibold text-emerald-400 mt-1.5">折合约 $6.77B 美元 · 整体复合增速 +17.7%</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">期末预计调整后 EBITDA 利润</div>
+                <div id="sim-final-ebitda" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">CHF 1.32B</div>
+                <div id="sim-ebitda-margin" class="text-xs text-slate-400 mt-1.5">预计调整后 EBITDA 利润率：23.0%</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">服饰与配件业务规模及总营收占比</div>
+                <div id="sim-apparel-rev" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">CHF 0.76B</div>
+                <div id="sim-apparel-share" class="text-xs text-slate-400 mt-1.5">占集团总营收比重由 9.4% 跃升至 13.2%</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">隐含合理估值区间 (按 16x EV/EBITDA)</div>
+                <div id="sim-implied-mcap" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$26.8B</div>
+                <div id="sim-implied-upside" class="text-xs text-slate-400 mt-1.5">较当前 ~$11.1B 市值隐含年化回报 +34.1%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 治理与领导力双视角对比 (Bull Case vs Critical Reflection) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头治理红利论点 (Founder-Led Edge)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">零委托代理损耗 + 极致产品热力</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>克服职业经理人短期主义：</strong>创始人持有核心股权且着眼十年品牌资产，敢于在批发景气波动期果断拒绝对批发商倾销压货，换取 66.9% 历史新高内生毛利率。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>“创意大脑 + 商业大脑 + 科技大脑”三创始人共治 16 年零裂痕：</strong>自 2010 年联合创立至今，Allemann、Coppetti 与 Bernhard 默契历经检验，兼具创业激情与机构级纪律。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>高管梯队补齐短板：</strong>Scott Maguire 执掌供应链制造与 Frank Sluis 执掌财务，让联席 CEO 得以维持“60% 时间投入未来创新”的高杠杆模式。</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-rose-700 dark:text-rose-400 text-base">治理风险与市场顾虑审视 (Governance Watch)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">双首长权责 + 明星CFO离任适应期</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>双联席 CEO（Co-CEO）架构的长期决策效率考验：</strong>华尔街历来对双首长制持审慎态度（2026年3月换帅公告当日股价一度大跌逾 11%），一旦出现重大逆风，需观察两位联席 CEO 与 COO 之间的最终拍板机制（<a href="https://sgbonline.com/exec-on-holdings-shares-crash-11-percent-on-surprise-ceo-departure/" target="_blank" rel="noopener noreferrer" class="cite-link">SGB Online</a>）。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>功勋 CFO/CEO Martin Hoffmann 离任后的财务沟通磨合：</strong>Hoffmann 曾是华尔街最信任的财务守门人，新任 CFO Frank Sluis 仍需通过连续数个季度的精准指引兑现来建立同等级市场声誉。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>规模跨过 50 亿瑞郎后的直营重资产管理复杂度：</strong>全球旗舰店快速铺开与服饰 SKU 扩张将显著推高库存与门店管理难度，对创始人的精细化运营提出更高要求。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           五、 三幕领导力演进与折戟复盘 (Three-Act Evolution & Takeaways)
+      ========================================================= -->
+      <section id="sec-inv" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Leadership Evolution &amp; Strategic Takeaways</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕领导力演进与商业折戟复盘：从苏黎世公寓花园软管到全球百亿美元奢潮帝国</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">进化主线：2010–2020 创始人草创 → 2021–2025 职业经理人规模化 → 2026+ 创始人2.0重掌全局</span>
+        </div>
+
+        <!-- 1. 三幕演进卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- 第一幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 车库原型与品牌立心</span>
+                <span class="font-mono text-xs font-bold text-slate-500">2010–2020</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">从 ISPO 创新奖到费德勒入股</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>2010 年三位创始人在苏黎世创立昂跑，凭“如踩云端”的独特中空鞋底拿下慕尼黑 ISPO 全球创新大奖；2019 年网球天王罗杰·费德勒以股东及共创人身份加入并推出 <strong>THE ROGER</strong> 系列，一举打通高端精英消费圈层。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+              阶段启示：用极高辨识度物理结构建立天然社交货币，零广告费实现口碑冷启动
+            </div>
+          </div>
+
+          <!-- 第二幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 制度化放量与纽交所 IPO</span>
+                <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2021–2025</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">联席 CEO 制度助力跨过 30 亿瑞郎</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>2021 年 9 月登陆纽交所（NYSE: ONON），原 CFO Martin Hoffmann 与 Marc Maurer 组成双联席 CEO 搭档，两位创始人退居执行联席董事长负责品牌与产品远见。五年间公司年营收从 CHF 7.25亿狂飙逾 4 倍跨过 CHF 30亿里程碑（<a href="https://investors.on-running.com/news/news-details/2026/On-Co-Founders-to-Lead-Next-Chapter-of-Growth-as-Co-CEOs/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On IR</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+              阶段启示：用顶级 CFO 搭建财务与供应链底盘，承接爆发式全球需求
+            </div>
+          </div>
+
+          <!-- 第三幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 创始人 2.0 重掌一线</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2026–2029+</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">重新定义现代运动奢潮边界</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>2026 年 5 月 Allemann 与 Coppetti 正式出任 Co-CEOs，9 月投资者日发布 2029 战略蓝图：以 <strong>LightSpray™</strong> 机器人制造、<strong>Cloudtilt</strong> 时尚矩阵及 <strong>Zendaya</strong> 运动服饰为抓手，向全球全方位高端运动生活方式领导者迈进（<a href="https://press.on-running.com/category/company" target="_blank" rel="noopener noreferrer" class="cite-link">On Press</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              阶段启示：规模突破 30 亿后再次向创始人锐度回归，防止官僚僵化
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 四大实战挑战与管理进化复盘矩阵 -->
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业实战镜鉴：昂跑发展历程中的四大关键挑战与纠偏闭环</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">挑战 01 · 2024 亚特兰大自动化仓切换配送阵痛</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">供应链危机公关</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">自动化升级初期导致北美旺季缺货与库存扭曲</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                2024 年北美高度自动化仓库上线磨合期曾造成交付延迟，暴露高速扩张下的供应链脆弱性；随后引入前苹果/戴森制造专家 Scott Maguire 彻底重构物流网络，至 2026Q3 存货实际件数增速（+16%）已实现完美控盘（<a href="https://investors.on-running.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On Q3 2026</a>）。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">挑战 02 · 2026年3月突发换帅引发的资本市场剧震</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">预期管理修复</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">股价单日急挫 11% 后的“业绩与战略双重透明化”</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                功勋 CEO Martin Hoffmann 宣布卸任一度引发市场对治理稳定性的误读（<a href="https://sgbonline.com/exec-on-holdings-shares-crash-11-percent-on-surprise-ceo-departure/" target="_blank" rel="noopener noreferrer" class="cite-link">SGB Online</a>）；双联席 CEO 随后在 9 月举办深度投资者日清晰锚定 2029 目标，并用 26Q3 创纪录毛利与利润增长打消疑虑。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">挑战 03 · 东南亚产能集中与美国关税博弈</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">地缘与成本对冲</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">用提价权与机器人喷织技术对冲贸易政策不确定性</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                面对美国针对越南/印尼鞋履关税波动，管理层一方面凭借高端定位顺畅传导价格、并成功追回 CHF 5,260万关税退税，另一方面加速布局瑞士与欧美本土 LightSpray™ 机器人自动化产线。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">挑战 04 · 防止沦为“昙花一现的网红中产街鞋”</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">硬核科技回血</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">时尚破圈的同时加大专业竞速与女子服饰双线护城河</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                吸取部分潮流鞋履品牌“因过度时尚化失去专业根基而迅速过气”的教训，Bernhard 与两位联席 CEO 同步推进顶级马拉松选手领奖台战靴与高毛利服饰生态，实现专业与时尚双向正循环。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 机构级商业与投资启示横幅 -->
+        <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+          <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>写给消费品牌操盘手与成长股投资者的三条“昂跑 CEO 底层启示”</span>
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-white mb-1">1. 创始人最大的价值在“创造未来”，而非“审批报表”</div>
+              <p class="text-slate-300 leading-relaxed">
+                通过配置顶级 COO 与 CFO 接管日常稳态运营，把创始人 60% 的时间释放给实验室、门店体验与品牌叙事，是消费品公司跨越 30 亿营收鸿沟后依然保持年轻生命力的核心秘诀。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-mogold-400 mb-1">2. 全价纪律是高端消费品最深也最难守的护城河</div>
+              <p class="text-slate-300 leading-relaxed">
+                宁愿牺牲短期的批发压货数字，也绝不通过打折透支品牌资产——正是这种反人性克制，让昂跑在 2026 年交出了媲美欧洲奢侈品的 66.9% 内生毛利率。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-emerald-400 mb-1">3. 关注“创始人重掌一线 + 估值充分消化”的错杀赔率</div>
+              <p class="text-slate-300 leading-relaxed">
+                市场常因职业经理人 CEO 离任产生条件反射式抛售；当创始人不仅年富力强且互补共治、同时公司内生盈利指标不降反升时，情绪错杀往往孕育中长线黄金买点。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           六、 联席 CEO 治理与经营跟踪核查清单 (Checklist)
+      ========================================================= -->
+      <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Co-CEO Governance &amp; Execution Diagnostic Checklist</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 昂跑联席 CEO 治理与战略兑现交互核查清单（Checklist）</h2>
+          </div>
+          <div class="flex items-center space-x-2 no-print">
+            <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 4 / 6 项 (67%)</span>
+            <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            可用于持续跟踪大卫·阿莱曼与卡斯帕·科佩蒂重掌一线后的治理效率与 2029 战略落地进度（点击勾选自动本地保存状态）：
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+            <!-- KPI 1 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">1. 全价纪律检验：内生毛利率是否稳守 66.0%–67.0% 高地？</span>
+                  <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">品牌溢价核心锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  2026Q3 剔除关税退税后的内生毛利率创 66.9% 新高；需核查欧美假日季及 2027 年全价售罄率是否持续保持行业第一。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 2 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">2. 双联席 CEO 与 COO/CFO 四人执行铁三角磨合顺畅度</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">组织治理基准</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  跟踪 Scott Maguire 统筹日常供应链与新任 CFO Frank Sluis 财报指引精准度，确保高管团队稳定性与决策敏捷性。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 3 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">3. 运动服饰（Apparel）保持 30%+ 增速且占集团营收突破 10%</span>
+                  <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">第二增长曲线</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Q3 服饰大增 +38.7%（服饰+配件合占 9.4%）；检验 Allemann 主导的 Zendaya 联名与女子训练服能否实现高频复购。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 4 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-4" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">4. DTC 直营渠道占比向 43%–45% 稳步攀升（亚太区领跑）</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">渠道掌控力指标</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Q3 DTC 同比增长 +25.0% 占比达 42.2%，亚太固定汇率增长 +31.9%；观察全球核心商圈旗舰店单店坪效持续性。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 5 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">5. LightSpray™ 机器人自动化鞋面产线从竞速向大众主力扩产</span>
+                  <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">制造护城河检验</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  追踪机器人 3 分钟一步成型技术是否从 Cloudboom Strike LS 逐步下放至主流跑步与生活鞋款，重塑毛利与近岸制造弹性。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 6 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">6. 2027 年起 SG&amp;A 费用率下行，兑现 2029 战略盈利杠杆承诺</span>
+                  <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">利润释放验证点</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  验证经历 2026 旗舰店与新品类前置投入高峰后，2027 财年起管理与销售费用率是否如期回落并推高净利率。
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+      ========================================================= -->
+      <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+          <span>昂跑双联席 CEO 大卫·阿莱曼 &amp; 卡斯帕·科佩蒂深度商业与领导力研究报告 · 机构框架版</span>
+          <span>核心数据出处：On Holding AG SEC Form 6-K (2026.03 / 2026.11) · On Investor Day 2026</span>
+        </div>
+        <p class="leading-relaxed">
+          <strong>数据来源与研究说明：</strong>本深度报告所有治理架构与财务指标均核验自昂跑官方投资者关系公告 <a href="https://investors.on-running.com/news/news-details/2026/On-Co-Founders-to-Lead-Next-Chapter-of-Growth-as-Co-CEOs/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On Co-Founders to Lead Next Chapter of Growth as Co-CEOs (2026-03-25)</a>、<a href="https://www.sec.gov/Archives/edgar/data/1858985/000095010326004606/dp244091_ex9901.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Form 6-K Exhibit 99.1</a>、<a href="https://investors.on-running.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" class="cite-link">On Holding 2026Q3 财报（2026-11-10）</a> 及 <a href="https://www.inc.com/victoria-salves/on-founders-just-33-percent-time-traditional-ceos-what-they-do-instead-fuels-success/91402635" target="_blank" rel="noopener noreferrer" class="cite-link">Inc. 创始人深度专访（2026-09-18）</a>。内置的 2026–2029/2031 复利推演器旨在量化分析多引擎增长模型，不构成具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+  <script>
+    // ==========================================
+    // 0. 一键导出独立自包含 HTML 文件 (.html)
+    // ==========================================
+    let toastTimer = null;
+
+    function showToast(msg) {
+      const toast = document.getElementById('export-toast');
+      const msgEl = document.getElementById('export-toast-msg');
+      if (!toast || !msgEl) return;
+      msgEl.textContent = msg;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3200);
+    }
+
+    function exportStandaloneHtml() {
+      try {
+        const clone = document.documentElement.cloneNode(true);
+        const toastClone = clone.querySelector('#export-toast');
+        if (toastClone) {
+          toastClone.classList.add('hidden');
+          toastClone.classList.remove('flex');
+        }
+        const drawerClone = clone.querySelector('#mobile-drawer');
+        if (drawerClone) {
+          drawerClone.classList.add('hidden');
+        }
+        const progressClone = clone.querySelector('#reading-progress');
+        if (progressClone) {
+          progressClone.style.width = '0%';
+        }
+        clone.querySelectorAll('canvas').forEach(cv => {
+          cv.removeAttribute('width');
+          cv.removeAttribute('height');
+          cv.removeAttribute('style');
+        });
+
+        const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'On_Holding_CEO_Analysis.html';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+        showToast('已成功导出独立 HTML 文件：On_Holding_CEO_Analysis.html');
+      } catch (err) {
+        showToast('导出失败，请使用右上角文件下载功能保存。');
+      }
+    }
+
+    // ==========================================
+    // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+    // ==========================================
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      updateChartsTheme();
+    }
+
+    // ==========================================
+    // 2. 移动端抽屉菜单切换
+    // ==========================================
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      if (drawer) drawer.classList.toggle('hidden');
+    }
+
+    // ==========================================
+    // 3. 阅读进度条与左侧导航滚动联动高亮
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      const prog = document.getElementById('reading-progress');
+      if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+      let currentId = 'sec-exec';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 160;
+        if (scrollTop >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const numSpan = link.querySelector('span span');
+        if (numSpan) {
+          numSpan.classList.remove('text-mogold-400');
+          numSpan.classList.add('text-slate-500');
+        }
+        if (link.dataset.target === currentId) {
+          link.classList.add('active');
+          if (numSpan) {
+            numSpan.classList.remove('text-slate-500');
+            numSpan.classList.add('text-mogold-400');
+          }
+        }
+      });
+    });
+
+    // ==========================================
+    // 4. 全球鞋服掌门人横向对比筛选 + 关键词搜索联动
+    // ==========================================
+    let activeLeaderCategory = 'all';
+
+    function filterCompetitors(category) {
+      activeLeaderCategory = category;
+      document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+          btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        } else {
+          btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+          btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        }
+      });
+      applyLeaderFilters();
+    }
+
+    function applyLeaderFilters() {
+      const searchInput = document.getElementById('leader-search-input');
+      const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+      const rows = document.querySelectorAll('#comp-table-body tr');
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const rowCat = row.dataset.category;
+        const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+        const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+        if (catMatch && textMatch) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      const emptyState = document.getElementById('leader-empty-state');
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+    }
+
+    // ==========================================
+    // 5. “2026–2029 战略蓝图”三引擎增长与目标价值推演器
+    // ==========================================
+    const ERA_PRESETS = {
+      base_2029: {
+        shoe: 16.0,
+        apparel: 32.0,
+        years: 3,
+        caption: '当前测算基准：基于 2026E 营收 CHF 3.52B（鞋类约 CHF 3.19B、服饰配件约 CHF 0.33B），测算两位联席 CEO 带领昂跑迈向 2029 投资者日战略目标的收入结构跃迁。'
+      },
+      bull_2029: {
+        shoe: 20.0,
+        apparel: 38.0,
+        years: 3,
+        caption: '当前测算基准：乐观情景假设亚太区保持 30%+ 扩张、Cloudsurfer 3 与 Cloudtilt 持续爆卖且服饰线加速放量，集团营收在 2029 年突破 CHF 6.3B。'
+      },
+      horizon_2031: {
+        shoe: 15.0,
+        apparel: 30.0,
+        years: 5,
+        caption: '当前测算基准：5 年跨周期复合推演（至 2031E），随着服饰与直营门店网络全面成熟，集团年营收跨越 CHF 7.6B 迈入全球第一梯队运动奢潮巨头行列。'
+      }
+    };
+
+    function highlightEraButton(eraKey) {
+      document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+        const subDiv = btn.querySelectorAll('div')[1];
+        if (btn.dataset.era === eraKey) {
+          btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+          if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+        } else {
+          btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+          if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+        }
+      });
+    }
+
+    function setSimEra(eraKey) {
+      const preset = ERA_PRESETS[eraKey];
+      if (!preset) return;
+      document.getElementById('sim-shoe').value = preset.shoe;
+      document.getElementById('sim-apparel').value = preset.apparel;
+      document.getElementById('sim-years').value = preset.years;
+      document.getElementById('sim-era-caption').textContent = preset.caption;
+      highlightEraButton(eraKey);
+      updateValueSimulator();
+    }
+
+    function markCustomEra() {
+      highlightEraButton('custom');
+      document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义多引擎增长推演模式——自由探索不同鞋类基本盘增速、服饰倍增斜率与时间跨度下的规模与市值变化。';
+    }
+
+    function updateValueSimulator() {
+      const shoeCagr = parseFloat(document.getElementById('sim-shoe').value) || 16.0;
+      const apparelCagr = parseFloat(document.getElementById('sim-apparel').value) || 32.0;
+      const years = parseInt(document.getElementById('sim-years').value, 10) || 3;
+      const hasLeverage = document.getElementById('leverage-bonus-toggle').checked;
+
+      const targetYear = 2026 + years;
+      document.getElementById('sim-shoe-label').textContent = shoeCagr.toFixed(1) + '%';
+      document.getElementById('sim-apparel-label').textContent = apparelCagr.toFixed(1) + '%';
+      document.getElementById('sim-years-label').textContent = `${years} 年 (至 ${targetYear}E)`;
+
+      // 2026E 基准拆分：总营收 CHF 3.52B (鞋类 90.6% = CHF 3.19B, 服饰及配件 9.4% = CHF 0.33B)
+      const baseTotalChf = 3.52;
+      const baseShoeChf = 3.19;
+      const baseApparelChf = 0.33;
+
+      const endShoeChf = baseShoeChf * Math.pow(1 + shoeCagr / 100, years);
+      const endApparelChf = baseApparelChf * Math.pow(1 + apparelCagr / 100, years);
+      const endTotalChf = endShoeChf + endApparelChf;
+
+      const blendedCagr = (Math.pow(endTotalChf / baseTotalChf, 1 / years) - 1) * 100;
+      const chfToUsd = 1.18;
+      const endTotalUsd = endTotalChf * chfToUsd;
+
+      // 稳态调整后 EBITDA 利润率：基准 21.5% + 经营杠杆释放
+      const ebitdaMarginPct = 21.5 + (hasLeverage ? 1.5 : 0) + (years > 3 ? 0.8 : 0);
+      const endEbitdaChf = endTotalChf * (ebitdaMarginPct / 100);
+      const endEbitdaUsd = endEbitdaChf * chfToUsd;
+
+      const apparelSharePct = (endApparelChf / endTotalChf) * 100;
+
+      // 按 16x EV/EBITDA + 累计净现金估算隐含市值（对比当前 ~$11.1B）
+      const estNetCashUsd = 1.58 + (endEbitdaUsd * 0.45 * (years * 0.65));
+      const impliedMcapUsd = (endEbitdaUsd * 16.0) + estNetCashUsd;
+      const currentMcap = 11.10;
+      const impliedIrr = (Math.pow(impliedMcapUsd / currentMcap, 1 / years) - 1) * 100;
+
+      document.getElementById('sim-final-rev').textContent = `CHF ${endTotalChf.toFixed(2)}B`;
+      document.getElementById('sim-rev-usd').textContent = `折合约 $${endTotalUsd.toFixed(2)}B 美元 · 整体复合增速 +${blendedCagr.toFixed(1)}%`;
+      document.getElementById('sim-final-ebitda').textContent = `CHF ${endEbitdaChf.toFixed(2)}B`;
+      document.getElementById('sim-ebitda-margin').textContent = `预计调整后 EBITDA 利润率：${ebitdaMarginPct.toFixed(1)}%`;
+      document.getElementById('sim-apparel-rev').textContent = `CHF ${endApparelChf.toFixed(2)}B`;
+      document.getElementById('sim-apparel-share').textContent = `占集团总营收比重由 9.4% 跃升至 ${apparelSharePct.toFixed(1)}%`;
+      document.getElementById('sim-implied-mcap').textContent = `$${impliedMcapUsd.toFixed(1)}B`;
+      document.getElementById('sim-implied-upside').textContent = `较当前 ~$11.1B 市值隐含年化回报 ${impliedIrr >= 0 ? '+' : ''}${impliedIrr.toFixed(1)}%`;
+    }
+
+    // ==========================================
+    // 6. KPI 核查清单状态持久化与计数更新
+    // ==========================================
+    const KPI_STORAGE_KEY = 'onon_ceo_checklist_v1';
+
+    function loadKpiChecklist() {
+      try {
+        const saved = localStorage.getItem(KPI_STORAGE_KEY);
+        if (saved) {
+          const stateMap = JSON.parse(saved);
+          document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+            if (typeof stateMap[cb.id] === 'boolean') {
+              cb.checked = stateMap[cb.id];
+            }
+          });
+        }
+      } catch (e) {
+        // 忽略沙箱本地存储权限限制
+      }
+      updateKpiChecklist();
+    }
+
+    function updateKpiChecklist() {
+      const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      const stateMap = {};
+
+      checkboxes.forEach(cb => {
+        stateMap[cb.id] = cb.checked;
+        if (cb.checked) checkedCount++;
+      });
+
+      const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+      const badge = document.getElementById('kpi-progress-badge');
+      if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+      try {
+        localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+      } catch (e) {
+        // 忽略沙箱本地存储权限限制
+      }
+    }
+
+    function resetKpiChecklist() {
+      document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      updateKpiChecklist();
+      showToast('已重置昂跑联席 CEO 治理观察清单状态');
+    }
+
+    // ==========================================
+    // 7. Chart.js 数据可视化初始化与主题自适应
+    // ==========================================
+    let bizChartInstance = null;
+    let radarChartInstance = null;
+    let compMarginChartInstance = null;
+    let valEvolutionChartInstance = null;
+    let currentBizMode = 'time_allocation';
+
+    function getChartColors() {
+      const isDark = document.documentElement.classList.contains('dark');
+      return {
+        text: isDark ? '#CBD5E1' : '#475569',
+        grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+        radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+      };
+    }
+
+    function initBizChart() {
+      const canvas = document.getElementById('bizArchitectureChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      // 视图 A：昂跑联席 CEO 精力配置结构 vs 传统大公司 CEO 对比 (%)
+      const timeConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            '未来产品创新、品牌实验与实验室共创',
+            '常规公司治理、外部沟通与行政管理',
+            '战略伙伴关系与文化跨界项目储备'
+          ],
+          datasets: [
+            {
+              label: '昂跑联席 CEO (Allemann & Coppetti 实测比例)',
+              data: [60, 33, 7],
+              backgroundColor: '#F59E0B',
+              borderRadius: 5
+            },
+            {
+              label: '传统大型消费品企业 CEO (行业常态基准)',
+              data: [20, 70, 10],
+              backgroundColor: 'rgba(100, 116, 139, 0.65)',
+              borderRadius: 5
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `${c.dataset.label}: ${c.parsed.y}% 时间精力`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            },
+            y: {
+              min: 0,
+              max: 80,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+            }
+          }
+        }
+      };
+
+      // 视图 B：双创始人掌舵首个完整季（2026Q3）核心增长引擎实绩 (%)
+      const pillarsConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            '配件 Accessories Q3 营收增速',
+            '运动服饰 Apparel Q3 营收增速',
+            '亚太区 APAC 固定汇率增速',
+            'DTC 直营渠道 Q3 营收增速',
+            '欧洲中东非 EMEA 固定汇率增速',
+            '鞋类 Footwear Q3 营收增速'
+          ],
+          datasets: [
+            {
+              label: '2026Q3 同比增长率 (%)',
+              data: [39.2, 38.7, 31.9, 25.0, 19.1, 15.4],
+              backgroundColor: [
+                '#10B981',
+                '#F59E0B',
+                '#06B6D4',
+                '#D97706',
+                '#3B82F6',
+                '#64748B'
+              ],
+              borderRadius: 6,
+              barThickness: 20
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (c) => `2026Q3 同比增速: +${c.parsed.x}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 45,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '+' + v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      };
+
+      if (bizChartInstance) bizChartInstance.destroy();
+      bizChartInstance = new Chart(ctx, currentBizMode === 'time_allocation' ? timeConfig : pillarsConfig);
+    }
+
+    function switchBizChart(mode) {
+      currentBizMode = mode;
+      const btnEvo = document.getElementById('btn-chart-evo');
+      const btnSplit = document.getElementById('btn-chart-split');
+      const titleEl = document.getElementById('biz-chart-title');
+      const subEl = document.getElementById('biz-chart-sub');
+
+      if (mode === 'time_allocation') {
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '昂跑联席 CEO“反传统时间分配”与战略资源倾斜模型（Inc. 2026 披露）';
+        subEl.textContent = 'Allemann 与 Coppetti 将 60% 精力投入未来产品与品牌实验，仅花 33% 时间处理传统 CEO 行政事务';
+      } else {
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '双联席 CEO 执掌首个完整季（2026Q3）各引擎爆发增速实绩';
+        subEl.textContent = '服饰（+38.7%）、亚太区（+31.9% CC）与 DTC 直营（+25.0%）全线高增，验证创始人回归一线的直接势能';
+      }
+      initBizChart();
+    }
+
+    function initRadarChart() {
+      const canvas = document.getElementById('moatRadarChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (radarChartInstance) radarChartInstance.destroy();
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: [
+            '品牌美学与奢潮跨界溢价',
+            '全价定价纪律与毛利率',
+            '一线创新时间倾斜与敏捷度',
+            'DTC直营体验与亚太扩张力',
+            '全球供应链规模与多品牌纵深'
+          ],
+          datasets: [
+            {
+              label: '昂跑联席 CEO (Allemann & Coppetti)',
+              data: [9.8, 9.9, 9.7, 9.5, 6.8],
+              borderColor: '#F59E0B',
+              backgroundColor: 'rgba(245, 158, 11, 0.24)',
+              pointBackgroundColor: '#F59E0B',
+              borderWidth: 2.5
+            },
+            {
+              label: '德克斯户外 (Stefano Caroti · HOKA)',
+              data: [7.6, 8.9, 8.2, 8.5, 7.8],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.14)',
+              pointBackgroundColor: '#10B981',
+              borderWidth: 2.0
+            },
+            {
+              label: '耐克 (Elliott Hill · NKE)',
+              data: [8.6, 6.8, 7.2, 7.4, 9.9],
+              borderColor: '#06B6D4',
+              backgroundColor: 'rgba(6, 182, 212, 0.12)',
+              pointBackgroundColor: '#06B6D4',
+              borderWidth: 1.8,
+              borderDash: [4, 4]
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            }
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 10,
+              ticks: { display: false, stepSize: 2 },
+              grid: { color: colors.grid },
+              angleLines: { color: colors.radarAngle },
+              pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initCompMarginChart() {
+      const canvas = document.getElementById('compMarginChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (compMarginChartInstance) compMarginChartInstance.destroy();
+      compMarginChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            '昂跑 (ONON · 双创始人联席 CEO)',
+            '露露乐蒙 (LULU · Calvin McDonald)',
+            '德克斯户外 (DECK · Stefano Caroti)',
+            '阿迪达斯 (ADDYY · Bjørn Gulden)',
+            '耐克 (NKE · Elliott Hill)'
+          ],
+          datasets: [
+            {
+              label: '内生毛利率 Underlying Gross Margin (%)',
+              data: [66.0, 58.5, 56.5, 50.8, 43.5],
+              backgroundColor: '#F59E0B',
+              borderRadius: 5,
+              barThickness: 13
+            },
+            {
+              label: '2026E 营收同比增速 Revenue Growth (%)',
+              data: [21.0, 7.0, 11.0, 9.0, 0.5],
+              backgroundColor: '#10B981',
+              borderRadius: 5,
+              barThickness: 13
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `${c.dataset.label}: ${c.parsed.x}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              max: 75,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initValEvolutionChart() {
+      const canvas = document.getElementById('valEvolutionChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+      valEvolutionChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['2021 (IPO)', '2022', '2023', '2024', '2025', '2026E (Co-CEOs)'],
+          datasets: [
+            {
+              type: 'bar',
+              label: '年度净营收 Net Sales (CHF 百万)',
+              data: [725, 1222, 1792, 2318, 3015, 3520],
+              backgroundColor: 'rgba(245, 158, 11, 0.85)',
+              borderRadius: 5,
+              barThickness: 30,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: '调整后 EBITDA 利润 (CHF 百万)',
+              data: [110, 165, 277, 384, 545, 748],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 3,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `${c.dataset.label}: CHF ${c.parsed.y.toLocaleString('en-US')}M`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 4000,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => 'CHF ' + v + 'M' },
+              title: { display: true, text: '年度净营收 (CHF 百万)', color: colors.text, font: { size: 11 } }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 0,
+              max: 850,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => 'CHF ' + v + 'M' },
+              title: { display: true, text: '调整后 EBITDA (CHF 百万)', color: '#10B981', font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartsTheme() {
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadKpiChecklist();
+      updateValueSimulator();
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    });
+  </script>
+</body>
+</html>

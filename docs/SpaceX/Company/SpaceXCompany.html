@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>SpaceX (NASDAQ: SPCX) 深度研究报告：航天发射垄断霸主、Starlink 全球卫星宽带引擎与超级智能算力帝国</title>
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <!-- Chart.js -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#93C5FD',
+ 400: '#60A5FA',
+ 500: '#3B82F6',
+ 600: '#2563EB',
+ 700: '#1D4ED8',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ }
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：深空星海蓝渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(59, 130, 246, 0.24) 0%, rgba(6, 182, 212, 0.08) 100%);
+ border-left: 3px solid #3B82F6;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-white transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-teal-400 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-white text-xs shadow">
+ SPCX
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">NASDAQ: SPCX · Aerospace & AI</div>
+ <div class="text-sm font-bold leading-tight">SpaceX 深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-2">
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">SPCX 研报目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 业务与三支柱收入架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球航天与AI算力同行对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务健康与SOTP分部估值器</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 投资决策与风险配置</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
+ <p>全球商业航天与前沿科技研究组</p>
+ <p class="mt-1">数据基准：2026年11月 (Q3 26 / FY26E)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-teal-500 flex items-center justify-center text-white font-extrabold text-xs shadow-lg shadow-mogold-500/25">
+ SPCX
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">NASDAQ: SPCX</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">SpaceX 深度研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 可回收航天绝对垄断者 · 1360万用户星链网络 × 超级智能算力帝国
+ </p>
+ </div>
+
+ <!-- 股票实时快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">参考股价 (上市后区间)</span>
+ <span class="font-mono font-bold text-white">~$147.8 <span class="text-slate-400 text-[10px]">($135–$225)</span></span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">2026Q3 单季总营收</span>
+ <span class="font-mono font-bold text-emerald-400">$14.58B <span class="text-slate-400">(+161% YoY)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">总市值与年度运行率</span>
+ <span class="font-mono font-bold text-mogold-400">~$2.00T · 年化营收 $58.3B</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3.5 overflow-y-auto max-h-[calc(100vh-310px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>业务与三支柱收入架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球航天与AI算力同行对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务健康与SOTP分部估值器</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>投资决策与风险配置</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏 -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2.5">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色星海模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">评级：增持 / 太空基建与超级智能核心资产</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：2026Q3 上市后首份盈利答卷与星舰回收里程碑</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖时间：2026年11月</span>
+ <span>NASDAQ: SPCX</span>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景深空蓝点阵纹理 -->
+ <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#3B82F6 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+ <span>CORE THESIS · 史上最大IPO($86.2B募资) × 1360万星链用户现金牛 × 超级智能算力第二曲线 × 星舰塔臂捕获一级飞船</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ SpaceX (NASDAQ: SPCX) 深度研究报告：航天发射垄断霸主、Starlink 全球卫星宽带引擎与超级智能算力帝国
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 自 2026 年 2 月整合 xAI 并于 6 月 12 日在纳斯达克完成史上最大规模 IPO（发行价 $135，总募资 <strong class="text-white">$862亿</strong>）后，SpaceX 交出了上市后首份全面盈利的 <strong class="text-mogold-300">2026Q3 财报</strong>：单季总营收同比暴增 <strong class="text-emerald-400">+161% 至 $145.8亿</strong>（年化运行率达 <strong class="text-white">$583亿</strong>），GAAP 净利润录得 <strong class="text-emerald-400">$44.0亿</strong>。
+ 业务版图正式进化为“航天发射（Space）+ 卫星连接（Connectivity/Starlink）+ 超级智能（Super Intelligence，含 Colossus II 与 Cursor）”三大引擎；更在 2026 年 11 月 13 日星舰 <strong class="text-mogold-300">Flight 15</strong> 任务中历史性实现发射塔“筷子”机械臂首次捕获回收 <strong>Ship 上级飞船</strong>，彻底改写重型运载与卫星组网经济性。
+ </p>
+
+ <!-- 核心投资结论高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">Starlink 现金牛印钞引擎</div>
+ <div class="text-white font-semibold">全球消费者订户突破 1,360 万（单季净增 160 万），Q3 连接业务营收 $52.5亿、营业利润 $23.7亿（OPM 高达 45.1%）</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">超级智能 (SI) 跃居第一大营收极</div>
+ <div class="text-mogold-300 font-semibold">Q3 营收飙升 +830% 至 $75.6亿（占总营收 51.9%）并首次实现 $4.31亿 营业盈利，Colossus II 算力规模达 1.7GW</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">星舰完全可复用代际跃迁</div>
+ <div class="text-emerald-400 font-semibold">Flight 15 成功部署 26 颗 Starlink V3（下行容量为猎鹰9号单次 10 倍）并首次塔臂回收飞船上级，全复用闭环近在咫尺</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>总市值与参考股价</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$2.00T</span>
+ <span class="text-xs font-bold text-mogold-600 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">~$147.8</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2026年6月12日以 $135 发行价上市（首日收 $161，峰值 $225.6），稳居全球市值前六大上市公司。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>2026Q3 季度总营收</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$14.58B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+161% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 单季营收超越 2024 全年总和（$14.0B），前三季度累计营收达 $27.1B，远超华尔街 $12.7B 共识。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Starlink 消费者订阅规模</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">13.6M</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">Q3净增 +1.6M</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 另含超 2,200 万 Starlink Mobile 手机直连月活用户及 12,000 架民航客机签约订单，全球在轨卫星占比 ~75%。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Q3 营业利润与净利润</span>
+ <span class="p-1.5 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$2.80B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">净利 $4.40B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 上市后首次实现 GAAP 全面盈利（去年同期亏损 $1.1B），星链与超级智能双双实现正向营业利润。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 业务与三支柱收入架构 (Business & Revenue Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Business & Three-Pillar Revenue Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 业务与三支柱收入架构：超级智能算力反超星链，商业航天构筑底层闭环</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2026Q3 营收构成：SI 51.9% · Connectivity 36.0% · Space 12.1%</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2023–2026Q3 季度/年度总营收爆发与三大业务板块结构演进</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">2026Q3 单季营收达 $14.58B（超越 2024 全年），其中超级智能板块单季贡献 $7.56B 实现结构性反超</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('rev_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：营收三支柱演进</button>
+ <button onclick="switchBizChart('starlink_growth')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：Starlink 订户与ARPU轨迹</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性拆解核心洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026Q3 三大核心商业跃迁逻辑</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">Super Intelligence 营收占比跃升至 51.9% 并扭亏为盈</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 合并 xAI 并于 2026 年 8 月以 $600亿 全股票收购 AI 编程龙头 <strong>Cursor（Anysphere）</strong>后，SI 板块 Q3 营收同比暴增 +830% 至 <strong>$75.6亿</strong>（含 Cursor 贡献 $6.08亿及大型 AI 算力长协），首次斩获 <strong>$4.31亿</strong> 营业利润。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">Starlink 消费端量价齐升，800 MHz 频谱直指移动运营商</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ Q3 消费端与政企连接营收合共 <strong>$52.5亿</strong>（+69% YoY），消费级 ARPU 环比回升 5% 至 <strong>$69/月</strong>；10 月斥资收购 Grain Management 全美 <strong>800 MHz 低频段频谱</strong>，加速铺开 Starlink Mobile 手机直连服务。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">星舰 Flight 15 首度塔臂回收飞船上级，V3 卫星产能 10 倍跃迁</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026 年 11 月 13 日星舰 15 飞成功入轨释放 <strong>26 颗 Starlink V3 卫星</strong>（单次下行容量为猎鹰 9 号的 10 倍），并首次用发射塔“筷子”机械臂精准捕获回收 Ship 上级飞船。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">马斯克 2027 年底长期愿景</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">全集团年化营收运行率冲击 $500B+</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 三大核心业务分部 + 前沿太空数据中心战略卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 分部 1：Super Intelligence 超级智能与算力 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一大营收引擎 · 占总营收 51.9%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">Q3 营收 $7.56B (+830%)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 超级智能板块（xAI + Colossus II + Cursor + X）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 涵盖 Grok 大模型家族、社交平台 X 实时数据流、<strong>Colossus II 超算集群（额定装机容量已达 1.7 吉瓦）</strong>以及 2026 年 8 月并表的 AI 编程独角兽 <strong>Cursor</strong>。除自研模型订阅与企业 API 外，SpaceX 亦向核心 AI 实验室提供大规模算力基础设施租赁，Q3 单季实现 <strong>$4.31亿 营业利润</strong>（单季 AI CapEx 投入达 $164.4亿）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Q3 营业利润 $431M · CapEx $16.44B</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">1.7GW 算力集群 + Cursor 生态闭环</span>
+ </div>
+ </div>
+
+ <!-- 分部 2：Connectivity 卫星连接与星链 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">高利润现金牛 · 占总营收 36.0%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">OPM 45.1% ($2.37B 营业利润)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 全球卫星连接板块（Starlink 宽带 + 航空海事 + 手机直连）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2026Q3 营收达 <strong>$52.5亿</strong>（+69% YoY），其中消费级宽带营收 <strong>$31.2亿</strong>（1,360 万付费订户，ARPU $69/月），政企与国防（Starshield）及航空海事营收 <strong>$21.3亿（+91% YoY）</strong>。截至 9 月底已安装超 <strong>3,800 架民航客机</strong>（在手签约达 12,000 架），且 Starlink Mobile 手机直连月活突破 <strong>2,200 万人</strong>。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>前9月 Adj. EBITDA 高达 $8.18B</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">800MHz 频谱收购赋能全美直连</span>
+ </div>
+ </div>
+
+ <!-- 分部 3：Space 商业航天发射与深空运输 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">战略基建底座 · 占外部营收 12.1%</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">Q3 外部营收 $1.77B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 商业航天运载板块（Falcon 9/Heavy + Dragon + Starship）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 猎鹰 9 号（Falcon 9 Block 5）继续保持全球商业发射绝对霸主地位，承担美国国家安全发射（USSF/NROL）、NASA 载人与货运补给及商业卫星发射（Q3 外部确认收入 $17.7亿，另有大量内部组网发射成本内部抵消）。重型火箭 <strong>Starship</strong> 已演进至 Block 3 并规划 500 英尺高的 <strong>Starship V4</strong>，向月球 Artemis 登月与深空货运迈进。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>全球近地轨道入轨质量占比 &gt;85%</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">猎鹰稳健造血 + 星舰代际降本</span>
+ </div>
+ </div>
+
+ <!-- 分部 4：天基算力与轨道AI数据中心远期期权 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">跨维度协同远期期权 · 天基AI算力</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">星舰低成本重型入轨催化</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. “航天 + 卫星 + AI”三维飞轮与天基算力基础设施</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ SpaceX 合并 xAI 的核心产业逻辑在于打通<strong>“低成本重型入轨（Starship）→ 全球激光星间链路骨干网（Starlink V3）→ 分布式边缘/轨道 AI 推理算力”</strong>。随着地面数据中心面临电网变压器与冷却水资源瓶颈，利用星舰将高功率太阳能 AI 算力卫星送入晨昏轨道、通过星链激光网络直接向全球分发智能服务的远期蓝图正加速落地。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>星舰 V3/V4 单次百吨级近地运力</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">全球唯一天基通信+算力垂直整合体</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 行业地位与四重核心护城河 (Industry Position & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position & Economic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重核心护城河：可回收火箭、75%在轨卫星与高频发射飞轮</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：极宽 (Wide Moat · 投资级信用评级与 $862亿 IPO 现金储备)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">全栈可回收火箭技术代差与高频周转</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 猎鹰 9 号一级助推器复用次数已突破 20+ 次，将商业发射边际成本压缩至竞争对手的三分之一以下；星舰 <strong>Flight 15</strong> 实现塔臂回收上级飞船，进一步拉开至少 5–7 年代际鸿沟。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">75% 全球在轨卫星份额与频谱轨道卡位</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ Starlink 占据地球轨道所有活跃可控卫星的约 <strong>75%</strong>，依托自有火箭高频补网与 ITU 优先申报权，叠加全美 <strong>800 MHz</strong> 与 2 GHz 移动直连频谱，后发星座追赶成本呈指数级攀升。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“火箭-星座-终端-AI”全产业链垂直整合</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 从猛禽发动机、星链卫星（得州 Bastrop 工厂自研自产用户终端芯片）到 1.7GW 超级算力集群全栈自研，彻底消除外部供应商加价，实现 <strong>45.1% 的星链营业利润率</strong>。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">国防军工深度绑定与海量用户规模效应</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 美国太空军（USSF）、国家侦察局（NRO）及 NASA 高度依赖猎鹰、龙飞船与星盾（Starshield）；1,360 万付费订户与 2,200 万移动用户摊薄单星折旧，形成不可逆网络效应。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维护城河雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">商业航天与低轨星座巨头五维护城河雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">SpaceX (SPCX) vs 亚马逊 Leo (AMZN) vs Rocket Lab (RKLB)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 全球航天与AI算力同行对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Aerospace, Satellite & AI Competitive Landscape</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球航天、低轨卫星与前沿 AI 巨头横向对比</h2>
+ </div>
+ <!-- 交互式筛选按钮 -->
+ <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-white shadow-sm transition cursor-pointer">全部同行</button>
+ <button onclick="filterCompetitors('launch')" data-filter="launch" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">商业火箭发射</button>
+ <button onclick="filterCompetitors('satellite')" data-filter="satellite" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">低轨卫星与直连</button>
+ <button onclick="filterCompetitors('ai')" data-filter="ai" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">前沿AI大模型对手</button>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">企业名称与核心业务</th>
+ <th class="py-4 px-4 min-w-[130px]">最新估值 / 市值</th>
+ <th class="py-4 px-4 min-w-[140px]">年化营收规模</th>
+ <th class="py-4 px-4 min-w-[115px]">盈利能力状态</th>
+ <th class="py-4 px-4 min-w-[125px]">远期 P/S 倍数</th>
+ <th class="py-4 px-5 min-w-[235px]">核心优劣势与竞合定位评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：SpaceX 基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-white text-[10px] font-extrabold">研究标的</span>
+ <span class="font-bold text-slate-900 dark:text-white">SpaceX (SPCX)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Starship / Starlink / xAI / Cursor</div>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">~$2.00T</td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">$58.3B (Q3年化)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">OPM 19.2% (已盈利)</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-mogold-600 dark:text-mogold-400">~25x–34x</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全栈稀缺溢价：</strong>全球唯一同时掌控轨道运输垄断、1,360万用户卫星通信网与1.7GW AI算力集群的超级平台；但高额 AI 资本开支短期压制自由现金流。
+ </td>
+ </tr>
+
+ <!-- 行 2：Rocket Lab (RKLB) -->
+ <tr data-category="launch" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Rocket Lab (RKLB)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Electron / Neutron / 航天器系统</div>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$32B–$38B</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$0.85B</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">研发投入期微亏</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~38x</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>小型火箭与卫星制造亚军：</strong>在小型商业发射与航天器组件领域稳居第二，但中型可回收火箭 Neutron 运力远小于猎鹰 9 号与星舰。
+ </td>
+ </tr>
+
+ <!-- 行 3：Amazon Leo / Blue Origin -->
+ <tr data-category="satellite" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Amazon Leo & Blue Origin</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">低轨宽带星座 / New Glenn</div>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">母公司生态支撑</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">初期商业部署期</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">前期巨额组网亏损</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-500 dark:text-slate-400">N/A</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>最强劲资金对手：</strong>贝索斯旗下 Blue Origin 推进 New Glenn 火箭，亚马逊砸重金部署 Leo 星座；但因 ULA 火神火箭故障频发，反而被迫向 SpaceX 采购发射运力。
+ </td>
+ </tr>
+
+ <!-- 行 4：AST SpaceMobile (ASTS) -->
+ <tr data-category="satellite" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">AST SpaceMobile (ASTS)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">BlueBird 卫星手机直连</div>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$18B–$24B</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$0.25B</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">早期星座铺设亏损</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">&gt;70x</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>手机直连赛道直接竞品：</strong>绑定 AT&T 与 Verizon 合作，但卫星部署节奏受制于火箭运力，而 Starlink Mobile 已率先积累超 2,200 万月活并买下全美 800 MHz 频谱。
+ </td>
+ </tr>
+
+ <!-- 行 5：Anthropic (NASDAQ: ANT) & OpenAI -->
+ <tr data-category="ai" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Anthropic (ANT) / OpenAI</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Claude / GPT 前沿基础模型</div>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">$1.40T / ~$1.0T+</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">$57B / $50B (年化)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">高速扩张高投入期</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~20x–25x</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>SI 板块核心战局：</strong>Anthropic 以约 $1.4T 估值登陆纳斯达克；SpaceX 凭借自建 1.7GW Colossus II 超算与星链稳定现金流输血，具备更强的算力成本纵深。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：三大板块盈利能力与资本开支结构对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2026Q3 SpaceX 三大业务分部营收、营业利润（或亏损）与资本开支（CapEx）对比 ($B)</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">Connectivity（星链）以 $5.25B 营收斩获 $2.37B 营业利润充当核心现金奶牛，强力支撑 Super Intelligence 单季 $16.44B 算力投资</p>
+ </div>
+ <span class="text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-500/15 px-2.5 py-1 rounded">Starlink 营业利润率 45.1%</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 财务健康与 SOTP 分部加总估值器 (Financial Health & SOTP Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Health & SOTP Valuation Engine</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务健康度与估值体系：百亿IPO现金堡垒与三支柱 SOTP 估值拆解</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">IPO 募资 $86.2B + 首笔 $25B 投资级债券 · 资产负债表弹药充沛</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Q3 2026 Revenue Run-Rate</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$58.3B</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ Q3 单季营收 $14.58B（+161% YoY），年化运行率逼近 $600 亿美元大关，华尔街共识 2027E 营收达 $168.8B。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Q3 GAAP Operating & Net Profit</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$2.80B / $4.40B</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 营业利润率达 19.2%，净利润率高达 30.2%，彻底扭转 2025 全年因合并 xAI 产生的 $49.4亿 账面亏损。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">9M 2026 OCF & CapEx</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$13.1B / $48.1B</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 前 9 月经营现金流达 $131亿，但为抢占 AI 算力制高点，总资本开支达 $481亿（Q3 单季 $196亿，其中 AI 占 $164亿）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">IPO & Debt War Chest</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$110B+</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 2026年6月 IPO 净募资 $85.7亿 + 发行 $25B 首笔投资级债券（另有 $4B SPV 芯片表外融资），足以覆盖未来两年重资产扩张。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴图：营收暴增 vs 算力与星座资本开支曲线 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">2023–2027E 营收跃升曲线 vs 资本开支（CapEx）与经营现金流（OCF）剪刀差演进</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">2026 年处于 Colossus II 算力与星链 V3 密集投入峰值期（CapEx 达 $65B+），预计 2027 年随百亿级营收兑现迎来自由现金流大爆发</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">2026–2028E 营收预测 CAGR ~150%</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：SpaceX 三支柱 SOTP（分部加总）动态估值模拟器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>SOTP VALUATION ENGINE · 三支柱分部加总估值模拟器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">SpaceX 三大核心业务分部加总（SOTP）与隐含目标股价推演器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：当前参考股价 $147.80 | 稀释总股本 ~135.3 亿股（对应当前市值 ~$2.00T）| 净现金及表外调整项 +$45B</p>
+ </div>
+ <div class="flex flex-wrap gap-2">
+ <button type="button" onclick="applySotpPreset('conservative')" class="px-3 py-1.5 rounded-lg bg-navy-950/80 hover:bg-navy-700 border border-slate-700 text-xs font-semibold text-slate-300 transition cursor-pointer">保守(达摩达兰框架)</button>
+ <button type="button" onclick="applySotpPreset('base')" class="px-3 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-xs font-bold text-white shadow transition cursor-pointer">基准(华尔街共识)</button>
+ <button type="button" onclick="applySotpPreset('bull')" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-xs font-semibold text-emerald-300 transition cursor-pointer">乐观(花旗 $280 目标)</button>
+ </div>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-6 space-y-4 text-xs">
+ <!-- 滑块 1：Connectivity (Starlink) -->
+ <div class="bg-navy-950/60 p-3.5 rounded-xl border border-slate-800">
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-200 font-semibold">1. Starlink 连接业务远期 EV/Sales 倍数 (2027E 营收基数 $34B)</span>
+ <span id="sotp-starlink-mult-label" class="font-mono font-bold text-emerald-400 text-sm">22.0x ($748B)</span>
+ </div>
+ <input id="sotp-starlink-mult" type="range" min="10" max="40" step="1" value="22" oninput="updateSotpSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <!-- 滑块 2：Super Intelligence (xAI + Colossus + Cursor) -->
+ <div class="bg-navy-950/60 p-3.5 rounded-xl border border-slate-800">
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-200 font-semibold">2. Super Intelligence 超级智能业务倍数 (2027E 营收基数 $115B)</span>
+ <span id="sotp-ai-mult-label" class="font-mono font-bold text-mogold-400 text-sm">11.0x ($1,265B)</span>
+ </div>
+ <input id="sotp-ai-mult" type="range" min="5" max="25" step="0.5" value="11" oninput="updateSotpSimulator()" class="w-full accent-[#3B82F6] cursor-pointer">
+ </div>
+
+ <!-- 滑块 3：Space 商业发射与深空运输 -->
+ <div class="bg-navy-950/60 p-3.5 rounded-xl border border-slate-800">
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-200 font-semibold">3. Space 航天发射与星舰板块独立估值 ($B)</span>
+ <span id="sotp-space-val-label" class="font-mono font-bold text-teal-400 text-sm">$320B</span>
+ </div>
+ <input id="sotp-space-val" type="range" min="150" max="650" step="10" value="320" oninput="updateSotpSimulator()" class="w-full accent-[#06B6D4] cursor-pointer">
+ </div>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">SOTP 隐含总股权价值 (Equity Value)</div>
+ <div id="sotp-total-cap" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$2.38T</div>
+ <div id="sotp-upside" class="text-xs font-semibold text-emerald-400 mt-1.5">较当前 $2.00T 市值潜在空间 +18.9%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">隐含合理目标股价 (Implied Price)</div>
+ <div id="sotp-target-price" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">$175.76</div>
+ <div class="text-xs text-slate-400 mt-1.5">对比参考现价 $147.80 (IPO 价 $135.00)</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">三大板块估值贡献权重结构</div>
+ <div id="sotp-mix-text" class="text-sm font-mono font-bold text-teal-400 mt-2">AI 54% · 星链 32% · 航天 14%</div>
+ <div class="text-xs text-slate-400 mt-1.5">超级智能已成为核心估值弹性来源</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">对应 2027E 共识营收 ($168.8B) 市销率</div>
+ <div id="sotp-implied-ps" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">14.1x</div>
+ <div class="text-xs text-slate-400 mt-1.5">当前现价对应 2027E 远期 P/S 为 11.8x</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 华尔街多空核心分歧对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">多维垄断 + 指数级放量</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>人类史上最强的物理与数字基础设施壁垒：</strong>航天运载 + 75%在轨通信卫星 + 1.7GW AI超算三者相互锁死，没有任何单一竞争对手能在全维度抗衡。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>Starlink 利润率持续超预期，手机直连打开十亿级 TAM：</strong>星链营业利润率已达 45.1%，叠加 800 MHz 频谱落地，有望直接切分全球传统电信运营商万亿级漫游与无线市场。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>花旗（Citi）给出 $280 目标价（对应 $3.8T 市值）：</strong>认为星舰 V3/V4 全复用闭环一旦跑通，单公斤入轨成本将降至百美元级别，解锁轨道数据中心与深空经济万亿蓝海。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">烧钱黑洞 + 估值透支</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>AI 算力资本开支呈“无底洞”特征，自由现金流大幅为负：</strong>前 9 个月经营现金流 $131亿，但资本开支高达 $481亿（单季 AI CapEx $164亿），甚至需通过 SPV 举债 $40亿 采购 NVIDIA 芯片。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>估值大师达摩达兰测算独立加总估值仅 ~$1.3T：</strong>当前 ~$2.0T 市值已提前计入极高的 AI 增长预期，且消费级 Starlink ARPU 随新兴市场下沉已从 $83 降至 $69。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>IPO 禁售期解禁抛压与治理集中风险：</strong>2026 年 12 月前后将迎来上市满 180 天机构与员工限售股解禁窗口，且马斯克持有 82% 超级投票权，公众股东对跨板块资本调配缺乏制衡。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 投资决策与风险配置框架 (Investment Decision & Risk)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Investment Decision & Risk Allocation</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 投资决策与风险配置框架：三情景估值推演与跨市场建仓纪律</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">配置建议：成长科技组合核心底仓 · 紧盯 2026 年底解禁波动黄金坑</span>
+ </div>
+
+ <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 牛市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：25%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$3.2T–$3.8T ($236–$280)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>Starship 实现助推器+飞船“双筷子捕获”全复用高频商业化；Starlink 订户突破 2,200 万且手机直连全面商用；SI 算力营收按期冲刺 $300B+ 年化规模。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 12–18个月潜在上行空间：+60% 至 +89%
+ </div>
+ </div>
+
+ <!-- 基准情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">基准情景 (Base Case)</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">概率：55%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$2.3T–$2.6T ($170–$192)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>2027E 营收兑现 ~$160B–$170B 共识预期，Starlink 保持 45%+ 高营业利润率稳步造血，虽然高额 CapEx 延后自由现金流转正，但高增长支撑 14x 远期 P/S 估值中枢。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 12–18个月基准潜在回报：+15% 至 +30%
+ </div>
+ </div>
+
+ <!-- 熊市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$1.4T–$1.65T ($103–$122)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>大模型行业价格战加剧导致 SI 板块算力资本回报率低于预期，叠加星舰 V4 试飞推迟或 IPO 禁售期解禁引发机构集中减持，估值回落至 $135 发行价下方。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 潜在下行回撤风险：-17% 至 -30%
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心风险矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">四大核心潜在风险评估与跟踪边界</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 巨额 AI 算力 CapEx 与表外融资风险</span>
+ <span class="text-xs font-mono text-rose-500 font-semibold">关注度：极高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">单季 $164亿 AI 资本开支消耗现金的速度远超当前经营造血</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 若大模型商业化变现斜率放缓或 GPU 折旧周期加快，Colossus II 超算集群的巨额折旧与债务利息将显著侵蚀集团 2027–2028 年营业利润率。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 星舰工程试飞节奏与 FAA 监管审批</span>
+ <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">Flight 15 超重型助推器未能完成塔臂回收，全复用仍需打磨</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 尽管 Flight 15 成功捕获 Ship 上级，但 Super Heavy 助推器被迫改道溅落墨西哥湾；在轨低温推进剂加注与“双捕获”稳定性直接决定 Starlink V3 组网与 Artemis 登月进度。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">03 · 马斯克精力分散与关联交易治理</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">横跨 Tesla、SpaceX、Neuralink 多家万亿级实体及 82% 投票权</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 合并 xAI 与高溢价收购 Cursor 体现了强创始人意志；投资者需密切跟踪 SpaceX 与 Tesla 在芯片采购、机器人及 AI 算力订单上的关联定价公允性。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 低轨星座地缘政治准入与竞争加剧</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">国际市场牌照博弈及 Amazon Leo、ASTS 频谱争夺</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 随 Starlink 向亚非拉新兴市场渗透（ARPU 降至 $69），本地电信牌照审批、主权安全审查以及 Amazon Leo 获批 Globalstar 合作后的追赶将带来边际竞争压力。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级组合配置纪律横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>机构级投资组合配置纪律与建仓节奏策略</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 把握 2026 年 12 月 IPO 解禁期配置窗口</div>
+ <p class="text-slate-300 leading-relaxed">
+ 股价自上市首周 $225.6 高点回落至 ~$147.8 后已消化大半泡沫；若 12 月上市满 6 个月禁售期解禁引发股价回踩 <strong>$130–$138（接近 $135 IPO 发行价）</strong>，将是长线建仓黄金击球区。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-300 mb-1">2. 科技成长组合中的“硬科技+AI”双栖锚</div>
+ <p class="text-slate-300 leading-relaxed">
+ SPCX 兼具低轨卫星通信的高壁垒现金流与前沿 AI 算力爆发力，可与纯软件 AI 龙头（如 NVDA、MSFT）形成“天基+地面”基础设施互补配置，单票建议权重 5%–10%。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 关注事件驱动型波段催化剂</div>
+ <p class="text-slate-300 leading-relaxed">
+ 重点跟踪 <strong>Starship 首次“双机械臂同时捕获助推器与飞船”</strong>试飞节点，以及 2027 年一季度 800 MHz 频谱商用后 Starlink Mobile 付费用户转化率披露。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Fundamental Tracking KPIs</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度基本面跟踪 KPI 交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选季度财报与发射任务中已验证达标的核心指标（勾选状态自动本地保存），持续校验 SpaceX 商业飞轮与算力投入回报率：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. Starlink 消费级订户单季净增 &gt;150 万且 ARPU 企稳</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">现金牛基石</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026Q3 订户达 1,360 万（净增 160 万），ARPU 环比回升 5% 至 $69/月；需持续跟踪年底向 1,550–1,700 万迈进的渗透斜率。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. Super Intelligence 板块延续季度营业盈利（OPM &gt;5%）</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">第二增长极</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026Q3 SI 营收达 $75.6亿 并首次实现 $4.31亿 营业利润；后续需核查 Cursor 协同变现与算力长协能否覆盖攀升的折旧成本。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 星舰（Starship）单次发射 V3 卫星部署量与塔臂回收成功率</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">核心技术壁垒</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ Flight 15 已实现 Ship 上级首次“筷子”回收与 26 颗 V3 卫星释放；下一里程碑为“双捕获”成功及 V4 巨型星舰首飞。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 航空/海事与国防 Starshield 政企连接营收维持 80%+ 增速</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">高毛利B2B引擎</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 截至 9 月底已安装超 3,800 架客机（在手订单 12,000 架），政企连接 Q3 同比大增 +91% 至 $21.3亿，是提升星链综合毛利率的关键。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 800 MHz 频谱交割进度与 Starlink Mobile 商业化变现</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">移动运营商期权</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪 FCC 对 Grain Management 800 MHz 频谱交易的审批，以及 2,200 万手机直连月活用户向独立高 ARPU 套餐的转化率。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 全集团 CapEx 强度收敛与自由现金流（FCF）转正拐点</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">财务健康安全线</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 监控季度资本开支（26Q3 达 $196亿）占营收比例是否随 Colossus II 1.7GW 投产而逐步见顶回落，迈向自由现金流正向闭环。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明 (Disclaimer Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>SpaceX (Space Exploration Technologies Corp. · NASDAQ: SPCX) 深度商业与投资价值分析报告 · 机构研究框架版</span>
+ <span>数据基准：2026Q3 财报（10-Q）、星舰 Flight 15 实况及 2026 年 11 月市场一致预期</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度研究报告基于 SpaceX 公开披露的 S-1 招股说明书、2026Q2/Q3 季度财务报告（Form 10-Q）、业绩电话会议纪要及商业航天与 AI 算力行业公开调研资料整理生成，旨在提供结构化的产业分析与 SOTP 分部估值框架。报告中涉及的 2027–2028 年营收共识、三情景目标市值及 SOTP 估值模拟器均基于特定假设条件推演，不构成任何证券买卖建议或收益承诺。前沿航天工程试飞、AI 算力重资产投入及限售股解禁均伴随较高股价波动风险，请在独立核实后审慎决策。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ document.getElementById('reading-progress').style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 同行竞争格局矩阵筛选器
+ // ==========================================
+ function filterCompetitors(category) {
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ if (category === 'all' || rowCat === 'core' || rowCat === category) {
+ row.style.display = '';
+ } else {
+ row.style.display = 'none';
+ }
+ });
+ }
+
+ // ==========================================
+ // 5. SpaceX 三支柱 SOTP 分部加总估值模拟器
+ // ==========================================
+ function applySotpPreset(mode) {
+ const starlinkSlider = document.getElementById('sotp-starlink-mult');
+ const aiSlider = document.getElementById('sotp-ai-mult');
+ const spaceSlider = document.getElementById('sotp-space-val');
+
+ if (mode === 'conservative') {
+ // 达摩达兰谨慎分部估值视角 (~$1.35T)
+ starlinkSlider.value = 14;
+ aiSlider.value = 6.0;
+ spaceSlider.value = 210;
+ } else if (mode === 'base') {
+ // 华尔街基准共识 (~$2.38T)
+ starlinkSlider.value = 22;
+ aiSlider.value = 11.0;
+ spaceSlider.value = 320;
+ } else if (mode === 'bull') {
+ // 花旗乐观目标价视角 (~$3.80T / $280)
+ starlinkSlider.value = 34;
+ aiSlider.value = 18.0;
+ spaceSlider.value = 540;
+ }
+ updateSotpSimulator();
+ }
+
+ function updateSotpSimulator() {
+ const starlinkMult = parseFloat(document.getElementById('sotp-starlink-mult').value);
+ const aiMult = parseFloat(document.getElementById('sotp-ai-mult').value);
+ const spaceVal = parseFloat(document.getElementById('sotp-space-val').value);
+
+ const starlink27Rev = 34.0; // $34B 2027E Starlink 营收基准
+ const ai27Rev = 115.0;      // $115B 2027E Super Intelligence 营收基准
+ const netCashAdj = 45.0;    // $45B 净现金及非并表战略投资调整项
+ const dilutedShares = 13.53; // 135.3 亿股（对应现价 $147.80 -> $2,000B 市值）
+ const currentPrice = 147.80;
+ const consensus27TotalRev = 168.8;
+
+ const starlinkEV = starlinkMult * starlink27Rev;
+ const aiEV = aiMult * ai27Rev;
+ const totalEV = starlinkEV + aiEV + spaceVal;
+ const totalEquityVal = totalEV + netCashAdj;
+
+ const impliedPrice = totalEquityVal / dilutedShares;
+ const upsidePct = ((impliedPrice - currentPrice) / currentPrice) * 100;
+ const impliedPS = totalEquityVal / consensus27TotalRev;
+
+ const aiPct = Math.round((aiEV / totalEV) * 100);
+ const starlinkPct = Math.round((starlinkEV / totalEV) * 100);
+ const spacePct = Math.max(0, 100 - aiPct - starlinkPct);
+
+ document.getElementById('sotp-starlink-mult-label').textContent = `${starlinkMult.toFixed(1)}x ($${Math.round(starlinkEV)}B)`;
+ document.getElementById('sotp-ai-mult-label').textContent = `${aiMult.toFixed(1)}x ($${Math.round(aiEV).toLocaleString('en-US')}B)`;
+ document.getElementById('sotp-space-val-label').textContent = `$${Math.round(spaceVal)}B`;
+
+ document.getElementById('sotp-total-cap').textContent = `$${(totalEquityVal / 1000).toFixed(2)}T`;
+ const upsideEl = document.getElementById('sotp-upside');
+ if (upsidePct >= 0) {
+ upsideEl.className = 'text-xs font-semibold text-emerald-400 mt-1.5';
+ upsideEl.textContent = `较当前 $2.00T 市值潜在空间 +${upsidePct.toFixed(1)}%`;
+ } else {
+ upsideEl.className = 'text-xs font-semibold text-rose-400 mt-1.5';
+ upsideEl.textContent = `较当前 $2.00T 市值隐含回撤 ${upsidePct.toFixed(1)}%`;
+ }
+
+ document.getElementById('sotp-target-price').textContent = `$${impliedPrice.toFixed(2)}`;
+ document.getElementById('sotp-mix-text').textContent = `AI ${aiPct}% · 星链 ${starlinkPct}% · 航天 ${spacePct}%`;
+ document.getElementById('sotp-implied-ps').textContent = `${impliedPS.toFixed(1)}x`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'spacex_research_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ document.getElementById('kpi-progress-badge').textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'rev_evolution';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const ctx = document.getElementById('bizArchitectureChart').getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：2023–2026Q3 营收三支柱结构演进 ($B)
+ const evoConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2023', 'FY2024', 'FY2025', '2026Q1', '2026Q2', '2026Q3'],
+ datasets: [
+ {
+ label: 'Super Intelligence 超级智能 ($B)',
+ data: [0.30, 1.20, 3.20, 0.82, 2.40, 7.56],
+ backgroundColor: '#3B82F6',
+ borderRadius: 4,
+ stack: 'rev'
+ },
+ {
+ label: 'Connectivity 星链连接 ($B)',
+ data: [4.20, 7.80, 11.40, 3.26, 4.18, 5.25],
+ backgroundColor: '#10B981',
+ borderRadius: 4,
+ stack: 'rev'
+ },
+ {
+ label: 'Space 商业航天发射 ($B)',
+ data: [5.90, 5.00, 4.10, 1.32, 1.54, 1.77],
+ backgroundColor: '#06B6D4',
+ borderRadius: 4,
+ stack: 'rev'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 20,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：2023年底–2026Q3 Starlink 付费订户增长与月均 ARPU 轨迹
+ const splitConfig = {
+ type: 'bar',
+ data: {
+ labels: ['2023Q4', '2025Q1', '2025Q4', '2026Q2', '2026Q3'],
+ datasets: [
+ {
+ type: 'bar',
+ label: 'Starlink 全球消费者订户 (百万户)',
+ data: [2.3, 5.0, 8.9, 12.0, 13.6],
+ backgroundColor: 'rgba(16, 185, 129, 0.85)',
+ borderRadius: 6,
+ barThickness: 32,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '消费端月均 ARPU ($/月)',
+ data: [95, 86, 76, 66, 69],
+ borderColor: '#3B82F6',
+ backgroundColor: '#3B82F6',
+ borderWidth: 3,
+ pointRadius: 5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => ctx.dataset.yAxisID === 'y'
+ ? `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)}M 户`
+ : `${ctx.dataset.label}: $${ctx.parsed.y}/月`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 16,
+ grid: { color: colors.grid },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + 'M' }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 50,
+ max: 110,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#3B82F6', font: { size: 11, weight: '600' }, callback: v => '$' + v }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'rev_evolution' ? evoConfig : splitConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'rev_evolution') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2023–2026Q3 季度/年度总营收爆发与三大业务板块结构演进';
+ subEl.textContent = '2026Q3 单季营收达 $14.58B（超越 2024 全年），其中超级智能板块单季贡献 $7.56B 实现结构性反超';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'Starlink 全球消费者订阅用户爆发与月均 ARPU 企稳回升轨迹';
+ subEl.textContent = '付费订户从 2023 年底 230 万激增至 2026Q3 的 1,360 万，消费端 ARPU 在全球下沉后于 Q3 回升 5% 至 $69/月';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const ctx = document.getElementById('moatRadarChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '重型可回收运载垄断力',
+ '低轨卫星在轨与频谱卡位',
+ '全产业链垂直自研能力',
+ 'AI 算力集群协同规模',
+ '国防军工与政府订单粘性'
+ ],
+ datasets: [
+ {
+ label: 'SpaceX (SPCX)',
+ data: [9.9, 9.8, 9.8, 9.3, 9.7],
+ borderColor: '#3B82F6',
+ backgroundColor: 'rgba(59, 130, 246, 0.24)',
+ pointBackgroundColor: '#3B82F6',
+ borderWidth: 2.5
+ },
+ {
+ label: '亚马逊 Leo / Blue Origin',
+ data: [6.5, 6.2, 7.0, 8.8, 6.8],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: 'Rocket Lab (RKLB)',
+ data: [6.8, 5.5, 7.6, 3.0, 7.4],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const ctx = document.getElementById('compMarginChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Super Intelligence (超级智能与AI)',
+ 'Connectivity (Starlink 卫星通信)',
+ 'Space (商业航天发射与星舰研发)'
+ ],
+ datasets: [
+ {
+ label: '2026Q3 单季营收 ($B)',
+ data: [7.56, 5.25, 1.77],
+ backgroundColor: '#3B82F6',
+ borderRadius: 5,
+ barThickness: 14
+ },
+ {
+ label: '2026Q3 单季营业利润 ($B)',
+ data: [0.43, 2.37, 0.00],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 14
+ },
+ {
+ label: '2026Q3 单季资本开支 CapEx ($B)',
+ data: [16.44, 1.54, 1.62],
+ backgroundColor: '#F43F5E',
+ borderRadius: 5,
+ barThickness: 14
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.x.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 18,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const ctx = document.getElementById('valEvolutionChart').getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['2023', '2024', '2025', '2026E (共识)', '2027E (共识)'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年度总营收 ($B)',
+ data: [10.4, 14.0, 18.7, 49.3, 168.8],
+ backgroundColor: 'rgba(59, 130, 246, 0.85)',
+ borderRadius: 5,
+ barThickness: 28,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '年度资本开支 CapEx ($B)',
+ data: [8.5, 13.2, 20.7, 67.5, 58.0],
+ borderColor: '#F43F5E',
+ backgroundColor: '#F43F5E',
+ borderWidth: 2.5,
+ pointRadius: 4,
+ tension: 0.25,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '年度经营性现金流 OCF ($B)',
+ data: [1.8, 4.5, 6.2, 19.5, 64.0],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ tension: 0.25,
+ yAxisID: 'y'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(1)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 185,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '金额（十亿美元 / $B）', color: colors.text, font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateSotpSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>
