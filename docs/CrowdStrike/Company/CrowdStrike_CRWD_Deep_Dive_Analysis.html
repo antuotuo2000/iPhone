@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>CrowdStrike Holdings (NASDAQ: CRWD) 深度商业与投资研究报告：AI原生网络安全平台化霸主、$58.4亿ARR加速扩张与Falcon Flex多模块飞轮</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：琥珀金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：CrowdStrike_CRWD_Deep_Dive_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ CRWD
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">NASDAQ: CRWD · Falcon Platform</div>
+ <div class="text-sm font-bold leading-tight">CrowdStrike 深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">CRWD 研报目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 业务与 ARR 收入架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球网安巨头横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务健康与 ARR 飞轮推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 投资决策与风险配置</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>全球网络安全与 AI 基础设施研究组</p>
+ <p>数据基准：2026年11月 (Q2 FY27 / FY27E)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-xs shadow-lg shadow-mogold-500/25">
+ CRWD
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">NASDAQ: CRWD</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">CrowdStrike 研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ AI 原生单探针网安霸主 · $5.84B ARR 加速增长与 Falcon Flex 平台飞轮
+ </p>
+ </div>
+
+ <!-- 股票实时快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">参考股价 (4拆1后口径)</span>
+ <span class="font-mono font-bold text-white">~$237.03 <span class="text-slate-400 text-[10px]">(52W $85.7-$287)</span></span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">期末 ARR &amp; FY27E 指引</span>
+ <span class="font-mono font-bold text-emerald-400">$5.84B <span class="text-slate-400">(FY27E $6.61B)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">总市值与自由现金流</span>
+ <span class="font-mono font-bold text-mogold-400">~$242.7B · FCF Margin 26%+</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>业务与 ARR 收入架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球网安巨头横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务健康与 ARR 飞轮推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>投资决策与风险配置</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">评级：增持 / AI原生网安平台化核心配置</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：FY2027 Q2 超预期加速与 Q3 财报前瞻</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖时间：2026年11月</span>
+ <span>NASDAQ: CRWD</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · $58.4亿 ARR 加速扩张 × $3.33亿单季净新增ARR(+51%) × Falcon Flex $22.9亿翻倍飞轮</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ CrowdStrike Holdings (NASDAQ: CRWD) 深度商业与投资研究报告：Agentic SOC AI安全中枢、单轻量探针壁垒与多模块复利机器
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 由联合创始人兼 CEO <strong class="text-white">George Kurtz</strong> 领衔的全球云原生网络安全龙头 <strong class="text-mogold-300">CrowdStrike</strong> 在完成 2026 年 7 月 4 拆 1 股票分拆后，于 2026 年 8 月底交出史上最强 Q2 FY27 财报：单季净新增 ARR 飙升 <strong class="text-emerald-400">+51% YoY 至创纪录的 $3.33亿</strong>，推动期末总 ARR 同比增长 <strong class="text-emerald-400">+25% 至 $58.4亿</strong>（管理层同步将全年 FY27 净新增 ARR 增速指引上调 630 个基点至 +34% YoY，预计期末 ARR 达 <strong class="text-white">$66.0亿–$66.1亿</strong>）。
+ 凭借极具颠覆性的弹性授权模式 <strong class="text-mogold-300">Falcon Flex</strong>（累计采用账户 ARR 突破 <strong class="text-emerald-400">$22.9亿，同比暴增 +101%</strong>，占总 ARR 39%）以及自主安全代理 <strong class="text-white">Charlotte AI</strong>，CrowdStrike 正从传统终端防护（EDR）向“云安全 + 新一代 SIEM + 身份保护 + AI 代理全生命周期防护”的统一操作系统全面跃迁。
+ </p>
+
+ <!-- 核心投资结论高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">单轻量探针架构与高毛利杠杆</div>
+ <div class="text-white font-semibold">Non-GAAP 订阅毛利率提升至 81%（长期目标 82%–85%），51% 客户已部署 6 个以上模块，26% 部署 8 个以上</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">Falcon Flex 破解模块采购摩擦</div>
+ <div class="text-mogold-400 font-semibold">客户预付平台额度池自由调用逾 30 个模块，Flex 客户平均部署 9 个模块且续约扩单速度远超传统合同</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">盈利拐点与 $50.1亿 净现金堡垒</div>
+ <div class="text-emerald-400 font-semibold">Q2 FY27 正式重返 GAAP 盈利，单季自由现金流创纪录达 $3.77亿（FCF 利润率 26%），账面现金高达 $50.1亿</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>总市值与最新股价 (4拆1后)</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$242.7B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">~$237.03</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2026 年 7 月实施 4-for-1 拆股，10 月曾创 $286.99 历史新高，当前静待 12 月 1 日 Q3 FY27 财报催化。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>期末 ARR 与创纪录净新增</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$5.84B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+25% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ Q2 FY27 净新增 ARR 达 $3.33亿（+51% YoY），FY27 全年期末 ARR 指引上调至 $6.60B–$6.61B。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>订阅毛利率 &amp; 自由现金流</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">81.0%</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">FCF $377M/季</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ Non-GAAP 营业利润率跃升至 25.3%（+$372M），FY27 全年自由现金流利润率指引达 30%+（长期目标 34%–38%）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Falcon Flex 生态与现金储备</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$2.29B</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">+101% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ Falcon Flex 账户 ARR 占总 ARR 39%，账面现金及等价物 $50.1亿，支持持续研发与战略并购。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 业务与 ARR 收入架构 (Business & ARR Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Business &amp; ARR Revenue Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 业务与 ARR 收入架构：单轻量探针统一平台，四大高增长产品引擎全线加速</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY27E 总营收指引 ~$6.00B (+24.7%) · 订阅收入占比 95.2%</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2023–FY2027E 期末 ARR 与年度总营收阶梯跃升（$B）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">2024 年 7 月故障风波后迅速修复信任，FY27E 期末 ARR 预计突破 $6.61B，净新增 ARR 重返 +34% 高增速</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('arr_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：ARR与营收演进</button>
+ <button onclick="switchBizChart('module_adoption')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：新兴模块与渗透率</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性拆解核心洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">Q2 FY27 业绩全面加速三大核心驱动力</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">Falcon Flex 引爆平台整合，$22.9亿 ARR 同比翻倍</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 客户预付年度承诺额度池后可随时启用新模块，无需反复走漫长商务谈判。Q2 末 Flex 账户 ARR 达 <strong>$22.9亿（+101% YoY）</strong>，平均部署高达 <strong>9 个模块</strong>，成为企业取代多套点状工具的首选方案（<a href="https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-reports-second-quarter-fiscal-year-2027-financial/" target="_blank" rel="noopener noreferrer" class="cite-link">CRWD Q2 FY27</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">云安全、新一代 SIEM 与身份安全三大新兴引擎破 $21.8亿</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 仅靠单探针一键开启模块即可替换 Splunk/QRadar 等老旧 SIEM 及传统云安全工具，三大新兴支柱合计期末 ARR 已突破 <strong>$21.8亿（同比增逾 +39%）</strong>，占比超总 ARR 的 37%。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">Charlotte AI 与 Agentic SOC 引领 AI 时代安全刚需</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 企业大规模部署大模型与 AI Agent 带来指数级攻击面扩张，CrowdStrike 推出 <strong>AI Detection &amp; Response (AIDR)</strong> 与消费积分制 <strong>Charlotte AI</strong>，每名安全分析师每周平均节省超 40 小时事件研判时间（<a href="https://futurumgroup.com/insights/crowdstrike-deepens-agentic-soc-strategy-across-partners-services-and-devices/" target="_blank" rel="noopener noreferrer" class="cite-link">Futurum</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">FY2028 长期财务指引锚点</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">净新增 ARR 增速 ≥20% · FCF 利润率 ≥32.5%</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大产品与战略支柱分部详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 分部 1：终端安全基石 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一现金流基石 · 全球 EDR/XDR 绝对龙头</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">毛留存率 ~97%+</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 终端安全与威胁情报底座（Falcon Prevent / Insight / OverWatch）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 作为现代云原生终端检测与响应（EDR）的开创者，CrowdStrike 稳居 Gartner 魔力象限领导者榜首，占据全球现代终端安全第一市场份额。全天候托管威胁狩猎服务 <strong>Falcon OverWatch</strong> 与高级威胁情报构成极高客户粘性（美元净留存率 NRR 达 <strong>115%</strong>），为向其他领域交叉销售提供源源不断的客户入口（<a href="https://cust.co/companies/crowdstrike/" target="_blank" rel="noopener noreferrer" class="cite-link">Cust Research</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Falcon Prevent / Insight / Exposure Mgmt</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">替代 McAfee / Symantec 存量升级标杆</span>
+ </div>
+ </div>
+
+ <!-- 分部 2：云原生安全 CNAPP -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第二增长支柱 · 云工作负载与运行时保护</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">Cloud ARR &gt;$905M (+29%)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 云原生应用保护平台（Falcon Cloud Security / CNAPP）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 结合“无代理云配置审计（CSPM）”与“内核级运行时探针保护（CWPP）”，覆盖 AWS、Azure、GCP 多云容器与 Kubernetes 集群。截至 Q2 FY27，云安全业务期末 ARR 突破 <strong>$9.05亿（同比增逾 +29%）</strong>，在 2026 Frost Radar 云运行时安全评估中斩获最高创新评分，与 Wiz 展开正面高端对决（<a href="https://www.crowdstrike.com/en-us/blog/crowdstrike-leads-2026-frost-radar-cloud-runtime-security/" target="_blank" rel="noopener noreferrer" class="cite-link">CrowdStrike Blog</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>CSPM / CWPP / AI-SPM / ASPM</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">运行时 + 无代理一体化全栈优势</span>
+ </div>
+ </div>
+
+ <!-- 分部 3：新一代 SIEM 与数据底座 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">颠覆性破局点 · 替换传统昂贵 SIEM</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">Next-Gen SIEM 翻倍高增</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 新一代安全信息与事件管理（Falcon Next-Gen SIEM）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 约 80% 的安全分析所需遥测数据原本已由 Falcon 探针采集，企业无需再向 Splunk 或 IBM QRadar 重复支付高昂的数据摄取费用。凭借无索引流式架构与超快查询速度，<strong>Falcon Next-Gen SIEM</strong> 成为公司史上增长最快的千亿美元级替代赛道，驱动三大新兴业务合计 ARR 突破 <strong>$21.8亿</strong>（<a href="https://ir.crowdstrike.com/static-files/7d32e91f-6184-4ade-8f02-f685e91b420f" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 FY27 Deck</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Falcon LogScale / Next-Gen SIEM / SOAR</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">搜索速度提升 150 倍 · 综合成本降半</span>
+ </div>
+ </div>
+
+ <!-- 分部 4：身份保护与 Charlotte AI 代理安全 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">零信任与 AI 代理前哨 · 身份与代理安全</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">Charlotte AI · 消费积分化</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 身份威胁防护与 AI 安全中枢（Identity Protection + Charlotte AI）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 现代网络攻击逾 75% 涉及凭证盗用与横向移动，CrowdStrike 通过单一终端探针直接实时阻断 Active Directory 与云身份（Okta/Entra ID）异常访问；同时推出 <strong>Charlotte AI</strong>（向基于使用量的消费积分模式演进）及 <strong>AIDR（AI 检测与响应）</strong>，保护企业级大模型与自主 AI Agent 免受提示词注入与数据投毒攻击（<a href="https://dealiqinc.com/vendors/crowdstrike/falcon-flex/" target="_blank" rel="noopener noreferrer" class="cite-link">DealIQ</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Identity Protection / AIDR / Charlotte AI</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">零额外探针部署的横向扩张利器</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 行业地位与四重核心护城河 (Industry Position & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position &amp; Economic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重核心护城河：单探针架构壁垒、Threat Graph 飞轮与 51% 6+模块粘性</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河评级：极宽 (Wide Moat · 81% Non-GAAP 订阅毛利率 + 高转换成本)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">单轻量探针（Single Lightweight Agent）原生整合</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 相比靠并购拼凑多套控制台与多款探针的竞争对手，CrowdStrike 从第一天起便构建统一的云端多租户架构：客户只需安装一个几十兆的探针，即可在云端秒级激活逾 30 个安全模块，大幅降低服务器资源占用与运维复杂度（<a href="https://ir.crowdstrike.com/static-files/7d32e91f-6184-4ade-8f02-f685e91b420f" target="_blank" rel="noopener noreferrer" class="cite-link">IR Deck</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">Threat Graph 万亿级遥测数据网络效应</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 全球数千万终端与云工作负载每周向云端 <strong>Threat Graph</strong> 实时回传数万亿条安全遥测事件——只要全球任何一家客户遭遇新型零日漏洞或 AI 攻击，整个 Falcon 网络的所有客户在数秒内即可同步获得免疫防御。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">Falcon Flex 预付池锁定与 8+ 模块高转换成本</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 截至 Q2 FY27，<strong>51%</strong> 的订阅客户已部署 6 个以上模块，<strong>35%</strong> 部署 7 个以上，<strong>26%</strong> 部署 8 个以上；而采用 Falcon Flex 的客户平均部署高达 <strong>9 个模块</strong>，一旦企业安全运营中心（SOC）深度绑定其工作流，替换成本极高（<a href="https://public.com/stocks/crwd/forecast-price-target" target="_blank" rel="noopener noreferrer" class="cite-link">Public Research</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">2024 故障危机后的信任淬炼与透明治理升级</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 经历 2024 年 7 月内容配置更新事件后，公司重构了分阶段金丝雀发布与内核级测试协议，客户毛留存率迅速稳固在 ~97%+，2026 年净新增 ARR 增速更是强势反弹至 <strong>+51% YoY</strong>，证明平台不可替代性经受住了极限压力测试。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维护城河雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球网络安全三巨头五维护城河雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">CrowdStrike (CRWD) vs Palo Alto Networks (PANW) vs Zscaler (ZS)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 全球网安巨头横向对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Global Cybersecurity Competitive Landscape</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球网络安全巨头横向对比：25% ARR 增速 + 81% 订阅毛利率领跑一线平台</h2>
+ </div>
+ <!-- 交互式筛选按钮 -->
+ <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部网安巨头</button>
+ <button onclick="filterCompetitors('platform')" data-filter="platform" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">综合性平台霸主</button>
+ <button onclick="filterCompetitors('zerotrust')" data-filter="zerotrust" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">零信任与云网络龙头</button>
+ <button onclick="filterCompetitors('edr_peer')" data-filter="edr_peer" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">终端与AI安全专精对手</button>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">企业名称与核心定位</th>
+ <th class="py-4 px-4 min-w-[135px]">核心技术架构范式</th>
+ <th class="py-4 px-4 min-w-[135px]">总市值与 ARR 规模</th>
+ <th class="py-4 px-4 min-w-[105px]">ARR / 营收增速</th>
+ <th class="py-4 px-4 min-w-[110px]">订阅/软件毛利率</th>
+ <th class="py-4 px-4 min-w-[105px]">FCF 利润率</th>
+ <th class="py-4 px-5 min-w-[230px]">核心优劣势与竞合定位评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：CrowdStrike CRWD 基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">核心研究标的</span>
+ <span class="font-bold text-slate-900 dark:text-white">CrowdStrike (CRWD)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Falcon EDR / Cloud / Next-Gen SIEM</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">单轻量探针 + 统一云多租户架构</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">~$242.7B · ARR $5.84B</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">+25% ARR (+26% Rev)</td>
+ <td class="py-4 px-4 font-mono font-bold text-mogold-600 dark:text-mogold-400">81.0% (Non-GAAP)</td>
+ <td class="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">~26%–30%+</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>原生一体化架构与增量弹性之王：</strong>净新增 ARR 增速重返 +51%，软件毛利率高达 81%；但前瞻估值倍数（~36x EV/Sales）亦显著高于同业（<a href="https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-reports-second-quarter-fiscal-year-2027-financial/" target="_blank" rel="noopener noreferrer" class="cite-link">CRWD IR</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：Palo Alto Networks PANW -->
+ <tr data-category="platform" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Palo Alto Networks (PANW)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Strata 防火墙 / Prisma Cloud / Cortex</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">硬件防火墙 + 并购整合三平台化</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">~$258.8B · NGS ARR $6B+</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">+15%–16% 营收</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~77.5% (含硬件)</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~37.0%</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全栈综合网安体量冠军：</strong>防火墙硬件现金流极厚、FCF 利润率高达 37%；但在终端与云原生领域依赖多平台拼装，平台化折价期曾阶段性压制增速（<a href="https://www.macrotrends.net/stocks/charts/CRWD/crowdstrike/market-cap" target="_blank" rel="noopener noreferrer" class="cite-link">Macrotrends</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 3：Fortinet FTNT -->
+ <tr data-category="platform" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Fortinet (FTNT)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">FortiGate ASIC / Unified SASE</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">自研安全芯片 ASIC 性价比壁垒</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">~$90.6B · 全球防火墙出货王</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">+12%–14% 营收</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~80.5%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~33.5%</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>网络安全硬件与分支机构霸主：</strong>依靠自研芯片构建极高毛利与性价比护城河，GAAP 盈利极稳，但在纯云原生工作负载与大型企业 SOC 领域影响力弱于 CRWD。
+ </td>
+ </tr>
+
+ <!-- 行 4：Zscaler ZS & Cloudflare NET -->
+ <tr data-category="zerotrust" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Zscaler / Cloudflare (ZS / NET)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Zero Trust Exchange / Edge Network</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">全球云原生零信任网络与边缘节点</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">ZS ~$31B / NET ~$107B</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">+22%–27% 营收</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~78%–80%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~15%–25%</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>网络层零信任与边缘安全盟友兼对手：</strong>ZS 与 NET 主导网络传输层 SASE 与边缘安全（与 CRWD 存在 API 生态集成，同时在零信任安全预算上存在一定竞合）。
+ </td>
+ </tr>
+
+ <!-- 行 5：SentinelOne S & Wiz (私有/并购系) -->
+ <tr data-category="edr_peer" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">SentinelOne / Wiz (S / 谷歌系)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Singularity AI / Cloud Security CNAPP</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">自主终端 AI 与无代理云安全扫描</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">S ~$7.6B · Wiz 巨额并购体</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">+25%–30%</td>
+ <td class="py-4 px-4 font-mono text-slate-500 dark:text-slate-400">~78%–79%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~5%–12%</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>细分赛道直面竞争对手：</strong>SentinelOne 在终端 EDR 领域打价格战，Wiz 在云安全 CNAPP 领域与 CRWD 激烈交锋，但两者在平台广度与自由现金流规模上均大幅落后于 CRWD。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：订阅/软件毛利率与营收增速对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">全球主要网络安全上市公司 Non-GAAP 毛利率（%）与最新季度营收同比增速对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">在百亿美元营收体量级安全巨头中，CrowdStrike 兼具 81.0% 顶级订阅毛利率与 26% 营收增速（Rule of 52+），稀缺性显著</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">81.0% 订阅毛利率 + 26% 营收高增</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 财务健康与 ARR 飞轮推演 (Financial Health & ARR Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Health &amp; ARR Compounding Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务健康度与估值体系：重返 GAAP 盈利、$50.1亿现金堡垒与长周期复利推演</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">Q2 FY27 经营现金流 $530M (+59%) · FY27E 自由现金流利润率 ≥30%</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Non-GAAP Operating Income</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$371.6M (25.3%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ Q2 FY27 Non-GAAP 营业利润同比大增 +45.7%，同时实现 GAAP 净利润转正（+$5.3M vs 去年同期 -$70.2M）（<a href="https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-reports-second-quarter-fiscal-year-2027-financial/" target="_blank" rel="noopener noreferrer" class="cite-link">CRWD Q2 8-K</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Record Q2 Free Cash Flow</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$377.4M (25.7%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 单季经营现金流创纪录达 $5.30亿，自由现金流达 $3.77亿（+33% YoY），FY27 全年自由现金流有望突破 $18亿（<a href="https://getcompound.ai/news/crowdstrike-q3-earnings-preview" target="_blank" rel="noopener noreferrer" class="cite-link">Compound</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Cash Fortress &amp; Net Cash</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$5.01B 现金储备</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 截至 2026 年 7 月 31 日账面现金及等价物高达 $50.1亿，长期债务仅约 $7.45亿，净现金超 $42亿，财务安全垫极厚。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Rule of 40 (FCF Basis)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">51.7 分 (26%+25.7%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 营收增速（+26%）与自由现金流利润率（25.7%）之和稳居 50+ 黄金俱乐部，长期目标模型 FCF 利润率高达 34%–38%（<a href="https://ir.crowdstrike.com/static-files/7d32e91f-6184-4ade-8f02-f685e91b420f" target="_blank" rel="noopener noreferrer" class="cite-link">Target Model</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2023–FY2027E CrowdStrike 年度自由现金流（$B）vs Non-GAAP 营业利润率（%）扩张曲线</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">随着单探针规模效应释放与 Falcon Flex 提升销售效率，Non-GAAP 营业利润率从 15.9% 稳步攀升至 ~25.1%，年度自由现金流向 $18亿+ 迈进</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">4年自由现金流扩张逾 2.6 倍</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：CrowdStrike“ARR + 自由现金流复利”动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>FALCON ARR COMPOUNDING ENGINE · 平台化扩张与长周期估值推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">CrowdStrike“多模块渗透 + FCF 利润率扩张”长期股权价值模拟器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：当前市值 ~$242.7B | FY27E 期末 ARR 指引 $6.61B | 长期目标模型 FCF Margin 34%–38% | 支持三种退出估值情景</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="target-margin-toggle" checked onchange="updateArrSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>兑现长期目标 FCF 利润率 (35.0% vs 当前 30.0%)</span>
+ </label>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <!-- 本金滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">模拟投资本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$30,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="5000" max="200000" step="5000" value="30000" oninput="updateArrSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <!-- 年限滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期持有年限 (Years · FY27E起算)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">5 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="10" step="1" value="5" oninput="updateArrSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <!-- ARR复合增速滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年均 ARR 复合增长率 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">21.0%</span>
+ </div>
+ <input id="sim-growth" type="range" min="10" max="30" step="0.5" value="21" oninput="updateArrSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <!-- 退出估值倍数选择按钮组 -->
+ <div class="pt-1">
+ <div class="text-slate-300 font-medium mb-2">期末成熟平台估值倍数（EV / Free Cash Flow）：</div>
+ <div class="grid grid-cols-3 gap-2" id="mult-btn-group">
+ <button type="button" onclick="setExitMultiple(35)" data-mult="35" class="mult-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ 35x FCF 消化折价<br><span class="text-[10px] text-slate-400">成熟 SaaS 底线</span>
+ </button>
+ <button type="button" onclick="setExitMultiple(45)" data-mult="45" class="mult-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-mogold-500 text-navy-950 border border-mogold-400 shadow transition cursor-pointer">
+ 45x FCF 基准中枢<br><span class="text-[10px] text-navy-900">平台龙头合理锚</span>
+ </button>
+ <button type="button" onclick="setExitMultiple(58)" data-mult="58" class="mult-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ 58x FCF 溢价延续<br><span class="text-[10px] text-slate-400">高景气 AI 安全溢价</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计投资总价值 (USD)</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$34,475</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计总回报 +14.9% (年化IRR 2.8%)</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末公司预计 ARR 规模</div>
+ <div id="sim-end-arr" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">$17.14B</div>
+ <div id="sim-end-fcf" class="text-xs text-slate-400 mt-1.5">对应期末年度自由现金流 ~$6.00B</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末隐含企业价值 (Implied EV)</div>
+ <div id="sim-end-ev" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$270.0B</div>
+ <div id="sim-margin-used" class="text-xs text-slate-400 mt-1.5">测算采用自由现金流利润率：35.0%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">消化高估值后的资本增值倍数</div>
+ <div id="sim-moic" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">1.15x</div>
+ <div id="sim-net-gain" class="text-xs text-slate-400 mt-1.5">提示：当前 ~36x P/S 已提前透支部分远期增长</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 华尔街多空核心分歧对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">ARR加速 + Agentic SOC刚需</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>净新增 ARR 增速暴力反弹至 +51% YoY：</strong>证明企业客户不仅彻底走出 2024 故障阴霾，更在加速整合碎片化安全供应商预算（<a href="https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-reports-second-quarter-fiscal-year-2027-financial/" target="_blank" rel="noopener noreferrer" class="cite-link">CRWD Q2 FY27</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>Falcon Flex 打开通往 $100亿 ARR 的高速通道：</strong>Flex 账户 ARR 同比暴增 101% 至 $22.9亿，平均部署 9 个模块，使云安全与 Next-Gen SIEM 渗透率仍有巨大提升空间。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>AI 时代“攻击自动化”倒逼安全预算刚性扩张：</strong>企业部署数以万计的 AI Agent 后必须配置实时运行时监控与身份隔离，Charlotte AI 与 AIDR 站上时代风口。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">极端高估值 + 巨头正面围剿</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>~36x EV/Sales 与 ~180x Forward Non-GAAP P/E 容错率极低：</strong>总市值高达 ~$2,427亿（几乎比肩年营收百亿美元的 PANW），任何单季净新增 ARR 增速微幅放缓都可能引发剧烈杀估值（<a href="https://www.macrotrends.net/stocks/charts/CRWD/crowdstrike/market-cap" target="_blank" rel="noopener noreferrer" class="cite-link">Macrotrends</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>巨额股权激励（SBC）吞噬 GAAP 净利润：</strong>半年 SBC 支出近 $5.42亿（占营收约 19%），导致 GAAP 营业利润仍处于微亏边缘（Q2 GAAP 营业亏损 -$3,320万）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>微软 Defender、PANW 与谷歌（收购 Wiz）的跨界挤压：</strong>微软凭借 E5 捆绑、谷歌凭借云原生生态及 PANW 平台化策略，在大型企业续约时持续施加价格压力。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 投资决策与风险配置框架 (Investment Decision & Risk)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Investment Decision &amp; Risk Allocation</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 投资决策与风险配置框架：三情景估值推演与网安龙头组合配对</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">配置建议：网安赛道核心龙头底仓 · 紧盯 12月1日 Q3 财报净新增 ARR 兑现度</span>
+ </div>
+
+ <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 牛市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：25%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">38x–42x EV/NTM ARR ($275–$305)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>Q3 FY27 净新增 ARR 突破 $3.75亿大关，Falcon Flex 渗透率突破 50%，Charlotte AI 消费积分模式开启第二曲线，推动 FY28 ARR 增速稳守 23%+。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 潜在上行空间：+16% 至 +29%
+ </div>
+ </div>
+
+ <!-- 基准情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">基准情景 (Base Case)</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">概率：55%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">31x–35x EV/NTM ARR ($225–$255)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>顺利兑现 FY27 期末 ARR $66.1亿指引及 FY28 净新增 ARR 增速 ≥20% 目标，自由现金流利润率向 32.5%+ 迈进，依靠内生盈利消化高估值倍数。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 稳健预期回报：业绩消化估值、区间震荡上行
+ </div>
+ </div>
+
+ <!-- 熊市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">22x–25x EV/NTM ARR ($160–$185)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>宏观 IT 预算紧缩或云安全/SIEM 遭遇价格战，导致净新增 ARR 增速快速回落至 15% 以下，高估值 SaaS 板块整体发生倍数压缩。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 潜在下行回撤风险：-22% 至 -32%
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心风险矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">四大核心潜在风险评估与跟踪边界</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 高估值倍数敏感性与增长减速风险</span>
+ <span class="text-xs font-mono text-rose-500 font-semibold">关注度：极高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">百亿美元级安全软件史上罕见高溢价对业绩瑕疵零容忍</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 当前市值已充分定价 FY27–FY28 的高确定性复合增长，一旦任意季度出现大单推迟或净新增 ARR 低于共识，股价短期波动率极高（如 2026 年 11 月初曾单周回撤逾 10%）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 微软、谷歌与 PANW 的生态捆绑价格战</span>
+ <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">超大规模云厂商将安全能力原生内置于基础设施层</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 微软（Defender + Sentinel）、谷歌云（收购 Wiz 后强化多云安全）与 PANW 均在争夺同一批大型企业首席信息安全官（CISO）预算，价格折扣博弈持续存在。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">03 · Falcon Flex 存量合同转换后的基数效应</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">非 Flex 账户 ARR 已连续四季维持在 $3.55B–$3.61B 平台</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 随着越来越多现有客户迁入 Falcon Flex，未来需重点观测 Flex 账户首期预付额度耗尽后的“二次续约增购斜率（Refill Rate）”是否如期兑现（<a href="https://getcompound.ai/news/crowdstrike-q3-earnings-preview" target="_blank" rel="noopener noreferrer" class="cite-link">Compound</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 内核级软件更新操作风险与 SBC 稀释</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">全球关键基础设施高度依赖带来的软件可靠性责任</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 操作系统内核级实时防护赋予极强防御效能的同时，也要求近乎零容错的发布质量管控；此外需持续跟踪股权激励费用占营收比重的逐步收敛趋势。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级组合配置纪律横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>机构级网络安全组合配置纪律与“网安三剑客”协同策略</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 攻守兼备网安组合（CRWD + PANW + FTNT）</div>
+ <p class="text-slate-300 leading-relaxed">
+ <strong>CRWD</strong> 捕获云原生终端、Next-Gen SIEM 与 AI 代理安全最高增速弹性；<strong>PANW</strong> 提供 37% FCF 利润率平台化防守；<strong>FTNT</strong> 锚定自研芯片高性价比硬件网络底座。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 避免财报前盲目追高，利用宏观情绪回撤分批布局</div>
+ <p class="text-slate-300 leading-relaxed">
+ 历史规律显示 CRWD 在估值冲高后常伴随 15%–25% 阶段性回调（如 2026 年 10 月高点 $287 回落至 $217 区间），回调至 28x–30x NTM ARR 附近往往是高胜率买点。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 紧盯“净新增 ARR 增速”而非单一季度 EPS</div>
+ <p class="text-slate-300 leading-relaxed">
+ 对于高成长订阅 SaaS 龙头，<strong>净新增 ARR 同比增速（Net New ARR Growth）</strong>与 <strong>Falcon Flex 扩单速度</strong> 才是决定估值溢价能否维持的第一领先指标。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Fundamental Tracking KPIs</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度基本面跟踪 KPI 交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选季度财报（重点关注 2026 年 12 月 1 日 Q3 FY27 财报）中已验证达标的经营指标（勾选状态自动本地保存）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 单季净新增 ARR 是否超越指引中枢（Q3 FY27 指引 $345M）</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">增长第一领先锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ Q2 净新增 ARR 达 $333M（+51% YoY）；若 Q3 实际值站上 $365M–$375M+ 并推动期末 ARR 超 $6.21B，则强化 FY28 ≥20% 增长信心。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. Falcon Flex 账户 ARR 保持 80%–100%+ 同比高速扩张</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">平台整合晴雨表</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ Q2 Flex 账户 ARR 达 $2.29B（占总 ARR 39%）；重点跟踪早期 Flex 合同的额度消耗速度与二次加购（Refill）比例。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 云安全（&gt;$905M）与 Next-Gen SIEM 新兴引擎合计 ARR 增速</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">第二曲线验证</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 三大新兴引擎合计 ARR 已破 $2.18B（+39% YoY），需持续验证在替换 Splunk/QRadar 与对抗 Wiz 过程中的胜率。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 多模块渗透率提升（6+ 模块 &gt;51%，8+ 模块 &gt;26%）</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">交叉销售护城河</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察多模块采纳率是否每季稳步上行 1–2 个百分点，带动美元净留存率（NRR）重返 115%–120% 黄金区间。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. Non-GAAP 订阅毛利率（≥81%）与营业利润率（~25%+）</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">规模经济杠杆</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验随着云基础设施优化与 Charlotte AI 提升运维自动化，毛利率能否稳步向 82%–85% 长期目标模型靠近。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 自由现金流利润率（FY27E ≥30%）与 GAAP 持续盈利巩固</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">现金流与稀释控制</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查 Q3 FCF 利润率是否达到 27.5% 指引中枢，并跟踪股权激励（SBC）占营收比重是否逐步下行以巩固 GAAP 盈利。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明 (Disclaimer Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>CrowdStrike Holdings, Inc. (NASDAQ: CRWD) 深度商业与投资价值分析报告 · 机构研究框架版</span>
+ <span>数据基准：SEC Form 10-K / Q2 FY2027 Form 8-K &amp; Earnings Presentation · 2026年11月回溯</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度研究报告基于 CrowdStrike Holdings, Inc. 向美国证监会（SEC EDGAR）披露的 <a href="https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-reports-second-quarter-fiscal-year-2027-financial/" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 FY2027 Financial Results (Form 8-K)</a>、<a href="https://ir.crowdstrike.com/static-files/7d32e91f-6184-4ade-8f02-f685e91b420f" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 FY2027 Earnings Presentation</a>、<a href="https://www.sec.gov/Archives/edgar/data/1535527/000153552726000007/crwd-20260303xex991.htm" target="_blank" rel="noopener noreferrer" class="cite-link">FY2026 Financial Results</a> 及全球企业软件行业公开研究整理生成（所有股本与股价均已按 2026 年 7 月 4-for-1 股票分拆口径调整）。报告中涉及的 ARR 复合增速假设、三情景估值倍数及飞轮模拟器推演均基于特定前提条件，不构成任何具体证券买卖建议或收益承诺。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'CrowdStrike_CRWD_Deep_Dive_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：CrowdStrike_CRWD_Deep_Dive_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 同行竞争格局矩阵筛选器
+ // ==========================================
+ function filterCompetitors(category) {
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ if (category === 'all' || rowCat === 'core' || rowCat === category) {
+ row.style.display = '';
+ } else {
+ row.style.display = 'none';
+ }
+ });
+ }
+
+ // ==========================================
+ // 5. CrowdStrike“ARR + 自由现金流复利”动态推演器
+ // ==========================================
+ let currentExitMultiple = 45; // 默认 45x EV / Free Cash Flow
+
+ function setExitMultiple(mult) {
+ currentExitMultiple = mult;
+ document.querySelectorAll('#mult-btn-group .mult-btn').forEach(btn => {
+ const btnMult = parseFloat(btn.dataset.mult);
+ if (Math.abs(btnMult - mult) < 0.01) {
+ btn.className = 'mult-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-mogold-500 text-navy-950 border border-mogold-400 shadow transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-navy-900';
+ } else {
+ btn.className = 'mult-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+ }
+ });
+ updateArrSimulator();
+ }
+
+ function updateArrSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 30000;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 5;
+ const growthPct = parseFloat(document.getElementById('sim-growth').value) || 21;
+ const targetMargin = document.getElementById('target-margin-toggle').checked;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = growthPct.toFixed(1) + '%';
+
+ // 基准参数：FY27E 期末 ARR 指引 $6.61B，当前企业价值 EV ~$238.4B（市值 $242.7B - 净现金 $4.3B）
+ const baseArrB = 6.61;
+ const baseEvB = 238.4;
+ const fcfMargin = targetMargin ? 0.35 : 0.30;
+ const g = growthPct / 100;
+
+ const endArrB = baseArrB * Math.pow(1 + g, years);
+ const endFcfB = endArrB * fcfMargin;
+ const endEvB = endFcfB * currentExitMultiple;
+
+ const evMultiple = endEvB / baseEvB;
+ const finalPortfolioVal = principal * evMultiple;
+ const netGain = finalPortfolioVal - principal;
+ const totalReturnPct = ((finalPortfolioVal - principal) / principal) * 100;
+ const irrPct = (Math.pow(evMultiple, 1 / years) - 1) * 100;
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalPortfolioVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计总回报 ${totalReturnPct >= 0 ? '+' : ''}${totalReturnPct.toFixed(1)}% (年化IRR ${irrPct.toFixed(1)}%)`;
+ document.getElementById('sim-end-arr').textContent = '$' + endArrB.toFixed(2) + 'B';
+ document.getElementById('sim-end-fcf').textContent = `对应期末年度自由现金流 ~$${endFcfB.toFixed(2)}B`;
+ document.getElementById('sim-end-ev').textContent = '$' + endEvB.toFixed(1) + 'B';
+ document.getElementById('sim-margin-used').textContent = `测算采用自由现金流利润率：${(fcfMargin * 100).toFixed(1)}%`;
+ document.getElementById('sim-moic').textContent = evMultiple.toFixed(2) + 'x';
+ document.getElementById('sim-net-gain').textContent = netGain >= 0
+ ? `累计创造净资本利得：+$${Math.round(netGain).toLocaleString('en-US')}`
+ : `估值消化期账面变动：-$${Math.abs(Math.round(netGain)).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'crwd_research_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置 CrowdStrike 季度跟踪 KPI 核查清单');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'arr_evolution';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2023–FY2027E 期末 ARR 与年度总营收 ($B, 源自 SEC 10-K & Q2 FY27 8-K)
+ const evoConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2023', 'FY2024', 'FY2025', 'FY2026', 'Q2 FY27 (实际)', 'FY27E (指引)'],
+ datasets: [
+ {
+ label: '期末年度经常性收入 Ending ARR ($B)',
+ data: [2.56, 3.44, 4.24, 5.25, 5.84, 6.61],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5
+ },
+ {
+ label: '年度总营收 / 季化营收 Revenue ($B)',
+ data: [2.24, 3.06, 3.95, 4.81, 5.88, 6.00],
+ backgroundColor: 'rgba(16, 185, 129, 0.85)',
+ borderRadius: 5
+ },
+ {
+ type: 'line',
+ label: '单季净新增 ARR ($M) — 右轴参考',
+ data: [222, 282, 224, 331, 333, 365],
+ borderColor: '#06B6D4',
+ backgroundColor: '#06B6D4',
+ borderWidth: 2.5,
+ pointRadius: 4,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y1'
+ ? `${c.dataset.label}: $${c.parsed.y}M`
+ : `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 7.5,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ },
+ y1: {
+ position: 'right',
+ min: 0,
+ max: 420,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#06B6D4', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'M' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：Q2 FY27 多模块渗透率与核心增长比率 (%)
+ const splitConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Falcon Flex 账户 ARR 同比增速 (+101%)',
+ 'Non-GAAP 订阅毛利率 (Q2 FY27)',
+ '部署 6 个以上模块订阅客户占比',
+ '单季净新增 ARR 同比增速 (+51%)',
+ 'Falcon Flex 占总 ARR 比重 ($2.29B)',
+ '部署 7 个以上模块订阅客户占比',
+ '部署 8 个以上模块订阅客户占比'
+ ],
+ datasets: [
+ {
+ label: 'Q2 FY27 核心平台渗透与增长指标 (%)',
+ data: [101.0, 81.0, 51.0, 51.0, 39.2, 35.0, 26.0],
+ backgroundColor: [
+ '#F59E0B',
+ '#10B981',
+ '#06B6D4',
+ '#D97706',
+ '#6366F1',
+ '#059669',
+ '#64748B'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (c) => `指标值: ${c.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 115,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'arr_evolution' ? evoConfig : splitConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'arr_evolution') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2023–FY2027E 期末 ARR 与年度总营收阶梯跃升（$B）';
+ subEl.textContent = '2024 年 7 月故障风波后迅速修复信任，FY27E 期末 ARR 预计突破 $6.61B，净新增 ARR 重返 +34% 高增速';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'Q2 FY27 多模块渗透率与 Falcon Flex 平台扩张比率拆解（%）';
+ subEl.textContent = '51% 客户部署 6+ 模块、26% 部署 8+ 模块，Falcon Flex 账户 ARR 同比暴增 101% 至 $22.9亿';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '单探针原生一体化架构',
+ '终端与现代SOC市场统治力',
+ '万亿级遥测数据与AI情报网络',
+ '网络安全硬件与分支网关广度',
+ '自由现金流规模与利润率水平'
+ ],
+ datasets: [
+ {
+ label: 'CrowdStrike (CRWD)',
+ data: [9.9, 9.7, 9.8, 6.2, 9.0],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: 'Palo Alto Networks (PANW)',
+ data: [7.8, 8.8, 8.9, 9.8, 9.6],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: 'Zscaler (ZS)',
+ data: [8.8, 7.6, 8.4, 8.2, 8.5],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'CrowdStrike (CRWD · 单探针平台)',
+ 'Fortinet (FTNT · ASIC硬件+软件)',
+ 'Zscaler (ZS · 零信任云网络)',
+ 'Cloudflare (NET · 边缘安全网络)',
+ 'Palo Alto Networks (PANW · 综合霸主)'
+ ],
+ datasets: [
+ {
+ label: 'Non-GAAP 订阅/综合毛利率 (%)',
+ data: [81.0, 80.5, 80.2, 78.8, 77.5],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5,
+ barThickness: 13
+ },
+ {
+ label: '最新季度营收同比增速 YoY (%)',
+ data: [26.0, 13.5, 23.0, 27.0, 15.8],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 13
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: ${c.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 90,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2023', 'FY2024', 'FY2025', 'FY2026', 'FY2027E (指引)'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年度自由现金流 Free Cash Flow ($B)',
+ data: [0.68, 0.94, 1.07, 1.24, 1.82],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 28,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'Non-GAAP 营业利润率 Operating Margin (%)',
+ data: [15.9, 21.6, 21.3, 21.8, 25.1],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ : `${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 2.2,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toFixed(1) + 'B' },
+ title: { display: true, text: '年度自由现金流 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 10,
+ max: 30,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' },
+ title: { display: true, text: 'Non-GAAP 营业利润率 (%)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateArrSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>
