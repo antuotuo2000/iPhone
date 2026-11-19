@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>斯图尔特·米勒 Stuart A. Miller (Lennar CEO) 深度商业与领导力研究报告：美国家居地产周期驾驭宗师、轻资产转型与 2026 治理重塑</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：琥珀金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Stuart_Miller_Lennar_CEO_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ SM
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">NYSE: LEN · Sole CEO &amp; Chair</div>
+ <div class="text-sm font-bold leading-tight">斯图尔特·米勒深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">Stuart Miller 研报导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 商业版图与战略架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 管理哲学与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 美国头部房企 CEO 横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 治理薪酬与轻资产推演器</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕执掌演进与争议复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. CEO 治理与战略核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>北美住宅建筑与公司治理研究组</p>
+ <p>数据基准：SEC 2026 Proxy / 2026年11月</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-base shadow-lg shadow-mogold-500/25">
+ SM
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CEO MONOGRAPH · LEN</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">斯图尔特·米勒研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 莱纳房产 (Lennar) 掌舵人 · 44年深耕住宅周期与 Millrose 轻资产分拆架构师
+ </p>
+ </div>
+
+ <!-- 核心高管档案快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">现任职务 (2026重归唯一CEO)</span>
+ <span class="font-mono font-bold text-white">执行董事长兼 CEO</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY2025 披露总薪酬</span>
+ <span class="font-mono font-bold text-emerald-400">$29.53M <span class="text-slate-400">(87%股权)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">公司交付与轻资产度</span>
+ <span class="font-mono font-bold text-mogold-400">82,583 套 · &gt;95% 期权</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>商业版图与战略架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>管理哲学与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>美国头部房企 CEO 横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>治理薪酬与轻资产推演器</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕执掌演进与争议复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>CEO 治理与战略核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">治理与战略定评：北美住宅建筑业最富远见的周期与分拆架构师</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">关键节点：2025年底 Jon Jaffe 退休后重归唯一 CEO</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖基准：2026年11月</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 44年深耕 × 逆周期并购扩张 × Millrose 土地信托分拆与 2026 治理博弈</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 斯图尔特·米勒 Stuart A. Miller (Lennar CEO) 深度研究报告：周期穿越者、轻资产革命设计与 2026 治理大考
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 1957 年生于迈阿密、拥有哈佛大学学士与迈阿密大学法学博士（JD）背景的 <strong class="text-white">斯图尔特·米勒（Stuart A. Miller）</strong>，自 1982 年正式加入父亲 Leonard Miller 联合创立的莱纳房产以来，已深耕该企业逾 <strong class="text-mogold-300">44 年</strong>（<a href="https://www.encyclopedia.com/economics/news-wires-white-papers-and-books/miller-stuart-1957" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300">Encyclopedia</a>）。
+ 伴随任职 42 年的联席 CEO 兼总裁 <strong class="text-white">Jonathan Jaffe</strong> 于 2025 年 12 月 31 日正式退休且董事会决定不再增补联席职位，米勒自 2026 年初起再度出任莱纳<a href="https://investors.lennar.com/press-releases/2025/11-14-2025-222013161" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">执行董事长兼唯一首席执行官（Sole CEO）</a>。他主导的 <strong class="text-white">Millrose Properties (NYSE: MRP)</strong> 土地银行分拆将莱纳土地期权化率推升至 <strong class="text-emerald-400">&gt;95%</strong>，但 2026 年 10–11 月围绕其同时身兼 Millrose 最大投票权股东（43%）及关联购房租售争议的<a href="https://www.morningstar.com/news/pr-newswire/20261116la98159/len-shareholder-notice-shareholder-rights-law-firm-robbins-llp-reminds-investors-of-the" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-400 font-semibold">证券集体诉讼</a>，也让这位地产铁腕掌门站上了职业生涯最受瞩目的公司治理聚光灯下。
+ </p>
+
+ <!-- 核心研究定评高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">逆周期资本运作大师</div>
+ <div class="text-white font-semibold">1997 分拆商业地产 LNR、2000 吞并 U.S. Home、2018 收购 CalAtlantic，三次跨越式扩张奠定全美前二霸主</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">工业化轻资产制造范式</div>
+ <div class="text-mogold-400 font-semibold">确立“以量定产、动态调价、按揭买断”铁律，FY25 交付 82,583 套住宅、净负债率压降至 ~8% 历史极低位</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">利益高度绑定与治理双刃剑</div>
+ <div class="text-emerald-400 font-semibold">持有超级表决权 B 类股掌控控制权，FY25 薪酬 87% 为股权激励；2026 需妥善回应 Millrose 关联交易透明度质疑</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>执掌周期与企业体量跃迁</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">29 年+</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">1997任CEO至今</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 自 1997 年首任 CEO 以来，将莱纳年交付量从不足 1 万套扩张至 FY25 的 <strong>82,583 套</strong>、年营收 <strong>$34.2B</strong>（<a href="https://investors.lennar.com/~/media/Files/L/Lennar-IR-V3/documents/proxy-statements/2026-proxy-statement.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2025 总薪酬与结构</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$29.53M</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">股权占比 87.2%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 固定底薪仅 $1.00M（3.4%），年度现金激励 $2.77M（按税前利润 0.20% 挂钩），股票奖励 $25.74M（70%为绩效股）（<a href="https://gloom.sh/stocks/len/proxy/2026" target="_blank" rel="noopener noreferrer" class="cite-link">DEF 14A</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>Millrose 分拆轻资产跃升</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">&gt;95%</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">土地期权化率</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2025 年 2 月主导完成 Millrose Properties (NYSE: MRP) 独立分拆，自有土地年限压降至不足 0.2 年（<a href="https://www.businesswire.com/news/home/20261111929560/en/Grant-Eisenhofer-Files-Class-Action-Lawsuit-Against-Lennar-Corporation" target="_blank" rel="noopener noreferrer" class="cite-link">BusinessWire</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>治理票仓与控制权锚点</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">88%</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">Say-on-Pay 支持</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ FY25 与代表 79% 非关联流通股的机构直接沟通；凭借超级表决权 B 类股牢握集团战略拍板权（<a href="https://investors.lennar.com/~/media/Files/L/Lennar-IR-V3/documents/proxy-statements/2026-proxy-statement.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Lennar Proxy</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 商业版图与战略架构 (Business Empire & Strategic Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Executive Strategic Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 商业版图与战略架构：米勒亲手缔造的四次分拆并购与“制造机器”改造</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">核心手笔：从区域性佛州建筑商蜕变为全美前二标准化住宅巨擘</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">米勒二次主导期（FY2021–FY2026E）莱纳交付规模与净负债率剪刀差</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">在高利率冲击下坚持“保量优先”，年交付量逆势由 5.98万套增至 ~8.42万套，净负债率压降至 7.8%</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('scale_deleveraging')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：交付放量与降杠杆</button>
+ <button onclick="switchBizChart('pay_structure')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：FY25 高管团队薪酬拆解</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：战略重构三大核心动作 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">斯图尔特·米勒重塑莱纳的三大战略支点</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“分拆剥离+逆周期吞并”双轮资本手术</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 1997 年首任 CEO 即果断剥离商业地产业务成立 <strong>LNR Property</strong>，随后趁行业低谷于 2000 年收购 <strong>U.S. Home</strong> 实现规模翻倍；2018 年又以 $93亿并购 <strong>CalAtlantic</strong> 跃居全美前二（<a href="https://www.encyclopedia.com/economics/news-wires-white-papers-and-books/miller-stuart-1957" target="_blank" rel="noopener noreferrer" class="cite-link">Encyclopedia</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">强推“偶数流（Even-Flow）”与动态定价机器</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 米勒反对传统房企“捂盘惜售赌房价”的投机思维，要求各城市公司把建房视为汽车流水线：通过实时按揭利率买断（Rate Buydown）匹配销售流速，保证施工班组与集采供应链永不停工。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">2025 分拆 Millrose + 2026 精简唯一 CEO 架构</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2025 年 2 月完成住宅土地 REIT <strong>Millrose (MRP)</strong> 分拆彻底卸载重土地表内资产；2025 年底顺应 Jon Jaffe 退休取消联席 CEO 制，由米勒亲自统筹降本增效与高性价比住宅交付（<a href="https://traded.co/blog/lennar-s-jon-jaffe-to-retire-after-42-year-run-stuart-miller-to-take-sole-helm/" target="_blank" rel="noopener noreferrer" class="cite-link">Traded</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">兼任外部核心战略席位</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">FivePoint (FPH) 执行董事长 / 哈佛联合中心前主席</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 斯图尔特·米勒掌控的四大核心产业与治理板块矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 板块 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">核心旗舰主业 · FY25 营收 $34.2B</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">订单 83,978 套</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 莱纳核心住宅制造与按揭金融闭环（Lennar Homebuilding &amp; FS）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 米勒将全美 30 余个州的住宅业务统一纳入“<strong>Everything's Included®</strong>”标准精装体系，并依托自有按揭平台 <strong>Lennar Mortgage</strong>（捕获率超 80%）在财报季灵活调节利率买断补贴。FY2025 严峻利率环境下仍斩获 <strong>83,978 套新签订单</strong> 与 <strong>$21亿 净利润</strong>（<a href="https://investors.lennar.com/~/media/Files/L/Lennar-IR-V3/documents/proxy-statements/2026-proxy-statement.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Exec Chairman &amp; Sole CEO</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">全美人口净流入阳光地带霸主</span>
+ </div>
+ </div>
+
+ <!-- 板块 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">轻资产化核心载体 · 2025年2月上市</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">米勒握有 43% 投票权</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. Millrose Properties 土地银行平台（NYSE: MRP）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 由米勒亲自操盘设计，将莱纳约 $55亿 土地资产分拆独立为公开上市的住宅土地信托 <strong>Millrose Properties</strong>（由 Steve Hilton 任执行董事长、Douglas Bauer 任 CEO），为莱纳提供随建随提的期权供地服务（莱纳贡献 Millrose 约 72% 营收）。米勒本人是 Millrose <strong>第一大投票权股东（43%）</strong>（<a href="https://www.kmllp.com/cases-investigations/millrose-properties-inc" target="_blank" rel="noopener noreferrer" class="cite-link">KMLLP</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>复刻 NVR 轻资产估值范式</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">显著提升莱纳资产周转与现金转化</span>
+ </div>
+ </div>
+
+ <!-- 板块 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">加州大盘开发平台 · 兼任执行董事长</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">NYSE: FPH</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. FivePoint Holdings 综合社区开发商（加州核心土储）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 米勒自 2016 年起担任加州大型混合用途总体规划社区开发商 <strong>FivePoint Holdings</strong> 董事长（2021 年 9 月起任执行董事长），统筹尔湾大公园（Great Park Neighborhoods）、瓦伦西亚及旧金山猎人角等稀缺大型地块一级开发，为莱纳西部高单价业务提供长期优质宅地协同（<a href="https://executive-moves.com/profile/stuart-miller/" target="_blank" rel="noopener noreferrer" class="cite-link">Executive Moves</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>2016–至今 战略协同平台</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">锁定加州高壁垒稀缺供应</span>
+ </div>
+ </div>
+
+ <!-- 板块 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">科技生态投资与租赁 · LENX &amp; Quarterra</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">PropTech 布局</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. LENX 地产科技风投与多户租赁资产剥离变现</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 米勒极具科技前瞻性，在传统建筑商中最早设立创投部门 <strong>LENX</strong>（早期投资 Opendoor、Blend、SmartRent、Veev 及 Doma 等），将数字化看房、线上按揭与自动定价引擎全面植入莱纳营销漏斗；同时坚决推进 <strong>Quarterra</strong> 多户公寓重资产剥离，践行“彻底聚焦纯住宅制造”原则。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>数字化降本驱动 SG&amp;A 压降至 ~7.4%</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">传统建筑业数字化转型先锋</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 管理哲学与四重核心护城河 (Philosophy & Economic Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Leadership Philosophy &amp; Strategic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 管理哲学与四重核心护城河：米勒掌舵下的周期穿越方法论</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">管理特质：法学严谨契约思维 + 金融工程分拆能力 + 极度务实的流速纪律</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“Volume Over Margin”流速优先铁律</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 米勒在历次业绩会上反复强调：在利率上行期，宁可牺牲短期 300–500bps 毛利率通过利率买断刺激成交，也绝不让工地停摆或库存积压，从而保住集采规模与施工班组黏性。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">周期底部果断出手的“猎手直觉”</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 1992 年安德鲁飓风后逆势抄底南佛州土地、2000 年收购 U.S. Home、2008 年次贷危机果断削减土地减值并囤积现金、2018 年合并 CalAtlantic——米勒从未错过任何一次行业洗牌窗口（<a href="https://www.encyclopedia.com/economics/news-wires-white-papers-and-books/miller-stuart-1957" target="_blank" rel="noopener noreferrer" class="cite-link">Encyclopedia</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“制造机器 + 土地银行”二元架构</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 借鉴轻资产标杆 NVR 的商业精髓，米勒用五年时间推动土地储备期权化，最终通过分拆 <strong>Millrose Properties</strong> 将生熟地开发资金占用彻底移出莱纳资产负债表（<a href="https://www.businesswire.com/news/home/20261111929560/en/Grant-Eisenhofer-Files-Class-Action-Lawsuit-Against-Lennar-Corporation" target="_blank" rel="noopener noreferrer" class="cite-link">BusinessWire</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">2026 扁平化极简领导层与高绩效股权</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2026 年初起取消联席 CEO 冗余层级、缩减董事会规模至 9 人以加速决策并压低管理费用；自身 87% 薪酬为股票奖励（其中 70% 为超越同业 65 分位才解锁的绩效股）（<a href="https://investors.lennar.com/~/media/Files/L/Lennar-IR-V3/documents/proxy-statements/2026-proxy-statement.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维 CEO 领导力雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">美国三大住宅建筑巨头掌门人五维能力雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">斯图尔特·米勒 (LEN) vs 保罗·罗曼诺夫斯基 (DHI) vs 瑞安·马歇尔 (PHM)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 美国头部房企 CEO 横向对比 (Homebuilder CEOs Matrix)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · US Homebuilder CEOs Peer Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 美国头部房企 CEO 横向对比：任期资历、经营流派与治理结构解析</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索 CEO / 企业 / 经营流派..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部掌门人</button>
+ <button onclick="filterCompetitors('volume')" data-filter="volume" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">规模周转流派</button>
+ <button onclick="filterCompetitors('margin')" data-filter="margin" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">高毛利/资本回报流派</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">CEO 姓名与所属企业</th>
+ <th class="py-4 px-4 min-w-[130px]">背景与任期资历</th>
+ <th class="py-4 px-4 min-w-[145px]">核心战略流派</th>
+ <th class="py-4 px-4 min-w-[115px]">披露总薪酬口径</th>
+ <th class="py-4 px-4 min-w-[125px]">股权治理特征</th>
+ <th class="py-4 px-5 min-w-[240px]">与斯图尔特·米勒的领导力异同评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：Stuart Miller 基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">斯图尔特·米勒</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Lennar Corp (NYSE: LEN)</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">联合创始人之子 · 1997任CEO</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">以量定产 + 土地分拆轻资产</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">~$29.53M (FY25)</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">双层股权绝对控制</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全行业最长寿战略舵手：</strong>兼具法学契约严密性与华尔街资本运作魄力，敢于牺牲短期毛利保交付，并首创公开分拆土地 REIT 范式（<a href="https://investors.lennar.com/~/media/Files/L/Lennar-IR-V3/documents/proxy-statements/2026-proxy-statement.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：Paul Romanowski (D.R. Horton) -->
+ <tr data-category="volume" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">保罗·罗曼诺夫斯基</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">D.R. Horton (NYSE: DHI)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">内部晋升运营老兵 · 2023任CEO</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">入门刚需规模之王 + 现房快打</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$16M–$19M</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">职业经理人单层股</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>全美第一交付体量直接竞品：</strong>聚焦首次置业平价盘，依靠控股土地商 Forestar 供地，运营风格高度稳健务实，但无米勒式的超级投票权与大型分拆手笔。
+ </td>
+ </tr>
+
+ <!-- 行 3：Ryan Marshall (PulteGroup) -->
+ <tr data-category="margin" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">瑞安·马歇尔 (Ryan Marshall)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">PulteGroup (NYSE: PHM)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">财务与运营背景 · 2016任CEO</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">高毛利优先 + Del Webb 康养</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$17M–$20M</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">职业经理人单层股</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“保利润”路线代表：</strong>与米勒“保规模增速”形成鲜明对照，马歇尔拒绝过度降价换量，凭借老年全款客群守住全行业最高 26%+ 毛利率与 23%+ ROE。
+ </td>
+ </tr>
+
+ <!-- 行 4：Eugene Bredow / Paul Saville (NVR) -->
+ <tr data-category="margin" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">尤金·布雷多 / 保罗·萨维尔</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">NVR Inc (NYSE: NVR)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">内部财务长晋升 · 2022任CEO</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">100% 土地购买期权 + 极致回购</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$12M–$15M</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">零分红纯回购纪律</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>米勒轻资产转型的学习样板：</strong>NVR 管理层从不召开业绩电话会、从不持有生土，把全部现金流用于回购股票；米勒分拆 Millrose 正是在把 NVR 模式复制到 8 万套级巨头身上。
+ </td>
+ </tr>
+
+ <!-- 行 5：Douglas Yearley Jr. (Toll Brothers) -->
+ <tr data-category="volume" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">道格拉斯·耶利 (Douglas Yearley)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Toll Brothers (NYSE: TOL)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">法学背景高管 · 2010任CEO</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">百万美元豪宅细分赛道垄断</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$18M–$22M</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">职业经理人单层股</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>同为法学背景出身的长期掌门：</strong>与米勒同具律师严谨特质，但耶利深耕高净值豪宅小众高毛利赛道（年交付约 1.1 万套），而米勒主攻大众刚需与首改的规模化工业流水线。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的房企 CEO 记录，请尝试清空搜索词或切换流派标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：头部住宅建筑商 CEO 薪酬与治理结构对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2025 莱纳高管团队薪酬组成结构拆解（2026 Proxy Statement 披露口径）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">斯图尔特·米勒固定底薪仅 $1.00M，其余 $28.51M 全部与公司税前利润及长期股价业绩强绑定；Jon Jaffe 于 2025 年底退休后该笔联席 CEO 薪酬支出永久取消（<a href="https://investors.lennar.com/~/media/Files/L/Lennar-IR-V3/documents/proxy-statements/2026-proxy-statement.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Lennar 2026 Proxy</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">2026 起取消联席 CEO 节省 ~$23M+/年</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 治理薪酬与轻资产推演器 (Governance & CEO Allocation Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Governance Alignment &amp; Capital Allocation Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 治理激励结构与资本配置推演：90% 浮动绩效绑定与 Millrose 轻资产价值测算</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">0.20% 税前利润分红公式 + 65分位相对 TSR/ROE 绩效股门槛</span>
+ </div>
+
+ <!-- 1. 治理与激励四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Performance Pay Mix</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~90.6% 浮动</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 米勒 $29.53M 薪酬中固定底薪仅 $1.00M，其余超 90% 取决于税前利润及三年期相对同行表现（<a href="https://gloom.sh/stocks/len/proxy/2026" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">PSU Outperformance Hurdle</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">65th 百分位</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 股权激励中 70% 为绩效股（PSU），必须跑赢同业第 65 百分位才能拿到 100% 目标兑现，显著严于市场常见中位数标准。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Short-Term Cash Formula</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">0.20% × EBT</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 短期现金奖金直接按莱纳税前利润（Pretax Income）的 0.20% 透明公式核定（FY25 为 $2.77M），拒绝主观酌情加薪。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Governance Risk Watch</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">43% MRP 投票权</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 米勒同时握有莱纳超级投票权及分拆出去的 Millrose 43% 投票权，双重角色引发的关联交易透明度成为 2026 治理焦点（<a href="https://www.kmllp.com/cases-investigations/millrose-properties-inc" target="_blank" rel="noopener noreferrer" class="cite-link">KMLLP</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 薪酬与业绩联动演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2021–FY2025 莱纳税前利润周期波动 vs 斯图尔特·米勒短期现金奖金刚性挂钩验证</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">依托“税前利润 × 0.20%”硬性公式，米勒的年度现金激励随房地产周期高峰（FY22）与利率承压期（FY25）同频自动伸缩，杜绝旱涝保收</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">CEO 薪酬与员工中位数比 284:1</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：斯图尔特·米勒“轻资产转型与资本配置”决策模拟器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>CEO CAPITAL ALLOCATION ENGINE · 米勒“轻资产+回购+独掌降本”价值推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">模拟斯图尔特·米勒三大核心决策对莱纳 ROE 与长期每股内在价值的影响</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：当前流通股本 2.61 亿股 | 轻资产剥离后账面股东权益 ~$25.2B | 2026 取消联席 CEO 精简架构</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="sole-ceo-toggle" checked onchange="updateCeoSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>计入 2026 取消联席 CEO 精简降本 (+$30M/年)</span>
+ </label>
+ </div>
+
+ <!-- 三大策略场景预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimStrategy('miller_base')" data-era="miller_base" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 米勒当前“保量+轻资产”基准</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">期权地 95% · 年回购 $2.3B · ROE ~12.8%</div>
+ </button>
+ <button type="button" onclick="setSimStrategy('nvr_rerate')" data-era="nvr_rerate" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 降息后毛利修复 + NVR式估值重估</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">期权地 98% · 年回购 $3.0B · 净利 $4.1B</div>
+ </button>
+ <button type="button" onclick="setSimStrategy('old_heavy')" data-era="old_heavy" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 对照组：若未分拆 Millrose 的重土地模式</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">期权地 60% · 沉淀权益 $31.5B · 现金流受限</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">土地期权轻资产化比例 (%)</span>
+ <span id="sim-opt-label" class="font-mono font-bold text-mogold-400 text-sm">95%</span>
+ </div>
+ <input id="sim-opt" type="range" min="50" max="100" step="1" value="95" oninput="markCustomStrategy(); updateCeoSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年度自由现金流股票回购力度 ($B/年)</span>
+ <span id="sim-buyback-label" class="font-mono font-bold text-emerald-400 text-sm">$2.30B</span>
+ </div>
+ <input id="sim-buyback" type="range" min="0.5" max="4.0" step="0.1" value="2.3" oninput="markCustomStrategy(); updateCeoSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">周期常态化归母净利润假设 ($B)</span>
+ <span id="sim-ni-label" class="font-mono font-bold text-teal-400 text-sm">$3.20B</span>
+ </div>
+ <input id="sim-ni" type="range" min="2.0" max="4.8" step="0.1" value="3.2" oninput="markCustomStrategy(); updateCeoSimulator()" class="w-full accent-[#06B6D4] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：还原斯图尔特·米勒在完成 Millrose 分拆后的资本配置组合——以 &gt;95% 土地期权释放自由现金流，并将超 70% 自由现金流投入持续股票回购注销。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">轻资产结构下隐含净资产收益率 (ROE)</div>
+ <div id="sim-roe" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">12.82%</div>
+ <div id="sim-equity-base" class="text-xs text-slate-400 mt-1.5">轻资产占用净资产底座：~$25.2B</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">年度可分配自由现金流 (FCF) &amp; 转化率</div>
+ <div id="sim-fcf" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">$2.95B</div>
+ <div id="sim-fcf-conv" class="text-xs text-slate-400 mt-1.5">净利润向自由现金流转化率：91.5%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">5年持续回购累计注销总股本比例</div>
+ <div id="sim-shrink" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">-28.8%</div>
+ <div id="sim-eps-boost" class="text-xs text-slate-400 mt-1.5">仅靠股本缩减即可额外增厚 EPS +40.4%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">CEO 短期税前利润绩效激励预估 (0.20%)</div>
+ <div id="sim-ceo-bonus" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$8.49M</div>
+ <div id="sim-gov-save" class="text-xs font-semibold text-emerald-400 mt-1.5">精简联席架构为股东年省 ~$30.0M</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角治理与领导力定评对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">机构多头赞誉维度 (Governance Strengths)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">长期主义 + 资本运作天花板</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>历经四轮完整地产大周期的“活化石”级经验：</strong>从 1990 年代储贷危机、2008 年次贷海啸到 2022–2026 年美联储激进加息周期，米勒从未让莱纳陷入流动性危机。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>高度主动的投资者沟通与高管持股绑定：</strong>2025 财年主动与占非关联流通股 <strong>79%</strong> 的股东对话，且米勒个人身家高度绑定于莱纳长期股权价值（<a href="https://investors.lennar.com/~/media/Files/L/Lennar-IR-V3/documents/proxy-statements/2026-proxy-statement.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>2026 年主动精简顶层治理冗余：</strong>在 Jon Jaffe 退休后果断取消联席 CEO 制并缩减董事会席位，每年直接节省逾两千万美元高管开支并提升指挥效率（<a href="https://investors.lennar.com/press-releases/2025/11-14-2025-222013161" target="_blank" rel="noopener noreferrer" class="cite-link">Lennar IR</a>）。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">机构空头与治理警示 (Governance Red Flags)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">关联交易冲突 + 双层股权集中</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>Millrose 关联交易与 2026 年 11 月证券集体诉讼冲击：</strong>2026 年 10 月做空报告及随后 Robbins LLP 等律所提起的集体诉讼指控，Millrose（米勒持有 43% 投票权）斥资约 $2亿收购莱纳成品住宅并低价出租，被质疑变相粉饰终端去化压力（<a href="https://www.morningstar.com/news/pr-newswire/20261116la98159/len-shareholder-notice-shareholder-rights-law-firm-robbins-llp-reminds-investors-of-the" target="_blank" rel="noopener noreferrer" class="cite-link">Morningstar / PRN</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>土地期权费资本化会计处理争议：</strong>诉讼同时质疑莱纳对部分土地银行期权协议费用的资本化列账方式，考验管理层在财报披露颗粒度上的公信力（<a href="https://www.businesswire.com/news/home/20261111929560/en/Grant-Eisenhofer-Files-Class-Action-Lawsuit-Against-Lennar-Corporation" target="_blank" rel="noopener noreferrer" class="cite-link">BusinessWire</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>双层超级投票权与接班人梯队断层隐忧：</strong>米勒兼具执行董事长与唯一 CEO 职务（缺乏独立董事长制衡），且随着资深二把手 Jon Jaffe 退休，下一代外部可见的 CEO 接班人选尚待明确。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕执掌演进与管理争议复盘 (Three-Act Career & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Tenure &amp; Governance Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕执掌演进与关键节点复盘：从区域二代接班人到轻资产帝国舵手</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">横跨 1982–2026 四十四年：每逢地产大变局必有大动作</span>
+ </div>
+
+ <!-- 1. 三幕执掌演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 基层历练与全国扩张</span>
+ <span class="font-mono text-xs font-bold text-slate-500">1982–2007</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">双倍吞并跃居全国巨头</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>哈佛与迈阿密法学院毕业后从基层起步（11 岁起便在父辈样板房修剪草坪），1997 年接任 CEO 即剥离商业地产 LNR，2000 年大胆并购体量相当的 <strong>U.S. Home</strong> 并收购加州多家中型房企，使莱纳在 2005 年房地产繁荣顶峰前跻身全美三强（<a href="https://www.encyclopedia.com/economics/news-wires-white-papers-and-books/miller-stuart-1957" target="_blank" rel="noopener noreferrer" class="cite-link">Encyclopedia</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段定评：借助资本市场杠杆与并购完成全国化版图卡位
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 绝境求生与格局重塑</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2008–2023</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">次贷突围与 CalAtlantic 合并</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2008 年金融危机期间果断甩卖不良土储回笼现金、大刀阔斧削减行政费用率（SG&amp;A），使莱纳成为大型房企中最先恢复盈利的领头羊；2018 年退居执行董事长后仍主导完成 <strong>CalAtlantic</strong> 世纪并购，并在 2023 年 9 月重返联席 CEO 一线统筹轻资产改革（<a href="https://www.unifygtm.com/insights/executives/lennar-ceo" target="_blank" rel="noopener noreferrer" class="cite-link">Unify</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段定评：把每一次行业寒冬转化为吞噬市场份额的黄金窗口
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 独掌大权与治理考验</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2024–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">Millrose 分拆与唯一 CEO 时代</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2025 年 2 月圆满落地 Millrose 土地银行分拆，随后在 Jon Jaffe 退休之际重任唯一 CEO 推行精简高效运营；当前核心任务在于证明 8.4 万套高周转制造模式在 6% 利率环境下的盈利韧性，并妥善化解 2026 年底围绕 Millrose 关联购房与披露透明度引发的集体诉讼风波（<a href="https://www.morningstar.com/news/pr-newswire/20261116la98159/len-shareholder-notice-shareholder-rights-law-firm-robbins-llp-reminds-investors-of-the" target="_blank" rel="noopener noreferrer" class="cite-link">Morningstar</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段定评：轻资产蓝图已成，治理透明度与接班规划成下一程胜负手
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心领导力与治理争议深度拆解 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">机构投资者评估斯图尔特·米勒的四大核心议题</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">议题 01 · 关联方交易边界与治理防火墙</span>
+ <span class="text-xs font-mono text-rose-500 font-semibold">2026 最高优先级</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">LEN × Millrose (MRP) × FivePoint (FPH) 三重角色交集审查</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 米勒同时担任 LEN 执行董事长兼 CEO、FPH 执行董事长并持有分拆主体 MRP 43% 投票权（<a href="https://www.kmllp.com/cases-investigations/millrose-properties-inc" target="_blank" rel="noopener noreferrer" class="cite-link">KMLLP</a>）。随着 2026 年 11 月证券集体诉讼立案，机构投资者高度关注独立审计委员会对三方资产买卖、期权费定价及现房回购租赁的公允性把关。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">议题 02 · “保量降价”与同业“保毛利”路线之争</span>
+ <span class="text-xs font-mono text-amber-500 font-semibold">经营哲学核心分歧</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">19% 毛利率换取 8.4 万套满产周转是否最优解？</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 面对普尔特（PHM）26%+ 毛利率的诱惑，米勒顶住华尔街短线质疑坚持“永不减产、用按揭买断消化库存”，确保了高达 90%+ 的自由现金流转化率与供应链最低建安成本，一旦降息启动将展现极强利润弹性。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">议题 03 · 取消联席 CEO 后的组织带宽与继任梯队</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关键人物依赖度</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">69 岁的米勒独挑大梁后，谁是下一任运营接班人？</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 过去数十年 Jon Jaffe 一直扮演“主内施工运营”、米勒扮演“主外战略资本”的黄金搭档；2026 年起米勒集所有大权于一身，董事会提名与治理委员会未来两年能否培养出清晰的新一代 COO/总裁接班人至关重要。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">议题 04 · 超级投票权结构与中小股东利益保护</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">资本配置纪律检验</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">只要股票回购与派息纪律持续兑现，控制权折价便可收敛</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 尽管米勒凭借 B 类超级表决权股拥有高度控制力，但过去六年累计回购注销逾 16% 流通股本、净负债率压降至 8% 以下的实绩，证明其在传统主业资本分配上对外部股东保持了高度尊重。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级投资与治理观察总结横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>围绕斯图尔特·米勒领导力的三大机构级配置与跟踪原则</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 顺周期博弈看“米勒的利率买断退坡节奏”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 米勒把莱纳打造成了全美对按揭利率下行最敏感的“纯制造期权”；每当其在财报会上宣布逐步缩减利率买断补贴比例，往往意味着单套毛利率与 EPS 主升浪正式开启。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 治理风险定价看“Millrose 关联交易独立审查结果”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 2026 年底集体诉讼引发的股价波动，核心症结在于外部投资者对 LEN 与 Millrose 之间非土地银行性质交易的担忧；若董事会出台更严格的关联交易上限与独立披露规则，估值折价将迅速修复。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 跟随控制权股东的经济利益（优先关注 LEN.B）</div>
+ <p class="text-slate-300 leading-relaxed">
+ 米勒家族与核心利益高度锚定在经济权益完全一致的股权之上；对于不追求投票权的机构与个人长线投资者，折价 6%–9% 交易的 <strong>LEN.B</strong> 是搭便车分享米勒轻资产复利的最优载体。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 莱纳 CEO 治理与战略跟踪 KPI 交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · CEO Governance &amp; Strategic Execution Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 莱纳 CEO 治理与战略执行交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 用于季度跟踪斯图尔特·米勒重归唯一 CEO 后的战略兑现度与公司治理透明度（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. Millrose (MRP) 关联交易防火墙与期权费用透明度披露</span>
+ <span class="text-[11px] font-mono text-rose-600 dark:text-rose-400 font-semibold shrink-0">治理公信力头号锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查独立董事审计委员会是否明确限制 Millrose 直接购买莱纳成品住宅的行为，并清晰披露土地期权费会计处理口径。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 取消联席 CEO 后的管理费用率（SG&amp;A &lt; 7.5%）兑现情况</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">组织精简校验</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 验证 2026 财年起取消联席 CEO 架构及精简高管层后，总部行政开支下降是否切实转化为单套房屋盈利增厚。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 土地期权轻资产控制比例维持 &gt;95% 且自有土地 &lt;0.2年</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">核心转型底线</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 确保米勒坚守“纯住宅制造机器”定位，不因外部短期杂音而重新在莱纳资产负债表内囤积重资产开发土地。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 房屋销售激励占比是否随按揭利率回落而逐步退坡</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">盈利弹性信号</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪管理层在季度电话会上披露的激励占房价比例是否由 12%+ 峰值向 9%–10% 正常区间收敛，验证毛利率修复斜率。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 自由现金流股票回购注销节奏（维持 $20亿+/年 力度）</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">股东回报锚点</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查米勒是否继续把轻资产释放的现金流优先用于回购低估自家股票，而非盲目进行高溢价跨界多元化并购。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 董事会继任梯队规划与独立铅董事（Lead Independent Director）监督</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">长期接班观察</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 关注下一份委托书（Proxy Statement）中对大区运营负责人晋升及下一代 CEO 继任规划的披露进展。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>斯图尔特·米勒 Stuart A. Miller (Lennar Corp CEO) 深度治理与战略研究报告 · 机构框架版</span>
+ <span>核心数据出处：Lennar 2026 Proxy Statement (DEF 14A) · SEC Filings · 2026年11月</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告高管履历、薪酬结构、业绩指标及公司治理事件均核验自莱纳房产公开披露的 <a href="https://investors.lennar.com/~/media/Files/L/Lennar-IR-V3/documents/proxy-statements/2026-proxy-statement.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Lennar Corporation 2026 Proxy Statement</a>、<a href="https://www.sec.gov/Archives/edgar/data/920760/000119312525040938/d900040ddef14a.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Form DEF 14A</a>、<a href="https://investors.lennar.com/press-releases/2025/11-14-2025-222013161" target="_blank" rel="noopener noreferrer" class="cite-link">Lennar 2025年11月高管退休公告</a> 及公开司法诉讼文件。报告内置的资本配置模拟器旨在量化分析轻资产转型与股本回购对长期股东价值的机制影响，不构成任何证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Stuart_Miller_Lennar_CEO_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Stuart_Miller_Lennar_CEO_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 美国头部房企 CEO 横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. 斯图尔特·米勒“轻资产转型与资本配置”决策模拟器
+ // ==========================================
+ const STRATEGY_PRESETS = {
+ miller_base: {
+ opt: 95,
+ buyback: 2.3,
+ ni: 3.2,
+ caption: '当前测算基准：还原斯图尔特·米勒在完成 Millrose 分拆后的资本配置组合——以 >95% 土地期权释放自由现金流，并将超 70% 自由现金流投入持续股票回购注销。'
+ },
+ nvr_rerate: {
+ opt: 98,
+ buyback: 3.0,
+ ni: 4.1,
+ caption: '当前测算基准：模拟按揭利率回落至 5.5% 附近、销售激励退坡推动莱纳归母净利润回升至 $4.1B，且米勒将年回购力度加码至 $3.0B 的戴维斯双击情景。'
+ },
+ old_heavy: {
+ opt: 60,
+ buyback: 1.1,
+ ni: 3.2,
+ caption: '当前测算基准：假设莱纳未分拆 Millrose 仍沿用传统 60% 期权比例，表内沉淀逾 $60亿额外生熟地权益，自由现金流转化率与回购能力显著受限。'
+ }
+ };
+
+ function highlightStrategyButton(key) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === key) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimStrategy(key) {
+ const preset = STRATEGY_PRESETS[key];
+ if (!preset) return;
+ document.getElementById('sim-opt').value = preset.opt;
+ document.getElementById('sim-buyback').value = preset.buyback;
+ document.getElementById('sim-ni').value = preset.ni;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightStrategyButton(key);
+ updateCeoSimulator();
+ }
+
+ function markCustomStrategy() {
+ highlightStrategyButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义 CEO 资本配置推演模式——自由调节土地期权轻资产化比例、年度股票回购力度与周期常态化净利润假设。';
+ }
+
+ function updateCeoSimulator() {
+ const optPct = parseFloat(document.getElementById('sim-opt').value) || 95;
+ const buybackB = parseFloat(document.getElementById('sim-buyback').value) || 2.3;
+ const baseNiB = parseFloat(document.getElementById('sim-ni').value) || 3.2;
+ const soleCeoSave = document.getElementById('sole-ceo-toggle').checked;
+
+ document.getElementById('sim-opt-label').textContent = optPct.toFixed(0) + '%';
+ document.getElementById('sim-buyback-label').textContent = '$' + buybackB.toFixed(2) + 'B';
+ document.getElementById('sim-ni-label').textContent = '$' + baseNiB.toFixed(2) + 'B';
+
+ // 取消联席 CEO 架构预计年省 ~$30M 税前开支（税后约 $22.8M = $0.0228B）
+ const effNiB = baseNiB + (soleCeoSave ? 0.023 : 0);
+
+ // 土地期权化率越高，表内沉淀净资产越精简：95% 对应 ~$25.2B 净资产，每降低 1% 增加约 $0.18B 表内土地权益
+ const equityBaseB = Math.max(24.2, 25.2 + (95 - optPct) * 0.18);
+ const roePct = (effNiB / equityBaseB) * 100;
+
+ // 自由现金流转化率随期权轻资产率提高而提升（95% 对应 ~91.5%）
+ const fcfConvPct = Math.min(96.0, Math.max(55.0, 91.5 - (95 - optPct) * 0.85));
+ const fcfB = effNiB * (fcfConvPct / 100);
+
+ // 5年持续回购累计注销股本比例（参考当前总市值 ~$34.8B）
+ const currentMcapB = 34.8;
+ const annualShrinkRate = Math.min(0.11, buybackB / currentMcapB);
+ const fiveYrRemainRatio = Math.pow(1 - annualShrinkRate, 5);
+ const fiveYrShrinkPct = (1 - fiveYrRemainRatio) * 100;
+ const epsBoostPct = ((1 / fiveYrRemainRatio) - 1) * 100;
+
+ // 米勒短期现金激励 = 税前利润 (effNiB / 0.76) * 0.20%
+ const preTaxProfitM = (effNiB / 0.76) * 1000;
+ const ceoBonusM = preTaxProfitM * 0.002;
+
+ document.getElementById('sim-roe').textContent = roePct.toFixed(2) + '%';
+ document.getElementById('sim-equity-base').textContent = `轻资产占用净资产底座：~$${equityBaseB.toFixed(1)}B`;
+ document.getElementById('sim-fcf').textContent = '$' + fcfB.toFixed(2) + 'B';
+ document.getElementById('sim-fcf-conv').textContent = `净利润向自由现金流转化率：${fcfConvPct.toFixed(1)}%`;
+ document.getElementById('sim-shrink').textContent = `-${fiveYrShrinkPct.toFixed(1)}%`;
+ document.getElementById('sim-eps-boost').textContent = `仅靠股本缩减即可额外增厚 EPS +${epsBoostPct.toFixed(1)}%`;
+ document.getElementById('sim-ceo-bonus').textContent = '$' + ceoBonusM.toFixed(2) + 'M';
+ document.getElementById('sim-gov-save').textContent = soleCeoSave
+ ? '精简联席架构为股东年省 ~$30.0M'
+ : '未计入取消联席 CEO 的管理层降本';
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'stuart_miller_ceo_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置 CEO 治理与战略核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'scale_deleveraging';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2021–FY2026E 莱纳年度住宅交付量（千套） vs 住宅净负债占总资本比（%）
+ const scaleConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025 (实际)', 'FY2026E'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年度住宅交付规模 (千套)',
+ data: [59.8, 66.4, 73.1, 80.2, 82.6, 84.2],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '住宅建筑净负债占总资本比 (%)',
+ data: [18.3, 12.1, 9.6, 7.5, 8.1, 7.8],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: ${c.parsed.y.toFixed(1)} 千套`
+ : `${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 40,
+ max: 95,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'k' }
+ },
+ y1: {
+ position: 'right',
+ min: 0,
+ max: 25,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：FY2025 莱纳核心高管团队薪酬组成拆解 ($M, 源自 2026 Proxy Statement)
+ const payConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Stuart Miller (执行董事长兼CEO)',
+ 'Jonathan Jaffe (前联席CEO · 已退休)',
+ 'Diane Bessette (VP 兼 CFO)',
+ 'Katherine Martin (首席法务官)',
+ 'David Collins (VP 兼主计长)'
+ ],
+ datasets: [
+ {
+ label: '固定底薪 ($M)',
+ data: [1.00, 0.80, 0.75, 0.15, 0.35],
+ backgroundColor: '#64748B',
+ stack: 'pay'
+ },
+ {
+ label: '年度绩效现金奖金与签约奖 ($M)',
+ data: [2.77, 0.00, 2.85, 1.90, 0.90],
+ backgroundColor: '#10B981',
+ stack: 'pay'
+ },
+ {
+ label: '长期股权激励 Grant Value ($M)',
+ data: [25.74, 22.54, 4.65, 5.97, 1.00],
+ backgroundColor: '#F59E0B',
+ borderRadius: 4,
+ stack: 'pay'
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.x.toFixed(2)}M`
+ }
+ }
+ },
+ scales: {
+ x: {
+ stacked: true,
+ max: 32,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' }
+ },
+ y: {
+ stacked: true,
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'scale_deleveraging' ? scaleConfig : payConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'scale_deleveraging') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '米勒二次主导期（FY2021–FY2026E）莱纳交付规模与净负债率剪刀差';
+ subEl.textContent = '在高利率冲击下坚持“保量优先”，年交付量逆势由 5.98万套增至 ~8.42万套，净负债率压降至 7.8%';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2025 莱纳核心高管团队薪酬组成拆解（2026 Proxy Statement 披露口径）';
+ subEl.textContent = '斯图尔特·米勒总薪酬 $29.53M 中 87.2% 为长期股权奖励，2026 起取消联席 CEO 架构显著降本';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '逆周期并购与分拆架构力',
+ '土地轻资产化转型彻底度',
+ '低利率敏感期毛利率防守',
+ '施工流速与集采规模效率',
+ '公司治理与关联透明度评级'
+ ],
+ datasets: [
+ {
+ label: '斯图尔特·米勒 (Lennar)',
+ data: [9.8, 9.7, 7.2, 9.5, 7.4],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: '保罗·罗曼诺夫斯基 (D.R. Horton)',
+ data: [8.4, 8.3, 8.0, 9.8, 8.9],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '瑞安·马歇尔 (PulteGroup)',
+ data: [8.2, 7.2, 9.8, 8.5, 9.2],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Stuart Miller (执行董事长兼唯一CEO)',
+ 'Jonathan Jaffe (前联席CEO · 2025底退休)',
+ 'Diane Bessette (副总兼首席财务官 CFO)',
+ 'Katherine Martin (首席法务官 · 新任)',
+ 'David Collins (副总兼企业主计长)'
+ ],
+ datasets: [
+ {
+ label: 'FY2025 SEC 披露总薪酬 ($M · 2026 Proxy Statement)',
+ data: [29.53, 23.38, 8.28, 8.02, 2.27],
+ backgroundColor: [
+ '#F59E0B',
+ '#64748B',
+ '#10B981',
+ '#06B6D4',
+ '#94A3B8'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `FY2025 总薪酬: $${c.parsed.x.toFixed(2)}M`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 34,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '莱纳年度归母净利润 ($B · 周期轨迹)',
+ data: [4.43, 4.61, 3.94, 3.93, 2.10],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 32,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: 'Stuart Miller 税前利润挂钩现金奖金 ($M)',
+ data: [11.65, 12.14, 10.35, 10.32, 2.77],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ : `${c.dataset.label}: $${c.parsed.y.toFixed(2)}M`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 5.5,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '归母净利润 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 15,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'M' },
+ title: { display: true, text: 'CEO 短期现金奖金 ($M)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateCeoSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

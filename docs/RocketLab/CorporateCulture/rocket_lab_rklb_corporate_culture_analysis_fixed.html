@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rocket Lab (RKLB) 企业文化与工程治理深度研究报告：极客草根逆袭、“每一美元与每一小时”铁律、端到端垂直整合与吃帽式科学纠错</title>
+  <!-- Tailwind CSS (Pinned Version) -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- Chart.js (Pinned Version) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" onerror="this.onerror=null;this.src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js';"></script>
+  <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#060911',
+              900: '#0C1220',
+              800: '#162033',
+              700: '#27354F',
+            },
+            rklbred: {
+              300: '#FCA5A5',
+              400: '#F87171',
+              500: '#EF4444',
+              600: '#DC2626',
+              700: '#B91C1C',
+            },
+            emerald: {
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+            },
+            teal: {
+              400: '#22D3EE',
+              500: '#06B6D4',
+              600: '#0891B2',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* 自定义滚动条与机构研报细节排版 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+
+    /* 打印友好优化 */
+    @media print {
+      #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+        display: none !important;
+      }
+      main {
+        margin-left: 0 !important;
+        padding: 0 !important;
+      }
+      section {
+        break-inside: avoid;
+      }
+    }
+
+    /* 卡片悬浮微光与上移过渡 */
+    .report-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .report-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 侧边导航激活态：火箭推进红渐变标识 */
+    .nav-link.active {
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.24) 0%, rgba(6, 182, 212, 0.06) 100%);
+      border-left: 3px solid #EF4444;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    /* 引用信源外链微标签样式 */
+    .cite-link {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+      transition: color 0.15s ease;
+    }
+    .cite-link:hover {
+      color: #EF4444;
+      text-decoration-style: solid;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-rklbred-500 selection:text-white transition-colors duration-200">
+
+  <!-- 顶部全局阅读进度条 -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-rklbred-600 via-rklbred-400 to-teal-400 w-0 transition-all duration-150"></div>
+  </div>
+
+  <!-- 页面内通知 Toast -->
+  <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-rklbred-500/50 shadow-2xl text-xs font-medium">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="export-toast-msg">已导出独立 HTML 报告文件：Rocket_Lab_Corporate_Culture_Analysis.html</span>
+  </div>
+
+  <!-- 移动端顶部导航栏 -->
+  <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-rklbred-500 to-rklbred-700 flex items-center justify-center font-extrabold text-white text-xs shadow">
+        RKLB
+      </div>
+      <div>
+        <div class="text-[11px] text-rklbred-400 font-semibold tracking-wider uppercase">Auckland · Long Beach · 2006–2026+</div>
+        <div class="text-sm font-bold leading-tight">Rocket Lab 企业文化深度研报</div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-1.5">
+      <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-rklbred-600 hover:bg-rklbred-700 text-white text-xs font-bold transition" aria-label="导出HTML文件">
+        导出HTML
+      </button>
+      <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 移动端折叠抽屉菜单 -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+    <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <span class="font-bold text-white text-base">Rocket Lab 文化专题导航</span>
+          <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+          <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 文化架构与端到端闭环</a></li>
+          <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 彼得·贝克法则与四重护城河</a></li>
+          <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 商业航天文化与同业横向对比</a></li>
+          <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 工程执行力与商业飞轮推演</a></li>
+          <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与“吃帽式”进化复盘</a></li>
+          <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. Rocket Lab 文化核查清单</a></li>
+        </ul>
+      </div>
+      <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+        <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-rklbred-600 text-white font-bold text-center">
+          一键导出独立 HTML 文件
+        </button>
+        <p>商业航天与组织工程研究组</p>
+        <p>财报与任务基准：SEC 10-K / 2026Q3 财报</p>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+  <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0C1220] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+    <div>
+      <!-- 机构品牌头 -->
+      <div class="p-5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rklbred-500 via-rklbred-600 to-rose-700 flex items-center justify-center text-white font-extrabold text-xs shadow-lg shadow-rklbred-500/25">
+            RKLB
+          </div>
+          <div>
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-rklbred-400 bg-rklbred-500/15 px-2 py-0.5 rounded">AEROSPACE CULTURE</span>
+            <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">Rocket Lab 企业文化研报</h2>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          “每一美元与每一小时” × 非亿万富翁精益极客 × 端到端太空基础设施 · 彼得·贝克（Sir Peter Beck）的硬核工程哲学
+        </p>
+      </div>
+
+      <!-- 核心组织与财务快照徽章 -->
+      <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">2026Q3 创纪录季度营收</span>
+          <span class="font-mono font-bold text-white">$268M (积压 $3.57B)</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">全球工程与制造团队</span>
+          <span class="font-mono font-bold text-teal-400">~3,217人 (产线 52%)</span>
+        </div>
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+          <span class="text-slate-400">Electron 发射与部署战绩</span>
+          <span class="font-mono font-bold text-rklbred-400">56+次 · 200+颗卫星</span>
+        </div>
+      </div>
+
+      <!-- 七大核心章节目录导航 -->
+      <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+        <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+        <nav id="desktop-nav" class="space-y-1 text-[13px]">
+          <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-rklbred-400 mr-2">00</span>执行摘要与核心指标</span>
+          </a>
+          <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>文化架构与端到端闭环</span>
+          </a>
+          <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>彼得·贝克法则与四重护城河</span>
+          </a>
+          <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>商业航天文化与同业横向对比</span>
+          </a>
+          <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>工程执行力与商业飞轮推演</span>
+          </a>
+          <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与“吃帽式”进化复盘</span>
+          </a>
+          <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>Rocket Lab 文化核查清单</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+    <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-slate-400">阅读模式切换</span>
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-rklbred-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-3.5 h-3.5 text-rklbred-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span class="dark:hidden">深色轨道模式</span>
+          <span class="hidden dark:inline">机构亮色模式</span>
+        </button>
+      </div>
+      <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-rklbred-600 to-rose-700 hover:from-rklbred-700 hover:to-rose-800 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        <span>导出独立 HTML 文件 (.html)</span>
+      </button>
+      <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>打印 / 导出 PDF 研报</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="lg:ml-[280px] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+      <!-- =========================================================
+           00. Hero 研报封面区与执行摘要
+      ========================================================= -->
+      <section id="sec-exec" class="scroll-mt-20">
+        <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-rklbred-500/15 text-rklbred-700 dark:text-rklbred-400 font-bold border border-rklbred-500/30">航天治理定评：人类商业航天史唯一实现高频率常态化发射的“草根极客端到端帝国”</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：新西兰车库起步 (2006–2017) · Electron高频统治与空间系统跃迁 (2018–2026+)</span>
+          </div>
+          <div class="flex items-center space-x-3 font-mono">
+            <span>数据基准：2024–2025 10-K / 2026Q3 财报</span>
+            <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-rklbred-600 dark:text-rklbred-400 hover:underline font-sans font-semibold cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span>下载 .html</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero 标题卡片 -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+          <!-- 背景航天红点阵纹理 -->
+          <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#EF4444 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+          <div class="relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rklbred-500/20 border border-rklbred-400/40 text-rklbred-300 text-xs font-semibold mb-4">
+              <span class="w-2 h-2 rounded-full bg-rklbred-400 animate-pulse"></span>
+              <span>CORE THESIS · “每一美元与每一小时”精益铁律 × 94%发射成功率执行力 × 端到端垂直整合 × 吃帽式科学务实主义</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+              Rocket Lab (NASDAQ: RKLB) 企业文化深度研究报告：非亿万富翁的草根极客逆袭、高强度发射冲刺节奏与端到端太空基础设施闭环
+            </h1>
+            <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+              当现代商业航天的舞台被埃隆·马斯克（SpaceX）与杰夫·贝索斯（Blue Origin）等硅谷亿万富翁占据时，新西兰自学成才的机械学徒<strong class="text-white">彼得·贝克爵士（Sir Peter Beck）</strong>却带领 <strong class="text-rklbred-300">Rocket Lab</strong> 走出了截然不同的文化路径——没有无限烧钱的富豪支票，唯有把<strong class="text-white">“每一美元与每一小时（Every Dollar and Every Hour）”</strong>压榨到极致的第一性原理精益文化（<a href="https://builtin.com/company/rocket-lab/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link text-rklbred-300 font-semibold">Built In 2026 文化调研</a>）。
+              截至 2026 年三季度，Rocket Lab 凭借全球领先的小型轨道火箭 <strong class="text-white">Electron</strong>（累计超 56 次轨道任务、部署逾 200 颗卫星、全周期成功率达 <a href="https://www.spacecapital.com/blogs/rocket-lab-the-discipline-of-audacity-the-art-of-precision" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">94% 且 2025 年保持 100% 完美记录</a>）与高速扩张的太空系统（Space Systems）双引擎，推动单季营收在 2026Q3 飙升至创纪录的 <a href="https://www.newswire.ca/news-releases/before-a-planned-catch-of-both-rocket-stages-space-companies-lay-out-fresh-results-841845845.html" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$2.68亿美元</a>，在手订单积压（Backlog）更激增至 <a href="https://www.newswire.ca/news-releases/before-a-planned-catch-of-both-rocket-stages-space-companies-lay-out-fresh-results-841845845.html" target="_blank" rel="noopener noreferrer" class="cite-link text-rklbred-300 font-semibold">$35.7亿美元</a>，确立了仅次于 SpaceX 的全球第二大民营商业航天巨头地位。
+            </p>
+
+            <!-- 核心文化基因高亮条 -->
+            <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">“每一美元与每一小时”资源铁律</div>
+                <div class="text-white font-semibold">非亿万富翁的生存本能：拒绝豪华办公福利与冗长 PPT 审批，用 3D 打印引擎与碳纤维制造把资本效率逼近极限</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">坦诚高强度发射冲刺（Sprint Rhythm）</div>
+                <div class="text-rklbred-400 font-semibold">“如果你追求朝九晚五的工作生活平衡，请不要来这里”——以快速硬件交付换取工程师早期端到端所有权</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">“吃掉自己的帽子”科学纠错文化</div>
+                <div class="text-teal-400 font-semibold">面对空气动力学与中型复用火箭新证据时，CEO 公开在镜头前把帽子放进搅拌机喝下，推翻旧教条拥抱 Neutron</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4个核心 KPI 卡片 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+          <!-- KPI 1 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>2026Q3 单季营收与订单积压</span>
+              <span class="p-1.5 rounded-lg bg-rklbred-500/15 text-rklbred-600 dark:text-rklbred-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$268M</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">积压 $3.57B</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              2026Q3 营收环比再增 $3,400万（Q4 业绩指引高达 $2.70亿–$2.90亿），在手订单单季环比暴增 52% 至 $35.7亿（<a href="https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-announces-third-quarter-2026-financial-results-posts" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB Q3 2026 Release</a>）。
+            </p>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>Electron 任务成功率与部署规模</span>
+              <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">94.0%</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">200+ 颗卫星</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              全球发射频率最高的小型轨道火箭，超过 600 台 3D 打印卢瑟福（Rutherford）发动机已飞入太空（<a href="https://investors.rocketlabcorp.com/static-files/f8b710ce-c1ca-4186-a93a-6e3cc4bb2b3e" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB 10-K</a>）。
+            </p>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>工程师与一线制造密度</span>
+              <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">86.3%</span>
+              <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">3,217 总员工</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              截至 2026Q2，生产制造（1,688人）与研发工程（1,087人）合计占全员 86.3%，行政职能（SG&amp;A）仅占 13.7%（<a href="https://www.alpha-sense.com/earnings/rklb/" target="_blank" rel="noopener noreferrer" class="cite-link">AlphaSense Q2 2026</a>）。
+            </p>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>垂直整合双轮毛利率跃升</span>
+              <span class="p-1.5 rounded-lg bg-rklbred-500/15 text-rklbred-600 dark:text-rklbred-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">39–41%</span>
+              <span class="text-xs font-bold text-rklbred-700 dark:text-rklbred-400 bg-rklbred-500/15 px-2 py-0.5 rounded">Q4 Non-GAAP</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              得益于自研反作用轮、星敏感器、太阳能电池与整星制造比例提升，2026Q4 Non-GAAP 毛利率指引跃升至 39%–41%（<a href="https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-announces-third-quarter-2026-financial-results-posts" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB Q3 2026 Guidance</a>）。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           一、 文化架构与端到端闭环 (Cultural Architecture & Vertical Loop)
+      ========================================================= -->
+      <section id="sec-biz" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-rklbred-600 dark:text-rklbred-400">Section 01 · Cultural Architecture &amp; End-to-End Aerospace Loop</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 文化架构与业务闭环：“造火箭是入场券，端到端太空系统是印钞机”</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">全员 86.3% 聚集于制造与研发一线 · 拒绝传统航天外包分包体制</span>
+        </div>
+
+        <!-- 交互式 Chart.js 双视图切换面板 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- 左侧：双视图图表 -->
+          <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">Rocket Lab 组织人才结构拆解：86.3% 硬件制造与研发硬核密度（2026Q2 财报）</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">生产制造 1,688 人 (52.5%) + 研发工程 1,087 人 (33.8%) 构成绝对主体，行政官僚（SG&amp;A）严控在 13.7%</p>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+                <button onclick="switchBizChart('headcount_mix')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-rklbred-600 dark:text-rklbred-400 shadow-sm transition cursor-pointer">视图A：组织人才密度结构</button>
+                <button onclick="switchBizChart('rev_trajectory')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：季度营收爆炸式增长</button>
+              </div>
+            </div>
+            <div class="relative h-72 w-full">
+              <canvas id="bizArchitectureChart"></canvas>
+            </div>
+          </div>
+
+          <!-- 右侧：结构性战略洞察 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">Rocket Lab 文化驱动的三大组织工程铁律</h3>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-rklbred-500/15 text-rklbred-600 dark:text-rklbred-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">“每一美元与每一小时（Every Dollar, Every Hour）”</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      这是写进 Electron、Neutron 与 Space Systems 全条线的最高行动纲领。彼得·贝克多次强调自己不是亿万富翁，公司每一分研发资金都必须靠商业合同与精打细算挣来——用 3D 打印 24 小时造出一台引擎，而非花数百万美元等传统供应商排期 18 个月（<a href="https://builtin.com/company/rocket-lab/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In</a>）。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">“发射窗口倒计时”驱动的高强度冲刺节奏</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      贝克在招聘与全员会上极度坦诚：“<strong>如果你想要轻松的工作生活平衡（Work-Life Balance），请不要来 Rocket Lab。</strong>”轨道发射窗口不等人，工程师围绕发射节点进行通宵与周末冲刺，但也因此获得传统航空巨头 10 年都拿不到的早期硬件负责权（<a href="https://builtin.com/company/rocket-lab/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In</a>）。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">极端垂直整合 + 私人发射场主权</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      从在新西兰马希亚半岛（Mahia）自建全球首个私人轨道发射场 LC-1（拥有两个发射工位），到自研碳纤维箭体、电池泵、反作用轮与星敏感器，公司消灭了对外部供应链的依赖与繁文缛节，实现了“周级”响应客户专属轨道定制（<a href="https://investors.rocketlabcorp.com/static-files/f8b710ce-c1ca-4186-a93a-6e3cc4bb2b3e" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB 10-K</a>）。
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-slate-500 dark:text-slate-400">核心企业使命（Mission Statement）</span>
+              <span class="font-bold text-rklbred-600 dark:text-rklbred-400">We Open Access to Space to Improve Life on Earth</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大业务与文化支柱分部详细卡片矩阵 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- 支柱 1：高频小型发射与专属轨道服务 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rklbred-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-rklbred-500/15 text-rklbred-700 dark:text-rklbred-400 text-xs font-bold">战略入场券 · 全球高频小型发射之王</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">56+次发射 · 94%成功率</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. Electron 高频专属发射与 HASTE 高超音速测试</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                不同于 SpaceX 猎鹰9号“拼车（Rideshare）”像大型公交车一样按固定班次与轨道停靠，Rocket Lab 将 Electron 打造成<strong>“太空专属出租车”</strong>——凭借独创的“居里（Curie）”踢级（Kick Stage）引擎，把客户卫星精准送入任意倾角与高度的定制轨道（<a href="https://umbrex.com/resources/company-profiles/rocket-lab/" target="_blank" rel="noopener noreferrer" class="cite-link">Umbrex 策略研报</a>）。同时衍生出 HASTE 高超音速亚轨道测试火箭，在 2026Q2 斩获美国太空军 <strong>$2.66亿美元</strong>大单，全线发射积压超 90 发（<a href="https://www.alpha-sense.com/earnings/rklb/" target="_blank" rel="noopener noreferrer" class="cite-link">AlphaSense</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>LC-1 (新西兰) + LC-2 (美国弗吉尼亚)</span>
+              <span class="text-rklbred-600 dark:text-rklbred-400 font-semibold">NASA Category 1 最高级认证</span>
+            </div>
+          </div>
+
+          <!-- 支柱 2：太空系统垂直制造帝国 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">核心营收引擎 · 占总营收逾 70%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2026Q2 产品营收 $181.3M</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. Space Systems 卫星整星与核心部组件垂直闭环</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                彼得·贝克敏锐洞察到“卫星制造与在轨运营的市场规模是发射服务的数倍”。公司通过精准并购 Sinclair Interplanetary、ASI、PSC、SolAero 与激光通信巨头 Mynaric，将<strong>反应轮、星敏感器、分离系统、宇航级太阳能电池与 Photon 卫星平台</strong>全部收归麾下（<a href="https://investors.rocketlabcorp.com/static-files/f8b710ce-c1ca-4186-a93a-6e3cc4bb2b3e" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB 10-K</a>）。2026 年更宣布收购<strong>铱星通信（Iridium）</strong>（预计 2027 年中完成交割），构建从火箭发射、卫星制造到全球星座通信运营的完整闭环（<a href="https://www.alpha-sense.com/earnings/rklb/" target="_blank" rel="noopener noreferrer" class="cite-link">AlphaSense Q2 2026</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>Photon 飞船 · 月球 CAPSTONE · 火星任务</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">深空与星座基础设施标准制定者</span>
+            </div>
+          </div>
+
+          <!-- 支柱 3：Neutron 中型可重复使用火箭 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">第二增长曲线 · 打破中型火箭垄断</span>
+                <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">13吨运力 · 碳纤维可复用</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. Neutron 中型可回收运载火箭与阿基米德引擎</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                面向巨型星座组网与国家安全重型载荷，Rocket Lab 自主研发 13 吨级中型可复用火箭 <strong>Neutron</strong>：采用自动铺丝碳纤维复合材料箭体、全流量分级燃烧液氧甲烷“阿基米德（Archimedes）”引擎，以及独创的<strong>“饥饿河马（Hungry Hippo）”固定式整流罩</strong>（无需抛弃整流罩，随一级箭体一同返回发射场着陆），大幅降低单次复用周转时间与成本（<a href="https://www.clickorlando.com/news/local/2021/03/01/rocket-lab-ceo-eats-part-of-his-hat-revealing-new-rocket-capable-of-human-spaceflight/" target="_blank" rel="noopener noreferrer" class="cite-link">Neutron 技术发布</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>Hungry Hippo 整流罩 · Archimedes 引擎</span>
+              <span class="text-teal-600 dark:text-teal-400 font-semibold">首飞后预计迅速实现 Adjusted EBITDA 转正</span>
+            </div>
+          </div>
+
+          <!-- 支柱 4：精益资本配置与现金流纪律 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">资本效率纪律 · 拒绝无效烧钱</span>
+                <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">2026Q3 经营现金流转正</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 研发投入商业锚定与正向经营现金流里程碑</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                与许多靠“PPT 愿景”融资、却迟迟无法入轨的 SPAC 火箭初创公司不同，Rocket Lab 坚持<strong>“先用 Electron 跑通高频商业发射并建立信任，再用成熟客户订单反哺 Neutron 研发”</strong>的务实路线（<a href="https://umbrex.com/resources/company-profiles/rocket-lab/" target="_blank" rel="noopener noreferrer" class="cite-link">Umbrex</a>）。2026 年三季度公司实现 <strong>GAAP 经营活动现金流转正</strong>，总资产扩至 <strong>$65.69亿美元</strong>，展现出极强的财务韧性（<a href="https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-announces-third-quarter-2026-financial-results-posts" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB Q3 2026 财报</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>2026Q3 现金流转正 · 积压订单 $3.57B</span>
+              <span class="text-indigo-600 dark:text-indigo-400 font-semibold">商业航天罕见的盈利可见度与资金安全垫</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           二、 彼得·贝克法则与四重文化护城河 (Peter Beck Rules & Moat)
+      ========================================================= -->
+      <section id="sec-moat" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Sir Peter Beck's Principles &amp; Cultural Moat</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 彼得·贝克法则与四重文化护城河：为什么上百家火箭初创公司只有它跑出来了？</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：高壁垒 (Wide Moat · 飞行遗产信任壁垒 + 增材制造速度 + 垂直供应链)</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- 左侧：四重文化护城河深度解析 -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 护城河 1 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-rklbred-500/15 text-rklbred-600 dark:text-rklbred-400 flex items-center justify-center font-bold text-sm">01</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“非亿万富翁”的极致资本效率基因</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                彼得·贝克曾直言：“航天界大多是亿万富翁在玩，我大概是唯一一个非亿万富翁的 CEO。”（<a href="https://observer.com/2021/01/rocket-lab-ceo-resuable-rocket-electron-interview/" target="_blank" rel="noopener noreferrer" class="cite-link">Observer 专访</a>）没有富豪兜底逼出了全球最高的研发费效比：Rocket Lab 仅用约 1 亿美元级早期投入就研发出首款入轨火箭 Electron，而传统航天巨头同等项目动辄耗资数十亿美元。
+              </p>
+            </div>
+
+            <!-- 护城河 2 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">3D 打印与“实物验证优先于纸面论证”</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                传统波音/洛马模式依赖数千页文档评审与层层外包；Rocket Lab 是全球首个将 3D 打印火箭发动机（Rutherford）送入轨道的企业（累计逾 600 台入轨）（<a href="https://investors.rocketlabcorp.com/static-files/f8b710ce-c1ca-4186-a93a-6e3cc4bb2b3e" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB 10-K</a>）。工程师上午修改 CAD 图纸、下午金属打印成型、次日即上自有试车台点火，将硬件迭代周期从“年”压缩至“天”。
+              </p>
+            </div>
+
+            <!-- 护城河 3 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“吃掉自己的帽子”科学实证与零包袱纠错</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                贝克早年曾公开立誓“如果 Rocket Lab 造可回收火箭或中型火箭，我就把帽子吃掉”。当工程数据证明第一级伞降回收与中型复用火箭 Neutron 具备更高商业价值时，他亲自在镜头前把帽子放进搅拌机喝下，向全员传递最高文化信号：<strong>物理规律与商业真相永远高于 CEO 的面子</strong>（<a href="https://www.bvp.com/atlas/peter-beck" target="_blank" rel="noopener noreferrer" class="cite-link">BVP 深度访谈</a>）。
+              </p>
+            </div>
+
+            <!-- 护城河 4 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“交付结果而非PPT”的任务保障信誉</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                在航天界，“飞行遗产（Flight Heritage）”是唯一通行证（<a href="https://www.spacecapital.com/blogs/rocket-lab-the-discipline-of-audacity-the-art-of-precision" target="_blank" rel="noopener noreferrer" class="cite-link">Space Capital</a>）。Rocket Lab 极少参与浮夸的公关口水战，而是用 94% 任务成功率、2025 全年 100% 发射成功与如期交付 NASA 月球/火星探测器，赢得了美国太空军（USSF）、NRO 与商业星座巨头的长期信任背书。
+              </p>
+            </div>
+          </div>
+
+          <!-- 右侧：五维商业航天文化对比雷达图 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">商业航天三大组织文化流派五维评估雷达</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Rocket Lab vs SpaceX vs 传统国防承包商（Old Space: ULA/波音）（满分 10 分）</p>
+            <div class="relative h-72 w-full">
+              <canvas id="moatRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           三、 商业航天文化与同业横向对比 (Aerospace Culture Landscape)
+      ========================================================= -->
+      <section id="sec-comp" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-rklbred-600 dark:text-rklbred-400">Section 03 · Aerospace Culture &amp; Execution Comparative Matrix</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 商业航天文化横向对比：五大航天组织范式与执行力统治力</h2>
+          </div>
+          <!-- 交互式筛选按钮 + 实时搜索框 -->
+          <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+            <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索航天流派 / 代表企业 / 文化特征..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-rklbred-500 w-48" />
+            <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+              <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-rklbred-600 text-white shadow-sm transition cursor-pointer">全部航天流派</button>
+              <button onclick="filterCompetitors('newspace')" data-filter="newspace" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">新航天颠覆派</button>
+              <button onclick="filterCompetitors('legacy')" data-filter="legacy" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">传统军工与缓慢学院派</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 横向对比矩阵表格 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                  <th class="py-4 px-5 min-w-[185px]">航天组织流派与代表</th>
+                  <th class="py-4 px-4 min-w-[140px]">核心文化信条</th>
+                  <th class="py-4 px-4 min-w-[140px]">研发与试错哲学</th>
+                  <th class="py-4 px-4 min-w-[125px]">供应链与制造模式</th>
+                  <th class="py-4 px-4 min-w-[120px]">标志性战绩与积压</th>
+                  <th class="py-4 px-5 min-w-[240px]">与 Rocket Lab 企业文化的深度对比评估</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+                <!-- 行 1：Rocket Lab 基准 -->
+                <tr data-category="core" class="bg-rklbred-500/5 dark:bg-rklbred-500/10 font-medium">
+                  <td class="py-4 px-5">
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-0.5 rounded bg-rklbred-600 text-white text-[10px] font-extrabold">研究基准</span>
+                      <span class="font-bold text-slate-900 dark:text-white">Rocket Lab (RKLB)</span>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Sir Peter Beck (新西兰/美国)</div>
+                  </td>
+                  <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">“每一美元与每一小时”精益实干</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rklbred-500/15 text-rklbred-700 dark:text-rklbred-400">3D打印快速地面测试 + 务实纠错</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">端到端垂直整合 (火箭+卫星)</td>
+                  <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">56+次发射 · $3.57B积压</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>精益高效与端到端闭环典范：</strong>没有富豪无限资金池，却以最高资本效率实现了常态化高频发射与卫星系统全产业链闭环（<a href="https://www.spacecapital.com/blogs/rocket-lab-the-discipline-of-audacity-the-art-of-precision" target="_blank" rel="noopener noreferrer" class="cite-link">Space Capital</a>）。
+                  </td>
+                </tr>
+
+                <!-- 行 2：SpaceX -->
+                <tr data-category="newspace" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">第一性原理极限颠覆派</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Elon Musk (SpaceX)</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">多行星生存愿景 · “白痴指数”极限降本</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">炸中求进 (Hardware-Rich 飞炸迭代)</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">超级重型垂直整合 + Starlink闭环</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">全球绝对霸主 · 重型复用统治</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>可敬的巨无霸镜像：</strong>两家是全球仅有的实现轨道火箭常态化发射并回收一级箭体的民营公司，但 SpaceX 靠千亿级星链与星舰重型豪赌，Rocket Lab 靠精益资本效率拿下专属发射与卫星供应链（<a href="https://observer.com/2021/01/rocket-lab-ceo-resuable-rocket-electron-interview/" target="_blank" rel="noopener noreferrer" class="cite-link">Observer</a>）。
+                  </td>
+                </tr>
+
+                <!-- 行 3：Blue Origin 蓝色起源 -->
+                <tr data-category="legacy" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">富豪慢工学院派</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Jeff Bezos / Dave Limp (Blue Origin)</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">“循序渐进，勇猛精进 (Gradatim Ferociter)”</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">重纸面论证 · 长期慢节奏打磨</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">早期类传统航天流程，近年加速改革</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">20+年耗资百亿方实现首次入轨</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>“资源充裕导致紧迫感稀释”的对照：</strong>贝索斯每年卖股注资数十亿美元反而削弱了早期的交付紧迫感，反衬出 Rocket Lab“缺钱逼出极致速度”的文化威力（<a href="https://www.spacecapital.com/blogs/rocket-lab-the-discipline-of-audacity-the-art-of-precision" target="_blank" rel="noopener noreferrer" class="cite-link">Space Capital</a>）。
+                  </td>
+                </tr>
+
+                <!-- 行 4：传统国防承包商 (ULA / Boeing / Lockheed) -->
+                <tr data-category="legacy" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">传统军工成本加成派</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">ULA / Boeing / Northrop Grumman</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">零风险容忍 · 政治与国会议员游说驱动</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">瀑布流文档审查 · 十年一剑</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">遍布全美各州的多层分包商网络</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">单次发射数亿美元 · 商业份额萎缩</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>Cost-Plus（成本加成）文化的黄昏：</strong>传统巨头习惯把研发超支转嫁给政府纳税人，在 Rocket Lab 商业固定价格合同与快速迭代面前节节败退（<a href="https://umbrex.com/resources/company-profiles/rocket-lab/" target="_blank" rel="noopener noreferrer" class="cite-link">Umbrex</a>）。
+                  </td>
+                </tr>
+
+                <!-- 行 5：中小 SPAC 火箭初创公司 (Astra / Virgin Orbit 等) -->
+                <tr data-category="newspace" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">高杠杆 PPT 概念初创派</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Astra / Virgin Orbit (已破产或退市)</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">追求短期融资估值故事 · 忽视质量敬畏</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">在缺乏严谨测试下仓促发射屡遭炸毁</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">单一小火箭赌注 · 缺乏卫星业务护城河</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">大批小型火箭公司倒闭或退市</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>“大胆且精密（Audacity + Precision）”的试金石：</strong>小型火箭赛道曾涌现逾百家竞争者，唯独 Rocket Lab 兼顾了初创速度与老牌军工级的可靠性纪律（<a href="https://www.spacecapital.com/blogs/rocket-lab-the-discipline-of-audacity-the-art-of-precision" target="_blank" rel="noopener noreferrer" class="cite-link">Space Capital</a>）。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+            未找到匹配的航天组织流派，请尝试清空搜索词或切换分类标签。
+          </div>
+        </div>
+
+        <!-- 配套 Chart.js 横向条形图：商业航天执行力与任务可靠性统治力对比 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">“航天没有运气，只有工程纪律”：Rocket Lab 关键工程执行力与商业化里程碑量化指标（%）</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">不同于停留在动画演示阶段的概念企业，Rocket Lab 将工程文化沉淀为可审计的发射成功率、一线工程师密度与毛利率扩张（<a href="https://www.spacecapital.com/blogs/rocket-lab-the-discipline-of-audacity-the-art-of-precision" target="_blank" rel="noopener noreferrer" class="cite-link">Space Capital</a> · <a href="https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-announces-third-quarter-2026-financial-results-posts" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB Q3 2026</a>）</p>
+            </div>
+            <span class="text-xs font-semibold text-rklbred-700 dark:text-rklbred-400 bg-rklbred-500/15 px-2.5 py-1 rounded">2025 发射成功率 100% · 历史累计 94%</span>
+          </div>
+          <div class="relative h-64 w-full">
+            <canvas id="compMarginChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           四、 工程执行力与商业飞轮推演 (Execution Flywheel & Simulator)
+      ========================================================= -->
+      <section id="sec-fin" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Engineering Execution &amp; Space Flywheel Simulator</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 工程执行力与商业飞轮推演：从“高频小火箭”到“万亿太空基础设施”</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">用财务硬指标验证工程文化：文化不是口号，而是 62%+ 营收增速与 $3.57B 订单积压</span>
+        </div>
+
+        <!-- 1. 文化驱动的四大财务与经营硬指标卡 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-rklbred-600 dark:text-rklbred-400 uppercase">Record Backlog (2026Q3)</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$3.57B (+52% QoQ)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              凭借极高的发射准点率与端到端卫星交付能力，2026Q3 在手未履约订单单季环比激增 52% 至创纪录的 $35.7亿美元（<a href="https://www.newswire.ca/news-releases/before-a-planned-catch-of-both-rocket-stages-space-companies-lay-out-fresh-results-841845845.html" target="_blank" rel="noopener noreferrer" class="cite-link">Newswire 2026Q3</a>）。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Gross Margin Expansion</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">39%–41% (Q4指引)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              随着垂直整合部件自给率提升与发射摊销优化，Non-GAAP 毛利率从早年不足 20% 一路攀升至 2026Q4 指引的 39%–41%（<a href="https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-announces-third-quarter-2026-financial-results-posts" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB Q3 2026</a>）。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Operating Cash Flow Pivot</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">GAAP 正经营现金流</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              在同步推进 Neutron 中型火箭重磅研发的同时，2026Q3 率先实现 GAAP 经营活动现金流转正，验证精益财务纪律（<a href="https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-announces-third-quarter-2026-financial-results-posts" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB Q3 2026</a>）。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">3D Printed Engines in Orbit</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">600+ 台引擎入轨</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              每枚 Electron 火箭搭载 10 台电泵循环卢瑟福发动机（9台一级+1台二级），累计逾 600 台增材制造引擎经受真实太空实战检验（<a href="https://investors.rocketlabcorp.com/static-files/f8b710ce-c1ca-4186-a93a-6e3cc4bb2b3e" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB 10-K</a>）。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. 交互式 Chart.js 双轴演进图 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">2023Q1–2026Q4E Rocket Lab 季度营业收入跃升 vs Non-GAAP 毛利率扩张曲线（SEC 财报）</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">单季营收从 2023 年初的 ~$5,500万跨越式增长至 2026Q3 的 $2.68亿美元（2026Q4 指引 $2.80亿美元中值），伴随 Non-GAAP 毛利率突破 40% 大关</p>
+            </div>
+            <span class="text-xs font-mono font-bold text-rklbred-700 dark:text-rklbred-400 bg-rklbred-500/15 px-2.5 py-1 rounded">三年单季营收翻近 5 倍 · 毛利率跃升 +18 pct</span>
+          </div>
+          <div class="relative h-72 w-full">
+            <canvas id="valEvolutionChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 3. 交互式组件：“Rocket Lab 端到端太空飞轮”商业规模动态推演器 -->
+        <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+            <div>
+              <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-rklbred-400 font-bold">
+                <span>ROCKET LAB SPACE FLYWHEEL ENGINE · 商业航天双轮飞轮动态推演器</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-1">从“小型专属发射”到“Neutron + 铱星星座全栈巨头”的五年规模推演</h3>
+              <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实业务情景（Electron 稳健基准 / Neutron 商业化加速 / 端到端全栈超级周期）或手动调节增长参数</p>
+            </div>
+            <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-rklbred-500/15 border border-rklbred-400/30 text-xs font-semibold text-rklbred-300 cursor-pointer shrink-0">
+              <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#EF4444] cursor-pointer">
+              <span>叠加 Neutron 复用与铱星协同溢价 (+6.0%/年)</span>
+            </label>
+          </div>
+
+          <!-- 情景预设按钮组 -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+            <button type="button" onclick="setSimEra('electron_base')" data-era="electron_base" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-rklbred-400 transition cursor-pointer">
+              <div>① 保守情景：Electron + Space Systems 稳健扩展</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">5年推演 · 年化营收复合增速 25.0% CAGR</div>
+            </button>
+            <button type="button" onclick="setSimEra('neutron_scale')" data-era="neutron_scale" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-rklbred-600 text-white font-bold border border-rklbred-400 shadow transition cursor-pointer">
+              <div>② 基准情景：Neutron 商飞 + 积压订单加速转化</div>
+              <div class="text-[11px] opacity-90 font-mono mt-0.5">5年推演 · 年化营收复合增速 35.0% CAGR</div>
+            </button>
+            <button type="button" onclick="setSimEra('constellation_era')" data-era="constellation_era" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-rklbred-400 transition cursor-pointer">
+              <div>③ 进取情景：全栈星座运营 + 国防订单爆发</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">7年推演 · 年化营收复合增速 42.0% CAGR</div>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <!-- 左侧参数控制区 -->
+            <div class="lg:col-span-5 space-y-4 text-xs">
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">基准年化营收规模 (2026 Run-Rate, $M)</span>
+                  <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$1,000M</span>
+                </div>
+                <input id="sim-principal" type="range" min="400" max="2000" step="50" value="1000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#EF4444] cursor-pointer">
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">飞轮推演年限 (Years)</span>
+                  <span id="sim-years-label" class="font-mono font-bold text-white text-sm">5 年</span>
+                </div>
+                <input id="sim-years" type="range" min="1" max="10" step="1" value="5" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#EF4444] cursor-pointer">
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">年化复合营收增速 (CAGR %)</span>
+                  <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">35.0%</span>
+                </div>
+                <input id="sim-growth" type="range" min="10" max="55" step="1" value="35" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+              </div>
+
+              <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+                当前测算基准：以 Rocket Lab 2026 下半年约 $10亿年化营收运行率（Run-Rate）与 $35.7亿创纪录订单积压为起点，测算在 Neutron 中型火箭投入商业运营后 35% 年化复合增速下的营收跃迁与自由现金流释放潜力。
+              </p>
+            </div>
+
+            <!-- 右侧四大实时测算结果卡片 -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">期末预计年化总营收规模</div>
+                <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$4,484M</div>
+                <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计营收扩张 +348%</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">营收规模扩张倍数 (Scale Multiple)</div>
+                <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-rklbred-400 mt-1.5">4.48x</div>
+                <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 2.3 年营收规模翻一倍</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">期末稳态年化毛利空间 (按 42% 毛利率计)</div>
+                <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$1,883M</div>
+                <div class="text-xs text-slate-400 mt-1.5">支撑大规模自研星座与深空探索再投资</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">有效综合年化增长率</div>
+                <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">35.00%</div>
+                <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">推演半程（第 3 年）年化营收约：$2,460M</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 正反双视角文化与组织定评对比 (Bull Legacy vs Critical Reflection) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">正向文化优势定评 (Enduring Engineering Moat)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">极客草根执行力 + 端到端垂直整合</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>商业航天最稀缺的“把承诺变成入轨硬件”履约文化：</strong>当大量新航天竞争对手陷入无限期跳票时，Rocket Lab 凭借 94% 任务成功率与周级迭代速度成为国防与商业客户最可靠的发射与卫星伙伴（<a href="https://www.spacecapital.com/blogs/rocket-lab-the-discipline-of-audacity-the-art-of-precision" target="_blank" rel="noopener noreferrer" class="cite-link">Space Capital</a>）。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>高密度实战成长的“工程师练兵场”：</strong>极扁平的架构与早期所有权，使年轻工程师在入职数月内即可亲手负责真实飞行硬件并见证其升空，学习曲线远超传统军工巨头（<a href="https://builtin.com/company/rocket-lab/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In</a>）。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>高度坦诚的期望管理（Radically Candid Fit）：</strong>贝克从不粉饰工作强度，在面试阶段就明确筛选真正热爱造火箭而非追求高薪舒适区的建设者，极大提升了核心团队的文化纯度（<a href="https://builtin.com/company/rocket-lab/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In</a>）。</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-rose-700 dark:text-rose-400 text-base">客观局限与组织扩张阵痛反思 (Critical Lens)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">高强度倦怠 + 跨国并购整合</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>持续高压发射节奏下的员工倦怠（Burnout）风险：</strong>在 Electron 高频发射与 Neutron 攻坚双线并行下，长工时、夜间与周末加班成为常态，部分员工反馈在长期冲刺下面临身心透支挑战（<a href="https://builtin.com/company/rocket-lab/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In 员工评价</a>）。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“精益成本控制”带来的薪酬竞争力争议：</strong>由于严格贯彻“每一美元”成本纪律，部分工程与制造岗位的基础现金薪酬相较于硅谷科技巨头或头部私募航天同业偏于保守，容易在扩张期引发局部人才流失（<a href="https://builtin.com/company/rocket-lab/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In</a>）。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>跨洲多基地（新西兰、加州、弗吉尼亚、德国 Mynaric）的协同摩擦：</strong>随着并购企业增多（人员超 3,200 人），不同园区与并购子公司的流程标准、跨时区沟通与供应链整合仍处于磨合升级期（<a href="https://www.alpha-sense.com/earnings/rklb/" target="_blank" rel="noopener noreferrer" class="cite-link">AlphaSense</a>）。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           五、 三幕演进与“吃帽式”进化复盘 (Three-Act Evolution & Takeaways)
+      ========================================================= -->
+      <section id="sec-inv" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-rklbred-600 dark:text-rklbred-400">Section 05 · Three-Act Cultural Evolution &amp; Engineering Takeaways</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕文化演进与实战进化复盘：从新西兰后院火箭到跨洲航天巨擘</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">理解 Rocket Lab 的关键：每一条工程信条都诞生于真实的发射台成败与物理规律洗礼</span>
+        </div>
+
+        <!-- 1. 三幕演进卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- 第一幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 车库破局与南半球首飞</span>
+                <span class="font-mono text-xs font-bold text-slate-500">2006–2018</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">打破航天不可能三角</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>没有大学学历的彼得·贝克在 2006 年创立 Rocket Lab，2009 年发射亚轨道火箭 Ātea-1 成为南半球首家进入太空的私营企业；2018 年 1 月 Electron 火箭“Still Testing”成功入轨，开创电泵发动机与全碳纤维箭体高频发射先河，将“极客巧思战胜巨额资金”刻入企业灵魂（<a href="https://www.bvp.com/atlas/peter-beck" target="_blank" rel="noopener noreferrer" class="cite-link">BVP 专访</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+              阶段启示：资源匮乏不是借口，第一性原理与增材制造是草根颠覆巨头的杠杆
+            </div>
+          </div>
+
+          <!-- 第二幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rklbred-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-rklbred-500/15 text-rklbred-700 dark:text-rklbred-400 text-xs font-bold">第二幕 · 吃帽破执与端到端扩张</span>
+                <span class="font-mono text-xs font-bold text-rklbred-600 dark:text-rklbred-400">2019–2023</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">从单一发射商到太空系统</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>2020–2021 年公司连续并购 Sinclair、SolAero 等核心航天部件商，打造 Photon 卫星平台并成功执行 NASA 月球 CAPSTONE 任务；2021 年贝克兑现“吃帽”诺言发布可复用中型火箭 Neutron 并在纳斯达克上市（RKLB），完成从“快递员”向“全栈航天基础设施商”的战略蜕变（<a href="https://www.clickorlando.com/news/local/2021/03/01/rocket-lab-ceo-eats-part-of-his-hat-revealing-new-rocket-capable-of-human-spaceflight/" target="_blank" rel="noopener noreferrer" class="cite-link">ClickOrlando</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rklbred-600 dark:text-rklbred-400">
+              阶段启示：敢于公开推翻创始人昔日公开断言，是组织避免路径依赖的最高勇气
+            </div>
+          </div>
+
+          <!-- 第三幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 规模化统治与星座闭环</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2024–2026+</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">$3.57B 积压与全栈霸权</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>2025 年实现 Electron 全年 100% 发射成功率；2026 年单季营收突破 $2.68亿美元、在手订单达 $35.7亿美元并实现 GAAP 经营现金流转正；随着 Neutron 迈向商业首飞与收购铱星（Iridium）推进，Rocket Lab 正式跻身集“运载+卫星制造+全球通信运营”于一体的超级航天巨头（<a href="https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-announces-third-quarter-2026-financial-results-posts" target="_blank" rel="noopener noreferrer" class="cite-link">RKLB Q3 2026</a>）。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              阶段启示：在最烧钱的硬科技领域，唯有现金流自造血才能赢得终局定价权
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 四大工程实战挫折与文化进化闭环矩阵 -->
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业航天镜鉴：Rocket Lab 企业文化在四大实战挫折中的自我进化</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">进化 01 · 第 13 次发射（Pics Or It Didn't Happen）失利</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">2020 电池连接器故障</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">数周内完成根因归零并全透明披露，铸就 94% 铁血可靠性</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                2020 年 7 月第 13 次任务因二级火箭电气连接异常失利后，公司未做任何掩饰，在 FAA 监督下数周内精准锁定单一电池热膨胀接触问题并重返发射台，此后创下连续数十次完美入轨记录（<a href="https://www.clickorlando.com/news/local/2021/03/01/rocket-lab-ceo-eats-part-of-his-hat-revealing-new-rocket-capable-of-human-spaceflight/" target="_blank" rel="noopener noreferrer" class="cite-link">FAA 复飞报道</a>）。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">进化 02 · 直升机空中捕获 vs 海洋溅落回收取舍</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">工程务实主义迭代</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">不迷信炫酷特技，选择综合成本与安全冗余最优的复用路径</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                在验证过直升机空中钩挂 Electron 一级箭体后，工程团队通过海量海洋回收数据发现：经过防水密封改进的箭体直接溅落海面捞回，不仅省去高风险空中编队作业，且引擎翻新成本极低——果断放弃炫技转向海洋回收与 Neutron 陆上垂直着陆（<a href="https://observer.com/2021/01/rocket-lab-ceo-resuable-rocket-electron-interview/" target="_blank" rel="noopener noreferrer" class="cite-link">Observer</a>）。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">进化 03 · 跨国并购整合（Mynaric 供应链补齐）</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">2025–2026 整合淬炼</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">将“Rocket Lab 制造速度”注入被收购的欧洲与北美子部门</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                在收购激光通信厂商 Mynaric 后，面对原有供应链交付瓶颈，Rocket Lab 迅速派驻核心生产工程力量（2026Q2 研发与制造团队扩充逾 430 人）重构排产体系，将外部瓶颈转化为独占技术护城河（<a href="https://www.alpha-sense.com/earnings/rklb/" target="_blank" rel="noopener noreferrer" class="cite-link">AlphaSense Q2 2026</a>）。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">进化 04 · 拒绝盲目竞速，严守 Neutron 首飞质量红线</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">2026 级间测试纪律</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">“在地面把问题解决，绝不把未验证风险带上发射台”</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                面对资本市场对 Neutron 首飞时间表的高度关注，贝克坚持在发射台完成全箭加注与阿基米德引擎全系统联合点火资格考核后才放行首飞，宁可多打磨数月也不牺牲商业发射信誉（<a href="https://www.alpha-sense.com/earnings/rklb/" target="_blank" rel="noopener noreferrer" class="cite-link">AlphaSense</a>）。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 机构级硬科技管理与投资启示横幅 -->
+        <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+          <h3 class="text-base font-bold text-rklbred-400 mb-4 flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>写给硬科技创业者、工程师团队与长期投资者的三条“Rocket Lab 底层文化法则”</span>
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-white mb-1">1. 资源约束（Scarcity）往往是技术创新最强的催化剂</div>
+              <p class="text-slate-300 leading-relaxed">
+                当资金充裕到可以随意堆砌人头与外包时，组织必然滋生官僚与慢吞吞的流程；把“每一美元与每一小时”当作生存底线，反而能逼出 3D 打印引擎与电泵循环等颠覆性工程突破。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-rklbred-400 mb-1">2. 用单点极致产品建立信任，再用垂直整合收割全栈利润</div>
+              <p class="text-slate-300 leading-relaxed">
+                单一小型发射很难支撑百亿美元市值，但如果没有 Electron 56 次高可靠发射建立的客户信任，Rocket Lab 就不可能拿到数亿美元的卫星制造与星座合同——切入点要锋利，终局版图要完整。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-emerald-400 mb-1">3. 最高级的领导力是“坦诚筛选同路人 + 敢于当众推翻自己”</div>
+              <p class="text-slate-300 leading-relaxed">
+                招人前把高强度冲刺的真相摆在桌面上，避免了入职后的文化撕裂；面对新科学数据时像“吃掉帽子”一样放下创始人执念，让整个组织永远忠于客观事实而非权威。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           六、 “Rocket Lab 文化法则”硬科技组织评估交互核查清单 (Checklist)
+      ========================================================= -->
+      <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Rocket Lab Hard-Tech Culture Diagnostic Checklist</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “Rocket Lab 文化法则”硬科技企业治理与投资评估核查清单（Checklist）</h2>
+          </div>
+          <div class="flex items-center space-x-2 no-print">
+            <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-rklbred-500/15 text-rklbred-700 dark:text-rklbred-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+            <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            可用于审视任何商业航天、机器人、半导体或高端制造企业是否具备“Rocket Lab 式”硬核工程执行文化（点击勾选自动本地保存状态）：
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+            <!-- KPI 1 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-rklbred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">1. 一线工程与制造密度测试：研发+产线员工是否超过 80%？</span>
+                  <span class="text-[11px] font-mono text-rklbred-600 dark:text-rklbred-400 font-semibold shrink-0">反官僚密度</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  对标 Rocket Lab 86.3% 的制造与研发人员占比：检验企业是否把绝大多数薪资预算花在真正画图纸、拧螺丝和测试硬件的人身上。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 2 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-rklbred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">2. “每一美元与每一小时”费效比：单位研发产出是否领先同行？</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">资本效率锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  对比同赛道竞争对手融资总额与实际交付里程碑，核查团队是否靠快速自研与增材制造省去高昂外包溢价。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 3 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-rklbred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">3. “吃掉帽子”纠错文化：管理层能否公开承认假设错误并迅速转向？</span>
+                  <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">科学实证精神</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  检验组织内部是“数据与物理规律最大”，还是为了维护高管昔日公开表态而在错误技术路线上继续烧钱。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 4 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-rklbred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">4. 端到端垂直整合度：核心卡脖子部组件与测试设施是否自主可控？</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">供应链主权</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  对标自建私人发射场 LC-1 与自研反应轮/太阳能电池：核查企业能否自主掌控交付排期与毛利率扩张主动权。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 5 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-rklbred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">5. 履约信誉与复购验证：商业积压订单（Backlog）是否持续高增？</span>
+                  <span class="text-[11px] font-mono text-rklbred-600 dark:text-rklbred-400 font-semibold shrink-0">客户信任壁垒</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  硬科技领域客户最看重过往成功遗产——核查政府国防机构与头部商业客户是否在首次合作后持续追加批量订单。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 6 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#DC2626] focus:ring-rklbred-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">6. 组织可持续发展机制：高压冲刺下是否建立了健康的人才梯队与防倦怠缓冲？</span>
+                  <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">长周期组织韧性</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  观察企业在迈过千人、三千人规模门槛后，能否在保留发射冲刺战斗力的同时优化跨基地沟通与核心骨干激励。
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+      ========================================================= -->
+      <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+          <span>Rocket Lab Corporation (NASDAQ: RKLB) 企业文化、工程执行力与垂直整合深度研究报告 · 机构框架版</span>
+          <span>核心数据出处：Rocket Lab Form 10-K · Q2 &amp; Q3 2026 Financial Releases · Built In Culture Study</span>
+        </div>
+        <p class="leading-relaxed">
+          <strong>数据来源与研究说明：</strong>本深度报告所有财务、运营与组织指标均核验自美国证监会（SEC EDGAR）公开披露的 <a href="https://investors.rocketlabcorp.com/static-files/f8b710ce-c1ca-4186-a93a-6e3cc4bb2b3e" target="_blank" rel="noopener noreferrer" class="cite-link">Rocket Lab Form 10-K</a>、<a href="https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-announces-third-quarter-2026-financial-results-posts" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 Financial Results Release</a>、<a href="https://www.sec.gov/Archives/edgar/data/1819994/000181999426000061/rklb-08102026ex991.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 2026 SEC Filing</a>、<a href="https://builtin.com/company/rocket-lab/faq/culture-values" target="_blank" rel="noopener noreferrer" class="cite-link">Built In 2026 员工与文化调研</a> 及创始人彼得·贝克爵士公开访谈实录。报告内置的商业飞轮模拟器旨在复盘航天双轮业务扩展规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+  <script>
+    // ==========================================
+    // 0. 一键导出独立自包含 HTML 文件 (.html)
+    // ==========================================
+    let toastTimer = null;
+
+    function showToast(msg) {
+      const toast = document.getElementById('export-toast');
+      const msgEl = document.getElementById('export-toast-msg');
+      if (!toast || !msgEl) return;
+      msgEl.textContent = msg;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3200);
+    }
+
+    function exportStandaloneHtml() {
+      try {
+        const clone = document.documentElement.cloneNode(true);
+        const toastClone = clone.querySelector('#export-toast');
+        if (toastClone) {
+          toastClone.classList.add('hidden');
+          toastClone.classList.remove('flex');
+        }
+        const drawerClone = clone.querySelector('#mobile-drawer');
+        if (drawerClone) {
+          drawerClone.classList.add('hidden');
+        }
+        const progressClone = clone.querySelector('#reading-progress');
+        if (progressClone) {
+          progressClone.style.width = '0%';
+        }
+        clone.querySelectorAll('canvas').forEach(cv => {
+          cv.removeAttribute('width');
+          cv.removeAttribute('height');
+          cv.removeAttribute('style');
+        });
+
+        const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Rocket_Lab_Corporate_Culture_Analysis.html';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+        showToast('已成功导出独立 HTML 文件：Rocket_Lab_Corporate_Culture_Analysis.html');
+      } catch (err) {
+        showToast('导出失败，请使用右上角文件下载功能保存。');
+      }
+    }
+
+    // ==========================================
+    // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+    // ==========================================
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      updateChartsTheme();
+    }
+
+    // ==========================================
+    // 2. 移动端抽屉菜单切换
+    // ==========================================
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      if (drawer) drawer.classList.toggle('hidden');
+    }
+
+    // ==========================================
+    // 3. 阅读进度条与左侧导航滚动联动高亮
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      const prog = document.getElementById('reading-progress');
+      if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+      let currentId = 'sec-exec';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 160;
+        if (scrollTop >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const numSpan = link.querySelector('span span');
+        if (numSpan) {
+          numSpan.classList.remove('text-rklbred-400');
+          numSpan.classList.add('text-slate-500');
+        }
+        if (link.dataset.target === currentId) {
+          link.classList.add('active');
+          if (numSpan) {
+            numSpan.classList.remove('text-slate-500');
+            numSpan.classList.add('text-rklbred-400');
+          }
+        }
+      });
+    });
+
+    // ==========================================
+    // 4. 商业航天文化横向对比筛选 + 关键词搜索联动
+    // ==========================================
+    let activeLeaderCategory = 'all';
+
+    function filterCompetitors(category) {
+      activeLeaderCategory = category;
+      document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('bg-rklbred-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        } else {
+          btn.classList.remove('bg-rklbred-600', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        }
+      });
+      applyLeaderFilters();
+    }
+
+    function applyLeaderFilters() {
+      const searchInput = document.getElementById('leader-search-input');
+      const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+      const rows = document.querySelectorAll('#comp-table-body tr');
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const rowCat = row.dataset.category;
+        const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+        const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+        if (catMatch && textMatch) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      const emptyState = document.getElementById('leader-empty-state');
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+    }
+
+    // ==========================================
+    // 5. “Rocket Lab 端到端太空飞轮”商业规模动态推演器
+    // ==========================================
+    const ERA_PRESETS = {
+      electron_base: {
+        principal: 1000,
+        years: 5,
+        cagr: 25.0,
+        caption: '当前测算基准：保守情景——仅依托 Electron 高频专属发射、HASTE 国防测试及现有卫星组件业务实现 25% 年化内生增长，不计入 Neutron 商业爆发红利。'
+      },
+      neutron_scale: {
+        principal: 1000,
+        years: 5,
+        cagr: 35.0,
+        caption: '当前测算基准：基准情景——以 Rocket Lab 2026 下半年约 $10亿年化营收运行率（Run-Rate）与 $35.7亿创纪录订单积压为起点，测算在 Neutron 中型火箭投入商业运营后 35% 年化复合增速下的营收跃迁与自由现金流释放潜力。'
+      },
+      constellation_era: {
+        principal: 1000,
+        years: 7,
+        cagr: 42.0,
+        caption: '当前测算基准：进取情景——模拟 Neutron 实现常态化高频复用、铱星（Iridium）并购完成整合且大型政府与商业星座批量交付下的 7 年超级商业周期（42% CAGR）。'
+      }
+    };
+
+    function highlightEraButton(eraKey) {
+      document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+        const subDiv = btn.querySelectorAll('div')[1];
+        if (btn.dataset.era === eraKey) {
+          btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-rklbred-600 text-white font-bold border border-rklbred-400 shadow transition cursor-pointer';
+          if (subDiv) subDiv.className = 'text-[11px] opacity-90 font-mono mt-0.5';
+        } else {
+          btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-rklbred-400 transition cursor-pointer';
+          if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+        }
+      });
+    }
+
+    function setSimEra(eraKey) {
+      const preset = ERA_PRESETS[eraKey];
+      if (!preset) return;
+      document.getElementById('sim-principal').value = preset.principal;
+      document.getElementById('sim-years').value = preset.years;
+      document.getElementById('sim-growth').value = preset.cagr;
+      document.getElementById('sim-era-caption').textContent = preset.caption;
+      highlightEraButton(eraKey);
+      updateValueSimulator();
+    }
+
+    function markCustomEra() {
+      highlightEraButton('custom');
+      document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义商业航天飞轮推演模式——自由探索不同年化营收基数、推演周期与复合增速下的商业规模与毛利释放空间。';
+    }
+
+    function updateValueSimulator() {
+      const principal = parseFloat(document.getElementById('sim-principal').value) || 1000;
+      const years = parseInt(document.getElementById('sim-years').value, 10) || 5;
+      const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 35;
+      const divBonus = document.getElementById('div-bonus-toggle').checked ? 6.0 : 0;
+
+      const effGrowthPct = baseGrowthPct + divBonus;
+      const r = effGrowthPct / 100;
+
+      document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US') + 'M';
+      document.getElementById('sim-years-label').textContent = years + ' 年';
+      document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+      const finalVal = principal * Math.pow(1 + r, years);
+      const steadyGrossProfit = finalVal * 0.42;
+      const multiple = principal > 0 ? (finalVal / principal) : 1;
+      const totalReturnPct = principal > 0 ? (((finalVal - principal) / principal) * 100) : 0;
+      const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+      const midYears = Math.max(1, Math.round(years / 2));
+      const midVal = principal * Math.pow(1 + r, midYears);
+
+      document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US') + 'M';
+      document.getElementById('sim-total-return').textContent = `累计营收扩张 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+      document.getElementById('sim-multiple').textContent = `${multiple.toFixed(2)}x`;
+      document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年营收规模翻一倍` : '稳健增长';
+      document.getElementById('sim-net-gain').textContent = '$' + Math.round(steadyGrossProfit).toLocaleString('en-US') + 'M';
+      document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+      document.getElementById('sim-mid-val').textContent = `推演半程（第 ${midYears} 年）年化营收约：$${Math.round(midVal).toLocaleString('en-US')}M`;
+    }
+
+    // ==========================================
+    // 6. KPI 核查清单状态持久化与计数更新
+    // ==========================================
+    const KPI_STORAGE_KEY = 'rklb_culture_checklist_v1';
+
+    function loadKpiChecklist() {
+      try {
+        const saved = localStorage.getItem(KPI_STORAGE_KEY);
+        if (saved) {
+          const stateMap = JSON.parse(saved);
+          document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+            if (typeof stateMap[cb.id] === 'boolean') {
+              cb.checked = stateMap[cb.id];
+            }
+          });
+        }
+      } catch (e) {
+        // 忽略沙箱本地存储权限限制
+      }
+      updateKpiChecklist();
+    }
+
+    function updateKpiChecklist() {
+      const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      const stateMap = {};
+
+      checkboxes.forEach(cb => {
+        stateMap[cb.id] = cb.checked;
+        if (cb.checked) checkedCount++;
+      });
+
+      const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+      const badge = document.getElementById('kpi-progress-badge');
+      if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+      try {
+        localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+      } catch (e) {
+        // 忽略沙箱本地存储权限限制
+      }
+    }
+
+    function resetKpiChecklist() {
+      document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      updateKpiChecklist();
+      showToast('已重置“Rocket Lab 文化法则”核查清单状态');
+    }
+
+    // ==========================================
+    // 7. Chart.js 数据可视化初始化与主题自适应
+    // ==========================================
+    let bizChartInstance = null;
+    let radarChartInstance = null;
+    let compMarginChartInstance = null;
+    let valEvolutionChartInstance = null;
+    let currentBizMode = 'headcount_mix';
+
+    function getChartColors() {
+      const isDark = document.documentElement.classList.contains('dark');
+      return {
+        text: isDark ? '#CBD5E1' : '#475569',
+        grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+        radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+      };
+    }
+
+    function initBizChart() {
+      const canvas = document.getElementById('bizArchitectureChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      // 视图 A：Rocket Lab 2026Q1 vs 2026Q2 组织人才密度拆解 (总人数 3,217 人，源自 AlphaSense Q2 2026 财报拆解)
+      const mixConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            '生产与一线制造团队 (Production)',
+            '研发与航天工程团队 (R&D Engineering)',
+            '销售、通用与行政管理 (SG&A)'
+          ],
+          datasets: [
+            {
+              label: '2026Q1 员工人数 (合计 2,778 人)',
+              data: [1448, 949, 381],
+              backgroundColor: 'rgba(100, 116, 139, 0.65)',
+              borderRadius: 6
+            },
+            {
+              label: '2026Q2 员工人数 (合计 3,217 人 · 一线占比 86.3%)',
+              data: [1688, 1087, 442],
+              backgroundColor: '#EF4444',
+              borderRadius: 6
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `${c.dataset.label}: ${c.parsed.y.toLocaleString('en-US')} 人`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              min: 0,
+              max: 2000,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + ' 人' }
+            }
+          }
+        }
+      };
+
+      // 视图 B：2023Q1–2026Q4E 单季营业收入爆炸式增长 ($M, 源自 SEC 财报与 Q3 2026 业绩发布)
+      const trajectoryConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            '2023Q1',
+            '2023Q4',
+            '2024Q2',
+            '2024Q4E',
+            '2025Q2',
+            '2026Q1',
+            '2026Q2',
+            '2026Q3',
+            '2026Q4 指引中值'
+          ],
+          datasets: [
+            {
+              type: 'bar',
+              label: '单季营业收入 Quarterly Revenue ($M)',
+              data: [54.9, 60.0, 106.3, 130.0, 144.5, 200.3, 234.1, 268.0, 280.0],
+              backgroundColor: 'rgba(239, 68, 68, 0.85)',
+              borderRadius: 5
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(1)}M`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            },
+            y: {
+              min: 0,
+              max: 320,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' }
+            }
+          }
+        }
+      };
+
+      if (bizChartInstance) bizChartInstance.destroy();
+      bizChartInstance = new Chart(ctx, currentBizMode === 'headcount_mix' ? mixConfig : trajectoryConfig);
+    }
+
+    function switchBizChart(mode) {
+      currentBizMode = mode;
+      const btnEvo = document.getElementById('btn-chart-evo');
+      const btnSplit = document.getElementById('btn-chart-split');
+      const titleEl = document.getElementById('biz-chart-title');
+      const subEl = document.getElementById('biz-chart-sub');
+
+      if (mode === 'headcount_mix') {
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-rklbred-600 dark:text-rklbred-400 shadow-sm transition cursor-pointer';
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = 'Rocket Lab 组织人才结构拆解：86.3% 硬件制造与研发硬核密度（2026Q2 财报）';
+        subEl.textContent = '生产制造 1,688 人 (52.5%) + 研发工程 1,087 人 (33.8%) 构成绝对主体，行政官僚（SG&A）严控在 13.7%';
+      } else {
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-rklbred-600 dark:text-rklbred-400 shadow-sm transition cursor-pointer';
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '2023Q1–2026Q4E Rocket Lab 单季营业收入 5 倍跨越曲线（$M）';
+        subEl.textContent = '单季营收从 2023Q1 的 $54.9M 稳步攀升至 2026Q3 的 $268.0M，2026Q4 官方营收指引中值达 $280.0M';
+      }
+      initBizChart();
+    }
+
+    function initRadarChart() {
+      const canvas = document.getElementById('moatRadarChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (radarChartInstance) radarChartInstance.destroy();
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: [
+            '精益资本效率 (每美元产出)',
+            '硬件快速迭代与增材制造速度',
+            '端到端垂直整合闭环程度',
+            '一线工程师早期所有权与密度',
+            '科研务实纠错与坦诚文化'
+          ],
+          datasets: [
+            {
+              label: 'Rocket Lab (RKLB)',
+              data: [9.8, 9.5, 9.6, 9.4, 9.7],
+              borderColor: '#EF4444',
+              backgroundColor: 'rgba(239, 68, 68, 0.24)',
+              pointBackgroundColor: '#EF4444',
+              borderWidth: 2.5
+            },
+            {
+              label: 'SpaceX (星舰与星链巨头)',
+              data: [8.8, 10.0, 9.9, 9.5, 9.2],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.14)',
+              pointBackgroundColor: '#10B981',
+              borderWidth: 2.0
+            },
+            {
+              label: '传统国防承包商 (Old Space)',
+              data: [3.2, 3.5, 4.8, 4.2, 4.0],
+              borderColor: '#06B6D4',
+              backgroundColor: 'rgba(6, 182, 212, 0.12)',
+              pointBackgroundColor: '#06B6D4',
+              borderWidth: 1.8,
+              borderDash: [4, 4]
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            }
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 10,
+              ticks: { display: false, stepSize: 2 },
+              grid: { color: colors.grid },
+              angleLines: { color: colors.radarAngle },
+              pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initCompMarginChart() {
+      const canvas = document.getElementById('compMarginChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (compMarginChartInstance) compMarginChartInstance.destroy();
+      compMarginChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            '2025 全年 Electron 轨道发射成功率',
+            'Electron 历史全周期累计任务成功率',
+            '全员生产制造 + 研发工程一线占比 (2026Q2)',
+            '2026Q3 在手积压订单环比增速 (QoQ)',
+            '2026Q4 指引 Non-GAAP 毛利率中值'
+          ],
+          datasets: [
+            {
+              label: 'Rocket Lab 硬核执行力与商业化量化指标 (%)',
+              data: [100.0, 94.0, 86.3, 52.0, 40.0],
+              backgroundColor: [
+                '#EF4444',
+                '#10B981',
+                '#06B6D4',
+                '#F59E0B',
+                '#6366F1'
+              ],
+              borderRadius: 6,
+              barThickness: 20
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `实测指标值: ${c.parsed.x.toFixed(1)}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 105,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initValEvolutionChart() {
+      const canvas = document.getElementById('valEvolutionChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+      valEvolutionChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['2025Q2', '2026Q1', '2026Q2', '2026Q3', '2026Q4 指引中值'],
+          datasets: [
+            {
+              type: 'bar',
+              label: '单季营业收入 Quarterly Revenue ($M)',
+              data: [144.5, 200.3, 234.1, 268.0, 280.0],
+              backgroundColor: 'rgba(239, 68, 68, 0.85)',
+              borderRadius: 5,
+              barThickness: 32,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: 'Non-GAAP 毛利率 Gross Margin (%)',
+              data: [34.5, 36.2, 37.8, 38.6, 40.0],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 3,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => c.dataset.yAxisID === 'y'
+                  ? `${c.dataset.label}: $${c.parsed.y.toFixed(1)}M`
+                  : `${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 320,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' },
+              title: { display: true, text: '单季营业收入 ($M)', color: colors.text, font: { size: 11 } }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 20,
+              max: 50,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' },
+              title: { display: true, text: 'Non-GAAP 毛利率 (%)', color: '#10B981', font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartsTheme() {
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadKpiChecklist();
+      updateValueSimulator();
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    });
+  </script>
+</body>
+</html>

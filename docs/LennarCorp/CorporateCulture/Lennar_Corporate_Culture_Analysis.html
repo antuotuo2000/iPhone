@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>莱纳房产 Lennar Corporation (NYSE: LEN) 企业文化与组织架构深度研究报告：地方自治分权、“以量定产”流速铁律与轻资产制造机器</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：琥珀金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Lennar_Corporate_Culture_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ LEN
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Miami · 1954–2026+</div>
+ <div class="text-sm font-bold leading-tight">莱纳企业文化深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">莱纳企业文化目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 地方分权与集中采购架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 四大文化支柱与护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 地产巨头文化横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 文化复利与运营效能推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三代演进与管理得失复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 莱纳文化法则核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>北美地产组织架构与企业文化研究组</p>
+ <p>财报与治理基准：Lennar FY25 10-K / 2026 Proxy</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-xs shadow-lg shadow-mogold-500/25">
+ LEN
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CORPORATE CULTURE</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">莱纳企业文化研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 区域自治分权 × 集中供应链赋能 × “以量定产”流速铁律 · 制造化房企的文化密码
+ </p>
+ </div>
+
+ <!-- 核心组织与财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">组织形态与运营模式</span>
+ <span class="font-mono font-bold text-white">区域事业部 · 偶数流制造</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY25 员工数与人均创收</span>
+ <span class="font-mono font-bold text-emerald-400">12,568 人 · ~$2.72M/人</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">FY25 交付量与销管费率</span>
+ <span class="font-mono font-bold text-mogold-400">82,583 套 · SG&amp;A 7.4%</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>地方分权与集中采购架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>四大文化支柱与护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>地产巨头文化横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>文化复利与运营效能推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三代演进与管理得失复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>莱纳文化法则核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">组织史定评：北美住宅业“区域前端敏捷 × 总部制造标准”典范</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：创业拓荒 (1954–1997) · 并购扩张 (1997–2018) · 轻资产制造化 (2019–2026+)</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据基准：Lennar FY25 10-K / 2026 Proxy</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · “地方自治创业精神 × 集中供应链规模” × 偶数流制造节奏 × EBT 业绩分享文化</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 莱纳房产 Lennar Corporation 企业文化与组织架构深度研究报告：地方分权敏捷、工业化流速铁律与全员业绩共同体
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 住宅建筑是极具“属地化”特征的行业——土地审批、市政规章与购房者审美因城而异，但建材集采、按揭金融与信息化成本又极度依赖全国规模效应。<strong class="text-white">莱纳房产（Lennar Corporation）</strong>自 1954 年在迈阿密创立以来，历经 72 年打磨出一套独特的<strong class="text-mogold-300">“分布式地方运营自治（Decentralized Field Execution）+ 集中式工业制造平台（Centralized Manufacturing &amp; Finance）”</strong>双螺旋文化。
+ 在这一文化驱动下，莱纳不靠庞大的直雇施工队，而是仅凭 <strong class="text-white">12,568 名全职员工</strong>（人均创收高达 <strong class="text-emerald-400">~$272万</strong>）统筹全美 30 余个州的独立区域城市公司，以 <strong class="text-mogold-400">“以量定产、动态调价（Volume Over Margin）”</strong>的铁血执行力，在 FY2025 交付 <strong class="text-white">82,583 套住宅</strong>、实现 <strong class="text-emerald-400">$342亿 营收</strong>，并在 2025–2026 年完成 <strong class="text-mogold-300">Millrose Properties (MRP)</strong> 土地剥离与唯一 CEO 扁平化改革，彻底蜕变为高周转纯住宅制造机器。
+ </p>
+
+ <!-- 核心文化基因高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">地方事业部自治 × 总部底座赋能</div>
+ <div class="text-white font-semibold">一线城市总裁拥有极高购地建议与即时调价权；总部则统一把控全国集采、按揭金融与资本配置</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">“偶数流（Even-Flow）”制造文化</div>
+ <div class="text-mogold-400 font-semibold">拒绝赌地价与捂盘惜售，用 Everything's Included® 标配包与按揭买断保证流水线永不停工</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">税前利润（EBT）全员绩效共担</div>
+ <div class="text-emerald-400 font-semibold">从城市公司经理到 CEO 均按区域/集团税前利润（Pretax Income）透明提成，同甘共苦、荣辱与共</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>精简员工规模与超高人效</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$2.72M</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">12,568 员工</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 通过总包外包与标准化 SKU 管理，仅凭 1.25 万名员工统筹年均 8.26 万套住宅建设，人均创收冠绝地产制造同业。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>数字化驱动的极致销管费率</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">7.4%</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">较2018降200bps</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 将 LENX 数字化看房与动态定价平台植入一线销售文化，大幅削减外部中介佣金与广告耗费，SG&amp;A 稳居历史最优区间。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>施工周期压缩与工业化节奏</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">128 天</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">缩短近 90 天</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ “Everything's Included”精简选配文化削减超 60% 建材 SKU，推动平均工期由 218 天压缩至 128 天，存货周转大幅提速。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>轻资产文化转型与股息票仓</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">&gt;95%</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">期权土地占比</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 打破“囤地致富”的传统地产商思维惯性，分拆 Millrose 后彻底转向随建随提的制造业轻资产文化（2026 Proxy）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 地方分权与集中采购架构 (Decentralized Field & Centralized Core)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Decentralized Execution &amp; Centralized Manufacturing Backbone</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 组织架构基因：一线城市公司的“创业者自治”与迈阿密总部的“制造底座”</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">核心哲学：“本地化触角敏锐捕捉每一街区变化，全国化后台输出最低建造成本”</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2021–FY2026E 莱纳组织效能跃迁：工期天数压缩 vs 销管费用率（SG&amp;A）压降</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">标准化制造文化与数字化营销协同发力，施工周期从 218 天降至 ~125 天，SG&amp;A 稳居 ~7.4% 历史最优</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('efficiency_trend')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：工期压缩与费率优化</button>
+ <button onclick="switchBizChart('org_headcount')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：精简员工与人均创收</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：组织双螺旋三大设计原则 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">莱纳“地方分权 × 总部集约”组织双螺旋</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">地方城市公司（Division）拥有前线快速决策权</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 全美划分为四大区域（东区、德州、中区、西区）下辖逾 40 个地方城市分部。地方总裁深谙本地学区、市政审批与分包商生态，享有充分的户型微调与周末即时促销定价授权，避免官僚层层请示延误战机。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">总部统管“全国集采、资金池、按揭金融与土地期权审核”</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 所有大宗建材采购协议、债务融资、<strong>Lennar Mortgage</strong> 按揭利率买断额度及超过一定金额的土地期权合同必须经过迈阿密总部投资委员会审批，用制度杜绝地方分部在周期顶部盲目高价拿地。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">2026 取消联席 CEO：扁平化削减总部管理层级</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 伴随任职 42 年的联席 CEO Jonathan Jaffe 于 2025 年底退休，董事会顺势取消联席 CEO 架构并精简高管层，由 <strong>Stuart Miller</strong> 任唯一 CEO 直接对接四大区域运营负责人，进一步强化一线向总部的反馈穿透力。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">核心文化信条（Core Credo）</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">Doing the Right Thing for the Right Reason</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大组织与文化运作单元详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 单元 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">制造标准化基因 · 削减超 60% 建材 SKU</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">集采成本优势 8%–12%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. “Everything's Included®”工业化标配文化</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 传统美国定制建房商允许买家在数千种瓷砖、橱柜、龙头与灯具中自由选配，导致工地返工频发、库存积压且单价虚高。莱纳在全公司推行 <strong>Everything's Included®（一切皆标配）</strong>文化，把高频热门配置直接打包进标准户型，让建筑工地像丰田汽车总装线一样实现<strong>“偶数流（Even-Flow）”连续节拍施工</strong>。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>年度交付 82,583 套 · 工期 ~128 天</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">以消费品制造思维重构建筑业</span>
+ </div>
+ </div>
+
+ <!-- 单元 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">反投机文化 · 告别“坐等土地升值”</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">期权土地占比 &gt;95%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 从“土地囤积者”到“纯粹制造者”的认知重塑</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 历史上美国房企高管常以“手里囤了多少万英亩生土”为荣，结果在 2008 年次贷危机中因土地巨额减值惨遭重创。斯图尔特·米勒在过去六年主导了一场深刻的文化洗脑：要求全员彻底摒弃靠土地周期投机赚钱的幻觉，并通过 2025 年分拆 <strong>Millrose Properties (NYSE: MRP)</strong> 将生熟地开发彻底剥离，确立“赚取制造加工与周转效率利润”的新信仰。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>自有土地年限 &lt; 0.2 年</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">把重资产地产重塑为轻资产制造业</span>
+ </div>
+ </div>
+
+ <!-- 单元 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">数据驱动实战 · 实时动态定价引擎</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">金融服务捕获率 ~84%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. “销售与金融一体”的快速出清实战文化</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 莱纳一线销售顾问（New Home Consultants）并非孤军奋战，而是与 <strong>Lennar Mortgage</strong> 驻场按揭专员结成“作战单元”。每周根据各社区客流与签约转化率数据，系统自动调整当周特定楼栋的按揭利率买断幅度与成交补贴（Incentives），确保每座社区保持 <strong>每月 3.5–4.2 套</strong> 的稳定去化节拍，零积压库存。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>LENX 数字化看房 + 线上预审闭环</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">让每一栋竣工新房在交房前锁定买家</span>
+ </div>
+ </div>
+
+ <!-- 单元 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">荣誉与留存机制 · 超过 20 年老兵遍布中高层</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">税前利润挂钩激励</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. “25年俱乐部”老兵忠诚文化与透明分利机制</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 尽管住宅建筑业周期剧烈波动，莱纳核心管理团队却展现出罕见的超长稳定性——退休前的 Jon Jaffe 任职 42 年、米勒深耕 44 年、CFO Diane Bessette 任职近 30 年，各区域总裁平均司龄超 18 年。公司推行极简透明的<strong>税前利润（Pretax Income）提成制度</strong>与内部员工公益基金会（Lennar Foundation），将家族创业温度与严苛绩效纪律融为一体。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>内部提拔为主 · 极低核心高管流失率</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">跨周期穿越危机的人才凝聚力基石</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 四大文化支柱与组织护城河 (Cultural Pillars & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Four Cultural Pillars &amp; Organizational Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 四大核心文化支柱：“以量定产”、三原则信条、数字化赋能与危机进化</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：宽护城河 (Wide Moat · 制造流速纪律 + 供应链议价 + 轻资产文化惯性)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重文化护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“Volume Over Margin”反周期流速铁律</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 当 2022–2026 年按揭利率飙升至 6%–7% 时，多数中小房企因不愿降价而陷入开工停滞、劳务班组流失的恶性循环；莱纳全员奉行“<strong>宁让利、不断流</strong>”，用按揭利率买断保住 8.2 万+套满负荷施工，使分包商优先向莱纳工地派工。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“Quality, Value and Integrity”三大核心准则</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 创始人 Leonard Miller 确立的“品质（Quality）、价值（Value）与诚信（Integrity）”被具象化为全流程交房质检清单（Pre-Closing Orientation）与透明一口价合同，在 2018 年合并 CalAtlantic 时凭借统一的品质审计标准迅速完成文化融合。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“数字原生”售房与动态库存看板文化</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2020 年疫情封控期间，莱纳迅速转型线上 3D 虚拟看房、自助电子预约参观（Self-Guided Tours）与全线上按揭锁息，推动传统房地产经纪人外部佣金占比大幅下降，使 SG&amp;A 销管费率从 9.4% 降至 <strong>7.4%</strong> 行业标杆水平。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">社区公益反哺（Focused Acts of Caring）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 莱纳将“为构建更美好社区而建房”写入企业使命，鼓励一线员工参与本地无家可归者庇护所建设与儿童教育公益，并在每次重大并购后保留被收购区域品牌的社区慈善承诺，赢得地方政府规划审批的长期信任背书。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维企业文化与组织模型雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">美国三大住宅建筑巨头组织文化五维雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">莱纳房产 (LEN) vs 霍顿房屋 (DHI) vs 普尔特集团 (PHM)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 地产巨头企业文化横向对比 (Homebuilders Culture Matrix)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · US Homebuilders Corporate Culture Comparative Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 顶级建筑商企业文化横向对比：五种组织基因与人效费率统治力</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索房企 / 文化特征 / 管理模式..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部标杆房企</button>
+ <button onclick="filterCompetitors('manufacturing')" data-filter="manufacturing" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">标准化快周转文化</button>
+ <button onclick="filterCompetitors('discipline')" data-filter="discipline" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">高毛利与资本纪律文化</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">企业名称与文化标签</th>
+ <th class="py-4 px-4 min-w-[140px]">组织集分权形态</th>
+ <th class="py-4 px-4 min-w-[145px]">核心经营文化信条</th>
+ <th class="py-4 px-4 min-w-[125px]">员工规模与人均创收</th>
+ <th class="py-4 px-4 min-w-[115px]">代表性运营指标</th>
+ <th class="py-4 px-5 min-w-[240px]">与莱纳企业文化的异同及优劣势评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：莱纳基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">莱纳房产 (LEN)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">迈阿密 · 斯图尔特·米勒领衔</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">地方城市公司自治 + 总部制造金融集中</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">以量定产 + Everything's Included</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">12,568人 · ~$2.72M/人</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">SG&amp;A 7.4% / 期权&gt;95%</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>工业制造化最彻底：</strong>靠标准化配置包与按揭买断实现全行业最快流速与最高轻资产率；短板在于承压期牺牲部分毛利率（~19.2%），且关联治理透明度受市场严审。
+ </td>
+ </tr>
+
+ <!-- 行 2：霍顿房屋 D.R. Horton -->
+ <tr data-category="manufacturing" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">霍顿房屋 (D.R. Horton · DHI)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">德州阿灵顿 · 全美第一交付量</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">高度分权的区域创业型事业部网络</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">入门刚需平价 + 区域利润分红</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~14,500人 · ~$2.55M/人</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">年交付 ~9.1万套全美第一</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>与莱纳文化最接近的宿敌：</strong>同样极度重视基层一线自主权与高周转现房（Spec Homes），霍顿地方经理创业自主权甚至更大，但标准化 SKU 集中度略逊于莱纳。
+ </td>
+ </tr>
+
+ <!-- 行 3：普尔特集团 PulteGroup -->
+ <tr data-category="discipline" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">普尔特集团 (PulteGroup · PHM)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">亚特兰大 · 资本回报与康养龙头</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">总部强资本配置纪律 + 多品牌矩阵</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">严守 ROIC 与毛利率红线</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~6,800人 · ~$2.60M/人</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利 26.8% / ROE 23%+</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“利润优先”文化对照样本：</strong>普尔特拒绝为冲销量而大幅降价，且在建房施工中引入精益制造（Lean Manufacturing），以更小体量跑出全行业最高 ROE 与毛利率。
+ </td>
+ </tr>
+
+ <!-- 行 4：NVR Inc -->
+ <tr data-category="discipline" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">NVR Inc (NYSE: NVR)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">弗吉尼亚 · 极致低调禁欲文化</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">纯建筑组装车间 + 零土地开发团队</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">100% 土地期权 + 零公关纯粹回购</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~6,500人 · ~$1.60M/人</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">市净率 P/B ~5.2x 行业之巅</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>莱纳文化转型的精神导师：</strong>NVR 员工深信“我们不是地产商，只是帮土地买家盖房子的组装厂”，从不囤地、不召开业绩电话会；莱纳分拆 Millrose 正是在向 NVR 文化靠拢。
+ </td>
+ </tr>
+
+ <!-- 行 5：梅里蒂奇 Meritage Homes -->
+ <tr data-category="manufacturing" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">梅里蒂奇房屋 (Meritage · MTH)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">亚利桑那 · 100% 现房快打模式</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">精简设计工作室 + 标准化现房流水线</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">零定制全精装现房 (Spec Only)</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~2,100人 · ~$3.05M/人</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">人均创收超 $300万</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>更极端的标准化分支：</strong>取消一切客户个性化选配中心，仅凭设计师预设的几套硬装风格批量建造精装现房，与莱纳 Everything's Included 异曲同工但体量仅为其 1/5。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的房企文化记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：美国头部住宅建筑商运营效率与文化指标对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">把组织文化转化为经营效率：美国头部房企销管费用率（SG&amp;A）与人均创收（$M）横向对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">凭借 12,568 名精简员工、数字化直销与标准化流程，莱纳以 7.4% 销管费用率（越低越优）与 ~$2.72M 人均创收领跑超大型全国建筑商</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">SG&amp;A 费率 7.4% · 人均创收 $2.72M</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 文化复利与运营效能推演 (Cultural Compounding & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Cultural Compounding &amp; Operational Efficiency Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 文化复利与运营效能推演：标准化制造与数字化营销如何转化为自由现金流？</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">文化落地的终极试金石：组织轻量化、库存周转提速与股东现金回报</span>
+ </div>
+
+ <!-- 1. 文化驱动的四大财务与组织效能指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Revenue Per Employee</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$2.72M / 人</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 12,568 名员工统筹全年 $342亿 营收与 82,583 套交房，精简高效的管理编制释放出惊人组织杠杆。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Construction Cycle Time</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">128 天 (-41%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ “偶数流”流水线排产使单套建房工期从 218 天大幅缩短 90 天，单年资金与在建存货周转次数显著提高。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">SG&amp;A Cost Discipline</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">7.4% of Rev</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 数字化自助看房与直销替代外部中介佣金，相较 2018 年合并初期节省约 200bps 管理费用（年省超 $6.5亿）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Asset-Light FCF Yield</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~90%+ 转化率</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 摆脱囤地文化后，几乎全部会计净利润直接转化为自由现金流，支撑每年 $22亿–$25亿 持续股票回购注销。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2018–FY2025 莱纳制造化文化转型成果：年度交付套数扩张 vs 销管费用率（SG&amp;A）持续下行</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">自 2018 年合并 CalAtlantic 以来，莱纳年交付量从 4.56万套攀升至 8.26万套（+81%），而 SG&amp;A 费率逆势从 9.4% 降至 7.4%，印证规模集约文化的强大经营杠杆</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">交付量 +81% · SG&amp;A 费率 -200 bps</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“莱纳制造化文化”组织效率与利润释放动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>MANUFACTURING CULTURE ENGINE · 莱纳“标准化+快周转+低费率”文化效能推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">量化拆解组织文化对盈利的贡献：工期周转、SG&amp;A 纪律与集采降本模拟器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">对照行业传统定制房企（工期 210天 / SG&amp;A 10.2%），测算莱纳三大文化基因每年为股东创造的超额税前利润与资金释放</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="std-sku-toggle" checked onchange="updateCultureSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>启用 Everything's Included 集采降本 (+1.2% 毛利)</span>
+ </label>
+ </div>
+
+ <!-- 文化模式预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimCulture('lennar_now')" data-era="lennar_now" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 莱纳当前制造化文化基准</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">工期 128天 · SG&amp;A 7.4% · 交付 84,200套</div>
+ </button>
+ <button type="button" onclick="setSimCulture('lennar_target')" data-era="lennar_target" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 2027 极致工业化目标态</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">工期 110天 · SG&amp;A 6.9% · 交付 90,000套</div>
+ </button>
+ <button type="button" onclick="setSimCulture('legacy_builder')" data-era="legacy_builder" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 对照组：传统定制化官僚房企</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">工期 210天 · SG&amp;A 10.2% · 繁杂选配模式</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">平均建房施工周期 (Cycle Time · 天)</span>
+ <span id="sim-cycle-label" class="font-mono font-bold text-mogold-400 text-sm">128 天</span>
+ </div>
+ <input id="sim-cycle" type="range" min="95" max="220" step="1" value="128" oninput="markCustomCulture(); updateCultureSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">销管费用占住宅营收比 (SG&amp;A Ratio %)</span>
+ <span id="sim-sga-label" class="font-mono font-bold text-emerald-400 text-sm">7.4%</span>
+ </div>
+ <input id="sim-sga" type="range" min="6.5" max="11.5" step="0.1" value="7.4" oninput="markCustomCulture(); updateCultureSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年度住宅交付总规模 (套 / 均价 $40.2万)</span>
+ <span id="sim-vol-label" class="font-mono font-bold text-teal-400 text-sm">84,200 套</span>
+ </div>
+ <input id="sim-vol" type="range" min="65000" max="100000" step="600" value="84200" oninput="markCustomCulture(); updateCultureSimulator()" class="w-full accent-[#06B6D4] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：还原莱纳当前“偶数流制造 + 数字化直销 + 标配集采”三大文化支柱创造的组织超额收益——仅费用率与集采优势每年即可较传统房企多赚逾 $13亿 税前利润。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">文化护城河带来的年度超额税前利润</div>
+ <div id="sim-alpha-profit" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">+$1,354M</div>
+ <div id="sim-alpha-eps" class="text-xs font-semibold text-emerald-400 mt-1.5">折合增厚税后每股收益：+$3.94 / 股</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">单年存货与在建工程资金周转速度</div>
+ <div id="sim-turns" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">2.85 次/年</div>
+ <div id="sim-wc-save" class="text-xs text-slate-400 mt-1.5">较 210 天传统工期少占用营运资金 ~$5.4B</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">单套房屋平均销管营销成本 (SG&amp;A/套)</div>
+ <div id="sim-sga-unit" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$29,748</div>
+ <div id="sim-sga-diff" class="text-xs text-slate-400 mt-1.5">较行业 10.2% 基准单套节省 $11,256</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">对应住宅制造板块营收与人均创收</div>
+ <div id="sim-hb-rev" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$33.85B</div>
+ <div id="sim-rev-emp" class="text-xs text-slate-400 mt-1.5">按 12,568 名员工计人均创收：~$2.69M</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角企业文化定评对比 (Bull Cultural Moat vs Cultural Tension) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">正向文化护城河定评 (Enduring Cultural Strengths)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">制造业纪律 + 地方敏捷性</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>成功打破房地产行业“重资产周期诅咒”的认知革命：</strong>用工业制造流水线与轻资产期权取代传统“买地赌涨价”思维，使公司穿越高利率寒冬仍保持强劲造血能力。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>高度务实的数据驱动与即时纠偏文化：</strong>不迷信静态年度预算，而是按周追踪社区客流与贷款利率变化实时调价，库存去化效率位居全国大型房企前列。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>透明的税前利润分享机制带来极高一线凝聚力：</strong>核心高管与地方区域总裁平均司龄超 18 年，历次大型并购（U.S. Home、CalAtlantic）均实现快速文化整合。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">客观局限与文化张力反思 (Cultural Tension &amp; Risks)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">家族控制惯性 + 品质口碑平衡</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>强人家族控制文化与现代上市公司治理标准的摩擦：</strong>双层超级投票权与米勒身兼 Millrose、FivePoint 多重职务的关联结构，容易引发外部机构投资者对关联交易公允性的质疑（如 2026 年底诉讼风波）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>极致“赶工期、保流速”对分包商施工品控的考验：</strong>在全行业熟练建筑工人短缺背景下，持续压缩施工周期至 120 天左右，对一线项目经理的现场品控监督提出极高要求。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“标配化”在高端改善型市场的个性化局限：</strong>Everything's Included 在首置刚需与首改市场无往不利，但在百万美元以上豪宅细分市场仍难敌 Toll Brothers 的深度定制文化。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三代文化演进与管理得失复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Stage Cultural Evolution &amp; Management Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三代文化演进与管理复盘：从迈阿密本地创业者到工业化制造帝国</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">七十二年进化轨迹：每一次房地产大危机都成为莱纳文化升级的催化剂</span>
+ </div>
+
+ <!-- 1. 三代演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一代 · 创始草根与诚信立身</span>
+ <span class="font-mono text-xs font-bold text-slate-500">1954–1997</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">迈阿密草创与三原则奠基</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>1954 年 Gene Fisher 与 Arnold Rosen 创立 F&amp;R Builders，1956 年 Leonard Miller 携 $1 万入伙（公司名 Lennar 即取自 <strong>Len</strong>-ard 与 <strong>Ar</strong>-nold 名字组合）。创始一代确立了“品质、价值、诚信”三原则，并以稳健的佛州退休社区开发在 1971 年登陆纽交所。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段启示：区域深耕口碑与保守财务观是跨越早期周期的压舱石
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二代 · 并购融合与危机淬炼</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">1997–2018</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">全国化扩张与次贷洗礼</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>斯图尔特·米勒接任 CEO 后连续吞并 U.S. Home（2000）与 CalAtlantic（2018），建立起“地方城市公司自治 + 总部集采金融统一”的全国化组织模型；2008 年次贷寒冬迫使全员彻底告别重土地投机文化，全面转向 Everything's Included 标准化精装体系。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：危机是重塑组织惰性、统一全公司运营语言的最佳时机
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三代 · 纯制造化与治理重塑</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2019–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">偶数流制造与轻资产新生</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>借力 LENX 数字化转型与 2025 年 Millrose 土地平台分拆，莱纳全员在文化上完成向“纯住宅制造机器”的彻底切换；2026 年初随联席 CEO Jon Jaffe 退休取消联席制，进入唯一 CEO 扁平化高效执行新阶段，同时直面现代公司治理透明度的更高审视。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段启示：把传统建筑商打造为高周转、低杠杆的标准化消费品制造商
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大组织文化实战案例与进化闭环矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：莱纳企业文化在四大关键战役中的检验与进化</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">战役 01 · 2008 次贷海啸中的断臂求生文化</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2008–2010 敏捷瘦身</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">绝不抱幻想捂盘，全员快速出清不良土储并引入精益标配</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2008 年全美楼市崩盘之际，莱纳果断批量折价出售滞销地块回笼现金，并趁机在全集团推广 Everything's Included 简化供应链，成为全美大型上市建筑商中最快恢复盈利的领头羊。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">战役 02 · $93亿合并 CalAtlantic 的“零内耗整合”</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2018 世纪并购融合</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">尊重地方优秀团队 + 统一集采与 ERP 后台的系统化整合</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 合并全美第五大房企 CalAtlantic 时，莱纳保留了对方在优质学区与改善型社区的地方经营骨干，同时迅速切入莱纳全国建材集采合同与 Lennar Mortgage 系统，一年内兑现逾 $3.65亿 年度协同降本。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">战役 03 · 2022–2026 利率飙升期的“按揭买断”文化胜利</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">6%–7% 利率突围战</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">不抱怨宏观利率，用“制造端降本+金融端贴息”主动创造需求</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 面对近二十年最高按揭利率，莱纳一线销售与金融团队紧密协同，将部分房价让利精准转化为买方 4.75%–5.25% 优惠按揭利率，使年度交付量逆势从 6.6万套攀升至 8.26万套。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">战役 04 · Millrose 分拆后的“治理透明度”自我进化</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2025–2026 治理升级</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">轻资产商业模式已成，下一步需补齐现代独立治理防火墙</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 分拆 Millrose 证明了莱纳打破自我边界的魄力；而 2026 年底围绕关联购房租赁引发的市场争议，正倒逼董事会进一步强化独立审计监督与关联交易披露透明度。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级组织设计与管理启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给传统行业转型者、区域化连锁企业与周期股投资者的三条“莱纳文化法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 属地化生意必须“一线听得见炮火的人有调价权，后台看得到全局的人控风险”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 区域差异巨大的行业切忌总部一刀切定价，但必须由总部牢牢锁死大宗集采、资金杠杆与重资产投资审批权，实现“前端敏捷如游击队，后台厚重如正规军”。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 周期性行业最好的文化护城河是“把重资产制造变成轻资产流水线”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 拒绝赚取不可控的原材料或土地囤积投机钱，通过削减 SKU、压缩工期与期权化外包，把企业重塑为靠周转效率与集采规模取胜的现金流机器。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 用透明的利润分享公式代替复杂主观 KPI，锻造跨周期老兵团队</div>
+ <p class="text-slate-300 leading-relaxed">
+ 当管理层与区域负责人的奖金直接与税前利润（EBT）挂钩、高峰期多拿、低谷期自动缩水时，组织内部就会自然形成荣辱与共、杜绝内耗的长期战斗力。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “莱纳文化法则”组织与运营效能交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Lennar Culture &amp; Execution Diagnostic Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “莱纳文化法则”组织文化与执行力交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于持续追踪莱纳房产企业文化落地成色，或评估任何区域连锁/制造型企业的组织健康度（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 地方敏捷度测试：一线城市公司是否具备周度即时调价权？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">流速响应锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查各区域分部能否根据当周社区来访与签约转化率快速微调利率买断或促销包，保持每月 3.5–4.2 套/社区的稳定流速。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 制造标准化测试：施工周期是否稳守 125–130 天以内？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">流水线纪律</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验 Everything's Included 标配包是否持续发挥 SKU 精简效应，防止一线为迎合个别需求重新引入繁琐定制导致工期反弹。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 轻资产文化定力测试：期权土地占比维持 &gt;95% 不走回头路</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">反囤地惯性</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 确认全员坚守“纯粹制造者”定位，不再在表内沉淀重资产开发土地，保证净负债率稳居 10% 以下。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 数字化直销效能测试：SG&amp;A 销管费率控制在 7.5% 以内</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">$2.72M/人效标杆</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 追踪线上自助看房、数字化线索转化与 2026 扁平化管理改革能否持续压降外部佣金与总部行政开支。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 交房品质与客户满意度测试（平衡高流速与施工品控）</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">三原则诚信检验</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查在工期压缩至 128 天背景下，各区域公司的首年保修索赔率（Warranty Expense Ratio）与购房者推荐度是否保持稳定。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 关联方交易防火墙与新一代运营接班梯队透明度</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">现代治理升级</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪董事会对 Millrose 关联交易的独立审查机制升级，以及对四大区域总裁中新一代接班领军人物的培养披露。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>莱纳房产 Lennar Corporation (NYSE: LEN) 企业文化与组织架构深度研究报告 · 机构框架版</span>
+ <span>核心数据出处：Lennar FY2018–FY2025 Form 10-K · 2026 Proxy Statement (DEF 14A)</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有员工人数、交付套数、销管费用率（SG&amp;A）、施工周期及高管激励制度均核验自莱纳房产向美国证监会（SEC）披露的年度报告（Form 10-K）、<a href="https://investors.lennar.com/~/media/Files/L/Lennar-IR-V3/documents/proxy-statements/2026-proxy-statement.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Lennar 2026 Proxy Statement</a>、业绩电话会议披露资料及北美住宅建筑业调研数据。报告内置的文化效能推演器旨在量化分析标准化制造与低费用率文化对企业盈利的贡献机制，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ // 清理运行态临时样式与画布缓存属性，确保导出的 HTML 在任何本地浏览器打开时干净重绘
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Lennar_Corporate_Culture_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Lennar_Corporate_Culture_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 地产巨头文化横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “莱纳制造化文化”组织效率与利润释放动态推演器
+ // ==========================================
+ const CULTURE_PRESETS = {
+ lennar_now: {
+ cycle: 128,
+ sga: 7.4,
+ vol: 84200,
+ sku: true,
+ caption: '当前测算基准：还原莱纳当前“偶数流制造 + 数字化直销 + 标配集采”三大文化支柱创造的组织超额收益——仅费用率与集采优势每年即可较传统房企多赚逾 $13亿 税前利润。'
+ },
+ lennar_target: {
+ cycle: 110,
+ sga: 6.9,
+ vol: 90000,
+ sku: true,
+ caption: '当前测算基准：模拟 2027 年进一步深化 SKU 精简与 Millrose 供地协同后的极致工业化状态——施工周期缩短至 110 天（年周转 3.32 次），SG&A 降至 6.9%。'
+ },
+ legacy_builder: {
+ cycle: 210,
+ sga: 10.2,
+ vol: 72000,
+ sku: false,
+ caption: '当前测算基准：对照传统定制选配官僚房企模型——工期长达 210 天、外部经纪人及行政费用率高达 10.2%，营运资金严重沉淀且缺乏集采成本护城河。'
+ }
+ };
+
+ function highlightCultureButton(key) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === key) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimCulture(key) {
+ const preset = CULTURE_PRESETS[key];
+ if (!preset) return;
+ document.getElementById('sim-cycle').value = preset.cycle;
+ document.getElementById('sim-sga').value = preset.sga;
+ document.getElementById('sim-vol').value = preset.vol;
+ document.getElementById('std-sku-toggle').checked = preset.sku;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightCultureButton(key);
+ updateCultureSimulator();
+ }
+
+ function markCustomCulture() {
+ highlightCultureButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义制造化文化效能推演模式——自由探索施工周期压缩、销管费率压降与集采标准化带来的超额盈利弹性。';
+ }
+
+ function updateCultureSimulator() {
+ const cycleDays = parseInt(document.getElementById('sim-cycle').value, 10) || 128;
+ const sgaPct = parseFloat(document.getElementById('sim-sga').value) || 7.4;
+ const vol = parseInt(document.getElementById('sim-vol').value, 10) || 84200;
+ const useSkuBonus = document.getElementById('std-sku-toggle').checked;
+
+ document.getElementById('sim-cycle-label').textContent = cycleDays + ' 天';
+ document.getElementById('sim-sga-label').textContent = sgaPct.toFixed(1) + '%';
+ document.getElementById('sim-vol-label').textContent = vol.toLocaleString('en-US') + ' 套';
+
+ const asp = 402000;
+ const hbRev = vol * asp;
+ const hbRevB = hbRev / 1e9;
+
+ // 对照传统基准：SG&A 10.2%，工期 210 天
+ const sgaSavings = hbRev * ((10.2 - sgaPct) / 100);
+ const skuSavings = useSkuBonus ? (hbRev * 0.012) : 0;
+ const totalAlphaPreTaxM = (sgaSavings + skuSavings) / 1e6;
+
+ // 税后 EPS 增厚（24% 税率，2.61 亿流通股）
+ const afterTaxEpsBoost = ((totalAlphaPreTaxM * 1e6) * 0.76) / 2.61e8;
+
+ // 存货周转次数 & 营运资金释放（假设建安存货成本约占营收 72%）
+ const turns = 365 / cycleDays;
+ const wipInventory = (hbRev * 0.72) * (cycleDays / 365);
+ const legacyWip = (hbRev * 0.72) * (210 / 365);
+ const wcSavedB = (legacyWip - wipInventory) / 1e9;
+
+ const sgaPerUnit = asp * (sgaPct / 100);
+ const legacySgaPerUnit = asp * 0.102;
+ const unitSaved = legacySgaPerUnit - sgaPerUnit;
+ const revPerEmpM = hbRevB * 1000 / 12568;
+
+ const signPrefix = totalAlphaPreTaxM >= 0 ? '+' : '';
+ document.getElementById('sim-alpha-profit').textContent = `${signPrefix}$${Math.round(totalAlphaPreTaxM).toLocaleString('en-US')}M`;
+ document.getElementById('sim-alpha-eps').textContent = `折合增厚税后每股收益：${afterTaxEpsBoost >= 0 ? '+' : ''}$${afterTaxEpsBoost.toFixed(2)} / 股`;
+ document.getElementById('sim-turns').textContent = `${turns.toFixed(2)} 次/年`;
+ document.getElementById('sim-wc-save').textContent = wcSavedB >= 0
+ ? `较 210 天传统工期少占用营运资金 ~$${wcSavedB.toFixed(1)}B`
+ : `较 210 天基准多占用营运资金 ~$${Math.abs(wcSavedB).toFixed(1)}B`;
+ document.getElementById('sim-sga-unit').textContent = '$' + Math.round(sgaPerUnit).toLocaleString('en-US');
+ document.getElementById('sim-sga-diff').textContent = unitSaved >= 0
+ ? `较行业 10.2% 基准单套节省 $${Math.round(unitSaved).toLocaleString('en-US')}`
+ : `较行业 10.2% 基准单套多支 $${Math.round(Math.abs(unitSaved)).toLocaleString('en-US')}`;
+ document.getElementById('sim-hb-rev').textContent = '$' + hbRevB.toFixed(2) + 'B';
+ document.getElementById('sim-rev-emp').textContent = `按 12,568 名员工计住宅人均创收：~$${revPerEmpM.toFixed(2)}M`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'lennar_culture_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“莱纳文化法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'efficiency_trend';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2021–FY2026E 平均建房工期（天） vs SG&A 销管费用率（%）
+ const effConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025', 'FY2026E'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '平均建房施工周期 Cycle Time (天)',
+ data: [165, 218, 178, 142, 128, 124],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '销管费用率 SG&A Ratio (%)',
+ data: [7.6, 6.7, 7.1, 7.5, 7.4, 7.3],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: ${c.parsed.y} 天`
+ : `${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 80,
+ max: 240,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '天' }
+ },
+ y1: {
+ position: 'right',
+ min: 5.5,
+ max: 10.0,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：FY2019–FY2025 莱纳全职员工编制克制 vs 人均创收（$M/人）
+ const headcountConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2019', 'FY2020', 'FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '全职员工总数 (千人)',
+ data: [10.1, 10.7, 11.5, 12.1, 12.3, 12.6, 12.57],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '人均年度创收 ($M / 员工)',
+ data: [2.20, 2.10, 2.36, 2.78, 2.78, 2.81, 2.72],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.datasetIndex === 0
+ ? `全职员工总数: ${c.parsed.y.toFixed(2)}k 人`
+ : `人均年度创收: $${c.parsed.y.toFixed(2)}M`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 6,
+ max: 16,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'k' }
+ },
+ y1: {
+ position: 'right',
+ min: 1.5,
+ max: 3.3,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v.toFixed(1) + 'M' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'efficiency_trend' ? effConfig : headcountConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'efficiency_trend') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2021–FY2026E 莱纳组织效能跃迁：工期天数压缩 vs 销管费用率（SG&A）压降';
+ subEl.textContent = '标准化制造文化与数字化营销协同发力，施工周期从 218 天降至 ~124 天，SG&A 稳居 ~7.4% 历史最优';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2019–FY2025 莱纳全职员工精简控制（千人）vs 人均年创收（$M）';
+ subEl.textContent = '全公司仅约 1.26 万名直雇员工，依靠分包体系与数字化看板跑出 ~$272万/人的超高组织人效';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '产品与配置工业标准化程度',
+ '一线城市公司敏捷调价自治力',
+ '轻资产去土地化彻底度',
+ '数字化直销与低费率纪律',
+ '承压期单套毛利率防守深度'
+ ],
+ datasets: [
+ {
+ label: '莱纳房产 (LEN · 制造流速派)',
+ data: [9.8, 9.5, 9.8, 9.6, 7.2],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: '霍顿房屋 (DHI · 刚需规模派)',
+ data: [8.6, 9.8, 8.2, 9.0, 8.0],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '普尔特集团 (PHM · 精益高毛利派)',
+ data: [8.8, 8.2, 7.0, 8.5, 9.8],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ '莱纳房产 (Lennar · LEN)',
+ '霍顿房屋 (D.R. Horton · DHI)',
+ '普尔特集团 (PulteGroup · PHM)',
+ '托尔兄弟 (Toll Brothers · TOL)',
+ '传统中型区域建筑商均值'
+ ],
+ datasets: [
+ {
+ label: '销管费用率 SG&A Ratio (% · 越低代表组织与营销效率越高)',
+ data: [7.4, 7.6, 9.1, 9.6, 10.8],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5,
+ barThickness: 13
+ },
+ {
+ label: '人均年度创收 ($M / 员工 · 组织精简杠杆)',
+ data: [2.72, 2.55, 2.60, 2.15, 1.45],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 13
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.datasetIndex === 0
+ ? `销管费用率 SG&A: ${c.parsed.x.toFixed(1)}%`
+ : `人均年度创收: $${c.parsed.x.toFixed(2)}M`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 12,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 } }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2018', 'FY2019', 'FY2020', 'FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年度住宅交付规模 (千套)',
+ data: [45.6, 51.5, 52.9, 59.8, 66.4, 73.1, 80.2, 82.6],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 26,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '住宅业务销管费用率 SG&A Ratio (%)',
+ data: [9.4, 8.5, 8.1, 7.6, 6.7, 7.1, 7.5, 7.4],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ pointHoverRadius: 6.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.datasetIndex === 0
+ ? `年度交付规模: ${c.parsed.y.toFixed(1)} 千套`
+ : `销管费用率 SG&A: ${c.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 30,
+ max: 95,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'k' },
+ title: { display: true, text: '年度交付规模 (千套)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 5.5,
+ max: 11.0,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' },
+ title: { display: true, text: '销管费用率 SG&A (%)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateCultureSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

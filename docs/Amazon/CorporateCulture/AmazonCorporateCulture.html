@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>亚马逊 Amazon.com, Inc. (AMZN) 企业文化与组织架构深度研究报告：永远的 Day 1、解耦 API 架构、16 条领导力准则与六页纸叙事机制</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js 多源冗余自动加载机制（解决单 CDN 网络拦截或超时导致图表空白问题） -->
+ <script>
+ window.__chartLoadQueue = [
+ "https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js",
+ "https://cdn.bootcdn.net/ajax/libs/Chart.js/4.4.1/chart.umd.min.js",
+ "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js",
+ "https://unpkg.com/chart.js@4.4.1/dist/chart.umd.min.js"
+ ];
+ window.__loadChartJsWithFallback = function(onReady) {
+ if (typeof window.Chart !== 'undefined') {
+ onReady();
+ return;
+ }
+ var idx = 0;
+ function tryNext() {
+ if (typeof window.Chart !== 'undefined') {
+ onReady();
+ return;
+ }
+ if (idx >= window.__chartLoadQueue.length) {
+ document.querySelectorAll('canvas').forEach(function(cv) {
+ var parent = cv.parentElement;
+ if (parent && !parent.querySelector('.chart-fallback-tip')) {
+ var tip = document.createElement('div');
+ tip.className = 'chart-fallback-tip flex items-center justify-center h-full text-xs text-slate-500 dark:text-slate-400 bg-slate-100/70 dark:bg-navy-800/60 rounded-xl p-4 text-center';
+ tip.textContent = '图表库加载超时，请检查网络连接或使用 Chrome / Edge 浏览器打开本文件。';
+ parent.appendChild(tip);
+ }
+ });
+ return;
+ }
+ var s = document.createElement('script');
+ s.src = window.__chartLoadQueue[idx++];
+ s.onload = function() {
+ if (typeof window.Chart !== 'undefined') {
+ onReady();
+ } else {
+ tryNext();
+ }
+ };
+ s.onerror = tryNext;
+ document.head.appendChild(s);
+ }
+ tryNext();
+ };
+ </script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：亚马逊琥珀橙金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：AmazonCorporateCulture.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ AMZN
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Seattle · 1994–2026+</div>
+ <div class="text-sm font-bold leading-tight">亚马逊企业文化深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">亚马逊企业文化目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 解耦 API 与双披萨架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 16条领导力准则与六页纸</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 科技巨头文化横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 飞轮复利与财务绩效推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 两代掌舵与管理得失复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 亚马逊文化法则核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>科技组织架构与创新文化研究组</p>
+ <p>财报与治理基准：Amazon FY24–FY25 10-K / Shareholder Letters</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-xs shadow-lg shadow-mogold-500/25">
+ AMZN
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CORPORATE CULTURE</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">亚马逊企业文化研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 永远的 Day 1 × 解耦微服务 API × 16 条领导力准则 · 商业史上最强大的“多引擎并行发明机器”
+ </p>
+ </div>
+
+ <!-- 核心组织与财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">组织形态与协同接口</span>
+ <span class="font-mono font-bold text-white">双披萨自治 · API硬解耦</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY25 全球员工与营业利润</span>
+ <span class="font-mono font-bold text-emerald-400">~157.6万人 / $80.0B</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">FY25 营收与 AWS 利润</span>
+ <span class="font-mono font-bold text-mogold-400">$716.9B · AWS $45.6B</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>解耦 API 与双披萨架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>16条领导力准则与六页纸</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>科技巨头文化横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>飞轮复利与财务绩效推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>两代掌舵与管理得失复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>亚马逊文化法则核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">组织史定评：人类商业史上最强大的“分布式并行发明与基础设施平台”</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：贝索斯拓荒期 (1994–2021) · 安迪·贾西 AI 算力与效率重塑期 (2021–2026+)</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据基准：FY2024–FY2025 10-K</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 永远的 Day 1 × 解耦 API 架构 × 16 条领导力准则 × 逆向工作法（Working Backwards）</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 亚马逊 Amazon.com, Inc. 企业文化与组织架构深度研究报告：永远的 Day 1、解耦自治与“地球上最以客户为中心的公司”
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 如果说苹果靠“单一损益表的职能制集权”把有限几款核心硬件打磨到极致，那么<strong class="text-white">亚马逊（Amazon.com, Inc.）</strong>则演化出了商业史上另一极的组织奇迹——<strong class="text-mogold-300">“强文化价值观统一 × 弱组织耦合（API 契约化）× 双披萨自治小队（Two-Pizza Teams）”</strong>的并行创新架构（<a href="https://www.aboutamazon.com/about-us/leadership-principles" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">Amazon Leadership Principles</a>）。
+ 2002 年杰夫·贝索斯发出著名的“API 强制令（API Mandate）”，将内部组织强行拆解为只通过标准接口通信的独立微服务单元，消除了跨团队会议协调的熵增；同时用<strong class="text-white">16 条领导力准则（Leadership Principles）</strong>、<strong class="text-white">逆向工作法（PR/FAQ）</strong>与<strong class="text-white">禁绝 PPT 的六页纸叙事备忘录（6-Pager）</strong>锁定决策质量（<a href="https://aws.amazon.com/executive-insights/content/how-amazon-defines-and-operationalizes-a-day-1-culture/" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">AWS Day 1 Culture</a>）。这一机制让亚马逊同时在重资产履约零售、AWS 云计算与高毛利数字广告三大赛道跑出惊人复利：FY2025 净营收突破 <a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$7,169亿（+12% YoY）</a>，营业利润跃升至 <a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$800亿</a>，其中 AWS 单季年化营收规模跨过 <a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-400 font-semibold">$1,420亿</a> 大关，在 CEO 安迪·贾西（Andy Jassy）主导的 AI 算力与区域化履约网络重塑中持续践行“Day 1”哲学。
+ </p>
+
+ <!-- 核心文化基因高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">API 硬解耦 × 双披萨小队（Two-Pizza Teams）</div>
+ <div class="text-white font-semibold">所有内部团队必须通过标准化 API 暴露数据与服务，减少沟通开销，实现数千个小团队独立高速迭代</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">逆向工作法（PR/FAQ）× 六页纸备忘录</div>
+ <div class="text-mogold-400 font-semibold">立项先写未来新闻稿与客户 FAQ，开会前全员静默精读 20 分钟六页纸叙事文档，用深度逻辑取代 PPT 表演</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">双向门决策 × 抬杆者（Bar Raiser）机制</div>
+ <div class="text-emerald-400 font-semibold">可逆决策（Type 2）下放一线快速试错；外部独立“抬杆者”拥有招聘一票否决权，死守人才密度底线</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2025 全年净营收与营业利润</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$716.9B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">营业利润 $80.0B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ FY25 净营收同比增长 12% 至 $7,169亿，净利润达 $777亿（每股收益 $7.17），营业利润较 FY23 翻倍有余（<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon FY25 Release</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>AWS 云计算引擎盈利统治力 (FY25)</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$128.7B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">营业利润率 35.4%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 源自内部 IT 基础设施 API 化副产品的 AWS，FY25 创收 $1,287亿（+20%）、营业利润 $456亿，贡献全公司 57% 营业利润（<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon 10-K</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>全球员工规模与自动化人效跃迁</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">1.576M</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">&gt;100万台机器人</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 截至 FY25 末全职及兼职员工约 157.6 万人，依靠区域化履约与超百万台仓储机器人协同，员工增速显著低于营收增速（<a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm" target="_blank" rel="noopener noreferrer" class="cite-link">FY25 Form 10-K</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>第三方卖家生态与数字广告高毛利</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$68.6B</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">广告营收 +22%</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 开放平台使第三方卖家占全站实物销量超 60%，FY25 第三方卖家服务创收 $1,722亿，广告服务创收 $686亿（<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon FY25 Release</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 解耦 API 与双披萨小队架构 (Decoupled API & Two-Pizza Teams)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Decoupled API Mandate &amp; Two-Pizza Autonomous Teams</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 解耦 API 架构与双披萨自治小队：亚马逊如何破解超大型组织的“协调熵增”？</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">“沟通是组织架构的缺陷”：用标准化技术接口替代跨部门开会扯皮</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2024 vs FY2025 亚马逊六大业务模块营收解耦增长（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">每一个内部基础设施能力都对外商品化：自营零售 ($266.2B)、第三方服务 ($172.2B)、AWS ($128.7B) 与广告 ($68.6B) 齐头并进</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('fy25_mix')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：六大业务模块营收</button>
+ <button onclick="switchBizChart('headcount_scale')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：员工扩张与营收剪刀差</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">亚马逊分布式组织（Distributed Org）三大底层法则</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">2002 年“API 强制令”：把组织架构直接写进软件接口</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 贝索斯下达死命令：所有团队必须通过标准化服务接口（API）暴露数据与功能，严禁数据库直连或后门调用，且任何接口从第一天起必须设计成<strong>“可对外向外部开发者商业化收费”</strong>——这一组织重构直接孕育了日后年营收超 $1,287亿的 <strong>AWS 云计算帝国</strong>（<a href="https://gist.github.com/chitchcock/1281611" target="_blank" rel="noopener noreferrer" class="cite-link">Bezos API Mandate</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">双披萨团队（Two-Pizza Teams）与单线程领导者</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 任何一个团队规模不得超过“两张大披萨能吃饱的人数”（约 6–10 人），配备独立全栈开发、产品与运营权限（Single-Threaded Leader）。小队无需等待总部审批即可日均发布上千次代码更新，像数千家相互调用 API 的微型初创公司同时运转（<a href="https://aws.amazon.com/executive-insights/content/amazon-two-pizza-team/" target="_blank" rel="noopener noreferrer" class="cite-link">AWS Executive Insights</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">后疫情“去官僚化”重塑：削减管理层级与恢复五天返岗</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 针对 2020–2022 年扩张期滋生的中层汇报冗赘，CEO 安迪·贾西于 2024 年 9 月启动全面扁平化改革：要求在 2025 年 Q1 末前将全公司<strong>一线员工与管理者比例提高至少 15%</strong>，设立“官僚主义投诉邮箱”，并于 2025 年 1 月起恢复全员每周 5 天办公室协同以重燃 Day 1 发明火花（<a href="https://www.aboutamazon.com/news/company-news/ceo-andy-jassy-latest-update-on-amazon-return-to-office-manager-team-ratio" target="_blank" rel="noopener noreferrer" class="cite-link">Andy Jassy Memo</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">当前领导层结构 (2021–2026+)</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">Andy Jassy (CEO) × Jeff Bezos (执行董事长)</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大组织与文化运作单元详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 单元 1：客户痴迷与贝索斯飞轮 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一性原理 · 85%精力盯客户而非盯竞争对手</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">全球超 2 亿 Prime 会员</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 客户痴迷（Customer Obsession）与餐巾纸增长飞轮</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 亚马逊所有战略均围绕“<strong>客户永远渴望更低的价格、更丰富的选品与更快的配送</strong>”三大永恒不变的需求构建（<a href="https://www.aboutamazon.com/about-us/leadership-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Leadership Principles</a>）。会议室里著名的“<strong>空椅子（Empty Chair）</strong>”传统提醒全员：客户才是最重要却不在场的人。通过 Prime 会员订阅（FY25 订阅服务营收达 <strong>$497亿</strong>）（<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon 10-K</a>），亚马逊主动把规模红利回馈为当日/次日达与低价，驱动飞轮自我加速。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>低价 + 广选品 + 极速配送 → 流量飞轮</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">专注“未来10年什么不会改变”</span>
+ </div>
+ </div>
+
+ <!-- 单元 2：AWS 内部基础设施对外赋能文化 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">能力商品化基因 · 贡献 57% 全公司营业利润</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">FY25 AWS 营业利润 $45.6B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. AWS 云计算与自研 AI 芯片算力军火库（AWS &amp; Custom Silicon）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 亚马逊拥有独特的“<strong>把自身成本中心转化为对外高毛利平台</strong>”的文化：无论是早期为应对双十一/黑五流量峰值而自研的 EC2/S3（成就今日年营收 <strong>$1,287亿、营业利润率 35.4%</strong> 的 AWS），还是如今自研的 <strong>Graviton CPU 与 Trainium AI 训练芯片</strong>（年化营收超百亿美元且三位数增长），均遵循“先满足自身极端规模验证，再通过 API 向全球企业开放”的铁律（<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon FY25 Release</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>EC2 / S3 / Bedrock / Trainium / Graviton</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">基础设施即服务（IaaS）开创者</span>
+ </div>
+ </div>
+
+ <!-- 单元 3：第三方开放平台与高毛利广告生态 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">反封闭生态思维 · 邀请第三方卖家与自营同台竞技</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">3P服务 $172.2B · 广告 $68.6B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. “把黄金货架开放给外部竞争者”的开放平台哲学（Marketplace &amp; Ads）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2000 年亚马逊做出违背传统零售直觉的决定：将全站最核心的商品详情页黄金购买框（Buy Box）向第三方卖家开放，即便第三方价格低于亚马逊自营也优先展示第三方。这一“<strong>只站客户一边、不护内部自营短</strong>”的机制引爆了飞轮——第三方卖家贡献全站超 60% 销量，带动 FY25 第三方卖家服务创收 <strong>$1,722亿</strong>、高毛利零售媒体广告创收 <strong>$686亿</strong>（<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon 10-K</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>FBA 物流外包 + 零售搜索/Prime Video 广告</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">开放生态使北美零售营业利润率跃升</span>
+ </div>
+ </div>
+
+ <!-- 单元 4：指标驱动的履约自动化与工程运营 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">指标狂魔（Metrics-Driven）· &gt;100万台仓储机器人</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">FY25 经营现金流 $139.5B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 极致节俭（Frugality）与算法驱动的智能履约网络</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 从早期门板拼成的办公桌，到如今在不能直接改善客户体验的环节一毛不拔，亚马逊将“<strong>节俭催生足智多谋</strong>”刻入基因。在安迪·贾西主导下，亚马逊将全美单一履约网拆分为 8 大区域化网络（Regionalization），并部署超 <strong>100 万台自主移动机器人</strong>（Proteus、Sequoia 等），大幅缩短包裹运输里程与单件履约成本，推动 FY2025 经营现金流高达 <strong>$1,395亿</strong>（<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon FY25 Release</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>WBR 每周业务指标复盘 + 区域化库存路由</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">投入指标（Input Metrics）驱动产出</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 16条领导力准则与六页纸叙事机制 (16 LPs & Working Backwards)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · 16 Leadership Principles, Working Backwards &amp; Six-Pager</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 亚马逊文化操作系统：16 条领导力准则、逆向工作法（PR/FAQ）与六页纸备忘录</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极宽 (Wide Moat · 制度化决策语法 + 高容错并行试错 + 严格招聘门槛)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四大文化操作系统深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">16 条领导力准则（Leadership Principles）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 亚马逊的准则不是挂在墙上的空洞口号，而是全公司日常辩论、招聘面试与晋升考核的“<strong>共同操作系统语言</strong>”：包含<em>客户痴迷、主人翁精神、敢于谏言并服从大局（Have Backbone; Disagree and Commit）、深入细节（Dive Deep）、崇尚行动（Bias for Action）</em>，以及 2021 年新增的<em>“努力成为地球最佳雇主”</em>与<em>“成功与规模带来广博责任”</em>（<a href="https://www.aboutamazon.com/about-us/leadership-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon 16 LPs</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">逆向工作法（Working Backwards · PR/FAQ）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 在写任何一行代码或申请一分钱预算前，项目发起人必须从客户视角倒推，撰写一份虚拟的<strong>未来产品发布新闻稿（Press Release）</strong>及客户与内部高管最尖锐的<strong>常见问题解答（FAQ）</strong>（<a href="https://aws.amazon.com/executive-insights/content/how-amazon-defines-and-operationalizes-a-day-1-culture/" target="_blank" rel="noopener noreferrer" class="cite-link">AWS Day 1 Guide</a>）。如果一页纸新闻稿都无法让客户感到兴奋，项目在零成本阶段就会被直接叫停。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">禁绝 PPT 与开会静默精读六页纸（6-Pager）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2004 年贝索斯彻底禁止高管会议使用 PowerPoint，因为项目符号（Bullet Points）极易掩盖逻辑漏洞与思维懒惰。取而代之的是结构严谨、有完整主谓宾逻辑的<strong>六页纸叙事备忘录（Six-Page Narrative Memo）</strong>：每次评审会前 20–30 分钟全员在会议室绝对安静地逐字阅读并批注，随后展开高强度质询（<a href="https://www.aboutamazon.com/news/workplace/how-amazon-meetings-work" target="_blank" rel="noopener noreferrer" class="cite-link">About Amazon</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">双向门高速决策与抬杆者（Bar Raiser）招聘</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 亚马逊将决策分为不可逆的<strong>单向门（Type 1，需审慎集体论证）</strong>与可随时回退的<strong>双向门（Type 2，允许一线在掌握 70% 信息时立刻拍板执行）</strong>（<a href="https://www.aboutamazon.com/news/company-news/2015-letter-to-shareholders" target="_blank" rel="noopener noreferrer" class="cite-link">2015 Shareholder Letter</a>）；同时每场招聘必配一名跨部门独立<strong>抬杆者（Bar Raiser）</strong>，确保新员工能力高于现有团队 50% 均值并拥有一票否决权（<a href="https://www.amazon.jobs/content/en/how-we-hire/interviewing-at-amazon" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon Jobs</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维企业文化与组织模型雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">三大标杆企业组织文化五维特征对比雷达</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">亚马逊 (API解耦并行自治) vs 苹果 (职能制集权精品) vs 伯克希尔 (极端财务分权)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 科技巨头企业文化横向对比 (Tech Corporate Culture Matrix)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Big Tech &amp; Iconic Corporate Cultures Comparative Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 顶级企业文化横向对比：亚马逊“分布并行引擎”与全球商业巨头基因对照</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索企业 / 组织模式 / 文化关键词..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部标杆企业</button>
+ <button onclick="filterCompetitors('platform')" data-filter="platform" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">分权自治与平台派</button>
+ <button onclick="filterCompetitors('product')" data-filter="product" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">职能集权与全栈派</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">企业与文化掌舵人</th>
+ <th class="py-4 px-4 min-w-[140px]">底层组织架构形态</th>
+ <th class="py-4 px-4 min-w-[145px]">核心决策与问责机制</th>
+ <th class="py-4 px-4 min-w-[125px]">员工规模与运营特征</th>
+ <th class="py-4 px-4 min-w-[120px]">代表性业绩/利润特征</th>
+ <th class="py-4 px-5 min-w-[240px]">与亚马逊企业文化的异同及适配场景评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：亚马逊基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">亚马逊 (Amazon)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">杰夫·贝索斯 / 安迪·贾西</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">解耦 API 微服务 + 双披萨自治小队</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">16条准则 + PR/FAQ六页纸</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">157.6万人 · &gt;100万机器人</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">FY25营收 $716.9B / 净利 $77.7B</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>多引擎并行发明机器：</strong>用统一价值观与 API 契约替代层级管控，容忍高容错试错以换取 AWS、Prime 等史诗级新曲线（<a href="https://www.aboutamazon.com/about-us/leadership-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：苹果公司 Apple -->
+ <tr data-category="product" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">苹果公司 (Apple Inc.)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">乔布斯 / 库克 / 特努斯</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">职能制集权 (Functional Org) + 单一P&amp;L</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-700 dark:text-amber-400">专家领导专家 + DRI责任制</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">16.6万人 · ~$2.5M/人</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利 46.9%–47.9%</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>极致深度精品 vs 极致广度平台：</strong>苹果对 1,000 件事说“不”，集中全公司专家死磕少数旗舰；亚马逊则鼓励数千小队并行实验、广撒网押注（<a href="https://www.apple.com/careers/pdf/HBR_How_Apple_Is_Organized_For_Innovation-4.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">HBR</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 3：英伟达 NVIDIA -->
+ <tr data-category="product" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">英伟达 (NVIDIA)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">黄仁勋 (Jensen Huang)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">超扁平职能架构 + 60余名高管直管</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">Top-5 邮件 + 光速迭代文化</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~3.6万人 · 极高人效密度</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利 71–75% / 营业 ~65%</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>底层算力生态伙伴：</strong>同样信奉“公司离破产永远只有30天”的危机感，但英伟达靠极扁平信息全透明运转，而亚马逊靠 API 接口隔离复杂度。
+ </td>
+ </tr>
+
+ <!-- 行 4：伯克希尔 Berkshire Hathaway -->
+ <tr data-category="platform" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">伯克希尔·哈撒韦</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">巴菲特 / 芒格 / 阿贝尔</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">27人极简总部 + 60+子公司极端分权</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-500/15 text-teal-700 dark:text-teal-400">经营完全放权 + 资金中央统配</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">38.8万人 · 总部仅27人</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">FY25 营业利润 $44.49B</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>分权自治的精神共鸣：</strong>贝索斯公开致敬巴菲特股东信文化；二者都厌恶官僚总部，但伯克希尔靠并购成熟现金牛，亚马逊靠内部白手孵化新业务（<a href="https://www.berkshirehathaway.com/2025ar/2025ar.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">BRK AR</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 5：微软与谷歌 Microsoft / Alphabet -->
+ <tr data-category="platform" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">微软 / 谷歌 (MS / Google)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">纳德拉 (成长型思维) / 皮查伊</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">多事业部 P&amp;L 矩阵 (Cloud / Ads / OS)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">事业部GM负责制 + OKR自下而上</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">18万–22万人级软件大厂</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">云与广告高利润率引擎</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>AI 云基础设施直接对手：</strong>微软 Azure 与谷歌云在企业 AI 领域与 AWS 正面交锋，但亚马逊独具全球最大重资产履约零售网络与消费硬件生态。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的标杆企业文化记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：亚马逊各核心板块利润率与高增长引擎拆解 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">把组织文化转化为多引擎盈利能力：亚马逊核心分部营业利润率与关键增长率拆解（FY2025 SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">API 解耦与“基础设施外部商品化”文化造就了营业利润率高达 35.4% 的 AWS，同时第三方卖家与广告飞轮推动全公司营业利润率从 FY22 的 2.4% 跃升至 FY25 的 11.2%（<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon FY25 Form 10-K</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">AWS 营业利润率 35.4% · 广告增速 22.0% · 综合营业利润率 11.2%</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 飞轮复利与财务绩效推演 (Flywheel Compounding & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Flywheel Compounding &amp; Financial Performance Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 飞轮复利与财务绩效推演：从“二十年不计短期盈利深蹲”到 $800亿年度营业利润爆发</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">自由现金流哲学：贝索斯在 1997 年首封股东信中写明“重长期自由现金流大于短期账面 GAAP 利润”</span>
+ </div>
+
+ <!-- 1. 文化驱动的四大财务护城河指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">AWS Operating Income</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$45.6B (35.4%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ FY2025 AWS 营业利润达 $456亿（较 FY23 的 $246亿近乎翻倍），以 18% 营收占比贡献全公司 57% 营业利润（<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon 10-K</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Operating Cash Flow</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$139.5B (+20%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 贝索斯最看重的现金流指标在 FY2025 跃升至 $1,395亿，为重金投入 AI 数据中心与卫星互联网提供内生弹药（<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">FY25 Release</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">North America Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">6.9% ($29.6B)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 北美零售分部在区域化履约与高毛利广告叠加下彻底走出亏损泥潭，FY25 营业利润达 $296亿（利润率 6.9%）（<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon 10-K</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">AI &amp; Infra CapEx</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~$131.8B (FY25)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 践行“Day 1 长期主义重仓未来基础设施”基因，FY25 资本开支超 $1,300亿抢占全球 AI 算力与定制硅片高地（<a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm" target="_blank" rel="noopener noreferrer" class="cite-link">FY25 Form 10-K</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2021–FY2025 亚马逊“效率重塑与多引擎收获期”：年度营业利润与营业利润率跃迁曲线（SEC Form 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">经历 2022 年疫情超建产能消化低谷（营业利润率 2.4%）后，区域化履约改造、AWS 加速与广告高增推动营业利润三年暴增 6.5 倍至 $800亿</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">营业利润率 +880 bps (2.4%→11.2%) · FY25 营业利润 $80.0B</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“亚马逊 Day 1 飞轮文化复利”跨代际股东回报动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>DAY 1 FLYWHEEL COMPOUNDING · 亚马逊“飞轮长期主义”跨周期价值复利模拟器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">从 1997 年车库书店 IPO 到 $2.4万亿多引擎帝国：亚马逊文化复利推演器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实历史周期（1997–2021 贝索斯 24 年开拓期 / 2006–2025 AWS 诞生后 19 年飞轮期 / 1997–2026 完整 29 年跨代长牛）或自定义测算</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>叠加新业务期权爆发溢价 (+1.5%/年)</span>
+ </label>
+ </div>
+
+ <!-- 真实历史周期预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('aws_flywheel')" data-era="aws_flywheel" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 2006–2025 AWS与Prime飞轮期</div>
+ <div class="text-[11px] opacity-85 font-mono mt-0.5">19年 · 拆股后价 ~$1.95→$230.8 (~28.6% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('bezos_tenure')" data-era="bezos_tenure" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 1997–2021 贝索斯 24 年掌舵期</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">24年 · 拆股后价 ~$0.075→$172.0 (~38.1% CAGR)</div>
+ </button>
+ <button type="button" onclick="setSimEra('full_29yr')" data-era="full_29yr" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 1997–2026 IPO 以来 29 年跨代长牛</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">29年 · $1,000 变 ~$3.0M (~31.8% CAGR)</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始投入本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$10,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="1000" max="100000" step="1000" value="10000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">19 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="30" step="1" value="19" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年化复合回报率 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">28.6%</span>
+ </div>
+ <input id="sim-growth" type="range" min="5" max="42" step="0.1" value="28.6" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：对应 2006 年 AWS 正式商业化上线（拆股调整股价约 $1.95）至 2025 年底（股价约 $230.82）的 19 年飞轮叠加期，展示了内部 IT 基础设施通过 API 对外商业化后释放的指数级盈利能量。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计总资产市值</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$1,187,719</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计净增值 +11,777%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">本金增值倍数 (MOIC Multiple)</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">118.8x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 2.8 年资产翻一倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">累计创造净资本利得</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$1,177,719</div>
+ <div class="text-xs text-slate-400 mt-1.5">扣除初始投入本金后的纯复利收益</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效综合年化复合增长率</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">28.60%</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">持有半程（第 10 年）资产约：$123,682</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角历史定评对比 (Bull Legacy vs Critical Reflection) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">正向组织文化遗产定评 (Enduring Cultural Moat)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">多引擎第二曲线 + 极端长期主义</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>商业史罕见成功跨界开辟多条千亿美元级第二曲线：</strong>从网上书店到第三方平台、Prime 会员、AWS 云计算与数字广告，证明了“API 解耦 + 双向门试错”的极强孵化能力。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>用“六页纸叙事 + PR/FAQ”对抗大企业空心化：</strong>在 150 万员工体量下依然保持极高的逻辑思辨密度，拒绝花哨 PPT 汇报，迫使各级管理者直面事实与输入指标（Input Metrics）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>忍受“长达 7 年以上误解”的战略定力：</strong>无论是早年零售亏损期、Kindle 硬件补贴还是如今日均百亿美元级 AI 算力资本开支，管理层始终愿意牺牲短期利润换取十年壁垒。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">客观局限与组织张力反思 (Critical Lens)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">高压角斗场 + 消费硬件协同短板</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“高标准与末位淘汰（URA）”带来的组织高压与损耗：</strong>极度指标化考核与高强度内部辩论（“有骨气地反对”）虽然筛选出战斗力，但也曾引发《纽约时报》关于白领高压及仓储劳工流失率的广泛争议。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>高度解耦的小队文化在消费电子美学上的天然短板：</strong>与苹果“全公司只打磨一款精品”相反，亚马逊曾出现数十款功能重叠的 Echo/Fire 硬件型号（如 Fire Phone 失败与 Alexa 早期商业化困境），2023 年起不得不大幅收缩设备线亏损。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>庞大规模下的“Day 2 官僚化”持续反扑：</strong>在拥有 157 万名员工后，审批流程变慢与中层管理膨胀一度抬头，迫使安迪·贾西在 2024–2025 年动用“提高管理跨度 15% + 全员返岗”等重典纠偏（<a href="https://www.aboutamazon.com/news/company-news/ceo-andy-jassy-latest-update-on-amazon-return-to-office-manager-team-ratio" target="_blank" rel="noopener noreferrer" class="cite-link">Jassy Memo</a>）。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 两代掌舵与管理得失复盘 (Evolution & Strategic Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Cultural Evolution &amp; Strategic Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三大演进阶段与管理复盘：从“车库快速扩张”到“AI 时代反官僚重塑”</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">理解亚马逊文化的核心警示：“Day 2 就是停滞，随后是无关紧要，接着是痛苦衰落，最终死亡”</span>
+ </div>
+
+ <!-- 1. 三阶段演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一幕 · 基因奠基与API解耦</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">1994–2005</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">互联网泡沫洗礼与组织重构</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>1997 年首封股东信确立“一切围绕长期自由现金流与客户痴迷”；2000 年互联网泡沫破裂股价暴跌逾 90% 后，贝索斯不仅坚持降低商品售价，更在 2002–2004 年推出 <strong>API 强制令、双披萨团队与六页纸叙事制度</strong>，为日后爆发埋下技术与组织种子。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：逆境中用架构解耦替代人力堆砌，把内部痛点变成外部平台
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第二幕 · 多引擎飞轮全面引爆</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2006–2021</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">Prime × AWS × 自动化履约</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>Prime 会员、FBA 第三方物流与 AWS 云计算三大飞轮相互咬合；2012 年收购 Kiva 机器人开启智能仓储革命；2016 年股东信系统阐述<strong>“如何抵御 Day 2 衰老”</strong>四大法宝（真客户痴迷、抵制形式主义、拥抱外部趋势、高速决策）（<a href="https://www.aboutamazon.com/news/company-news/2016-letter-to-shareholders" target="_blank" rel="noopener noreferrer" class="cite-link">2016 Letter</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段启示：把流程当成工具而非目的（Don't let the process become the proxy）
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 text-xs font-bold">第三幕 · 贾西重塑与生成式 AI</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">2021–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">扁平去官僚 × AI 算力重仓</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>AWS 创始掌舵人 <strong>Andy Jassy</strong> 于 2021 年 7 月接任 CEO 后，先是通过区域化履约改造与裁撤边缘亏损项目修复零售盈利能力，随后推行<strong>管理者跨度提升 15%、全员返岗、自研 Trainium 芯片与 Bedrock/Alexa+ 生成式 AI 重构</strong>（<a href="https://www.aboutamazon.com/news/company-news/andy-jassy-2024-annual-shareholder-letter" target="_blank" rel="noopener noreferrer" class="cite-link">2024 Shareholder Letter</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
+ 阶段启示：巨头唯有主动自我刮骨疗毒、削减层级，才能在 AI 浪潮中重回 Day 1
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大组织文化实战案例与进化闭环矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：亚马逊企业文化在四大标志性战役中的检验与进化</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">案例 01 · 从内部杂乱数据库到 AWS 云计算帝国</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2002–2006 逆向工作法</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">当工程师发现搭建基础环境占去 70% 时间时，亚马逊把它做成了全球第一朵云</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 安迪·贾西与团队用逆向工作法撰写了 S3 与 EC2 的未来新闻稿，设想“任何大学宿舍里的开发者都能按秒租用与亚马逊同等级别的算力与存储”，历经 20 年成长为年化营收超 $1,420亿的全球云基石（<a href="https://aws.amazon.com/executive-insights/content/how-amazon-defines-and-operationalizes-a-day-1-culture/" target="_blank" rel="noopener noreferrer" class="cite-link">AWS Insights</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">案例 02 · Prime 会员与“当日达”豪赌</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2005 双向门敢为天下先</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">违背全部财务测算模型的“$79 包年无限次两日达”</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2005 年财务团队警告免运费包年将引发巨额运费亏损，但贝索斯依据“客户痴迷”与“双向门”原则果断拍板上线。Prime 彻底改变了全球电商消费习惯，催生出全球超 2 亿高粘性付费会员与年均百亿级递送包裹规模。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">案例 03 · Fire Phone 折戟与“容忍实验性失败”</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2014 失败复盘转化为 Echo</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">减记 $1.7亿库存后，原班团队转战孵化出智能音箱 Echo</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 贝索斯公开区分“<strong>操作性失败（不可原谅）</strong>”与“<strong>实验性失败（创新必经之路）</strong>”：Fire Phone 虽遭市场冷遇，但亚马逊没有惩罚研发团队，而是将语音识别与硬件沉淀迅速转向无屏智能音箱 <strong>Amazon Echo / Alexa</strong>，开创了全新智能家居品类（<a href="https://www.aboutamazon.com/news/company-news/2015-letter-to-shareholders" target="_blank" rel="noopener noreferrer" class="cite-link">2015 Shareholder Letter</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">案例 04 · 2024–2025 组织扁平化与 AI 全面重构</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">Andy Jassy 反官僚战役</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">砍掉多余“预审会（Pre-meetings）”，让一线直接向高管汇报</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 贾西在致全员信中直指疫情扩招导致部分团队出现“预审会的预审会”与过度层层审批，强制设定管理跨度提升 15% 硬指标并关闭官僚流程，使全公司得以在 2024–2026 年同步推进上千个生成式 AI 应用落地（<a href="https://www.aboutamazon.com/news/company-news/andy-jassy-2024-annual-shareholder-letter" target="_blank" rel="noopener noreferrer" class="cite-link">2024 Shareholder Letter</a>）。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级组织设计与管理启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给科技创业者、平台管理者与长期投资者的三条“亚马逊组织文化法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 当公司规模膨胀时，用“技术接口契约”替代“行政协调会议”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 如果每个新功能都需要五个部门坐在一起开会对齐，创新速度必然归零；把团队拆成 6–10 人双披萨全栈小队，强制通过标准化 API 协作，才能实现线性扩张下的非线性创新。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 用“六页纸叙事 + PR/FAQ”消灭结构化思维懒惰</div>
+ <p class="text-slate-300 leading-relaxed">
+ 禁止用华丽但空洞的 PPT 掩盖商业本质；迫使团队在动用一分钱资源前写清客户新闻稿与完整逻辑链，让真理在静默阅读与尖锐质询中自然浮现。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 区分“单向门”与“双向门”，别把制度变成创新的枷锁</div>
+ <p class="text-slate-300 leading-relaxed">
+ 90% 的商业决定都是可撤回的双向门，掌握 70% 信息就该立刻行动；一旦发现流程开始取代结果成为考核标准，必须像“第一天创业”那样毫不手软地砍掉官僚层级。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “亚马逊文化法则”组织与业务评估交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Amazon Day 1 Culture &amp; Organization Diagnostic Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “亚马逊文化法则”企业组织与平台力交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于诊断任何平台型科技企业、多业务集团或内部创新团队是否具备“亚马逊式”Day 1 进化力与飞轮复利基因（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 逆向工作法（PR/FAQ）测试：立项是否从客户终局倒推？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">客户痴迷起点</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查新项目启动前是否先撰写面向终端用户的未来新闻稿与尖锐 FAQ，而非从“我们现有技术能做什么”出发拍脑袋立项。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 六页纸叙事测试：核心决策是否摆脱 PPT 要点式表演？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">深度思考密度</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验重要评审会是否采用完整叙事文档（6-Pager）与开场静默精读机制，确保因果逻辑与数据证据经得起逐字推敲。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. API 解耦与双披萨测试：小团队能否无需跨部门审批独立上线？</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">低耦合高并发</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察业务单元是否具备单线程负责制与标准化接口契约，避免跨部门排期等待与“预审会的预审会”消耗创新动能。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 双向门速度测试：可逆决策是否在掌握 70% 信息时果断执行？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">崇尚行动速度</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验公司是否将绝大多数日常试错归类为可撤回的 Type 2 双向门并授权一线快速推进，同时容忍实验性失败。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 抬杆者（Bar Raiser）测试：招聘是否设有跨部门独立否决权？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">防止招聘稀释</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查用人部门在急于填补空缺时，是否有独立于该团队的“抬杆者”把关企业文化准则与能力均值，杜绝降低用人标准。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 能力商品化测试：核心内部基础设施能否对外变现为第二曲线？</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">AWS式平台外溢</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验企业在物流、算力、支付或数据基建上形成的规模优势，是否具备向第三方开放收费并沉淀为高毛利引擎的平台能力。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>亚马逊 Amazon.com, Inc. (AMZN) 企业文化、解耦架构与飞轮复利深度研究报告 · 机构框架版</span>
+ <span>核心数据出处：Amazon FY2024–FY2025 Form 10-K · Bezos &amp; Jassy Annual Shareholder Letters</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务、业务分部与组织治理指标均严格核验自美国证监会（SEC EDGAR）公开披露的 <a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon.com, Inc. FY2025 Form 10-K</a>、<a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener noreferrer" class="cite-link">Amazon FY2025 全年业绩公告</a>、亚马逊官方发布的 <a href="https://www.aboutamazon.com/about-us/leadership-principles" target="_blank" rel="noopener noreferrer" class="cite-link">《16 条领导力准则（Leadership Principles）》</a>、<a href="https://aws.amazon.com/executive-insights/content/how-amazon-defines-and-operationalizes-a-day-1-culture/" target="_blank" rel="noopener noreferrer" class="cite-link">AWS Executive Insights《Day 1 文化与逆向工作法》</a>、历年《致股东信》（1997、2015、2016、2024）及 CEO 安迪·贾西关于扁平化管理跨度与全员返岗的公开备忘录。报告内置的复利模拟器旨在复盘长期主义文化与多引擎飞轮的价值创造规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ // 清理运行态临时样式与画布缓存属性，确保导出的 HTML 在任何本地浏览器打开时干净重绘
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'AmazonCorporateCulture.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：AmazonCorporateCulture.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 科技巨头文化横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “亚马逊 Day 1 飞轮文化复利”跨代际股东回报动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ aws_flywheel: {
+ principal: 10000,
+ years: 19,
+ cagr: 28.6,
+ caption: '当前测算基准：对应 2006 年 AWS 正式商业化上线（拆股调整股价约 $1.95）至 2025 年底（股价约 $230.82）的 19 年飞轮叠加期，展示了内部 IT 基础设施通过 API 对外商业化后释放的指数级盈利能量。'
+ },
+ bezos_tenure: {
+ principal: 10000,
+ years: 24,
+ cagr: 38.1,
+ caption: '当前测算基准：对应 1997 年 5 月亚马逊 IPO（拆股调整发行价约 $0.075）至 2021 年 7 月杰夫·贝索斯卸任 CEO 交棒安迪·贾西（拆股调整均价约 $172.0）的 24 年开拓复利表现。'
+ },
+ full_29yr: {
+ principal: 1000,
+ years: 29,
+ cagr: 31.8,
+ caption: '当前测算基准：对应 1997 年 5 月 IPO 投入 $1,000 买入亚马逊股票并跨越贝索斯与贾西两代掌舵人持有至今（价值约 $300万）的 29 年 Day 1 长期主义复利奇迹。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-principal').value = preset.principal;
+ document.getElementById('sim-years').value = preset.years;
+ document.getElementById('sim-growth').value = preset.cagr;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义飞轮复利推演模式——自由探索不同初始本金、持有期限与创新企业年化复合增速下的长期财富放大效应。';
+ }
+
+ function updateValueSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 10000;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 19;
+ const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 25;
+ const divBonus = document.getElementById('div-bonus-toggle').checked ? 1.5 : 0;
+
+ const effGrowthPct = baseGrowthPct + divBonus;
+ const r = effGrowthPct / 100;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+ const finalVal = principal * Math.pow(1 + r, years);
+ const netGain = finalVal - principal;
+ const multiple = principal > 0 ? (finalVal / principal) : 1;
+ const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+ const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+ const midYears = Math.max(1, Math.round(years / 2));
+ const midVal = principal * Math.pow(1 + r, midYears);
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+ document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年资产翻一倍` : '稳健保值';
+ document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+ document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+ document.getElementById('sim-mid-val').textContent = `持有半程（第 ${midYears} 年）资产约：$${Math.round(midVal).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'amazon_culture_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“亚马逊文化法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'fy25_mix';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：Amazon FY2024 vs FY2025 六大业务模块净营收 ($B, 源自 SEC 10-K)
+ const mixConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '自营网上商城 (Online Stores)',
+ '第三方卖家服务 (3P Seller)',
+ 'AWS 云计算基础设施',
+ '数字广告服务 (Advertising)',
+ 'Prime 订阅服务 (Subscription)',
+ '实体店及其他 (Physical & Other)'
+ ],
+ datasets: [
+ {
+ label: 'FY2024 净营收 ($B · 总计 $637.96B)',
+ data: [247.03, 156.15, 107.56, 56.21, 44.37, 26.64],
+ backgroundColor: 'rgba(100, 116, 139, 0.65)',
+ borderRadius: 5
+ },
+ {
+ label: 'FY2025 净营收 ($B · 总计 $716.92B)',
+ data: [266.16, 172.18, 128.73, 68.60, 49.68, 31.57],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 300,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：FY2019–FY2025 全球员工规模演进（千人）vs 净营收扩张 ($B, 源自 SEC 10-K)
+ const trajectoryConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2019',
+ 'FY2020',
+ 'FY2021',
+ 'FY2022',
+ 'FY2023',
+ 'FY2024',
+ 'FY2025'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '全球员工人数 Headcount (千人)',
+ data: [798, 1298, 1608, 1541, 1525, 1556, 1576],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '亚马逊年度净营收 Net Sales ($B)',
+ data: [280.52, 386.06, 469.82, 513.98, 574.79, 637.96, 716.92],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 4.5,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.datasetIndex === 0 ? `全球员工: ${c.parsed.y.toLocaleString('en-US')}k 人` : `年度净营收: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 1800,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'k' }
+ },
+ y1: {
+ position: 'right',
+ min: 0,
+ max: 780,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'fy25_mix' ? mixConfig : trajectoryConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'fy25_mix') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2024 vs FY2025 亚马逊六大业务模块营收解耦增长（SEC 10-K）';
+ subEl.textContent = '每一个内部基础设施能力都对外商品化：自营零售 ($266.2B)、第三方服务 ($172.2B)、AWS ($128.7B) 与广告 ($68.6B) 齐头并进';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2019–FY2025 亚马逊自动化效率拐点：员工稳定（千人）vs 营收腾飞（$B）';
+ subEl.textContent = '2021 年见顶（160.8万人）后，依靠超 100 万台仓储机器人与扁平化重塑，员工总数保持平稳而营收再增近 $2,500亿';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '双披萨小队并行试错与广度拓展',
+ '统一价值观语法（16准则/PR-FAQ）',
+ '基础设施对外API商品化能力',
+ '跨部门端到端单一美学集权度',
+ '子公司/业务单元独立自治度'
+ ],
+ datasets: [
+ {
+ label: '亚马逊 (Amazon · API解耦并行自治)',
+ data: [10.0, 9.8, 10.0, 4.5, 9.2],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: '苹果公司 (Apple · 职能制集权精品)',
+ data: [4.2, 9.5, 3.0, 10.0, 3.0],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '伯克希尔 (Berkshire · 极端财务分权)',
+ data: [6.0, 8.8, 2.0, 2.5, 10.0],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'AWS 云计算分部营业利润率 (FY2025 10-K)',
+ '数字广告服务年度营收增速 YoY (FY2025 10-K)',
+ 'AWS 云计算年度营收增速 YoY (FY2025 10-K)',
+ '全公司综合营业利润率 Operating Margin (FY2025)',
+ '全公司综合净利润率 Net Profit Margin (FY2025)',
+ '北美零售分部营业利润率 North America (FY2025)'
+ ],
+ datasets: [
+ {
+ label: '亚马逊核心分部盈利与增长比率 (% · SEC Form 10-K)',
+ data: [35.4, 22.0, 19.7, 11.2, 10.8, 6.9],
+ backgroundColor: [
+ '#F59E0B',
+ '#10B981',
+ '#06B6D4',
+ '#6366F1',
+ '#8B5CF6',
+ '#EC4899'
+ ],
+ borderRadius: 6,
+ barThickness: 18
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `指标数值: ${c.parsed.x.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 42,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '亚马逊年度营业利润 Operating Income ($B)',
+ data: [24.88, 12.25, 36.85, 68.59, 79.98],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 32,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '全公司综合营业利润率 Operating Margin (%)',
+ data: [5.3, 2.4, 6.4, 10.8, 11.2],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.datasetIndex === 0 ? `年度营业利润: $${c.parsed.y.toFixed(2)}B` : `综合营业利润率: ${c.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 95,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '年度营业利润 ($B)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 14,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' },
+ title: { display: true, text: '综合营业利润率 (%)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateValueSimulator();
+ window.__loadChartJsWithFallback(function() {
+ updateChartsTheme();
+ });
+ });
+ </script>
+</body>
+</html>

@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Roblox Corporation (NYSE: RBLX) 企业文化与治理架构深度研究报告：14大Pods敏捷组织、四大核心价值观、UGC创作者飞轮与安全信任壁垒</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#93C5FD',
+ 400: '#60A5FA',
+ 500: '#3B82F6',
+ 600: '#2563EB',
+ 700: '#1D4ED8',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：电光蓝渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(59, 130, 246, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #3B82F6;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #60A5FA;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-white transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Roblox_Corporate_Culture_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-white text-xs shadow">
+ RBLX
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">San Mateo · 2004–2026+</div>
+ <div class="text-sm font-bold leading-tight">Roblox 企业文化深度研报</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-white text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">Roblox 文化专题导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 文化架构与“Roblox操作系统”</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 四大核心价值观与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 组织治理与同业横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 文化飞轮与十亿用户推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与治理挑战复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. Roblox 文化诊断核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-white font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>科技平台文化与组织架构研究组</p>
+ <p>财报与治理基准：SEC 2025 10-K / 2026Q3 10-Q</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-white font-extrabold text-sm shadow-lg shadow-mogold-500/25">
+ RBLX
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CORPORATE CULTURE</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">Roblox 企业文化研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 乐观与文明 × 14大Pods创业小队 × 自助式UGC共创生态 · 大卫·巴斯祖基的元宇宙组织操作系统
+ </p>
+ </div>
+
+ <!-- 核心组织与财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">FY2025 预订额 / 营收</span>
+ <span class="font-mono font-bold text-white">$6.80B / $4.90B</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">峰值日活 DAU (Q4'25)</span>
+ <span class="font-mono font-bold text-emerald-400">1.44亿+ 活跃用户</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">2025 创作者分成 DevEx</span>
+ <span class="font-mono font-bold text-mogold-400">$1.50B+ 生态分红</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>文化架构与“Roblox操作系统”</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>四大核心价值观与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>组织治理与同业横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>文化飞轮与十亿用户推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与治理挑战复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>Roblox 文化诊断核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">治理史定评：人类共同体验（Human Co-Experience）的UGC敏捷组织范本</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：创业拓荒期 (2004–2019) · 疫情破圈与上市 (2020–2023) · AI与安全升级期 (2024–2026+)</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据基准：2025 10-K / 2026Q3 财报</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景电光蓝点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#3B82F6 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 乐观与文明 × 14大Pods创业型小队 × 100%自助式UGC生态 × 预期结果与意外后果双重当责</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ Roblox Corporation (NYSE: RBLX) 企业文化深度研究报告：把组织当作“操作系统”打造的UGC共创生态与文明安全工程
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 如果说传统游戏巨头（如暴雪、EA）信奉“精英工作室重资产闭门造车”，那么联合创始人兼 CEO 大卫·巴斯祖基（David Baszucki）与埃里克·卡塞尔（Erik Cassel）自 2004 年创立 <strong class="text-white">Roblox</strong> 起，便确立了一条截然不同的组织哲学——<strong class="text-mogold-300">“公司最核心的产品不是某款爆款游戏，而是‘Roblox 操作系统（The Roblox Operating System）’——即我们的文化、人才与运行机制，用这套系统去赋能全球数百万创作者自助构建一切”</strong>（<a href="https://www.scribd.com/document/805748666/The-CEO-of-Roblox-on-Scaling-Community-Sourced-Innovation" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">HBR / CEO 专访实录</a>）。
+ 内部围绕 <strong class="text-white">14 个创新大组、约 60 个 10–20 人初创型小队（Pods）</strong> 运作，遵循“社区先于公司、公司先于团队、团队先于个人”的价值排序（<a href="https://about.roblox.com/newsroom/2024/04/roblox-values-principles" target="_blank" rel="noopener noreferrer" class="cite-link text-white font-semibold">Roblox Values &amp; Principles</a>）。在 2025 财年，Roblox 交出了预订额（Bookings）同比暴增 55% 至 <a href="https://investgame.net/news/pdf/2026-04-27-roblox-2025-annual-report_wp/" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$68.0亿</a>、GAAP 营收达 <a href="https://www.sec.gov/Archives/edgar/data/1315098/000131509826000024/rblx-20251231.htm" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$49.0亿</a>、日均活跃用户突破 <strong class="text-mogold-300">1.44 亿</strong> 的爆发式答卷，同时向创作者社区发放了超 <strong class="text-emerald-400">$15.0亿 DevEx 分成</strong>，并在 2025–2026 年领先行业立法全面推行强制性聊天年龄核验与 AI 创作加速工具（<a href="https://www.gsb.stanford.edu/insights/roblox-founder-ceo-says-trust-your-gut" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">Stanford GSB 2026 访谈</a>）。
+ </p>
+
+ <!-- 核心文化基因高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">“社区 > 公司 > 团队 > 个人”排序铁律</div>
+ <div class="text-white font-semibold">使命直指“以乐观与文明连接十亿人（Connect a Billion People with Optimism &amp; Civility）”，创作者生态繁荣是商业变现的前提</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">“既为预期结果负责，也为意外后果当责”</div>
+ <div class="text-mogold-400 font-semibold">创业第一个月即建立安全与文明系统，将“Roblox Safety”视为公司内部同等量级的独立产品线，主动超前于监管五年布局年龄评估</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">14大创新组 × ~60个初创级小队（Pods）</div>
+ <div class="text-emerald-400 font-semibold">打破大公司病：将组织拆解为约 60 个 10–20 人独立小队，保留“连实习生几个月内都能上线核心功能”的极速迭代文化</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>FY2025 预订额与 GAAP 营收</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$6.80B</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+55% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ FY25 预订额达 $68.0亿（+55%），GAAP 营收达 $49.0亿（+36%）；2026Q3 单季营收再增 16% 至 $16.0亿（<a href="https://investgame.net/news/pdf/2026-04-27-roblox-2025-annual-report_wp/" target="_blank" rel="noopener noreferrer" class="cite-link">2025 Annual Report</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>全球日活规模与“十亿愿景”进度</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">1.44 亿</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">目标 10 亿</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ Q4'25 日活 DAU 达 1.44 亿（全年净增约 6,000 万），占全球游戏内容市场约 3%，锚定 10% 中期市占与 10 亿用户长期北极星（<a href="https://www.gsb.stanford.edu/insights/roblox-founder-ceo-says-trust-your-gut" target="_blank" rel="noopener noreferrer" class="cite-link">Stanford GSB</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>创作者生态分成 (FY2025 DevEx)</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$1.50B+</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">社区共建</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ “尊重社区”的财务兑现：2025 全年向全球创作者发放逾 $15亿开发者兑换费用，从“业余爱好者”升级为职业工作室经济体（<a href="https://investgame.net/news/pdf/2026-04-27-roblox-2025-annual-report_wp/" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>组织颗粒度与 CEO 股权绑定</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~60 Pods</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">100% 股权薪酬</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 14 大技术组下设约 60 个 10–20 人初创型小队（每周 3 天线下协同）；2025 年 CEO 直接薪酬 100% 挂钩长期股权与预订额业绩（<a href="https://investgame.net/news/pdf/2026-04-27-roblox-2025-annual-report_wp/" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 文化架构与“Roblox操作系统” (Cultural Architecture & Roblox OS)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · The "Roblox Operating System" &amp; Pod Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 文化架构与“Roblox操作系统”：“赋能型底层基建 + 14组60小队创业型敏捷组织”</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2025 Bookings $6.80B (+55%) · 创作者分成突破 $1.50B</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2021–FY2025 预订额（Bookings）、GAAP营收与创作者分成（DevEx）飞轮对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">2025 年预订额跳涨 55% 至 $6.80B，平台与创作者生态同步进入高速正循环</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('fy25_mix')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：营收与生态分成</button>
+ <button onclick="switchBizChart('float_trajectory')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：日活用户扩张轨迹</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">“Roblox 操作系统”驱动的三大组织设计法则</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“像 60 家初创小队而非官僚巨兽一样运转”</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 巴斯祖基刻意避免按传统职能竖井划分庞大部门，而是将全公司组织为 <strong>14 个核心创新领域组，每组下设平均 4 个（合计约 60 个）10–20 人独立小队（Pods）</strong>，保留初创公司的极速迭代与全员“创始人思维”（<a href="https://www.scribd.com/document/805748666/The-CEO-of-Roblox-on-Scaling-Community-Sourced-Innovation" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox CEO Essay</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“自助式平台（Self-Service）”：永不亲自下场做内容</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ Roblox 内部员工<strong>从不制作商业游戏与体验</strong>——全部 3D 世界、服饰与社交玩法均由外部创作者自助发布并即时上线。内部工程师的唯一使命是打磨引擎、实时通信、云基建与创作者工具（<a href="https://www.gsb.stanford.edu/insights/roblox-founder-ceo-says-trust-your-gut" target="_blank" rel="noopener noreferrer" class="cite-link">Stanford GSB</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">3天线下混合办公 + 价值观作为“决策算法”</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 工程副总裁 Claus Moberg 指出：“若把四大价值观当作<strong>决策算法（Decision-Making Algorithm）</strong>，几乎不会迷失方向。”同时坚持每周 3 天线下协同以保障跨代际师徒传帮带与高密度脑暴（<a href="https://fortune.com/2025/04/02/roblox-ceo-david-baszucki-ai-gaming-leadership-next/" target="_blank" rel="noopener noreferrer" class="cite-link">Fortune 2025</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">核心人才画像定义</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">“Builders（建造者）”× 创始人主人翁精神</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大文化与生态支柱分部详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 支柱 1：UGC 创作者共创生态 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一生态支柱 · 外部创造力无限杠杆</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2025 DevEx $1.50B+</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. “尊重社区”：把数百万外部创作者视为核心合伙人</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 巴斯祖基在 2024 年新版《价值观与原则》中重申铁律：<strong>“社区先于公司，公司先于团队，团队先于个人。”</strong>（<a href="https://about.roblox.com/newsroom/2024/04/roblox-values-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox Newsroom</a>）公司将社区成员直接纳入广义人才版图——从青少年业余爱好者到数百人专业工作室，2025 年平台向开发者支付了超 <strong>$15亿现金分成</strong>，让创作者无需服务器运维与发行渠道成本即可实现全球化商业变现。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>零自研游戏冲突 · 纯粹平台赋能</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">社区越富，平台飞轮越快</span>
+ </div>
+ </div>
+
+ <!-- 支柱 2：公司内的“Roblox Safety”安全帝国 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第二信任支柱 · 文明与数字安全工程</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">超前法规 5 年布局</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. “假设 11 岁孩子刚拿到手机”：把安全做成独立核心产品</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2004 年创业第一个月，巴斯祖基与卡塞尔便亲手搭建了首批内容审核系统。他在斯坦福访谈中坦言：<strong>“我们内部甚至可以用一家独立公司的体量来衡量‘Roblox Safety’。”</strong>（<a href="https://www.gsb.stanford.edu/insights/roblox-founder-ceo-says-trust-your-gut" target="_blank" rel="noopener noreferrer" class="cite-link">Stanford GSB</a>）在没有法律强制要求的情况下，Roblox 于 2025 年底在全平台率先推出聊天功能强制年龄核验与年龄估计技术，宁可短期牺牲部分社交摩擦，也要捍卫家长与年轻用户的长期信任底座。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>AI 多模态实时审核 + 强制年龄核验</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">“乐观与文明”不是口号而是代码底线</span>
+ </div>
+ </div>
+
+ <!-- 支柱 3：人机协同与AI创作加速 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">第三技术支柱 · 人类加速技术 (Human Acceleration)</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">3D 生成式 AI 基座</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. “放眼长远”：从 3D 游戏引擎进化为下一代人类通信与社交基础设施</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 在绝大多数人还不知道“元宇宙”一词的 2000 年代初，Roblox 就押注云端多人实时 3D 模拟；进入 2025–2026 年，公司将 AI 定义为<strong>“人类加速技术（Human Acceleration Technology）”</strong>——不以 AI 取代人类创作者，而是通过文本生成 3D 场景、智能脚本助手与跨语言实时翻译，让普通玩家用自然语言即可构建复杂虚拟世界，推动体验从“积木卡通风”向“照片级写实与全年龄社交”跨越（<a href="https://fortune.com/2025/04/02/roblox-ceo-david-baszucki-ai-gaming-leadership-next/" target="_blank" rel="noopener noreferrer" class="cite-link">Fortune</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>3D 物理引擎 + 实时语音 + 跨语种 AI 翻译</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">重塑人类共同相聚与沟通的方式</span>
+ </div>
+ </div>
+
+ <!-- 支柱 4：全员实干与实习生上线文化 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">第四执行支柱 · 极致敏捷与公平晋升机制</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">Get Stuff Done</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. “真抓实干（Get Stuff Done）”与去偏见公平治理</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ Roblox 崇尚极致的“交付文化（Shipping Culture）”——<strong>就连暑期实习生在短短几个月的实习期内也会亲手将新功能推送给全球上亿玩家</strong>（<a href="https://careers.roblox.com/" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox Careers</a>）。同时在 2024 年原则升级中，公司明确反对僵化的配额制（“我们追踪人口结构但绝不设招聘指标”），坚持在招聘、晋升与薪酬中采用统一、去偏见的能力与结果评估体系（<a href="https://about.roblox.com/newsroom/2024/04/roblox-values-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox Principles</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Meritocracy 唯才是举 + 持续学习反馈文化</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">拒绝空谈PPT，以真实线上影响力衡量一切</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 四大核心价值观与四重文化护城河 (4 Core Values & Cultural Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Four Core Values &amp; Ecosystem Cultural Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 四大核心价值观与四重文化护城河：为什么传统游戏大厂学不会 Roblox？</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极宽 (Wide Moat · 双边UGC网络效应 + 青少年安全合规壁垒 + 敏捷工程文化)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四大核心价值观深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 价值观 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">Respect the Community（尊重社区）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>核心法则：社区先于公司，公司先于团队，团队先于个人。</strong>决策时首先评估对外部玩家与创作者生态的整体福祉，保持真诚透明沟通。正是这种克制，使 Roblox 绝不因短期财务诱惑而推出破坏创作者公平竞争的自营爆款，从而锁定了全球数百万开发者的长期忠诚（<a href="https://about.roblox.com/newsroom/2024/04/roblox-values-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox Values</a>）。
+ </p>
+ </div>
+
+ <!-- 价值观 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">We Are Responsible（勇于当责）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>核心法则：既为预期结果负责，也为意外后果当责（Intended &amp; Unintended Consequences）。</strong>平台级企业的最大风险在于对社区外部性甩锅；Roblox 要求每位员工以主人翁心态预判技术滥用风险，在未成年人保护、反欺诈与虚拟经济秩序上主动承担超越法律底线的社会责任（<a href="https://www.gsb.stanford.edu/insights/roblox-founder-ceo-says-trust-your-gut" target="_blank" rel="noopener noreferrer" class="cite-link">Stanford GSB</a>）。
+ </p>
+ </div>
+
+ <!-- 价值观 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">Take the Long View（放眼长远）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>核心法则：用十年后的愿景校准今天的短期决策。</strong>自 2004 年起便忍受长达十余年的冷启动与高额底层研发投入，不追求短期流量收割，而是坚定构建全平台云渲染、通用虚拟化身（Avatar）经济系统与全球服务器低延迟网络，静待时间复利爆发（<a href="https://about.roblox.com/newsroom/2024/04/roblox-values-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox Values</a>）。
+ </p>
+ </div>
+
+ <!-- 价值观 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">Get Stuff Done（真抓实干）</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>核心法则：每天主动出击、快速交付、持续迭代。</strong>宏大愿景必须落地为每天的代码提交与体验优化。巴斯祖基在公开复盘中也坦言自身管理风格的进化——从早期创业时的情绪化直白转向“用五个字精准切中优化要点”，赋能一线工程师高效解决问题（<a href="https://www.gsb.stanford.edu/insights/roblox-founder-ceo-says-trust-your-gut" target="_blank" rel="noopener noreferrer" class="cite-link">Stanford GSB 2026</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维互动娱乐与平台治理文化雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">三大数字娱乐与社交平台治理文化五维对比雷达</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Roblox (RBLX) vs 传统 3A 游戏大厂 (EA/Activision) vs 商业引擎工具商 (Unity)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 组织治理与同业横向对比 (Governance Paradigms Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Interactive Entertainment &amp; Platform Culture Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 组织与生态文化横向对比：五种数字互动与创作者平台范式剖析</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索范式 / 代表企业 / 机制关键词..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-white shadow-sm transition cursor-pointer">全部组织范式</button>
+ <button onclick="filterCompetitors('ugc')" data-filter="ugc" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">UGC与创作者平台派</button>
+ <button onclick="filterCompetitors('studio')" data-filter="studio" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">自研内容与精品工作室派</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">组织范式与代表企业</th>
+ <th class="py-4 px-4 min-w-[140px]">组织架构与团队颗粒度</th>
+ <th class="py-4 px-4 min-w-[140px]">内容供给与生态关系</th>
+ <th class="py-4 px-4 min-w-[125px]">安全治理与长期导向</th>
+ <th class="py-4 px-4 min-w-[120px]">标志性运营指标</th>
+ <th class="py-4 px-5 min-w-[240px]">与 Roblox 企业文化的深度对比评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：Roblox 基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-white text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">Roblox Corporation</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">David Baszucki (San Mateo)</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">14大组 × ~60个 10–20人创业小队 (Pods)</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">100% 外部UGC · 零自营内容竞争</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">安全即核心产品 · 年龄强核验</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">1.44亿 DAU · $6.8B Bookings</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>纯粹平台操作系统标杆：</strong>靠“社区先于公司”价值观消除零和博弈，以小队制保持初创敏捷度，实现长周期网络效应复利（<a href="https://about.roblox.com/newsroom/2024/04/roblox-values-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox Principles</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：Epic Games / Fortnite UEFN 模式 -->
+ <tr data-category="ugc" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">旗舰爆款+生态开放派</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Epic Games (Tim Sweeney / Fortnite)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">强引擎研发 + 顶级第一方内容工作室</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">第一方超级IP + UEFN创作者经济</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">反平台税斗士 · 虚幻引擎生态</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">高质量3A画质与高分成比例</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“球员兼裁判” vs “纯粹修路者”：</strong>Epic 自己拥有史上最吸金的《堡垒之夜》第一方内容，创作者难免面临官方自营导流竞争；Roblox 则彻底放弃自营内容以换取创作者绝对信任。
+ </td>
+ </tr>
+
+ <!-- 行 3：Valve (Steam) 无层级精英自治模式 -->
+ <tr data-category="ugc" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">极端扁平无层级分发派</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Valve Corporation (Gabe Newell)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">约350人极致精简 · 无经理零层级</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">PC游戏分发霸主 + 创意工坊</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">高度自由放任 · 人均创收极高</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">PC 端绝对统治级分发壁垒</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>自由放任 vs 主动安全护航：</strong>Valve 的完全无经理制适合几百人精英团队服务成年 PC 玩家；而 Roblox 面对 1.44 亿低龄及全年龄用户，必须建立高度组织化的安全治理与明确的 14 组方向对齐。
+ </td>
+ </tr>
+
+ <!-- 行 4：传统 3A 游戏发行巨头 (EA / 育碧) -->
+ <tr data-category="studio" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">工业化年货大作流水线派</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Electronic Arts / Ubisoft</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">数千人跨洲大型工作室矩阵</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">全闭源重资产自研 · 单款豪赌</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">季度财报驱动 · 依赖成熟IP续作</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">单作研发周期长达 4–6 年</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“内容制造业” vs “互联网操作系统”：</strong>传统大厂受困于单款大作研发周期长、边际成本高与爆款不确定性；Roblox 把内容创意风险分散给数百万创作者，实现边际成本递减。
+ </td>
+ </tr>
+
+ <!-- 行 5：Unity 商业底层引擎工具派 -->
+ <tr data-category="studio" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">独立开发引擎工具商派</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Unity Technologies</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">多并购整合型企业架构</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">纯 B2B 软件授权 + 广告网络</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">曾因“安装费风波”重创社区信任</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">不掌控终端用户社交关系链</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“工具授权” vs “全栈社交消费生态”：</strong>Unity 曾因单方面修改收费条款引发开发者大逃亡，印证了 Roblox “Respect the Community”铁律的含金量——且 Roblox 同时掌握云端托管、支付结算与终端社交图谱。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的组织范式记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：Roblox 文化与生态核心效能指标对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">“社区先于公司”的商业飞轮拆解：Roblox 每 1 美元预订额（Bookings）背后的生态价值分配与增长动能（FY2025 基准）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">通过将超 22% 预订额直接回馈给创作者社区（DevEx &gt; $1.50B），Roblox 实现了无需支付巨额买量获客费的病毒式社交裂变（2025 年预订额同比增长 +55.0%，GAAP 营收增长 +36.0%）（<a href="https://investgame.net/news/pdf/2026-04-27-roblox-2025-annual-report_wp/" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox 2025 Annual Report</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">2025 预订额 +55% · 创作者分成超 $15亿</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 文化飞轮与十亿用户推演 (Cultural Flywheel & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Cultural Flywheel &amp; "1 Billion Users" Growth Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 文化飞轮与十亿用户推演：当“自助式UGC + AI加速 + 社交裂变”持续复利</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">用生态硬指标验证企业文化：文化不是墙上的海报，而是驱动亿级用户自发创造与留存的底层引力</span>
+ </div>
+
+ <!-- 1. 文化驱动的四大生态护城河指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Bookings Surge (FY2025)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$6.80B (+55%)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 全年预订额从 $43.9亿跃升至 $68.0亿，单年净增 6,000 万日活用户，验证“放眼长远”基建投入的爆发弹性（<a href="https://investgame.net/news/pdf/2026-04-27-roblox-2025-annual-report_wp/" target="_blank" rel="noopener noreferrer" class="cite-link">2025 10-K</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Creator Payouts (DevEx)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$1.50B+ (FY25)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ “尊重社区”的直接激励：创作者年分成突破 15 亿美元，吸引全职专业游戏团队入驻，推动内容从低龄向全年龄段升级（<a href="https://investgame.net/news/pdf/2026-04-27-roblox-2025-annual-report_wp/" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Agile Pod Granularity</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">14 Groups · ~60 Pods</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 将数千名技术与产品人员切分为约 60 个 10–20 人初创型小队，确保在体量膨胀后依然保持极高的功能迭代速率（<a href="https://www.scribd.com/document/805748666/The-CEO-of-Roblox-on-Scaling-Community-Sourced-Innovation" target="_blank" rel="noopener noreferrer" class="cite-link">CEO Essay</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">CEO Equity Alignment</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">100% 股权薪酬</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 2025 年 CEO 巴斯祖基直接薪酬 100% 采用长期股权形式，严格挂钩预订额与调整后 EBITDA 利润率目标（<a href="https://investgame.net/news/pdf/2026-04-27-roblox-2025-annual-report_wp/" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2021–FY2025 Roblox 日均活跃用户（DAU）与年度预订额（Bookings）双轮跃升曲线（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">五年间日活用户从 4,550 万攀升至 1.44 亿（+216%），年度预订额从 $27.3亿跃升至 $68.0亿（+149%），印证“先繁荣社区、后释放商业化”的复利路径</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">5年 DAU 增逾 3 倍 · 预订额复合增速 25.6%</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“十亿用户愿景”UGC 生态飞轮动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>ROBLOX 1-BILLION VISION ENGINE · UGC 生态飞轮与“十亿用户愿景”动态推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">乐观与文明的复利：多情景用户扩张与创作者分成规模模拟器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大演进情景（2021–2025 历史真实高速复利 / 2026+ 万亿级稳健破圈路线 / AI 创作爆发加速情景）或自定义参数</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#3B82F6] cursor-pointer">
+ <span>叠加 AI 3D 创作工具破圈加速 (+4.5%/年)</span>
+ </label>
+ </div>
+
+ <!-- 真实历史与战略情景预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('buffett_60yr')" data-era="buffett_60yr" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-white font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 2021–2025 历史真实生态增速</div>
+ <div class="text-[11px] opacity-90 font-mono mt-0.5">8年推演 · DAU 年化复合增速 25.6% CAGR</div>
+ </button>
+ <button type="button" onclick="setSimEra('sp500_benchmark')" data-era="sp500_benchmark" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 2026+ 稳健全年龄化破圈路径</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">10年推演 · 年化用户复合增速 18.0% CAGR</div>
+ </button>
+ <button type="button" onclick="setSimEra('abel_era')" data-era="abel_era" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 安全核验过渡期保守基准档</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">10年推演 · 成熟市场稳步渗透 12.5% CAGR</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">基准日均活跃用户规模 (百万 DAU)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">144 百万</span>
+ </div>
+ <input id="sim-principal" type="range" min="45" max="250" step="1" value="144" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#3B82F6] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期战略推演年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">8 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="15" step="1" value="8" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#3B82F6] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">DAU 年化复合增长率 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">25.6%</span>
+ </div>
+ <input id="sim-growth" type="range" min="5" max="35" step="0.2" value="25.6" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：以 2025 年底 1.44 亿日活为起点，沿用 2021–2025 年间真实年化 25.6% 用户复合增速，测算距离巴斯祖基“连接十亿日活用户”北极星愿景的达成时间轴与配套创作者经济体量。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计日均活跃用户 (DAU)</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">8.92 亿</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">达成“十亿用户愿景”的 89.2%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">用户规模扩张倍数 (DAU Multiple)</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">6.19x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 3.0 年活跃生态翻一倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">对应期末年化预订额潜力 (按 $47/DAU)</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$41.9B</div>
+ <div class="text-xs text-slate-400 mt-1.5">约占未来全球数字娱乐市场重要份额</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">预计年度创作者分成池 (按 22% DevEx)</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">$9.22B / 年</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">推演半程（第 4 年）DAU 约：3.58 亿</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角历史定评对比 (Bull Legacy vs Critical Reflection) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">正向文化与组织定评 (Enduring Cultural Moat)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">生态共赢 + 敏捷小队引擎</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>把“不与创作者抢食”上升为信仰级纪律：</strong>彻底放弃第一方商业游戏开发，换取数百万外部开发者毫无保留地将核心创意与社交资产沉淀在 Roblox 上（<a href="https://about.roblox.com/newsroom/2024/04/roblox-values-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox Principles</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>60 个创业型 Pods 有效抵御大企业官僚病：</strong>以 10–20 人小队维持高度自主与极速试错，在年预订额近 70 亿美元体量下仍保持互联网初创公司的交付速度（<a href="https://www.scribd.com/document/805748666/The-CEO-of-Roblox-on-Scaling-Community-Sourced-Innovation" target="_blank" rel="noopener noreferrer" class="cite-link">CEO Essay</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>超前于监管的自我规制文化：</strong>主动承担平台“意外后果”责任，提前数年投入重金研发年龄核验与 AI 安全审核，将合规痛点转化为长期护城河（<a href="https://www.gsb.stanford.edu/insights/roblox-founder-ceo-says-trust-your-gut" target="_blank" rel="noopener noreferrer" class="cite-link">Stanford GSB</a>）。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">客观局限与治理挑战反思 (Critical Lens)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">UGC治理悖论 + 盈利平衡压力</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>开放创作自由与儿童安全的永恒张力：</strong>海量 UGC 实时上传天然伴随违规内容与不法分子渗透风险；2025 年底推出强制聊天年龄核验虽筑牢了安全底线，但也一度导致 2026Q3 短期日活同比回调 9%、预订额下滑 12%（<a href="https://www.gamesindustry.biz/roblox-q3-results-beat-expectations-despite-bookings-falling-12-to-17bn" target="_blank" rel="noopener noreferrer" class="cite-link">GamesIndustry.biz</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>生态分成比例与 GAAP 亏损之间的拉锯：</strong>为了维持创作者热情并重金投入安全与 AI 基建，公司长期承受较高股权激励（SBC）与服务器折旧，2026Q3 仍录得 $2.30亿 GAAP 净亏损（<a href="https://www.gamesindustry.biz/roblox-q3-results-beat-expectations-despite-bookings-falling-12-to-17bn" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 Report</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>低龄向平台心智向“全年龄段”破圈的文化惯性：</strong>“假设 11 岁孩子拿到手机”的默认安全设计虽保护了青少年，但在吸引 25 岁以上硬核成年社交玩家时仍需持续打破“低幼积木游戏”的刻板印象。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕演进与治理挑战复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Cultural Evolution &amp; Governance Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕文化演进与治理挑战复盘：从物理模拟教育软件到全球亿级数字社交帝国</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">理解 Roblox 的关键：它在二十余年间不断把早期物理教育软件的“用户自造顿悟”制度化为全球社交操作系统</span>
+ </div>
+
+ <!-- 1. 三幕演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 基因奠基与冷启动</span>
+ <span class="font-mono text-xs font-bold text-slate-500">2004–2019</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">自助UGC顿悟与安全首月立规</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>巴斯祖基与卡塞尔在早期开发物理模拟软件《Interactive Physics》时发现，学生们最热衷的不是预设课程，而是自己动手搭建奇思妙想的机械装置；2004 年创立 Roblox 后，他们将“自助式全员创作”定为灵魂，并在<strong>创业第一个月就上线内容审核系统</strong>，熬过长达十余年的慢热期打磨出最初版核心价值观（<a href="https://www.scribd.com/document/805748666/The-CEO-of-Roblox-on-Scaling-Community-Sourced-Innovation" target="_blank" rel="noopener noreferrer" class="cite-link">CEO Essay</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段启示：伟大的平台文化往往源于创始人对人性创造本能的早期洞察
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 爆发破圈与小队制扩容</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2020–2024</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">60小队敏捷架构与价值观升级</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2020 年全球居家社交浪潮引爆 Roblox 用户呈指数级激增，公司于 2021 年在纽交所直接上市（DPO）。面对员工人数迅速扩张带来的大公司病隐忧，巴斯祖基推行“14 大组 × ~60 个 10–20 人初创型 Pods”架构，并于 2024 年 4 月全面迭代《价值观与原则》，明确“去偏见唯才是举”与结果导向的领导力评估标准（<a href="https://about.roblox.com/newsroom/2024/04/roblox-values-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox 2024 Update</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：超高速扩张期唯有拆小作战单元并明晰原则，才能防住组织熵增
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · AI加速与安全强治理</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2025–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">超前年龄核验与十亿用户征途</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2025 年平台日活突破 1.44 亿、DevEx 分成首超 $15亿；面对全球对未成年人数字社交的严苛审视，Roblox 践行“为意外后果当责”铁律，主动超前立法推出全平台强制聊天年龄核验，宁可承受 2026 年短期增速换挡，也要依托 3D 生成式 AI 与全年龄分级生态向“10% 全球游戏市场份额与十亿用户”迈进（<a href="https://www.gsb.stanford.edu/insights/roblox-founder-ceo-says-trust-your-gut" target="_blank" rel="noopener noreferrer" class="cite-link">Stanford GSB 2026</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段启示：敢于牺牲短期数据指标以捍卫信任底座，才是真长期主义
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大治理实战教训与文化进化闭环矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：Roblox 企业文化在四大实战挑战中的自我进化</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">进化 01 · 主动推行强制年龄核验的短期阵痛</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2025Q4–2026Q3 信任抉择</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">“在法律强制要求前五年，就把安全护栏建好”</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2025 年底推行强制聊天年龄检查直接抬高了新用户社交门槛，导致 2026Q3 出现阶段性 DAU 与预订额同比回调；但管理层坚定执行“We Are Responsible”，用短期增长摩擦换取家长与监管机构的长期信任通行证（<a href="https://investgame.net/news/pdf/2026-04-27-roblox-2025-annual-report_wp/" target="_blank" rel="noopener noreferrer" class="cite-link">2026 Proxy</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">进化 02 · 从“低龄积木”向全年龄段社交破圈</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">17–24 岁核心增长极</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">既守护儿童安全底线，又为成年用户释放写实创作空间</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 通过精细化的内容分级与年龄分层隔离，Roblox 在不破坏青少年保护的前提下，推动 17 岁及以上用户成为增长最快的群体，支撑起沉浸式演唱会、品牌虚拟商城与复杂硬核玩法的多元生态（<a href="https://www.scribd.com/document/805748666/The-CEO-of-Roblox-on-Scaling-Community-Sourced-Innovation" target="_blank" rel="noopener noreferrer" class="cite-link">CEO Essay</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">进化 03 · 巴斯祖基自身领导力的“自我重构”</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">创始人到上市公司CEO</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">收敛早期情绪化批判，进化为精准赋能的平台架构师</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 巴斯祖基在 2026 年斯坦福演讲中坦承“我的工作就是不断重构我自己”——从早期创业时直接怒斥“这太烂了”，进化为克制直觉冲动、用简洁精准的建设性反馈激发团队创造力，树立“持续学习”的榜样（<a href="https://www.gsb.stanford.edu/insights/roblox-founder-ceo-says-trust-your-gut" target="_blank" rel="noopener noreferrer" class="cite-link">Stanford GSB 2026</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">进化 04 · 拒绝僵化配额制的公平人才体系</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2024 原则校准</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">在拓宽招聘漏斗的同时坚守“统一能力与结果标尺”</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 面对硅谷一度盛行的形式主义指标，Roblox 在 2024 年原则更新中明确划界：在招聘漏斗顶端积极触达多元背景人才，但在评估、晋升与定薪环节<strong>绝不设置任何配额目标</strong>，确保每一位入选的“Builder”都能切实提升团队创新与执行力（<a href="https://about.roblox.com/newsroom/2024/04/roblox-values-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox Principles</a>）。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级平台治理与长期主义启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给平台型创始人、产品组织架构师与长期投资者的三条“Roblox 底层文化法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 先造“操作系统”，再让千万外部创作者在上面建城</div>
+ <p class="text-slate-300 leading-relaxed">
+ 真正具备指数级扩展性的平台，必须克制“自己下场做第一方爆款与生态伙伴争利”的冲动；把全部工程资源投入底层工具与公平分润机制，社区就会成为你最庞大、零边际成本的研发军团。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 用“创业型小队（Pods）+ 清晰价值观”对抗大公司官僚化</div>
+ <p class="text-slate-300 leading-relaxed">
+ 当公司突破数千人规模时，将组织拆分为 10–20 人的独立作战小队，并用寥寥数条清晰的价值观作为全员通用的“决策算法”，既能保留初创企业的极速上线文化，又能确保万人同向而行。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 为生态的“意外后果”主动当责，信任才是最高壁垒</div>
+ <p class="text-slate-300 leading-relaxed">
+ 任何连接亿万用户的数字平台都会面临监管与安全考验；与其在危机爆发后被动补救，不如从第一天起就把安全与文明当作独立核心产品来打磨——超前于法规的自律终将沉淀为竞争对手无法逾越的护城河。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “Roblox文化法则”平台组织与生态治理诊断核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Roblox Corporate Culture &amp; Platform Governance Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “Roblox 文化法则”平台型企业组织与生态治理交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于诊断任何科技平台、创作者经济体或高成长型互联网组织是否具备“Roblox 式”健康自驱的生态文化（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. “社区先于公司”测试：平台是否克制与创作者争利？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">生态信任锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验平台是否像 Roblox 一样坚持纯赋能定位（年分成超 $15亿）而非下场做自营内容收割流量，确保创作者生态长期繁荣。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 小队制敏捷度测试：组织是否保持 10–20 人初创颗粒度？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">反官僚壁垒</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 对标 Roblox 14 组 × ~60 个独立 Pods 架构：观察一线工程师与实习生能否在数月内将核心创新功能直接交付给真实用户。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. “意外后果当责”测试：安全与合规是否超前于监管布局？</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">安全防火墙</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验公司是否把安全与社区文明视为独立核心产品线，敢于在法律强制前主动投入年龄核验与 AI 审核，宁可牺牲短期增长摩擦。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 决策算法测试：价值观能否真正指导一线日常取舍？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">文化执行力</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查企业价值观是停留在墙上的空洞口号，还是能像 Roblox 四大原则一样成为一线团队在复杂两难中自主决策的清晰算法。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 公平与唯才是举测试：是否拒绝形式主义指标而看重真实产出？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">人才纯洁度</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察人才选拔与晋升是否严格遵循统一客观的创新力与执行结果标准，同时通过线下高密度协同培养新一代“Builders”。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#2563EB] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 长期股东利益绑定：核心掌舵人薪酬是否与长期生态增长锁定？</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">长周期锚定</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 对标巴斯祖基 100% 长期股权薪酬与“连接十亿人”二十年北极星愿景，检验管理层是否具备抵御华尔街季度短期噪音的定力。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>Roblox Corporation (NYSE: RBLX) 企业文化、敏捷组织与UGC生态深度研究报告 · 机构框架版</span>
+ <span>核心数据出处：Roblox 2025 Form 10-K · 2026 Proxy Statement · Roblox Values &amp; Principles</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务、组织架构与管理层访谈资料均核验自美国证监会（SEC EDGAR）公开披露的 <a href="https://www.sec.gov/Archives/edgar/data/1315098/000131509826000024/rblx-20251231.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox 2025 Form 10-K</a>、<a href="https://investgame.net/news/pdf/2026-04-27-roblox-2025-annual-report_wp/" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox 2026 Proxy Statement &amp; 2025 Annual Report</a>、<a href="https://about.roblox.com/newsroom/2024/04/roblox-values-principles" target="_blank" rel="noopener noreferrer" class="cite-link">Roblox Values and Principles 官方白皮书</a>、CEO David Baszucki 在 <a href="https://www.gsb.stanford.edu/insights/roblox-founder-ceo-says-trust-your-gut" target="_blank" rel="noopener noreferrer" class="cite-link">Stanford GSB (2026)</a> 与 <a href="https://fortune.com/2025/04/02/roblox-ceo-david-baszucki-ai-gaming-leadership-next/" target="_blank" rel="noopener noreferrer" class="cite-link">Fortune (2025)</a> 的深度对话实录，以及 2026Q3 季度业绩报告。报告内置的推演器旨在复盘平台网络效应与用户扩张规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Roblox_Corporate_Culture_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Roblox_Corporate_Culture_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 组织与生态范式横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “十亿用户愿景”UGC 生态飞轮动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ buffett_60yr: {
+ principal: 144,
+ years: 8,
+ cagr: 25.6,
+ caption: '当前测算基准：以 2025 年底 1.44 亿日活为起点，沿用 2021–2025 年间真实年化 25.6% 用户复合增速，测算距离巴斯祖基“连接十亿日活用户”北极星愿景的达成时间轴与配套创作者经济体量。'
+ },
+ sp500_benchmark: {
+ principal: 144,
+ years: 10,
+ cagr: 18.0,
+ caption: '当前测算基准：模拟完成全平台年龄核验升级后，凭借 17 岁以上全年龄社交破圈与全球新兴市场渗透实现年化 18.0% 稳健扩张的十年路线图。'
+ },
+ abel_era: {
+ principal: 144,
+ years: 10,
+ cagr: 12.5,
+ caption: '当前测算基准：保守评估情景，假设高基数下日活年化复合增速放缓至 12.5%，聚焦存量用户变现深度提升与创作者生态高质量发展。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-white font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-90 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-principal').value = preset.principal;
+ document.getElementById('sim-years').value = preset.years;
+ document.getElementById('sim-growth').value = preset.cagr;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义生态飞轮推演模式——自由探索不同基准日活体量、战略推演年限与年化增长率下的十亿用户愿景进度。';
+ }
+
+ function updateValueSimulator() {
+ const principalM = parseFloat(document.getElementById('sim-principal').value) || 144;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 8;
+ const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 25.6;
+ const aiBonus = document.getElementById('div-bonus-toggle').checked ? 4.5 : 0;
+
+ const effGrowthPct = baseGrowthPct + aiBonus;
+ const r = effGrowthPct / 100;
+
+ document.getElementById('sim-principal-label').textContent = principalM.toLocaleString('en-US') + ' 百万';
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+ const finalDauM = principalM * Math.pow(1 + r, years);
+ const multiple = principalM > 0 ? (finalDauM / principalM) : 1;
+ const visionPct = (finalDauM / 1000) * 100;
+ const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+
+ // 按 2025 年基准：约 $47.2 Bookings / DAU ($6.80B / 144M)
+ const estBookingsB = (finalDauM * 47.2) / 1000;
+ const estDevExB = estBookingsB * 0.221;
+ const midYears = Math.max(1, Math.round(years / 2));
+ const midDauM = principalM * Math.pow(1 + r, midYears);
+
+ const formatDau = (m) => m >= 100 ? (m / 100).toFixed(2) + ' 亿' : Math.round(m) + ' 百万';
+
+ document.getElementById('sim-final-value').textContent = formatDau(finalDauM);
+ document.getElementById('sim-total-return').textContent = visionPct >= 100
+ ? `已超越“十亿用户愿景” (${visionPct.toFixed(0)}%)`
+ : `达成“十亿用户愿景”的 ${visionPct.toFixed(1)}%`;
+ document.getElementById('sim-multiple').textContent = `${multiple.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年活跃生态翻一倍` : '稳健渗透';
+ document.getElementById('sim-net-gain').textContent = '$' + estBookingsB.toFixed(1) + 'B';
+ document.getElementById('sim-eff-cagr').textContent = '$' + estDevExB.toFixed(2) + 'B / 年';
+ document.getElementById('sim-mid-val').textContent = `推演半程（第 ${midYears} 年）DAU 约：${formatDau(midDauM)}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'rblx_culture_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“Roblox 文化法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'fy25_mix';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2021–FY2025 预订额、GAAP 营收与创作者分成 DevEx 对比 ($B, 源自 SEC 10-K)
+ const mixConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025'],
+ datasets: [
+ {
+ label: '年度预订额 Bookings ($B)',
+ data: [2.73, 2.87, 3.52, 4.39, 6.80],
+ backgroundColor: '#3B82F6',
+ borderRadius: 5
+ },
+ {
+ label: 'GAAP 营业收入 Revenue ($B)',
+ data: [1.92, 2.23, 2.80, 3.60, 4.90],
+ backgroundColor: 'rgba(100, 116, 139, 0.7)',
+ borderRadius: 5
+ },
+ {
+ label: '创作者分成 DevEx Payouts ($B)',
+ data: [0.54, 0.62, 0.74, 0.92, 1.50],
+ backgroundColor: '#10B981',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 8,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：FY2020–Q4'2025 全球日均活跃用户 DAU 扩张轨迹 (百万)
+ const trajectoryConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2020 (疫后破圈)',
+ 'FY2021 (纽交所上市)',
+ 'FY2022 (全球化渗透)',
+ 'FY2023 (全年龄提速)',
+ 'Q4 2024 (稳健扩张)',
+ 'Q4 2025 (生态大爆发)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '平均日活用户规模 DAU (百万)',
+ data: [32.6, 45.5, 56.0, 68.4, 85.3, 144.0],
+ backgroundColor: 'rgba(59, 130, 246, 0.85)',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: ${c.parsed.y.toFixed(1)} 百万`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 160,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'M' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'fy25_mix' ? mixConfig : trajectoryConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'fy25_mix') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2021–FY2025 预订额（Bookings）、GAAP营收与创作者分成（DevEx）飞轮对比';
+ subEl.textContent = '2025 年预订额跳涨 55% 至 $6.80B，平台与创作者生态同步进入高速正循环';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2020–Q4 2025 Roblox 全球日均活跃用户（DAU）跨越式扩张轨迹（百万）';
+ subEl.textContent = '从 2020 年 3,260 万增长至 2025 年底的 1.44 亿日活，向“连接十亿用户”愿景迈进';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '外部创作者生态共赢与零自营冲突',
+ '小队制敏捷组织与极速交付能力',
+ '主动数字安全治理与儿童信任壁垒',
+ '长期主义基建投入与AI赋能愿景',
+ '双边网络效应与用户社交粘性'
+ ],
+ datasets: [
+ {
+ label: 'Roblox Corporation (RBLX)',
+ data: [9.9, 9.5, 9.6, 9.7, 9.8],
+ borderColor: '#3B82F6',
+ backgroundColor: 'rgba(59, 130, 246, 0.24)',
+ pointBackgroundColor: '#3B82F6',
+ borderWidth: 2.5
+ },
+ {
+ label: '传统 3A 游戏发行大厂 (EA/Ubisoft)',
+ data: [3.2, 4.8, 6.0, 5.2, 5.8],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '纯商业引擎工具商 (Unity)',
+ data: [6.0, 6.2, 5.5, 6.8, 4.0],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2025 预订额 Bookings 同比增长率 (%)',
+ 'FY2025 创作者分成 DevEx 同比增长率 (%)',
+ 'FY2025 GAAP 营业收入同比增长率 (%)',
+ '2021–2025 日均活跃用户 DAU 年化复合增速 (%)',
+ '创作者分成占年度预订额比例 (DevEx / Bookings %)'
+ ],
+ datasets: [
+ {
+ label: 'Roblox 核心文化与飞轮效能指标 (%)',
+ data: [55.0, 63.0, 36.0, 25.6, 22.1],
+ backgroundColor: [
+ '#3B82F6',
+ '#10B981',
+ '#06B6D4',
+ '#6366F1',
+ '#F59E0B'
+ ],
+ borderRadius: 6,
+ barThickness: 20
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `指标数值: ${c.parsed.x.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 70,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '年末/峰值日均活跃用户 DAU (百万)',
+ data: [45.5, 56.0, 68.4, 85.3, 144.0],
+ backgroundColor: 'rgba(59, 130, 246, 0.85)',
+ borderRadius: 5,
+ barThickness: 32,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '年度预订额 Annual Bookings ($B)',
+ data: [2.73, 2.87, 3.52, 4.39, 6.80],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: ${c.parsed.y.toFixed(1)} 百万`
+ : `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 160,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + 'M' },
+ title: { display: true, text: '日均活跃用户 DAU (百万)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 8,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '年度预订额 ($B)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateValueSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

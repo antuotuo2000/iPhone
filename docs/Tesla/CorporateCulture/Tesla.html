@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>特斯拉 Tesla (TSLA) 企业文化与治理架构深度研究报告：第一性原理、硬核工程集权、极端迭代速度与“All In”使命驱动机器</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCA5A5',
+ 400: '#F87171',
+ 500: '#E31937',
+ 600: '#DC2626',
+ 700: '#B91C1C',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：特斯拉赛道红渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(227, 25, 55, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #E31937;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F87171;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-white transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Tesla_TSLA_Corporate_Culture_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-white text-xs shadow">
+ TSLA
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Austin · 2003–2026+</div>
+ <div class="text-sm font-bold leading-tight">特斯拉企业文化深度研报</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-white text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">特斯拉文化专题导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 文化架构与工程机器</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 六大法则与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 治理范式与同业横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 文化复利与股东回报推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与组织进化复盘</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 特斯拉文化核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-white font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>企业文化与颠覆式创新治理研究组</p>
+ <p>财报与治理基准：SEC 10-K / 2026Q3 10-Q</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-white font-extrabold text-sm shadow-lg shadow-mogold-500/25">
+ TSLA
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CORPORATE CULTURE</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">特斯拉企业文化研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ 第一性原理 × 创始人直线扁平集权 × 极限工程迭代 · 马斯克“硬核战时”组织操作系统
+ </p>
+ </div>
+
+ <!-- 核心组织与财务快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">2010 IPO 至今总回报</span>
+ <span class="font-mono font-bold text-white">~33%+ 年化 · &gt;250x</span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">全球全职员工与人效</span>
+ <span class="font-mono font-bold text-emerald-400">134,785人 · $703.5K/人</span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">现金储备与 FSD 订阅</span>
+ <span class="font-mono font-bold text-mogold-400">$45.45B · 174万用户</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>文化架构与工程机器</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>六大法则与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>治理范式与同业横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>文化复利与股东回报推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与组织进化复盘</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>特斯拉文化核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-white text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">治理史定评：当代硬件与具身智能界最极致的“战时第一性原理”组织机器</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：电动化破局期 (2003–2019) · 物理AI与机器人纪元 (2020–2026+)</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>数据基准：2025 10-K / 2026Q3 10-Q</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景赛道红点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#E31937 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 6大内部行为准则 × 跨层级直通通信 × 马斯克“制造五步法” × 全员股权所有者文化</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ 特斯拉 Tesla (TSLA) 企业文化深度研究报告：第一性原理重构物理世界、无层级直线通信与“战时工程师”极限迭代机器
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 如果说伯克希尔·哈撒韦代表了“用极简总部无为而治统御成熟稳态企业”的资本复利巅峰，那么埃隆·马斯克（Elon Musk）执掌的<strong class="text-white">特斯拉（Tesla）</strong>则代表了完全相反却同样极具颠覆性的组织极点——<strong class="text-mogold-300">“创始人一线微观深潜 + 跨层级无障碍直线通信 + 使命驱动的极限战时迭代”</strong>（<a href="https://panmore.com/tesla-motors-inc-organizational-culture-characteristics-analysis" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">Panmore Institute</a>）。
+ 在全球 <a href="https://bullfincher.io/companies/tesla/overview" target="_blank" rel="noopener noreferrer" class="cite-link text-white font-semibold">134,785 名全职员工</a>（2025 10-K 数据）的庞大体量下，特斯拉依然刻意销毁传统百年车企的部门墙与官僚科层，通过“<strong>物理第一性原理（First Principles）</strong>”拆解电池、一体化压铸、端到端神经网络（FSD）与人形机器人（Optimus）的成本与工程极限。在 2025 财年实现 <a href="https://bullfincher.io/companies/tesla/overview" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$948.27亿总营收</a> 与 <a href="https://bullfincher.io/companies/tesla/overview" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$62.20亿自由现金流</a>，并在 2026Q3 推动不含积分汽车毛利率回升至 <a href="https://coindcx.com/blog/us-stock/tesla-q3-2026-earnings-results" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-400 font-semibold">18.1%</a>、活跃 FSD 订阅用户突破 <a href="https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">174 万</a>、现金储备达 <a href="https://www.geminiq.com/blog/tesla-earnings-q3-2026" target="_blank" rel="noopener noreferrer" class="cite-link text-emerald-400 font-semibold">$454.5亿</a>，完成了从“电动车制造商”向“物理 AI 与能源巨头”的组织跃迁。
+ </p>
+
+ <!-- 核心文化基因高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">特斯拉内部六大核心文化信条</div>
+ <div class="text-white font-semibold">“快速行动（Move Fast）、挑战不可能、持续创新、第一性原理推理、主人翁思维、全力以赴（We are All In）”</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">马斯克全员信“越级沟通铁律”</div>
+ <div class="text-mogold-400 font-semibold">“任何人都可以且必须直接与解决问题所需的人沟通，无需经过层层经理许可；阻挠跨级沟通的经理将立即走人”</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">“机器制造机器”与制造五步算法</div>
+ <div class="text-emerald-400 font-semibold">质疑需求 → 删除冗余零件与工序 → 简化优化 → 加速周期 → 最后才自动化；零广告预算全靠产品口碑自传播</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>2010 IPO 至今长期复合神话</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~33.5%</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">市值 $1.26T</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 自 2010 年 $17（拆股调整后约 $1.13）IPO 以来累计涨幅逾 300 倍，2026 年 11 月市值稳居全球车企与物理 AI 榜首（<a href="https://bullfincher.io/companies/tesla/overview" target="_blank" rel="noopener noreferrer" class="cite-link">Bullfincher</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>单兵工程人效与百万车厂密度</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$703.5K</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">134,785人</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 全员人均创收超 $70.35万；上海超级工厂“制造五步法”实现每 30 余秒下线一台整车，累计交付突破 1,020 万辆（<a href="https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 Update</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>储能毛利率与服务软件爆发 (2026Q3)</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">33.1%</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">FSD 174万</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2026Q3 能源业务毛利率创 33.1% 新高，活跃 FSD 付费订阅同比激增 +67% 至 174 万户，服务营收同比 +33%（<a href="https://sqmagazine.co.uk/tesla-statistics/" target="_blank" rel="noopener noreferrer" class="cite-link">Tesla 10-Q</a>）。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>自造血现金堡垒与 AI 研发投入</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$45.45B</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">TTM OCF $18.7B</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 截至 2026Q3 末现金及短期投资达 $454.5亿（单季经营现金流 $62.6亿），全额内生支撑约 $200亿年度 AI 算力与机器人资本开支（<a href="https://www.geminiq.com/blog/tesla-earnings-q3-2026" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 10-Q</a>）。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 文化架构与工程机器 (Cultural Architecture & Engineering Engine)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Cultural Architecture &amp; First-Principles Engineering Engine</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 文化架构与工程机器：“第一性原理垂直整合 + 跨层级无摩擦直线通信”</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">FY2025 营收 $94.83B · 2026Q3 整体毛利率回升至 19.6%</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2023 vs FY2025 特斯拉三大业务板块营收结构跃迁（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">储能与能源发电 ($12.77B，两年翻倍) 及服务软件 ($12.53B，+50.6%) 成为第二、第三增长极</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('fy25_mix')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：三大板块营收结构</button>
+ <button onclick="switchBizChart('float_trajectory')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：现金储备与研发扩张</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性战略洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">特斯拉文化驱动的三大组织设计奇迹</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">物理第一性原理（First Principles）反类比思维</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 传统车企按“行业惯例与去年成本减 3%”做预算，而马斯克要求工程师把一切问题拆解到<strong>物理学基本定律与原材料元素价格</strong>（如电池包每公斤碳、镍、铝的伦敦金属交易所现货价），从而用一体压铸（Giga Press）砍掉 70+ 个冲压焊接件（<a href="https://panmore.com/tesla-motors-inc-organizational-culture-characteristics-analysis" target="_blank" rel="noopener noreferrer" class="cite-link">Panmore</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">反科层直通通信：信息流拒绝走“传话筒”</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 马斯克在全员信中明文规定：<strong>任何一线工程师无需请示部门总监即可直接给副总裁甚至 CEO 发邮件或面谈解决问题</strong>。若某个中层经理试图阻拦下属越级沟通，将立即被解雇，以此彻底消除大公司病中的信息失真与推诿（<a href="https://www.infinityhr.com.au/blogs/workplace-spotlight-tesla-is-all-in-on-innovation" target="_blank" rel="noopener noreferrer" class="cite-link">Infinity HR</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“把工厂本身当作核心产品”的极端制造信仰</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 特斯拉认为设计原型车只占 1% 难度，<strong>大规模量产（Production Hell）才是 99% 护城河</strong>。通过“质疑需求→删除部件→简化→加速→自动化”五步算法，2026Q3 不含碳积分汽车毛利率在价格战中逆势回升至 <strong>18.1%</strong>（<a href="https://coindcx.com/blog/us-stock/tesla-q3-2026-earnings-results" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 Earnings</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">2026 年战略重心演进</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">纯电制造底座 × FSD/Cybercab × Optimus 具身智能</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大业务与文化支柱分部详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 支柱 1：垂直整合智能电动车与超级工厂网络 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一现金流底座 · 占 FY25 营收 73.3%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">汽车营收 $69.53B · 毛利率 18.1%</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 极度垂直整合的制造飞轮与数据母舰（Vehicle &amp; Gigafactory）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 不同于传统车企依赖数百家一级供应商“拼装集成”的外包文化，特斯拉自研自产三电系统、热泵八通阀、中央域控电子电气架构、座椅及 4680 电芯。截至 2026Q3 全球累计交付突破 <strong>1,020 万辆</strong>（单季交付 486,532 辆），通过硬件毛利与零传统电视广告营销模式，将省下的数十亿美元营销费用全数灌入 AI 算力与工厂迭代（<a href="https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 Update</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Fremont / Shanghai / Berlin / Texas</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">每辆车都是运行在路上的视觉神经采集终端</span>
+ </div>
+ </div>
+
+ <!-- 支柱 2：FSD 端到端神经网络与自动驾驶出行 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第一性原理 AI 赌注 · 订阅同比 +67%</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">活跃 FSD 订阅 174 万户</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 纯视觉端到端神经网络与无人驾驶网络（FSD &amp; Cybercab）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 在全行业迷信高精地图与昂贵激光雷达（LiDAR）时，马斯克依据第一性原理断定“人类靠双眼与大脑开车，传感器融合只会导致多源信号冲突”，毅然全面转向纯视觉 + 端到端光子输入到控制输出的大模型架构。2026Q3 活跃 FSD 付费订阅用户从去年同期的 104 万飙升至 <strong>174 万</strong>，推动高毛利软件与服务分部单季营收同比大增 <strong>+33% 至 $46.05亿</strong>（<a href="https://sqmagazine.co.uk/tesla-statistics/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine / 10-Q</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Cortex AI 算力集群 / FSD v13+ / Cybercab</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">边际成本趋近于零的软件经常性现金流</span>
+ </div>
+ </div>
+
+ <!-- 支柱 3：能源发电、Megapack 储能与超充网络 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">第二高毛利引擎 · 2026Q3 毛利率 33.1%</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">FY25 部署 46.7 GWh · 营收 $12.77B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. Megapack 电网级储能与全球超充基础设施（Energy &amp; Supercharger）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 践行“加速世界向可持续能源转变”的创立初心，特斯拉储能部署量从 2023 年的 14.72 GWh 狂飙逾三倍至 2025 年的 <strong>46.7 GWh</strong>，2026Q3 分部毛利率达到惊人的 <strong>33.1%</strong>（远超整车业务），叠加全球 <strong>84,465 个超级充电桩接口</strong> 已成为北美 NACS 行业统一标准（<a href="https://sqmagazine.co.uk/tesla-statistics/" target="_blank" rel="noopener noreferrer" class="cite-link">Tesla 10-Q</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Lathrop &amp; Shanghai Megafactory / Autobidder</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">AI 数据中心电力缺口的核心调峰底座</span>
+ </div>
+ </div>
+
+ <!-- 支柱 4：Optimus 具身智能机器人与共享工程复用 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">跨物种技术复用 · 具身智能终局</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">年研发投入 $6.41B+ · CapEx ~$20B</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. “长着双腿的轮式机器人”技术同源文化（Optimus &amp; AI Infra）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 特斯拉内部并不把汽车、储能和人形机器人视为孤立事业部，而是统一视作<strong>“AI 芯片 + 视觉感知 + 电机执行器 + 电池包”</strong>的同源硬件载体。这种高度集中的单核工程架构使 Optimus 可以直接复用 FSD 视觉大模型、特斯拉自研推理芯片与车规级执行器供应链，将传统实验室百万美元级机器人成本压缩至量产消费级区间（<a href="https://coindcx.com/blog/us-stock/tesla-q3-2026-earnings-results" target="_blank" rel="noopener noreferrer" class="cite-link">CoinDCX Analysis</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Optimus Gen 3 / 灵巧手 / 工厂内部先行部署</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">用自家超级工厂作为人形机器人的第一批训练场</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 六大文化法则与四重护城河 (Cultural Principles & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Six Cultural Pillars &amp; Engineering Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 六大内部行为准则与四重文化护城河：为什么传统车企学不会特斯拉？</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极宽 (Wide Moat · 工程师迭代速度壁垒 + 硬件软件数据闭环 + 人才磁吸效应)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重文化护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">全员“所有者思维”与股权期权绑定</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 与伯克希尔“零期权、高管自掏现金买股”不同，特斯拉从生产车间一线技工到首席工程师<strong>全员授予股票期权或 RSU</strong>（2026Q1 单季股权激励支出达 $10.93亿）（<a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026026673/tsla-20260331.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC 10-Q</a>），而马斯克本人不领一分钱常规现金底薪，仅靠市值与业绩阶梯对赌解锁期权，让全员在“Think Like Owners”下共享超额市值红利。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“在硬件行业跑出互联网敏捷迭代速度”</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 传统车企遵循“4 年一改款、7 年一换代”的冻结供应链周期；特斯拉则奉行 <strong>Move Fast &amp; Constantly Innovate</strong>，一条产线每周修改数十项工程变更（如 Model 3/Y 在不改外观的前提下悄悄完成底盘压铸、48V 低压架构与隔音玻璃升级），把汽车变成像 iPhone 一样持续 OTA 进化的活体产品（<a href="https://rbr.business.rutgers.edu/sites/default/files/documents/rbr-090103.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Rutgers Business Review</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“使命感溢价”对顶尖硬核极客的磁吸效应</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 尽管特斯拉的工作强度以“80–100 小时战时节奏”闻名，但根据 Universum 等全球工科生雇主调研，特斯拉常年稳居北美机械、电气与 AI 毕业生理想雇主前列——因为对于渴望改变人类能源与交通史的顶尖工程师而言，<strong>“Do the Impossible”的真实物理舞台远比大厂温水煮青蛙更具吸引力</strong>（<a href="https://rickgoodman.com/elon-musk-future-of-work/" target="_blank" rel="noopener noreferrer" class="cite-link">Rick Goodman</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“物理规律是唯一限制”的容错试错机制</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 在特斯拉，因为平庸懈怠或官僚推诿犯错会立刻被解雇，但<strong>“因为大胆追求第一性原理极限而导致的诚实技术失败”不仅被允许，而且被视为必要学费</strong>（马斯克名言：“如果你没有把某些零件删到最后不得不加回 10% 的程度，说明你删得还不够狠”）（<a href="https://www.atlantis-press.com/article/126004038.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Atlantis Press</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维企业治理与文化模型雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">三大产业巨头组织文化五维对比雷达</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">特斯拉 (TSLA) vs 传统底特律百年车企 (Legacy OEM) vs 伯克希尔分权帝国 (BRK)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 治理范式与同业横向对比 (Governance Paradigms Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Corporate Governance &amp; Culture Comparative Matrix</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 组织与治理范式横向对比：五种顶级商业文化与单兵人效统治力</h2>
+ </div>
+ <!-- 交互式筛选按钮 + 实时搜索框 -->
+ <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+ <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索范式 / 代表企业 / 机制关键词..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+ <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-white shadow-sm transition cursor-pointer">全部治理范式</button>
+ <button onclick="filterCompetitors('tech')" data-filter="tech" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">硬核科技与制造派</button>
+ <button onclick="filterCompetitors('classic')" data-filter="classic" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">分权自治与传统巨擘</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[185px]">治理范式与代表人物</th>
+ <th class="py-4 px-4 min-w-[140px]">组织形态与沟通机制</th>
+ <th class="py-4 px-4 min-w-[140px]">核心创新与迭代逻辑</th>
+ <th class="py-4 px-4 min-w-[125px]">高管与全员激励机制</th>
+ <th class="py-4 px-4 min-w-[120px]">标志性财务与人效</th>
+ <th class="py-4 px-5 min-w-[240px]">与特斯拉企业文化的深度对比评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：特斯拉基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-white text-[10px] font-extrabold">研究基准</span>
+ <span class="font-bold text-slate-900 dark:text-white">特斯拉 (Tesla)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Elon Musk · 物理AI与新能源</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">创始人一线深潜 · 越级直线通信</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">第一性原理 · 周级硬件OTA迭代</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">全员股权期权 + CEO零底薪对赌</td>
+ <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">人均创收 $703.5K · 现金 $45.5B</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>战时工程极致标杆：</strong>以强烈使命感与极限速度压缩试错周期，在制造与 AI 跨界领域构建垂直整合壁垒（<a href="https://bullfincher.io/companies/tesla/overview" target="_blank" rel="noopener noreferrer" class="cite-link">2025 10-K</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：伯克希尔·哈撒韦 -->
+ <tr data-category="classic" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">无官僚分权自治联邦</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Warren Buffett / Greg Abel (Berkshire)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">27人极简总部 · 子公司完全自治</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">护城河收购 · 零成本浮存金配置</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">零股票期权 · 可控ROIC现金奖</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">60年 19.7% CAGR · $336.7B美债</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“绝对分权” vs “绝对集权”双生极点：</strong>伯克希尔靠不干预成熟好生意实现稳健复利；特斯拉靠创始人深潜单点突破颠覆传统工业。
+ </td>
+ </tr>
+
+ <!-- 行 3：比亚迪垂直制造铁军 -->
+ <tr data-category="tech" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">工程师垂直供应链铁军</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">王传福 (BYD Co., Ltd.)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">强执行事业部制 · 近百万员工军团</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">全产业链自研自产 · 极致规模降本</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">员工持股计划 + 工程专利激励</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">年销量超 400万辆 · 垂直成本壁垒</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>物理供应链双雄：</strong>二者均信奉垂直整合与工程主导，但比亚迪强在多车型矩阵与供应链规模效应，特斯拉强在极简 SKU 与端到端 AI 软件溢价。
+ </td>
+ </tr>
+
+ <!-- 行 4：苹果职能型集权帝国 -->
+ <tr data-category="tech" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">职能型精工设计集权派</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Steve Jobs / Tim Cook (Apple Inc.)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">按专业职能集权 · DRI 唯一责任人</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">软硬芯完美打磨 · 极度保密与克制</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">长期受限股 RSU · 高现金流回购</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">毛利率 &gt;46% · 人均创收超 $2.3M</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>“打磨成熟后发布” vs “公测中极速进化”：</strong>苹果追求零瑕疵交付与轻资产外包制造；特斯拉敢于自建重资产超级工厂并在现实道路数据中高频迭代。
+ </td>
+ </tr>
+
+ <!-- 行 5：传统底特律百年车企 -->
+ <tr data-category="classic" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">传统多层官僚与外包集成派</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">GM / Ford / Legacy Auto OEMs</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">金字塔科层制 · 强工会与经销商网络</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">黑盒外包 Tier-1 · 4年车型换代周期</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">高额现金年终奖 + 短期销量指标</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">电动车业务普遍亏损 · 高有息负债</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>特斯拉第一性原理革命的直接颠覆对象：</strong>传统车企把核心电控软件外包给 Tier-1 供应商导致系统割裂，而特斯拉全栈自研实现软硬件一体定义汽车。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+ 未找到匹配的治理范式记录，请尝试清空搜索词或切换分类标签。
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：第一性原理与垂直整合带来的跨业务毛利率表现对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">第一性原理降本与软件飞轮的财务映射：特斯拉各业务分部与整体毛利率（Gross Margin %）演进对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">源自 SEC 2026Q3 Form 10-Q 与 Q3 2026 Update：储能系统毛利率高达 33.1%，不含碳积分汽车毛利率从 2025Q3 的 15.4% 强势修复至 18.1%，带动合并 GAAP 毛利率重返 19.6%（<a href="https://www.onebullex.com/blog/tesla-q3-2026-earnings" target="_blank" rel="noopener noreferrer" class="cite-link">TSLA Q3 2026 10-Q</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">储能毛利率 33.1% · 汽车毛利环比三连升</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 文化复利与股东回报推演 (Cultural Compounding & Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Cultural Compounding &amp; Shareholder Value Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 文化复利与股东回报推演：当“零广告费 + 第一性原理制造 + 端到端 AI”运转二十年</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">用财务硬指标验证企业文化：硬核工程文化不是口号，而是穿越行业价格战的正向自由现金流与高毛利护城河</span>
+ </div>
+
+ <!-- 1. 文化驱动的四大财务护城河指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Auto Margin ex-Credits (2026Q3)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">18.1% (+270 bps)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 制造五步法持续压缩单车物料与制造成本，推动 2026Q3 不含积分汽车毛利率较去年同期的 15.4% 大幅回升 2.7 个百分点（<a href="https://coindcx.com/blog/us-stock/tesla-q3-2026-earnings-results" target="_blank" rel="noopener noreferrer" class="cite-link">CoinDCX</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Cash &amp; T-Bill War Chest (2026Q3)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$45.45B 现金池</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ “自我造血、不依赖外部融资”的财务纪律：2026Q3 经营现金流达 $62.6亿（创近 16 个季度新高），手握 $454.5亿现金全额覆盖 AI 基建（<a href="https://www.geminiq.com/blog/tesla-earnings-q3-2026" target="_blank" rel="noopener noreferrer" class="cite-link">GeminIQ 10-Q</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Active FSD Subscribers (2026Q3)</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">1.74M (+67% YoY)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 端到端神经网络迭代显著提升用户智驾体验，活跃 FSD 订阅用户一年内从 104 万增至 174 万，开启硬件向高毛利 AI 软件变现拐点（<a href="https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 Update</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">CapEx Discipline &amp; Efficiency</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$1.53B Q3 FCF</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 工程团队用极致算力利用率优化资本开支，将 2026 全年 CapEx 预期从 $250亿+ 精准优化至 ~$200亿，单季创造 $15.3亿正向自由现金流（<a href="https://coindcx.com/blog/us-stock/tesla-q3-2026-earnings-results" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 Earnings</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2021–FY2025 特斯拉全员人均创收（$K/人）vs 全球研发与资本开支投入双轮曲线（SEC 10-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">五年间全球全职员工从 99,290 人增至 134,785 人，人均创收稳居 $68.8万–$77.7万高水平，同时年度研发（R&amp;D）持续加码至 $64.1亿构建 AI 护城河</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">2025 人均创收 $703.5K · R&amp;D $6.41B</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：“特斯拉颠覆式创新复利”长期股东价值动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>TESLA FIRST-PRINCIPLES ENGINE · 特斯拉颠覆式创新与长期股东价值推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">指数级工程飞轮：历史真实回报基准与“物理 AI 纪元”自定义推演器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实历史与前瞻锚点（2010–2026 IPO 以来 33.5% 真实复合回报 / 2019–2026 超级工厂量产跃升期 / 2026+ FSD与机器人稳健复合档）或手动调节参数</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="div-bonus-toggle" onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#E31937] cursor-pointer">
+ <span>叠加 FSD 高毛利软件订阅渗透率跃升 (+2.5%/年)</span>
+ </label>
+ </div>
+
+ <!-- 真实历史周期预设按钮组 -->
+ <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+ <button type="button" onclick="setSimEra('ipo_16yr')" data-era="ipo_16yr" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-white font-bold border border-mogold-400 shadow transition cursor-pointer">
+ <div>① 2010–2026 IPO 至今真实复利率</div>
+ <div class="text-[11px] opacity-90 font-mono mt-0.5">16年推演 · 历史真实年化 ~33.5% CAGR</div>
+ </button>
+ <button type="button" onclick="setSimEra('gigafactory_era')" data-era="gigafactory_era" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>② 2019–2026 上海工厂量产爆发期</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">7年推演 · 规模化量产年化 ~38.0% CAGR</div>
+ </button>
+ <button type="button" onclick="setSimEra('physical_ai_era')" data-era="physical_ai_era" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ <div>③ 2026+ 万亿市值物理AI稳健成长档</div>
+ <div class="text-[11px] text-slate-400 font-mono mt-0.5">15年推演 · 储能+FSD+Robotaxi 18.0% CAGR</div>
+ </button>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">初始股权投入本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$10,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="1000" max="100000" step="1000" value="10000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#E31937] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">16 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="30" step="1" value="16" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#E31937] cursor-pointer">
+ </div>
+
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年化复合回报率 (CAGR %)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">33.5%</span>
+ </div>
+ <input id="sim-growth" type="range" min="5" max="42" step="0.5" value="33.5" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+ 当前测算基准：对应特斯拉 2010 年 6 月纳斯达克上市至 2026 年 11 月约 16 年间的真实年化复合收益率（~33.5% CAGR），直观展现“第一性原理工程颠覆 + 超级工厂规模化”带来的非线性科技成长复利。
+ </p>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计总资产市值</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$1,016,745</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计净增值 +10,067%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">本金增值倍数 (MOIC Multiple)</div>
+ <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">101.7x</div>
+ <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 2.4 年资产翻一倍</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">累计创造净资本利得</div>
+ <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$1,006,745</div>
+ <div class="text-xs text-slate-400 mt-1.5">扣除初始投入本金后的纯复利收益</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">有效综合年化复合增长率</div>
+ <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">33.50%</div>
+ <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">持有半程（第 8 年）资产约：$100,834</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 正反双视角历史定评对比 (Bull Legacy vs Critical Reflection) -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">正向文化遗产定评 (Enduring Cultural Moat)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">第一性原理破局 + 跨界工程速度</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>打破百年重工业的“创新者窘境”：</strong>证明了即便在资本极度密集、供应链极其固化的汽车制造业，只要重构底层架构并消除部门墙，依然能跑出硅谷软件公司的迭代速度（<a href="https://rbr.business.rutgers.edu/sites/default/files/documents/rbr-090103.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Rutgers Business Review</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>强使命感凝聚全球顶尖跨学科极客：</strong>“加速可持续能源与具身智能到来”让电化学、空气动力学、芯片设计与大模型科学家在同一屋檐下高效协同（<a href="https://www.atlantis-press.com/article/126004038.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Atlantis Press</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>极度务实的反官僚成本意识：</strong>取消传统公关部、零常规广告费、全员邮箱直通现场，将每一分资源聚焦于产品与工厂本质（<a href="https://panmore.com/tesla-motors-inc-organizational-culture-characteristics-analysis" target="_blank" rel="noopener noreferrer" class="cite-link">Panmore</a>）。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">客观局限与治理挑战反思 (Critical Lens)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">高压耗竭 + 关键人过度集中</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“战时高压”带来的高管与核心骨干高流失率：</strong>常年 80–100 小时工作制与毫不留情的当众否定，虽然筛出了极少数超级战士，但也导致大量优秀高管在 2–4 年内因职业倦怠（Burnout）离职（<a href="https://rickgoodman.com/elon-musk-future-of-work/" target="_blank" rel="noopener noreferrer" class="cite-link">Rick Goodman</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>“Elon Time”激进时间表与公众预期透支：</strong>习惯用不可能的截止日期逼出团队潜能，在外部资本市场视角下容易表现为产品与自动驾驶落地时间屡次跳票。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>高度依赖单一核心领袖的注意力分配：</strong>当马斯克同时兼顾 SpaceX、xAI 与社交平台等多家帝国时，关键决策节点若过度集中于一人，可能引发阶段性资源与焦点分散风险（<a href="https://medium.com/all-things-elon-musk/elon-musks-management-style-visionary-leadership-or-unrelenting-demands-4a39de8cd78f" target="_blank" rel="noopener noreferrer" class="cite-link">Medium Leadership Review</a>）。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 三幕演进与组织进化复盘 (Three-Act Evolution & Takeaways)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Cultural Evolution &amp; Governance Takeaways</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕文化演进与组织进化复盘：从硅谷破产边缘车库到万亿物理 AI 帝国</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">理解特斯拉的关键：每一次濒临破产的制造地狱，都锻造了更硬核的组织基因</span>
+ </div>
+
+ <!-- 1. 三幕演进卡片 -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 第一幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 破局与生死突围</span>
+ <span class="font-mono text-xs font-bold text-slate-500">2003–2016</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">秘密宏图与第一性原理建厂</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>2006 年发布《秘密宏图（Master Plan）》确立“高端跑车→豪华轿车→大众平价车”三步走；2008 年圣诞前夕在破产边缘压上全部个人身家救活公司；2010 年低价接手丰田通用废弃的弗里蒙特工厂并成功上市，用 Model S 证明电动车可以比燃油超跑更性感、更安全（<a href="https://medium.com/all-things-elon-musk/elon-musks-management-style-visionary-leadership-or-unrelenting-demands-4a39de8cd78f" target="_blank" rel="noopener noreferrer" class="cite-link">Leadership Study</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 阶段启示：向死而生的战时危机感是消灭早期官僚主义的最强疫苗
+ </div>
+ </div>
+
+ <!-- 第二幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 产能地狱与制造蜕变</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2017–2022</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">睡在产线与“制造五步算法”</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>Model 3 量产初期因过度迷信“全自动无人工厂（Alien Dreadnought）”陷入产能地狱，马斯克直接把睡袋搬进工厂会议室现场拆机器人，总结出举世闻名的“制造五步法”；随后上海超级工厂仅用 10 个月建成投产，全球年交付量跃升破百万大关，彻底摆脱对外部资本输血的依赖（<a href="https://rickgoodman.com/elon-musk-future-of-work/" target="_blank" rel="noopener noreferrer" class="cite-link">Rick Goodman</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 阶段启示：先删除和简化蠢需求，最后再自动化，否则只是在加速制造垃圾
+ </div>
+ </div>
+
+ <!-- 第三幕 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 物理 AI 与具身智能</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2023–2026+</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">端到端大模型与 Optimus 军团</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心复盘：</strong>推翻数十万行传统 C++ 规则代码，全面重构 FSD 为端到端神经网络；同步爆发 Megapack 储能（2026Q3 毛利率 33.1%）并推进 Cybercab 无人出租与 Optimus 人形机器人量产，内部工程师团队进一步向 AI 算力、材料物理与自动化制造高度聚焦（<a href="https://sqmagazine.co.uk/tesla-statistics/" target="_blank" rel="noopener noreferrer" class="cite-link">Tesla 2026 Stats</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 阶段启示：敢于亲手推翻自己过去最引以为傲的技术栈，才是真正的长期主义
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大组织实战教训与文化进化闭环矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">商业史镜鉴：特斯拉企业文化在四大实战挫折中的自我进化</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">进化 01 · Model 3 过度自动化之痛</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2018 产线重构教训</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">“人类在灵活装配环节依然比笨拙机械臂强得多”</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2018 年弗里蒙特工厂曾用一英里长的昂贵传送带自动组装线结果频繁卡死，马斯克亲手拆除设备并公开承认“过度自动化是我的错误”，由此确立了享誉全球的<strong>“制造五步法”铁律</strong>，成就了后来上海工厂的世界级人效（<a href="https://rickgoodman.com/elon-musk-future-of-work/" target="_blank" rel="noopener noreferrer" class="cite-link">Leadership Review</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">进化 02 · 从 30 万行规则代码转向端到端 AI</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2023–2026 FSD 架构革命</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">不为沉没成本买单：直接用神经网络替代人类手工代码</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 面对积累多年的规则控制代码瓶颈，特斯拉自动驾驶团队没有陷入增量修补，而是遵循第一性原理直接用百万级视频片段训练端到端神经网络，推动活跃 FSD 订阅在 2026Q3 突破 <strong>174 万户</strong>（<a href="https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Q3 2026 Update</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">进化 03 · 全球 10% 组织瘦身与算力聚焦</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2024–2026 组织反熵增</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">每隔五年主动修剪组织冗余，防止大公司官僚化</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 在员工规模一度突破 14 万人后，特斯拉主动实施结构性组织瘦身（2024 年减员超 10% 至 12.57 万人，2025 年精准回补至 13.48 万人）（<a href="https://bullfincher.io/companies/tesla/overview" target="_blank" rel="noopener noreferrer" class="cite-link">10-K Headcount</a>），并将资本开支精准锚定在 AI 与具身智能高回报节点上。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">进化 04 · 开放超充标准 NACS 统一北美生态</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">2023–2026 生态定标权</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">以开放标准换取基础设施级网络效应</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 将自研 NACS 充电接口开源并向福特、通用、丰田等几乎所有竞争对手开放 <strong>84,465 个超级充电桩</strong>，把昔日封闭护城河转化为全行业向特斯拉缴纳充电与能源服务费的公共基础设施（<a href="https://sqmagazine.co.uk/tesla-statistics/" target="_blank" rel="noopener noreferrer" class="cite-link">SQ Magazine</a>）。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级企业管理与长期价值投资启示横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>写给企业家、组织架构师与科技投资者的三条“特斯拉底层文化法则”</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 永远用“物理规律”而非“行业惯例”定义成本与上限</div>
+ <p class="text-slate-300 leading-relaxed">
+ 凡是听到“这个行业向来如此”或“供应商报价就是这样”，就是第一性原理套利的最大机会；拆解到原材料与原子层面重新设计，才能获得数量级的成本与性能代差。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 消灭组织内部“信息传递的中间商”</div>
+ <p class="text-slate-300 leading-relaxed">
+ 科层制最大的毒药不是慢，而是每多一层汇报就多一层报喜不报忧的过滤；建立越级直通的问题解决机制，让最懂技术的一线工程师直接对话最高决策者。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 在硬科技领域，“工程迭代速度”本身就是最深的护城河</div>
+ <p class="text-slate-300 leading-relaxed">
+ 静态的专利壁垒终会被追平，但当你的组织每周都在产线和代码库里完成数十次闭环迭代时，按年度甚至按四年规划的传统巨头甚至连你的尾灯都看不见。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 “特斯拉文化法则”企业治理交互核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Tesla Corporate Culture Diagnostic Checklist</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “特斯拉文化法则”硬核科技企业治理与投资评估核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 可用于审视任何硬科技、智能制造或 AI 创新企业是否具备“特斯拉式”第一性原理战斗力与高人效工程基因（点击勾选自动本地保存状态）：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#E31937] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 第一性原理降本测试：是否敢于重构底层物理与供应链架构？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">成本代差锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验企业是在供应商现有零件目录里做“组装集成”，还是像特斯拉一体化压铸和自研芯片那样从底层物理学与原料出发实现 30%+ 降本。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#E31937] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 反科层直通测试：一线工程师能否无障碍越级直达最高决策层？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">敏捷沟通壁垒</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 对标马斯克全员越级沟通铁律：若一个技术问题必须经过 5 层审批和 PPT 汇报才能立项，该组织在 AI 与制造竞速中已失去生存优势。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#E31937] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. 工程迭代频率测试：硬件与软件能否实现“月度甚至周级”进化？</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">迭代速度墙</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 检验企业是否把工厂和产品当成持续 OTA 升级的动态系统，而非“一次定型、吃老本五年”的静态工业品。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#E31937] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. “制造五步法”反熵增测试：是否持续删除冗余零件与无效流程？</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">极简制造纪律</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查管理层是在盲目堆砌昂贵自动化设备与人员，还是持续质疑需求合理性并精简 BOM 物料清单。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#E31937] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 产品力替代营销测试：研发投入是否远高于广告公关费用？</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">资源配置纯度</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察企业是靠天价广告牌和渠道返点买销量，还是像特斯拉一样靠极致产品口碑自传播并将数十亿美元全数灌注于 R&amp;D。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#E31937] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 全员所有者激励与自我造血测试：高风险高回报是否利益一致？</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">长期激励闭环</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 对标特斯拉全员股权激励与 $454.5亿自造血现金储备，检验企业能否在行业逆风期不靠外部输血独立完成下一代技术跃迁。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>特斯拉 Tesla (TSLA) 企业文化、第一性原理组织架构与颠覆式创新深度研究报告 · 机构框架版</span>
+ <span>核心数据出处：Tesla 2024–2025 Form 10-K · Q3 2026 Form 10-Q · Q3 2026 Shareholder Update</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>数据来源与研究说明：</strong>本深度报告所有财务、运营与治理指标均核验自美国证监会（SEC EDGAR）公开披露的 <a href="https://bullfincher.io/companies/tesla/overview" target="_blank" rel="noopener noreferrer" class="cite-link">Tesla FY2025 Form 10-K</a>、<a href="https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Tesla Q3 2026 Update</a>、<a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026026673/tsla-20260331.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Tesla 2026 Form 10-Q</a> 以及哈佛/罗格斯商业评论（<a href="https://rbr.business.rutgers.edu/sites/default/files/documents/rbr-090103.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Rutgers Business Review</a>）对特斯拉组织文化与埃隆·马斯克管理体系的学术案例研究。报告内置的复利模拟器旨在复盘长期创新复利规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Tesla_TSLA_Corporate_Culture_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Tesla_TSLA_Corporate_Culture_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 治理范式横向对比筛选 + 关键词搜索联动
+ // ==========================================
+ let activeLeaderCategory = 'all';
+
+ function filterCompetitors(category) {
+ activeLeaderCategory = category;
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-white', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+ applyLeaderFilters();
+ }
+
+ function applyLeaderFilters() {
+ const searchInput = document.getElementById('leader-search-input');
+ const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ let visibleCount = 0;
+
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+ const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+ if (catMatch && textMatch) {
+ row.style.display = '';
+ visibleCount++;
+ } else {
+ row.style.display = 'none';
+ }
+ });
+
+ const emptyState = document.getElementById('leader-empty-state');
+ if (emptyState) {
+ if (visibleCount === 0) {
+ emptyState.classList.remove('hidden');
+ } else {
+ emptyState.classList.add('hidden');
+ }
+ }
+ }
+
+ // ==========================================
+ // 5. “特斯拉颠覆式创新复利”长期股东价值动态推演器
+ // ==========================================
+ const ERA_PRESETS = {
+ ipo_16yr: {
+ principal: 10000,
+ years: 16,
+ cagr: 33.5,
+ caption: '当前测算基准：对应特斯拉 2010 年 6 月纳斯达克上市至 2026 年 11 月约 16 年间的真实年化复合收益率（~33.5% CAGR），直观展现“第一性原理工程颠覆 + 超级工厂规模化”带来的非线性科技成长复利。'
+ },
+ gigafactory_era: {
+ principal: 10000,
+ years: 7,
+ cagr: 38.0,
+ caption: '当前测算基准：对应 2019 年上海超级工厂投产突破产能地狱至 2026 年间的规模化爆发周期（~38.0% CAGR），验证“制造五步法”打通量产瓶颈后的盈利与市值重估。'
+ },
+ physical_ai_era: {
+ principal: 10000,
+ years: 15,
+ cagr: 18.0,
+ caption: '当前测算基准：模拟 2026 年后特斯拉在 $1.26万亿市值底座上，依靠 Megapack 储能、174万+ FSD 软件订阅及 Optimus 具身智能实现年化 18.0% 稳健复合增长的 15 年财富演进路径。'
+ }
+ };
+
+ function highlightEraButton(eraKey) {
+ document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+ const subDiv = btn.querySelectorAll('div')[1];
+ if (btn.dataset.era === eraKey) {
+ btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-white font-bold border border-mogold-400 shadow transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] opacity-90 font-mono mt-0.5';
+ } else {
+ btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+ }
+ });
+ }
+
+ function setSimEra(eraKey) {
+ const preset = ERA_PRESETS[eraKey];
+ if (!preset) return;
+ document.getElementById('sim-principal').value = preset.principal;
+ document.getElementById('sim-years').value = preset.years;
+ document.getElementById('sim-growth').value = preset.cagr;
+ document.getElementById('sim-era-caption').textContent = preset.caption;
+ highlightEraButton(eraKey);
+ updateValueSimulator();
+ }
+
+ function markCustomEra() {
+ highlightEraButton('custom');
+ document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义硬核科技复利推演模式——自由探索不同初始本金、持有年限与企业年化资本回报率下的长期复利放大效应。';
+ }
+
+ function updateValueSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 10000;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 16;
+ const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 20;
+ const divBonus = document.getElementById('div-bonus-toggle').checked ? 2.5 : 0;
+
+ const effGrowthPct = baseGrowthPct + divBonus;
+ const r = effGrowthPct / 100;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+ const finalVal = principal * Math.pow(1 + r, years);
+ const netGain = finalVal - principal;
+ const multiple = principal > 0 ? (finalVal / principal) : 1;
+ const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+ const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+ const midYears = Math.max(1, Math.round(years / 2));
+ const midVal = principal * Math.pow(1 + r, midYears);
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+ document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+ document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年资产翻一倍` : '稳健保值';
+ document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+ document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+ document.getElementById('sim-mid-val').textContent = `持有半程（第 ${midYears} 年）资产约：$${Math.round(midVal).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'tsla_culture_checklist_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置“特斯拉文化法则”核查清单状态');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'fy25_mix';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2023 vs FY2025 特斯拉三大业务分部营收结构 ($B, 源自 SEC 10-K)
+ const mixConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '智能电动车核心业务 (Automotive)',
+ '能源发电与 Megapack 储能 (Energy)',
+ 'FSD 软件、超充与服务 (Services & Other)'
+ ],
+ datasets: [
+ {
+ label: 'FY2023 营收 ($B · 总计 $96.77B)',
+ data: [82.42, 6.04, 8.32],
+ backgroundColor: 'rgba(100, 116, 139, 0.65)',
+ borderRadius: 5
+ },
+ {
+ label: 'FY2025 营收 ($B · 总计 $94.83B)',
+ data: [69.53, 12.77, 12.53],
+ backgroundColor: '#E31937',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 90,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：2021–2026Q3 现金及短期投资储备扩张曲线 ($B, 源自 SEC 10-K & 10-Q)
+ const trajectoryConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ 'FY2021',
+ 'FY2022',
+ 'FY2023',
+ 'FY2024',
+ 'FY2025',
+ '2026Q3 (最新披露)'
+ ],
+ datasets: [
+ {
+ type: 'bar',
+ label: '现金、等价物及短期投资储备 ($B)',
+ data: [17.71, 22.18, 29.09, 36.56, 41.65, 45.45],
+ backgroundColor: 'rgba(227, 25, 55, 0.85)',
+ borderRadius: 5
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ min: 0,
+ max: 50,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'B' }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'fy25_mix' ? mixConfig : trajectoryConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'fy25_mix') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2023 vs FY2025 特斯拉三大业务板块营收结构跃迁（SEC 10-K）';
+ subEl.textContent = '储能与能源发电 ($12.77B，两年翻倍) 及服务软件 ($12.53B，+50.6%) 成为第二、第三增长极';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = '2021–2026Q3 特斯拉内生现金及短期投资储备扩张曲线（$B）';
+ subEl.textContent = '从 2021 年 $177.1亿稳步攀升至 2026Q3 的 $454.5亿，全额内生支撑 $200亿级 AI 与机器人资本开支';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '第一性原理工程突破度',
+ '硬件与软件极速迭代频率',
+ '跨层级扁平直线沟通效率',
+ '全员股权所有者激励绑定',
+ '一线员工长期工作舒适度'
+ ],
+ datasets: [
+ {
+ label: '特斯拉 (Tesla)',
+ data: [10.0, 9.8, 9.5, 9.6, 4.8],
+ borderColor: '#E31937',
+ backgroundColor: 'rgba(227, 25, 55, 0.24)',
+ pointBackgroundColor: '#E31937',
+ borderWidth: 2.5
+ },
+ {
+ label: '伯克希尔·哈撒韦 (Berkshire)',
+ data: [7.2, 6.0, 9.2, 9.8, 9.4],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '传统底特律百年车企 (Legacy OEM)',
+ data: [4.2, 3.8, 3.5, 4.5, 8.0],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ '能源发电与 Megapack 储能毛利率 (2026Q3)',
+ '特斯拉公司整体 GAAP 合并毛利率 (2026Q3)',
+ '汽车业务不含积分毛利率 (2026Q3 最新修复)',
+ '汽车业务不含积分毛利率 (2026Q2 环比过渡)',
+ '服务、超充与软件综合毛利率 (2026Q3)',
+ '汽车业务不含积分毛利率 (2025Q3 价格战低谷)'
+ ],
+ datasets: [
+ {
+ label: '各业务板块与时期毛利率 Gross Margin (% · 源自 SEC 2026Q3 10-Q)',
+ data: [33.1, 19.6, 18.1, 16.3, 15.9, 15.4],
+ backgroundColor: [
+ '#E31937',
+ '#10B981',
+ '#06B6D4',
+ '#6366F1',
+ '#F59E0B',
+ '#64748B'
+ ],
+ borderRadius: 6,
+ barThickness: 18
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => `毛利率 Gross Margin: ${c.parsed.x.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 10,
+ max: 36,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2021', 'FY2022', 'FY2023', 'FY2024', 'FY2025'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '全员人均创收 Revenue per Employee ($K)',
+ data: [542.1, 637.1, 688.9, 777.4, 703.5],
+ backgroundColor: 'rgba(227, 25, 55, 0.85)',
+ borderRadius: 5,
+ barThickness: 32,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '年度研发支出 R&D Expense ($B)',
+ data: [2.59, 3.08, 3.97, 4.54, 6.41],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: $${c.parsed.y.toFixed(1)}K/人`
+ : `${c.dataset.label}: $${c.parsed.y.toFixed(2)}B`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 400,
+ max: 850,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'K' },
+ title: { display: true, text: '人均创收 ($K)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 0,
+ max: 8,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => '$' + v + 'B' },
+ title: { display: true, text: '年度研发投入 ($B)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateValueSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>

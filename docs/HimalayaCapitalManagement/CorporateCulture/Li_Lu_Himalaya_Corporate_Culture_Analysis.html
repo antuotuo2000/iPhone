@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>李录喜马拉雅资本 Himalaya Capital Management 企业文化与治理架构深度研究报告：极简受托人联邦、25.05%三年年化复利与东西方双核护城河</title>
+  <!-- Tailwind CSS (Pinned Version) -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- Chart.js 多源 CDN 自动回退加载器，确保 100% 稳定运行 -->
+  <script>
+    window.__chartReadyCallbacks = [];
+    window.onChartReady = function(cb) {
+      if (typeof Chart !== 'undefined') { cb(); }
+      else { window.__chartReadyCallbacks.push(cb); }
+    };
+    function __triggerChartReady() {
+      while (window.__chartReadyCallbacks.length) {
+        const fn = window.__chartReadyCallbacks.shift();
+        try { fn(); } catch (e) { console.error(e); }
+      }
+    }
+    (function loadChartJsWithFallback() {
+      const cdns = [
+        'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js',
+        'https://unpkg.com/chart.js@4.4.1/dist/chart.umd.min.js',
+        'https://cdn.staticfile.net/Chart.js/4.4.1/chart.umd.min.js'
+      ];
+      let idx = 0;
+      function tryLoad() {
+        if (typeof Chart !== 'undefined') { __triggerChartReady(); return; }
+        if (idx >= cdns.length) {
+          document.querySelectorAll('canvas').forEach(c => {
+            const p = c.parentElement;
+            if (p) p.innerHTML = '<div class="h-full flex flex-col items-center justify-center text-xs text-amber-500 bg-slate-100/60 dark:bg-navy-800/60 rounded-xl p-4 text-center"><div class="font-bold mb-1">图表库 CDN 加载超时（当前网络可能无法访问外部 CDN）</div><div class="text-slate-500">请检查网络连接或开启代理后刷新页面，核心分析数据与交互组件已完整就绪。</div></div>';
+          });
+          return;
+        }
+        const s = document.createElement('script');
+        s.src = cdns[idx++];
+        s.async = true;
+        s.onload = __triggerChartReady;
+        s.onerror = tryLoad;
+        document.head.appendChild(s);
+      }
+      tryLoad();
+    })();
+  </script>
+  <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              navy: {
+                950: '#070B14',
+                900: '#0F172A',
+                800: '#1E293B',
+                700: '#334155',
+              },
+              mogold: {
+                300: '#FCD34D',
+                400: '#FBBF24',
+                500: '#F59E0B',
+                600: '#D97706',
+                700: '#B45309',
+              },
+              emerald: {
+                400: '#34D399',
+                500: '#10B981',
+                600: '#059669',
+              },
+              teal: {
+                400: '#22D3EE',
+                500: '#06B6D4',
+                600: '#0891B2',
+              }
+            }
+          }
+        }
+      };
+    }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+
+    @media print {
+      #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+        display: none !important;
+      }
+      main {
+        margin-left: 0 !important;
+        padding: 0 !important;
+      }
+      section {
+        break-inside: avoid;
+      }
+    }
+
+    .report-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .report-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .nav-link.active {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+      border-left: 3px solid #F59E0B;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .cite-link {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+      transition: color 0.15s ease;
+    }
+    .cite-link:hover {
+      color: #F59E0B;
+      text-decoration-style: solid;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+  <!-- 顶部全局阅读进度条 -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+  </div>
+
+  <!-- 页面内通知 Toast -->
+  <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="export-toast-msg">已导出独立 HTML 报告文件：Li_Lu_Himalaya_Corporate_Culture_Analysis.html</span>
+  </div>
+
+  <!-- 移动端顶部导航栏 -->
+  <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+        HC
+      </div>
+      <div>
+        <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">Seattle · 1997–2026+</div>
+        <div class="text-sm font-bold leading-tight">李录喜马拉雅企业文化研报</div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-1.5">
+      <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition cursor-pointer" aria-label="导出HTML文件">
+        导出HTML
+      </button>
+      <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300 cursor-pointer" aria-label="切换阅读主题">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white cursor-pointer" aria-label="打开目录">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 移动端折叠抽屉菜单 -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+    <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <span class="font-bold text-white text-base">李录企业文化专题导航</span>
+          <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul class="mt-4 space-y-1.5 text-sm">
+          <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+          <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 受托文化与极简组织架构</a></li>
+          <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 文明哲学与四重文化护城河</a></li>
+          <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 治理范式与同业横向对比</a></li>
+          <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 文化复利与合伙人回报推演</a></li>
+          <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 三幕演进与智识传承复盘</a></li>
+          <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 李录文化法则核查清单</a></li>
+        </ul>
+      </div>
+      <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+        <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+          一键导出独立 HTML 文件
+        </button>
+        <p>企业文化与长期资本配置研究组</p>
+        <p>治理与披露基准：SEC 13F-HR / Form ADV</p>
+      </div>
+    </nav>
+  </div>
+
+  <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+  <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+    <div>
+      <!-- 机构品牌头 -->
+      <div class="p-5 border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-sm shadow-lg shadow-mogold-500/25">
+            HC
+          </div>
+          <div>
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">CORPORATE CULTURE</span>
+            <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">李录企业文化研报</h2>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          受托人精神 × 商业史学家尽调 × 零官僚精品团队 · 喜马拉雅资本二十九年治理圣经
+        </p>
+      </div>
+
+      <!-- 核心组织与财务快照徽章 -->
+      <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">近3年13F复合回报</span>
+          <span class="font-mono font-bold text-white">+95.55% (25.05%/yr)</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">全球受托规模 vs 13F</span>
+          <span class="font-mono font-bold text-emerald-400">$21.40B / $3.78B</span>
+        </div>
+        <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+          <span class="text-slate-400">前四大集中度与持有周期</span>
+          <span class="font-mono font-bold text-mogold-400">93.17% · 5–10年+</span>
+        </div>
+      </div>
+
+      <!-- 七大核心章节目录导航 -->
+      <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+        <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+        <nav id="desktop-nav" class="space-y-1 text-[13px]">
+          <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+          </a>
+          <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>受托文化与极简组织架构</span>
+          </a>
+          <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>文明哲学与四重文化护城河</span>
+          </a>
+          <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>治理范式与同业横向对比</span>
+          </a>
+          <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>文化复利与合伙人回报推演</span>
+          </a>
+          <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>三幕演进与智识传承复盘</span>
+          </a>
+          <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+            <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>李录文化法则核查清单</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+    <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-slate-400">阅读模式切换</span>
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span class="dark:hidden">深色护眼模式</span>
+          <span class="hidden dark:inline">机构亮色模式</span>
+        </button>
+      </div>
+      <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        <span>导出独立 HTML 文件 (.html)</span>
+      </button>
+      <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>打印 / 导出 PDF 研报</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="lg:ml-[280px] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+      <!-- =========================================================
+      00. Hero 研报封面区与执行摘要
+      ========================================================= -->
+      <section id="sec-exec" class="scroll-mt-20">
+        <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">治理史定评：查理·芒格衣钵传承者 · 跨文明受托人与研究型精品机构典范</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">研究横跨：Himalaya Capital (1997–2026+) · 文明3.0理论 · 东西方双向投资</span>
+          </div>
+          <div class="flex items-center space-x-3 font-mono">
+            <span>数据基准：2026Q3 13F / Form ADV</span>
+            <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span>下载 .html</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero 标题卡片 -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+          <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+          <div class="relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+              <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+              <span>CORE THESIS · 严苛受托人契约 × 商业史学家式尽调 × 长锁定期LP双向筛选 × 极简精品研究团队</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+              李录喜马拉雅资本 Himalaya Capital 企业文化深度研究报告：跨文明研究共同体、信托责任铁律与二十九年复利基因
+            </h1>
+            <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+              如果说奥马哈的伯克希尔展示了大型实业联邦的治理极限，那么李录（Li Lu）于 1997 年创立、扎根西雅图的<strong class="text-white">喜马拉雅资本（Himalaya Capital Management）</strong>则树立了现代资产管理界最纯粹的<strong class="text-mogold-300">“研究驱动型精品受托人文化（Research-Driven Fiduciary Boutique）”</strong>标杆。作为<strong class="text-white">查理·芒格（Charlie Munger）生前唯一托付家族核心资金的外部基金经理</strong>，李录摒弃了华尔街以“扩规模、收管理费、追季度排名”为核心的商业化套路，将机构打造成一座仅容纳数十位极客研究员、每年只做极少数重大决策的“商业史学家修道院”。
+              在这套文化的驱动下，喜马拉雅资本（CIK: 0001709323）全球全权委托资产规模已达 <strong class="text-emerald-400">$214.0亿（Form ADV）</strong>，其中 2026Q3 美股 13F 组合达 <strong class="text-mogold-400">$37.81亿（仅 7 家上市公司、前四大公司集中度高达 93.17%）</strong>，近三年累计回报高达 <strong class="text-emerald-400">+95.55%（年化 +25.05%）</strong>，并诞生了比亚迪（逾 30 倍回报并引荐巴菲特赚超 $70亿）、Alphabet（6 年浮盈 +206%）、华美银行（7 年浮盈 +113%）与拼多多（2026Q3 登顶第一重仓，占比 24.24%）等教科书级长线战役。
+            </p>
+
+            <!-- 核心文化基因高亮条 -->
+            <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">受托人精神（Fiduciary Ethos）</div>
+                <div class="text-white font-semibold">“把客户资金当作父母毕生积蓄来守护”——创始人自身绝大多数净资产同仓共进退，宁可退还超额资金也绝不牺牲收益率换规模</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">“商业史学家”式极客研究文化</div>
+                <div class="text-mogold-400 font-semibold">拒绝看 K 线与卖方研报，要求研究员假设“买入后交易所关闭 10 年”，通过一手产业链访谈穷尽企业竞争壁垒</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+                <div class="text-slate-400 font-medium mb-1">负债端与资产端的长久期匹配</div>
+                <div class="text-emerald-400 font-semibold">严格筛选大学捐赠基金与家族办公室等长钱 LP 并设数年锁定期，从制度上彻底免疫市场恐慌挤兑</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4个核心 KPI 卡片 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+          <!-- KPI 1 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>近三年 13F 组合累计复利回报</span>
+              <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">+95.55%</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">年化 25.05%</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              零债务杠杆、极低换手率约束下实现三年近乎翻倍，远超同期标普 500 指数与对冲基金行业均值。
+            </p>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>Form ADV 全球受托资产规模</span>
+              <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$21.40B</span>
+              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">13F $3.78B</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              约 17.7% 配置于美股 13F（8只证券），约 82.3%（~$176亿）重仓配置于香港及亚太市场优质龙头。
+            </p>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>前四大重仓公司集中度</span>
+              <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">93.17%</span>
+              <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">仅7家上市公司</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Alphabet (45.23%) + 拼多多 (24.24%) + 伯克希尔 (14.59%) + 华美银行 (9.10%) 合计达 $35.23亿。
+            </p>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span>2026Q3 卖出换手率与经典战绩</span>
+              <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline space-x-2">
+              <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">0.00%</span>
+              <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">比亚迪 &gt;30x</span>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              2026Q3 全季零卖出、仅逆势加仓 PDD 与 TME；重仓股平均持有 5–10 年以上享受免税内部复利。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      一、 受托文化与极简组织架构 (Fiduciary Culture & Organizational Architecture)
+      ========================================================= -->
+      <section id="sec-biz" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Fiduciary Culture &amp; Boutique Organizational Architecture</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 受托文化与组织架构：“研究共同体修道院 + 东西方双核资产配置机器”</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">西雅图极简总部 · 全球受托管理总规模 $21.40B</span>
+        </div>
+
+        <!-- 交互式 Chart.js 双视图切换面板 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- 左侧：双视图图表 -->
+          <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">2026Q3 喜马拉雅资本四大文化选股支柱市值分布（$3.78B 13F）</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">数字平台双寡头 ($1,827.9M) 与现代消费供应链 ($1,020.7M) 合计占比 75.33%，精选金融压舱石占 23.69%</p>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+                <button onclick="switchBizChart('culture_pillars')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：四大配置支柱结构</button>
+                <button onclick="switchBizChart('aum_trajectory')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：历季13F规模与集中度</button>
+              </div>
+            </div>
+            <div class="relative h-72 w-full">
+              <canvas id="bizArchitectureChart"></canvas>
+            </div>
+          </div>
+
+          <!-- 右侧：结构性文化洞察 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">喜马拉雅资本文化驱动的三大组织设计奇迹</h3>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">“像买下整家公司一样研究”的极客研究团队</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      拒绝华尔街投行式的层级政治与高频交易噪音，喜马拉雅资本保持极度精干的研究员团队，每人每年只深耕 1–2 个行业，以<strong>商业史学家</strong>的标准撰写百页级产业与企业进化档案，看透前绝不轻易扣动扳机。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">“负债端决定资产端”：长锁定期 LP 双向筛选制度</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      李录深刻认识到许多价值基金失败并非因为看错股票，而是因为客户资金太短视导致在市场底部被迫割肉赎回。喜马拉雅资本只接受认同<strong>5–10 年长期主义</strong>的大学捐赠基金与家族办公室，并设置数年锁定期。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                  <div>
+                    <div class="font-semibold text-slate-900 dark:text-white">反华尔街“规模至上”魔咒：克制 AUM 膨胀</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      不同于普通对冲基金靠疯狂募资旱涝保收赚取 2% 管理费，李录将个人绝大部分身家投入自家基金与 LP 利益完全绑定，长期关闭对外募资通道，确保资金体量始终匹配高复利机会池。
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-slate-500 dark:text-slate-400">核心受托治理铁律</span>
+              <span class="font-bold text-mogold-600 dark:text-mogold-400">同仓共进退 · 零杠杆 · 零做空 · 零频繁交易</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大文化落地支柱详细卡片矩阵 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- 支柱 1：文明 3.0 数字平台配置文化 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">文化映射一 · 占 13F 权重 48.34%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">数字垄断平台 $1,827.91M</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 拥抱“现代文明 3.0”科技双边网络垄断（Alphabet + 腾讯音乐）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                在《文明、现代化、价值投资与中国》理论指引下，李录将科技与市场经济结合视为人类持续复利的核心引擎：2020Q2 疫情恐慌期重注 <strong>Alphabet（GOOGL + GOOG 合计 $17.10亿，占比 45.23%，持有逾 6 年零减持）</strong>，并在 2026Q3 狂增 <strong>腾讯音乐（TME +124.93% 至 $1.18亿）</strong>，牢牢锁定数字内容与搜索云霸权。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>GOOGL $875.1M | GOOG $835.3M | TME $117.6M</span>
+              <span class="text-mogold-600 dark:text-mogold-400 font-semibold">零边际成本扩张的现代基础设施</span>
+            </div>
+          </div>
+
+          <!-- 支柱 2：社会效率革命与逆向重锤文化 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">文化映射二 · 占 13F 权重 26.99%</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">高效消费供应链 $1,020.73M</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. “为社会创造巨大净剩余”的逆向重注（拼多多 24.24% + Crocs 2.75%）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                李录认为伟大企业必须为消费者创造真实价值 surplus：当华尔街因短视情绪低估 <strong>拼多多（PDD）</strong> 时，他在 2026Q2 翻倍加码（+133.5%）并在 Q3 再增持 100 万股至 <strong>1,176.1万股（$9.17亿）</strong>，一举将其推上单一证券第一重仓；同步持有高现金转化率休闲品牌 <strong>Crocs（$1.04亿）</strong>。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>PDD $916.66M (24.24%) | CROX $104.06M (2.75%)</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">别人恐惧时重锤出击的逆向定力</span>
+            </div>
+          </div>
+
+          <!-- 支柱 3：深潜银行研究与永续复利底座 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">文化映射三 · 占 13F 权重 23.69%</span>
+                <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">金融价值压舱石 $895.96M</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 精选金融特许权与伯克希尔底座（BRK.B 14.59% + 华美银行 9.10%）</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                依托商业史学家级的资产负债表解剖能力，李录自 2019Q4 起重仓服务美亚跨境经贸的精品区域行 <strong>华美银行（EWBC 277.6万股，$3.44亿，浮盈 +113.3%）</strong>，并持有 <strong>伯克希尔（BRK.B 110.8万股，$5.52亿）</strong> 作为兼具流动性与复利弹性的安全底座。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>BRK.B $551.89M | EWBC $344.07M</span>
+              <span class="text-teal-600 dark:text-teal-400 font-semibold">低估值、高 ROE 与低成本存款壁垒</span>
+            </div>
+          </div>
+
+          <!-- 支柱 4：跨越太平洋的全球资产全景 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">文化映射四 · 全球 AUM $214亿全景</span>
+                <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">AAPL $36.83M + 海外 ~$17.6B</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 东西方双向信息差套利：美股 13F 之外的 $176亿港股与亚太重仓</h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                喜马拉雅资本同时深耕北美与大中华区产业界，Form ADV 披露总受托规模高达 <strong>$214.0亿</strong>。除美股持仓（含持有 6 年浮盈 +183% 的苹果 AAPL）外，约 <strong>$176亿</strong> 重仓配置于香港与亚太优质大盘龙头（如<strong>中国邮政储蓄银行 1658.HK</strong> 等），真正做到“在最懂的地方下最重的注”。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+              <span>AAPL 110,600股 | 邮储银行 1658.HK</span>
+              <span class="text-indigo-600 dark:text-indigo-400 font-semibold">连接东方产业与西方资本的桥梁</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      二、 文明哲学与四重文化护城河 (Civilization Philosophy & Cultural Moat)
+      ========================================================= -->
+      <section id="sec-moat" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Civilization Philosophy &amp; Cultural Moat</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 文明价值哲学与四重文化护城河：为什么华尔街无法复制喜马拉雅资本？</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：极宽 (Wide Moat · 信托责任文化 + 长锁定期LP + 商业史学家研究方法)</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- 左侧：四重文化护城河深度解析 -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 护城河 1 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“100% 拥有整家公司”的求真文化</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                李录在哥伦比亚大学演讲中立下铁律：买入前必须假设“交易所明天关闭 10 年”，研究员不是在猜测股价涨跌，而是在撰写一部严谨的<strong>商业编年史</strong>，靠知识深度而非持股数量去消灭本金永久性损失风险。
+              </p>
+            </div>
+
+            <!-- 护城河 2 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“受托人责任高于一切”的合伙契约</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                李录将自己和家人的绝大部分财富锁在喜马拉雅基金中，践行“自己吃自己做的饭”。查理·芒格曾评价：“在所有我认识的基金经理中，我只把家族的钱交给李录，因为他把受托人道德看得比生命还重。”
+              </p>
+            </div>
+
+            <!-- 护城河 3 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">“现代文明 3.0”宏观历史观赋能</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                在《文明、现代化、价值投资与中国》中，李录将现代科技与自由市场结合定义为人类“现代文明 3.0”，解释了为何现代经济能够实现持续复利。这一宏大历史观使他敢于在科技浪潮（比亚迪、Alphabet、拼多多）中重仓持有十年。
+              </p>
+            </div>
+
+            <!-- 护城河 4 -->
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center space-x-2.5 mb-2.5">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">反内耗精品组织与零频繁交易纪律</h3>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                没有销售部门、没有公关炒作、没有短期业绩考核压力。2026Q3 全组合卖出换手率为 <strong>0.00%</strong>，前四大公司集中度高达 <strong>93.17%</strong>，将每一分研究精力与税盾红利都留给时间复利。
+              </p>
+            </div>
+          </div>
+
+          <!-- 右侧：三大顶级资管机构文化五维对比雷达图 -->
+          <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">三大资管与投资机构治理文化五维对比雷达</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">喜马拉雅资本 (李录) vs 伯克希尔 (巴菲特/芒格) vs 华尔街传统对冲基金（满分 10 分）</p>
+            <div class="relative h-72 w-full">
+              <canvas id="moatRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      三、 治理范式与同业横向对比 (Governance Paradigms Landscape)
+      ========================================================= -->
+      <section id="sec-comp" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Investment Institution Culture &amp; Governance Matrix</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 资管机构文化范式横向对比：五种顶级机构治理模式与极简集中统治力</h2>
+          </div>
+          <!-- 交互式筛选按钮 + 实时搜索框 -->
+          <div class="flex flex-wrap items-center gap-2 text-xs no-print">
+            <input id="leader-search-input" type="text" oninput="applyLeaderFilters()" placeholder="搜索机构 / 创始人 / 文化机制..." class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-mogold-500 w-48" />
+            <div class="flex flex-wrap gap-1.5" id="comp-filter-group">
+              <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部机构范式</button>
+              <button onclick="filterCompetitors('value_boutique')" data-filter="value_boutique" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">长期价值与家族办公室</button>
+              <button onclick="filterCompetitors('wallstreet')" data-filter="wallstreet" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">华尔街多策略与PE派</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 横向对比矩阵表格 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                  <th class="py-4 px-5 min-w-[185px]">机构范式与灵魂人物</th>
+                  <th class="py-4 px-4 min-w-[140px]">组织规模与研究文化</th>
+                  <th class="py-4 px-4 min-w-[145px]">资金端(LP)与锁定期结构</th>
+                  <th class="py-4 px-4 min-w-[125px]">集中度与换手纪律</th>
+                  <th class="py-4 px-4 min-w-[120px]">标志性战绩与规模</th>
+                  <th class="py-4 px-5 min-w-[240px]">与喜马拉雅资本企业文化的深度对比</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+                <!-- 行 1：喜马拉雅资本基准 -->
+                <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+                  <td class="py-4 px-5">
+                    <div class="flex items-center space-x-2">
+                      <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">研究基准</span>
+                      <span class="font-bold text-slate-900 dark:text-white">喜马拉雅资本</span>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">李录 Li Lu (西雅图)</div>
+                  </td>
+                  <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">极简精品研究团队 · 商业史学家尽调</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-mogold-500/15 text-mogold-700 dark:text-mogold-400">捐赠基金/芒格家族 · 数年锁定期</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">Top4占93.2% · 零卖出</td>
+                  <td class="py-4 px-4 font-mono text-slate-900 dark:text-white">AUM $21.4B · 3年+95.6%</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>受托人精品机构终极标杆：</strong>摒弃募资膨胀，靠东西方双核深度研究与极致集中持有实现跨越周期的复合超额回报。
+                  </td>
+                </tr>
+
+                <!-- 行 2：伯克希尔·哈撒韦 -->
+                <tr data-category="value_boutique" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">伯克希尔·哈撒韦</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">巴菲特 / 芒格 / 阿贝尔</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">27人极简总部 · 极端分权实业联邦</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">永续上市股权 + $178.5B浮存金</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">Top10占89.4% · 永久持有</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">60年 19.7% CAGR</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>源头活水与精神母舰：</strong>喜马拉雅资本在文化内核上高度承袭奥马哈“合伙人精神、声誉零容忍与极端集中”，但体量更轻盈灵活。
+                  </td>
+                </tr>
+
+                <!-- 行 3：H&H International (段永平) -->
+                <tr data-category="value_boutique" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">H&amp;H International</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">段永平 (加州 Palo Alto)</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">企业家直觉 + 本分与“Stop Doing”文化</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">自有永久资本 · 零外部赎回压力</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">Top3占78.0% + 卖Put增厚</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">2018年以来 +31.1%/yr</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>华尔街华人价值双璧：</strong>同样重仓拼多多（PDD）与伯克希尔（BRK.B），段永平偏重实业家产品直觉，李录偏重机构级行业史研究。
+                  </td>
+                </tr>
+
+                <!-- 行 4：华尔街多策略平台基金 -->
+                <tr data-category="wallstreet" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">华尔街多策略平台对冲基金</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Citadel / Millennium 等 Pod 模式</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">数千人庞大投研工厂 · 严苛止损淘汰制</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">高杠杆多空对冲 · 季度流动性</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">数千只分散持仓 · 极高换手</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">追求低回撤平滑夏普比率</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>与李录文化完全相反的另一极：</strong>Pod 模式靠极高杠杆、微幅波段与回撤 5% 即砍仓生存；喜马拉雅资本零杠杆、承受波动并持有十年。
+                  </td>
+                </tr>
+
+                <!-- 行 5：黑石/KKR 传统大型另类资管 -->
+                <tr data-category="wallstreet" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+                  <td class="py-4 px-5">
+                    <div class="font-bold text-slate-900 dark:text-white">大型上市另类资管帝国</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Blackstone / Apollo / Brookfield</div>
+                  </td>
+                  <td class="py-4 px-4 text-slate-700 dark:text-slate-300">全球化募资机器 · 全资产类别扩张</td>
+                  <td class="py-4 px-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/15 text-indigo-700 dark:text-indigo-400">万亿级 AUM · 管理费+绩效分成</span>
+                  </td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">跨信贷/地产/PE 高度多元</td>
+                  <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">AUM 突破 $1万亿大关</td>
+                  <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <strong>“资产聚集商” vs “受托精品店”：</strong>大型资管的核心 KPI 是持续扩大 AUM 赚取稳定管理费，而李录则主动限制规模以保护投资收益率。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="leader-empty-state" class="hidden py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+            未找到匹配的机构文化范式记录，请尝试清空搜索词或切换分类标签。
+          </div>
+        </div>
+
+        <!-- 配套 Chart.js 横向条形图：喜马拉雅资本重仓标的持有久期与历史成本安全垫对比 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">把“时间之友”刻进文化基因：李录美股核心重仓持有季度数与累计浮盈安全垫对比</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">不同于华尔街平均不足 6 个月的持股周期，喜马拉雅资本老牌重仓持有高达 21–28 个季度（5–7 年），构筑起逾 +85% 至 +206% 的厚实浮盈护城河</p>
+            </div>
+            <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">老牌重仓平均持有逾 6 年 · 零卖出</span>
+          </div>
+          <div class="relative h-64 w-full">
+            <canvas id="compMarginChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      四、 文化复利与合伙人回报推演 (Cultural Compounding & Simulator)
+      ========================================================= -->
+      <section id="sec-fin" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Cultural Compounding &amp; Partner Return Simulator</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 文化复利与合伙人回报推演：当“零频繁交易 + 商业史学家选股”运转数十年</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">用硬核业绩验证企业文化：好文化最终一定沉淀为低换手、高 ROE 与持久复利曲线</span>
+        </div>
+
+        <!-- 1. 文化驱动的四大硬核业绩指标卡 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">3-Year Return (2023–2026)</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">+95.55% (25.1%/yr)</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              近三年累计收益率 +95.55%（年化 +25.05%），零杠杆状态下凭借重仓 Alphabet 与拼多多实现三年近乎翻倍。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">Form ADV Global AUM</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$21.40B 全权受托</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              Form ADV 披露全权委托规模达 $214亿，除去 $37.81亿美股 13F 外，约 $176亿重仓配置于香港及亚太优质资产。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Zero-Turnover Tax Shield</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">0.00% 卖出换手</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              2026Q3 全季一股未卖，GOOG（+206%）、AAPL（+183%）、EWBC（+113%）等巨额浮盈留存池内免税继续复利。
+            </p>
+          </div>
+
+          <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Q3 Conviction Additions</div>
+            <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">+$143.2M 逆势加码</div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+              研究透彻后毫不犹豫重锤：Q3 增持拼多多 PDD（+9.29% 至 $9.17亿登顶第一）与腾讯音乐 TME（+124.93% 至 $1.18亿）。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. 交互式 Chart.js 双轴演进图 -->
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">2024Q4–2026Q3 喜马拉雅资本 13F 美股持仓总市值 vs 拼多多（PDD）逆势重注攀升曲线</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">“不鸣则已，一鸣惊人”的研究文化写照：2025Q2 建仓拼多多后经过一年深度跟踪验证，于 2026Q2–Q3 连续大幅加仓至 1,176.1万股</p>
+            </div>
+            <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">总市值 +63.6% · 极度克制零卖出</span>
+          </div>
+          <div class="relative h-72 w-full">
+            <canvas id="valEvolutionChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 3. 交互式组件：“喜马拉雅合伙人复利”长期股东价值动态推演器 -->
+        <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+            <div>
+              <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+                <span>HIMALAYA PARTNER ENGINE · 喜马拉雅受托人文化与复利动态推演器</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mt-1">商业史学家选股与时间之友：历史真实基准与自定义文化复利模拟器</h3>
+              <p class="text-xs text-slate-400 mt-0.5">支持一键切换三大真实历史锚点（1997–2026 喜马拉雅长期复利档 / 2023–2026 近三年 25.05% 真实斜率 / 金融压舱石稳健档）或自由滑动</p>
+            </div>
+            <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+              <input type="checkbox" id="div-bonus-toggle" checked onchange="updateValueSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+              <span>叠加“零换手税盾递延 + 底层回购”增厚 (+1.8%/年)</span>
+            </label>
+          </div>
+
+          <!-- 真实历史周期预设按钮组 -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs" id="era-btn-group">
+            <button type="button" onclick="setSimEra('himalaya_28yr')" data-era="himalaya_28yr" class="era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer">
+              <div>① 1997–2026 喜马拉雅长期复利档</div>
+              <div class="text-[11px] opacity-85 font-mono mt-0.5">20年推演 · 深度研究超额复利 18.0% CAGR</div>
+            </button>
+            <button type="button" onclick="setSimEra('recent_3yr')" data-era="recent_3yr" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+              <div>② 2023–2026 近三年真实业绩斜率</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">10年推演 · 真实 25.05% 年化复利基准</div>
+            </button>
+            <button type="button" onclick="setSimEra('defensive_bank')" data-era="defensive_bank" class="era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+              <div>③ 银行与伯克希尔压舱石稳健档</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">15年推演 · EWBC+BRK.B+邮储 11.5% CAGR</div>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <!-- 左侧参数控制区 -->
+            <div class="lg:col-span-5 space-y-4 text-xs">
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">初始合伙投入本金 (USD)</span>
+                  <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$50,000</span>
+                </div>
+                <input id="sim-principal" type="range" min="5000" max="500000" step="5000" value="50000" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+                  <span id="sim-years-label" class="font-mono font-bold text-white text-sm">20 年</span>
+                </div>
+                <input id="sim-years" type="range" min="1" max="30" step="1" value="20" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1.5">
+                  <span class="text-slate-300 font-medium">组合内生年化复合回报率 (CAGR %)</span>
+                  <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">18.0%</span>
+                </div>
+                <input id="sim-growth" type="range" min="6" max="28" step="0.5" value="18.0" oninput="markCustomEra(); updateValueSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+              </div>
+
+              <p id="sim-era-caption" class="text-[11px] text-slate-400 leading-relaxed pt-1">
+                当前测算基准：参考喜马拉雅资本自 1997 年创立以来跨越近三十年的卓越长期复利表现（基础年化 18.0%），叠加“零换手免资本利得税递延”增益，直观呈现少数重仓股在时间复利下的指数级放大效应。
+              </p>
+            </div>
+
+            <!-- 右侧四大实时测算结果卡片 -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">期末预计总资产市值</div>
+                <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$1,847,290</div>
+                <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计净增值 +3,595%</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">本金增值倍数 (MOIC Multiple)</div>
+                <div id="sim-multiple" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">36.9x</div>
+                <div id="sim-double-years" class="text-xs text-slate-400 mt-1.5">平均每 3.8 年资产翻一倍</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">累计创造净资本利得</div>
+                <div id="sim-net-gain" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$1,797,290</div>
+                <div class="text-xs text-slate-400 mt-1.5">扣除初始投入本金后的纯复利收益</div>
+              </div>
+
+              <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+                <div class="text-xs text-slate-400">有效综合年化复合增长率</div>
+                <div id="sim-eff-cagr" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">19.80%</div>
+                <div id="sim-mid-val" class="text-xs text-slate-400 mt-1.5">持有半程（第 10 年）资产约：$304,572</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 正反双视角历史定评对比 (Bull Legacy vs Critical Reflection) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">正向文化遗产定评 (Enduring Cultural Moat)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">受托人精神 + 深度研究共同体</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>现代资管界最纯粹的“反商业化”受托典范：</strong>拒绝靠营销与扩张规模赚管理费，主动关闭募资并绑定个人身家，使 LP 与 GP 利益高度一致。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>将“商业史学家式研究”制度化：</strong>以一手田野调查与跨文明历史坐标取代短期情绪博弈，在比亚迪、邮储银行、Alphabet 与拼多多上反复验证。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>思想开源反哺全球价值投资共同体：</strong>通过哥伦比亚大学演讲与《文明、现代化、价值投资与中国》系统传播现代价值投资哲学，培养新一代跨市场研究人才。</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-rose-700 dark:text-rose-400 text-base">客观局限与治理挑战反思 (Critical Lens)</span>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">高集中度波动 + 灵魂人物依赖</span>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>极端集中度下的阶段性高波动考验：</strong>美股前四大公司占 93.17%（Alphabet 45.23% + 拼多多 24.24%），在系统性熊市或行业监管冲击期净值回撤幅度显著高于分散型基金。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>信息透明度极低带来的外部跟踪盲区：</strong>喜马拉雅资本极少接受媒体采访或公开季报评述，且约 82% 资产配置于非美市场，外部投资者难以一窥全局对冲全貌。</span></li>
+              <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>核心投研决策对创始人智识禀赋的高度依赖：</strong>“商业史学家”式跨文明洞察极度考验掌舵人的知识广度与心智定力，在代际传承与团队规模化扩张上天然存在边界。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      五、 三幕演进与智识传承复盘 (Three-Act Evolution & Takeaways)
+      ========================================================= -->
+      <section id="sec-inv" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Three-Act Cultural Evolution &amp; Governance Takeaways</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 三幕文化演进与跨代传承复盘：从哥大求道者到东西方价值投资精神桥梁</h2>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">理解喜马拉雅文化的关键：它是在亚洲金融风暴淬炼、芒格言传身教与现代科技浪潮中逐步成型的</span>
+        </div>
+
+        <!-- 1. 三幕演进卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- 第一幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">第一幕 · 求道与危机淬炼</span>
+                <span class="font-mono text-xs font-bold text-slate-500">1993–2003</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">哥大顿悟 · 创立喜马拉雅</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>1993 年在哥伦比亚大学聆听巴菲特讲座后找到人生志业，同时拿下经济学、法学博士与 MBA 三学位；1997 年创立喜马拉雅资本，早年专注格雷厄姆式低估值资产并历经亚洲金融风暴洗礼，于 2002 年重注早期<strong>比亚迪</strong>，完成向“伟大成长股”的心智跃迁。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+              阶段启示：唯有经历过全仓波动与危机洗礼，才能真正理解“风险”的本质
+            </div>
+          </div>
+
+          <!-- 第二幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第二幕 · 结缘芒格与受托定型</span>
+                <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">2004–2019</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">芒格家族托付 · 比亚迪封神</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>2004 年感恩节与查理·芒格长谈后成为其家族唯一外部资金管理人；2008 年促成伯克希尔以 $2.32亿入股比亚迪（创造逾 $70亿回报）；同时在港股重仓<strong>邮储银行</strong>、美股重仓<strong>美国银行与华美银行（EWBC）</strong>，确立“受托人文化 + 精品团队 + 长锁定期 LP”治理宪章。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+              阶段启示：把受托责任视如生命，只与价值观高度同频的长期合伙人同行
+            </div>
+          </div>
+
+          <!-- 第三幕 -->
+          <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">第三幕 · 文明宗师与数字重注</span>
+                <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">2020–2026+</span>
+              </div>
+              <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">文明 3.0 著作 · 重注谷歌拼多多</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                <strong>核心复盘：</strong>2020 年出版《文明、现代化、价值投资与中国》，将价值投资升维至人类文明演进高度；实战中于 2020Q2 抄底 <strong>Alphabet</strong>（持有至今达 $17.10亿），并在 2025–2026 年连续重锤 <strong>拼多多（PDD 24.24%）</strong> 与 <strong>腾讯音乐（TME）</strong>，全球总规模突破 <strong>$214亿</strong>。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              阶段启示：价值投资不仅是财富复利工具，更是推动现代文明进步的理性力量
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 四大文化实战进化闭环矩阵 -->
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">机构文化镜鉴：喜马拉雅资本在四大实战考验中的文化定型</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">定型 01 · 从“廉价烟蒂”到“伟大企业家与护城河”</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">2002 比亚迪顿悟</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">放弃纯粹低 PB 清算思维，拥抱高 ROE 内生复利</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                通过深入研究王传福领导下的比亚迪制造体系，李录彻底完成了从格雷厄姆到芒格的飞跃，确立了喜马拉雅资本“重仓极少数拥有宽阔护城河与卓越创始人的伟大企业”核心选股标准。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">定型 02 · 重新定义“风险”：知识深度 vs 股价波动</span>
+                <span class="text-xs text-mono text-slate-500 font-semibold">哥大经典演讲铁律</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">不靠购买 100 只股票伪装安全，靠百页尽调消灭本金损失</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                在喜马拉雅内部，任何投资提案必须回答“如果交易所关闭十年，我们是否愿意全资买下这家公司”，从而把 99% 的平庸机会挡在门外，促成 2026Q3 前四大公司集中度高达 <strong>93.17%</strong>。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">定型 03 · 负债端治理：宁缺毋滥的 LP 筛选机制</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">长锁定期制度设计</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">没有长期稳定的投资人，就不可能有真正的长期价值投资</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                喜马拉雅资本主动拒绝短期交易型热钱，只接纳捐赠基金与家族办公室等真正理解价值规律的长期合伙人，确保在 2020 年熔断与 2025–2026 年中概回调期手握充足弹药逆势加仓。
+              </p>
+            </div>
+
+            <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">定型 04 · 拥抱数字科技平台与双边网络效应</span>
+                <span class="text-xs font-mono text-slate-500 font-semibold">2020 谷歌 &amp; 2026 拼多多</span>
+              </div>
+              <h4 class="font-bold text-slate-900 dark:text-white text-sm">顺应“现代文明 3.0”科技与市场融合的复利大潮</h4>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                李录打破传统价值派排斥科技股的刻板偏见，深刻洞悉搜索引擎（Alphabet）、社交电商（PDD）与在线音乐（TME）在边际成本趋零下的超强自由现金流创造力，实现跨越时代的持续进化。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 机构级资管治理与长期价值投资启示横幅 -->
+        <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+          <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>写给资管机构创始人、研究者与长期价值投资者的三条“李录底层文化法则”</span>
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-white mb-1">1. 真正的受托人文化是“把客户当合伙人而非提款机”</div>
+              <p class="text-slate-300 leading-relaxed">
+                只有当管理人把自身绝大部分身家与客户资金锁在同一条船上，并主动克制 AUM 规模膨胀冲动时，机构才不会异化为只顾收管理费的平庸机器。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-mogold-400 mb-1">2. 用“商业史学家”的严谨度取代“市场预测家”的浮躁</div>
+              <p class="text-slate-300 leading-relaxed">
+                没有人能持续预测下个月的宏观利率或大盘涨跌，但通过扎实的一手产业访谈与竞争格局推演，完全可以看清一家伟大企业未来五到十年的护城河走向。
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="font-bold text-emerald-400 mb-1">3. 少即是多：一年只挥棒一两次，买对后坐等时间复利</div>
+              <p class="text-slate-300 leading-relaxed">
+                频繁交易是复利的最大敌人；当你在安全边际充足时重仓买入拥有现代文明 3.0 效率红利的超级企业后，最难也最赚钱的动作就是“什么都不做”。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      六、 “李录文化法则”资管治理与投资评估交互核查清单 (Checklist)
+      ========================================================= -->
+      <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+        <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Li Lu Culture &amp; Fiduciary Diagnostic Checklist</span>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 “李录文化法则”资管机构与投资组合交互式核查清单（Checklist）</h2>
+          </div>
+          <div class="flex items-center space-x-2 no-print">
+            <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+            <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            可用于评估任何资产管理机构、基金经理或个人投资体系是否具备“喜马拉雅资本式”健康的受托文化与研究基因（点击勾选自动本地保存状态）：
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+            <!-- KPI 1 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">1. 受托利益绑定测试：管理人是否将主要个人身家同仓投入？</span>
+                  <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">受托伦理锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  检验基金管理人是靠规模扩张旱涝保收赚管理费，还是像李录一样与投资人把身家锁在同一组合中同甘共苦。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 2 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">2. “商业史学家”研究深度测试：是否完成一手产业链交叉验证？</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">研究深度壁垒</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  核查研究流程是否建立在一手客户、供应商与竞争对手访谈之上，而非二手资讯拼接或短线技术面博弈。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 3 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">3. 负债端久期匹配测试：资金端是否能承受 30%–40% 阶段回撤？</span>
+                  <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">反挤兑防火墙</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  对标喜马拉雅长锁定期 LP 机制与零融资杠杆铁律，确保绝不会在市场恐慌底部遭遇资金端强平或挤兑。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 4 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">4. 极致集中度与低换手纪律：重仓股是否聚焦于 &lt;10 家企业？</span>
+                  <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">复利纯度指标</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  对标喜马拉雅美股仅持 7 家公司、前四大占 93.17% 且全季零卖出，避免无效交易损耗税盾与复利斜率。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 5 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">5. 现代文明 3.0 效率检验：标的是否为社会创造巨大消费者剩余？</span>
+                  <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">文明顺势锚</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  像 Alphabet 降低全球信息获取成本、拼多多重构商品流通效率一样，投资真正推动现代文明进步的商业力量。
+                </p>
+              </div>
+            </label>
+
+            <!-- KPI 6 -->
+            <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+              <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">6. 逆向击球安全边际：是否在行业短期恐慌而非一致狂热时重注？</span>
+                  <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">赔率安全垫</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  保持极度耐心，等待自己深度研究过的顶级企业在宏观或舆论错杀期给出高安全边际价格后再重锤出击。
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+      页脚免责声明与信源索引 (Disclaimer & Sources Footer)
+      ========================================================= -->
+      <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+          <span>李录喜马拉雅资本 Himalaya Capital Management 企业文化、治理架构与复利战略深度研究报告 · 机构框架版</span>
+          <span>核心数据出处：SEC Form 13F-HR (2026Q3) · Form ADV · 《文明、现代化、价值投资与中国》</span>
+        </div>
+        <p class="leading-relaxed">
+          <strong>数据来源与研究说明：</strong>本深度报告所有持仓、资产管理规模与治理指标均严格核验自美国证监会（SEC EDGAR）公开披露的 <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001709323&type=13F-HR" target="_blank" rel="noopener noreferrer" class="cite-link">Himalaya Capital Management 2026Q3 Form 13F-HR</a>、<a href="https://valuesider.com/guru/li-lu-himalaya-capital-management/portfolio" target="_blank" rel="noopener noreferrer" class="cite-link">Valuesider 机构档案</a>、Form ADV 监管备案及李录哥伦比亚大学演讲与《文明、现代化、价值投资与中国》公开文献。报告内置的复利模拟器旨在复盘长期受托人文化与低换手税盾增值规律，不构成任何具体证券买卖建议。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+  <script>
+    // ==========================================
+    // 0. 一键导出独立自包含 HTML 文件 (.html)
+    // ==========================================
+    let toastTimer = null;
+
+    function showToast(msg) {
+      const toast = document.getElementById('export-toast');
+      const msgEl = document.getElementById('export-toast-msg');
+      if (!toast || !msgEl) return;
+      msgEl.textContent = msg;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3200);
+    }
+
+    function exportStandaloneHtml() {
+      try {
+        const clone = document.documentElement.cloneNode(true);
+        const toastClone = clone.querySelector('#export-toast');
+        if (toastClone) {
+          toastClone.classList.add('hidden');
+          toastClone.classList.remove('flex');
+        }
+        const drawerClone = clone.querySelector('#mobile-drawer');
+        if (drawerClone) {
+          drawerClone.classList.add('hidden');
+        }
+        const progressClone = clone.querySelector('#reading-progress');
+        if (progressClone) {
+          progressClone.style.width = '0%';
+        }
+        clone.querySelectorAll('script[src*="chart"]').forEach(s => s.remove());
+        clone.querySelectorAll('canvas').forEach(cv => {
+          cv.removeAttribute('width');
+          cv.removeAttribute('height');
+          cv.removeAttribute('style');
+        });
+
+        const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Li_Lu_Himalaya_Corporate_Culture_Analysis.html';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+        showToast('已成功导出独立 HTML 文件：Li_Lu_Himalaya_Corporate_Culture_Analysis.html');
+      } catch (err) {
+        showToast('导出失败，请使用右上角文件下载功能保存。');
+      }
+    }
+
+    // ==========================================
+    // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+    // ==========================================
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      updateChartsTheme();
+    }
+
+    // ==========================================
+    // 2. 移动端抽屉菜单切换
+    // ==========================================
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      if (drawer) drawer.classList.toggle('hidden');
+    }
+
+    // ==========================================
+    // 3. 阅读进度条与左侧导航滚动联动高亮
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      const prog = document.getElementById('reading-progress');
+      if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+      let currentId = 'sec-exec';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 160;
+        if (scrollTop >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const numSpan = link.querySelector('span span');
+        if (numSpan) {
+          numSpan.classList.remove('text-mogold-400');
+          numSpan.classList.add('text-slate-500');
+        }
+        if (link.dataset.target === currentId) {
+          link.classList.add('active');
+          if (numSpan) {
+            numSpan.classList.remove('text-slate-500');
+            numSpan.classList.add('text-mogold-400');
+          }
+        }
+      });
+    });
+
+    // ==========================================
+    // 4. 机构文化范式横向对比筛选 + 关键词搜索联动
+    // ==========================================
+    let activeLeaderCategory = 'all';
+
+    function filterCompetitors(category) {
+      activeLeaderCategory = category;
+      document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+          btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        } else {
+          btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+          btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+        }
+      });
+      applyLeaderFilters();
+    }
+
+    function applyLeaderFilters() {
+      const searchInput = document.getElementById('leader-search-input');
+      const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+      const rows = document.querySelectorAll('#comp-table-body tr');
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const rowCat = row.dataset.category;
+        const catMatch = (activeLeaderCategory === 'all' || rowCat === 'core' || rowCat === activeLeaderCategory);
+        const textMatch = !keyword || row.textContent.toLowerCase().includes(keyword);
+        if (catMatch && textMatch) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      const emptyState = document.getElementById('leader-empty-state');
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+    }
+
+    // ==========================================
+    // 5. “喜马拉雅受托人文化与复利”长期股东价值动态推演器
+    // ==========================================
+    const ERA_PRESETS = {
+      himalaya_28yr: {
+        principal: 50000,
+        years: 20,
+        cagr: 18.0,
+        caption: '当前测算基准：参考喜马拉雅资本自 1997 年创立以来跨越近三十年的卓越长期复利表现（基础年化 18.0%），叠加“零换手免资本利得税递延”增益，直观呈现少数重仓股在时间复利下的指数级放大效应。'
+      },
+      recent_3yr: {
+        principal: 50000,
+        years: 10,
+        cagr: 25.0,
+        caption: '当前测算基准：对应喜马拉雅资本 2023–2026 近三年真实 13F 组合年化复合回报斜率（25.05% CAGR，三年累计 +95.55%），展示重仓 Alphabet 与拼多多带来的高速复利。'
+      },
+      defensive_bank: {
+        principal: 50000,
+        years: 15,
+        cagr: 11.5,
+        caption: '当前测算基准：模拟以华美银行（EWBC）、伯克希尔（BRK.B）与港股邮储银行等高 ROE 金融价值压舱石为核心的稳健配置组合（基础年化 11.5%）。'
+      }
+    };
+
+    function highlightEraButton(eraKey) {
+      document.querySelectorAll('#era-btn-group .era-btn').forEach(btn => {
+        const subDiv = btn.querySelectorAll('div')[1];
+        if (btn.dataset.era === eraKey) {
+          btn.className = 'era-btn active px-3.5 py-2.5 rounded-xl text-left bg-mogold-500 text-navy-950 font-bold border border-mogold-400 shadow transition cursor-pointer';
+          if (subDiv) subDiv.className = 'text-[11px] opacity-85 font-mono mt-0.5';
+        } else {
+          btn.className = 'era-btn px-3.5 py-2.5 rounded-xl text-left bg-navy-950/70 text-slate-200 font-medium border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+          if (subDiv) subDiv.className = 'text-[11px] text-slate-400 font-mono mt-0.5';
+        }
+      });
+    }
+
+    function setSimEra(eraKey) {
+      const preset = ERA_PRESETS[eraKey];
+      if (!preset) return;
+      document.getElementById('sim-principal').value = preset.principal;
+      document.getElementById('sim-years').value = preset.years;
+      document.getElementById('sim-growth').value = preset.cagr;
+      document.getElementById('sim-era-caption').textContent = preset.caption;
+      highlightEraButton(eraKey);
+      updateValueSimulator();
+    }
+
+    function markCustomEra() {
+      highlightEraButton('custom');
+      document.getElementById('sim-era-caption').textContent = '当前测算基准：自定义文化复利推演模式——自由探索不同本金、持有期限与重仓企业年化复合增速下的长期财富放大效应。';
+    }
+
+    function updateValueSimulator() {
+      const principal = parseFloat(document.getElementById('sim-principal').value) || 50000;
+      const years = parseInt(document.getElementById('sim-years').value, 10) || 20;
+      const baseGrowthPct = parseFloat(document.getElementById('sim-growth').value) || 18.0;
+      const divBonus = document.getElementById('div-bonus-toggle').checked ? 1.8 : 0;
+
+      const effGrowthPct = baseGrowthPct + divBonus;
+      const r = effGrowthPct / 100;
+
+      document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+      document.getElementById('sim-years-label').textContent = years + ' 年';
+      document.getElementById('sim-growth-label').textContent = baseGrowthPct.toFixed(1) + '%';
+
+      const finalVal = principal * Math.pow(1 + r, years);
+      const netGain = finalVal - principal;
+      const multiple = principal > 0 ? (finalVal / principal) : 1;
+      const totalReturnPct = principal > 0 ? ((netGain / principal) * 100) : 0;
+      const doubleYears = r > 0 ? (Math.log(2) / Math.log(1 + r)) : 0;
+      const midYears = Math.max(1, Math.round(years / 2));
+      const midVal = principal * Math.pow(1 + r, midYears);
+
+      document.getElementById('sim-final-value').textContent = '$' + Math.round(finalVal).toLocaleString('en-US');
+      document.getElementById('sim-total-return').textContent = `累计净增值 +${Math.round(totalReturnPct).toLocaleString('en-US')}%`;
+      document.getElementById('sim-multiple').textContent = multiple >= 100 ? `${multiple.toFixed(1)}x` : `${multiple.toFixed(2)}x`;
+      document.getElementById('sim-double-years').textContent = doubleYears > 0 ? `平均每 ${doubleYears.toFixed(1)} 年资产翻一倍` : '稳健保值';
+      document.getElementById('sim-net-gain').textContent = '$' + Math.round(netGain).toLocaleString('en-US');
+      document.getElementById('sim-eff-cagr').textContent = effGrowthPct.toFixed(2) + '%';
+      document.getElementById('sim-mid-val').textContent = `持有半程（第 ${midYears} 年）资产约：$${Math.round(midVal).toLocaleString('en-US')}`;
+    }
+
+    // ==========================================
+    // 6. KPI 核查清单状态持久化与计数更新
+    // ==========================================
+    const KPI_STORAGE_KEY = 'lilu_culture_checklist_v1';
+
+    function loadKpiChecklist() {
+      try {
+        const saved = localStorage.getItem(KPI_STORAGE_KEY);
+        if (saved) {
+          const stateMap = JSON.parse(saved);
+          document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+            if (typeof stateMap[cb.id] === 'boolean') {
+              cb.checked = stateMap[cb.id];
+            }
+          });
+        }
+      } catch (e) {}
+      updateKpiChecklist();
+    }
+
+    function updateKpiChecklist() {
+      const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      const stateMap = {};
+
+      checkboxes.forEach(cb => {
+        stateMap[cb.id] = cb.checked;
+        if (cb.checked) checkedCount++;
+      });
+
+      const pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+      const badge = document.getElementById('kpi-progress-badge');
+      if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+      try {
+        localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+      } catch (e) {}
+    }
+
+    function resetKpiChecklist() {
+      document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      updateKpiChecklist();
+      showToast('已重置“李录文化法则”核查清单状态');
+    }
+
+    // ==========================================
+    // 7. Chart.js 数据可视化初始化与主题自适应
+    // ==========================================
+    let bizChartInstance = null;
+    let radarChartInstance = null;
+    let compMarginChartInstance = null;
+    let valEvolutionChartInstance = null;
+    let currentBizMode = 'culture_pillars';
+
+    function getChartColors() {
+      const isDark = document.documentElement.classList.contains('dark');
+      return {
+        text: isDark ? '#CBD5E1' : '#475569',
+        grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+        radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+      };
+    }
+
+    function initBizChart() {
+      const canvas = document.getElementById('bizArchitectureChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      // 视图 A：2026Q3 喜马拉雅资本四大配置支柱持仓市值 ($M)
+      const mixConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            '数字平台双寡头 (Alphabet+TME)',
+            '现代消费供应链 (PDD+CROX)',
+            '金融特许与伯克希尔 (BRK.B+EWBC)',
+            '硬件生态观察底仓 (AAPL)'
+          ],
+          datasets: [
+            {
+              label: '2026Q3 13F 支柱持仓市值 ($M · 总计 $3,781.43M)',
+              data: [1827.91, 1020.73, 895.96, 36.83],
+              backgroundColor: [
+                '#F59E0B',
+                '#10B981',
+                '#06B6D4',
+                '#6366F1'
+              ],
+              borderRadius: 6,
+              barThickness: 38
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `持仓市值: $${c.parsed.y.toFixed(2)}M (占 13F ${(c.parsed.y / 3781.43 * 100).toFixed(2)}%)`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            },
+            y: {
+              min: 0,
+              max: 2000,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' }
+            }
+          }
+        }
+      };
+
+      // 视图 B：2024Q4–2026Q3 历季 13F 总市值与前四大重仓公司集中度演进
+      const trajectoryConfig = {
+        type: 'bar',
+        data: {
+          labels: [
+            '2024Q4',
+            '2025Q1',
+            '2025Q2 (建仓PDD)',
+            '2025Q3',
+            '2025Q4',
+            '2026Q1',
+            '2026Q2 (翻倍PDD)',
+            '2026Q3'
+          ],
+          datasets: [
+            {
+              type: 'bar',
+              label: '13F 美股持仓总市值 ($B)',
+              data: [2.62, 2.38, 2.31, 2.75, 3.04, 3.17, 3.70, 3.78],
+              backgroundColor: 'rgba(245, 158, 11, 0.85)',
+              borderRadius: 5,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: '前四大重仓公司集中度 (%)',
+              data: [88.5, 89.2, 90.1, 91.0, 91.5, 91.8, 92.9, 93.17],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 3,
+              pointRadius: 4.5,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => c.datasetIndex === 0
+                  ? `13F 总市值: $${c.parsed.y.toFixed(2)}B`
+                  : `前四大集中度: ${c.parsed.y.toFixed(2)}%`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            },
+            y: {
+              position: 'left',
+              min: 1.5,
+              max: 4.3,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toFixed(1) + 'B' }
+            },
+            y1: {
+              position: 'right',
+              min: 80,
+              max: 98,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' }
+            }
+          }
+        }
+      };
+
+      if (bizChartInstance) bizChartInstance.destroy();
+      bizChartInstance = new Chart(ctx, currentBizMode === 'culture_pillars' ? mixConfig : trajectoryConfig);
+    }
+
+    function switchBizChart(mode) {
+      currentBizMode = mode;
+      const btnEvo = document.getElementById('btn-chart-evo');
+      const btnSplit = document.getElementById('btn-chart-split');
+      const titleEl = document.getElementById('biz-chart-title');
+      const subEl = document.getElementById('biz-chart-sub');
+
+      if (mode === 'culture_pillars') {
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '2026Q3 喜马拉雅资本四大文化选股支柱市值分布（$3.78B 13F）';
+        subEl.textContent = '数字平台双寡头 ($1,827.9M) 与现代消费供应链 ($1,020.7M) 合计占比 75.33%，精选金融压舱石占 23.69%';
+      } else {
+        btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+        btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+        titleEl.textContent = '2024Q4–2026Q3 喜马拉雅资本 13F 总市值攀升与集中度演进';
+        subEl.textContent = '随拼多多持续加码与核心重仓内在价值释放，13F 总规模从 $2.31B 跃升至 $3.78B（+63.6%），前四大集中度升至 93.17%';
+      }
+      initBizChart();
+    }
+
+    function initRadarChart() {
+      const canvas = document.getElementById('moatRadarChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (radarChartInstance) radarChartInstance.destroy();
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: [
+            '受托人伦理与管理人同仓绑定',
+            '反官僚精品投研团队效率',
+            '商业史学家式一手尽调深度',
+            '长锁定期LP结构与抗挤兑韧性',
+            '极低换手率与税盾复利留存'
+          ],
+          datasets: [
+            {
+              label: '喜马拉雅资本 (李录)',
+              data: [9.9, 9.8, 9.9, 9.8, 10.0],
+              borderColor: '#F59E0B',
+              backgroundColor: 'rgba(245, 158, 11, 0.24)',
+              pointBackgroundColor: '#F59E0B',
+              borderWidth: 2.5
+            },
+            {
+              label: '伯克希尔·哈撒韦 (巴菲特/芒格)',
+              data: [10.0, 10.0, 9.8, 10.0, 9.9],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.14)',
+              pointBackgroundColor: '#10B981',
+              borderWidth: 2.0
+            },
+            {
+              label: '华尔街传统对冲基金均值',
+              data: [5.5, 4.8, 6.5, 4.2, 4.0],
+              borderColor: '#06B6D4',
+              backgroundColor: 'rgba(6, 182, 212, 0.12)',
+              pointBackgroundColor: '#06B6D4',
+              borderWidth: 1.8,
+              borderDash: [4, 4]
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            }
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 10,
+              ticks: { display: false, stepSize: 2 },
+              grid: { color: colors.grid },
+              angleLines: { color: colors.radarAngle },
+              pointLabels: { color: colors.text, font: { size: 10.5, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initCompMarginChart() {
+      const canvas = document.getElementById('compMarginChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (compMarginChartInstance) compMarginChartInstance.destroy();
+      compMarginChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            'EWBC 华美银行 (2019Q4建仓 · 持有28季 · 浮盈+113.3%)',
+            'GOOG 谷歌C类 (2020Q2建仓 · 持有26季 · 浮盈+206.0%)',
+            'AAPL 苹果公司 (2020Q4建仓 · 持有24季 · 浮盈+183.2%)',
+            'BRK-B 伯克希尔 (2021Q3建仓 · 持有21季 · 浮盈+85.6%)',
+            'GOOGL 谷歌A类 (2022Q2建仓 · 持有18季 · 浮盈+170.0%)'
+          ],
+          datasets: [
+            {
+              label: '连续持有季度数 (Quarters Held · 华尔街均值仅约 2 季)',
+              data: [28, 26, 24, 21, 18],
+              backgroundColor: [
+                '#F59E0B',
+                '#10B981',
+                '#06B6D4',
+                '#34D399',
+                '#6366F1'
+              ],
+              borderRadius: 6,
+              barThickness: 20
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `连续持有: ${c.parsed.x} 个季度 (约 ${(c.parsed.x / 4).toFixed(1)} 年)`
+              }
+            }
+          },
+          scales: {
+            x: {
+              max: 32,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => v + ' 季' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+
+    function initValEvolutionChart() {
+      const canvas = document.getElementById('valEvolutionChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const colors = getChartColors();
+
+      if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+      valEvolutionChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['2024Q4', '2025Q1', '2025Q2', '2025Q3', '2025Q4', '2026Q1', '2026Q2', '2026Q3'],
+          datasets: [
+            {
+              type: 'bar',
+              label: '13F 美股持仓总市值 ($B)',
+              data: [2.62, 2.38, 2.31, 2.75, 3.04, 3.17, 3.70, 3.78],
+              backgroundColor: 'rgba(245, 158, 11, 0.85)',
+              borderRadius: 5,
+              barThickness: 28,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: '拼多多 (PDD) 季度末持股数量 (百万股)',
+              data: [0.00, 0.00, 3.10, 3.85, 4.20, 4.61, 10.76, 11.76],
+              borderColor: '#10B981',
+              backgroundColor: '#10B981',
+              borderWidth: 3,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+              tension: 0.25,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => c.datasetIndex === 0
+                  ? `13F 总市值: $${c.parsed.y.toFixed(2)}B`
+                  : `拼多多持股数: ${c.parsed.y.toFixed(2)}M 股`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+            },
+            y: {
+              type: 'linear',
+              position: 'left',
+              min: 1.5,
+              max: 4.3,
+              grid: { color: colors.grid },
+              ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v.toFixed(1) + 'B' },
+              title: { display: true, text: '13F 美股持仓总市值 ($B)', color: colors.text, font: { size: 11 } }
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              min: 0,
+              max: 14,
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + 'M股' },
+              title: { display: true, text: '拼多多 (PDD) 持股数量 (百万股)', color: '#10B981', font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartsTheme() {
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    }
+
+    function renderAllCharts() {
+      initBizChart();
+      initRadarChart();
+      initCompMarginChart();
+      initValEvolutionChart();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadKpiChecklist();
+      updateValueSimulator();
+      window.onChartReady(renderAllCharts);
+    });
+  </script>
+</body>
+</html>

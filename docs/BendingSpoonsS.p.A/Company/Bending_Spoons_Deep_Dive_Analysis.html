@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Bending Spoons S.p.A (NASDAQ: BSP) 深度商业与投资研究报告：AI原生软件永续并购机器、54%经调整营业利润率与巴菲特重仓$9.3亿押注</title>
+ <!-- Tailwind CSS (Pinned Version) -->
+ <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <!-- Chart.js (Pinned Version) -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+ <!-- Google Fonts: Inter + Noto Sans SC + JetBrains Mono -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: {
+ sans: ['Inter', 'Noto Sans SC', 'system-ui', '-apple-system', 'sans-serif'],
+ mono: ['JetBrains Mono', 'monospace'],
+ },
+ colors: {
+ navy: {
+ 950: '#070B14',
+ 900: '#0F172A',
+ 800: '#1E293B',
+ 700: '#334155',
+ },
+ mogold: {
+ 300: '#FCD34D',
+ 400: '#FBBF24',
+ 500: '#F59E0B',
+ 600: '#D97706',
+ 700: '#B45309',
+ },
+ emerald: {
+ 400: '#34D399',
+ 500: '#10B981',
+ 600: '#059669',
+ },
+ teal: {
+ 400: '#22D3EE',
+ 500: '#06B6D4',
+ 600: '#0891B2',
+ }
+ }
+ }
+ }
+ };
+ </script>
+
+ <style>
+ /* 自定义滚动条与机构研报细节排版 */
+ ::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+ }
+ ::-webkit-scrollbar-track {
+ background: transparent;
+ }
+ ::-webkit-scrollbar-thumb {
+ background: #94A3B8;
+ border-radius: 3px;
+ }
+ .dark ::-webkit-scrollbar-thumb {
+ background: #475569;
+ }
+
+ /* 打印友好优化 */
+ @media print {
+ #sidebar, #mobile-header, #theme-toggle-btn, #export-toast, .no-print {
+ display: none !important;
+ }
+ main {
+ margin-left: 0 !important;
+ padding: 0 !important;
+ }
+ section {
+ break-inside: avoid;
+ }
+ }
+
+ /* 卡片悬浮微光与上移过渡 */
+ .report-card {
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ }
+ .report-card:hover {
+ transform: translateY(-2px);
+ }
+
+ /* 侧边导航激活态：琥珀金渐变标识 */
+ .nav-link.active {
+ background: linear-gradient(90deg, rgba(245, 158, 11, 0.24) 0%, rgba(16, 185, 129, 0.06) 100%);
+ border-left: 3px solid #F59E0B;
+ color: #FFFFFF;
+ font-weight: 600;
+ }
+
+ /* 引用信源外链微标签样式 */
+ .cite-link {
+ text-decoration: underline;
+ text-decoration-style: dotted;
+ text-underline-offset: 3px;
+ transition: color 0.15s ease;
+ }
+ .cite-link:hover {
+ color: #F59E0B;
+ text-decoration-style: solid;
+ }
+ </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] dark:bg-navy-950 dark:text-slate-100 antialiased selection:bg-mogold-500 selection:text-navy-950 transition-colors duration-200">
+
+ <!-- 顶部全局阅读进度条 -->
+ <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-slate-200/70 dark:bg-navy-800">
+ <div id="reading-progress" class="h-full bg-gradient-to-r from-mogold-600 via-mogold-400 to-emerald-500 w-0 transition-all duration-150"></div>
+ </div>
+
+ <!-- 页面内通知 Toast（用于 HTML 导出与交互反馈，无阻塞弹窗） -->
+ <div id="export-toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2.5 px-4 py-3 rounded-xl bg-navy-900 text-white border border-mogold-500/50 shadow-2xl text-xs font-medium">
+ <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+ <span id="export-toast-msg">已导出独立 HTML 报告文件：Bending_Spoons_Deep_Dive_Analysis.html</span>
+ </div>
+
+ <!-- 移动端顶部导航栏 -->
+ <header id="mobile-header" class="lg:hidden sticky top-0 z-40 bg-navy-900 text-white border-b border-slate-800 px-4 py-3 flex items-center justify-between shadow-md">
+ <div class="flex items-center space-x-2.5">
+ <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mogold-400 to-mogold-600 flex items-center justify-center font-extrabold text-navy-950 text-xs shadow">
+ BSP
+ </div>
+ <div>
+ <div class="text-[11px] text-mogold-400 font-semibold tracking-wider uppercase">NASDAQ: BSP · Compounder</div>
+ <div class="text-sm font-bold leading-tight">Bending Spoons 深度研究报告</div>
+ </div>
+ </div>
+ <div class="flex items-center space-x-1.5">
+ <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 rounded-lg bg-mogold-500 hover:bg-mogold-600 text-navy-950 text-xs font-bold transition" aria-label="导出HTML文件">
+ 导出HTML
+ </button>
+ <button onclick="toggleTheme()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300" aria-label="切换阅读主题">
+ <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ </button>
+ <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-white" aria-label="打开目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ </div>
+ </header>
+
+ <!-- 移动端折叠抽屉菜单 -->
+ <div id="mobile-drawer" class="fixed inset-0 z-50 hidden lg:hidden">
+ <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+ <nav class="relative w-72 max-w-[80vw] h-full bg-navy-900 text-slate-300 flex flex-col justify-between p-5 overflow-y-auto shadow-2xl">
+ <div>
+ <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+ <span class="font-bold text-white text-base">BSP 研报目录导航</span>
+ <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="关闭目录">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ <ul class="mt-4 space-y-1.5 text-sm">
+ <li><a href="#sec-exec" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">00. 执行摘要与核心指标</a></li>
+ <li><a href="#sec-biz" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">01. 业务与收入架构</a></li>
+ <li><a href="#sec-moat" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">02. 行业地位与四重护城河</a></li>
+ <li><a href="#sec-comp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">03. 全球软件并购巨头横向对比</a></li>
+ <li><a href="#sec-fin" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">04. 财务健康与飞轮复利推演</a></li>
+ <li><a href="#sec-inv" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">05. 投资决策与风险配置</a></li>
+ <li><a href="#sec-kpi" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white">06. 季度跟踪 KPI 核查清单</a></li>
+ </ul>
+ </div>
+ <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+ <button onclick="exportStandaloneHtml()" class="w-full py-2 px-3 rounded-lg bg-mogold-500 text-navy-950 font-bold text-center">
+ 一键导出独立 HTML 文件
+ </button>
+ <p>全球软件复利与 AI 组织研究组</p>
+ <p>数据基准：2026年11月 (Q2 26 / FY26E)</p>
+ </div>
+ </nav>
+ </div>
+
+ <!-- 桌面端左侧固定侧边导航栏 (宽 280px) -->
+ <aside id="sidebar" class="hidden lg:flex fixed top-0 left-0 bottom-0 w-[280px] bg-[#0F172A] text-slate-300 flex-col justify-between border-r border-slate-800 z-30 select-none">
+ <div>
+ <!-- 机构品牌头 -->
+ <div class="p-5 border-b border-slate-800/80">
+ <div class="flex items-center space-x-3">
+ <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mogold-400 via-mogold-500 to-mogold-600 flex items-center justify-center text-navy-950 font-extrabold text-sm shadow-lg shadow-mogold-500/25">
+ BSP
+ </div>
+ <div>
+ <span class="inline-block text-[10px] font-bold tracking-widest uppercase text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">NASDAQ: BSP</span>
+ <h2 class="text-white font-bold text-base mt-0.5 tracking-tight">Bending Spoons 研报</h2>
+ </div>
+ </div>
+ <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+ AI 原生软件永续并购复合体 · 54% 经调整营业利润率与巴菲特重仓标的
+ </p>
+ </div>
+
+ <!-- 股票实时快照徽章 -->
+ <div class="px-5 py-3 bg-navy-950/70 border-b border-slate-800/80 space-y-1.5 text-xs">
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">市值与 IPO 发行价</span>
+ <span class="font-mono font-bold text-white">~$27B+ <span class="text-slate-400 text-[10px]">(IPO $29)</span></span>
+ </div>
+ <div class="flex items-center justify-between">
+ <span class="text-slate-400">2026Q2 单季营收/Adj.OI</span>
+ <span class="font-mono font-bold text-emerald-400">$704M / $381M <span class="text-slate-400">(+126%)</span></span>
+ </div>
+ <div class="flex items-center justify-between pt-1 border-t border-slate-800/70">
+ <span class="text-slate-400">利润率与机构重注</span>
+ <span class="font-mono font-bold text-mogold-400">54.1% OM · BRK投$9.3亿</span>
+ </div>
+ </div>
+
+ <!-- 七大核心章节目录导航 -->
+ <div class="px-3 py-3 overflow-y-auto max-h-[calc(100vh-345px)]">
+ <div class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">核心研究章节</div>
+ <nav id="desktop-nav" class="space-y-1 text-[13px]">
+ <a href="#sec-exec" data-target="sec-exec" class="nav-link active flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-mogold-400 mr-2">00</span>执行摘要与核心指标</span>
+ </a>
+ <a href="#sec-biz" data-target="sec-biz" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">01</span>业务与收入架构</span>
+ </a>
+ <a href="#sec-moat" data-target="sec-moat" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">02</span>行业地位与四重护城河</span>
+ </a>
+ <a href="#sec-comp" data-target="sec-comp" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">03</span>全球软件并购巨头横向对比</span>
+ </a>
+ <a href="#sec-fin" data-target="sec-fin" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">04</span>财务健康与飞轮复利推演</span>
+ </a>
+ <a href="#sec-inv" data-target="sec-inv" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">05</span>投资决策与风险配置</span>
+ </a>
+ <a href="#sec-kpi" data-target="sec-kpi" class="nav-link flex items-center justify-between px-3 py-2 rounded-r-lg text-slate-300 hover:bg-navy-800/70 hover:text-white transition-all">
+ <span><span class="text-xs font-mono text-slate-500 mr-2">06</span>季度跟踪 KPI 核查清单</span>
+ </a>
+ </nav>
+ </div>
+ </div>
+
+ <!-- 侧边栏底部工具栏：支持亮暗切换、一键导出 HTML 文件、打印 PDF -->
+ <div class="p-4 border-t border-slate-800/80 bg-navy-950/50 space-y-2">
+ <div class="flex items-center justify-between">
+ <span class="text-xs text-slate-400">阅读模式切换</span>
+ <button id="theme-toggle-btn" onclick="toggleTheme()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-xs font-medium text-slate-200 border border-slate-700 transition cursor-pointer">
+ <svg class="w-3.5 h-3.5 text-mogold-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg class="w-3.5 h-3.5 text-mogold-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ <span class="dark:hidden">深色护眼模式</span>
+ <span class="hidden dark:inline">机构亮色模式</span>
+ </button>
+ </div>
+ <button onclick="exportStandaloneHtml()" class="w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-lg bg-gradient-to-r from-mogold-500 to-mogold-600 hover:from-mogold-600 hover:to-mogold-700 text-navy-950 text-xs font-extrabold transition shadow-sm cursor-pointer">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>导出独立 HTML 文件 (.html)</span>
+ </button>
+ <button onclick="window.print()" class="w-full flex items-center justify-center space-x-2 py-1.5 px-3 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+ <span>打印 / 导出 PDF 研报</span>
+ </button>
+ </div>
+ </aside>
+
+ <!-- 主内容区 -->
+ <main class="lg:ml-[280px] min-h-screen">
+ <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 lg:py-12 space-y-12">
+
+ <!-- =========================================================
+ 00. Hero 研报封面区与执行摘要
+ ========================================================= -->
+ <section id="sec-exec" class="scroll-mt-20">
+ <!-- 顶部研报元数据标签栏与快捷导出按钮 -->
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs text-slate-500 dark:text-slate-400">
+ <div class="flex flex-wrap items-center gap-2">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 font-bold border border-mogold-500/30">评级：增持 / AI原生软件复利核心配置</span>
+ <span class="px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-navy-800 text-slate-700 dark:text-slate-300 font-medium">周期：2026Q2 上市首份季报与 Airtable/Miro 巨鲸整合期</span>
+ </div>
+ <div class="flex items-center space-x-3 font-mono">
+ <span>覆盖时间：2026年11月</span>
+ <span>NASDAQ: BSP</span>
+ <button onclick="exportStandaloneHtml()" class="no-print inline-flex items-center space-x-1 text-mogold-600 dark:text-mogold-400 hover:underline font-sans font-semibold cursor-pointer">
+ <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+ <span>下载 .html</span>
+ </button>
+ </div>
+ </div>
+
+ <!-- Hero 标题卡片 -->
+ <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-700/70">
+ <!-- 背景琥珀金点阵纹理 -->
+ <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#F59E0B 1.2px, transparent 1.2px); background-size: 24px 24px;"></div>
+ <div class="relative z-10">
+ <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-mogold-500/20 border border-mogold-400/40 text-mogold-300 text-xs font-semibold mb-4">
+ <span class="w-2 h-2 rounded-full bg-mogold-400 animate-pulse"></span>
+ <span>CORE THESIS · 0.036% 量子级选才 × 54.1% 经调整营业利润率 × 伯克希尔累计 $9.3亿重仓背书</span>
+ </div>
+ <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+ Bending Spoons S.p.A (NASDAQ: BSP) 深度商业与投资研究报告：AI原生软件永续并购机器、高密度重构飞轮与十亿级协同生态
+ </h1>
+ <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
+ 由 CEO <strong class="text-white">Luca Ferrari</strong> 掌舵的意大利米兰科技复合体 <strong class="text-mogold-300">Bending Spoons</strong> 在 2026 年 7 月以 $180亿发行估值登陆纳斯达克后，交出震撼华尔街的首份上市季报（2026Q2）：单季营业收入同比暴增 <strong class="text-emerald-400">+126% 至 $7.04亿</strong>（年化运行率超 $28亿），经调整营业利润同比飙升 <strong class="text-emerald-400">+150% 至 $3.81亿（利润率 54.1%）</strong>。
+ 凭借“买入已验证 PMF 的经典数字品牌 + 迁移至统一共享云中台与内部 AI 系统 <strong class="text-white">Alt-Spooner</strong>（&gt;90% 代码 PR 参与率）+ 永不出售”的独特商业模式，公司成功将 <strong class="text-mogold-300">Evernote、WeTransfer、Vimeo、AOL、Eventbrite、Tractive</strong> 转化为高利润现金牛，并于 2026 年下半年进一步出手吞下企业协作巨头 <strong class="text-white">Airtable（~$22.5亿估值）与 Miro（$13.55亿）</strong>，赢得 <a href="https://www.nasdaq.com/press-release/berkshire-hathaway-invests-further-330-million-bending-spoons-following-600-million" target="_blank" rel="noopener noreferrer" class="cite-link text-mogold-300 font-semibold">伯克希尔·哈撒韦累计 $9.3亿重磅股权投资</a>（IPO 认购 $6亿 + 2026年10月追加 $3.3亿）。
+ </p>
+
+ <!-- 核心投资结论高亮条 -->
+ <div class="mt-6 pt-6 border-t border-slate-700/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">极致软件盈利与人效壁垒</div>
+ <div class="text-white font-semibold">2026Q2 经调整营业利润率达 54.1%，人均年创收 $2.57M（26Q1年化 $3.88M），为成熟 SaaS 均值的 7 倍</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">84% 订阅底座 + 永久复利飞轮</div>
+ <div class="text-mogold-400 font-semibold">服务超 5 亿月活与逾 900 万付费用户，混合净收入留存率（NRR）达 94%，内部现金流持续滚入 1,000+ 猎物库</div>
+ </div>
+ <div class="bg-white/5 rounded-xl p-3.5 border border-white/10">
+ <div class="text-slate-400 font-medium mb-1">从消费应用跃升 B2B 协同旗舰</div>
+ <div class="text-emerald-400 font-semibold">继整合 AOL/Vimeo 后重仓切入 Airtable 与 Miro，在保持 0.6% 极低核心流失率的同时打开万亿企业协作市场</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4个核心 KPI 卡片 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-6">
+ <!-- KPI 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>总市值与上市表现</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">~$27B+</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">IPO $29</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 2026 年 7 月登陆纳斯达克（代码：BSP），首日大涨近 40% 至 $40.50，市值稳居欧洲新生代科技龙头前列。
+ </p>
+ </div>
+
+ <!-- KPI 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>2026Q2 营收与经调整营业利润</span>
+ <span class="p-1.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-mono">$704M</span>
+ <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">+126% YoY</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 单季经调整营业利润 $3.81亿（+150%），经调整稀释 EPS 达 $0.46（+167%），单季发布逾 70 项产品升级。
+ </p>
+ </div>
+
+ <!-- KPI 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>经调整营业利润率 &amp; 人均创收</span>
+ <span class="p-1.5 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">54.1%</span>
+ <span class="text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-500/15 px-2 py-0.5 rounded">$2.57M/人</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ AI 工具 “Alt-Spooner” 参与生成 &gt;90% 代码 PR，TTM 资本开支仅 $3.7M，自由现金流转化率极高。
+ </p>
+ </div>
+
+ <!-- KPI 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+ <span>全球用户池与伯克希尔重注</span>
+ <span class="p-1.5 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400">
+ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+ </span>
+ </div>
+ <div class="mt-3 flex items-baseline space-x-2">
+ <span class="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">5.0亿+</span>
+ <span class="text-xs font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2 py-0.5 rounded">BRK $930M</span>
+ </div>
+ <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+ 覆盖超 900 万付费订阅用户；获伯克希尔 2026 年 7 月（$6亿）与 10 月（$3.3亿）累计 $9.3亿重仓入股。
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 一、 业务与收入架构 (Business & Revenue Architecture)
+ ========================================================= -->
+ <section id="sec-biz" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 01 · Business &amp; Revenue Architecture</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">一、 业务与收入架构：84% 高粘性订阅底座，四大数字品牌集群构筑增长飞轮</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2026Q2 年化营收运行率超 $2.8B · 经调整营业利润年化超 $1.5B</span>
+ </div>
+
+ <!-- 交互式 Chart.js 双视图切换面板 -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+ <!-- 左侧：双视图图表 -->
+ <div class="lg:col-span-7 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base" id="biz-chart-title">FY2023–2026Q2 营业收入与经调整营业利润双轮演进（SEC F-1 &amp; 6-K）</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" id="biz-chart-sub">2023–2025 两年营收与经调整营业利润均翻逾 3 倍，2026Q2 单季经调整营业利润高达 $381M（利润率 54.1%）</p>
+ </div>
+ <div class="inline-flex rounded-lg bg-slate-100 dark:bg-navy-800 p-1 text-xs no-print">
+ <button onclick="switchBizChart('oci_evolution')" id="btn-chart-evo" class="px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer">视图A：营收与Adj.OI跃升</button>
+ <button onclick="switchBizChart('share_split')" id="btn-chart-split" class="px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">视图B：核心运营与转化比率</button>
+ </div>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="bizArchitectureChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 右侧：结构性拆解核心洞察 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">2026Q2 三大核心经营超预期引擎</h3>
+ <ul class="space-y-4 text-sm">
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">AOL、Eventbrite 与 Vimeo 整合兑现，单季营收暴增 +126%</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026Q2 营收由去年同期的 $3.12亿跃升至 <strong>$7.04亿</strong>，经调整营业利润从 $1.52亿大增 <strong>+150% 至 $3.81亿</strong>，经调整营业利润率进一步扩张 5.3 个百分点至 <strong>54.1%</strong>（<a href="https://www.sec.gov/Archives/edgar/data/2004711/000200471126000011/bsp-20260630x6k.htm" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Form 6-K</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">“Alt-Spooner” AI 工程底座释放百倍研发速度</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 内部 AI 编程与协作平台 <strong>Alt-Spooner</strong> 参与编写超 <strong>90% 代码 PR</strong>（70% 独立完成），仅 2026Q2 单季即为 AOL、Eventbrite、Vimeo 等矩阵发布逾 <strong>70 项重大功能迭代</strong>（<a href="https://bendingspoons.com/documents/financials/2026/Bending%20Spoons%E2%80%94Q2%202026%20Prepared%20Remarks.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 2026 Remarks</a>）。
+ </p>
+ </div>
+ </li>
+ <li class="flex items-start space-x-3">
+ <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+ <div>
+ <div class="font-semibold text-slate-900 dark:text-white">WeTransfer 与 Tractive 领衔内生增长，重仓进军 Airtable/Miro</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026Q2 存量组合实现 <strong>+3% 内生有机增长</strong>（WeTransfer 与宠物科技 Tractive 表现强劲，对冲早期应用 Remini/Splice 阶段性回落），并宣布收购 <strong>Airtable 与 Miro</strong> 切入企业级 B2B 赛道（<a href="https://www.sourcery.vc/p/breaking-inside-bending-spoons-bsp" target="_blank" rel="noopener noreferrer" class="cite-link">Sourcery</a>）。
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+ <span class="text-slate-500 dark:text-slate-400">核心资本配置信仰</span>
+ <span class="font-bold text-mogold-600 dark:text-mogold-400">“永不出售” + “宁要 5% 盈利增长不要 15% 烧钱增长”</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- 四大业务与战略资产分部详细卡片矩阵 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+ <!-- 分部 1：生产力与效率软件集群 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">第一现金流支柱 · 高粘性订阅核心</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">Evernote / WeTransfer / Harvest</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. 生产力、文件传输与自由职业者工具集群</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 涵盖笔记鼻祖 <strong>Evernote</strong>、全球文件传输标杆 <strong>WeTransfer</strong>（2026Q2 内生增长核心引擎）、工时与发票 SaaS <strong>Harvest</strong>、里程追踪应用 <strong>MileIQ</strong> 以及户外导航平台 <strong>Komoot</strong>。该集群以高达 <strong>84% 的订阅收入占比</strong> 贡献极其稳定的高频续费现金流，经过共享云架构改造后毛利率普遍超过 80%（<a href="https://www.mostlymetrics.com/p/bending-spoons-ipo-s1-breakdown" target="_blank" rel="noopener noreferrer" class="cite-link">S-1 Breakdown</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Evernote / WeTransfer / Komoot / MileIQ</span>
+ <span class="text-mogold-600 dark:text-mogold-400 font-semibold">低获客成本唤醒国民级品牌心智</span>
+ </div>
+ </div>
+
+ <!-- 分部 2：企业级B2B协同与工作流巨鲸 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold">第二增长极 · 2026 战略升维</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">Airtable (~$2.25B) · Miro ($1.36B)</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. 企业级协作与可视化工作流旗舰（Airtable &amp; Miro）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2026 年 7 月登陆纳斯达克后，Bending Spoons 正式从消费级工具迈向十亿级企业协同软件——先后宣布收购无代码数据库巨头 <strong>Airtable（约 $22.5亿估值）</strong> 与在线协同白板领军者 <strong>Miro（$13.55亿）</strong>。这两大资产拥有数十万家企业级付费客户，接入 Alt-Spooner AI 与精益研发体制后具备巨大的营业利润率释放空间（<a href="https://www.sourcery.vc/p/breaking-inside-bending-spoons-bsp" target="_blank" rel="noopener noreferrer" class="cite-link">Sourcery 2026</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Airtable / Miro / Brightcove</span>
+ <span class="text-emerald-600 dark:text-emerald-400 font-semibold">打开高客单价企业级 SaaS 复利空间</span>
+ </div>
+ </div>
+
+ <!-- 分部 3：视频流媒体与创意影像引擎 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-teal-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-teal-500/15 text-teal-700 dark:text-teal-400 text-xs font-bold">全栈视频与AI影像 · 5亿月活入口</span>
+ <span class="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">Vimeo / Remini / Splice</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. 视频托管、直播与 AI 影像编辑矩阵</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 涵盖老牌高清视频平台 <strong>Vimeo</strong>、企业视频云 <strong>Brightcove</strong>、浏览器直播工作室 <strong>StreamYard</strong>，以及公司早期自研孵化的 AI 图像增强爆款 <strong>Remini</strong> 和移动剪辑应用 <strong>Splice</strong>（经架构重构后发布速度翻两番、NRR 达 99%）。2026Q2 期间已为 Vimeo 密集推出多项 AI 视频工作流升级（<a href="https://bendingspoons.com/documents/financials/2026/Bending%20Spoons%E2%80%94Q2%202026%20Prepared%20Remarks.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 2026 Remarks</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>Vimeo / StreamYard / Remini / Splice</span>
+ <span class="text-teal-600 dark:text-teal-400 font-semibold">共享音视频编解码与 AI 推理管线</span>
+ </div>
+ </div>
+
+ <!-- 分部 4：门户流量、线下活动与智能硬件生态 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-indigo-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+ <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 text-xs font-bold">多元化现金流网络 · 票务与消费连接</span>
+ <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">AOL / Eventbrite / Tractive</span>
+ </div>
+ <h3 class="text-lg font-bold text-slate-900 dark:text-white">4. 国民级门户、活动票务与宠物智能订阅（AOL / Eventbrite / Tractive）</h3>
+ <p class="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2026 年初完成收购老牌门户 <strong>AOL</strong> 与全球活动票务平台 <strong>Eventbrite</strong>，并串联早年收购的线下社群平台 <strong>Meetup</strong>；同时于 2026 年 5 月斥资 <strong>$7.59亿</strong> 收购全球宠物 GPS 与健康监测订阅龙头 <strong>Tractive</strong>，进一步拓宽“硬件+高毛利软件订阅”的跨界边际（<a href="https://www.gigikenneth.com/post/who-is-bending-spoons" target="_blank" rel="noopener noreferrer" class="cite-link">Gigi Kenneth</a>）。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+ <span>AOL / Eventbrite / Meetup / Tractive ($759M)</span>
+ <span class="text-indigo-600 dark:text-indigo-400 font-semibold">1,000+ 潜在并购猎物清单蓄水池</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 二、 行业地位与四重核心护城河 (Industry Position & Moat)
+ ========================================================= -->
+ <section id="sec-moat" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 02 · Industry Position &amp; Economic Moat</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">二、 行业地位与四重核心护城河：0.036% 人才密度、共享数字底座与 54% 利润率</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">护城河定性：较宽 (Narrow-to-Wide Moat · 人才密度复利 + 共享软件底座 + 永久收购声誉)</span>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧：四重护城河深度解析 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <!-- 护城河 1 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-mogold-500/15 text-mogold-600 dark:text-mogold-400 flex items-center justify-center font-bold text-sm">01</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">0.036% 严选人才密度与 0.6% 极低流失率</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 2025 年从约 80 万份申请中仅录用 286 人（录取率仅哈佛大学百分之一），摒弃简历光环改用数小时量化逻辑与编程实战测试，核心 Spooner 团队遗憾主动流失率仅 <strong>0.6%</strong>，形成欧洲最难复制的高智商同侪磁场（<a href="https://bendingspoons.com/documents/financials/2026/Bending%20Spoons%20Final%20Prospectus%20As%20Filed.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">SEC Prospectus</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 2 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">02</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“Alt-Spooner” AI 工程底座与共享中台</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 自研内部 AI 工具 <strong>Alt-Spooner</strong> 已渗透至 &gt;90% 代码 Pull Request（其中 70% 由 AI 独立生成），叠加统一云架构、支付账单与 A/B 测试增长引擎，将单名员工年创收推升至 <strong>$2.57M</strong>（2026Q1 年化 $3.88M）（<a href="https://bendingspoons.com/documents/financials/2026/Bending%20Spoons%E2%80%94Q2%202026%20Prepared%20Remarks.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 2026 Remarks</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 3 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold text-sm">03</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">“击败传统私募（PE）”的永久持有品牌声誉</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 相比于 4–7 年基金到期必须转卖资产的软件 PE 基金，Bending Spoons 承诺<strong>“永不出售任何重要业务”</strong>，既赢得了珍视产品传承的创始人信赖，也使其敢于投入数季度重写底层代码而非短期财务美容（<a href="https://www.youtube.com/watch?v=6t5yF8ansoQ" target="_blank" rel="noopener noreferrer" class="cite-link">All-In Summit</a>）。
+ </p>
+ </div>
+
+ <!-- 护城河 4 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center space-x-2.5 mb-2.5">
+ <span class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">04</span>
+ <h3 class="font-bold text-slate-900 dark:text-white text-sm">5亿月活生态交叉导流与 0.24% 严苛选标</h3>
+ </div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ 超过 5 亿月活与 900 万付费用户构成天然低成本交叉分发池；同时公司对 1,000+ 猎物清单保持极度克制（2025 年评估超 2,500 宗交易仅成交 6 笔），确保每笔并购均具备高安全边际（<a href="https://www.fastcompany.com/91640320/bending-spoons-has-1000-more-companies-on-its-shopping-list-can-its-acquisition-machine-keep-delivering" target="_blank" rel="noopener noreferrer" class="cite-link">Fast Company</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 右侧：五维护城河雷达图 -->
+ <div class="lg:col-span-5 bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">全球软件并购与 SaaS 商业模式五维护城河雷达图</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Bending Spoons (BSP) vs Constellation (CSU) vs 软件并购PE (Vista/TB)（满分 10 分）</p>
+ <div class="relative h-72 w-full">
+ <canvas id="moatRadarChart"></canvas>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 三、 全球软件并购巨头横向对比 (Competitive Landscape)
+ ========================================================= -->
+ <section id="sec-comp" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 03 · Global Software Compounders Competitive Landscape</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">三、 全球软件并购与 SaaS 巨头横向对比：54% 经调整营业利润率领跑赛道</h2>
+ </div>
+ <!-- 交互式筛选按钮 -->
+ <div class="flex flex-wrap gap-1.5 text-xs no-print" id="comp-filter-group">
+ <button onclick="filterCompetitors('all')" data-filter="all" class="comp-filter-btn active px-3 py-1.5 rounded-lg font-semibold bg-mogold-500 text-navy-950 shadow-sm transition cursor-pointer">全部可比公司</button>
+ <button onclick="filterCompetitors('compounder')" data-filter="compounder" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">永续并购复合体</button>
+ <button onclick="filterCompetitors('saas')" data-filter="saas" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">成熟应用软件巨头</button>
+ <button onclick="filterCompetitors('pe')" data-filter="pe" class="comp-filter-btn px-3 py-1.5 rounded-lg font-medium bg-white dark:bg-navy-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition cursor-pointer">传统软件并购私募</button>
+ </div>
+ </div>
+
+ <!-- 横向对比矩阵表格 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+ <div class="overflow-x-auto">
+ <table class="w-full text-left border-collapse">
+ <thead>
+ <tr class="bg-slate-100/80 dark:bg-navy-800/80 border-b border-slate-200 dark:border-slate-700 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+ <th class="py-4 px-5 min-w-[180px]">公司名称与代表产品</th>
+ <th class="py-4 px-4 min-w-[135px]">核心增长与整合模式</th>
+ <th class="py-4 px-4 min-w-[140px]">市值与盈利体量</th>
+ <th class="py-4 px-4 min-w-[105px]">经调整利润率</th>
+ <th class="py-4 px-4 min-w-[115px]">单人年创收</th>
+ <th class="py-4 px-4 min-w-[110px]">持有周期逻辑</th>
+ <th class="py-4 px-5 min-w-[230px]">核心优劣势与竞合定位评估</th>
+ </tr>
+ </thead>
+ <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm" id="comp-table-body">
+ <!-- 行 1：Bending Spoons 基准 -->
+ <tr data-category="core" class="bg-mogold-500/5 dark:bg-mogold-500/10 font-medium">
+ <td class="py-4 px-5">
+ <div class="flex items-center space-x-2">
+ <span class="px-2 py-0.5 rounded bg-mogold-500 text-navy-950 text-[10px] font-extrabold">核心研究标的</span>
+ <span class="font-bold text-slate-900 dark:text-white">Bending Spoons (BSP)</span>
+ </div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Evernote / Vimeo / Airtable / Miro</div>
+ </td>
+ <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">并购经典品牌 + AI共享中台彻底重构</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">~$27B+ · 26Q2 Adj.OI $381M</span>
+ </td>
+ <td class="py-4 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">54.1% (Q2)</td>
+ <td class="py-4 px-4 font-mono font-bold text-mogold-600 dark:text-mogold-400">$2.57M/人</td>
+ <td class="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">永不出售</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>AI时代软件重构效率之王：</strong>人均创收与营业利润率断层领先，获伯克希尔 $9.3亿重仓；短板在于举债并购推高利息支出，且重塑期伴有裁员与调价口碑摩擦（<a href="https://www.mostlymetrics.com/p/bending-spoons-ipo-s1-breakdown" target="_blank" rel="noopener noreferrer" class="cite-link">Mostly Metrics</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 2：Constellation Software (CSU) -->
+ <tr data-category="compounder" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Constellation Software (CSU)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Volaris / Harris / Topicus (垂直软件)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">高频并购垂直B2B利基软件、极端分权</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/15 text-teal-700 dark:text-teal-400">~$65B+ · 千年百倍股标杆</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~27.5%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$0.24M/人</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">永不出售</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>永续并购鼻祖但技术协同较轻：</strong>保留原团队自治、不改写底层代码，靠海量小额并购滚雪球，利润率与人均创收远低于深度重构的 BSP（<a href="https://www.acquiry.com/research/bending-spoons-acquisition-compounding-model/" target="_blank" rel="noopener noreferrer" class="cite-link">Acquiry</a>）。
+ </td>
+ </tr>
+
+ <!-- 行 3：Roper Technologies (ROP) -->
+ <tr data-category="compounder" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Roper Technologies (ROP)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Vertafore / Deltek / Frontline</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">收购高现金流行业龙头应用软件平台</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">~$60B · 标普500现金流机器</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~40.2%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~$0.41M/人</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">长期持有</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>美股成熟软件复合体标杆：</strong>专注高转换成本 B2B 垂直软件，EBITDA 利润率超 40%，但内生与并购复合增速（~10–14%）显著慢于 BSP 的高速扩张。
+ </td>
+ </tr>
+
+ <!-- 行 4：Adobe / Dropbox / 成熟创意与协作软件 -->
+ <tr data-category="saas" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Adobe / Dropbox (ADBE / DBX)</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Creative Cloud / Acrobat / Dropbox</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">内生单品研发与高毛利订阅授权</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-400">创意与云存储成熟巨头</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~35%–46%</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">$0.65M–$0.95M</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">内生经营</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>正面赛道竞合对象：</strong>BSP 旗下的 Remini、Splice、Vimeo 与 WeTransfer 直接在创意影像与文件协作领域与 Adobe、Dropbox 争夺中小创作者订阅预算。
+ </td>
+ </tr>
+
+ <!-- 行 5：软件并购私募巨头 (Vista / Thoma Bravo) -->
+ <tr data-category="pe" class="hover:bg-slate-50 dark:hover:bg-navy-800/40 transition">
+ <td class="py-4 px-5">
+ <div class="font-bold text-slate-900 dark:text-white">Vista Equity / Thoma Bravo</div>
+ <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Citrix / Coupa / Anaplan (非上市PE)</div>
+ </td>
+ <td class="py-4 px-4 text-slate-700 dark:text-slate-300">高杠杆 LBO + 标准化运营手册降本</td>
+ <td class="py-4 px-4">
+ <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/15 text-rose-700 dark:text-rose-400">单家管理资产超 $1,000亿</span>
+ </td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">~35%–45%</td>
+ <td class="py-4 px-4 font-mono text-slate-500 dark:text-slate-400">~0.35M–0.50M</td>
+ <td class="py-4 px-4 font-mono text-slate-700 dark:text-slate-300">4–7年退出</td>
+ <td class="py-4 px-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+ <strong>一级市场并购竞价对手：</strong>PE 缺乏自有统一技术栈与 AI 工程团队，且受基金存续期限制必须再次转卖；BSP 凭借永久持有承诺与内部中台在优质交易中具独特胜出优势（<a href="https://www.youtube.com/watch?v=6t5yF8ansoQ" target="_blank" rel="noopener noreferrer" class="cite-link">All-In Summit</a>）。
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- 配套 Chart.js 横向条形图：经调整营业利润率与人均创收对比 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">全球主要软件复合体与成熟 SaaS 巨头经调整营业利润率（%）及单人创收对比</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">Bending Spoons 凭借共享技术中台与 Alt-Spooner AI 编码，以 54.1% 经调整营业利润率领跑全球软件并购同业（<a href="https://bendingspoons.com/documents/financials/2026/20260813%20Bending%20Spoons%E2%80%94Q2%202026%20Results.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 2026 Results</a>）</p>
+ </div>
+ <span class="text-xs font-semibold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">54.1% 经调整营业利润率断层第一</span>
+ </div>
+ <div class="relative h-64 w-full">
+ <canvas id="compMarginChart"></canvas>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 四、 财务健康与飞轮复利推演 (Financial Health & Flywheel Simulator)
+ ========================================================= -->
+ <section id="sec-fin" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 04 · Financial Health &amp; Compounding Flywheel Simulator</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">四、 财务健康度与估值体系：54% 营业利润率、$9.3亿巴菲特背书与杠杆边界</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">2026Q2 经调整营业利润 $381M · 远期 EV/Adj.OI ~19x–21x</span>
+ </div>
+
+ <!-- 1. 财务健康度四大硬核指标卡 -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-mogold-600 dark:text-mogold-400 uppercase">Adj. Operating Margin</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">54.1% ($381M)</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 由 2023 年 36%、2025 年 47% 稳步攀升至 2026Q2 单季 54.1%，且该非 GAAP 口径已全额扣除真实股权激励费用（<a href="https://bendingspoons.com/documents/financials/2026/Bending%20Spoons%E2%80%94Q2%202026%20Prepared%20Remarks.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 Remarks</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">CapEx-Light Cash Engine</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$3.7M CapEx</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 极致轻资产软件架构令 TTM 资本开支仅 $370万（占营收不足 0.3%），税前经营现金流直接转化为次年并购弹药（<a href="https://www.trefis.com/data/companies/BSP" target="_blank" rel="noopener noreferrer" class="cite-link">Trefis</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Debt Leverage &amp; Interest</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">~2.4x 净杠杆</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ IPO 前总债务约 $43.6亿（2026Q1 单季利息支出 $9,300万），IPO 募资及伯克希尔后续注资正逐步优化资产负债表利率成本（<a href="https://www.mostlymetrics.com/p/bending-spoons-ipo-s1-breakdown" target="_blank" rel="noopener noreferrer" class="cite-link">Mostly Metrics</a>）。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Berkshire Capital Anchor</div>
+ <div class="text-2xl font-extrabold font-mono text-slate-900 dark:text-white mt-1">$930M 重仓入股</div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+ 伯克希尔·哈撒韦继 2026 年 7 月 IPO 认购 $6亿后，于 2026 年 10 月再度追加投资 $3.3亿，为后续巨型并购提供顶格信用背书（<a href="https://www.nasdaq.com/press-release/berkshire-hathaway-invests-further-330-million-bending-spoons-following-600-million" target="_blank" rel="noopener noreferrer" class="cite-link">Nasdaq PR</a>）。
+ </p>
+ </div>
+ </div>
+
+ <!-- 2. 交互式 Chart.js 双轴演进图 -->
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base">FY2023–2026Q2 Bending Spoons 营业收入（$M）vs 经调整营业利润率（%）扩张曲线</h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400">每一次经典品牌收购并入共享 AI 平台后，不仅直接抬升营收台阶，更带动集团整体经调整营业利润率从 36.0% 稳步走高至 54.1%</p>
+ </div>
+ <span class="text-xs font-mono font-bold text-mogold-700 dark:text-mogold-400 bg-mogold-500/15 px-2.5 py-1 rounded">利润率 3年累计扩张 +18.1pp</span>
+ </div>
+ <div class="relative h-72 w-full">
+ <canvas id="valEvolutionChart"></canvas>
+ </div>
+ </div>
+
+ <!-- 3. 交互式组件：Bending Spoons“永续软件并购飞轮”长期价值动态推演器 -->
+ <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-700 shadow-xl space-y-6 no-print">
+ <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+ <div>
+ <div class="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-mogold-400 font-bold">
+ <span>SPOONER COMPOUNDING FLYWHEEL · 永续软件并购与估值动态推演器</span>
+ </div>
+ <h3 class="text-lg sm:text-xl font-bold text-white mt-1">Bending Spoons“内生+并购”复合增长与长期股权回报模拟器</h3>
+ <p class="text-xs text-slate-400 mt-0.5">基准参数：当前市值 ~$27.5B | 2026Q2 年化营收运行率 $2,816M | 经调整营业利润率 54.1% | 支持三种典型情景一键切换</p>
+ </div>
+ <label class="inline-flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-mogold-500/15 border border-mogold-400/30 text-xs font-semibold text-mogold-300 cursor-pointer shrink-0">
+ <input type="checkbox" id="ai-boost-toggle" checked onchange="updateFlywheelSimulator()" class="w-4 h-4 rounded accent-[#F59E0B] cursor-pointer">
+ <span>开启 Alt-Spooner AI 提效利润率扩张 (+3.0pp)</span>
+ </label>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+ <!-- 左侧参数控制区 -->
+ <div class="lg:col-span-5 space-y-4 text-xs">
+ <!-- 本金滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">模拟投资本金 (USD)</span>
+ <span id="sim-principal-label" class="font-mono font-bold text-white text-sm">$30,000</span>
+ </div>
+ <input id="sim-principal" type="range" min="5000" max="200000" step="5000" value="30000" oninput="updateFlywheelSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <!-- 年限滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">长期持有年限 (Years)</span>
+ <span id="sim-years-label" class="font-mono font-bold text-white text-sm">7 年</span>
+ </div>
+ <input id="sim-years" type="range" min="1" max="15" step="1" value="7" oninput="updateFlywheelSimulator()" class="w-full accent-[#F59E0B] cursor-pointer">
+ </div>
+
+ <!-- 复合营收增速滑块 -->
+ <div>
+ <div class="flex justify-between mb-1.5">
+ <span class="text-slate-300 font-medium">年均营收复合增速 (内生+并购 CAGR)</span>
+ <span id="sim-growth-label" class="font-mono font-bold text-emerald-400 text-sm">24.0%</span>
+ </div>
+ <input id="sim-growth" type="range" min="8" max="45" step="1" value="24" oninput="updateFlywheelSimulator()" class="w-full accent-[#10B981] cursor-pointer">
+ </div>
+
+ <!-- 退出估值倍数选择按钮组 -->
+ <div class="pt-1">
+ <div class="text-slate-300 font-medium mb-2">期末合理估值倍数（EV / Adj. Operating Income）：</div>
+ <div class="grid grid-cols-3 gap-2" id="mult-btn-group">
+ <button type="button" onclick="setExitMultiple(14)" data-mult="14" class="mult-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ 14.0x 谨慎折价<br><span class="text-[10px] text-slate-400">成熟复合体底线</span>
+ </button>
+ <button type="button" onclick="setExitMultiple(18)" data-mult="18" class="mult-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-mogold-500 text-navy-950 border border-mogold-400 shadow transition cursor-pointer">
+ 18.0x 基准中枢<br><span class="text-[10px] text-navy-900">合理估值锚点</span>
+ </button>
+ <button type="button" onclick="setExitMultiple(23)" data-mult="23" class="mult-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-mogold-400 transition cursor-pointer">
+ 23.0x 溢价重估<br><span class="text-[10px] text-slate-400">高增速平台溢价</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- 右侧四大实时测算结果卡片 -->
+ <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末预计投资总价值 (USD)</div>
+ <div id="sim-final-value" class="text-2xl sm:text-3xl font-mono font-extrabold text-white mt-1.5">$132,140</div>
+ <div id="sim-total-return" class="text-xs font-semibold text-emerald-400 mt-1.5">累计总回报 +340.5% (年化IRR 23.6%)</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末公司预计经调整营业利润</div>
+ <div id="sim-end-oi" class="text-2xl sm:text-3xl font-mono font-extrabold text-mogold-400 mt-1.5">$7,256M</div>
+ <div id="sim-end-rev" class="text-xs text-slate-400 mt-1.5">对应期末年化总营收 ~$12,707M</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">期末隐含企业价值 (Implied EV)</div>
+ <div id="sim-end-ev" class="text-2xl sm:text-3xl font-mono font-extrabold text-teal-400 mt-1.5">$130.6B</div>
+ <div id="sim-margin-used" class="text-xs text-slate-400 mt-1.5">测算采用经调整营业利润率：57.1%</div>
+ </div>
+
+ <div class="bg-navy-950/80 rounded-xl p-5 border border-slate-800">
+ <div class="text-xs text-slate-400">本金扩张倍数 (MOIC Multiple)</div>
+ <div id="sim-moic" class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-400 mt-1.5">4.40x</div>
+ <div id="sim-net-gain" class="text-xs text-slate-400 mt-1.5">累计创造净资本利得：+$102,140</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. 华尔街多空核心分歧对比 -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div class="bg-emerald-50/70 dark:bg-emerald-950/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-emerald-700 dark:text-emerald-400 text-base">多头核心论点 (Bull Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">AI工程杠杆 + 伯克希尔护航</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>伯克希尔·哈撒韦累计 $9.3亿真金白银背书：</strong>全球最严苛的价值投资机构在 IPO 与 2026 年 10 月连续两次重仓入股，验证了其自由现金流与“永不出售”模式的稀缺性（<a href="https://www.nasdaq.com/press-release/berkshire-hathaway-invests-further-330-million-bending-spoons-following-600-million" target="_blank" rel="noopener noreferrer" class="cite-link">Nasdaq PR</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>Alt-Spooner AI 带来传统并购者不具备的降本维度：</strong>通过 &gt;90% AI 代码协作与微服务重构，能把利润率仅 10%–15% 的老牌软件迅速改造成 50%+ 利润率印钞机。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-emerald-600 font-bold">✓</span><span><strong>Airtable 与 Miro 打开十亿级 B2B 协同第二曲线：</strong>高客单价企业客户带来更长生命周期与更强抗周期韧性，打破早期依赖移动工具 App 的天花板。</span></li>
+ </ul>
+ </div>
+
+ <div class="bg-rose-50/70 dark:bg-rose-950/20 rounded-2xl p-6 border border-rose-200 dark:border-rose-800/60">
+ <div class="flex items-center justify-between mb-3">
+ <span class="font-bold text-rose-700 dark:text-rose-400 text-base">空头担忧论点 (Bear Thesis)</span>
+ <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300">内生放缓 + 整合带宽上限</span>
+ </div>
+ <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>内生有机增速由 2025 年 13% 放缓至 2026Q2 的 +3%：</strong>早期主力产品 Remini 与 Splice 在 Q2 出现同比营收下滑，若无持续大型并购输血，存量产品内生增速偏温和（<a href="https://bendingspoons.com/documents/financials/2026/Bending%20Spoons%E2%80%94Q2%202026%20Prepared%20Remarks.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 Remarks</a>）。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>核心 Spooner 整合带宽（Operational Capacity）受限：</strong>CEO Luca Ferrari 坦言约 650 名核心骨干消化大型并购的产能存在上限，未来交易节奏可能阶段性放慢。</span></li>
+ <li class="flex items-start space-x-2"><span class="text-rose-600 font-bold">!</span><span><strong>高杠杆利息负担与“裁员+提价”品牌透支风险：</strong>巨额并购贷款带来的利息支出显著压缩 GAAP 净利润，且激进削减免费层可能引发老用户社区流失。</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 五、 投资决策与风险配置框架 (Investment Decision & Risk)
+ ========================================================= -->
+ <section id="sec-inv" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-mogold-600 dark:text-mogold-400">Section 05 · Investment Decision &amp; Risk Allocation</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">五、 投资决策与风险配置框架：三情景估值推演与软件复合体组合配置</h2>
+ </div>
+ <span class="text-xs text-slate-500 dark:text-slate-400">配置建议：AI 时代软件整合稀缺标的 · 关注并购落地与杠杆降速节奏</span>
+ </div>
+
+ <!-- 1. 三情景估值推演卡片 (Bull / Base / Bear) -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+ <!-- 牛市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-emerald-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold">牛市情景 (Bull Case)</span>
+ <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">概率：25%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">22.0x–25.0x EV/Adj.OI ($38B–$44B)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>Airtable 与 Miro 顺利完成微服务与 Alt-Spooner AI 重构并释放 50%+ 营业利润率；存量组合内生增速重返 8%–10%，华沙与美国枢纽成功扩大核心 Spooner 整合带宽。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+ 潜在上行空间：+38% 至 +60%
+ </div>
+ </div>
+
+ <!-- 基准情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-mogold-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">基准情景 (Base Case)</span>
+ <span class="font-mono text-xs font-bold text-mogold-600 dark:text-mogold-400">概率：55%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">17.5x–19.5x EV/Adj.OI ($28B–$33B)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>公司按节奏消化 AOL、Eventbrite、Vimeo 与 Airtable/Miro 交易，全年经调整营业利润率稳定在 50%–54% 区间，存量内生增速维持 3%–6%，凭借内生现金流逐步去杠杆并开展中小型补强并购。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-mogold-600 dark:text-mogold-400">
+ 稳健预期年化总回报：+14% 至 +20%
+ </div>
+ </div>
+
+ <!-- 熊市情景 -->
+ <div class="report-card bg-white dark:bg-navy-900 rounded-2xl p-6 border-t-4 border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+ <div>
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2.5 py-0.5 rounded bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">熊市情景 (Bear Case)</span>
+ <span class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">概率：20%</span>
+ </div>
+ <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white mt-2">12.5x–14.5x EV/Adj.OI ($19B–$22B)</div>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+ <strong>核心假设：</strong>企业级 B2B 客户（Airtable/Miro）对激进裁员与涨价产生强烈抵触导致客户流失超预期，同时生成式 AI 原生竞品加速替代传统工具类应用，估值向传统软件控股平台折价回归。
+ </p>
+ </div>
+ <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-rose-600 dark:text-rose-400">
+ 潜在下行回撤风险：-20% 至 -30%
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. 四大核心风险矩阵 -->
+ <div>
+ <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3">四大核心潜在风险评估与跟踪边界</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold">01 · 核心 Spooner 整合带宽与管理半径瓶颈</span>
+ <span class="text-xs font-mono text-rose-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">约 650 名核心骨干同步消化多起十亿级并购的产能上限</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 2026 年连续接手 AOL、Eventbrite、Vimeo、Tractive、Airtable 与 Miro 后，核心工程师轮转压力骤增，若整合周期拉长可能阶段性拖累新品发布节奏。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">02 · 企业级 SaaS 整合与社区信任摩擦</span>
+ <span class="text-xs font-mono text-amber-500 font-semibold">关注度：高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">B2B 客户（Airtable/Miro）与消费级 App 的文化差异</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 消费级工具可快速砍掉免费层并调价，但大型企业客户对客户成功团队、安全合规与产品路线图稳定性要求极高，过度精简人员可能影响大客户续约。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold">03 · 生成式 AI 对工具类软件的颠覆风险</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中高</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">基础修图、轻量剪辑与白板工具面临大模型原生功能替代</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ Remini 与 Splice 在 2026Q2 已显现营收同比回落迹象，需持续观察大模型厂商免费内置图像/视频编辑能力对独立订阅 App 的长期分流效应。
+ </p>
+ </div>
+
+ <div class="report-card bg-white dark:bg-navy-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <div class="flex items-center justify-between mb-2">
+ <span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold">04 · 高债务利息侵蚀与创始人关键人依赖</span>
+ <span class="text-xs font-mono text-slate-500 font-semibold">关注度：中</span>
+ </div>
+ <h4 class="font-bold text-slate-900 dark:text-white text-sm">银团债务利息成本及核心创始团队无固定期限合同</h4>
+ <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+ 巨额并购融资带来的高额财务费用压缩 GAAP 账面净利润，且招股书提示 CEO Luca Ferrari 等核心创始人未签署固定期限雇佣合同。
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. 机构级组合配置纪律横幅 -->
+ <div class="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 text-white border border-slate-700 shadow-md">
+ <h3 class="text-base font-bold text-mogold-400 mb-4 flex items-center space-x-2">
+ <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+ <span>机构级软件组合配置纪律与“永续并购三角”协同策略</span>
+ </h3>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-white mb-1">1. 软件复合体三杰配对（BSP + CSU + ROP）</div>
+ <p class="text-slate-300 leading-relaxed">
+ <strong>BSP</strong> 捕获高弹性 AI 架构重构与大中型品牌整合红利；<strong>CSU</strong> 提供千笔垂直利基小微软件极端分散防守；<strong>ROP</strong> 锚定美国高转换成本行业软件稳健复利。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-mogold-400 mb-1">2. 紧盯“内生有机增速与净杠杆”双拐点加仓</div>
+ <p class="text-slate-300 leading-relaxed">
+ 建议采取“底仓跟踪 + 逢回调分批配置”策略：若存量内生有机增速由 +3% 回升至 +6% 以上，或 54% 高利润现金流推动净债务/Adj.OI 降至 1.8x 以下，则构成强力加仓信号。
+ </p>
+ </div>
+ <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+ <div class="font-bold text-emerald-400 mb-1">3. 关注非 GAAP 调整项与自由现金流真实含金量</div>
+ <p class="text-slate-300 leading-relaxed">
+ BSP 的经调整营业利润已包含真实股权激励支出（优于多数硅谷 SaaS 粉饰口径），追踪时应重点锚定“税后无杠杆自由现金流（uFCF）”对收购本金的回收周期。
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 六、 季度基本面跟踪 KPI 交互式核查清单 (Checklist)
+ ========================================================= -->
+ <section id="sec-kpi" class="scroll-mt-20 space-y-6">
+ <div class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+ <div>
+ <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Section 06 · Quarterly Fundamental Tracking KPIs</span>
+ <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">六、 季度基本面跟踪 KPI 交互式核查清单（Checklist）</h2>
+ </div>
+ <div class="flex items-center space-x-2 no-print">
+ <span id="kpi-progress-badge" class="px-3 py-1 rounded-full bg-mogold-500/15 text-mogold-700 dark:text-mogold-400 text-xs font-bold">已核查 3 / 6 项 (50%)</span>
+ <button onclick="resetKpiChecklist()" class="px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-navy-800 hover:bg-slate-300 dark:hover:bg-navy-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer">重置清单</button>
+ </div>
+ </div>
+
+ <div class="bg-white dark:bg-navy-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+ <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+ 点击勾选季度财报中已验证达标的经营指标（勾选状态自动本地保存），持续校验 Bending Spoons 整合效率与内生增长健康度：
+ </p>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="kpi-checklist">
+ <!-- KPI 1 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-1" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">1. 经调整营业利润率是否稳守 50%–54%+ 标杆区间</span>
+ <span class="text-[11px] font-mono text-mogold-600 dark:text-mogold-400 font-semibold shrink-0">重构效率核心锚</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026Q2 达 54.1%（$3.81亿）；后续需观察并入低利润率的 Airtable 与 Miro 后，集团整体利润率能否在 4 个季度内重返 50%+。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 2 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-2" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">2. 存量品牌组合内生有机增速（Organic Growth）企稳回升</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">产品生命力晴雨表</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 2026Q2 内生增速为 +3%（WeTransfer 与 Tractive 表现优异）；需跟踪 Remini/Splice 是否企稳以及 AOL/Vimeo 改版后内生增速能否重回 6%+。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 3 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-3" checked onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">3. “Alt-Spooner” AI 代码渗透率（&gt;90%）与单人年创收（&gt;$2.5M）</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">技术杠杆护城河</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查 AI 辅助研发与自动化招聘测评是否持续压低新增员工需求，保持单名 FTE 年创收稳居 $250万以上。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 4 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-4" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">4. 混合净收入留存率（NRR ≥ 94%）与订阅收入占比（&gt;82%）</span>
+ <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">订阅续费粘性</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 观察在定价体系重塑及引入企业级协同软件（Airtable/Miro）后，集团混合 NRR 能否从 94% 进一步向 100% 迈进。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 5 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-5" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">5. 核心 Spooner 遗憾流失率（&lt;1.5%）与全球招聘扩容进度</span>
+ <span class="text-[11px] font-mono text-teal-600 dark:text-teal-400 font-semibold shrink-0">整合产能瓶颈指标</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 跟踪波兰华沙与美国新枢纽的精英招募进度，确保在不稀释 0.036% 严选标准的前提下拓宽大型并购消化带宽。
+ </p>
+ </div>
+ </label>
+
+ <!-- KPI 6 -->
+ <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800/50 cursor-pointer transition">
+ <input type="checkbox" id="kpi-6" onchange="updateKpiChecklist()" class="mt-1 w-4 h-4 rounded accent-[#D97706] focus:ring-mogold-500">
+ <div class="flex-1">
+ <div class="flex items-center justify-between gap-2">
+ <span class="font-bold text-sm text-slate-900 dark:text-white">6. 净债务 / 经调整营业利润杠杆率回落及利息覆盖倍数改善</span>
+ <span class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">资产负债表安全垫</span>
+ </div>
+ <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+ 核查伯克希尔 $9.3亿股权资金与内生强现金流是否有效降低综合融资利率，推动 GAAP 净利润加速释放。
+ </p>
+ </div>
+ </label>
+ </div>
+ </div>
+ </section>
+
+ <!-- =========================================================
+ 页脚免责声明 (Disclaimer Footer)
+ ========================================================= -->
+ <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-10">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-semibold text-slate-700 dark:text-slate-300">
+ <span>Bending Spoons S.p.A (NASDAQ: BSP) 深度商业与投资价值分析报告 · 机构研究框架版</span>
+ <span>数据基准：SEC Form F-1 Prospectus · Q2 2026 Form 6-K &amp; Earnings Call · 2026年11月回溯</span>
+ </div>
+ <p class="leading-relaxed">
+ <strong>免责声明：</strong>本深度研究报告基于 Bending Spoons S.p.A 向美国证监会（SEC EDGAR）披露的 <a href="https://www.sec.gov/Archives/edgar/data/2004711/000110465926071170/tm2613674-7_f1.htm" target="_blank" rel="noopener noreferrer" class="cite-link">IPO Final Prospectus (Form F-1)</a>、<a href="https://www.sec.gov/Archives/edgar/data/2004711/000200471126000011/bsp-20260630x6k.htm" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 2026 Form 6-K</a>、<a href="https://bendingspoons.com/documents/financials/2026/Bending%20Spoons%E2%80%94Q2%202026%20Prepared%20Remarks.pdf" target="_blank" rel="noopener noreferrer" class="cite-link">Q2 2026 Earnings Call Prepared Remarks</a>、<a href="https://www.nasdaq.com/press-release/berkshire-hathaway-invests-further-330-million-bending-spoons-following-600-million" target="_blank" rel="noopener noreferrer" class="cite-link">Berkshire Hathaway 投资公告</a> 及全球企业软件行业公开研究整理生成，旨在提供结构化的产业分析与长期复利估值框架。报告中涉及的复合增速假设、三情景估值倍数及飞轮模拟器推演均基于特定前提条件，不构成任何具体证券买卖建议或收益承诺。点击侧边栏或顶部“导出独立 HTML 文件”即可保存完整离线单文件版本。
+ </p>
+ </footer>
+
+ </div>
+ </main>
+
+ <!-- 交互逻辑、一键导出 HTML 与 Chart.js 可视化脚本 -->
+ <script>
+ // ==========================================
+ // 0. 一键导出独立自包含 HTML 文件 (.html)
+ // ==========================================
+ let toastTimer = null;
+
+ function showToast(msg) {
+ const toast = document.getElementById('export-toast');
+ const msgEl = document.getElementById('export-toast-msg');
+ if (!toast || !msgEl) return;
+ msgEl.textContent = msg;
+ toast.classList.remove('hidden');
+ toast.classList.add('flex');
+ if (toastTimer) clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => {
+ toast.classList.add('hidden');
+ toast.classList.remove('flex');
+ }, 3200);
+ }
+
+ function exportStandaloneHtml() {
+ try {
+ const clone = document.documentElement.cloneNode(true);
+ const toastClone = clone.querySelector('#export-toast');
+ if (toastClone) {
+ toastClone.classList.add('hidden');
+ toastClone.classList.remove('flex');
+ }
+ const drawerClone = clone.querySelector('#mobile-drawer');
+ if (drawerClone) {
+ drawerClone.classList.add('hidden');
+ }
+ const progressClone = clone.querySelector('#reading-progress');
+ if (progressClone) {
+ progressClone.style.width = '0%';
+ }
+ clone.querySelectorAll('canvas').forEach(cv => {
+ cv.removeAttribute('width');
+ cv.removeAttribute('height');
+ cv.removeAttribute('style');
+ });
+
+ const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+ const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = 'Bending_Spoons_Deep_Dive_Analysis.html';
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ setTimeout(() => URL.revokeObjectURL(url), 1500);
+ showToast('已成功导出独立 HTML 文件：Bending_Spoons_Deep_Dive_Analysis.html');
+ } catch (err) {
+ showToast('导出失败，请使用右上角文件下载功能保存。');
+ }
+ }
+
+ // ==========================================
+ // 1. 亮色 / 深色模式切换（同步刷新所有 Chart.js 图表）
+ // ==========================================
+ function toggleTheme() {
+ const html = document.documentElement;
+ html.classList.toggle('dark');
+ updateChartsTheme();
+ }
+
+ // ==========================================
+ // 2. 移动端抽屉菜单切换
+ // ==========================================
+ function toggleMobileMenu() {
+ const drawer = document.getElementById('mobile-drawer');
+ if (drawer) drawer.classList.toggle('hidden');
+ }
+
+ // ==========================================
+ // 3. 阅读进度条与左侧导航滚动联动高亮
+ // ==========================================
+ const sections = document.querySelectorAll('section[id]');
+ const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+ const prog = document.getElementById('reading-progress');
+ if (prog) prog.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+ let currentId = 'sec-exec';
+ sections.forEach(sec => {
+ const top = sec.offsetTop - 160;
+ if (scrollTop >= top) {
+ currentId = sec.getAttribute('id');
+ }
+ });
+
+ navLinks.forEach(link => {
+ link.classList.remove('active');
+ const numSpan = link.querySelector('span span');
+ if (numSpan) {
+ numSpan.classList.remove('text-mogold-400');
+ numSpan.classList.add('text-slate-500');
+ }
+ if (link.dataset.target === currentId) {
+ link.classList.add('active');
+ if (numSpan) {
+ numSpan.classList.remove('text-slate-500');
+ numSpan.classList.add('text-mogold-400');
+ }
+ }
+ });
+ });
+
+ // ==========================================
+ // 4. 同行竞争格局矩阵筛选器
+ // ==========================================
+ function filterCompetitors(category) {
+ document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+ if (btn.dataset.filter === category) {
+ btn.classList.add('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.remove('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ } else {
+ btn.classList.remove('bg-mogold-500', 'text-navy-950', 'font-semibold', 'shadow-sm');
+ btn.classList.add('bg-white', 'dark:bg-navy-800', 'text-slate-600', 'dark:text-slate-300', 'border', 'font-medium');
+ }
+ });
+
+ const rows = document.querySelectorAll('#comp-table-body tr');
+ rows.forEach(row => {
+ const rowCat = row.dataset.category;
+ if (category === 'all' || rowCat === 'core' || rowCat === category) {
+ row.style.display = '';
+ } else {
+ row.style.display = 'none';
+ }
+ });
+ }
+
+ // ==========================================
+ // 5. Bending Spoons“永续软件并购飞轮”长期价值动态推演器
+ // ==========================================
+ let currentExitMultiple = 18; // 默认 18.0x EV / Adj. Operating Income
+
+ function setExitMultiple(mult) {
+ currentExitMultiple = mult;
+ document.querySelectorAll('#mult-btn-group .mult-btn').forEach(btn => {
+ const btnMult = parseFloat(btn.dataset.mult);
+ if (Math.abs(btnMult - mult) < 0.01) {
+ btn.className = 'mult-btn active px-2 py-2 rounded-lg text-[11px] font-bold bg-mogold-500 text-navy-950 border border-mogold-400 shadow transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-navy-900';
+ } else {
+ btn.className = 'mult-btn px-2 py-2 rounded-lg text-[11px] font-medium bg-navy-950/70 text-slate-300 border border-slate-700 hover:border-mogold-400 transition cursor-pointer';
+ const subSpan = btn.querySelector('span');
+ if (subSpan) subSpan.className = 'text-[10px] text-slate-400';
+ }
+ });
+ updateFlywheelSimulator();
+ }
+
+ function updateFlywheelSimulator() {
+ const principal = parseFloat(document.getElementById('sim-principal').value) || 30000;
+ const years = parseInt(document.getElementById('sim-years').value, 10) || 7;
+ const growthPct = parseFloat(document.getElementById('sim-growth').value) || 24;
+ const aiBoost = document.getElementById('ai-boost-toggle').checked;
+
+ document.getElementById('sim-principal-label').textContent = '$' + principal.toLocaleString('en-US');
+ document.getElementById('sim-years-label').textContent = years + ' 年';
+ document.getElementById('sim-growth-label').textContent = growthPct.toFixed(1) + '%';
+
+ // 基准参数：2026Q2 年化营收运行率 $2,816M，当前合理企业价值锚 ~$31.5B（含净债务）
+ const baseRevM = 2816;
+ const baseEvB = 31.5;
+ const baseMargin = 0.541;
+ const effMargin = aiBoost ? Math.min(0.62, baseMargin + 0.03) : baseMargin;
+ const g = growthPct / 100;
+
+ const endRevM = baseRevM * Math.pow(1 + g, years);
+ const endAdjOiM = endRevM * effMargin;
+ const endEvB = (endAdjOiM * currentExitMultiple) / 1000;
+
+ const evMultiple = endEvB / baseEvB;
+ const finalPortfolioVal = principal * evMultiple;
+ const netGain = finalPortfolioVal - principal;
+ const totalReturnPct = ((finalPortfolioVal - principal) / principal) * 100;
+ const irrPct = (Math.pow(evMultiple, 1 / years) - 1) * 100;
+
+ document.getElementById('sim-final-value').textContent = '$' + Math.round(finalPortfolioVal).toLocaleString('en-US');
+ document.getElementById('sim-total-return').textContent = `累计总回报 ${totalReturnPct >= 0 ? '+' : ''}${totalReturnPct.toFixed(1)}% (年化IRR ${irrPct.toFixed(1)}%)`;
+ document.getElementById('sim-end-oi').textContent = '$' + Math.round(endAdjOiM).toLocaleString('en-US') + 'M';
+ document.getElementById('sim-end-rev').textContent = `对应期末年化总营收 ~$${Math.round(endRevM).toLocaleString('en-US')}M`;
+ document.getElementById('sim-end-ev').textContent = '$' + endEvB.toFixed(1) + 'B';
+ document.getElementById('sim-margin-used').textContent = `测算采用经调整营业利润率：${(effMargin * 100).toFixed(1)}%`;
+ document.getElementById('sim-moic').textContent = evMultiple.toFixed(2) + 'x';
+ document.getElementById('sim-net-gain').textContent = `累计创造净资本利得：${netGain >= 0 ? '+' : ''}$${Math.round(netGain).toLocaleString('en-US')}`;
+ }
+
+ // ==========================================
+ // 6. KPI 核查清单状态持久化与计数更新
+ // ==========================================
+ const KPI_STORAGE_KEY = 'bsp_research_kpi_state_v1';
+
+ function loadKpiChecklist() {
+ try {
+ const saved = localStorage.getItem(KPI_STORAGE_KEY);
+ if (saved) {
+ const stateMap = JSON.parse(saved);
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ if (typeof stateMap[cb.id] === 'boolean') {
+ cb.checked = stateMap[cb.id];
+ }
+ });
+ }
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ updateKpiChecklist();
+ }
+
+ function updateKpiChecklist() {
+ const checkboxes = document.querySelectorAll('#kpi-checklist input[type="checkbox"]');
+ const total = checkboxes.length;
+ let checkedCount = 0;
+ const stateMap = {};
+
+ checkboxes.forEach(cb => {
+ stateMap[cb.id] = cb.checked;
+ if (cb.checked) checkedCount++;
+ });
+
+ const pct = Math.round((checkedCount / total) * 100);
+ const badge = document.getElementById('kpi-progress-badge');
+ if (badge) badge.textContent = `已核查 ${checkedCount} / ${total} 项 (${pct}%)`;
+
+ try {
+ localStorage.setItem(KPI_STORAGE_KEY, JSON.stringify(stateMap));
+ } catch (e) {
+ // 忽略沙箱本地存储权限限制
+ }
+ }
+
+ function resetKpiChecklist() {
+ document.querySelectorAll('#kpi-checklist input[type="checkbox"]').forEach(cb => {
+ cb.checked = false;
+ });
+ updateKpiChecklist();
+ showToast('已重置 Bending Spoons 季度跟踪 KPI 核查清单');
+ }
+
+ // ==========================================
+ // 7. Chart.js 数据可视化初始化与主题自适应
+ // ==========================================
+ let bizChartInstance = null;
+ let radarChartInstance = null;
+ let compMarginChartInstance = null;
+ let valEvolutionChartInstance = null;
+ let currentBizMode = 'oci_evolution';
+
+ function getChartColors() {
+ const isDark = document.documentElement.classList.contains('dark');
+ return {
+ text: isDark ? '#CBD5E1' : '#475569',
+ grid: isDark ? 'rgba(51, 65, 85, 0.5)' : 'rgba(226, 232, 240, 0.85)',
+ radarAngle: isDark ? 'rgba(71, 85, 105, 0.6)' : 'rgba(203, 213, 225, 0.85)'
+ };
+ }
+
+ function initBizChart() {
+ const canvas = document.getElementById('bizArchitectureChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ // 视图 A：FY2023–2026Q2 营业收入与经调整营业利润 ($M, 源自 SEC Form F-1 & Q2 2026 6-K)
+ const evoConfig = {
+ type: 'bar',
+ data: {
+ labels: ['FY2023 (全年)', 'FY2024 (全年)', 'FY2025 (全年)', 'Q1 2026 (单季)', 'Q2 2026 (单季)'],
+ datasets: [
+ {
+ label: '营业收入 Revenue ($M)',
+ data: [387.0, 671.0, 1306.0, 601.3, 704.0],
+ backgroundColor: 'rgba(100, 116, 139, 0.65)',
+ borderRadius: 5
+ },
+ {
+ label: '经调整营业利润 Adj. Operating Income ($M)',
+ data: [139.0, 302.0, 613.0, 307.0, 381.0],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5
+ },
+ {
+ type: 'line',
+ label: '经调整营业利润率 (%) — 右轴参考',
+ data: [36.0, 45.0, 47.0, 51.0, 54.1],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 2.5,
+ pointRadius: 4,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y1'
+ ? `${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`
+ : `${c.dataset.label}: $${c.parsed.y.toFixed(1)}M`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ position: 'left',
+ min: 0,
+ max: 1450,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' }
+ },
+ y1: {
+ position: 'right',
+ min: 20,
+ max: 65,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' }
+ }
+ }
+ }
+ };
+
+ // 视图 B：核心业务质量与 AI 效率结构比率 (%)
+ const splitConfig = {
+ type: 'bar',
+ data: {
+ labels: [
+ '2026Q2 同比营收增速 (+126%)',
+ '2026Q1 混合净收入留存率 (NRR)',
+ 'AI 参与编写代码 PR 占比 (Alt-Spooner)',
+ '2026Q1 订阅制收入占总营收比重',
+ '2026Q2 经调整营业利润率 (Adj. OM)',
+ '2025 存量组合内生有机增速 (Organic)'
+ ],
+ datasets: [
+ {
+ label: '核心经营指标百分比 (%)',
+ data: [126.0, 94.0, 91.0, 84.0, 54.1, 13.0],
+ backgroundColor: [
+ '#F59E0B',
+ '#10B981',
+ '#06B6D4',
+ '#6366F1',
+ '#D97706',
+ '#64748B'
+ ],
+ borderRadius: 6,
+ barThickness: 22
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: { display: false },
+ tooltip: {
+ callbacks: {
+ label: (c) => `指标值: ${c.parsed.x}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ min: 0,
+ max: 140,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ };
+
+ if (bizChartInstance) bizChartInstance.destroy();
+ bizChartInstance = new Chart(ctx, currentBizMode === 'oci_evolution' ? evoConfig : splitConfig);
+ }
+
+ function switchBizChart(mode) {
+ currentBizMode = mode;
+ const btnEvo = document.getElementById('btn-chart-evo');
+ const btnSplit = document.getElementById('btn-chart-split');
+ const titleEl = document.getElementById('biz-chart-title');
+ const subEl = document.getElementById('biz-chart-sub');
+
+ if (mode === 'oci_evolution') {
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'FY2023–2026Q2 营业收入与经调整营业利润双轮演进（SEC F-1 & 6-K）';
+ subEl.textContent = '2023–2025 两年营收与经调整营业利润均翻逾 3 倍，2026Q2 单季经调整营业利润高达 $381M（利润率 54.1%）';
+ } else {
+ btnSplit.className = 'px-2.5 py-1 rounded-md font-semibold bg-white dark:bg-navy-700 text-mogold-600 dark:text-mogold-400 shadow-sm transition cursor-pointer';
+ btnEvo.className = 'px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+ titleEl.textContent = 'Bending Spoons 核心业务质量与 AI 效率结构比率拆解（%）';
+ subEl.textContent = '84% 订阅收入、94% 混合 NRR 与 &gt;90% AI 代码参与率，驱动 2026Q2 单季营收 +126% 爆发';
+ }
+ initBizChart();
+ }
+
+ function initRadarChart() {
+ const canvas = document.getElementById('moatRadarChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (radarChartInstance) radarChartInstance.destroy();
+ radarChartInstance = new Chart(ctx, {
+ type: 'radar',
+ data: {
+ labels: [
+ '极严人才密度与研发执行力',
+ 'AI 原生共享中台重构效率',
+ '永久持有承诺与资本纪律',
+ '单人创收与营业利润率转化',
+ '超大规模资产分散度与低杠杆'
+ ],
+ datasets: [
+ {
+ label: 'Bending Spoons (BSP)',
+ data: [9.9, 9.8, 9.6, 9.8, 6.8],
+ borderColor: '#F59E0B',
+ backgroundColor: 'rgba(245, 158, 11, 0.24)',
+ pointBackgroundColor: '#F59E0B',
+ borderWidth: 2.5
+ },
+ {
+ label: 'Constellation Software (CSU)',
+ data: [8.4, 6.2, 9.9, 8.6, 9.2],
+ borderColor: '#10B981',
+ backgroundColor: 'rgba(16, 185, 129, 0.14)',
+ pointBackgroundColor: '#10B981',
+ borderWidth: 2.0
+ },
+ {
+ label: '传统软件并购PE (Vista/TB)',
+ data: [6.8, 6.0, 2.5, 7.8, 6.5],
+ borderColor: '#06B6D4',
+ backgroundColor: 'rgba(6, 182, 212, 0.12)',
+ pointBackgroundColor: '#06B6D4',
+ borderWidth: 1.8,
+ borderDash: [4, 4]
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ }
+ },
+ scales: {
+ r: {
+ min: 0,
+ max: 10,
+ ticks: { display: false, stepSize: 2 },
+ grid: { color: colors.grid },
+ angleLines: { color: colors.radarAngle },
+ pointLabels: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initCompMarginChart() {
+ const canvas = document.getElementById('compMarginChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (compMarginChartInstance) compMarginChartInstance.destroy();
+ compMarginChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: [
+ 'Bending Spoons (BSP · 26Q2 基准)',
+ 'Adobe (ADBE · 创意软件巨头)',
+ 'Roper Technologies (ROP · 垂直软件)',
+ 'Dropbox (DBX · 云协作存储)',
+ 'Constellation Software (CSU · 垂直并购)'
+ ],
+ datasets: [
+ {
+ label: '经调整营业利润率 Adj. Operating Margin (%)',
+ data: [54.1, 46.2, 40.2, 36.5, 27.5],
+ backgroundColor: '#F59E0B',
+ borderRadius: 5,
+ barThickness: 13
+ },
+ {
+ label: '单名全职员工年创收指标 (×10 = $M/人 · 视觉同轴比例)',
+ data: [25.7, 7.8, 4.1, 9.5, 2.4],
+ backgroundColor: '#10B981',
+ borderRadius: 5,
+ barThickness: 13
+ }
+ ]
+ },
+ options: {
+ indexAxis: 'y',
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11 }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.datasetIndex === 0
+ ? `经调整营业利润率: ${c.parsed.x}%`
+ : `单人年创收: $${(c.parsed.x / 10).toFixed(2)}M / 人`
+ }
+ }
+ },
+ scales: {
+ x: {
+ max: 60,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => v + '%' }
+ },
+ y: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ }
+ }
+ }
+ });
+ }
+
+ function initValEvolutionChart() {
+ const canvas = document.getElementById('valEvolutionChart');
+ if (!canvas || typeof Chart === 'undefined') return;
+ const ctx = canvas.getContext('2d');
+ const colors = getChartColors();
+
+ if (valEvolutionChartInstance) valEvolutionChartInstance.destroy();
+ valEvolutionChartInstance = new Chart(ctx, {
+ type: 'bar',
+ data: {
+ labels: ['FY2023 (全年)', 'FY2024 (全年)', 'FY2025 (全年)', 'Q1 2026 (单季)', 'Q2 2026 (单季)'],
+ datasets: [
+ {
+ type: 'bar',
+ label: '营业收入 Revenue ($M)',
+ data: [387.0, 671.0, 1306.0, 601.3, 704.0],
+ backgroundColor: 'rgba(245, 158, 11, 0.85)',
+ borderRadius: 5,
+ barThickness: 28,
+ yAxisID: 'y'
+ },
+ {
+ type: 'line',
+ label: '经调整营业利润率 Adj. Operating Margin (%)',
+ data: [36.0, 45.0, 47.0, 51.0, 54.1],
+ borderColor: '#10B981',
+ backgroundColor: '#10B981',
+ borderWidth: 3,
+ pointRadius: 5,
+ pointHoverRadius: 7,
+ tension: 0.25,
+ yAxisID: 'y1'
+ }
+ ]
+ },
+ options: {
+ responsive: true,
+ maintainAspectRatio: false,
+ plugins: {
+ legend: {
+ position: 'bottom',
+ labels: { color: colors.text, font: { size: 11, family: 'Inter' }, usePointStyle: true }
+ },
+ tooltip: {
+ callbacks: {
+ label: (c) => c.dataset.yAxisID === 'y'
+ ? `${c.dataset.label}: $${c.parsed.y.toFixed(1)}M`
+ : `${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`
+ }
+ }
+ },
+ scales: {
+ x: {
+ grid: { display: false },
+ ticks: { color: colors.text, font: { size: 11, weight: '600' } }
+ },
+ y: {
+ type: 'linear',
+ position: 'left',
+ min: 0,
+ max: 1500,
+ grid: { color: colors.grid },
+ ticks: { color: colors.text, font: { size: 11 }, callback: v => '$' + v + 'M' },
+ title: { display: true, text: '营业收入 ($M)', color: colors.text, font: { size: 11 } }
+ },
+ y1: {
+ type: 'linear',
+ position: 'right',
+ min: 20,
+ max: 65,
+ grid: { drawOnChartArea: false },
+ ticks: { color: '#10B981', font: { size: 11, weight: '600' }, callback: v => v + '%' },
+ title: { display: true, text: '经调整营业利润率 (%)', color: '#10B981', font: { size: 11 } }
+ }
+ }
+ }
+ });
+ }
+
+ function updateChartsTheme() {
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ loadKpiChecklist();
+ updateFlywheelSimulator();
+ initBizChart();
+ initRadarChart();
+ initCompMarginChart();
+ initValEvolutionChart();
+ });
+ </script>
+</body>
+</html>
